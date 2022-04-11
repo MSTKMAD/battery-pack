@@ -1,0 +1,63 @@
+\hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source}{}\doxysection{TEST\+\_\+3.\+ino}
+\label{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_3/TEST\_3.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_3/TEST\_3.ino}}
+\mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00012}00012 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_milli_timer_8h}{MilliTimer.h}}>}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00013}00013 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{display_8h}{display.h}}>}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00014}00014 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{power__bar_8h}{power\_bar.h}}>}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00015}\mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{00015}} \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}} = \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}}();}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00017}\mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00017}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00019}00019     \textcolor{comment}{// Serial.begin(9600);}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00020}00020     \textcolor{comment}{// while (!Serial)}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00021}00021     \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00022}00022     \textcolor{comment}{//     ;}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00023}00023     \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00024}00024     \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___i_s31_f_l3731_abb2902bf5f6c86a77366682ce8c6317b}{begin}}();}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00026}00026     \textcolor{keywordtype}{int} \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, j = 0;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00027}00027     \mbox{\hyperlink{class_milli_timer}{MilliTimer}} \mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}};}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00028}00028     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00029}00029     \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00030}00030         \textcolor{keywordflow}{for} (int16\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 40; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} <= 160; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00031}00031         \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00032}00032             \mbox{\hyperlink{display_8h_a471d98c29ea2c3cdb940f34a34198713}{DisplayVolt}}(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}, \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00033}00033             \textcolor{keywordflow}{if} (\mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}}.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(10))}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00034}00034             \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00035}00035                 j++;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00036}00036                 \textcolor{keywordflow}{if} (j == 360)}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00037}00037                 \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00038}00038                     j = 0;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00039}00039                 \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00040}00040                 \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}} = abs(sin(radians(j++))) * 16;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00041}00041                 Serial.println(\mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00042}00042                 \mbox{\hyperlink{power__bar_8h_a44952b05fbd77dbb964abea1a508c8d0}{PowerBar}}(\mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00043}00043                 delay(2);}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00044}00044             \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00045}00045         \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00046}00046         \textcolor{keywordflow}{for} (int16\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 160; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} >= 40; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}-\/-\/)}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00047}00047         \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00048}00048             \mbox{\hyperlink{display_8h_a471d98c29ea2c3cdb940f34a34198713}{DisplayVolt}}(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}, \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00049}00049             \textcolor{keywordflow}{if} (\mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}}.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(10))}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00050}00050             \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00051}00051                 j++;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00052}00052                 \textcolor{keywordflow}{if} (j == 360)}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00053}00053                 \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00054}00054                     j = 0;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00055}00055                 \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00056}00056                 \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}} = abs(sin(radians(j++))) * 16;}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00057}00057                 Serial.println(\mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00058}00058                 \mbox{\hyperlink{power__bar_8h_a44952b05fbd77dbb964abea1a508c8d0}{PowerBar}}(\mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00059}00059                 delay(2);}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00060}00060             \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00061}00061         \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00062}00062     \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00065}\mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_afe461d27b9c48d5921c00d521181f12f}{00065}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00066}00066 \{}
+\DoxyCodeLine{\Hypertarget{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__3_2_t_e_s_t__3_8ino_source_l00067}00067 \}}
+
+\end{DoxyCode}

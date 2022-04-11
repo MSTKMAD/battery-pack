@@ -1,0 +1,217 @@
+\hypertarget{_dpad_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0001-\/\+BUTTONS/\+Dpad.h File Reference}
+\label{_dpad_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/Dpad.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/Dpad.h}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a6b421ad8708aadcc0748da8035070970}{Read\+Dir\+Pad}} ()
+\begin{DoxyCompactList}\small\item\em Esta funcion lee y detecta las pulsaciones cortas(\+CLICKs) y largas (LP) de 5 botones. Incluye protecciones antirebotes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a0283079e2ebfe2a36d74f58b3bda965b}{C\+\_\+\+LP\+\_\+\+CENTER}} = 0x01
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a94c3a89769b4ced6c99cca3e7596e7ba}{C\+\_\+\+LP\+\_\+\+UP}} = 0x04
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a2c9c5cb70e2fdd47926c1fc71a54b974}{C\+\_\+\+LP\+\_\+\+DOWN}} = 0x05
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a8b3f3494d90d6ef7a384253d17418392}{C\+\_\+\+CLICK\+\_\+\+CENTER}} = 0x06
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a0cb709d731efe8eed0ba27d7bc5c0f04}{C\+\_\+\+CLICK\+\_\+\+UP}} = 0x09
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_ad8a5a68ee5917c9b48fcccb19bc23423}{C\+\_\+\+CLICK\+\_\+\+DOWN}} = 0x0A
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a0807a57abd82dc35f7d7865ab7ae4b86}{C\+\_\+\+NONE\+\_\+\+EVENT}} = 0x0B
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a947d766921ce43aec19b1ba3c6b13aeb}{C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+UP}} = 9
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_abd50bae55666f1b56c8debaf89c30fd5}{C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+DOWN}} = 8
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a90e5a0ae7282b21e10c1322e804f2664}{C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+CENTER}} = 5
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_dpad_8h_a93e2406faf16aa3edde644e90a7ec326}{C\+\_\+\+TIMER\+\_\+\+DEBOUNCE}} = 50
+\item 
+const int32\+\_\+t \mbox{\hyperlink{_dpad_8h_a5bd23c7fdf26f362c1ca787b275d15ca}{C\+\_\+\+TIMER\+\_\+\+LONGPRESS}} = 1000 + \mbox{\hyperlink{_dpad_8h_a93e2406faf16aa3edde644e90a7ec326}{C\+\_\+\+TIMER\+\_\+\+DEBOUNCE}}
+\item 
+const int32\+\_\+t \mbox{\hyperlink{_dpad_8h_ac16615442e2ed32ef09d643bac18313e}{C\+\_\+\+TIMER\+\_\+\+LONGPRESS\+\_\+\+LOOP}} = 500
+\item 
+const bool \mbox{\hyperlink{_dpad_8h_a8a59bde91ecb811f010566cfb7916e0c}{button\+\_\+pressed}} = LOW
+\item 
+const bool \mbox{\hyperlink{_dpad_8h_a952e98926fe414dc17cf255e3402a94e}{button\+\_\+not\+\_\+pressed}} = HIGH
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_dpad_8h_a6b421ad8708aadcc0748da8035070970}\label{_dpad_8h_a6b421ad8708aadcc0748da8035070970}} 
+\index{Dpad.h@{Dpad.h}!ReadDirPad@{ReadDirPad}}
+\index{ReadDirPad@{ReadDirPad}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{ReadDirPad()}{ReadDirPad()}}
+{\footnotesize\ttfamily int16\+\_\+t Read\+Dir\+Pad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Esta funcion lee y detecta las pulsaciones cortas(\+CLICKs) y largas (LP) de 5 botones. Incluye protecciones antirebotes. 
+
+\begin{DoxyReturn}{Returns}
+int16\+\_\+t 
+\end{DoxyReturn}
+UP BUTTON
+
+DOWN BUTTON
+
+CENTER BUTTON
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00042}{42}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_dpad_8h_a952e98926fe414dc17cf255e3402a94e}\label{_dpad_8h_a952e98926fe414dc17cf255e3402a94e}} 
+\index{Dpad.h@{Dpad.h}!button\_not\_pressed@{button\_not\_pressed}}
+\index{button\_not\_pressed@{button\_not\_pressed}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{button\_not\_pressed}{button\_not\_pressed}}
+{\footnotesize\ttfamily const bool button\+\_\+not\+\_\+pressed = HIGH}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00035}{35}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a8a59bde91ecb811f010566cfb7916e0c}\label{_dpad_8h_a8a59bde91ecb811f010566cfb7916e0c}} 
+\index{Dpad.h@{Dpad.h}!button\_pressed@{button\_pressed}}
+\index{button\_pressed@{button\_pressed}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{button\_pressed}{button\_pressed}}
+{\footnotesize\ttfamily const bool button\+\_\+pressed = LOW}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00034}{34}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a8b3f3494d90d6ef7a384253d17418392}\label{_dpad_8h_a8b3f3494d90d6ef7a384253d17418392}} 
+\index{Dpad.h@{Dpad.h}!C\_CLICK\_CENTER@{C\_CLICK\_CENTER}}
+\index{C\_CLICK\_CENTER@{C\_CLICK\_CENTER}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_CLICK\_CENTER}{C\_CLICK\_CENTER}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+CLICK\+\_\+\+CENTER = 0x06}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00017}{17}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_ad8a5a68ee5917c9b48fcccb19bc23423}\label{_dpad_8h_ad8a5a68ee5917c9b48fcccb19bc23423}} 
+\index{Dpad.h@{Dpad.h}!C\_CLICK\_DOWN@{C\_CLICK\_DOWN}}
+\index{C\_CLICK\_DOWN@{C\_CLICK\_DOWN}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_CLICK\_DOWN}{C\_CLICK\_DOWN}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+CLICK\+\_\+\+DOWN = 0x0A}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00021}{21}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a0cb709d731efe8eed0ba27d7bc5c0f04}\label{_dpad_8h_a0cb709d731efe8eed0ba27d7bc5c0f04}} 
+\index{Dpad.h@{Dpad.h}!C\_CLICK\_UP@{C\_CLICK\_UP}}
+\index{C\_CLICK\_UP@{C\_CLICK\_UP}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_CLICK\_UP}{C\_CLICK\_UP}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+CLICK\+\_\+\+UP = 0x09}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00020}{20}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a0283079e2ebfe2a36d74f58b3bda965b}\label{_dpad_8h_a0283079e2ebfe2a36d74f58b3bda965b}} 
+\index{Dpad.h@{Dpad.h}!C\_LP\_CENTER@{C\_LP\_CENTER}}
+\index{C\_LP\_CENTER@{C\_LP\_CENTER}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_LP\_CENTER}{C\_LP\_CENTER}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+LP\+\_\+\+CENTER = 0x01}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00012}{12}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a2c9c5cb70e2fdd47926c1fc71a54b974}\label{_dpad_8h_a2c9c5cb70e2fdd47926c1fc71a54b974}} 
+\index{Dpad.h@{Dpad.h}!C\_LP\_DOWN@{C\_LP\_DOWN}}
+\index{C\_LP\_DOWN@{C\_LP\_DOWN}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_LP\_DOWN}{C\_LP\_DOWN}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+LP\+\_\+\+DOWN = 0x05}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00016}{16}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a94c3a89769b4ced6c99cca3e7596e7ba}\label{_dpad_8h_a94c3a89769b4ced6c99cca3e7596e7ba}} 
+\index{Dpad.h@{Dpad.h}!C\_LP\_UP@{C\_LP\_UP}}
+\index{C\_LP\_UP@{C\_LP\_UP}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_LP\_UP}{C\_LP\_UP}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+LP\+\_\+\+UP = 0x04}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00015}{15}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a0807a57abd82dc35f7d7865ab7ae4b86}\label{_dpad_8h_a0807a57abd82dc35f7d7865ab7ae4b86}} 
+\index{Dpad.h@{Dpad.h}!C\_NONE\_EVENT@{C\_NONE\_EVENT}}
+\index{C\_NONE\_EVENT@{C\_NONE\_EVENT}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_NONE\_EVENT}{C\_NONE\_EVENT}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+NONE\+\_\+\+EVENT = 0x0B}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00022}{22}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a90e5a0ae7282b21e10c1322e804f2664}\label{_dpad_8h_a90e5a0ae7282b21e10c1322e804f2664}} 
+\index{Dpad.h@{Dpad.h}!C\_PIN\_BUTT\_CENTER@{C\_PIN\_BUTT\_CENTER}}
+\index{C\_PIN\_BUTT\_CENTER@{C\_PIN\_BUTT\_CENTER}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIN\_BUTT\_CENTER}{C\_PIN\_BUTT\_CENTER}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+CENTER = 5}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00028}{28}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_abd50bae55666f1b56c8debaf89c30fd5}\label{_dpad_8h_abd50bae55666f1b56c8debaf89c30fd5}} 
+\index{Dpad.h@{Dpad.h}!C\_PIN\_BUTT\_DOWN@{C\_PIN\_BUTT\_DOWN}}
+\index{C\_PIN\_BUTT\_DOWN@{C\_PIN\_BUTT\_DOWN}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIN\_BUTT\_DOWN}{C\_PIN\_BUTT\_DOWN}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+DOWN = 8}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00025}{25}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a947d766921ce43aec19b1ba3c6b13aeb}\label{_dpad_8h_a947d766921ce43aec19b1ba3c6b13aeb}} 
+\index{Dpad.h@{Dpad.h}!C\_PIN\_BUTT\_UP@{C\_PIN\_BUTT\_UP}}
+\index{C\_PIN\_BUTT\_UP@{C\_PIN\_BUTT\_UP}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIN\_BUTT\_UP}{C\_PIN\_BUTT\_UP}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PIN\+\_\+\+BUTT\+\_\+\+UP = 9}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00024}{24}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a93e2406faf16aa3edde644e90a7ec326}\label{_dpad_8h_a93e2406faf16aa3edde644e90a7ec326}} 
+\index{Dpad.h@{Dpad.h}!C\_TIMER\_DEBOUNCE@{C\_TIMER\_DEBOUNCE}}
+\index{C\_TIMER\_DEBOUNCE@{C\_TIMER\_DEBOUNCE}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_TIMER\_DEBOUNCE}{C\_TIMER\_DEBOUNCE}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+TIMER\+\_\+\+DEBOUNCE = 50}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00030}{30}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_a5bd23c7fdf26f362c1ca787b275d15ca}\label{_dpad_8h_a5bd23c7fdf26f362c1ca787b275d15ca}} 
+\index{Dpad.h@{Dpad.h}!C\_TIMER\_LONGPRESS@{C\_TIMER\_LONGPRESS}}
+\index{C\_TIMER\_LONGPRESS@{C\_TIMER\_LONGPRESS}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_TIMER\_LONGPRESS}{C\_TIMER\_LONGPRESS}}
+{\footnotesize\ttfamily const int32\+\_\+t C\+\_\+\+TIMER\+\_\+\+LONGPRESS = 1000 + \mbox{\hyperlink{_dpad_8h_a93e2406faf16aa3edde644e90a7ec326}{C\+\_\+\+TIMER\+\_\+\+DEBOUNCE}}}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00031}{31}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+
+\mbox{\Hypertarget{_dpad_8h_ac16615442e2ed32ef09d643bac18313e}\label{_dpad_8h_ac16615442e2ed32ef09d643bac18313e}} 
+\index{Dpad.h@{Dpad.h}!C\_TIMER\_LONGPRESS\_LOOP@{C\_TIMER\_LONGPRESS\_LOOP}}
+\index{C\_TIMER\_LONGPRESS\_LOOP@{C\_TIMER\_LONGPRESS\_LOOP}!Dpad.h@{Dpad.h}}
+\doxysubsubsection{\texorpdfstring{C\_TIMER\_LONGPRESS\_LOOP}{C\_TIMER\_LONGPRESS\_LOOP}}
+{\footnotesize\ttfamily const int32\+\_\+t C\+\_\+\+TIMER\+\_\+\+LONGPRESS\+\_\+\+LOOP = 500}
+
+
+
+Definition at line \mbox{\hyperlink{_dpad_8h_source_l00032}{32}} of file \mbox{\hyperlink{_dpad_8h_source}{Dpad.\+h}}.
+

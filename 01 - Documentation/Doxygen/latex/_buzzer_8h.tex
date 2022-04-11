@@ -1,0 +1,785 @@
+\hypertarget{_buzzer_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0003-\/\+BUZZER/\+Buzzer.h File Reference}
+\label{_buzzer_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/Buzzer.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/Buzzer.h}}
+{\ttfamily \#include \char`\"{}notes.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_buzzer_8h_a6b91a0d02bbe032d1d5f6cbcdcd10c5f}{NOTE\+\_\+\+B9}}~15804
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_buzzer_8h_a21b899c2373c9e91363ea5b75d41e815}{Init\+Buzzer}} (uint16\+\_\+t mode=\mbox{\hyperlink{_buzzer_8h_ae739bce69941ec6683b0a2ab35c9aeea}{C\+\_\+\+MODE\+\_\+\+DEFAULT}})
+\begin{DoxyCompactList}\small\item\em Inicializacion del buzzer con la seleccion del sonido de cada accion. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a8f0ff4f3823e304fcc5a568ef48b1170}{get\+Sound}} (uint16\+\_\+t $\ast$local, uint16\+\_\+t sound\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Get the Sound object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_buzzer_8h_a520652f2227e0303da55147ec5e0c1ec}{play\+Sound}} (int16\+\_\+t num)
+\begin{DoxyCompactList}\small\item\em Funcion que reproduce los sonidos. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ad1e4ea6a5abdc150285801a8ba4eea0f}{C\+\_\+\+PIN\+\_\+\+BUZZER}} = 4
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a910f2329a2cf8022293f3bec1e4829f8}{C\+\_\+\+SOUND\+\_\+\+MUTE}} = 0
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a47c3d40e0a1e811b4928f3c0118e0183}{C\+\_\+\+SOUND\+\_\+\+START}} = 1
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a51abe6d6bf8ca223624b2f7a97248649}{C\+\_\+\+SOUND\+\_\+\+END}} = 2
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aa61df6961685d19075485d8dea13214c}{C\+\_\+\+SOUND\+\_\+\+UP}} = 3
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aa972c570547083aae30a80b2b79da9d4}{C\+\_\+\+SOUND\+\_\+\+DOWN}} = 4
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ab21b370e4ceb350ef70f44ae3415b60e}{C\+\_\+\+SOUND\+\_\+\+ON}} = 5
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ab33d1e7c0e7e27dcc105c35b33e9b113}{C\+\_\+\+SOUND\+\_\+\+OFF}} = 6
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a2d9a45861fbd07e7f3c0b3bc5c696a34}{C\+\_\+\+SOUND\+\_\+\+CHARGE\+\_\+\+IN}} = 7
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a666343832642af01aa882c7eaaebc370}{C\+\_\+\+SOUND\+\_\+\+CHARGE\+\_\+\+OUT}} = 8
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a8f84cb5e07d3bdf0e5121c94a8e18649}{C\+\_\+\+SOUND\+\_\+\+DEATH\+\_\+\+BATTERY}} = 9
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aececbfe10f41fe65b6deb172adb6524d}{C\+\_\+\+SOUND\+\_\+\+FULL\+\_\+\+CHARGE}} = 10
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a4be3d8b6df98ef6eea9a3a87724c6fc6}{C\+\_\+\+SOUND\+\_\+\+LOW\+\_\+\+BATTERY}} = 11
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ad88447be0bedebdb25ac66439bdc04df}{C\+\_\+\+SOUND\+\_\+\+ERROR}} = 12
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ab04518c22c1f69da06254d193e9f1e9d}{C\+\_\+\+NOTES\+\_\+\+START\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 125, 5, \mbox{\hyperlink{notes_8h_abc6a20319564cb37b2de2d3ef3b90c56}{NOTE\+\_\+\+G6}}, 125, 5, \mbox{\hyperlink{notes_8h_a94435ecff4dd7454e8f12714c3bddd32}{NOTE\+\_\+\+E7}}, 125, 5, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 5, \mbox{\hyperlink{notes_8h_aedb563ef21585da30f0b764af28c0756}{NOTE\+\_\+\+D7}}, 125, 5, \mbox{\hyperlink{notes_8h_afabef1046812185e7c9b348c4ed42ff0}{NOTE\+\_\+\+G7}}, 125, 5\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a3ef383d81e84536e968e1f0cf5c85c77}{C\+\_\+\+NOTES\+\_\+\+END\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_afabef1046812185e7c9b348c4ed42ff0}{NOTE\+\_\+\+G7}}, 125, 5, \mbox{\hyperlink{notes_8h_aedb563ef21585da30f0b764af28c0756}{NOTE\+\_\+\+D7}}, 125, 5, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 5, \mbox{\hyperlink{notes_8h_a94435ecff4dd7454e8f12714c3bddd32}{NOTE\+\_\+\+E7}}, 125, 5, \mbox{\hyperlink{notes_8h_abc6a20319564cb37b2de2d3ef3b90c56}{NOTE\+\_\+\+G6}}, 125, 5, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 125, 5\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ae113b992ca08474ea24e60210f215958}{C\+\_\+\+NOTES\+\_\+\+DOWN\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 10, 10, \mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 10, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aa36fc1e25d4892f5e09f28bc3b12a605}{C\+\_\+\+NOTES\+\_\+\+UP\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 10, 10, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 10, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a77159f5e2f191d2ddc1fab5f0af4b354}{C\+\_\+\+NOTES\+\_\+\+ON\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 100, 0, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 200, 0\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a14c008700d72b448627d34bec13170a8}{C\+\_\+\+NOTES\+\_\+\+OFF\+\_\+1}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 100, 0, \mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 200, 0\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a9bc0ccff019c6ee18dbb3b9a0b59040d}{C\+\_\+\+NOTES\+\_\+\+CHARGE\+\_\+\+IN}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a8afb484cf5507628f20dd2822a5b2e79}{NOTE\+\_\+\+C5}}, 125, 10, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 10, \mbox{\hyperlink{notes_8h_a54087ffb7da518f038a39025b2a9ee7e}{NOTE\+\_\+\+C6}}, 125, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a2551bd0006aa529c2650a4feb24d1a40}{C\+\_\+\+NOTES\+\_\+\+CHARGE\+\_\+\+OUT}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a54087ffb7da518f038a39025b2a9ee7e}{NOTE\+\_\+\+C6}}, 125, 10, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 10, \mbox{\hyperlink{notes_8h_a8afb484cf5507628f20dd2822a5b2e79}{NOTE\+\_\+\+C5}}, 125, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a15abf88aa109878392621e2be4b2dbcc}{C\+\_\+\+NOTES\+\_\+\+LOW\+\_\+\+BATTERY}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_afb7df9b682b4b86d94b639e8c8d50503}{C\+\_\+\+NOTES\+\_\+\+FULL\+\_\+\+CHARGE}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 400, 5, \mbox{\hyperlink{notes_8h_a9ed6d5c8563ae60e6d2716e13d261386}{NOTE\+\_\+\+B4}}, 400, 5, \mbox{\hyperlink{notes_8h_a8f01a2997f769170cc4f20287aca5339}{NOTE\+\_\+\+CS5}}, 400, 5, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 150, \mbox{\hyperlink{notes_8h_a8f01a2997f769170cc4f20287aca5339}{NOTE\+\_\+\+CS5}}, 150, 5, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 500, 5\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a0603185ee7e1f098c1facced4b44815f}{C\+\_\+\+NOTES\+\_\+\+DEATHBATTERY}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10, \mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10, \mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10\}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ad71ac354308935bf7e3356741bd07b5e}{C\+\_\+\+NOTES\+\_\+\+ERROR}} \mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50\}
+\item 
+\mbox{\hyperlink{class_milli_timer}{Milli\+Timer}} \mbox{\hyperlink{_buzzer_8h_ac7ee97dc5a27f571cd247f4fc8e9758a}{timer\+\_\+buzzer}}
+\item 
+const bool \mbox{\hyperlink{_buzzer_8h_a370a80cbdc5b9af3cf91a65742f7e94c}{C\+\_\+\+BUZZER\+\_\+\+BUSSY}} = true
+\item 
+const bool \mbox{\hyperlink{_buzzer_8h_a26967fad00b92ea5d9d5eef8bd34a74b}{C\+\_\+\+BUZZER\+\_\+\+NOT\+\_\+\+BUSSY}} = false
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a93b09ae009b13329f0807624fc8a39ac}{SOUND\+\_\+\+START}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_af9824c8c4d9177c74eb6ceca2af46258}{size\+\_\+sound\+\_\+start}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a333a6fc516286878650f585a9660d6fc}{SOUND\+\_\+\+END}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a13341c66686a8a56b8d5d41d9de6b1bb}{size\+\_\+sound\+\_\+end}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a185ae8e9755b0a542defc14e512ce8bf}{SOUND\+\_\+\+DOWN}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a88e15892f1eb7fe645b1bfecf53ff3b6}{size\+\_\+sound\+\_\+down}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a40719ab8968683820bf4ab94c8347656}{SOUND\+\_\+\+UP}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a2cea37d9ab58386b7a17a4b6e5c2e96c}{size\+\_\+sound\+\_\+up}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a8b1f206cd96b554c5d3f682d566ebed2}{SOUND\+\_\+\+ON}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a1ad6665bf86412c104799389162d833c}{size\+\_\+sound\+\_\+on}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a609fa6479e534dbe8c3a0c07824319ff}{SOUND\+\_\+\+OFF}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aab0527f4c6c9d6de5e7df01287f79c20}{size\+\_\+sound\+\_\+off}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ae7dfa259c818f0d928626de5b3e29238}{SOUND\+\_\+\+CHARGE\+\_\+\+IN}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a4968ca4bab202e78fb2668cb87232b6c}{size\+\_\+sound\+\_\+charge\+\_\+in}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_abbf669b8c3e2f490006e9c5ab16d464d}{SOUND\+\_\+\+CHARGE\+\_\+\+OUT}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a6a99f028d9399e6e22a8d95871fec93d}{size\+\_\+sound\+\_\+charge\+\_\+out}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a41400cf28015443b29a2be3c4e0ceb94}{SOUND\+\_\+\+DEATH\+\_\+\+BATTERY}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ab66e86b7ce15150f1f4dfc0df1497256}{size\+\_\+sound\+\_\+death\+\_\+battery}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a7ab40b0f7d2f629a5b881b3c31874956}{SOUND\+\_\+\+FULL\+\_\+\+CHARGE}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a31fe9c206f043dd802bc1aeed4ca23e9}{size\+\_\+sound\+\_\+full\+\_\+charge}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a281a3ee823f7c17b34ac96f8b9802bc6}{SOUND\+\_\+\+LOW\+\_\+\+BATTERY}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a405e3082d523c8d15f2b0baf99d51ae1}{size\+\_\+sound\+\_\+low\+\_\+battery}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aa8c1858f6fe0d46f87aad454f7849d35}{SOUND\+\_\+\+ERROR}} \mbox{[}100\mbox{]}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_a0c48c41762a6c4f1294c2389a7ed8cca}{size\+\_\+sound\+\_\+error}}
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_aaa2ec1ac2d506b349204f64a6f37e33d}{C\+\_\+\+MODE\+\_\+\+HACK\+\_\+\+ALTERNATIVE}} = 0x10
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{_buzzer_8h_ae739bce69941ec6683b0a2ab35c9aeea}{C\+\_\+\+MODE\+\_\+\+DEFAULT}} = 0x11
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Javi (\href{mailto:Javier@musotoku.com}{\texttt{ Javier@musotoku.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2021-\/02-\/11
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2021 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_buzzer_8h_a6b91a0d02bbe032d1d5f6cbcdcd10c5f}\label{_buzzer_8h_a6b91a0d02bbe032d1d5f6cbcdcd10c5f}} 
+\index{Buzzer.h@{Buzzer.h}!NOTE\_B9@{NOTE\_B9}}
+\index{NOTE\_B9@{NOTE\_B9}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{NOTE\_B9}{NOTE\_B9}}
+{\footnotesize\ttfamily \#define NOTE\+\_\+\+B9~15804}
+
+
+
+Definition at line \mbox{\hyperlink{notes_8h_source_l00120}{120}} of file \mbox{\hyperlink{notes_8h_source}{notes.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_buzzer_8h_a8f0ff4f3823e304fcc5a568ef48b1170}\label{_buzzer_8h_a8f0ff4f3823e304fcc5a568ef48b1170}} 
+\index{Buzzer.h@{Buzzer.h}!getSound@{getSound}}
+\index{getSound@{getSound}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{getSound()}{getSound()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+Sound (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{local,  }\item[{uint16\+\_\+t}]{sound\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Get the Sound object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local} & \\
+\hline
+{\em sound\+\_\+id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00137}{137}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a21b899c2373c9e91363ea5b75d41e815}\label{_buzzer_8h_a21b899c2373c9e91363ea5b75d41e815}} 
+\index{Buzzer.h@{Buzzer.h}!InitBuzzer@{InitBuzzer}}
+\index{InitBuzzer@{InitBuzzer}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{InitBuzzer()}{InitBuzzer()}}
+{\footnotesize\ttfamily void Init\+Buzzer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{mode = {\ttfamily \mbox{\hyperlink{_buzzer_8h_ae739bce69941ec6683b0a2ab35c9aeea}{C\+\_\+\+MODE\+\_\+\+DEFAULT}}} }\end{DoxyParamCaption})}
+
+
+
+Inicializacion del buzzer con la seleccion del sonido de cada accion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00081}{81}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a520652f2227e0303da55147ec5e0c1ec}\label{_buzzer_8h_a520652f2227e0303da55147ec5e0c1ec}} 
+\index{Buzzer.h@{Buzzer.h}!playSound@{playSound}}
+\index{playSound@{playSound}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{playSound()}{playSound()}}
+{\footnotesize\ttfamily bool play\+Sound (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{num }\end{DoxyParamCaption})}
+
+
+
+Funcion que reproduce los sonidos. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00211}{211}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_buzzer_8h_a370a80cbdc5b9af3cf91a65742f7e94c}\label{_buzzer_8h_a370a80cbdc5b9af3cf91a65742f7e94c}} 
+\index{Buzzer.h@{Buzzer.h}!C\_BUZZER\_BUSSY@{C\_BUZZER\_BUSSY}}
+\index{C\_BUZZER\_BUSSY@{C\_BUZZER\_BUSSY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_BUZZER\_BUSSY}{C\_BUZZER\_BUSSY}}
+{\footnotesize\ttfamily const bool C\+\_\+\+BUZZER\+\_\+\+BUSSY = true}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00046}{46}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a26967fad00b92ea5d9d5eef8bd34a74b}\label{_buzzer_8h_a26967fad00b92ea5d9d5eef8bd34a74b}} 
+\index{Buzzer.h@{Buzzer.h}!C\_BUZZER\_NOT\_BUSSY@{C\_BUZZER\_NOT\_BUSSY}}
+\index{C\_BUZZER\_NOT\_BUSSY@{C\_BUZZER\_NOT\_BUSSY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_BUZZER\_NOT\_BUSSY}{C\_BUZZER\_NOT\_BUSSY}}
+{\footnotesize\ttfamily const bool C\+\_\+\+BUZZER\+\_\+\+NOT\+\_\+\+BUSSY = false}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00047}{47}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ae739bce69941ec6683b0a2ab35c9aeea}\label{_buzzer_8h_ae739bce69941ec6683b0a2ab35c9aeea}} 
+\index{Buzzer.h@{Buzzer.h}!C\_MODE\_DEFAULT@{C\_MODE\_DEFAULT}}
+\index{C\_MODE\_DEFAULT@{C\_MODE\_DEFAULT}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_MODE\_DEFAULT}{C\_MODE\_DEFAULT}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+MODE\+\_\+\+DEFAULT = 0x11}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00074}{74}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aaa2ec1ac2d506b349204f64a6f37e33d}\label{_buzzer_8h_aaa2ec1ac2d506b349204f64a6f37e33d}} 
+\index{Buzzer.h@{Buzzer.h}!C\_MODE\_HACK\_ALTERNATIVE@{C\_MODE\_HACK\_ALTERNATIVE}}
+\index{C\_MODE\_HACK\_ALTERNATIVE@{C\_MODE\_HACK\_ALTERNATIVE}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_MODE\_HACK\_ALTERNATIVE}{C\_MODE\_HACK\_ALTERNATIVE}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+MODE\+\_\+\+HACK\+\_\+\+ALTERNATIVE = 0x10}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00073}{73}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a9bc0ccff019c6ee18dbb3b9a0b59040d}\label{_buzzer_8h_a9bc0ccff019c6ee18dbb3b9a0b59040d}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_CHARGE\_IN@{C\_NOTES\_CHARGE\_IN}}
+\index{C\_NOTES\_CHARGE\_IN@{C\_NOTES\_CHARGE\_IN}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_CHARGE\_IN}{C\_NOTES\_CHARGE\_IN}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+CHARGE\+\_\+\+IN\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a8afb484cf5507628f20dd2822a5b2e79}{NOTE\+\_\+\+C5}}, 125, 10, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 10, \mbox{\hyperlink{notes_8h_a54087ffb7da518f038a39025b2a9ee7e}{NOTE\+\_\+\+C6}}, 125, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00037}{37}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a2551bd0006aa529c2650a4feb24d1a40}\label{_buzzer_8h_a2551bd0006aa529c2650a4feb24d1a40}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_CHARGE\_OUT@{C\_NOTES\_CHARGE\_OUT}}
+\index{C\_NOTES\_CHARGE\_OUT@{C\_NOTES\_CHARGE\_OUT}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_CHARGE\_OUT}{C\_NOTES\_CHARGE\_OUT}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+CHARGE\+\_\+\+OUT\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a54087ffb7da518f038a39025b2a9ee7e}{NOTE\+\_\+\+C6}}, 125, 10, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 10, \mbox{\hyperlink{notes_8h_a8afb484cf5507628f20dd2822a5b2e79}{NOTE\+\_\+\+C5}}, 125, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00038}{38}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a0603185ee7e1f098c1facced4b44815f}\label{_buzzer_8h_a0603185ee7e1f098c1facced4b44815f}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_DEATHBATTERY@{C\_NOTES\_DEATHBATTERY}}
+\index{C\_NOTES\_DEATHBATTERY@{C\_NOTES\_DEATHBATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_DEATHBATTERY}{C\_NOTES\_DEATHBATTERY}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+DEATHBATTERY\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10, \mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10, \mbox{\hyperlink{notes_8h_af71ac5d772736db7a12fd9f9521dd475}{NOTE\+\_\+\+G5}}, 100, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00041}{41}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ae113b992ca08474ea24e60210f215958}\label{_buzzer_8h_ae113b992ca08474ea24e60210f215958}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_DOWN\_1@{C\_NOTES\_DOWN\_1}}
+\index{C\_NOTES\_DOWN\_1@{C\_NOTES\_DOWN\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_DOWN\_1}{C\_NOTES\_DOWN\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+DOWN\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 10, 10, \mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 10, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00033}{33}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a3ef383d81e84536e968e1f0cf5c85c77}\label{_buzzer_8h_a3ef383d81e84536e968e1f0cf5c85c77}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_END\_1@{C\_NOTES\_END\_1}}
+\index{C\_NOTES\_END\_1@{C\_NOTES\_END\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_END\_1}{C\_NOTES\_END\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+END\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_afabef1046812185e7c9b348c4ed42ff0}{NOTE\+\_\+\+G7}}, 125, 5, \mbox{\hyperlink{notes_8h_aedb563ef21585da30f0b764af28c0756}{NOTE\+\_\+\+D7}}, 125, 5, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 5, \mbox{\hyperlink{notes_8h_a94435ecff4dd7454e8f12714c3bddd32}{NOTE\+\_\+\+E7}}, 125, 5, \mbox{\hyperlink{notes_8h_abc6a20319564cb37b2de2d3ef3b90c56}{NOTE\+\_\+\+G6}}, 125, 5, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 125, 5\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00032}{32}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ad71ac354308935bf7e3356741bd07b5e}\label{_buzzer_8h_ad71ac354308935bf7e3356741bd07b5e}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_ERROR@{C\_NOTES\_ERROR}}
+\index{C\_NOTES\_ERROR@{C\_NOTES\_ERROR}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_ERROR}{C\_NOTES\_ERROR}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+ERROR\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50,\mbox{\hyperlink{notes_8h_a86f99256baa62c00acf33ae49078a161}{NOTE\+\_\+\+C8}},100,50\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00042}{42}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_afb7df9b682b4b86d94b639e8c8d50503}\label{_buzzer_8h_afb7df9b682b4b86d94b639e8c8d50503}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_FULL\_CHARGE@{C\_NOTES\_FULL\_CHARGE}}
+\index{C\_NOTES\_FULL\_CHARGE@{C\_NOTES\_FULL\_CHARGE}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_FULL\_CHARGE}{C\_NOTES\_FULL\_CHARGE}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+FULL\+\_\+\+CHARGE\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 10, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 400, 5, \mbox{\hyperlink{notes_8h_a9ed6d5c8563ae60e6d2716e13d261386}{NOTE\+\_\+\+B4}}, 400, 5, \mbox{\hyperlink{notes_8h_a8f01a2997f769170cc4f20287aca5339}{NOTE\+\_\+\+CS5}}, 400, 5, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 150, 150, \mbox{\hyperlink{notes_8h_a8f01a2997f769170cc4f20287aca5339}{NOTE\+\_\+\+CS5}}, 150, 5, \mbox{\hyperlink{notes_8h_a7943ad2d66e53367906e04e8af1c086a}{NOTE\+\_\+\+DS5}}, 500, 5\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00040}{40}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a15abf88aa109878392621e2be4b2dbcc}\label{_buzzer_8h_a15abf88aa109878392621e2be4b2dbcc}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_LOW\_BATTERY@{C\_NOTES\_LOW\_BATTERY}}
+\index{C\_NOTES\_LOW\_BATTERY@{C\_NOTES\_LOW\_BATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_LOW\_BATTERY}{C\_NOTES\_LOW\_BATTERY}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+LOW\+\_\+\+BATTERY\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10, \mbox{\hyperlink{notes_8h_aa5207dfb3103215cdb89a40c1753eea8}{NOTE\+\_\+\+B3}}, 200, 10, \mbox{\hyperlink{notes_8h_a2533a6044529da9ea46ea98e76ee50ad}{NOTE\+\_\+\+F3}}, 200, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00039}{39}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a14c008700d72b448627d34bec13170a8}\label{_buzzer_8h_a14c008700d72b448627d34bec13170a8}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_OFF\_1@{C\_NOTES\_OFF\_1}}
+\index{C\_NOTES\_OFF\_1@{C\_NOTES\_OFF\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_OFF\_1}{C\_NOTES\_OFF\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+OFF\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 100, 0, \mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 200, 0\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00036}{36}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a77159f5e2f191d2ddc1fab5f0af4b354}\label{_buzzer_8h_a77159f5e2f191d2ddc1fab5f0af4b354}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_ON\_1@{C\_NOTES\_ON\_1}}
+\index{C\_NOTES\_ON\_1@{C\_NOTES\_ON\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_ON\_1}{C\_NOTES\_ON\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+ON\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 100, 0, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 200, 0\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00035}{35}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ab04518c22c1f69da06254d193e9f1e9d}\label{_buzzer_8h_ab04518c22c1f69da06254d193e9f1e9d}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_START\_1@{C\_NOTES\_START\_1}}
+\index{C\_NOTES\_START\_1@{C\_NOTES\_START\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_START\_1}{C\_NOTES\_START\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+START\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 125, 5, \mbox{\hyperlink{notes_8h_abc6a20319564cb37b2de2d3ef3b90c56}{NOTE\+\_\+\+G6}}, 125, 5, \mbox{\hyperlink{notes_8h_a94435ecff4dd7454e8f12714c3bddd32}{NOTE\+\_\+\+E7}}, 125, 5, \mbox{\hyperlink{notes_8h_a4a673e851d3b7e3b56a7cd83fba56cc3}{NOTE\+\_\+\+C7}}, 125, 5, \mbox{\hyperlink{notes_8h_aedb563ef21585da30f0b764af28c0756}{NOTE\+\_\+\+D7}}, 125, 5, \mbox{\hyperlink{notes_8h_afabef1046812185e7c9b348c4ed42ff0}{NOTE\+\_\+\+G7}}, 125, 5\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00031}{31}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aa36fc1e25d4892f5e09f28bc3b12a605}\label{_buzzer_8h_aa36fc1e25d4892f5e09f28bc3b12a605}} 
+\index{Buzzer.h@{Buzzer.h}!C\_NOTES\_UP\_1@{C\_NOTES\_UP\_1}}
+\index{C\_NOTES\_UP\_1@{C\_NOTES\_UP\_1}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_NOTES\_UP\_1}{C\_NOTES\_UP\_1}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+NOTES\+\_\+\+UP\+\_\+1\mbox{[}$\,$\mbox{]} = \{\mbox{\hyperlink{notes_8h_a88aac44b58d74d5aa5749e17a22b8cdd}{NOTE\+\_\+\+B5}}, 10, 10, \mbox{\hyperlink{notes_8h_a857f52119eedaadce999e3918ae9959f}{NOTE\+\_\+\+E6}}, 10, 10\}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00034}{34}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ad1e4ea6a5abdc150285801a8ba4eea0f}\label{_buzzer_8h_ad1e4ea6a5abdc150285801a8ba4eea0f}} 
+\index{Buzzer.h@{Buzzer.h}!C\_PIN\_BUZZER@{C\_PIN\_BUZZER}}
+\index{C\_PIN\_BUZZER@{C\_PIN\_BUZZER}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIN\_BUZZER}{C\_PIN\_BUZZER}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+PIN\+\_\+\+BUZZER = 4}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00014}{14}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a2d9a45861fbd07e7f3c0b3bc5c696a34}\label{_buzzer_8h_a2d9a45861fbd07e7f3c0b3bc5c696a34}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_CHARGE\_IN@{C\_SOUND\_CHARGE\_IN}}
+\index{C\_SOUND\_CHARGE\_IN@{C\_SOUND\_CHARGE\_IN}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_CHARGE\_IN}{C\_SOUND\_CHARGE\_IN}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+CHARGE\+\_\+\+IN = 7}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00023}{23}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a666343832642af01aa882c7eaaebc370}\label{_buzzer_8h_a666343832642af01aa882c7eaaebc370}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_CHARGE\_OUT@{C\_SOUND\_CHARGE\_OUT}}
+\index{C\_SOUND\_CHARGE\_OUT@{C\_SOUND\_CHARGE\_OUT}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_CHARGE\_OUT}{C\_SOUND\_CHARGE\_OUT}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+CHARGE\+\_\+\+OUT = 8}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00024}{24}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a8f84cb5e07d3bdf0e5121c94a8e18649}\label{_buzzer_8h_a8f84cb5e07d3bdf0e5121c94a8e18649}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_DEATH\_BATTERY@{C\_SOUND\_DEATH\_BATTERY}}
+\index{C\_SOUND\_DEATH\_BATTERY@{C\_SOUND\_DEATH\_BATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_DEATH\_BATTERY}{C\_SOUND\_DEATH\_BATTERY}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+DEATH\+\_\+\+BATTERY = 9}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00025}{25}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aa972c570547083aae30a80b2b79da9d4}\label{_buzzer_8h_aa972c570547083aae30a80b2b79da9d4}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_DOWN@{C\_SOUND\_DOWN}}
+\index{C\_SOUND\_DOWN@{C\_SOUND\_DOWN}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_DOWN}{C\_SOUND\_DOWN}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+DOWN = 4}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00020}{20}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a51abe6d6bf8ca223624b2f7a97248649}\label{_buzzer_8h_a51abe6d6bf8ca223624b2f7a97248649}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_END@{C\_SOUND\_END}}
+\index{C\_SOUND\_END@{C\_SOUND\_END}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_END}{C\_SOUND\_END}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+END = 2}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00018}{18}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ad88447be0bedebdb25ac66439bdc04df}\label{_buzzer_8h_ad88447be0bedebdb25ac66439bdc04df}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_ERROR@{C\_SOUND\_ERROR}}
+\index{C\_SOUND\_ERROR@{C\_SOUND\_ERROR}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_ERROR}{C\_SOUND\_ERROR}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+ERROR = 12}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00028}{28}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aececbfe10f41fe65b6deb172adb6524d}\label{_buzzer_8h_aececbfe10f41fe65b6deb172adb6524d}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_FULL\_CHARGE@{C\_SOUND\_FULL\_CHARGE}}
+\index{C\_SOUND\_FULL\_CHARGE@{C\_SOUND\_FULL\_CHARGE}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_FULL\_CHARGE}{C\_SOUND\_FULL\_CHARGE}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+FULL\+\_\+\+CHARGE = 10}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00026}{26}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a4be3d8b6df98ef6eea9a3a87724c6fc6}\label{_buzzer_8h_a4be3d8b6df98ef6eea9a3a87724c6fc6}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_LOW\_BATTERY@{C\_SOUND\_LOW\_BATTERY}}
+\index{C\_SOUND\_LOW\_BATTERY@{C\_SOUND\_LOW\_BATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_LOW\_BATTERY}{C\_SOUND\_LOW\_BATTERY}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+LOW\+\_\+\+BATTERY = 11}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00027}{27}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a910f2329a2cf8022293f3bec1e4829f8}\label{_buzzer_8h_a910f2329a2cf8022293f3bec1e4829f8}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_MUTE@{C\_SOUND\_MUTE}}
+\index{C\_SOUND\_MUTE@{C\_SOUND\_MUTE}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_MUTE}{C\_SOUND\_MUTE}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+MUTE = 0}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00016}{16}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ab33d1e7c0e7e27dcc105c35b33e9b113}\label{_buzzer_8h_ab33d1e7c0e7e27dcc105c35b33e9b113}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_OFF@{C\_SOUND\_OFF}}
+\index{C\_SOUND\_OFF@{C\_SOUND\_OFF}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_OFF}{C\_SOUND\_OFF}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+OFF = 6}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00022}{22}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ab21b370e4ceb350ef70f44ae3415b60e}\label{_buzzer_8h_ab21b370e4ceb350ef70f44ae3415b60e}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_ON@{C\_SOUND\_ON}}
+\index{C\_SOUND\_ON@{C\_SOUND\_ON}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_ON}{C\_SOUND\_ON}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+ON = 5}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00021}{21}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a47c3d40e0a1e811b4928f3c0118e0183}\label{_buzzer_8h_a47c3d40e0a1e811b4928f3c0118e0183}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_START@{C\_SOUND\_START}}
+\index{C\_SOUND\_START@{C\_SOUND\_START}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_START}{C\_SOUND\_START}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+START = 1}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00017}{17}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aa61df6961685d19075485d8dea13214c}\label{_buzzer_8h_aa61df6961685d19075485d8dea13214c}} 
+\index{Buzzer.h@{Buzzer.h}!C\_SOUND\_UP@{C\_SOUND\_UP}}
+\index{C\_SOUND\_UP@{C\_SOUND\_UP}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{C\_SOUND\_UP}{C\_SOUND\_UP}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+SOUND\+\_\+\+UP = 3}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00019}{19}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a4968ca4bab202e78fb2668cb87232b6c}\label{_buzzer_8h_a4968ca4bab202e78fb2668cb87232b6c}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_charge\_in@{size\_sound\_charge\_in}}
+\index{size\_sound\_charge\_in@{size\_sound\_charge\_in}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_charge\_in}{size\_sound\_charge\_in}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+charge\+\_\+in}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00061}{61}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a6a99f028d9399e6e22a8d95871fec93d}\label{_buzzer_8h_a6a99f028d9399e6e22a8d95871fec93d}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_charge\_out@{size\_sound\_charge\_out}}
+\index{size\_sound\_charge\_out@{size\_sound\_charge\_out}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_charge\_out}{size\_sound\_charge\_out}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+charge\+\_\+out}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00063}{63}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ab66e86b7ce15150f1f4dfc0df1497256}\label{_buzzer_8h_ab66e86b7ce15150f1f4dfc0df1497256}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_death\_battery@{size\_sound\_death\_battery}}
+\index{size\_sound\_death\_battery@{size\_sound\_death\_battery}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_death\_battery}{size\_sound\_death\_battery}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+death\+\_\+battery}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00065}{65}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a88e15892f1eb7fe645b1bfecf53ff3b6}\label{_buzzer_8h_a88e15892f1eb7fe645b1bfecf53ff3b6}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_down@{size\_sound\_down}}
+\index{size\_sound\_down@{size\_sound\_down}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_down}{size\_sound\_down}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+down}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00053}{53}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a13341c66686a8a56b8d5d41d9de6b1bb}\label{_buzzer_8h_a13341c66686a8a56b8d5d41d9de6b1bb}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_end@{size\_sound\_end}}
+\index{size\_sound\_end@{size\_sound\_end}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_end}{size\_sound\_end}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+end}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00051}{51}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a0c48c41762a6c4f1294c2389a7ed8cca}\label{_buzzer_8h_a0c48c41762a6c4f1294c2389a7ed8cca}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_error@{size\_sound\_error}}
+\index{size\_sound\_error@{size\_sound\_error}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_error}{size\_sound\_error}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+error}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00071}{71}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a31fe9c206f043dd802bc1aeed4ca23e9}\label{_buzzer_8h_a31fe9c206f043dd802bc1aeed4ca23e9}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_full\_charge@{size\_sound\_full\_charge}}
+\index{size\_sound\_full\_charge@{size\_sound\_full\_charge}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_full\_charge}{size\_sound\_full\_charge}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+full\+\_\+charge}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00067}{67}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a405e3082d523c8d15f2b0baf99d51ae1}\label{_buzzer_8h_a405e3082d523c8d15f2b0baf99d51ae1}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_low\_battery@{size\_sound\_low\_battery}}
+\index{size\_sound\_low\_battery@{size\_sound\_low\_battery}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_low\_battery}{size\_sound\_low\_battery}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+low\+\_\+battery}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00069}{69}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aab0527f4c6c9d6de5e7df01287f79c20}\label{_buzzer_8h_aab0527f4c6c9d6de5e7df01287f79c20}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_off@{size\_sound\_off}}
+\index{size\_sound\_off@{size\_sound\_off}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_off}{size\_sound\_off}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+off}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00059}{59}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a1ad6665bf86412c104799389162d833c}\label{_buzzer_8h_a1ad6665bf86412c104799389162d833c}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_on@{size\_sound\_on}}
+\index{size\_sound\_on@{size\_sound\_on}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_on}{size\_sound\_on}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+on}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00057}{57}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_af9824c8c4d9177c74eb6ceca2af46258}\label{_buzzer_8h_af9824c8c4d9177c74eb6ceca2af46258}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_start@{size\_sound\_start}}
+\index{size\_sound\_start@{size\_sound\_start}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_start}{size\_sound\_start}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+start}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00049}{49}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a2cea37d9ab58386b7a17a4b6e5c2e96c}\label{_buzzer_8h_a2cea37d9ab58386b7a17a4b6e5c2e96c}} 
+\index{Buzzer.h@{Buzzer.h}!size\_sound\_up@{size\_sound\_up}}
+\index{size\_sound\_up@{size\_sound\_up}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{size\_sound\_up}{size\_sound\_up}}
+{\footnotesize\ttfamily uint16\+\_\+t size\+\_\+sound\+\_\+up}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00055}{55}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ae7dfa259c818f0d928626de5b3e29238}\label{_buzzer_8h_ae7dfa259c818f0d928626de5b3e29238}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_CHARGE\_IN@{SOUND\_CHARGE\_IN}}
+\index{SOUND\_CHARGE\_IN@{SOUND\_CHARGE\_IN}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_CHARGE\_IN}{SOUND\_CHARGE\_IN}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+CHARGE\+\_\+\+IN\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00060}{60}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_abbf669b8c3e2f490006e9c5ab16d464d}\label{_buzzer_8h_abbf669b8c3e2f490006e9c5ab16d464d}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_CHARGE\_OUT@{SOUND\_CHARGE\_OUT}}
+\index{SOUND\_CHARGE\_OUT@{SOUND\_CHARGE\_OUT}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_CHARGE\_OUT}{SOUND\_CHARGE\_OUT}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+CHARGE\+\_\+\+OUT\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00062}{62}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a41400cf28015443b29a2be3c4e0ceb94}\label{_buzzer_8h_a41400cf28015443b29a2be3c4e0ceb94}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_DEATH\_BATTERY@{SOUND\_DEATH\_BATTERY}}
+\index{SOUND\_DEATH\_BATTERY@{SOUND\_DEATH\_BATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_DEATH\_BATTERY}{SOUND\_DEATH\_BATTERY}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+DEATH\+\_\+\+BATTERY\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00064}{64}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a185ae8e9755b0a542defc14e512ce8bf}\label{_buzzer_8h_a185ae8e9755b0a542defc14e512ce8bf}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_DOWN@{SOUND\_DOWN}}
+\index{SOUND\_DOWN@{SOUND\_DOWN}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_DOWN}{SOUND\_DOWN}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+DOWN\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00052}{52}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a333a6fc516286878650f585a9660d6fc}\label{_buzzer_8h_a333a6fc516286878650f585a9660d6fc}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_END@{SOUND\_END}}
+\index{SOUND\_END@{SOUND\_END}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_END}{SOUND\_END}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+END\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00050}{50}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_aa8c1858f6fe0d46f87aad454f7849d35}\label{_buzzer_8h_aa8c1858f6fe0d46f87aad454f7849d35}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_ERROR@{SOUND\_ERROR}}
+\index{SOUND\_ERROR@{SOUND\_ERROR}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_ERROR}{SOUND\_ERROR}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+ERROR\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00070}{70}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a7ab40b0f7d2f629a5b881b3c31874956}\label{_buzzer_8h_a7ab40b0f7d2f629a5b881b3c31874956}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_FULL\_CHARGE@{SOUND\_FULL\_CHARGE}}
+\index{SOUND\_FULL\_CHARGE@{SOUND\_FULL\_CHARGE}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_FULL\_CHARGE}{SOUND\_FULL\_CHARGE}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+FULL\+\_\+\+CHARGE\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00066}{66}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a281a3ee823f7c17b34ac96f8b9802bc6}\label{_buzzer_8h_a281a3ee823f7c17b34ac96f8b9802bc6}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_LOW\_BATTERY@{SOUND\_LOW\_BATTERY}}
+\index{SOUND\_LOW\_BATTERY@{SOUND\_LOW\_BATTERY}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_LOW\_BATTERY}{SOUND\_LOW\_BATTERY}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+LOW\+\_\+\+BATTERY\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00068}{68}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a609fa6479e534dbe8c3a0c07824319ff}\label{_buzzer_8h_a609fa6479e534dbe8c3a0c07824319ff}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_OFF@{SOUND\_OFF}}
+\index{SOUND\_OFF@{SOUND\_OFF}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_OFF}{SOUND\_OFF}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+OFF\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00058}{58}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a8b1f206cd96b554c5d3f682d566ebed2}\label{_buzzer_8h_a8b1f206cd96b554c5d3f682d566ebed2}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_ON@{SOUND\_ON}}
+\index{SOUND\_ON@{SOUND\_ON}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_ON}{SOUND\_ON}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+ON\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00056}{56}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a93b09ae009b13329f0807624fc8a39ac}\label{_buzzer_8h_a93b09ae009b13329f0807624fc8a39ac}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_START@{SOUND\_START}}
+\index{SOUND\_START@{SOUND\_START}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_START}{SOUND\_START}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+START\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00048}{48}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_a40719ab8968683820bf4ab94c8347656}\label{_buzzer_8h_a40719ab8968683820bf4ab94c8347656}} 
+\index{Buzzer.h@{Buzzer.h}!SOUND\_UP@{SOUND\_UP}}
+\index{SOUND\_UP@{SOUND\_UP}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{SOUND\_UP}{SOUND\_UP}}
+{\footnotesize\ttfamily uint16\+\_\+t SOUND\+\_\+\+UP\mbox{[}100\mbox{]}}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00054}{54}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+
+\mbox{\Hypertarget{_buzzer_8h_ac7ee97dc5a27f571cd247f4fc8e9758a}\label{_buzzer_8h_ac7ee97dc5a27f571cd247f4fc8e9758a}} 
+\index{Buzzer.h@{Buzzer.h}!timer\_buzzer@{timer\_buzzer}}
+\index{timer\_buzzer@{timer\_buzzer}!Buzzer.h@{Buzzer.h}}
+\doxysubsubsection{\texorpdfstring{timer\_buzzer}{timer\_buzzer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_milli_timer}{Milli\+Timer}} timer\+\_\+buzzer}
+
+
+
+Definition at line \mbox{\hyperlink{_buzzer_8h_source_l00044}{44}} of file \mbox{\hyperlink{_buzzer_8h_source}{Buzzer.\+h}}.
+

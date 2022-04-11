@@ -1,0 +1,78 @@
+\hypertarget{batt___flash_storage_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0012-\/batt\+\_\+\+Flash\+Storage/src/batt\+\_\+\+Flash\+Storage.h File Reference}
+\label{batt___flash_storage_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_flash_class}{Flash\+Class}}
+\item 
+class \mbox{\hyperlink{class_flash_storage_class}{Flash\+Storage\+Class$<$ T $>$}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}{PPCAT\+\_\+\+NX}}(A,  B)~A \#\# B
+\item 
+\#define \mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{PPCAT}}(A,  B)~\mbox{\hyperlink{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}{PPCAT\+\_\+\+NX}}(A, B)
+\item 
+\#define \mbox{\hyperlink{batt___flash_storage_8h_a6737e1f46e9149ea6531758c9ec2acb7}{Flash}}(name,  size)
+\item 
+\#define \mbox{\hyperlink{batt___flash_storage_8h_a13634dc342aa65ba6a9d95663529832f}{Flash\+Storage}}(name,  T)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{batt___flash_storage_8h_a6737e1f46e9149ea6531758c9ec2acb7}\label{batt___flash_storage_8h_a6737e1f46e9149ea6531758c9ec2acb7}} 
+\index{batt\_FlashStorage.h@{batt\_FlashStorage.h}!Flash@{Flash}}
+\index{Flash@{Flash}!batt\_FlashStorage.h@{batt\_FlashStorage.h}}
+\doxysubsubsection{\texorpdfstring{Flash}{Flash}}
+{\footnotesize\ttfamily \#define Flash(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{size }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \_\_attribute\_\_((\_\_aligned\_\_(256))) \(\backslash\)}
+\DoxyCodeLine{  static \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{PPCAT}}(\_data,name)[(size+255)/256*256] = \{ \}; \(\backslash\)}
+\DoxyCodeLine{  FlashClass name(\mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{PPCAT}}(\_data,name), size);}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_storage_8h_source_l00039}{39}} of file \mbox{\hyperlink{batt___flash_storage_8h_source}{batt\+\_\+\+Flash\+Storage.\+h}}.
+
+\mbox{\Hypertarget{batt___flash_storage_8h_a13634dc342aa65ba6a9d95663529832f}\label{batt___flash_storage_8h_a13634dc342aa65ba6a9d95663529832f}} 
+\index{batt\_FlashStorage.h@{batt\_FlashStorage.h}!FlashStorage@{FlashStorage}}
+\index{FlashStorage@{FlashStorage}!batt\_FlashStorage.h@{batt\_FlashStorage.h}}
+\doxysubsubsection{\texorpdfstring{FlashStorage}{FlashStorage}}
+{\footnotesize\ttfamily \#define Flash\+Storage(\begin{DoxyParamCaption}\item[{}]{name,  }\item[{}]{T }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{  \_\_attribute\_\_((\_\_aligned\_\_(256))) \(\backslash\)}
+\DoxyCodeLine{  static \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{PPCAT}}(\_data,name)[(\textcolor{keyword}{sizeof}(T)+255)/256*256] = \{ \}; \(\backslash\)}
+\DoxyCodeLine{  FlashStorageClass<T> name(\mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{PPCAT}}(\_data,name));}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_storage_8h_source_l00044}{44}} of file \mbox{\hyperlink{batt___flash_storage_8h_source}{batt\+\_\+\+Flash\+Storage.\+h}}.
+
+\mbox{\Hypertarget{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}\label{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}} 
+\index{batt\_FlashStorage.h@{batt\_FlashStorage.h}!PPCAT@{PPCAT}}
+\index{PPCAT@{PPCAT}!batt\_FlashStorage.h@{batt\_FlashStorage.h}}
+\doxysubsubsection{\texorpdfstring{PPCAT}{PPCAT}}
+{\footnotesize\ttfamily \#define PPCAT(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~\mbox{\hyperlink{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}{PPCAT\+\_\+\+NX}}(A, B)}
+
+
+
+Definition at line \mbox{\hyperlink{batt___flash_storage_8h_source_l00026}{26}} of file \mbox{\hyperlink{batt___flash_storage_8h_source}{batt\+\_\+\+Flash\+Storage.\+h}}.
+
+\mbox{\Hypertarget{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}\label{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}} 
+\index{batt\_FlashStorage.h@{batt\_FlashStorage.h}!PPCAT\_NX@{PPCAT\_NX}}
+\index{PPCAT\_NX@{PPCAT\_NX}!batt\_FlashStorage.h@{batt\_FlashStorage.h}}
+\doxysubsubsection{\texorpdfstring{PPCAT\_NX}{PPCAT\_NX}}
+{\footnotesize\ttfamily \#define PPCAT\+\_\+\+NX(\begin{DoxyParamCaption}\item[{}]{A,  }\item[{}]{B }\end{DoxyParamCaption})~A \#\# B}
+
+
+
+Definition at line \mbox{\hyperlink{batt___flash_storage_8h_source_l00025}{25}} of file \mbox{\hyperlink{batt___flash_storage_8h_source}{batt\+\_\+\+Flash\+Storage.\+h}}.
+

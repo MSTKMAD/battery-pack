@@ -1,0 +1,63 @@
+\hypertarget{_external_wakeup_8ino_source}{}\doxysection{External\+Wakeup.\+ino}
+\label{_external_wakeup_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/ExternalWakeup/ExternalWakeup.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/ExternalWakeup/ExternalWakeup.ino}}
+\mbox{\hyperlink{_external_wakeup_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00002}00002 \textcolor{comment}{  ExternalWakeup}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00004}00004 \textcolor{comment}{  This sketch demonstrates the usage of External Interrupts (on pins) to wakeup a chip in sleep mode.}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00005}00005 \textcolor{comment}{  Sleep modes allow a significant drop in the power usage of a board while it does nothing waiting for an event to happen. Battery powered application can take advantage of these modes to enhance battery life significantly.}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00006}00006 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00007}00007 \textcolor{comment}{  In this sketch, shorting pin 8 to a GND will wake up the board.}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00008}00008 \textcolor{comment}{  Please note that, if the processor is sleeping, a new sketch can't be uploaded. To overcome this, manually reset the board (usually with a single or double tap to the RESET button)}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00010}00010 \textcolor{comment}{  This example code is in the public domain.}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00011}00011 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00013}00013 \textcolor{preprocessor}{\#include "{}ArduinoLowPower.h"{}}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00015}00015 \textcolor{comment}{// Blink sequence number}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00016}00016 \textcolor{comment}{// Declare it volatile since it's incremented inside an interrupt}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00017}\mbox{\hyperlink{_external_wakeup_8ino_ac2df2825e12b7590acb6be95525ba026}{00017}} \textcolor{keyword}{volatile} \textcolor{keywordtype}{int} \mbox{\hyperlink{_external_wakeup_8ino_ac2df2825e12b7590acb6be95525ba026}{repetitions}} = 1;}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00019}00019 \textcolor{comment}{// Pin used to trigger a wakeup}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00020}\mbox{\hyperlink{_external_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{00020}} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{_external_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}} = 8;}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00022}\mbox{\hyperlink{_external_wakeup_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00022}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_external_wakeup_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00023}00023 \{}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00024}00024   Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00025}00025   \textcolor{comment}{// while (!Serial)}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00026}00026   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00027}00027   \textcolor{comment}{//   /* code */}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00028}00028   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00030}00030   pinMode(LED\_BUILTIN, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00031}00031   \textcolor{comment}{// Set pin 8 as INPUT\_PULLUP to avoid spurious wakeup}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00032}00032   pinMode(\mbox{\hyperlink{_external_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, INPUT\_PULLUP);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00033}00033   \textcolor{comment}{// Attach a wakeup interrupt on pin 8, calling repetitionsIncrease when the device is woken up}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00034}00034   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.\mbox{\hyperlink{class_arduino_low_power_class_a4d526011d83fdbcd4c85b65658c36ab7}{attachInterruptWakeup}}(\mbox{\hyperlink{_external_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, \mbox{\hyperlink{_external_wakeup_8ino_a580d1d135ee4ceacbfbdd2d332578fe7}{repetitionsIncrease}}, RISING);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00035}00035 \}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00037}\mbox{\hyperlink{_external_wakeup_8ino_afe461d27b9c48d5921c00d521181f12f}{00037}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_external_wakeup_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00038}00038 \{}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00039}00039   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < \mbox{\hyperlink{_external_wakeup_8ino_ac2df2825e12b7590acb6be95525ba026}{repetitions}}; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00040}00040   \{}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00041}00041     digitalWrite(LED\_BUILTIN, HIGH);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00042}00042     delay(500);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00043}00043     digitalWrite(LED\_BUILTIN, LOW);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00044}00044     delay(500);}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00045}00045   \}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00046}00046   \textcolor{comment}{// Triggers an infinite sleep (the device will be woken up only by the registered wakeup sources)}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00047}00047   \textcolor{comment}{// The power consumption of the chip will drop consistently}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00048}00048   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.\mbox{\hyperlink{class_arduino_low_power_class_abba69e9cc0570392d3b2da783dd05b70}{sleep}}();}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00051}\mbox{\hyperlink{_external_wakeup_8ino_a580d1d135ee4ceacbfbdd2d332578fe7}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_external_wakeup_8ino_a580d1d135ee4ceacbfbdd2d332578fe7}{repetitionsIncrease}}()}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00053}00053   \textcolor{comment}{// This function will be called once on device wakeup}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00054}00054   \textcolor{comment}{// You can do some little operations here (like changing variables which will be used in the loop)}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00055}00055   \textcolor{comment}{// Remember to avoid calling delay() and long running functions since this functions executes in interrupt context}}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00056}00056   \mbox{\hyperlink{_external_wakeup_8ino_ac2df2825e12b7590acb6be95525ba026}{repetitions}}++;}
+\DoxyCodeLine{\Hypertarget{_external_wakeup_8ino_source_l00057}00057 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,129 @@
+Inicializacion del valor de los elementos de diagnostico. Lectura y comprobacion de las memorias EEPROM, tanto la del chasis como la de la bateria. Cada elemento posee el valor, el nombre y la categoria\+:\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md71}{}\doxysection{Arquitectura de la memoria del SAMD21\+G18}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md71}
+La memoria de un MCU SAM D21 está mapeada en cuatro secciones\+:
+
+
+\begin{DoxyItemize}
+\item Memoria Flash
+\item Memoria Flash con capacidad de lectura y escritura (RWW)
+\item RAM interna
+\item Periféricos y puertos de E/S
+\end{DoxyItemize}
+
+\texorpdfstring{$<$}{<}img src=\char`\"{}.\+Images/arq-\/samd21.\+jpg\char`\"{} alt=\char`\"{}\char`\"{}IMAGE NOT FOUND\char`\"{}\char`\"{}/\texorpdfstring{$>$}{>}
+
+En nuestro caso usaremos el MCU SAMD21\+G18. Por lo tento tendremos una memoria de 256Kbytes.
+
+La memoria de programa esta dividad en colummnas ({\itshape rows}) y paginas ({\itshape pages}). Cada columna contiene 4 paginas.
+
+El tamaño de estas paginas estan predefinidas a 64 bytes, a un tamaño de 32 bits (4 bytes) por palabra, tenemos que en cada pagina hay 16 variables.
+
+\texorpdfstring{$<$}{<}img src=\char`\"{}.\+Images/page.\+form.\+jpg\char`\"{} alt=\char`\"{}\char`\"{}IMAGE NOT FOUND\char`\"{}\char`\"{}/\texorpdfstring{$>$}{>}
+
+DEbido a este formato reducimos las variables utiles a 15.
+
+Deebido a la falta de una seccion de memoria no volatil para el ussuaria, es posible configurar una zona de emulacion de memoria EEPROM al final del stack de la memoria flash.
+
+Este espacio puede ser de los siguientes tamaños\+:
+
+\texorpdfstring{$<$}{<}img src=\char`\"{}.\+Images/eepromsizes.\+jpg\char`\"{} alt=\char`\"{}\char`\"{}IMAGE NOT FOUND\char`\"{}\char`\"{}/\texorpdfstring{$>$}{>}
+
+En nuestro caso haremos uso de una memoeria emualda de 256 bytes. Lo que se traduce en 1 columna de 4 paginas, un total de 4 x 64 bytes = 256 bytes /4 bytes per word -\/ 1 word per header per word = 60 variables.
+
+Estas variables se alm,acenara en la parte no volatil de la memoria. Sin embargo esta memoria tiene una vida util limitada, por lo que es necesario que se controle muy bien el momento de la escritura.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md72}{}\doxysubsection{Memoria Externa I2C}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md72}
+El acceso a la memoria externa situada en la bateria, se realiza por I2C utilizando la tecnica de Bit\+Bang debido a la comparticion de los canales de I2C con el puerto USB y el pulsador. Por esta razon es aconsajable separar la comunicacion de los puertos por defecto.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md73}{}\doxysection{Funciones Privadas}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md73}
+
+\begin{DoxyItemize}
+\item {\bfseries{Init\+\_\+diagnostic\+\_\+elements}}()
+\item $\ast$ Serial Port (X o S). Con X no se muestra con S si. 
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md74}{}\doxysection{$\ast$ Guardado en EEPROM (\+X,\+B,\+C). X no se guarda, B se guarda en la Bateria y C se guarda en el Chasis.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md74}
+
+\begin{DoxyItemize}
+\item {\bfseries{Log\+Diagnostic\+Data}} ( \texorpdfstring{$<$}{<}integer\texorpdfstring{$>$}{>} , \texorpdfstring{$<$}{<}integer\texorpdfstring{$>$}{>})
+\begin{DoxyItemize}
+\item Actualizar el valor en Ram de una variable de adiagnostico
+\item 
+\begin{DoxyParams}{Parameters}
+{\em data} & Valor del dato. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md75}{}\doxysection{$\ast$ @param address Direccion en la memoria RAM de la variable.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md75}
+
+\begin{DoxyItemize}
+\item {\bfseries{Read\+Diagnotic\+Data(\+Address)}}
+\begin{DoxyItemize}
+\item \+: Lectura del valor de un elem,ento de diagnostico.
+\item 
+\begin{DoxyParams}{Parameters}
+{\em } & Address. Direccion de almacenamiento en el array de elementos en RAM. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md76}{}\doxysection{$\ast$ @return\+:  valor del elemento de diagnostico.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md76}
+
+\begin{DoxyItemize}
+\item {\bfseries{Increment\+Diagnosticdata}} (\texorpdfstring{$<$}{<}integer\texorpdfstring{$>$}{>},\texorpdfstring{$<$}{<}integer\texorpdfstring{$>$}{>})
+\begin{DoxyItemize}
+\item \+: Incremente en una cantidad el valor de un dato de diagnostico. 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md77}{}\doxysection{$\ast$ @param\+: Incremento, address.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md77}
+
+\begin{DoxyItemize}
+\item {\bfseries{Print\+Diagnostic\+Data}} (\texorpdfstring{$<$}{<}integer\texorpdfstring{$>$}{>})
+\begin{DoxyItemize}
+\item \+: Muestrea por el puerto serie o guarda en EEPROM los datos de diagnostico. 
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md78}{}\doxysection{$\ast$ @param\+: type\+\_\+print.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md78}
+
+\begin{DoxyItemize}
+\item {\bfseries{Print\+Static\+Data}} 
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md79}{}\doxysection{$\ast$ @brief\+: Impresion por el puerto serie de los datos estaticos.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md79}
+
+\begin{DoxyItemize}
+\item {\bfseries{is\+Valid}}()
+\begin{DoxyItemize}
+\item \+: Devuelve un boleano indicando si la memoria eemprom contiene datos o esta vacia.
+\item \begin{DoxyReturn}{Returns}
+\+: bool
+\begin{DoxyItemize}
+\item True\+: La memoria contiene valores. 
+\end{DoxyItemize}
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md80}{}\doxysection{$\ast$ False\+: La memoria esta vacia.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md80}
+
+\begin{DoxyItemize}
+\item {\bfseries{Stats}}(int,int)
+\begin{DoxyItemize}
+\item \+: Incremento de las estadisticas del valor de voltaje y potencia usado. Se incremeneta en 1 el valor de la posicion de un array correspondiente. Ej\+: 12.\+3 v -\/\texorpdfstring{$>$}{>} voltages\+\_\+values\mbox{[} 123 \mbox{]} ++
+\item 
+\begin{DoxyParams}{Parameters}
+{\em } & volts \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md81}{}\doxysection{$\ast$ @param\+: wats}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md81}
+
+\begin{DoxyItemize}
+\item {\bfseries{Update\+Eeeprom\+Batery}}()\+: 
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md82}{}\doxysection{$\ast$ @brief\+:  Actualizacion de la memoria EEPROM de la Bateria. Antes de relaizar el guardado se comprueba que el valor a guardar sea distinto del valor ya almacenado.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md82}
+
+\begin{DoxyItemize}
+\item {\bfseries{Print\+Stats}}()\+: 
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md83}{}\doxysection{$\ast$ @brief\+: Muestreo por el puerto serie de los valores acumulados de las estadisticas de potencia y voltage.\+Ademas de algunos datos estaticos guardados en eeprom como el numero de serio o el modelo.}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md83}
+
+\begin{DoxyItemize}
+\item {\bfseries{Reset\+Bateria\+Eeprom}}()\+:
+\begin{DoxyItemize}
+\item \+: Puesta a 0 de las primeras 1024 posiciones de la EEPROM de la Bateria.
+\end{DoxyItemize}
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md84}{}\doxysection{TESTs}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md84}
+\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md85}{}\doxysubsection{TEST\+\_\+0}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md85}
+Testeo de las funciones de Log\+Diagnostic\+Data, Print\+Header and Print\+Diagnostic\+Data (Serial Port).\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md86}{}\doxysubsection{TEST\+\_\+1}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md86}
+Testeo de la funcionalidad de guardado en EEMPROM. Prueba de las funciones \mbox{\hyperlink{diagnostic_8h_afe93e17ac89cd97917811068ba2af214}{is\+Valid()}}, Incremeent Diagnostic\+Data.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md87}{}\doxysubsection{TEST\+\_\+2}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md87}
+Test del guardado y lectura de la eeprom chasis. Para ello se utiliza y prueba la funcion de estadisticas.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md88}{}\doxysubsection{TEST\+\_\+3}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0d5e9337f75e6792ff305ef08d7fad0ac_autotoc_md88}
+Test que permite medir la velocidad de escritura de 1, 10 y 20 bytes, a traves de la libreria de Bit\+Bang I2c. 

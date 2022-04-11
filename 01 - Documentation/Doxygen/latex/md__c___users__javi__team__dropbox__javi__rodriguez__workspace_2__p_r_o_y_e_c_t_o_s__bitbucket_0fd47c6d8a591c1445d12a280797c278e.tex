@@ -1,0 +1,57 @@
+Esta libreria trata la clase {\itshape Helath\+Monitor} . Esta clase permita la monitorizacion o seguinto de una señal, permitiendo lanzar una alarma si dicha señal se mantiene por encima de un umbral durante un determinado tiempo, mediante la implementacion del algotimo de {\itshape pediente de subida pendiente de bajada} .\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md60}{}\doxysection{Metodos}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md60}
+
+\begin{DoxyItemize}
+\item Constructor. {\itshape {\bfseries{\mbox{\hyperlink{class_health_monitor}{Health\+Monitor( Umbral, valor de incremento, valor de decremento, limite del contador)}}}}}
+
+Para la programacion de estos obetos es necesario tener en cuenta la siguiente formula de la que se puede desgranar cada uno de las variables. Para ello hay que definicir dos constantes previas\+:
+\begin{DoxyItemize}
+\item Tiempo de muestreo.
+\item Tiempo tras el que salta la alarma.
+
+Con ello podemos aplicar la siguiente formula\+: \begin{DoxyVerb}Limite del contador = valor de incremento * (Tiempo de alarma/Tiempo de muestreo)    
+\end{DoxyVerb}
+ Jugando con estos valores se obtiene el limite del contador.
+\end{DoxyItemize}
+\item {\itshape {\bfseries{set\+Counter(valor)}}}\+: Cambia el contador a un valor deseado. Tamaño 16 bits.
+\item {\itshape {\bfseries{get\+Counter()}}}\+: Devuevle el valor del contador.
+\item {\itshape {\bfseries{Check( sample )}}}\+: Funcion principal que compar ala muestra con el umbral y aumenta o decrementa el contador en funcion de si lo sobrepasa o no. Ademas comparará el contador con el limite y devovera una alarma si este es superado.
+\item {\itshape {\bfseries{get\+Sample( ADCpin )}}}\+: Devuelve una muestra obtenida del ADC pin indicado.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md62}{}\doxysection{Test}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md62}
+\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md63}{}\doxysubsection{Test 0}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0fd47c6d8a591c1445d12a280797c278e_autotoc_md63}
+Este test inicializa un health monitor. El ciclo del programa se encargara de extraer una muestra del canal A1. Checkea la muestra y si salta la alrma se lanza un pulso de 10 ms por el pin A2. Paralelamente, por el puerto de salida analogica se esta muestreando el contador del health monitor.
+
+
+\begin{DoxyItemize}
+\item Para la creacion de la señal a muestrear, se utiliza la herramienta de Lab\+View para la generacion de esta señal. El sketch mostrara un panel de control para modificar 2 señales senosoidales, 2 pulsos y el ruido. de menera que se imita la señal de la corriente, la frecuencia de la pulsacion deuna mano utilizando la maquina y los pulsos posibles errores de la señal que deberian lanzar la alarma del health monitor.
+\end{DoxyItemize}
+
+
+
+Esta señal, se almacena en un excel. El cual se utilizara para la generacion de la señal con la yuda del Analog Discoery.
+
+
+\begin{DoxyItemize}
+\item Wave\+Form. Dentro del programa en la parte de Wave\+Gen se selecciona Custom e Import.
+\end{DoxyItemize}
+
+
+
+Seleccionando el excel previamente generado y configurando el separador y el simbolo decimal.
+
+Una vez generada la señal y con las sonsas del ociloscopio colocadas correctamente\+:
+
+
+
+Corroboramos el funcionamiento\+:
+
+
+
+
+\begin{DoxyItemize}
+\item Canal 1\+: Pin A0 ( Salida Analogica del ardunion con el \char`\"{}valor\char`\"{} del contador).
+\item Canal 2\+: Señal muestreada del wavegen.
+\item Canal digital 7\+: Pin A1 (Salida digital del arduino con el pulso de alarma.) 
+\end{DoxyItemize}

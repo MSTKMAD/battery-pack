@@ -1,0 +1,68 @@
+\hypertarget{_sleep_r_t_c_alarm_8ino_source}{}\doxysection{Sleep\+RTCAlarm.\+ino}
+\label{_sleep_r_t_c_alarm_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/SleepRTCAlarm/SleepRTCAlarm.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/SleepRTCAlarm/SleepRTCAlarm.ino}}
+\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00002}00002 \textcolor{comment}{  Sleep RTC Alarm for Arduino Zero}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00004}00004 \textcolor{comment}{  Demonstrates the use an alarm to wake up an Arduino zero from Standby mode}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00005}00005 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00006}00006 \textcolor{comment}{  This example code is in the public domain}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00007}00007 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00008}00008 \textcolor{comment}{  http://arduino.cc/en/Tutorial/SleepRTCAlarm}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00010}00010 \textcolor{comment}{  created by Arturo Guadalupi}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00011}00011 \textcolor{comment}{  17 Nov 2015}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00012}00012 \textcolor{comment}{  modified }}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00013}00013 \textcolor{comment}{  01 Mar 2016}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00014}00014 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00015}00015 \textcolor{comment}{  NOTE:}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00016}00016 \textcolor{comment}{  If you use this sketch with a MKR1000 you will see no output on the serial monitor.}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00017}00017 \textcolor{comment}{  This happens because the USB clock is stopped so it the USB connection is stopped too.}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00018}00018 \textcolor{comment}{  **To see again the USB port you have to double tap on the reset button!**}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00019}00019 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00021}00021 \textcolor{preprocessor}{\#include <RTCZero.h>}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00023}00023 \textcolor{comment}{/* Create an rtc object */}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00024}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{00024}} \mbox{\hyperlink{class_r_t_c_zero}{RTCZero}} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}};}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00026}00026 \textcolor{comment}{/* Change these values to set the current initial time */}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00027}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{00027}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}} = 0;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00028}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_abb1e34d12c0cdff5ba4517490308a48d}{00028}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}} = 00;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00029}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a73a1af017abdc92302c2d1b7beae5d09}{00029}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}} = 17;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00031}00031 \textcolor{comment}{/* Change these values to set the current initial date */}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00032}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{00032}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}} = 17;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00033}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{00033}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}} = 11;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00034}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{00034}} \textcolor{keyword}{const} \textcolor{keywordtype}{byte} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}} = 15;}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00036}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00036}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00037}00037 \{}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00038}00038   pinMode(LED\_BUILTIN, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00039}00039   digitalWrite(LED\_BUILTIN, LOW);}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00041}00041   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_ac6ad9d73cb8d3a0575e7cfc2b26a5412}{begin}}();}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00043}00043   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_a2bd00b1214877c926001a8d60acad72d}{setTime}}(\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}}, \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}}, \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}});}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00044}00044   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_ad84a83a503a798c3f90f667de21b8a44}{setDate}}(\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}}, \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}}, \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}});}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00046}00046   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_ac16225fa8a9c07a6e8d1157b6d699747}{setAlarmTime}}(17, 00, 10);}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00047}00047   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_af2923fee4310485bc922898376f5042c}{enableAlarm}}(\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccaf82fa9553250259c004ca80c3f2336cc}{MATCH\_HHMMSS}});}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00049}00049   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_a306f2bbbdfa83d21f8f577c11b73e76b}{attachInterrupt}}(\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a2bd78e9586fcc92146e3e7583456842c}{alarmMatch}});}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00051}00051   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_a2fab941e64ffe5501c30c085a5b3833e}{standbyMode}}();}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00052}00052 \}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00054}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_afe461d27b9c48d5921c00d521181f12f}{00054}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00055}00055 \{}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00056}00056   \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}}.\mbox{\hyperlink{class_r_t_c_zero_a2fab941e64ffe5501c30c085a5b3833e}{standbyMode}}();    \textcolor{comment}{// Sleep until next alarm match}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00057}00057 \}}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00059}\mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a2bd78e9586fcc92146e3e7583456842c}{00059}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_sleep_r_t_c_alarm_8ino_a2bd78e9586fcc92146e3e7583456842c}{alarmMatch}}()}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00060}00060 \{}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00061}00061   digitalWrite(LED\_BUILTIN, HIGH);}
+\DoxyCodeLine{\Hypertarget{_sleep_r_t_c_alarm_8ino_source_l00062}00062 \}}
+
+\end{DoxyCode}

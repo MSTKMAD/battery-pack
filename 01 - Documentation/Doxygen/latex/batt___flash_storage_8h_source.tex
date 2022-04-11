@@ -1,0 +1,95 @@
+\hypertarget{batt___flash_storage_8h_source}{}\doxysection{batt\+\_\+\+Flash\+Storage.\+h}
+\label{batt___flash_storage_8h_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.h}}
+\mbox{\hyperlink{batt___flash_storage_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00002}00002 \textcolor{comment}{  Copyright (c) 2015 Arduino LLC.  All right reserved.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00003}00003 \textcolor{comment}{  Written by Cristian Maglie}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00005}00005 \textcolor{comment}{  This library is free software; you can redistribute it and/or}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00006}00006 \textcolor{comment}{  modify it under the terms of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00007}00007 \textcolor{comment}{  License as published by the Free Software Foundation; either}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00008}00008 \textcolor{comment}{  version 2.1 of the License, or (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00010}00010 \textcolor{comment}{  This library is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00011}00011 \textcolor{comment}{  but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00012}00012 \textcolor{comment}{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00013}00013 \textcolor{comment}{  See the GNU Lesser General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00014}00014 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00015}00015 \textcolor{comment}{  You should have received a copy of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00016}00016 \textcolor{comment}{  License along with this library; if not, write to the Free Software}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00017}00017 \textcolor{comment}{  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-\/1301  USA}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00018}00018 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00020}00020 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00022}00022 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00024}00024 \textcolor{comment}{// Concatenate after macro expansion}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00025}\mbox{\hyperlink{batt___flash_storage_8h_a8287c9da589774d883bffb983070fc1d}{00025}} \textcolor{preprocessor}{\#define PPCAT\_NX(A, B) A \#\# B}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00026}\mbox{\hyperlink{batt___flash_storage_8h_a458aa886688ee82825409e855d418840}{00026}} \textcolor{preprocessor}{\#define PPCAT(A, B) PPCAT\_NX(A, B)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00028}00028 \textcolor{preprocessor}{\#if defined(\_\_SAMD51\_\_)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00029}00029 \textcolor{preprocessor}{  \#define Flash(name, size) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00030}00030 \textcolor{preprocessor}{  \_\_attribute\_\_((\_\_aligned\_\_(8192))) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00031}00031 \textcolor{preprocessor}{  static const uint8\_t PPCAT(\_data,name)[(size+8191)/8192*8192] = \{ \}; \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00032}00032 \textcolor{preprocessor}{  FlashClass name(PPCAT(\_data,name), size);}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00034}00034 \textcolor{preprocessor}{\#define FlashStorage(name, T) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00035}00035 \textcolor{preprocessor}{  \_\_attribute\_\_((\_\_aligned\_\_(8192))) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00036}00036 \textcolor{preprocessor}{  static const uint8\_t PPCAT(\_data,name)[(sizeof(T)+8191)/8192*8192] = \{ \}; \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00037}00037 \textcolor{preprocessor}{  FlashStorageClass<T> name(PPCAT(\_data,name));}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00038}00038 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00039}\mbox{\hyperlink{batt___flash_storage_8h_a6737e1f46e9149ea6531758c9ec2acb7}{00039}} \textcolor{preprocessor}{  \#define Flash(name, size) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00040}00040 \textcolor{preprocessor}{  \_\_attribute\_\_((\_\_aligned\_\_(256))) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00041}00041 \textcolor{preprocessor}{  static const uint8\_t PPCAT(\_data,name)[(size+255)/256*256] = \{ \}; \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00042}00042 \textcolor{preprocessor}{  FlashClass name(PPCAT(\_data,name), size);}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00044}\mbox{\hyperlink{batt___flash_storage_8h_a13634dc342aa65ba6a9d95663529832f}{00044}} \textcolor{preprocessor}{\#define FlashStorage(name, T) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00045}00045 \textcolor{preprocessor}{  \_\_attribute\_\_((\_\_aligned\_\_(256))) \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00046}00046 \textcolor{preprocessor}{  static const uint8\_t PPCAT(\_data,name)[(sizeof(T)+255)/256*256] = \{ \}; \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00047}00047 \textcolor{preprocessor}{  FlashStorageClass<T> name(PPCAT(\_data,name));}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00048}00048 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00050}\mbox{\hyperlink{class_flash_class}{00050}} \textcolor{keyword}{class }\mbox{\hyperlink{class_flash_class}{FlashClass}} \{}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00051}00051 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00052}00052   \mbox{\hyperlink{class_flash_class_a39436930d9792f3e2f551b5600d34526}{FlashClass}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *flash\_addr = NULL, uint32\_t size = 0);}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00054}\mbox{\hyperlink{class_flash_class_a666bd9e39063bd7eb3b4ffcc2faf8781}{00054}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a666bd9e39063bd7eb3b4ffcc2faf8781}{write}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}) \{ \mbox{\hyperlink{class_flash_class_a666bd9e39063bd7eb3b4ffcc2faf8781}{write}}(flash\_address, \mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}, flash\_size); \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00055}\mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{00055}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{erase}}()                 \{ \mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{erase}}(flash\_address, flash\_size);       \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00056}\mbox{\hyperlink{class_flash_class_a09ca858be0f93c3c7cc24a9fa2de8e75}{00056}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a09ca858be0f93c3c7cc24a9fa2de8e75}{read}}(\textcolor{keywordtype}{void} *\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}})        \{ \mbox{\hyperlink{class_flash_class_a09ca858be0f93c3c7cc24a9fa2de8e75}{read}}(flash\_address, \mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}, flash\_size);  \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00058}00058   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a666bd9e39063bd7eb3b4ffcc2faf8781}{write}}(\textcolor{keyword}{const} \textcolor{keyword}{volatile} \textcolor{keywordtype}{void} *flash\_ptr, \textcolor{keyword}{const} \textcolor{keywordtype}{void} *\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}, uint32\_t size);}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00059}00059   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{erase}}(\textcolor{keyword}{const} \textcolor{keyword}{volatile} \textcolor{keywordtype}{void} *flash\_ptr, uint32\_t size);}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00060}00060   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a09ca858be0f93c3c7cc24a9fa2de8e75}{read}}(\textcolor{keyword}{const} \textcolor{keyword}{volatile} \textcolor{keywordtype}{void} *flash\_ptr, \textcolor{keywordtype}{void} *\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}, uint32\_t size);}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00062}00062 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00063}00063   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{erase}}(\textcolor{keyword}{const} \textcolor{keyword}{volatile} \textcolor{keywordtype}{void} *flash\_ptr);}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00065}00065   \textcolor{keyword}{const} uint32\_t PAGE\_SIZE, PAGES, MAX\_FLASH, ROW\_SIZE;}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00066}00066   \textcolor{keyword}{const} \textcolor{keyword}{volatile} \textcolor{keywordtype}{void} *flash\_address;}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00067}00067   \textcolor{keyword}{const} uint32\_t flash\_size;}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00068}00068 \};}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00070}00070 \textcolor{keyword}{template}<\textcolor{keyword}{class} T>}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00071}\mbox{\hyperlink{class_flash_storage_class}{00071}} \textcolor{keyword}{class }\mbox{\hyperlink{class_flash_storage_class}{FlashStorageClass}} \{}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00072}00072 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00073}\mbox{\hyperlink{class_flash_storage_class_a1b8d9a2e71447e05b5908e398a3b4b45}{00073}}   \mbox{\hyperlink{class_flash_storage_class_a1b8d9a2e71447e05b5908e398a3b4b45}{FlashStorageClass}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void} *flash\_addr) : flash(flash\_addr, sizeof(T)) \{ \};}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00075}00075   \textcolor{comment}{// Write data into flash memory.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00076}00076   \textcolor{comment}{// Compiler is able to optimize parameter copy.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00077}\mbox{\hyperlink{class_flash_storage_class_a4c5b486e4cdd32d9584c49b1c53c361b}{00077}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_storage_class_a4c5b486e4cdd32d9584c49b1c53c361b}{write}}(T \mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}})  \{ flash.\mbox{\hyperlink{class_flash_class_a35f8bb0757e67be8995c435690259cde}{erase}}(); flash.\mbox{\hyperlink{class_flash_class_a666bd9e39063bd7eb3b4ffcc2faf8781}{write}}(\&\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}); \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00079}00079   \textcolor{comment}{// Read data from flash into variable.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00080}\mbox{\hyperlink{class_flash_storage_class_a6646342e08a83a13fba00c0869963e79}{00080}}   \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_flash_storage_class_a6646342e08a83a13fba00c0869963e79}{read}}(T *\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}})  \{ flash.\mbox{\hyperlink{class_flash_class_a09ca858be0f93c3c7cc24a9fa2de8e75}{read}}(\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}); \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00082}00082   \textcolor{comment}{// Overloaded version of read.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00083}00083   \textcolor{comment}{// Compiler is able to optimize copy-\/on-\/return.}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00084}\mbox{\hyperlink{class_flash_storage_class_a7cd4d80c9e53f2bf60b1ece2c07544a1}{00084}}   \textcolor{keyword}{inline} T \mbox{\hyperlink{class_flash_storage_class_a7cd4d80c9e53f2bf60b1ece2c07544a1}{read}}() \{ T \mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}; \mbox{\hyperlink{class_flash_storage_class_a7cd4d80c9e53f2bf60b1ece2c07544a1}{read}}(\&\mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}); \textcolor{keywordflow}{return} \mbox{\hyperlink{_b1_8ino_a1393b21435bd418d78d2fb07973af726}{data}}; \}}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00086}00086 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00087}00087   \mbox{\hyperlink{class_flash_class}{FlashClass}} flash;}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00088}00088 \};}
+\DoxyCodeLine{\Hypertarget{batt___flash_storage_8h_source_l00089}00089 }
+
+\end{DoxyCode}

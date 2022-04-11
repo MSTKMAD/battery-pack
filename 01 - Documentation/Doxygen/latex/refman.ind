@@ -1,0 +1,3295 @@
+\begin{theindex}
+
+  \item {\_cp437}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+  \item {\_dirty}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {\_eeprom\_RAM}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {\_frame}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{73}
+  \item {\_height}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+  \item {\_i2caddr}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{74}
+  \item {\_swap\_int16\_t}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{290}
+    \subitem {batt\_Adafruit\_IS31FL3731.cpp}, \hyperpage{354}
+  \item {\_width}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+  \item {$\sim$GFXcanvas1}
+    \subitem {GFXcanvas1}, \hyperpage{86}
+  \item {$\sim$GFXcanvas16}
+    \subitem {GFXcanvas16}, \hyperpage{90}
+  \item {$\sim$GFXcanvas8}
+    \subitem {GFXcanvas8}, \hyperpage{94}
+
+  \indexspace
+
+  \item {ACCENTchar}
+    \subitem {bitmaps.h}, \hyperpage{184}
+  \item {Achar}
+    \subitem {bitmaps.h}, \hyperpage{184}
+  \item {Adafruit\_GFX}, \hyperpage{39}
+    \subitem {\_cp437}, \hyperpage{63}
+    \subitem {\_height}, \hyperpage{63}
+    \subitem {\_width}, \hyperpage{63}
+    \subitem {Adafruit\_GFX}, \hyperpage{43}
+    \subitem {charBounds}, \hyperpage{43}
+    \subitem {cp437}, \hyperpage{43}
+    \subitem {cursor\_x}, \hyperpage{63}
+    \subitem {cursor\_y}, \hyperpage{63}
+    \subitem {drawBitmap}, \hyperpage{44, 45}
+    \subitem {drawChar}, \hyperpage{46}
+    \subitem {drawCircle}, \hyperpage{47}
+    \subitem {drawCircleHelper}, \hyperpage{47}
+    \subitem {drawFastHLine}, \hyperpage{47}
+    \subitem {drawFastVLine}, \hyperpage{48}
+    \subitem {drawGrayscaleBitmap}, \hyperpage{48, 49}
+    \subitem {drawLine}, \hyperpage{50}
+    \subitem {drawPixel}, \hyperpage{50}
+    \subitem {drawRect}, \hyperpage{50}
+    \subitem {drawRGBBitmap}, \hyperpage{51, 52}
+    \subitem {drawRoundRect}, \hyperpage{52}
+    \subitem {drawTriangle}, \hyperpage{53}
+    \subitem {drawXBitmap}, \hyperpage{53}
+    \subitem {endWrite}, \hyperpage{54}
+    \subitem {fillCircle}, \hyperpage{54}
+    \subitem {fillCircleHelper}, \hyperpage{54}
+    \subitem {fillRect}, \hyperpage{55}
+    \subitem {fillRoundRect}, \hyperpage{55}
+    \subitem {fillScreen}, \hyperpage{55}
+    \subitem {fillTriangle}, \hyperpage{56}
+    \subitem {getCursorX}, \hyperpage{56}
+    \subitem {getCursorY}, \hyperpage{56}
+    \subitem {getRotation}, \hyperpage{56}
+    \subitem {getTextBounds}, \hyperpage{57, 58}
+    \subitem {gfxFont}, \hyperpage{63}
+    \subitem {HEIGHT}, \hyperpage{64}
+    \subitem {height}, \hyperpage{58}
+    \subitem {invertDisplay}, \hyperpage{58}
+    \subitem {rotation}, \hyperpage{64}
+    \subitem {setCursor}, \hyperpage{58}
+    \subitem {setFont}, \hyperpage{59}
+    \subitem {setRotation}, \hyperpage{59}
+    \subitem {setTextColor}, \hyperpage{59}
+    \subitem {setTextSize}, \hyperpage{60}
+    \subitem {setTextWrap}, \hyperpage{60}
+    \subitem {startWrite}, \hyperpage{60}
+    \subitem {textbgcolor}, \hyperpage{64}
+    \subitem {textcolor}, \hyperpage{64}
+    \subitem {textsize\_x}, \hyperpage{64}
+    \subitem {textsize\_y}, \hyperpage{64}
+    \subitem {WIDTH}, \hyperpage{64}
+    \subitem {width}, \hyperpage{61}
+    \subitem {wrap}, \hyperpage{64}
+    \subitem {write}, \hyperpage{61}
+    \subitem {writeFastHLine}, \hyperpage{61}
+    \subitem {writeFastVLine}, \hyperpage{61}
+    \subitem {writeFillRect}, \hyperpage{62}
+    \subitem {writeLine}, \hyperpage{62}
+    \subitem {writePixel}, \hyperpage{62}
+  \item {Adafruit\_GFX\_Button}, \hyperpage{65}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{65}
+    \subitem {contains}, \hyperpage{66}
+    \subitem {drawButton}, \hyperpage{66}
+    \subitem {initButton}, \hyperpage{66, 67}
+    \subitem {initButtonUL}, \hyperpage{67, 68}
+    \subitem {isPressed}, \hyperpage{69}
+    \subitem {justPressed}, \hyperpage{69}
+    \subitem {justReleased}, \hyperpage{69}
+    \subitem {press}, \hyperpage{69}
+  \item {Adafruit\_IS31FL3731}, \hyperpage{69}
+    \subitem {\_frame}, \hyperpage{73}
+    \subitem {\_i2caddr}, \hyperpage{74}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{71}
+    \subitem {audioSync}, \hyperpage{71}
+    \subitem {begin}, \hyperpage{71}
+    \subitem {clear}, \hyperpage{71}
+    \subitem {displayFrame}, \hyperpage{71}
+    \subitem {drawPixel}, \hyperpage{72}
+    \subitem {readRegister8}, \hyperpage{72}
+    \subitem {selectBank}, \hyperpage{72}
+    \subitem {setFrame}, \hyperpage{73}
+    \subitem {setLEDPWM}, \hyperpage{73}
+    \subitem {writeRegister8}, \hyperpage{73}
+  \item {Adafruit\_IS31FL3731\_Wing}, \hyperpage{74}
+    \subitem {Adafruit\_IS31FL3731\_Wing}, \hyperpage{74}
+    \subitem {drawPixel}, \hyperpage{75}
+  \item {ADC\_3V3\_PIN}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{377}
+  \item {ADC\_GND\_PIN}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{377}
+  \item {ADC\_MAX\_GAIN}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{377}
+  \item {ADC\_MIN\_GAIN}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{377}
+  \item {ADC\_RANGE}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{377}
+  \item {ADC\_READS\_COUNT}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {ADC\_READS\_SHIFT}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {ADC\_RESOLUTION\_BITS}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {ADC\_TOP\_VALUE}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {ADC\_UNITY\_GAIN}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {AdcWakeup.ino}
+    \subitem {loop}, \hyperpage{328}
+    \subitem {margin}, \hyperpage{328}
+    \subitem {pin}, \hyperpage{328}
+    \subitem {repetitions}, \hyperpage{329}
+    \subitem {repetitionsIncrease}, \hyperpage{328}
+    \subitem {setup}, \hyperpage{328}
+  \item {ADDR\_I2C\_DCDC}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {afk\_counter}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {afk\_timer}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {alarm}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {Alarm\_Match}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {alarmMatch}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{389}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{391}
+  \item {ANALOG\_COMPARATOR\_WAKEUP}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {analogPin}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{333}
+  \item {analogReadCorrection}
+    \subitem {batt\_SAMD\_AnalogCorrection.cpp}, \hyperpage{381}
+    \subitem {batt\_SAMD\_AnalogCorrection.h}, \hyperpage{382}
+  \item {ANPERSANchar}
+    \subitem {bitmaps.h}, \hyperpage{184}
+  \item {APOSTROPHEchar}
+    \subitem {bitmaps.h}, \hyperpage{185}
+  \item {ArduinoLowPowerClass}, \hyperpage{75}
+    \subitem {attachInterruptWakeup}, \hyperpage{76}
+    \subitem {deatchRTCInterrupt}, \hyperpage{76}
+    \subitem {deepSleep}, \hyperpage{76}
+    \subitem {idle}, \hyperpage{76}
+    \subitem {sleep}, \hyperpage{76, 77}
+  \item {ASTERISKchar}
+    \subitem {bitmaps.h}, \hyperpage{185}
+  \item {ATchar}
+    \subitem {bitmaps.h}, \hyperpage{185}
+  \item {attachInterrupt}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {attachInterruptWakeup}
+    \subitem {ArduinoLowPowerClass}, \hyperpage{76}
+  \item {audioSync}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{71}
+
+  \indexspace
+
+  \item {B1.ino}
+    \subitem {afk\_counter}, \hyperpage{122}
+    \subitem {afk\_timer}, \hyperpage{122}
+    \subitem {boost\_check}, \hyperpage{122}
+    \subitem {button\_event}, \hyperpage{122}
+    \subitem {buzzer\_error\_state}, \hyperpage{122}
+    \subitem {buzzer\_state}, \hyperpage{122}
+    \subitem {C\_CMD\_DIAGNOSTIC\_STOP}, \hyperpage{122}
+    \subitem {C\_CMD\_DISPLAY\_ENDING\_OFF}, \hyperpage{122}
+    \subitem {C\_CMD\_DISPLAY\_ENDING\_ON}, \hyperpage{123}
+    \subitem {C\_CMD\_DISPLAY\_STARTING\_OFF}, \hyperpage{123}
+    \subitem {C\_CMD\_DISPLAY\_STARTING\_ON}, \hyperpage{123}
+    \subitem {C\_CMD\_LIVE\_OFF}, \hyperpage{123}
+    \subitem {C\_CMD\_LIVE\_ON}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_ENDING\_OFF}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_ENDING\_ON}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_FULL\_CHARGE\_OFF}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_FULL\_CHARGE\_ON}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_STARTING\_OFF}, \hyperpage{123}
+    \subitem {C\_CMD\_SOUND\_STARTING\_ON}, \hyperpage{124}
+    \subitem {C\_CMS\_SOUND\_CHARGE\_START\_OFF}, \hyperpage{124}
+    \subitem {C\_CMS\_SOUND\_CHARGE\_START\_ON}, \hyperpage{124}
+    \subitem {C\_CMS\_SOUND\_DEATH\_BATTERY\_OFF}, \hyperpage{124}
+    \subitem {C\_CMS\_SOUND\_DEATH\_BATTERY\_ON}, \hyperpage{124}
+    \subitem {C\_DIAGNOSTIC\_PASSWORD}, \hyperpage{124}
+    \subitem {C\_IDLE\_TIMER\_COUNT}, \hyperpage{124}
+    \subitem {C\_LIMIT\_COMSUPTION\_PROT}, \hyperpage{124}
+    \subitem {C\_LIMIT\_OVERPOWER\_PROT}, \hyperpage{124}
+    \subitem {C\_LIMIT\_UNDERVOLTAGE\_PROT}, \hyperpage{124}
+    \subitem {C\_LIMIT\_VOLTAGE\_INPUT}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_OFF\_LIVE\_VIEW}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_OUT\_OFF}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_OUT\_ON}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_VOLT\_DOWN\_1}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_VOLT\_DOWN\_10}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_VOLT\_UP\_1}, \hyperpage{125}
+    \subitem {C\_LIVE\_CMD\_VOLT\_UP\_10}, \hyperpage{125}
+    \subitem {C\_LOW\_BATTERY\_LEVEL}, \hyperpage{125}
+    \subitem {C\_MASK\_ACTIVATE}, \hyperpage{125}
+    \subitem {C\_MASK\_DEACTIVATE}, \hyperpage{126}
+    \subitem {C\_MAX\_VOLT}, \hyperpage{126}
+    \subitem {C\_MIN\_VOLT}, \hyperpage{126}
+    \subitem {C\_NUMB\_PRINTS\_STATIC\_DATA}, \hyperpage{126}
+    \subitem {C\_OFF}, \hyperpage{126}
+    \subitem {C\_ON}, \hyperpage{126}
+    \subitem {C\_PIN\_DEATH\_BATTERY\_CHECK}, \hyperpage{126}
+    \subitem {C\_PIN\_EN\_DCDC}, \hyperpage{126}
+    \subitem {C\_PIN\_FLAG\_BATTLOW}, \hyperpage{126}
+    \subitem {C\_PIN\_FLAG\_CHARG}, \hyperpage{126}
+    \subitem {C\_PIN\_I\_OUT}, \hyperpage{127}
+    \subitem {C\_PIN\_SCL\_2}, \hyperpage{127}
+    \subitem {C\_PIN\_SDA\_2}, \hyperpage{127}
+    \subitem {C\_PIN\_SHIPPING\_MOD}, \hyperpage{127}
+    \subitem {C\_PIN\_TEST\_MODE}, \hyperpage{127}
+    \subitem {C\_PIN\_USB\_CONNEXION}, \hyperpage{127}
+    \subitem {C\_PIN\_USB\_SEL}, \hyperpage{127}
+    \subitem {C\_PIN\_V\_IN}, \hyperpage{127}
+    \subitem {C\_PIN\_V\_OUT}, \hyperpage{127}
+    \subitem {C\_RETRY\_750\_COUNT}, \hyperpage{127}
+    \subitem {C\_SW\_ST\_CAPACITY}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_DIAGNOSTIC}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_ERROR}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_RUN}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_SLEEP}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_START\_UP}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_STOP}, \hyperpage{128}
+    \subitem {C\_SW\_ST\_USB}, \hyperpage{128}
+    \subitem {C\_TIME\_TO\_LIGHT\_DOWN}, \hyperpage{128}
+    \subitem {C\_TIMER\_ARMED}, \hyperpage{128}
+    \subitem {C\_TIMER\_DONE}, \hyperpage{129}
+    \subitem {C\_TIMER\_IDLE}, \hyperpage{129}
+    \subitem {C\_USB\_CONNECTED}, \hyperpage{129}
+    \subitem {C\_USB\_DISCONNECTED}, \hyperpage{129}
+    \subitem {C\_WATCH\_DOG\_TIME\_MS}, \hyperpage{129}
+    \subitem {capacity}, \hyperpage{129}
+    \subitem {capcaity\_ask\_off}, \hyperpage{129}
+    \subitem {change\_text\_answered}, \hyperpage{129}
+    \subitem {click\_events}, \hyperpage{129}
+    \subitem {cmd\_go\_sleep}, \hyperpage{129}
+    \subitem {consmptn\_event\_protection\_counter}, \hyperpage{130}
+    \subitem {cont\_idle\_timer}, \hyperpage{130}
+    \subitem {cont\_sec}, \hyperpage{130}
+    \subitem {counter\_prints\_static\_data}, \hyperpage{130}
+    \subitem {data}, \hyperpage{130}
+    \subitem {DCDC}, \hyperpage{130}
+    \subitem {delay\_live\_view}, \hyperpage{130}
+    \subitem {diag\_check}, \hyperpage{130}
+    \subitem {diagnostic\_msg}, \hyperpage{130}
+    \subitem {display\_error\_status}, \hyperpage{130}
+    \subitem {display\_status}, \hyperpage{131}
+    \subitem {enable\_charge\_sound}, \hyperpage{131}
+    \subitem {enable\_death\_battery\_sound}, \hyperpage{131}
+    \subitem {enable\_ending\_sound}, \hyperpage{131}
+    \subitem {enable\_ending\_text}, \hyperpage{131}
+    \subitem {enable\_full\_charge\_sound}, \hyperpage{131}
+    \subitem {enable\_live\_view}, \hyperpage{131}
+    \subitem {enable\_starting\_sound}, \hyperpage{131}
+    \subitem {enable\_starting\_text}, \hyperpage{131}
+    \subitem {error\_msg}, \hyperpage{131}
+    \subitem {flag\_arranque}, \hyperpage{132}
+    \subitem {flag\_cap\_one\_shot}, \hyperpage{132}
+    \subitem {flag\_diag\_header\_printed}, \hyperpage{132}
+    \subitem {flag\_display\_capacity}, \hyperpage{132}
+    \subitem {flag\_error}, \hyperpage{132}
+    \subitem {flag\_initialize}, \hyperpage{132}
+    \subitem {flag\_irq\_center\_button}, \hyperpage{132}
+    \subitem {flag\_irq\_death\_battery}, \hyperpage{132}
+    \subitem {flag\_irq\_singleshot}, \hyperpage{132}
+    \subitem {flag\_low\_battery}, \hyperpage{132}
+    \subitem {flag\_msg\_init}, \hyperpage{133}
+    \subitem {flag\_msg\_sleep}, \hyperpage{133}
+    \subitem {flag\_return}, \hyperpage{133}
+    \subitem {flag\_sleep}, \hyperpage{133}
+    \subitem {flag\_sound}, \hyperpage{133}
+    \subitem {flag\_test}, \hyperpage{133}
+    \subitem {flag\_timer\_low\_bright}, \hyperpage{133}
+    \subitem {flag\_update\_eeprom}, \hyperpage{133}
+    \subitem {flag\_usb\_change}, \hyperpage{133}
+    \subitem {flag\_waiting}, \hyperpage{133}
+    \subitem {flag\_work}, \hyperpage{134}
+    \subitem {go\_sleep}, \hyperpage{134}
+    \subitem {hw\_output}, \hyperpage{134}
+    \subitem {Irq\_DeathBattery\_Handler}, \hyperpage{121}
+    \subitem {Irq\_USB\_Handler}, \hyperpage{121}
+    \subitem {IrqCenterButtonHandler}, \hyperpage{121}
+    \subitem {ledmatrix}, \hyperpage{134}
+    \subitem {loop}, \hyperpage{121}
+    \subitem {low\_batt\_display}, \hyperpage{134}
+    \subitem {low\_batt\_sound}, \hyperpage{134}
+    \subitem {mask\_protection\_state}, \hyperpage{134}
+    \subitem {MAX\_NUM\_PROTECTION\_EVENTS}, \hyperpage{134}
+    \subitem {mode\_bright\_display}, \hyperpage{134}
+    \subitem {msg\_sleep}, \hyperpage{134}
+    \subitem {new\_text\_received}, \hyperpage{135}
+    \subitem {OP\_event\_protection\_counter}, \hyperpage{135}
+    \subitem {output\_mode}, \hyperpage{135}
+    \subitem {over\_consumption\_protection}, \hyperpage{135}
+    \subitem {over\_power\_protection}, \hyperpage{135}
+    \subitem {prev\_state}, \hyperpage{135}
+    \subitem {prev\_volt}, \hyperpage{135}
+    \subitem {print\_diagnostic\_static\_data}, \hyperpage{136}
+    \subitem {program\_tick}, \hyperpage{136}
+    \subitem {protection\_event\_delay}, \hyperpage{136}
+    \subitem {protection\_event\_delay\_flag}, \hyperpage{136}
+    \subitem {reset\_capacity\_off\_text}, \hyperpage{136}
+    \subitem {reset\_diag\_text}, \hyperpage{136}
+    \subitem {reset\_error\_text}, \hyperpage{136}
+    \subitem {reset\_init\_text}, \hyperpage{136}
+    \subitem {reset\_sleep\_text}, \hyperpage{136}
+    \subitem {sample\_IOut}, \hyperpage{136}
+    \subitem {sample\_POut}, \hyperpage{137}
+    \subitem {sample\_Vin}, \hyperpage{137}
+    \subitem {sample\_VOut}, \hyperpage{137}
+    \subitem {setup}, \hyperpage{121}
+    \subitem {sound}, \hyperpage{137}
+    \subitem {stage\_capacity\_1}, \hyperpage{137}
+    \subitem {stage\_capacity\_2}, \hyperpage{137}
+    \subitem {start\_string}, \hyperpage{137}
+    \subitem {state\_to\_return}, \hyperpage{137}
+    \subitem {sw\_output}, \hyperpage{137}
+    \subitem {sw\_status}, \hyperpage{137}
+    \subitem {t0}, \hyperpage{138}
+    \subitem {t1}, \hyperpage{138}
+    \subitem {test\_enable}, \hyperpage{138}
+    \subitem {theory\_Vout}, \hyperpage{138}
+    \subitem {timer\_arranque}, \hyperpage{138}
+    \subitem {timer\_diagnostic\_querist}, \hyperpage{138}
+    \subitem {timer\_display\_capacity}, \hyperpage{138}
+    \subitem {timer\_display\_error}, \hyperpage{138}
+    \subitem {timer\_idle}, \hyperpage{138}
+    \subitem {timer\_irq\_button\_center}, \hyperpage{138}
+    \subitem {timer\_low\_bright}, \hyperpage{139}
+    \subitem {timer\_print\_diagnostic}, \hyperpage{139}
+    \subitem {timer\_recover\_voltage}, \hyperpage{139}
+    \subitem {timer\_sec\_count}, \hyperpage{139}
+    \subitem {timer\_wait\_sleep}, \hyperpage{139}
+    \subitem {trigger\_Display\_volt}, \hyperpage{139}
+    \subitem {under\_voltage\_protection}, \hyperpage{139}
+    \subitem {usb\_status}, \hyperpage{139}
+    \subitem {user\_output}, \hyperpage{140}
+    \subitem {UV\_event\_protection\_counter}, \hyperpage{140}
+    \subitem {voltage\_input\_event\_protection\_counter}, 
+		\hyperpage{140}
+    \subitem {voltage\_input\_protection}, \hyperpage{121}
+  \item {BACKSLASHchar}
+    \subitem {bitmaps.h}, \hyperpage{185}
+  \item {batt\_Adafruit\_GFX.cpp}
+    \subitem {\_swap\_int16\_t}, \hyperpage{290}
+    \subitem {min}, \hyperpage{291}
+    \subitem {pgm\_read\_bitmap\_ptr}, \hyperpage{291}
+    \subitem {pgm\_read\_byte}, \hyperpage{291}
+    \subitem {pgm\_read\_dword}, \hyperpage{291}
+    \subitem {pgm\_read\_glyph\_ptr}, \hyperpage{291}
+    \subitem {pgm\_read\_pointer}, \hyperpage{291}
+    \subitem {pgm\_read\_word}, \hyperpage{291}
+  \item {batt\_Adafruit\_IS31FL3731.cpp}
+    \subitem {\_swap\_int16\_t}, \hyperpage{354}
+  \item {batt\_Adafruit\_IS31FL3731.h}
+    \subitem {ISSI\_ADDR\_DEFAULT}, \hyperpage{358}
+    \subitem {ISSI\_BANK\_FUNCTIONREG}, \hyperpage{358}
+    \subitem {ISSI\_COMMANDREGISTER}, \hyperpage{358}
+    \subitem {ISSI\_CONF\_AUDIOMODE}, \hyperpage{358}
+    \subitem {ISSI\_CONF\_AUTOFRAMEMODE}, \hyperpage{358}
+    \subitem {ISSI\_CONF\_PICTUREMODE}, \hyperpage{358}
+    \subitem {ISSI\_REG\_AUDIOSYNC}, \hyperpage{359}
+    \subitem {ISSI\_REG\_CONFIG}, \hyperpage{359}
+    \subitem {ISSI\_REG\_CONFIG\_AUDIOPLAYMODE}, \hyperpage{359}
+    \subitem {ISSI\_REG\_CONFIG\_AUTOPLAYMODE}, \hyperpage{359}
+    \subitem {ISSI\_REG\_CONFIG\_PICTUREMODE}, \hyperpage{359}
+    \subitem {ISSI\_REG\_PICTUREFRAME}, \hyperpage{359}
+    \subitem {ISSI\_REG\_SHUTDOWN}, \hyperpage{359}
+  \item {batt\_ArduinoLowPower.h}
+    \subitem {ANALOG\_COMPARATOR\_WAKEUP}, \hyperpage{326}
+    \subitem {GPIO\_WAKEUP}, \hyperpage{326}
+    \subitem {irq\_mode}, \hyperpage{326}
+    \subitem {LowPower}, \hyperpage{326}
+    \subitem {NFC\_WAKEUP}, \hyperpage{326}
+    \subitem {onOffFuncPtr}, \hyperpage{326}
+    \subitem {OTHER\_WAKEUP}, \hyperpage{326}
+    \subitem {RTC\_ALARM\_WAKEUP}, \hyperpage{325}
+    \subitem {wakeup\_reason}, \hyperpage{326}
+  \item {batt\_FlashAsEEPROM.cpp}
+    \subitem {EEPROM}, \hyperpage{370}
+    \subitem {FlashStorage}, \hyperpage{370}
+  \item {batt\_FlashAsEEPROM.h}
+    \subitem {EEPROM}, \hyperpage{371}
+    \subitem {EEPROM\_EMULATION\_SIZE}, \hyperpage{371}
+  \item {batt\_FlashStorage.h}
+    \subitem {Flash}, \hyperpage{375}
+    \subitem {FlashStorage}, \hyperpage{375}
+    \subitem {PPCAT}, \hyperpage{375}
+    \subitem {PPCAT\_NX}, \hyperpage{375}
+  \item {batt\_glcdfont.c}
+    \subitem {FONT5X7\_H}, \hyperpage{319}
+    \subitem {PROGMEM}, \hyperpage{319}
+  \item {batt\_RTCZero.cpp}
+    \subitem {DEFAULT\_DAY}, \hyperpage{394}
+    \subitem {DEFAULT\_HOUR}, \hyperpage{394}
+    \subitem {DEFAULT\_MINUTE}, \hyperpage{394}
+    \subitem {DEFAULT\_MONTH}, \hyperpage{394}
+    \subitem {DEFAULT\_SECOND}, \hyperpage{394}
+    \subitem {DEFAULT\_YEAR}, \hyperpage{394}
+    \subitem {EPOCH\_TIME\_OFF}, \hyperpage{394}
+    \subitem {EPOCH\_TIME\_YEAR\_OFF}, \hyperpage{394}
+    \subitem {RTC\_callBack}, \hyperpage{395}
+    \subitem {RTC\_Handler}, \hyperpage{395}
+  \item {batt\_RTCZero.h}
+    \subitem {voidFuncPtr}, \hyperpage{401}
+  \item {batt\_SAMD\_AnalogCorrection.cpp}
+    \subitem {analogReadCorrection}, \hyperpage{381}
+  \item {batt\_SAMD\_AnalogCorrection.h}
+    \subitem {analogReadCorrection}, \hyperpage{382}
+  \item {batt\_SlowSoftI2CMaster.h}
+    \subitem {BUFFER\_LENGTH}, \hyperpage{289}
+    \subitem {DELAY}, \hyperpage{289}
+    \subitem {I2C\_MAXWAIT}, \hyperpage{289}
+    \subitem {I2C\_READ}, \hyperpage{289}
+    \subitem {I2C\_WRITE}, \hyperpage{289}
+  \item {Bchar}
+    \subitem {bitmaps.h}, \hyperpage{185}
+  \item {begin}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{71}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {bitmap}
+    \subitem {GFXfont}, \hyperpage{98}
+  \item {bitmapOffset}
+    \subitem {GFXglyph}, \hyperpage{99}
+  \item {bitmaps.h}
+    \subitem {ACCENTchar}, \hyperpage{184}
+    \subitem {Achar}, \hyperpage{184}
+    \subitem {ANPERSANchar}, \hyperpage{184}
+    \subitem {APOSTROPHEchar}, \hyperpage{185}
+    \subitem {ASTERISKchar}, \hyperpage{185}
+    \subitem {ATchar}, \hyperpage{185}
+    \subitem {BACKSLASHchar}, \hyperpage{185}
+    \subitem {Bchar}, \hyperpage{185}
+    \subitem {C\_DISPLAY\_HEIGHT}, \hyperpage{183}
+    \subitem {C\_DISPLAY\_WIDTH}, \hyperpage{183}
+    \subitem {Cchar}, \hyperpage{186}
+    \subitem {Char2Bitmap}, \hyperpage{184}
+    \subitem {CIRCUMFLEXchar}, \hyperpage{186}
+    \subitem {CLOSECURLYBRAchar}, \hyperpage{186}
+    \subitem {CLOSEPARENTESISchar}, \hyperpage{186}
+    \subitem {CLOSESQUAREBRAQUETchar}, \hyperpage{186}
+    \subitem {COLONchar}, \hyperpage{186}
+    \subitem {COMMAchar}, \hyperpage{187}
+    \subitem {Dchar}, \hyperpage{187}
+    \subitem {DISPLAY\_SIZE}, \hyperpage{183}
+    \subitem {DOLLARchar}, \hyperpage{187}
+    \subitem {DOTchar}, \hyperpage{187}
+    \subitem {Echar}, \hyperpage{187}
+    \subitem {EIGHTchar}, \hyperpage{188}
+    \subitem {EQUALchar}, \hyperpage{188}
+    \subitem {EXCLMARKchar}, \hyperpage{188}
+    \subitem {EYES2\_1}, \hyperpage{188}
+    \subitem {EYES2\_2}, \hyperpage{188}
+    \subitem {EYES\_1}, \hyperpage{189}
+    \subitem {EYES\_2}, \hyperpage{189}
+    \subitem {FACE\_1}, \hyperpage{189}
+    \subitem {FACE\_2}, \hyperpage{189}
+    \subitem {Fchar}, \hyperpage{189}
+    \subitem {FIVEchar}, \hyperpage{190}
+    \subitem {FOURchar}, \hyperpage{190}
+    \subitem {Frame\_Batt\_1}, \hyperpage{190}
+    \subitem {Frame\_Batt\_2}, \hyperpage{190}
+    \subitem {Frame\_Batt\_Low\_1}, \hyperpage{190}
+    \subitem {Frame\_Batt\_Low\_2}, \hyperpage{191}
+    \subitem {Frame\_Error\_1}, \hyperpage{191}
+    \subitem {Frame\_Error\_2}, \hyperpage{191}
+    \subitem {Frame\_USB\_1}, \hyperpage{191}
+    \subitem {Frame\_USB\_2}, \hyperpage{191}
+    \subitem {Gchar}, \hyperpage{192}
+    \subitem {GREATERTHANchar}, \hyperpage{192}
+    \subitem {HASTAGchar}, \hyperpage{192}
+    \subitem {Hchar}, \hyperpage{192}
+    \subitem {HYPHENchar}, \hyperpage{192}
+    \subitem {Ichar}, \hyperpage{193}
+    \subitem {Jchar}, \hyperpage{193}
+    \subitem {Kchar}, \hyperpage{193}
+    \subitem {Lchar}, \hyperpage{193}
+    \subitem {LESSTHANchar}, \hyperpage{193}
+    \subitem {Mchar}, \hyperpage{194}
+    \subitem {Nchar}, \hyperpage{194}
+    \subitem {NINEchar}, \hyperpage{194}
+    \subitem {Ochar}, \hyperpage{194}
+    \subitem {ONEchar}, \hyperpage{194}
+    \subitem {OPENCURLYBRAchar}, \hyperpage{195}
+    \subitem {OPENPARENTESISchar}, \hyperpage{195}
+    \subitem {Pchar}, \hyperpage{195}
+    \subitem {PERCENTchar}, \hyperpage{195}
+    \subitem {PLUSchar}, \hyperpage{195}
+    \subitem {POWERBAR\_LOCATION}, \hyperpage{184}
+    \subitem {Qchar}, \hyperpage{196}
+    \subitem {QUESTIONchar}, \hyperpage{196}
+    \subitem {QUOTMARKchar}, \hyperpage{196}
+    \subitem {Rchar}, \hyperpage{196}
+    \subitem {Schar}, \hyperpage{196}
+    \subitem {SEMICOLONchar}, \hyperpage{197}
+    \subitem {SEVENchar}, \hyperpage{197}
+    \subitem {SIXchar}, \hyperpage{197}
+    \subitem {SLASHchar}, \hyperpage{197}
+    \subitem {SPACEchar}, \hyperpage{197}
+    \subitem {SQUAREBRAQUETchar}, \hyperpage{198}
+    \subitem {SWUNGchar}, \hyperpage{198}
+    \subitem {Tchar}, \hyperpage{198}
+    \subitem {THREEchar}, \hyperpage{198}
+    \subitem {TWOchar}, \hyperpage{198}
+    \subitem {Uchar}, \hyperpage{199}
+    \subitem {UNDERSCOREchar}, \hyperpage{199}
+    \subitem {Vchar}, \hyperpage{199}
+    \subitem {VERTICALBARchar}, \hyperpage{199}
+    \subitem {Wchar}, \hyperpage{199}
+    \subitem {width\_bitmap}, \hyperpage{200}
+    \subitem {Xchar}, \hyperpage{200}
+    \subitem {Ychar}, \hyperpage{200}
+    \subitem {Zchar}, \hyperpage{200}
+    \subitem {ZEROchar}, \hyperpage{200}
+  \item {blink\_OFF}
+    \subitem {display.h}, \hyperpage{225}
+  \item {blink\_ON}
+    \subitem {display.h}, \hyperpage{225}
+  \item {BOOST\_ARRAY}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {boost\_check}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {BUFFER\_LENGTH}
+    \subitem {batt\_SlowSoftI2CMaster.h}, \hyperpage{289}
+  \item {button\_event}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {button\_not\_pressed}
+    \subitem {Dpad.h}, \hyperpage{162}
+  \item {button\_pressed}
+    \subitem {Dpad.h}, \hyperpage{162}
+  \item {Buzzer.h}
+    \subitem {C\_BUZZER\_BUSSY}, \hyperpage{256}
+    \subitem {C\_BUZZER\_NOT\_BUSSY}, \hyperpage{256}
+    \subitem {C\_MODE\_DEFAULT}, \hyperpage{256}
+    \subitem {C\_MODE\_HACK\_ALTERNATIVE}, \hyperpage{256}
+    \subitem {C\_NOTES\_CHARGE\_IN}, \hyperpage{256}
+    \subitem {C\_NOTES\_CHARGE\_OUT}, \hyperpage{256}
+    \subitem {C\_NOTES\_DEATHBATTERY}, \hyperpage{257}
+    \subitem {C\_NOTES\_DOWN\_1}, \hyperpage{257}
+    \subitem {C\_NOTES\_END\_1}, \hyperpage{257}
+    \subitem {C\_NOTES\_ERROR}, \hyperpage{257}
+    \subitem {C\_NOTES\_FULL\_CHARGE}, \hyperpage{257}
+    \subitem {C\_NOTES\_LOW\_BATTERY}, \hyperpage{257}
+    \subitem {C\_NOTES\_OFF\_1}, \hyperpage{257}
+    \subitem {C\_NOTES\_ON\_1}, \hyperpage{257}
+    \subitem {C\_NOTES\_START\_1}, \hyperpage{257}
+    \subitem {C\_NOTES\_UP\_1}, \hyperpage{258}
+    \subitem {C\_PIN\_BUZZER}, \hyperpage{258}
+    \subitem {C\_SOUND\_CHARGE\_IN}, \hyperpage{258}
+    \subitem {C\_SOUND\_CHARGE\_OUT}, \hyperpage{258}
+    \subitem {C\_SOUND\_DEATH\_BATTERY}, \hyperpage{258}
+    \subitem {C\_SOUND\_DOWN}, \hyperpage{258}
+    \subitem {C\_SOUND\_END}, \hyperpage{258}
+    \subitem {C\_SOUND\_ERROR}, \hyperpage{258}
+    \subitem {C\_SOUND\_FULL\_CHARGE}, \hyperpage{258}
+    \subitem {C\_SOUND\_LOW\_BATTERY}, \hyperpage{258}
+    \subitem {C\_SOUND\_MUTE}, \hyperpage{259}
+    \subitem {C\_SOUND\_OFF}, \hyperpage{259}
+    \subitem {C\_SOUND\_ON}, \hyperpage{259}
+    \subitem {C\_SOUND\_START}, \hyperpage{259}
+    \subitem {C\_SOUND\_UP}, \hyperpage{259}
+    \subitem {getSound}, \hyperpage{255}
+    \subitem {InitBuzzer}, \hyperpage{255}
+    \subitem {NOTE\_B9}, \hyperpage{255}
+    \subitem {playSound}, \hyperpage{256}
+    \subitem {size\_sound\_charge\_in}, \hyperpage{259}
+    \subitem {size\_sound\_charge\_out}, \hyperpage{259}
+    \subitem {size\_sound\_death\_battery}, \hyperpage{259}
+    \subitem {size\_sound\_down}, \hyperpage{259}
+    \subitem {size\_sound\_end}, \hyperpage{259}
+    \subitem {size\_sound\_error}, \hyperpage{260}
+    \subitem {size\_sound\_full\_charge}, \hyperpage{260}
+    \subitem {size\_sound\_low\_battery}, \hyperpage{260}
+    \subitem {size\_sound\_off}, \hyperpage{260}
+    \subitem {size\_sound\_on}, \hyperpage{260}
+    \subitem {size\_sound\_start}, \hyperpage{260}
+    \subitem {size\_sound\_up}, \hyperpage{260}
+    \subitem {SOUND\_CHARGE\_IN}, \hyperpage{260}
+    \subitem {SOUND\_CHARGE\_OUT}, \hyperpage{260}
+    \subitem {SOUND\_DEATH\_BATTERY}, \hyperpage{260}
+    \subitem {SOUND\_DOWN}, \hyperpage{261}
+    \subitem {SOUND\_END}, \hyperpage{261}
+    \subitem {SOUND\_ERROR}, \hyperpage{261}
+    \subitem {SOUND\_FULL\_CHARGE}, \hyperpage{261}
+    \subitem {SOUND\_LOW\_BATTERY}, \hyperpage{261}
+    \subitem {SOUND\_OFF}, \hyperpage{261}
+    \subitem {SOUND\_ON}, \hyperpage{261}
+    \subitem {SOUND\_START}, \hyperpage{261}
+    \subitem {SOUND\_UP}, \hyperpage{261}
+    \subitem {timer\_buzzer}, \hyperpage{261}
+  \item {buzzer\_error\_state}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {buzzer\_state}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {byteSwap}
+    \subitem {GFXcanvas16}, \hyperpage{90}
+
+  \indexspace
+
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/CODE/B1/B1.ino}, 
+		\hyperpage{115}, \hyperpage{140}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/CODE/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0000-\/EXAMPLE/librarie.h}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/Dpad.h}, 
+		\hyperpage{162}, \hyperpage{164}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{167, 168}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/bitmaps.h}, 
+		\hyperpage{181}, \hyperpage{201}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/display.h}, 
+		\hyperpage{221}, \hyperpage{227}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{169, 170}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_1/TEST\_1.ino}, 
+		\hyperpage{233, 234}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_2/TEST\_2.ino}, 
+		\hyperpage{238, 239}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_3/TEST\_3.ino}, 
+		\hyperpage{241, 242}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_4/TEST\_4.ino}, 
+		\hyperpage{244}, \hyperpage{246}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_5/TEST\_5.ino}, 
+		\hyperpage{246, 247}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_6/TEST\_6.ino}, 
+		\hyperpage{248, 249}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_7/TEST\_7.ino}, 
+		\hyperpage{250, 251}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_8/TEST\_8.ino}, 
+		\hyperpage{251}, \hyperpage{253}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/Buzzer.h}, 
+		\hyperpage{253}, \hyperpage{262}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{171}, \hyperpage{173}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/notes.h}, 
+		\hyperpage{264}, \hyperpage{278}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0003-\/BUZZER/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0004-\/DCDC/DCDC.h}, 
+		\hyperpage{279}, \hyperpage{281}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0004-\/DCDC/exmples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{173}, \hyperpage{175}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0004-\/DCDC/exmples/TEST\_1/TEST\_1.ino}, 
+		\hyperpage{235, 236}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0004-\/DCDC/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{176}, \hyperpage{178}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/HealthMonitor.h}, 
+		\hyperpage{282, 283}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0006-\/POWERBAR/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{178, 179}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0006-\/POWERBAR/power\_bar.h}, 
+		\hyperpage{284}, \hyperpage{286}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0006-\/POWERBAR/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0007-\/SlowSoftI2CMaster/batt\_SlowSoftI2CMaster.cpp}, 
+		\hyperpage{286, 287}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0007-\/SlowSoftI2CMaster/batt\_SlowSoftI2CMaster.h}, 
+		\hyperpage{288, 289}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_Adafruit\_GFX.cpp}, 
+		\hyperpage{290}, \hyperpage{292}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_Adafruit\_GFX.h}, 
+		\hyperpage{315}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_gfxfont.h}, 
+		\hyperpage{319}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_glcdfont.c}, 
+		\hyperpage{319, 320}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.cpp}, 
+		\hyperpage{321}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.h}, 
+		\hyperpage{325, 326}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/AdcWakeup/AdcWakeup.ino}, 
+		\hyperpage{328, 329}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/ExternalWakeup/ExternalWakeup.ino}, 
+		\hyperpage{330, 331}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/PrimoDeepSleep/PrimoDeepSleep.ino}, 
+		\hyperpage{332, 333}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/TianStandby/TianStandby.ino}, 
+		\hyperpage{334, 335}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/TimedWakeup/TimedWakeup.ino}, 
+		\hyperpage{336}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/diagnostic.h}, 
+		\hyperpage{337}, \hyperpage{342}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/Eeprom\_LUT.h}, 
+		\hyperpage{346}, \hyperpage{351}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/EepromBitBang.h}, 
+		\hyperpage{351}, \hyperpage{353}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_0/TEST\_0.ino}, 
+		\hyperpage{180, 181}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_1/TEST\_1.ino}, 
+		\hyperpage{236, 237}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_2/TEST\_2.ino}, 
+		\hyperpage{239, 240}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_3/TEST\_3.ino}, 
+		\hyperpage{243}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/README.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0011-\/Adafruit\_IS31FL3731\_Library/batt\_Adafruit\_IS31FL3731.cpp}, 
+		\hyperpage{354, 355}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0011-\/Adafruit\_IS31FL3731\_Library/batt\_Adafruit\_IS31FL3731.h}, 
+		\hyperpage{357}, \hyperpage{359}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0011-\/Adafruit\_IS31FL3731\_Library/examples/gfxdemo/gfxdemo.ino}, 
+		\hyperpage{360, 361}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0011-\/Adafruit\_IS31FL3731\_Library/examples/manualanim/manualanim.ino}, 
+		\hyperpage{362, 363}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0011-\/Adafruit\_IS31FL3731\_Library/examples/swirldemo/swirldemo.ino}, 
+		\hyperpage{364, 365}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/examples/EmulateEEPROM/EmulateEEPROM.ino}, 
+		\hyperpage{365, 366}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/examples/FlashStoreAndRetrieve/FlashStoreAndRetrieve.ino}, 
+		\hyperpage{366, 367}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/examples/StoreNameAndSurname/StoreNameAndSurname.ino}, 
+		\hyperpage{368}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/readme.md}, 
+		\hyperpage{161}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashAsEEPROM.cpp}, 
+		\hyperpage{369, 370}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashAsEEPROM.h}, 
+		\hyperpage{371, 372}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.cpp}, 
+		\hyperpage{372, 373}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/src/batt\_FlashStorage.h}, 
+		\hyperpage{374, 375}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/examples/CorrectADCResponse/CorrectADCResponse.ino}, 
+		\hyperpage{377}, \hyperpage{379}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/src/batt\_SAMD\_AnalogCorrection.cpp}, 
+		\hyperpage{381, 382}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/src/batt\_SAMD\_AnalogCorrection.h}, 
+		\hyperpage{382, 383}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0014-\/MilliTimer/MilliTimer.cpp}, 
+		\hyperpage{383}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0014-\/MilliTimer/MilliTimer.h}, 
+		\hyperpage{384}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/Epoch/Epoch.ino}, 
+		\hyperpage{384, 385}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/SimpleRTC/SimpleRTC.ino}, 
+		\hyperpage{386}, \hyperpage{388}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/SimpleRTCAlarm/SimpleRTCAlarm.ino}, 
+		\hyperpage{389, 390}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/examples/SleepRTCAlarm/SleepRTCAlarm.ino}, 
+		\hyperpage{391, 392}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/src/batt\_RTCZero.cpp}, 
+		\hyperpage{393}, \hyperpage{395}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/src/batt\_RTCZero.h}, 
+		\hyperpage{401}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Diseño/ARDUINO/Test\_Shield\_Validacion\_CPU/Test\_Shield\_Validacion\_CPU.ino}, 
+		\hyperpage{403}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Diseño/SAMD/PCB\_Validacion\_CPU/PCB\_Validacion\_CPU.ino}, 
+		\hyperpage{403}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Produccion/ARDUINO/Test\_Production/Test\_Production.ino}, 
+		\hyperpage{403}, \hyperpage{407}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Produccion/LABVIEW/CPU TEST/sketch\_jul14a/sketch\_jul14a.ino}, 
+		\hyperpage{409}, \hyperpage{411}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/DCDC/Validacion Diseño/Arduino/Test\_Shield\_Validacion\_DCDC/Test\_Shield\_Validacion\_DCDC.ino}, 
+		\hyperpage{413}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/DISPLAY/Validacion Diseño/Arduino/Test\_Shield\_Validacion\_Display/Test\_Shield\_Validacion\_Display.ino}, 
+		\hyperpage{414}
+  \item {C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/INPUT/Validacion Diseño/Test\_Shield\_Validacion\_Input/Test\_Shield\_Validacion\_Input.ino}, 
+		\hyperpage{414}
+  \item {C\_BOOST\_MODE}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {C\_BUZZER\_BUSSY}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_BUZZER\_NOT\_BUSSY}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_CAPACITY}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{347}
+  \item {C\_CLICK\_CENTER}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_CLICK\_DOWN}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_CLICK\_UP}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_CMD\_DIAGNOSTIC\_STOP}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {C\_CMD\_DISPLAY\_ENDING\_OFF}
+    \subitem {B1.ino}, \hyperpage{122}
+  \item {C\_CMD\_DISPLAY\_ENDING\_ON}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_DISPLAY\_STARTING\_OFF}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_DISPLAY\_STARTING\_ON}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_LIVE\_OFF}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_LIVE\_ON}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_ENDING\_OFF}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_ENDING\_ON}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_FULL\_CHARGE\_OFF}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_FULL\_CHARGE\_ON}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_STARTING\_OFF}
+    \subitem {B1.ino}, \hyperpage{123}
+  \item {C\_CMD\_SOUND\_STARTING\_ON}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_CMS\_SOUND\_CHARGE\_START\_OFF}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_CMS\_SOUND\_CHARGE\_START\_ON}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_CMS\_SOUND\_DEATH\_BATTERY\_OFF}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_CMS\_SOUND\_DEATH\_BATTERY\_ON}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_CONSUMPTION\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{347}
+  \item {C\_COUNTER\_LIMIT}
+    \subitem {HealthMonitor.h}, \hyperpage{282}
+  \item {C\_DELAY\_BLINK\_LOW\_BATTERY}
+    \subitem {display.h}, \hyperpage{225}
+  \item {C\_DIAGNOSTIC\_PASSWORD}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_DISPLAY\_HEIGHT}
+    \subitem {bitmaps.h}, \hyperpage{183}
+  \item {C\_DISPLAY\_OFF}
+    \subitem {display.h}, \hyperpage{225}
+  \item {C\_DISPLAY\_ON}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_DISPLAY\_ST\_BUSSY}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_DISPLAY\_ST\_NOT\_BUSSY}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_DISPLAY\_WIDTH}
+    \subitem {bitmaps.h}, \hyperpage{183}
+  \item {C\_HACK\_CHARGE\_SOUND}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{347}
+  \item {C\_HACK\_DEATH\_BATTERY\_SOUND}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HACK\_END\_DISPLAY}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HACK\_END\_SOUND}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HACK\_FULL\_CHARGE\_SOUND}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HACK\_START\_DISPLAY}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HACK\_START\_SOUND}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_HIGH\_BRIGHTNESS}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_IDLE\_TIMER\_COUNT}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_INIT\_STATE}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_INSTANT\_CURRENT}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_INSTANT\_POWER}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_INSTANT\_VOLTAGE}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{348}
+  \item {C\_LIMIT\_COMSUPTION\_PROT}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_LIMIT\_OVERPOWER\_PROT}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_LIMIT\_UNDERVOLTAGE\_PROT}
+    \subitem {B1.ino}, \hyperpage{124}
+  \item {C\_LIMIT\_VOLTAGE\_INPUT}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_OFF\_LIVE\_VIEW}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_OUT\_OFF}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_OUT\_ON}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_VOLT\_DOWN\_1}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_VOLT\_DOWN\_10}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_VOLT\_UP\_1}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LIVE\_CMD\_VOLT\_UP\_10}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LOW\_BATTERY\_LEVEL}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_LOW\_BRIGHTNESS}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_LP\_CENTER}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_LP\_DOWN}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_LP\_UP}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_MASK\_ACTIVATE}
+    \subitem {B1.ino}, \hyperpage{125}
+  \item {C\_MASK\_DEACTIVATE}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_MAX\_VOLT}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_MIN\_VOLT}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_MODE\_DEFAULT}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_MODE\_HACK\_ALTERNATIVE}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_MODE\_HIGH\_BRIGHT}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_MODE\_LOW\_BRIGHT}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_MODEL}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_NON\_BOOST\_MODE}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {C\_NONE\_EVENT}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_NOTES\_CHARGE\_IN}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_NOTES\_CHARGE\_OUT}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {C\_NOTES\_DEATHBATTERY}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_DOWN\_1}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_END\_1}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_ERROR}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_FULL\_CHARGE}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_LOW\_BATTERY}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_OFF\_1}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_ON\_1}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_START\_1}
+    \subitem {Buzzer.h}, \hyperpage{257}
+  \item {C\_NOTES\_UP\_1}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_NUM\_ELEMENTS}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_NUMB\_PRINTS\_STATIC\_DATA}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_NUMBER\_BLINK\_LOW\_BATTERY}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_NUMBER\_CYCLES}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_OFF}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_ON}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_PIN\_BUTT\_CENTER}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_PIN\_BUTT\_DOWN}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_PIN\_BUTT\_UP}
+    \subitem {Dpad.h}, \hyperpage{163}
+  \item {C\_PIN\_BUZZER}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_PIN\_DEATH\_BATTERY\_CHECK}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_PIN\_EN\_DCDC}
+    \subitem {B1.ino}, \hyperpage{126}
+    \subitem {TEST\_0.ino}, \hyperpage{174}
+    \subitem {TEST\_1.ino}, \hyperpage{236}
+  \item {C\_PIN\_ENABLE\_LDO}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{409}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_FLAG\_BATTLOW}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_PIN\_FLAG\_CHARG}
+    \subitem {B1.ino}, \hyperpage{126}
+  \item {C\_PIN\_I\_IN}
+    \subitem {TEST\_0.ino}, \hyperpage{174}
+  \item {C\_PIN\_I\_OUT}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_IOUT\_SENSE}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{409}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_ISENSE\_RAW}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_LED\_1}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_LED\_2}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_LED\_3}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_SCL\_2}
+    \subitem {B1.ino}, \hyperpage{127}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_SDA\_2}
+    \subitem {B1.ino}, \hyperpage{127}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_SHIPPING\_MOD}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_SW1}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_SW2}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{405}
+  \item {C\_PIN\_TEST\_MODE}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_USB\_CONNEXION}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_USB\_SEL}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_V\_IN}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_PIN\_V\_OUT}
+    \subitem {B1.ino}, \hyperpage{127}
+    \subitem {TEST\_0.ino}, \hyperpage{174}
+  \item {C\_PIN\_VCC}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {C\_PIN\_VCC\_2}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{410}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {C\_PIXEL\_START\_STRING}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_PIXEL\_STOP\_STRING}
+    \subitem {display.h}, \hyperpage{226}
+  \item {C\_POWER\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_PWBAR\_Y\_AXE}
+    \subitem {display.h}, \hyperpage{227}
+  \item {C\_RETRY\_750\_COUNT}
+    \subitem {B1.ino}, \hyperpage{127}
+  \item {C\_RISE\_COUNT}
+    \subitem {HealthMonitor.h}, \hyperpage{282}
+  \item {C\_SAMPLING\_TIME}
+    \subitem {HealthMonitor.h}, \hyperpage{282}
+  \item {C\_SERIAL\_NUMBER}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_SOUND\_CHARGE\_IN}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_CHARGE\_OUT}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_DEATH\_BATTERY}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_DOWN}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_END}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_ERROR}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_FULL\_CHARGE}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_LOW\_BATTERY}
+    \subitem {Buzzer.h}, \hyperpage{258}
+  \item {C\_SOUND\_MUTE}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {C\_SOUND\_OFF}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {C\_SOUND\_ON}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {C\_SOUND\_START}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {C\_SOUND\_UP}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {C\_SW\_ST\_CAPACITY}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_DIAGNOSTIC}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_ERROR}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_RUN}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_SLEEP}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_START\_UP}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_STOP}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_SW\_ST\_USB}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_TEXT\_BITMAP\_WEIGHT}
+    \subitem {display.h}, \hyperpage{227}
+  \item {C\_TEXT\_CHAR\_HEIGHT}
+    \subitem {display.h}, \hyperpage{227}
+  \item {C\_TEXT\_CHAR\_OFFSET\_Y}
+    \subitem {display.h}, \hyperpage{227}
+  \item {C\_THEORY\_VOLTAGE}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_TIME\_HEALTH\_MONITORING}
+    \subitem {HealthMonitor.h}, \hyperpage{282}
+  \item {C\_TIME\_TO\_LIGHT\_DOWN}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_TIMER\_ARMED}
+    \subitem {B1.ino}, \hyperpage{128}
+  \item {C\_TIMER\_BTW\_FRAMES}
+    \subitem {display.h}, \hyperpage{227}
+  \item {C\_TIMER\_DEBOUNCE}
+    \subitem {Dpad.h}, \hyperpage{164}
+  \item {C\_TIMER\_DONE}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {C\_TIMER\_IDLE}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {C\_TIMER\_LONGPRESS}
+    \subitem {Dpad.h}, \hyperpage{164}
+  \item {C\_TIMER\_LONGPRESS\_LOOP}
+    \subitem {Dpad.h}, \hyperpage{164}
+  \item {C\_TIMER\_NOT\_EXPIRED}
+    \subitem {MilliTimer.h}, \hyperpage{384}
+  \item {C\_USB\_CONNECTED}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {C\_USB\_DISCONNECTED}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {C\_VOLTAGE\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_VOLTAGE\_INPUT\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {C\_WATCH\_DOG\_TIME\_MS}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {C\_WORK\_TIME}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {capacity}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {capcaity\_ask\_off}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {category}
+    \subitem {Element}, \hyperpage{81}
+  \item {Cchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {change\_text\_answered}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {Char2Bitmap}
+    \subitem {bitmaps.h}, \hyperpage{184}
+  \item {charBounds}
+    \subitem {Adafruit\_GFX}, \hyperpage{43}
+  \item {check}
+    \subitem {HealthMonitor}, \hyperpage{101}
+  \item {CIRCUMFLEXchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {clear}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{71}
+  \item {click\_events}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {CLOSECURLYBRAchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {CLOSEPARENTESISchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {CLOSESQUAREBRAQUETchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {cmd\_go\_sleep}
+    \subitem {B1.ino}, \hyperpage{129}
+  \item {COLONchar}
+    \subitem {bitmaps.h}, \hyperpage{186}
+  \item {COMMAchar}
+    \subitem {bitmaps.h}, \hyperpage{187}
+  \item {commit}
+    \subitem {EEPROMClass}, \hyperpage{80}
+  \item {consmptn\_event\_protection\_counter}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {cont\_idle\_timer}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {cont\_sec}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {contains}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{66}
+  \item {CorrectADCResponse.ino}
+    \subitem {ADC\_3V3\_PIN}, \hyperpage{377}
+    \subitem {ADC\_GND\_PIN}, \hyperpage{377}
+    \subitem {ADC\_MAX\_GAIN}, \hyperpage{377}
+    \subitem {ADC\_MIN\_GAIN}, \hyperpage{377}
+    \subitem {ADC\_RANGE}, \hyperpage{377}
+    \subitem {ADC\_READS\_COUNT}, \hyperpage{378}
+    \subitem {ADC\_READS\_SHIFT}, \hyperpage{378}
+    \subitem {ADC\_RESOLUTION\_BITS}, \hyperpage{378}
+    \subitem {ADC\_TOP\_VALUE}, \hyperpage{378}
+    \subitem {ADC\_UNITY\_GAIN}, \hyperpage{378}
+    \subitem {loop}, \hyperpage{378}
+    \subitem {MAX\_TOP\_VALUE\_READS}, \hyperpage{378}
+    \subitem {read3V3Level}, \hyperpage{378}
+    \subitem {readGndLevel}, \hyperpage{378}
+    \subitem {setup}, \hyperpage{379}
+  \item {count}
+    \subitem {TEST\_0.ino}, \hyperpage{177}
+  \item {counter\_prints\_static\_data}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {cp437}
+    \subitem {Adafruit\_GFX}, \hyperpage{43}
+  \item {cursor\_x}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+  \item {cursor\_y}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+
+  \indexspace
+
+  \item {dac\_output}
+    \subitem {TEST\_0.ino}, \hyperpage{177}
+  \item {DAC\_PIN}
+    \subitem {TEST\_0.ino}, \hyperpage{176}
+  \item {data}
+    \subitem {B1.ino}, \hyperpage{130}
+    \subitem {EEPROM\_EMULATION}, \hyperpage{79}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{411}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {day}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{389}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {DCDC}
+    \subitem {B1.ino}, \hyperpage{130}
+    \subitem {TEST\_0.ino}, \hyperpage{175}
+    \subitem {TEST\_1.ino}, \hyperpage{236}
+  \item {DCDC.h}
+    \subitem {ADDR\_I2C\_DCDC}, \hyperpage{280}
+    \subitem {BOOST\_ARRAY}, \hyperpage{280}
+    \subitem {C\_BOOST\_MODE}, \hyperpage{280}
+    \subitem {C\_NON\_BOOST\_MODE}, \hyperpage{280}
+    \subitem {LenDCDCvalues}, \hyperpage{280}
+    \subitem {NON\_BOOST\_ARRAY}, \hyperpage{280}
+  \item {dcdc\_controler}, \hyperpage{77}
+    \subitem {dcdc\_controler}, \hyperpage{77}
+    \subitem {EnableDCDC}, \hyperpage{78}
+    \subitem {encoderPos}, \hyperpage{78}
+    \subitem {pin\_enable}, \hyperpage{78}
+    \subitem {SetVoltage}, \hyperpage{78}
+    \subitem {TPICvalue}, \hyperpage{78}
+  \item {Dchar}
+    \subitem {bitmaps.h}, \hyperpage{187}
+  \item {deatchRTCInterrupt}
+    \subitem {ArduinoLowPowerClass}, \hyperpage{76}
+  \item {deepSleep}
+    \subitem {ArduinoLowPowerClass}, \hyperpage{76}
+  \item {DEFAULT\_DAY}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DEFAULT\_HOUR}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DEFAULT\_MINUTE}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DEFAULT\_MONTH}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DEFAULT\_SECOND}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DEFAULT\_YEAR}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {DELAY}
+    \subitem {batt\_SlowSoftI2CMaster.h}, \hyperpage{289}
+  \item {delay\_live\_view}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {detachInterrupt}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {diag\_check}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {diagnostic.h}
+    \subitem {\_dirty}, \hyperpage{341}
+    \subitem {\_eeprom\_RAM}, \hyperpage{341}
+    \subitem {EEPROM\_EMULATION\_SIZE}, \hyperpage{338}
+    \subitem {eeprom\_index}, \hyperpage{341}
+    \subitem {elements}, \hyperpage{341}
+    \subitem {FlashStorage}, \hyperpage{339}
+    \subitem {IncrementDiagnosticData}, \hyperpage{339}
+    \subitem {Init\_diagnostic\_elements}, \hyperpage{339}
+    \subitem {init\_flag}, \hyperpage{341}
+    \subitem {isValid}, \hyperpage{339}
+    \subitem {LogDiagnosticData}, \hyperpage{339}
+    \subitem {MAX\_VOLTAGE}, \hyperpage{341}
+    \subitem {MAX\_WATS}, \hyperpage{341}
+    \subitem {MIN\_VOLTAGE}, \hyperpage{341}
+    \subitem {MIN\_WATS}, \hyperpage{342}
+    \subitem {power\_values}, \hyperpage{342}
+    \subitem {PrintDiagnosticData}, \hyperpage{340}
+    \subitem {PrintStaticData}, \hyperpage{340}
+    \subitem {PrintStats}, \hyperpage{340}
+    \subitem {ReadDiagnosticData}, \hyperpage{340}
+    \subitem {ResetBateriaEeprom}, \hyperpage{340}
+    \subitem {SaveEepromChasis}, \hyperpage{340}
+    \subitem {Stats}, \hyperpage{340}
+    \subitem {UpdateEepromBatery}, \hyperpage{341}
+    \subitem {voltage\_values}, \hyperpage{342}
+  \item {diagnostic\_msg}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {digitalPin}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{333}
+  \item {disableAlarm}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {display.h}
+    \subitem {blink\_OFF}, \hyperpage{225}
+    \subitem {blink\_ON}, \hyperpage{225}
+    \subitem {C\_DELAY\_BLINK\_LOW\_BATTERY}, \hyperpage{225}
+    \subitem {C\_DISPLAY\_OFF}, \hyperpage{225}
+    \subitem {C\_DISPLAY\_ON}, \hyperpage{226}
+    \subitem {C\_DISPLAY\_ST\_BUSSY}, \hyperpage{226}
+    \subitem {C\_DISPLAY\_ST\_NOT\_BUSSY}, \hyperpage{226}
+    \subitem {C\_HIGH\_BRIGHTNESS}, \hyperpage{226}
+    \subitem {C\_LOW\_BRIGHTNESS}, \hyperpage{226}
+    \subitem {C\_MODE\_HIGH\_BRIGHT}, \hyperpage{226}
+    \subitem {C\_MODE\_LOW\_BRIGHT}, \hyperpage{226}
+    \subitem {C\_NUMBER\_BLINK\_LOW\_BATTERY}, \hyperpage{226}
+    \subitem {C\_PIXEL\_START\_STRING}, \hyperpage{226}
+    \subitem {C\_PIXEL\_STOP\_STRING}, \hyperpage{226}
+    \subitem {C\_PWBAR\_Y\_AXE}, \hyperpage{227}
+    \subitem {C\_TEXT\_BITMAP\_WEIGHT}, \hyperpage{227}
+    \subitem {C\_TEXT\_CHAR\_HEIGHT}, \hyperpage{227}
+    \subitem {C\_TEXT\_CHAR\_OFFSET\_Y}, \hyperpage{227}
+    \subitem {C\_TIMER\_BTW\_FRAMES}, \hyperpage{227}
+    \subitem {DisplayBattCharging}, \hyperpage{222}
+    \subitem {DisplayCap}, \hyperpage{223}
+    \subitem {DisplayDiagnosticMode}, \hyperpage{223}
+    \subitem {DisplayError}, \hyperpage{223}
+    \subitem {DisplayLowBattery}, \hyperpage{223}
+    \subitem {DisplayText}, \hyperpage{223}
+    \subitem {DisplayUsbIn}, \hyperpage{224}
+    \subitem {DisplayUsbOut}, \hyperpage{224}
+    \subitem {DisplayVolt}, \hyperpage{224}
+    \subitem {LedWork}, \hyperpage{225}
+    \subitem {ScreenON}, \hyperpage{225}
+    \subitem {SwitchScreenOff}, \hyperpage{225}
+  \item {display\_error\_status}
+    \subitem {B1.ino}, \hyperpage{130}
+  \item {DISPLAY\_SIZE}
+    \subitem {bitmaps.h}, \hyperpage{183}
+  \item {display\_status}
+    \subitem {B1.ino}, \hyperpage{131}
+    \subitem {TEST\_6.ino}, \hyperpage{249}
+    \subitem {TEST\_7.ino}, \hyperpage{251}
+  \item {DisplayBattCharging}
+    \subitem {display.h}, \hyperpage{222}
+  \item {DisplayCap}
+    \subitem {display.h}, \hyperpage{223}
+  \item {DisplayDiagnosticMode}
+    \subitem {display.h}, \hyperpage{223}
+  \item {DisplayError}
+    \subitem {display.h}, \hyperpage{223}
+  \item {displayFrame}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{71}
+  \item {DisplayLowBattery}
+    \subitem {display.h}, \hyperpage{223}
+  \item {DisplayText}
+    \subitem {display.h}, \hyperpage{223}
+  \item {DisplayUsbIn}
+    \subitem {display.h}, \hyperpage{224}
+  \item {DisplayUsbOut}
+    \subitem {display.h}, \hyperpage{224}
+  \item {DisplayVolt}
+    \subitem {display.h}, \hyperpage{224}
+  \item {DOLLARchar}
+    \subitem {bitmaps.h}, \hyperpage{187}
+  \item {doMyStuff}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+  \item {doMyStuffWithNFC}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+  \item {doOtherStuff}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+  \item {DOTchar}
+    \subitem {bitmaps.h}, \hyperpage{187}
+  \item {Dpad.h}
+    \subitem {button\_not\_pressed}, \hyperpage{162}
+    \subitem {button\_pressed}, \hyperpage{162}
+    \subitem {C\_CLICK\_CENTER}, \hyperpage{163}
+    \subitem {C\_CLICK\_DOWN}, \hyperpage{163}
+    \subitem {C\_CLICK\_UP}, \hyperpage{163}
+    \subitem {C\_LP\_CENTER}, \hyperpage{163}
+    \subitem {C\_LP\_DOWN}, \hyperpage{163}
+    \subitem {C\_LP\_UP}, \hyperpage{163}
+    \subitem {C\_NONE\_EVENT}, \hyperpage{163}
+    \subitem {C\_PIN\_BUTT\_CENTER}, \hyperpage{163}
+    \subitem {C\_PIN\_BUTT\_DOWN}, \hyperpage{163}
+    \subitem {C\_PIN\_BUTT\_UP}, \hyperpage{163}
+    \subitem {C\_TIMER\_DEBOUNCE}, \hyperpage{164}
+    \subitem {C\_TIMER\_LONGPRESS}, \hyperpage{164}
+    \subitem {C\_TIMER\_LONGPRESS\_LOOP}, \hyperpage{164}
+    \subitem {ReadDirPad}, \hyperpage{162}
+  \item {drawBitmap}
+    \subitem {Adafruit\_GFX}, \hyperpage{44, 45}
+  \item {drawButton}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{66}
+  \item {drawChar}
+    \subitem {Adafruit\_GFX}, \hyperpage{46}
+  \item {drawCircle}
+    \subitem {Adafruit\_GFX}, \hyperpage{47}
+  \item {drawCircleHelper}
+    \subitem {Adafruit\_GFX}, \hyperpage{47}
+  \item {drawFastHLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{47}
+    \subitem {GFXcanvas1}, \hyperpage{86}
+    \subitem {GFXcanvas16}, \hyperpage{90}
+    \subitem {GFXcanvas8}, \hyperpage{94}
+  \item {drawFastRawHLine}
+    \subitem {GFXcanvas1}, \hyperpage{86}
+    \subitem {GFXcanvas16}, \hyperpage{91}
+    \subitem {GFXcanvas8}, \hyperpage{95}
+  \item {drawFastRawVLine}
+    \subitem {GFXcanvas1}, \hyperpage{86}
+    \subitem {GFXcanvas16}, \hyperpage{91}
+    \subitem {GFXcanvas8}, \hyperpage{95}
+  \item {drawFastVLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{48}
+    \subitem {GFXcanvas1}, \hyperpage{87}
+    \subitem {GFXcanvas16}, \hyperpage{91}
+    \subitem {GFXcanvas8}, \hyperpage{96}
+  \item {drawGrayscaleBitmap}
+    \subitem {Adafruit\_GFX}, \hyperpage{48, 49}
+  \item {drawLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{50}
+  \item {drawPixel}
+    \subitem {Adafruit\_GFX}, \hyperpage{50}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{72}
+    \subitem {Adafruit\_IS31FL3731\_Wing}, \hyperpage{75}
+    \subitem {GFXcanvas1}, \hyperpage{87}
+    \subitem {GFXcanvas16}, \hyperpage{92}
+    \subitem {GFXcanvas8}, \hyperpage{96}
+  \item {drawRect}
+    \subitem {Adafruit\_GFX}, \hyperpage{50}
+  \item {drawRGBBitmap}
+    \subitem {Adafruit\_GFX}, \hyperpage{51, 52}
+  \item {drawRoundRect}
+    \subitem {Adafruit\_GFX}, \hyperpage{52}
+  \item {drawTriangle}
+    \subitem {Adafruit\_GFX}, \hyperpage{53}
+  \item {drawXBitmap}
+    \subitem {Adafruit\_GFX}, \hyperpage{53}
+  \item {dummy}
+    \subitem {TimedWakeup.ino}, \hyperpage{336}
+
+  \indexspace
+
+  \item {Echar}
+    \subitem {bitmaps.h}, \hyperpage{187}
+  \item {EEPROM}
+    \subitem {batt\_FlashAsEEPROM.cpp}, \hyperpage{370}
+    \subitem {batt\_FlashAsEEPROM.h}, \hyperpage{371}
+  \item {EEPROM\_EMULATION}, \hyperpage{79}
+    \subitem {data}, \hyperpage{79}
+    \subitem {valid}, \hyperpage{79}
+  \item {EEPROM\_EMULATION\_SIZE}
+    \subitem {batt\_FlashAsEEPROM.h}, \hyperpage{371}
+    \subitem {diagnostic.h}, \hyperpage{338}
+  \item {eeprom\_index}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {Eeprom\_LUT.h}
+    \subitem {C\_CAPACITY}, \hyperpage{347}
+    \subitem {C\_CONSUMPTION\_ERROR}, \hyperpage{347}
+    \subitem {C\_HACK\_CHARGE\_SOUND}, \hyperpage{347}
+    \subitem {C\_HACK\_DEATH\_BATTERY\_SOUND}, \hyperpage{348}
+    \subitem {C\_HACK\_END\_DISPLAY}, \hyperpage{348}
+    \subitem {C\_HACK\_END\_SOUND}, \hyperpage{348}
+    \subitem {C\_HACK\_FULL\_CHARGE\_SOUND}, \hyperpage{348}
+    \subitem {C\_HACK\_START\_DISPLAY}, \hyperpage{348}
+    \subitem {C\_HACK\_START\_SOUND}, \hyperpage{348}
+    \subitem {C\_INIT\_STATE}, \hyperpage{348}
+    \subitem {C\_INSTANT\_CURRENT}, \hyperpage{348}
+    \subitem {C\_INSTANT\_POWER}, \hyperpage{348}
+    \subitem {C\_INSTANT\_VOLTAGE}, \hyperpage{348}
+    \subitem {C\_MODEL}, \hyperpage{349}
+    \subitem {C\_NUM\_ELEMENTS}, \hyperpage{349}
+    \subitem {C\_NUMBER\_CYCLES}, \hyperpage{349}
+    \subitem {C\_POWER\_ERROR}, \hyperpage{349}
+    \subitem {C\_SERIAL\_NUMBER}, \hyperpage{349}
+    \subitem {C\_THEORY\_VOLTAGE}, \hyperpage{349}
+    \subitem {C\_VOLTAGE\_ERROR}, \hyperpage{349}
+    \subitem {C\_VOLTAGE\_INPUT\_ERROR}, \hyperpage{349}
+    \subitem {C\_WORK\_TIME}, \hyperpage{349}
+    \subitem {POS\_EEPROM\_CONSUMPTION\_ERROR}, \hyperpage{349}
+    \subitem {POS\_EEPROM\_INIT}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_MODEL}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_NUMBER\_CYCLES}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_POWER\_ARRAY}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_POWER\_ERROR}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_SERIAL\_NUMBER}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_VOLTAGE\_ERROR}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_VOLTAGE\_INPUT\_ERROR}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_VOLTS\_ARRAY}, \hyperpage{350}
+    \subitem {POS\_EEPROM\_WORK\_TIME}, \hyperpage{350}
+  \item {EEPROMADDR}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {EepromBitBang.h}
+    \subitem {EEPROMADDR}, \hyperpage{352}
+    \subitem {ReadArrayEEPROM}, \hyperpage{352}
+    \subitem {readEEPROM}, \hyperpage{352}
+    \subitem {ReadWordEEPROM}, \hyperpage{352}
+    \subitem {SCL\_PIN}, \hyperpage{352}
+    \subitem {SDA\_PIN}, \hyperpage{352}
+    \subitem {si}, \hyperpage{353}
+    \subitem {WriteArrayEEPROM}, \hyperpage{352}
+    \subitem {writeEEPROM}, \hyperpage{352}
+    \subitem {WriteWordEEPROM}, \hyperpage{353}
+  \item {EEPROMClass}, \hyperpage{79}
+    \subitem {commit}, \hyperpage{80}
+    \subitem {EEPROMClass}, \hyperpage{80}
+    \subitem {isValid}, \hyperpage{80}
+    \subitem {length}, \hyperpage{80}
+    \subitem {read}, \hyperpage{80}
+    \subitem {update}, \hyperpage{80}
+    \subitem {write}, \hyperpage{81}
+  \item {EIGHTchar}
+    \subitem {bitmaps.h}, \hyperpage{188}
+  \item {Element}, \hyperpage{81}
+    \subitem {category}, \hyperpage{81}
+    \subitem {name}, \hyperpage{81}
+    \subitem {value}, \hyperpage{82}
+  \item {elements}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {EmulateEEPROM.ino}
+    \subitem {loop}, \hyperpage{365}
+    \subitem {setup}, \hyperpage{365}
+  \item {enable\_charge\_sound}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_death\_battery\_sound}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_ending\_sound}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_ending\_text}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_full\_charge\_sound}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_live\_view}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_starting\_sound}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enable\_starting\_text}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {enableAlarm}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {EnableDCDC}
+    \subitem {dcdc\_controler}, \hyperpage{78}
+  \item {encoderPos}
+    \subitem {dcdc\_controler}, \hyperpage{78}
+  \item {endWrite}
+    \subitem {Adafruit\_GFX}, \hyperpage{54}
+  \item {Epoch.ino}
+    \subitem {loop}, \hyperpage{385}
+    \subitem {print2digits}, \hyperpage{385}
+    \subitem {rtc}, \hyperpage{385}
+    \subitem {setup}, \hyperpage{385}
+  \item {EPOCH\_TIME\_OFF}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {EPOCH\_TIME\_YEAR\_OFF}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{394}
+  \item {EQUALchar}
+    \subitem {bitmaps.h}, \hyperpage{188}
+  \item {erase}
+    \subitem {FlashClass}, \hyperpage{82}
+  \item {error}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {error\_msg}
+    \subitem {B1.ino}, \hyperpage{131}
+  \item {EXCLMARKchar}
+    \subitem {bitmaps.h}, \hyperpage{188}
+  \item {ExternalWakeup.ino}
+    \subitem {loop}, \hyperpage{330}
+    \subitem {pin}, \hyperpage{330}
+    \subitem {repetitions}, \hyperpage{330}
+    \subitem {repetitionsIncrease}, \hyperpage{330}
+    \subitem {setup}, \hyperpage{330}
+  \item {EYES2\_1}
+    \subitem {bitmaps.h}, \hyperpage{188}
+  \item {EYES2\_2}
+    \subitem {bitmaps.h}, \hyperpage{188}
+  \item {EYES\_1}
+    \subitem {bitmaps.h}, \hyperpage{189}
+  \item {EYES\_2}
+    \subitem {bitmaps.h}, \hyperpage{189}
+
+  \indexspace
+
+  \item {FACE\_1}
+    \subitem {bitmaps.h}, \hyperpage{189}
+  \item {FACE\_2}
+    \subitem {bitmaps.h}, \hyperpage{189}
+  \item {Fchar}
+    \subitem {bitmaps.h}, \hyperpage{189}
+  \item {fillCircle}
+    \subitem {Adafruit\_GFX}, \hyperpage{54}
+  \item {fillCircleHelper}
+    \subitem {Adafruit\_GFX}, \hyperpage{54}
+  \item {fillRect}
+    \subitem {Adafruit\_GFX}, \hyperpage{55}
+  \item {fillRoundRect}
+    \subitem {Adafruit\_GFX}, \hyperpage{55}
+  \item {fillScreen}
+    \subitem {Adafruit\_GFX}, \hyperpage{55}
+    \subitem {GFXcanvas1}, \hyperpage{87}
+    \subitem {GFXcanvas16}, \hyperpage{92}
+    \subitem {GFXcanvas8}, \hyperpage{96}
+  \item {fillTriangle}
+    \subitem {Adafruit\_GFX}, \hyperpage{56}
+  \item {first}
+    \subitem {GFXfont}, \hyperpage{98}
+  \item {FIVEchar}
+    \subitem {bitmaps.h}, \hyperpage{190}
+  \item {flag\_arranque}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_cap\_one\_shot}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_diag\_header\_printed}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_display\_capacity}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_error}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_initialize}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_irq\_center\_button}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_irq\_death\_battery}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_irq\_singleshot}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_low\_battery}
+    \subitem {B1.ino}, \hyperpage{132}
+  \item {flag\_msg\_init}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_msg\_sleep}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_return}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_sleep}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_sound}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_test}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_timer\_low\_bright}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_update\_eeprom}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_usb\_change}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_waiting}
+    \subitem {B1.ino}, \hyperpage{133}
+  \item {flag\_work}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {Flash}
+    \subitem {batt\_FlashStorage.h}, \hyperpage{375}
+  \item {FlashClass}, \hyperpage{82}
+    \subitem {erase}, \hyperpage{82}
+    \subitem {FlashClass}, \hyperpage{82}
+    \subitem {read}, \hyperpage{83}
+    \subitem {write}, \hyperpage{83}
+  \item {FlashStorage}
+    \subitem {batt\_FlashAsEEPROM.cpp}, \hyperpage{370}
+    \subitem {batt\_FlashStorage.h}, \hyperpage{375}
+    \subitem {diagnostic.h}, \hyperpage{339}
+    \subitem {FlashStoreAndRetrieve.ino}, \hyperpage{367}
+    \subitem {StoreNameAndSurname.ino}, \hyperpage{368}
+  \item {FlashStorageClass}
+    \subitem {FlashStorageClass$<$ T $>$}, \hyperpage{84}
+  \item {FlashStorageClass$<$ T $>$}, \hyperpage{83}
+    \subitem {FlashStorageClass}, \hyperpage{84}
+    \subitem {read}, \hyperpage{84}
+    \subitem {write}, \hyperpage{84}
+  \item {FlashStoreAndRetrieve.ino}
+    \subitem {FlashStorage}, \hyperpage{367}
+    \subitem {loop}, \hyperpage{367}
+    \subitem {setup}, \hyperpage{367}
+  \item {FONT5X7\_H}
+    \subitem {batt\_glcdfont.c}, \hyperpage{319}
+  \item {FOURchar}
+    \subitem {bitmaps.h}, \hyperpage{190}
+  \item {Frame\_Batt\_1}
+    \subitem {bitmaps.h}, \hyperpage{190}
+  \item {Frame\_Batt\_2}
+    \subitem {bitmaps.h}, \hyperpage{190}
+  \item {Frame\_Batt\_Low\_1}
+    \subitem {bitmaps.h}, \hyperpage{190}
+  \item {Frame\_Batt\_Low\_2}
+    \subitem {bitmaps.h}, \hyperpage{191}
+  \item {Frame\_Error\_1}
+    \subitem {bitmaps.h}, \hyperpage{191}
+  \item {Frame\_Error\_2}
+    \subitem {bitmaps.h}, \hyperpage{191}
+  \item {Frame\_USB\_1}
+    \subitem {bitmaps.h}, \hyperpage{191}
+  \item {Frame\_USB\_2}
+    \subitem {bitmaps.h}, \hyperpage{191}
+
+  \indexspace
+
+  \item {Gchar}
+    \subitem {bitmaps.h}, \hyperpage{192}
+  \item {getAlarmDay}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getAlarmHours}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getAlarmMinutes}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getAlarmMonth}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getAlarmSeconds}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getAlarmYear}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getBuffer}
+    \subitem {GFXcanvas1}, \hyperpage{88}
+    \subitem {GFXcanvas16}, \hyperpage{92}
+    \subitem {GFXcanvas8}, \hyperpage{96}
+  \item {getCounter}
+    \subitem {HealthMonitor}, \hyperpage{101}
+  \item {getCursorX}
+    \subitem {Adafruit\_GFX}, \hyperpage{56}
+  \item {getCursorY}
+    \subitem {Adafruit\_GFX}, \hyperpage{56}
+  \item {getDay}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getEpoch}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getHours}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getMinutes}
+    \subitem {RTCZero}, \hyperpage{107}
+  \item {getMonth}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {getPixel}
+    \subitem {GFXcanvas1}, \hyperpage{88}
+    \subitem {GFXcanvas16}, \hyperpage{92}
+    \subitem {GFXcanvas8}, \hyperpage{97}
+  \item {getRawPixel}
+    \subitem {GFXcanvas1}, \hyperpage{88}
+    \subitem {GFXcanvas16}, \hyperpage{93}
+    \subitem {GFXcanvas8}, \hyperpage{97}
+  \item {getRotation}
+    \subitem {Adafruit\_GFX}, \hyperpage{56}
+  \item {getSample}
+    \subitem {HealthMonitor}, \hyperpage{101}
+  \item {getSeconds}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {getSound}
+    \subitem {Buzzer.h}, \hyperpage{255}
+  \item {getTextBounds}
+    \subitem {Adafruit\_GFX}, \hyperpage{57, 58}
+  \item {getY2kEpoch}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {getYear}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {GFXcanvas1}, \hyperpage{84}
+    \subitem {$\sim$GFXcanvas1}, \hyperpage{86}
+    \subitem {drawFastHLine}, \hyperpage{86}
+    \subitem {drawFastRawHLine}, \hyperpage{86}
+    \subitem {drawFastRawVLine}, \hyperpage{86}
+    \subitem {drawFastVLine}, \hyperpage{87}
+    \subitem {drawPixel}, \hyperpage{87}
+    \subitem {fillScreen}, \hyperpage{87}
+    \subitem {getBuffer}, \hyperpage{88}
+    \subitem {getPixel}, \hyperpage{88}
+    \subitem {getRawPixel}, \hyperpage{88}
+    \subitem {GFXcanvas1}, \hyperpage{85}
+  \item {GFXcanvas16}, \hyperpage{89}
+    \subitem {$\sim$GFXcanvas16}, \hyperpage{90}
+    \subitem {byteSwap}, \hyperpage{90}
+    \subitem {drawFastHLine}, \hyperpage{90}
+    \subitem {drawFastRawHLine}, \hyperpage{91}
+    \subitem {drawFastRawVLine}, \hyperpage{91}
+    \subitem {drawFastVLine}, \hyperpage{91}
+    \subitem {drawPixel}, \hyperpage{92}
+    \subitem {fillScreen}, \hyperpage{92}
+    \subitem {getBuffer}, \hyperpage{92}
+    \subitem {getPixel}, \hyperpage{92}
+    \subitem {getRawPixel}, \hyperpage{93}
+    \subitem {GFXcanvas16}, \hyperpage{90}
+  \item {GFXcanvas8}, \hyperpage{93}
+    \subitem {$\sim$GFXcanvas8}, \hyperpage{94}
+    \subitem {drawFastHLine}, \hyperpage{94}
+    \subitem {drawFastRawHLine}, \hyperpage{95}
+    \subitem {drawFastRawVLine}, \hyperpage{95}
+    \subitem {drawFastVLine}, \hyperpage{96}
+    \subitem {drawPixel}, \hyperpage{96}
+    \subitem {fillScreen}, \hyperpage{96}
+    \subitem {getBuffer}, \hyperpage{96}
+    \subitem {getPixel}, \hyperpage{97}
+    \subitem {getRawPixel}, \hyperpage{97}
+    \subitem {GFXcanvas8}, \hyperpage{94}
+  \item {gfxdemo.ino}
+    \subitem {loop}, \hyperpage{360}
+    \subitem {matrix}, \hyperpage{361}
+    \subitem {setup}, \hyperpage{361}
+  \item {GFXfont}, \hyperpage{97}
+    \subitem {bitmap}, \hyperpage{98}
+    \subitem {first}, \hyperpage{98}
+    \subitem {glyph}, \hyperpage{98}
+    \subitem {last}, \hyperpage{98}
+    \subitem {yAdvance}, \hyperpage{98}
+  \item {gfxFont}
+    \subitem {Adafruit\_GFX}, \hyperpage{63}
+  \item {GFXglyph}, \hyperpage{99}
+    \subitem {bitmapOffset}, \hyperpage{99}
+    \subitem {height}, \hyperpage{99}
+    \subitem {width}, \hyperpage{99}
+    \subitem {xAdvance}, \hyperpage{99}
+    \subitem {xOffset}, \hyperpage{99}
+    \subitem {yOffset}, \hyperpage{100}
+  \item {glyph}
+    \subitem {GFXfont}, \hyperpage{98}
+  \item {go\_sleep}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {GPIO\_WAKEUP}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {GREATERTHANchar}
+    \subitem {bitmaps.h}, \hyperpage{192}
+
+  \indexspace
+
+  \item {HASTAGchar}
+    \subitem {bitmaps.h}, \hyperpage{192}
+  \item {Hchar}
+    \subitem {bitmaps.h}, \hyperpage{192}
+  \item {HealthMonitor}, \hyperpage{100}
+    \subitem {alarm}, \hyperpage{102}
+    \subitem {check}, \hyperpage{101}
+    \subitem {getCounter}, \hyperpage{101}
+    \subitem {getSample}, \hyperpage{101}
+    \subitem {HealthMonitor}, \hyperpage{100}
+    \subitem {limit}, \hyperpage{102}
+    \subitem {rampDOWNdec}, \hyperpage{102}
+    \subitem {rampUPinc}, \hyperpage{102}
+    \subitem {sense\_values}, \hyperpage{102}
+    \subitem {setCounter}, \hyperpage{102}
+    \subitem {threshold}, \hyperpage{102}
+  \item {HealthMonitor.h}
+    \subitem {C\_COUNTER\_LIMIT}, \hyperpage{282}
+    \subitem {C\_RISE\_COUNT}, \hyperpage{282}
+    \subitem {C\_SAMPLING\_TIME}, \hyperpage{282}
+    \subitem {C\_TIME\_HEALTH\_MONITORING}, \hyperpage{282}
+  \item {HEIGHT}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {height}
+    \subitem {Adafruit\_GFX}, \hyperpage{58}
+    \subitem {GFXglyph}, \hyperpage{99}
+  \item {hours}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{389}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {hw\_output}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {HYPHENchar}
+    \subitem {bitmaps.h}, \hyperpage{192}
+
+  \indexspace
+
+  \item {i}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{411}
+    \subitem {TEST\_0.ino}, \hyperpage{172}
+  \item {i2c\_init}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{111}
+  \item {I2C\_MAXWAIT}
+    \subitem {batt\_SlowSoftI2CMaster.h}, \hyperpage{289}
+  \item {I2C\_READ}
+    \subitem {batt\_SlowSoftI2CMaster.h}, \hyperpage{289}
+  \item {i2c\_read}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {i2c\_rep\_start}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {i2c\_start}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {i2c\_start\_wait}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {i2c\_stop}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {I2C\_WRITE}
+    \subitem {batt\_SlowSoftI2CMaster.h}, \hyperpage{289}
+  \item {i2c\_write}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{112}
+  \item {i\_sense}
+    \subitem {TEST\_0.ino}, \hyperpage{175}
+  \item {Ichar}
+    \subitem {bitmaps.h}, \hyperpage{193}
+  \item {idle}
+    \subitem {ArduinoLowPowerClass}, \hyperpage{76}
+    \subitem {MilliTimer}, \hyperpage{103}
+  \item {IncrementDiagnosticData}
+    \subitem {diagnostic.h}, \hyperpage{339}
+  \item {Init\_diagnostic\_elements}
+    \subitem {diagnostic.h}, \hyperpage{339}
+  \item {init\_flag}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {initButton}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{66, 67}
+  \item {initButtonUL}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{67, 68}
+  \item {InitBuzzer}
+    \subitem {Buzzer.h}, \hyperpage{255}
+  \item {invertDisplay}
+    \subitem {Adafruit\_GFX}, \hyperpage{58}
+  \item {iout\_sense}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{411}
+  \item {Irq\_DeathBattery\_Handler}
+    \subitem {B1.ino}, \hyperpage{121}
+  \item {irq\_mode}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {Irq\_USB\_Handler}
+    \subitem {B1.ino}, \hyperpage{121}
+  \item {IrqCenterButtonHandler}
+    \subitem {B1.ino}, \hyperpage{121}
+  \item {isConfigured}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {isPressed}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{69}
+  \item {ISSI\_ADDR\_DEFAULT}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_BANK\_FUNCTIONREG}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_COMMANDREGISTER}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_CONF\_AUDIOMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_CONF\_AUTOFRAMEMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_CONF\_PICTUREMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{358}
+  \item {ISSI\_REG\_AUDIOSYNC}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_CONFIG}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_CONFIG\_AUDIOPLAYMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_CONFIG\_AUTOPLAYMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_CONFIG\_PICTUREMODE}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_PICTUREFRAME}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {ISSI\_REG\_SHUTDOWN}
+    \subitem {batt\_Adafruit\_IS31FL3731.h}, \hyperpage{359}
+  \item {isValid}
+    \subitem {diagnostic.h}, \hyperpage{339}
+    \subitem {EEPROMClass}, \hyperpage{80}
+
+  \indexspace
+
+  \item {Jchar}
+    \subitem {bitmaps.h}, \hyperpage{193}
+  \item {justPressed}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{69}
+  \item {justReleased}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{69}
+
+  \indexspace
+
+  \item {Kchar}
+    \subitem {bitmaps.h}, \hyperpage{193}
+
+  \indexspace
+
+  \item {last}
+    \subitem {GFXfont}, \hyperpage{98}
+  \item {Lchar}
+    \subitem {bitmaps.h}, \hyperpage{193}
+  \item {ledmatrix}
+    \subitem {B1.ino}, \hyperpage{134}
+    \subitem {manualanim.ino}, \hyperpage{363}
+    \subitem {swirldemo.ino}, \hyperpage{364}
+    \subitem {TEST\_0.ino}, \hyperpage{170}, \hyperpage{179}
+    \subitem {TEST\_1.ino}, \hyperpage{234}
+    \subitem {TEST\_2.ino}, \hyperpage{238}
+    \subitem {TEST\_3.ino}, \hyperpage{242}
+    \subitem {TEST\_4.ino}, \hyperpage{245}
+    \subitem {TEST\_5.ino}, \hyperpage{247}
+    \subitem {TEST\_6.ino}, \hyperpage{249}
+    \subitem {TEST\_7.ino}, \hyperpage{251}
+    \subitem {TEST\_8.ino}, \hyperpage{252}
+  \item {LEDS\_IN\_POWERBAR}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {LedWork}
+    \subitem {display.h}, \hyperpage{225}
+  \item {LenDCDCvalues}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {length}
+    \subitem {EEPROMClass}, \hyperpage{80}
+  \item {LESSTHANchar}
+    \subitem {bitmaps.h}, \hyperpage{193}
+  \item {limit}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {LogDiagnosticData}
+    \subitem {diagnostic.h}, \hyperpage{339}
+  \item {loop}
+    \subitem {AdcWakeup.ino}, \hyperpage{328}
+    \subitem {B1.ino}, \hyperpage{121}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+    \subitem {EmulateEEPROM.ino}, \hyperpage{365}
+    \subitem {Epoch.ino}, \hyperpage{385}
+    \subitem {ExternalWakeup.ino}, \hyperpage{330}
+    \subitem {FlashStoreAndRetrieve.ino}, \hyperpage{367}
+    \subitem {gfxdemo.ino}, \hyperpage{360}
+    \subitem {manualanim.ino}, \hyperpage{363}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+    \subitem {SimpleRTC.ino}, \hyperpage{386}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{389}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{409}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{391}
+    \subitem {StoreNameAndSurname.ino}, \hyperpage{368}
+    \subitem {swirldemo.ino}, \hyperpage{364}
+    \subitem {TEST\_0.ino}, \hyperpage{167}, \hyperpage{170}, 
+		\hyperpage{172}, \hyperpage{174}, \hyperpage{177}, 
+		\hyperpage{179, 180}
+    \subitem {TEST\_1.ino}, \hyperpage{234, 235}, \hyperpage{237}
+    \subitem {TEST\_2.ino}, \hyperpage{238}, \hyperpage{240}
+    \subitem {TEST\_3.ino}, \hyperpage{241}, \hyperpage{243}
+    \subitem {TEST\_4.ino}, \hyperpage{245}
+    \subitem {TEST\_5.ino}, \hyperpage{247}
+    \subitem {TEST\_6.ino}, \hyperpage{248}
+    \subitem {TEST\_7.ino}, \hyperpage{250}
+    \subitem {TEST\_8.ino}, \hyperpage{252}
+    \subitem {Test\_Production.ino}, \hyperpage{404}
+    \subitem {TianStandby.ino}, \hyperpage{335}
+    \subitem {TimedWakeup.ino}, \hyperpage{336}
+  \item {low\_batt\_display}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {low\_batt\_sound}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {LowPower}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+
+  \indexspace
+
+  \item {manualanim.ino}
+    \subitem {ledmatrix}, \hyperpage{363}
+    \subitem {loop}, \hyperpage{363}
+    \subitem {setup}, \hyperpage{363}
+    \subitem {x}, \hyperpage{363}
+  \item {margin}
+    \subitem {AdcWakeup.ino}, \hyperpage{328}
+  \item {mask\_protection\_state}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {MATCH\_DHHMMSS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_HHMMSS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_MMDDHHMMSS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_MMSS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_OFF}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_SS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {MATCH\_YYMMDDHHMMSS}
+    \subitem {RTCZero}, \hyperpage{106}
+  \item {matrix}
+    \subitem {gfxdemo.ino}, \hyperpage{361}
+  \item {MAX\_NUM\_PROTECTION\_EVENTS}
+    \subitem {B1.ino}, \hyperpage{134}
+  \item {MAX\_POWER\_DISPLAYED}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {MAX\_TOP\_VALUE\_READS}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {MAX\_VOLTAGE}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {MAX\_WATS}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {Mchar}
+    \subitem {bitmaps.h}, \hyperpage{194}
+  \item {MilliTimer}, \hyperpage{103}
+    \subitem {idle}, \hyperpage{103}
+    \subitem {MilliTimer}, \hyperpage{103}
+    \subitem {poll}, \hyperpage{103}
+    \subitem {remaining}, \hyperpage{103}
+    \subitem {set}, \hyperpage{103}
+  \item {MilliTimer.h}
+    \subitem {C\_TIMER\_NOT\_EXPIRED}, \hyperpage{384}
+  \item {min}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {MIN\_VOLTAGE}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {MIN\_WATS}
+    \subitem {diagnostic.h}, \hyperpage{342}
+  \item {minutes}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{390}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {MIPS\_PIN}
+    \subitem {TianStandby.ino}, \hyperpage{334}
+  \item {MipsPM}
+    \subitem {TianStandby.ino}, \hyperpage{335}
+  \item {mode\_bright\_display}
+    \subitem {B1.ino}, \hyperpage{134}
+    \subitem {TEST\_6.ino}, \hyperpage{249}
+    \subitem {TEST\_7.ino}, \hyperpage{251}
+  \item {month}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{390}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {msg\_sleep}
+    \subitem {B1.ino}, \hyperpage{134}
+
+  \indexspace
+
+  \item {name}
+    \subitem {Element}, \hyperpage{81}
+    \subitem {Person}, \hyperpage{104}
+  \item {Nchar}
+    \subitem {bitmaps.h}, \hyperpage{194}
+  \item {new\_text\_received}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {NFC\_WAKEUP}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {NINEchar}
+    \subitem {bitmaps.h}, \hyperpage{194}
+  \item {NON\_BOOST\_ARRAY}
+    \subitem {DCDC.h}, \hyperpage{280}
+  \item {NOTE\_A1}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A2}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A3}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A4}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A5}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A6}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A7}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A8}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_A9}
+    \subitem {notes.h}, \hyperpage{267}
+  \item {NOTE\_AS1}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS2}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS3}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS4}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS5}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS6}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS7}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS8}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_AS9}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_B0}
+    \subitem {notes.h}, \hyperpage{268}
+  \item {NOTE\_B1}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B2}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B3}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B4}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B5}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B6}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B7}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B8}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_B9}
+    \subitem {Buzzer.h}, \hyperpage{255}
+  \item {NOTE\_C1}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_C2}
+    \subitem {notes.h}, \hyperpage{269}
+  \item {NOTE\_C3}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C4}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C5}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C6}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C7}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C8}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_C9}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_CS1}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_CS2}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_CS3}
+    \subitem {notes.h}, \hyperpage{270}
+  \item {NOTE\_CS4}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_CS5}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_CS6}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_CS7}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_CS8}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_CS9}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_D1}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_D2}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_D3}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_D4}
+    \subitem {notes.h}, \hyperpage{271}
+  \item {NOTE\_D5}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_D6}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_D7}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_D8}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_D9}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS1}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS2}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS3}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS4}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS5}
+    \subitem {notes.h}, \hyperpage{272}
+  \item {NOTE\_DS6}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_DS7}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_DS8}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_DS9}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E1}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E2}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E3}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E4}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E5}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E6}
+    \subitem {notes.h}, \hyperpage{273}
+  \item {NOTE\_E7}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_E8}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_E9}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F1}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F2}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F3}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F4}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F5}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F6}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F7}
+    \subitem {notes.h}, \hyperpage{274}
+  \item {NOTE\_F8}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_F9}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS1}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS2}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS3}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS4}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS5}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS6}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS7}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS8}
+    \subitem {notes.h}, \hyperpage{275}
+  \item {NOTE\_FS9}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G1}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G2}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G3}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G4}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G5}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G6}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G7}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G8}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_G9}
+    \subitem {notes.h}, \hyperpage{276}
+  \item {NOTE\_GS1}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS2}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS3}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS4}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS5}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS6}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS7}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS8}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {NOTE\_GS9}
+    \subitem {notes.h}, \hyperpage{277}
+  \item {notes.h}
+    \subitem {NOTE\_A1}, \hyperpage{267}
+    \subitem {NOTE\_A2}, \hyperpage{267}
+    \subitem {NOTE\_A3}, \hyperpage{267}
+    \subitem {NOTE\_A4}, \hyperpage{267}
+    \subitem {NOTE\_A5}, \hyperpage{267}
+    \subitem {NOTE\_A6}, \hyperpage{267}
+    \subitem {NOTE\_A7}, \hyperpage{267}
+    \subitem {NOTE\_A8}, \hyperpage{267}
+    \subitem {NOTE\_A9}, \hyperpage{267}
+    \subitem {NOTE\_AS1}, \hyperpage{268}
+    \subitem {NOTE\_AS2}, \hyperpage{268}
+    \subitem {NOTE\_AS3}, \hyperpage{268}
+    \subitem {NOTE\_AS4}, \hyperpage{268}
+    \subitem {NOTE\_AS5}, \hyperpage{268}
+    \subitem {NOTE\_AS6}, \hyperpage{268}
+    \subitem {NOTE\_AS7}, \hyperpage{268}
+    \subitem {NOTE\_AS8}, \hyperpage{268}
+    \subitem {NOTE\_AS9}, \hyperpage{268}
+    \subitem {NOTE\_B0}, \hyperpage{268}
+    \subitem {NOTE\_B1}, \hyperpage{269}
+    \subitem {NOTE\_B2}, \hyperpage{269}
+    \subitem {NOTE\_B3}, \hyperpage{269}
+    \subitem {NOTE\_B4}, \hyperpage{269}
+    \subitem {NOTE\_B5}, \hyperpage{269}
+    \subitem {NOTE\_B6}, \hyperpage{269}
+    \subitem {NOTE\_B7}, \hyperpage{269}
+    \subitem {NOTE\_B8}, \hyperpage{269}
+    \subitem {NOTE\_C1}, \hyperpage{269}
+    \subitem {NOTE\_C2}, \hyperpage{269}
+    \subitem {NOTE\_C3}, \hyperpage{270}
+    \subitem {NOTE\_C4}, \hyperpage{270}
+    \subitem {NOTE\_C5}, \hyperpage{270}
+    \subitem {NOTE\_C6}, \hyperpage{270}
+    \subitem {NOTE\_C7}, \hyperpage{270}
+    \subitem {NOTE\_C8}, \hyperpage{270}
+    \subitem {NOTE\_C9}, \hyperpage{270}
+    \subitem {NOTE\_CS1}, \hyperpage{270}
+    \subitem {NOTE\_CS2}, \hyperpage{270}
+    \subitem {NOTE\_CS3}, \hyperpage{270}
+    \subitem {NOTE\_CS4}, \hyperpage{271}
+    \subitem {NOTE\_CS5}, \hyperpage{271}
+    \subitem {NOTE\_CS6}, \hyperpage{271}
+    \subitem {NOTE\_CS7}, \hyperpage{271}
+    \subitem {NOTE\_CS8}, \hyperpage{271}
+    \subitem {NOTE\_CS9}, \hyperpage{271}
+    \subitem {NOTE\_D1}, \hyperpage{271}
+    \subitem {NOTE\_D2}, \hyperpage{271}
+    \subitem {NOTE\_D3}, \hyperpage{271}
+    \subitem {NOTE\_D4}, \hyperpage{271}
+    \subitem {NOTE\_D5}, \hyperpage{272}
+    \subitem {NOTE\_D6}, \hyperpage{272}
+    \subitem {NOTE\_D7}, \hyperpage{272}
+    \subitem {NOTE\_D8}, \hyperpage{272}
+    \subitem {NOTE\_D9}, \hyperpage{272}
+    \subitem {NOTE\_DS1}, \hyperpage{272}
+    \subitem {NOTE\_DS2}, \hyperpage{272}
+    \subitem {NOTE\_DS3}, \hyperpage{272}
+    \subitem {NOTE\_DS4}, \hyperpage{272}
+    \subitem {NOTE\_DS5}, \hyperpage{272}
+    \subitem {NOTE\_DS6}, \hyperpage{273}
+    \subitem {NOTE\_DS7}, \hyperpage{273}
+    \subitem {NOTE\_DS8}, \hyperpage{273}
+    \subitem {NOTE\_DS9}, \hyperpage{273}
+    \subitem {NOTE\_E1}, \hyperpage{273}
+    \subitem {NOTE\_E2}, \hyperpage{273}
+    \subitem {NOTE\_E3}, \hyperpage{273}
+    \subitem {NOTE\_E4}, \hyperpage{273}
+    \subitem {NOTE\_E5}, \hyperpage{273}
+    \subitem {NOTE\_E6}, \hyperpage{273}
+    \subitem {NOTE\_E7}, \hyperpage{274}
+    \subitem {NOTE\_E8}, \hyperpage{274}
+    \subitem {NOTE\_E9}, \hyperpage{274}
+    \subitem {NOTE\_F1}, \hyperpage{274}
+    \subitem {NOTE\_F2}, \hyperpage{274}
+    \subitem {NOTE\_F3}, \hyperpage{274}
+    \subitem {NOTE\_F4}, \hyperpage{274}
+    \subitem {NOTE\_F5}, \hyperpage{274}
+    \subitem {NOTE\_F6}, \hyperpage{274}
+    \subitem {NOTE\_F7}, \hyperpage{274}
+    \subitem {NOTE\_F8}, \hyperpage{275}
+    \subitem {NOTE\_F9}, \hyperpage{275}
+    \subitem {NOTE\_FS1}, \hyperpage{275}
+    \subitem {NOTE\_FS2}, \hyperpage{275}
+    \subitem {NOTE\_FS3}, \hyperpage{275}
+    \subitem {NOTE\_FS4}, \hyperpage{275}
+    \subitem {NOTE\_FS5}, \hyperpage{275}
+    \subitem {NOTE\_FS6}, \hyperpage{275}
+    \subitem {NOTE\_FS7}, \hyperpage{275}
+    \subitem {NOTE\_FS8}, \hyperpage{275}
+    \subitem {NOTE\_FS9}, \hyperpage{276}
+    \subitem {NOTE\_G1}, \hyperpage{276}
+    \subitem {NOTE\_G2}, \hyperpage{276}
+    \subitem {NOTE\_G3}, \hyperpage{276}
+    \subitem {NOTE\_G4}, \hyperpage{276}
+    \subitem {NOTE\_G5}, \hyperpage{276}
+    \subitem {NOTE\_G6}, \hyperpage{276}
+    \subitem {NOTE\_G7}, \hyperpage{276}
+    \subitem {NOTE\_G8}, \hyperpage{276}
+    \subitem {NOTE\_G9}, \hyperpage{276}
+    \subitem {NOTE\_GS1}, \hyperpage{277}
+    \subitem {NOTE\_GS2}, \hyperpage{277}
+    \subitem {NOTE\_GS3}, \hyperpage{277}
+    \subitem {NOTE\_GS4}, \hyperpage{277}
+    \subitem {NOTE\_GS5}, \hyperpage{277}
+    \subitem {NOTE\_GS6}, \hyperpage{277}
+    \subitem {NOTE\_GS7}, \hyperpage{277}
+    \subitem {NOTE\_GS8}, \hyperpage{277}
+    \subitem {NOTE\_GS9}, \hyperpage{277}
+
+  \indexspace
+
+  \item {Ochar}
+    \subitem {bitmaps.h}, \hyperpage{194}
+  \item {ONEchar}
+    \subitem {bitmaps.h}, \hyperpage{194}
+  \item {onOffFuncPtr}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {onWakeup}
+    \subitem {TianStandby.ino}, \hyperpage{335}
+  \item {OP\_event\_protection\_counter}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {OPENCURLYBRAchar}
+    \subitem {bitmaps.h}, \hyperpage{195}
+  \item {OPENPARENTESISchar}
+    \subitem {bitmaps.h}, \hyperpage{195}
+  \item {OTHER\_WAKEUP}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {output\_mode}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {over\_consumption\_protection}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {over\_power\_protection}
+    \subitem {B1.ino}, \hyperpage{135}
+
+  \indexspace
+
+  \item {Pchar}
+    \subitem {bitmaps.h}, \hyperpage{195}
+  \item {PERCENTchar}
+    \subitem {bitmaps.h}, \hyperpage{195}
+  \item {Person}, \hyperpage{104}
+    \subitem {name}, \hyperpage{104}
+    \subitem {surname}, \hyperpage{104}
+    \subitem {valid}, \hyperpage{104}
+  \item {pgm\_read\_bitmap\_ptr}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pgm\_read\_byte}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pgm\_read\_dword}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pgm\_read\_glyph\_ptr}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pgm\_read\_pointer}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pgm\_read\_word}
+    \subitem {batt\_Adafruit\_GFX.cpp}, \hyperpage{291}
+  \item {pin}
+    \subitem {AdcWakeup.ino}, \hyperpage{328}
+    \subitem {ExternalWakeup.ino}, \hyperpage{330}
+  \item {pin\_enable}
+    \subitem {dcdc\_controler}, \hyperpage{78}
+  \item {playSound}
+    \subitem {Buzzer.h}, \hyperpage{256}
+  \item {PLUSchar}
+    \subitem {bitmaps.h}, \hyperpage{195}
+  \item {poll}
+    \subitem {MilliTimer}, \hyperpage{103}
+  \item {POS\_EEPROM\_CONSUMPTION\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{349}
+  \item {POS\_EEPROM\_INIT}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_MODEL}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_NUMBER\_CYCLES}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_POWER\_ARRAY}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_POWER\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_SERIAL\_NUMBER}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_VOLTAGE\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_VOLTAGE\_INPUT\_ERROR}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_VOLTS\_ARRAY}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {POS\_EEPROM\_WORK\_TIME}
+    \subitem {Eeprom\_LUT.h}, \hyperpage{350}
+  \item {power\_bar.h}
+    \subitem {LEDS\_IN\_POWERBAR}, \hyperpage{285}
+    \subitem {MAX\_POWER\_DISPLAYED}, \hyperpage{285}
+    \subitem {power\_by\_led}, \hyperpage{285}
+    \subitem {PowerBar}, \hyperpage{285}
+    \subitem {refresh\_timer}, \hyperpage{285}
+    \subitem {UpdatePowerBar}, \hyperpage{285}
+  \item {power\_by\_led}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {power\_values}
+    \subitem {diagnostic.h}, \hyperpage{342}
+  \item {PowerBar}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {POWERBAR\_LOCATION}
+    \subitem {bitmaps.h}, \hyperpage{184}
+  \item {PPCAT}
+    \subitem {batt\_FlashStorage.h}, \hyperpage{375}
+  \item {PPCAT\_NX}
+    \subitem {batt\_FlashStorage.h}, \hyperpage{375}
+  \item {press}
+    \subitem {Adafruit\_GFX\_Button}, \hyperpage{69}
+  \item {prev\_state}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {prev\_volt}
+    \subitem {B1.ino}, \hyperpage{135}
+  \item {PrimoDeepSleep.ino}
+    \subitem {analogPin}, \hyperpage{333}
+    \subitem {digitalPin}, \hyperpage{333}
+    \subitem {doMyStuff}, \hyperpage{332}
+    \subitem {doMyStuffWithNFC}, \hyperpage{332}
+    \subitem {doOtherStuff}, \hyperpage{332}
+    \subitem {loop}, \hyperpage{332}
+    \subitem {setup}, \hyperpage{332}
+    \subitem {StmEspPM}, \hyperpage{332}
+  \item {print2digits}
+    \subitem {Epoch.ino}, \hyperpage{385}
+    \subitem {SimpleRTC.ino}, \hyperpage{386}
+  \item {print\_diagnostic\_static\_data}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {PrintDiagnosticData}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {PrintStaticData}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {PrintStats}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {PROGMEM}
+    \subitem {batt\_glcdfont.c}, \hyperpage{319}
+  \item {program\_tick}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {protection\_event\_delay}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {protection\_event\_delay\_flag}
+    \subitem {B1.ino}, \hyperpage{136}
+
+  \indexspace
+
+  \item {Qchar}
+    \subitem {bitmaps.h}, \hyperpage{196}
+  \item {QUESTIONchar}
+    \subitem {bitmaps.h}, \hyperpage{196}
+  \item {QUOTMARKchar}
+    \subitem {bitmaps.h}, \hyperpage{196}
+
+  \indexspace
+
+  \item {rampDOWNdec}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {rampUPinc}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {Rchar}
+    \subitem {bitmaps.h}, \hyperpage{196}
+  \item {read}
+    \subitem {EEPROMClass}, \hyperpage{80}
+    \subitem {FlashClass}, \hyperpage{83}
+    \subitem {FlashStorageClass$<$ T $>$}, \hyperpage{84}
+  \item {read3V3Level}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {ReadArrayEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {ReadDiagnosticData}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {ReadDirPad}
+    \subitem {Dpad.h}, \hyperpage{162}
+  \item {readEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {readGndLevel}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{378}
+  \item {readRegister8}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{72}
+  \item {ReadWordEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {refresh\_timer}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {remaining}
+    \subitem {MilliTimer}, \hyperpage{103}
+  \item {repetitions}
+    \subitem {AdcWakeup.ino}, \hyperpage{329}
+    \subitem {ExternalWakeup.ino}, \hyperpage{330}
+  \item {repetitionsIncrease}
+    \subitem {AdcWakeup.ino}, \hyperpage{328}
+    \subitem {ExternalWakeup.ino}, \hyperpage{330}
+  \item {reset\_capacity\_off\_text}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {reset\_diag\_text}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {reset\_error\_text}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {reset\_init\_text}
+    \subitem {B1.ino}, \hyperpage{136}
+    \subitem {TEST\_6.ino}, \hyperpage{249}
+    \subitem {TEST\_7.ino}, \hyperpage{251}
+  \item {reset\_sleep\_text}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {ResetBateriaEeprom}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {rotation}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {rtc}
+    \subitem {Epoch.ino}, \hyperpage{385}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{390}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {RTC\_ALARM\_WAKEUP}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{325}
+  \item {RTC\_callBack}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{395}
+  \item {RTC\_Handler}
+    \subitem {batt\_RTCZero.cpp}, \hyperpage{395}
+  \item {RTCZero}, \hyperpage{104}
+    \subitem {Alarm\_Match}, \hyperpage{106}
+    \subitem {attachInterrupt}, \hyperpage{106}
+    \subitem {begin}, \hyperpage{106}
+    \subitem {detachInterrupt}, \hyperpage{106}
+    \subitem {disableAlarm}, \hyperpage{106}
+    \subitem {enableAlarm}, \hyperpage{106}
+    \subitem {getAlarmDay}, \hyperpage{107}
+    \subitem {getAlarmHours}, \hyperpage{107}
+    \subitem {getAlarmMinutes}, \hyperpage{107}
+    \subitem {getAlarmMonth}, \hyperpage{107}
+    \subitem {getAlarmSeconds}, \hyperpage{107}
+    \subitem {getAlarmYear}, \hyperpage{107}
+    \subitem {getDay}, \hyperpage{107}
+    \subitem {getEpoch}, \hyperpage{107}
+    \subitem {getHours}, \hyperpage{107}
+    \subitem {getMinutes}, \hyperpage{107}
+    \subitem {getMonth}, \hyperpage{108}
+    \subitem {getSeconds}, \hyperpage{108}
+    \subitem {getY2kEpoch}, \hyperpage{108}
+    \subitem {getYear}, \hyperpage{108}
+    \subitem {isConfigured}, \hyperpage{108}
+    \subitem {MATCH\_DHHMMSS}, \hyperpage{106}
+    \subitem {MATCH\_HHMMSS}, \hyperpage{106}
+    \subitem {MATCH\_MMDDHHMMSS}, \hyperpage{106}
+    \subitem {MATCH\_MMSS}, \hyperpage{106}
+    \subitem {MATCH\_OFF}, \hyperpage{106}
+    \subitem {MATCH\_SS}, \hyperpage{106}
+    \subitem {MATCH\_YYMMDDHHMMSS}, \hyperpage{106}
+    \subitem {RTCZero}, \hyperpage{106}
+    \subitem {setAlarmDate}, \hyperpage{108}
+    \subitem {setAlarmDay}, \hyperpage{108}
+    \subitem {setAlarmEpoch}, \hyperpage{108}
+    \subitem {setAlarmHours}, \hyperpage{108}
+    \subitem {setAlarmMinutes}, \hyperpage{109}
+    \subitem {setAlarmMonth}, \hyperpage{109}
+    \subitem {setAlarmSeconds}, \hyperpage{109}
+    \subitem {setAlarmTime}, \hyperpage{109}
+    \subitem {setAlarmYear}, \hyperpage{109}
+    \subitem {setDate}, \hyperpage{109}
+    \subitem {setDay}, \hyperpage{109}
+    \subitem {setEpoch}, \hyperpage{109}
+    \subitem {setHours}, \hyperpage{110}
+    \subitem {setMinutes}, \hyperpage{110}
+    \subitem {setMonth}, \hyperpage{110}
+    \subitem {setSeconds}, \hyperpage{110}
+    \subitem {setTime}, \hyperpage{110}
+    \subitem {setY2kEpoch}, \hyperpage{110}
+    \subitem {setYear}, \hyperpage{110}
+    \subitem {standbyMode}, \hyperpage{110}
+
+  \indexspace
+
+  \item {sample}
+    \subitem {TEST\_0.ino}, \hyperpage{177}
+  \item {sample\_IOut}
+    \subitem {B1.ino}, \hyperpage{136}
+  \item {sample\_iout\_sense}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {sample\_POut}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {sample\_vcc}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {sample\_vcc\_2}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {sample\_Vin}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {sample\_VOut}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {SaveEepromChasis}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {Schar}
+    \subitem {bitmaps.h}, \hyperpage{196}
+  \item {SCL\_PIN}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {scl\_pin}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {ScreenON}
+    \subitem {display.h}, \hyperpage{225}
+  \item {SDA\_PIN}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {sda\_pin}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {seconds}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{390}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {selectBank}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{72}
+  \item {SEMICOLONchar}
+    \subitem {bitmaps.h}, \hyperpage{197}
+  \item {sense\_values}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {sensor\_1}
+    \subitem {TEST\_0.ino}, \hyperpage{177}
+  \item {set}
+    \subitem {MilliTimer}, \hyperpage{103}
+  \item {setAlarmDate}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {setAlarmDay}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {setAlarmEpoch}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {setAlarmHours}
+    \subitem {RTCZero}, \hyperpage{108}
+  \item {setAlarmMinutes}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setAlarmMonth}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setAlarmSeconds}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setAlarmTime}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setAlarmYear}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setCounter}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {setCursor}
+    \subitem {Adafruit\_GFX}, \hyperpage{58}
+  \item {setDate}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setDay}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setEpoch}
+    \subitem {RTCZero}, \hyperpage{109}
+  \item {setFont}
+    \subitem {Adafruit\_GFX}, \hyperpage{59}
+  \item {setFrame}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{73}
+  \item {setHours}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setLEDPWM}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{73}
+  \item {setMinutes}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setMonth}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setRotation}
+    \subitem {Adafruit\_GFX}, \hyperpage{59}
+  \item {setSeconds}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setTextColor}
+    \subitem {Adafruit\_GFX}, \hyperpage{59}
+  \item {setTextSize}
+    \subitem {Adafruit\_GFX}, \hyperpage{60}
+  \item {setTextWrap}
+    \subitem {Adafruit\_GFX}, \hyperpage{60}
+  \item {setTime}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setup}
+    \subitem {AdcWakeup.ino}, \hyperpage{328}
+    \subitem {B1.ino}, \hyperpage{121}
+    \subitem {CorrectADCResponse.ino}, \hyperpage{379}
+    \subitem {EmulateEEPROM.ino}, \hyperpage{365}
+    \subitem {Epoch.ino}, \hyperpage{385}
+    \subitem {ExternalWakeup.ino}, \hyperpage{330}
+    \subitem {FlashStoreAndRetrieve.ino}, \hyperpage{367}
+    \subitem {gfxdemo.ino}, \hyperpage{361}
+    \subitem {manualanim.ino}, \hyperpage{363}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{389}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{409}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{391}
+    \subitem {StoreNameAndSurname.ino}, \hyperpage{368}
+    \subitem {swirldemo.ino}, \hyperpage{364}
+    \subitem {TEST\_0.ino}, \hyperpage{167}, \hyperpage{170}, 
+		\hyperpage{172}, \hyperpage{174}, \hyperpage{177}, 
+		\hyperpage{179, 180}
+    \subitem {TEST\_1.ino}, \hyperpage{234, 235}, \hyperpage{237}
+    \subitem {TEST\_2.ino}, \hyperpage{238}, \hyperpage{240}
+    \subitem {TEST\_3.ino}, \hyperpage{241}, \hyperpage{243}
+    \subitem {TEST\_4.ino}, \hyperpage{245}
+    \subitem {TEST\_5.ino}, \hyperpage{247}
+    \subitem {TEST\_6.ino}, \hyperpage{248}
+    \subitem {TEST\_7.ino}, \hyperpage{250}
+    \subitem {TEST\_8.ino}, \hyperpage{252}
+    \subitem {Test\_Production.ino}, \hyperpage{404}
+    \subitem {TianStandby.ino}, \hyperpage{335}
+    \subitem {TimedWakeup.ino}, \hyperpage{336}
+  \item {SetVoltage}
+    \subitem {dcdc\_controler}, \hyperpage{78}
+  \item {setY2kEpoch}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {setYear}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {SEVENchar}
+    \subitem {bitmaps.h}, \hyperpage{197}
+  \item {si}
+    \subitem {EepromBitBang.h}, \hyperpage{353}
+  \item {SimpleRTC.ino}
+    \subitem {day}, \hyperpage{387}
+    \subitem {hours}, \hyperpage{387}
+    \subitem {loop}, \hyperpage{386}
+    \subitem {minutes}, \hyperpage{387}
+    \subitem {month}, \hyperpage{387}
+    \subitem {print2digits}, \hyperpage{386}
+    \subitem {rtc}, \hyperpage{387}
+    \subitem {seconds}, \hyperpage{387}
+    \subitem {setup}, \hyperpage{387}
+    \subitem {year}, \hyperpage{387}
+  \item {SimpleRTCAlarm.ino}
+    \subitem {alarmMatch}, \hyperpage{389}
+    \subitem {day}, \hyperpage{389}
+    \subitem {hours}, \hyperpage{389}
+    \subitem {loop}, \hyperpage{389}
+    \subitem {minutes}, \hyperpage{390}
+    \subitem {month}, \hyperpage{390}
+    \subitem {rtc}, \hyperpage{390}
+    \subitem {seconds}, \hyperpage{390}
+    \subitem {setup}, \hyperpage{389}
+    \subitem {year}, \hyperpage{390}
+  \item {SIXchar}
+    \subitem {bitmaps.h}, \hyperpage{197}
+  \item {size\_sound\_charge\_in}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {size\_sound\_charge\_out}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {size\_sound\_death\_battery}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {size\_sound\_down}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {size\_sound\_end}
+    \subitem {Buzzer.h}, \hyperpage{259}
+  \item {size\_sound\_error}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_full\_charge}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_low\_battery}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_off}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_on}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_start}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {size\_sound\_up}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {sketch\_jul14a.ino}
+    \subitem {C\_PIN\_ENABLE\_LDO}, \hyperpage{409}
+    \subitem {C\_PIN\_IOUT\_SENSE}, \hyperpage{409}
+    \subitem {C\_PIN\_ISENSE\_RAW}, \hyperpage{410}
+    \subitem {C\_PIN\_LED\_1}, \hyperpage{410}
+    \subitem {C\_PIN\_LED\_2}, \hyperpage{410}
+    \subitem {C\_PIN\_LED\_3}, \hyperpage{410}
+    \subitem {C\_PIN\_SCL\_2}, \hyperpage{410}
+    \subitem {C\_PIN\_SDA\_2}, \hyperpage{410}
+    \subitem {C\_PIN\_SW1}, \hyperpage{410}
+    \subitem {C\_PIN\_SW2}, \hyperpage{410}
+    \subitem {C\_PIN\_VCC}, \hyperpage{410}
+    \subitem {C\_PIN\_VCC\_2}, \hyperpage{410}
+    \subitem {data}, \hyperpage{411}
+    \subitem {i}, \hyperpage{411}
+    \subitem {iout\_sense}, \hyperpage{411}
+    \subitem {loop}, \hyperpage{409}
+    \subitem {setup}, \hyperpage{409}
+    \subitem {vcc}, \hyperpage{411}
+    \subitem {vcc\_2}, \hyperpage{411}
+  \item {SLASHchar}
+    \subitem {bitmaps.h}, \hyperpage{197}
+  \item {sleep}
+    \subitem {ArduinoLowPowerClass}, \hyperpage{76, 77}
+  \item {SleepRTCAlarm.ino}
+    \subitem {alarmMatch}, \hyperpage{391}
+    \subitem {day}, \hyperpage{392}
+    \subitem {hours}, \hyperpage{392}
+    \subitem {loop}, \hyperpage{391}
+    \subitem {minutes}, \hyperpage{392}
+    \subitem {month}, \hyperpage{392}
+    \subitem {rtc}, \hyperpage{392}
+    \subitem {seconds}, \hyperpage{392}
+    \subitem {setup}, \hyperpage{391}
+    \subitem {year}, \hyperpage{392}
+  \item {SlowSoftI2CMaster}, \hyperpage{111}
+    \subitem {error}, \hyperpage{112}
+    \subitem {i2c\_init}, \hyperpage{111}
+    \subitem {i2c\_read}, \hyperpage{112}
+    \subitem {i2c\_rep\_start}, \hyperpage{112}
+    \subitem {i2c\_start}, \hyperpage{112}
+    \subitem {i2c\_start\_wait}, \hyperpage{112}
+    \subitem {i2c\_stop}, \hyperpage{112}
+    \subitem {i2c\_write}, \hyperpage{112}
+    \subitem {SlowSoftI2CMaster}, \hyperpage{111}
+  \item {sound}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {SOUND\_CHARGE\_IN}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {SOUND\_CHARGE\_OUT}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {SOUND\_DEATH\_BATTERY}
+    \subitem {Buzzer.h}, \hyperpage{260}
+  \item {SOUND\_DOWN}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_END}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_ERROR}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_FULL\_CHARGE}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_LOW\_BATTERY}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_OFF}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_ON}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_START}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SOUND\_UP}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {SPACEchar}
+    \subitem {bitmaps.h}, \hyperpage{197}
+  \item {SQUAREBRAQUETchar}
+    \subitem {bitmaps.h}, \hyperpage{198}
+  \item {stage\_capacity\_1}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {stage\_capacity\_2}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {standbyMode}
+    \subitem {RTCZero}, \hyperpage{110}
+  \item {start\_string}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {startWrite}
+    \subitem {Adafruit\_GFX}, \hyperpage{60}
+  \item {state\_to\_return}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {Stats}
+    \subitem {diagnostic.h}, \hyperpage{340}
+  \item {StmEspPM}
+    \subitem {PrimoDeepSleep.ino}, \hyperpage{332}
+  \item {StoreNameAndSurname.ino}
+    \subitem {FlashStorage}, \hyperpage{368}
+    \subitem {loop}, \hyperpage{368}
+    \subitem {setup}, \hyperpage{368}
+  \item {surname}
+    \subitem {Person}, \hyperpage{104}
+  \item {sw\_output}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {sw\_status}
+    \subitem {B1.ino}, \hyperpage{137}
+  \item {sweep}
+    \subitem {swirldemo.ino}, \hyperpage{364}
+  \item {swirldemo.ino}
+    \subitem {ledmatrix}, \hyperpage{364}
+    \subitem {loop}, \hyperpage{364}
+    \subitem {setup}, \hyperpage{364}
+    \subitem {sweep}, \hyperpage{364}
+  \item {SwitchScreenOff}
+    \subitem {display.h}, \hyperpage{225}
+  \item {SWUNGchar}
+    \subitem {bitmaps.h}, \hyperpage{198}
+
+  \indexspace
+
+  \item {t0}
+    \subitem {B1.ino}, \hyperpage{138}
+    \subitem {TEST\_0.ino}, \hyperpage{172}
+  \item {t1}
+    \subitem {B1.ino}, \hyperpage{138}
+    \subitem {TEST\_0.ino}, \hyperpage{172}
+  \item {Tchar}
+    \subitem {bitmaps.h}, \hyperpage{198}
+  \item {TEST\_0.ino}
+    \subitem {C\_PIN\_EN\_DCDC}, \hyperpage{174}
+    \subitem {C\_PIN\_I\_IN}, \hyperpage{174}
+    \subitem {C\_PIN\_V\_OUT}, \hyperpage{174}
+    \subitem {count}, \hyperpage{177}
+    \subitem {dac\_output}, \hyperpage{177}
+    \subitem {DAC\_PIN}, \hyperpage{176}
+    \subitem {DCDC}, \hyperpage{175}
+    \subitem {i}, \hyperpage{172}
+    \subitem {i\_sense}, \hyperpage{175}
+    \subitem {ledmatrix}, \hyperpage{170}, \hyperpage{179}
+    \subitem {loop}, \hyperpage{167}, \hyperpage{170}, \hyperpage{172}, 
+		\hyperpage{174}, \hyperpage{177}, \hyperpage{179, 180}
+    \subitem {sample}, \hyperpage{177}
+    \subitem {sensor\_1}, \hyperpage{177}
+    \subitem {setup}, \hyperpage{167}, \hyperpage{170}, \hyperpage{172}, 
+		\hyperpage{174}, \hyperpage{177}, \hyperpage{179, 180}
+    \subitem {t0}, \hyperpage{172}
+    \subitem {t1}, \hyperpage{172}
+    \subitem {trigger\_timer}, \hyperpage{177}
+    \subitem {v\_diff}, \hyperpage{175}
+    \subitem {v\_sense}, \hyperpage{175}
+  \item {TEST\_1.ino}
+    \subitem {C\_PIN\_EN\_DCDC}, \hyperpage{236}
+    \subitem {DCDC}, \hyperpage{236}
+    \subitem {ledmatrix}, \hyperpage{234}
+    \subitem {loop}, \hyperpage{234, 235}, \hyperpage{237}
+    \subitem {setup}, \hyperpage{234, 235}, \hyperpage{237}
+  \item {TEST\_2.ino}
+    \subitem {ledmatrix}, \hyperpage{238}
+    \subitem {loop}, \hyperpage{238}, \hyperpage{240}
+    \subitem {setup}, \hyperpage{238}, \hyperpage{240}
+  \item {TEST\_3.ino}
+    \subitem {ledmatrix}, \hyperpage{242}
+    \subitem {loop}, \hyperpage{241}, \hyperpage{243}
+    \subitem {setup}, \hyperpage{241}, \hyperpage{243}
+  \item {TEST\_4.ino}
+    \subitem {ledmatrix}, \hyperpage{245}
+    \subitem {loop}, \hyperpage{245}
+    \subitem {setup}, \hyperpage{245}
+  \item {TEST\_5.ino}
+    \subitem {ledmatrix}, \hyperpage{247}
+    \subitem {loop}, \hyperpage{247}
+    \subitem {setup}, \hyperpage{247}
+  \item {TEST\_6.ino}
+    \subitem {display\_status}, \hyperpage{249}
+    \subitem {ledmatrix}, \hyperpage{249}
+    \subitem {loop}, \hyperpage{248}
+    \subitem {mode\_bright\_display}, \hyperpage{249}
+    \subitem {reset\_init\_text}, \hyperpage{249}
+    \subitem {setup}, \hyperpage{248}
+  \item {TEST\_7.ino}
+    \subitem {display\_status}, \hyperpage{251}
+    \subitem {ledmatrix}, \hyperpage{251}
+    \subitem {loop}, \hyperpage{250}
+    \subitem {mode\_bright\_display}, \hyperpage{251}
+    \subitem {reset\_init\_text}, \hyperpage{251}
+    \subitem {setup}, \hyperpage{250}
+  \item {TEST\_8.ino}
+    \subitem {ledmatrix}, \hyperpage{252}
+    \subitem {loop}, \hyperpage{252}
+    \subitem {setup}, \hyperpage{252}
+    \subitem {timer}, \hyperpage{252}
+  \item {test\_enable}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {Test\_Production.ino}
+    \subitem {C\_PIN\_ENABLE\_LDO}, \hyperpage{405}
+    \subitem {C\_PIN\_IOUT\_SENSE}, \hyperpage{405}
+    \subitem {C\_PIN\_ISENSE\_RAW}, \hyperpage{405}
+    \subitem {C\_PIN\_LED\_1}, \hyperpage{405}
+    \subitem {C\_PIN\_LED\_2}, \hyperpage{405}
+    \subitem {C\_PIN\_LED\_3}, \hyperpage{405}
+    \subitem {C\_PIN\_SCL\_2}, \hyperpage{405}
+    \subitem {C\_PIN\_SDA\_2}, \hyperpage{405}
+    \subitem {C\_PIN\_SW1}, \hyperpage{405}
+    \subitem {C\_PIN\_SW2}, \hyperpage{405}
+    \subitem {C\_PIN\_VCC}, \hyperpage{406}
+    \subitem {C\_PIN\_VCC\_2}, \hyperpage{406}
+    \subitem {data}, \hyperpage{406}
+    \subitem {loop}, \hyperpage{404}
+    \subitem {sample\_iout\_sense}, \hyperpage{406}
+    \subitem {sample\_vcc}, \hyperpage{406}
+    \subitem {sample\_vcc\_2}, \hyperpage{406}
+    \subitem {scl\_pin}, \hyperpage{406}
+    \subitem {sda\_pin}, \hyperpage{406}
+    \subitem {setup}, \hyperpage{404}
+    \subitem {test\_start}, \hyperpage{406}
+  \item {test\_start}
+    \subitem {Test\_Production.ino}, \hyperpage{406}
+  \item {textbgcolor}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {textcolor}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {textsize\_x}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {textsize\_y}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {theory\_Vout}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {THREEchar}
+    \subitem {bitmaps.h}, \hyperpage{198}
+  \item {threshold}
+    \subitem {HealthMonitor}, \hyperpage{102}
+  \item {TianStandby.ino}
+    \subitem {loop}, \hyperpage{335}
+    \subitem {MIPS\_PIN}, \hyperpage{334}
+    \subitem {MipsPM}, \hyperpage{335}
+    \subitem {onWakeup}, \hyperpage{335}
+    \subitem {setup}, \hyperpage{335}
+  \item {TimedWakeup.ino}
+    \subitem {dummy}, \hyperpage{336}
+    \subitem {loop}, \hyperpage{336}
+    \subitem {setup}, \hyperpage{336}
+  \item {timer}
+    \subitem {TEST\_8.ino}, \hyperpage{252}
+  \item {timer\_arranque}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_buzzer}
+    \subitem {Buzzer.h}, \hyperpage{261}
+  \item {timer\_diagnostic\_querist}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_display\_capacity}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_display\_error}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_idle}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_irq\_button\_center}
+    \subitem {B1.ino}, \hyperpage{138}
+  \item {timer\_low\_bright}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {timer\_print\_diagnostic}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {timer\_recover\_voltage}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {timer\_sec\_count}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {timer\_wait\_sleep}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {TPICvalue}
+    \subitem {dcdc\_controler}, \hyperpage{78}
+  \item {trigger\_Display\_volt}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {trigger\_timer}
+    \subitem {TEST\_0.ino}, \hyperpage{177}
+  \item {TWOchar}
+    \subitem {bitmaps.h}, \hyperpage{198}
+
+  \indexspace
+
+  \item {Uchar}
+    \subitem {bitmaps.h}, \hyperpage{199}
+  \item {under\_voltage\_protection}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {UNDERSCOREchar}
+    \subitem {bitmaps.h}, \hyperpage{199}
+  \item {update}
+    \subitem {EEPROMClass}, \hyperpage{80}
+  \item {UpdateEepromBatery}
+    \subitem {diagnostic.h}, \hyperpage{341}
+  \item {UpdatePowerBar}
+    \subitem {power\_bar.h}, \hyperpage{285}
+  \item {usb\_status}
+    \subitem {B1.ino}, \hyperpage{139}
+  \item {user\_output}
+    \subitem {B1.ino}, \hyperpage{140}
+  \item {UV\_event\_protection\_counter}
+    \subitem {B1.ino}, \hyperpage{140}
+
+  \indexspace
+
+  \item {v\_diff}
+    \subitem {TEST\_0.ino}, \hyperpage{175}
+  \item {v\_sense}
+    \subitem {TEST\_0.ino}, \hyperpage{175}
+  \item {valid}
+    \subitem {EEPROM\_EMULATION}, \hyperpage{79}
+    \subitem {Person}, \hyperpage{104}
+  \item {value}
+    \subitem {Element}, \hyperpage{82}
+  \item {vcc}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{411}
+  \item {vcc\_2}
+    \subitem {sketch\_jul14a.ino}, \hyperpage{411}
+  \item {Vchar}
+    \subitem {bitmaps.h}, \hyperpage{199}
+  \item {VERTICALBARchar}
+    \subitem {bitmaps.h}, \hyperpage{199}
+  \item {voidFuncPtr}
+    \subitem {batt\_RTCZero.h}, \hyperpage{401}
+  \item {voltage\_input\_event\_protection\_counter}
+    \subitem {B1.ino}, \hyperpage{140}
+  \item {voltage\_input\_protection}
+    \subitem {B1.ino}, \hyperpage{121}
+  \item {voltage\_values}
+    \subitem {diagnostic.h}, \hyperpage{342}
+
+  \indexspace
+
+  \item {wakeup\_reason}
+    \subitem {batt\_ArduinoLowPower.h}, \hyperpage{326}
+  \item {Wchar}
+    \subitem {bitmaps.h}, \hyperpage{199}
+  \item {WIDTH}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {width}
+    \subitem {Adafruit\_GFX}, \hyperpage{61}
+    \subitem {GFXglyph}, \hyperpage{99}
+  \item {width\_bitmap}
+    \subitem {bitmaps.h}, \hyperpage{200}
+  \item {wrap}
+    \subitem {Adafruit\_GFX}, \hyperpage{64}
+  \item {write}
+    \subitem {Adafruit\_GFX}, \hyperpage{61}
+    \subitem {EEPROMClass}, \hyperpage{81}
+    \subitem {FlashClass}, \hyperpage{83}
+    \subitem {FlashStorageClass$<$ T $>$}, \hyperpage{84}
+  \item {WriteArrayEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {writeEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{352}
+  \item {writeFastHLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{61}
+  \item {writeFastVLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{61}
+  \item {writeFillRect}
+    \subitem {Adafruit\_GFX}, \hyperpage{62}
+  \item {writeLine}
+    \subitem {Adafruit\_GFX}, \hyperpage{62}
+  \item {writePixel}
+    \subitem {Adafruit\_GFX}, \hyperpage{62}
+  \item {writeRegister8}
+    \subitem {Adafruit\_IS31FL3731}, \hyperpage{73}
+  \item {WriteWordEEPROM}
+    \subitem {EepromBitBang.h}, \hyperpage{353}
+
+  \indexspace
+
+  \item {x}
+    \subitem {manualanim.ino}, \hyperpage{363}
+  \item {xAdvance}
+    \subitem {GFXglyph}, \hyperpage{99}
+  \item {Xchar}
+    \subitem {bitmaps.h}, \hyperpage{200}
+  \item {xOffset}
+    \subitem {GFXglyph}, \hyperpage{99}
+
+  \indexspace
+
+  \item {yAdvance}
+    \subitem {GFXfont}, \hyperpage{98}
+  \item {Ychar}
+    \subitem {bitmaps.h}, \hyperpage{200}
+  \item {year}
+    \subitem {SimpleRTC.ino}, \hyperpage{387}
+    \subitem {SimpleRTCAlarm.ino}, \hyperpage{390}
+    \subitem {SleepRTCAlarm.ino}, \hyperpage{392}
+  \item {yOffset}
+    \subitem {GFXglyph}, \hyperpage{100}
+
+  \indexspace
+
+  \item {Zchar}
+    \subitem {bitmaps.h}, \hyperpage{200}
+  \item {ZEROchar}
+    \subitem {bitmaps.h}, \hyperpage{200}
+
+\end{theindex}

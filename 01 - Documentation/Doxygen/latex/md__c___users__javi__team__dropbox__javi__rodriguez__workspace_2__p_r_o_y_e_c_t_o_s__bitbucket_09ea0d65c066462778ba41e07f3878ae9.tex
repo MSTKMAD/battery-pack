@@ -1,0 +1,59 @@
+The Flash\+Storage library aims to provide a convenient way to store and retrieve user\textquotesingle{}s data using the non-\/volatile flash memory of microcontrollers.
+
+The flash memory, due to it\textquotesingle{}s properties, is generally used to store the firmware code, but it can also be used to store user data.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md90}{}\doxysection{Supported hardware}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md90}
+Currently, ATSAMD21 and ATSAMD51 cpu are supported (and consequently every board based on this cpu like the Arduino Zero or Aduino MKR1000).\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md91}{}\doxysection{Limited number of writes}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md91}
+Flash memory has a limited amount of write cycles. Typical flash memory can perform about 10000 writes cycles to the same flash block before starting to \char`\"{}wear out\char`\"{} and begin to lose the ability to retain data.
+
+So {\bfseries{BEWARE\+: IMPROPER USE OF THIS LIBRARY CAN QUICKLY AND PERMANENTLY DESTROY THE FLASH MEMORY OF YOUR MICRO}}, in particular you should avoid to call the {\ttfamily write()} function too often and make sure that in the entire life of the micro the number of calls to {\ttfamily write} stay well below the above limit of 10000 (it\textquotesingle{}s a good rule-\/of-\/thumb to keep that number in mind even if the manufacturer of the micro guarantees a bigger number of cycles).
+
+The same caution must be taken if you\textquotesingle{}re using the EEPROM API emulation (see below) with the {\ttfamily EEPROM.\+commit()} function.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md92}{}\doxysection{Usage}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md92}
+First of all you must declare a global {\ttfamily Flash\+Storage} object for each piece of data you intend to store in the flash memory. For example if you want to store the age of a person you must declare an {\ttfamily age\+\_\+storage} like this\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{FlashStorage(age\_storage, int);}
+
+\end{DoxyCode}
+
+
+this instruction means \char`\"{}create a \`{}\+Flash\+Storage\`{} to store an \`{}int\`{} variable and call it \`{}age\+\_\+storage\`{}\char`\"{}. Now you can use {\ttfamily age\+\_\+storage} as a place to safely store an integer\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{void readAndStoreUserAge() \{}
+\DoxyCodeLine{  Serial.println("{}Please enter your age:"{});}
+\DoxyCodeLine{  String age = Serial.readStringUntil('\(\backslash\)n');}
+\DoxyCodeLine{}
+\DoxyCodeLine{  age\_storage.write(age.toInt());  // <-\/-\/ save the age}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+after a reset of the microcontroller you can retrieve the stored age by using\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ \{c++\}}
+\DoxyCodeLine{int user\_age = age\_storage.read();}
+
+\end{DoxyCode}
+\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md93}{}\doxysubsection{Using the alternative EEPROM-\/like API}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md93}
+If you include {\ttfamily Flash\+As\+EEPROM.\+h} you\textquotesingle{}ll get an EEPROM emulation with the internal flash memory. See \href{https://github.com/cmaglie/FlashStorage/tree/master/examples/EmulateEEPROM/EmulateEEPROM.ino}{\texttt{ Emulate\+EEPROM}} sketch for an example.
+
+The API is very similar to the well known Arduino EEPROM.\+h API but with two additional functions\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily EEPROM.\+is\+Valid()} returns {\ttfamily true} if data in the EEPROM is valid or, in other words, if the data has been written at least once, otherwise EEPROM data is \char`\"{}undefined\char`\"{} and the function returns {\ttfamily false}.
+\item {\ttfamily EEPROM.\+commit()} store the EEPROM data in flash. Use this with care\+: Every call writes the complete EEPROM data to flash. This will reduce the remaining flash-\/write-\/cycles. Don\textquotesingle{}t call this method in a loop or \href{https://github.com/cmaglie/FlashStorage\#limited-number-of-writes}{\texttt{ you will kill your flash soon}}.
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md94}{}\doxysection{License}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md94}
+This library is released under LGPL-\/2.\+1.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md95}{}\doxysection{FAQ}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md95}
+\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md96}{}\doxysubsection{Can I use a single Flash\+Storage object to store more stuff?}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md96}
+Yes, you can declare a {\ttfamily struct} with more fields and create a {\ttfamily Flash\+Storage} object to store the entire structure. See the \href{https://github.com/cmaglie/FlashStorage/tree/master/examples/StoreNameAndSurname/StoreNameAndSurname.ino}{\texttt{ Store\+Name\+And\+Surname}} sketch for an example on how to do it.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md97}{}\doxysubsection{The content of the Flash\+Storage is erased each time a new sketch is uploaded?}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md97}
+Yes, every time you upload a new sketch, the previous content of the Flash\+Storage is erased and filled with 0\textquotesingle{}s. The Flash\+Storage library does not allow to set another default value.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md98}{}\doxysubsection{Do you recommend to use FLASH instead of EEPROM?}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_09ea0d65c066462778ba41e07f3878ae9_autotoc_md98}
+No. If your micro provides an EEPROM it\textquotesingle{}s almost always better to use that because it\textquotesingle{}s a kind of memory designed with the specific purpose to store user data (it has a longer lifetime, number of write cycles, etc...).
+
+In the absence of an EEPROM you can use this library to use a piece of the flash memory as an alternative to EEPROM. However, you must always keep in mind of it\textquotesingle{}s limits. 

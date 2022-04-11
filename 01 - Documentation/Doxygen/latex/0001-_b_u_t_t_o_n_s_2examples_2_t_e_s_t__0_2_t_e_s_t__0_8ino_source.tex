@@ -1,0 +1,125 @@
+\hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{}\doxysection{TEST\+\_\+0.\+ino}
+\label{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/examples/TEST\_0/TEST\_0.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0001-\/BUTTONS/examples/TEST\_0/TEST\_0.ino}}
+\mbox{\hyperlink{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00011}00011 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_milli_timer_8h}{MilliTimer.h}}>}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00012}00012 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{_dpad_8h}{Dpad.h}}>}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00014}\mbox{\hyperlink{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00014}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00016}00016     Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00017}00017     \textcolor{keywordflow}{while} (!Serial)}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00018}00018     \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00019}00019         ;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00020}00020     \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00022}00022     int32\_t computing\_time = 0;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00023}00023     int16\_t dpad\_event;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00024}00024     \textcolor{keywordtype}{int} time\_0 = 0;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00025}00025     \textcolor{keywordtype}{int} time\_1 = 0;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00026}00026     \textcolor{comment}{//pinMode(3, OUTPUT);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00027}00027     pinMode(\mbox{\hyperlink{_dpad_8h_a90e5a0ae7282b21e10c1322e804f2664}{C\_PIN\_BUTT\_CENTER}}, INPUT\_PULLUP);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00028}00028     pinMode(\mbox{\hyperlink{_dpad_8h_a947d766921ce43aec19b1ba3c6b13aeb}{C\_PIN\_BUTT\_UP}}, INPUT\_PULLUP);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00029}00029     pinMode(\mbox{\hyperlink{_dpad_8h_abd50bae55666f1b56c8debaf89c30fd5}{C\_PIN\_BUTT\_DOWN}}, INPUT\_PULLUP);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00030}00030     \textcolor{comment}{//pinMode(C\_PIN\_BUTT\_RIGHT, INPUT\_PULLUP);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00031}00031     \textcolor{comment}{//pinMode(C\_PIN\_BUTT\_LEFT, INPUT\_PULLUP);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00033}00033    \textcolor{comment}{// digitalWrite(3, LOW);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00034}00034     Serial.println(\textcolor{stringliteral}{"{}Test 0.Presione los botones del Dpad. En casa activacion se mostrara el evento detectado y el tiempo de computo de la funcion."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00036}00036     \textcolor{keywordflow}{while} (1)}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00037}00037     \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00038}00038         time\_0 = micros();}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00039}00039         dpad\_event = \mbox{\hyperlink{_dpad_8h_a6b421ad8708aadcc0748da8035070970}{ReadDirPad}}();}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00040}00040         time\_1 = micros();}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00041}00041         computing\_time = time\_1 -\/ time\_0;}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00042}00042         \textcolor{comment}{//digitalWrite(3, LOW);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00043}00043         \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a8b3f3494d90d6ef7a384253d17418392}{C\_CLICK\_CENTER}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00044}00044         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00045}00045             Serial.print(\textcolor{stringliteral}{"{}CENTER CLICK Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00046}00046             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00047}00047             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00048}00048             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00049}00049         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00050}00050         \textcolor{comment}{// else if (dpad\_event == C\_CLICK\_RIGHT)}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00051}00051         \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00052}00052         \textcolor{comment}{//     Serial.print("{}RIGHT CLICK Detected."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00053}00053         \textcolor{comment}{//     Serial.print("{}Computing Time:"{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00054}00054         \textcolor{comment}{//     Serial.print(computing\_time);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00055}00055         \textcolor{comment}{//     Serial.println("{}us."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00056}00056         \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00057}00057         \textcolor{comment}{// else if (dpad\_event == C\_CLICK\_LEFT)}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00058}00058         \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00059}00059         \textcolor{comment}{//     Serial.print("{}LEFT CLICK Detected."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00060}00060         \textcolor{comment}{//     Serial.print("{}Computing Time:"{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00061}00061         \textcolor{comment}{//     Serial.print(computing\_time);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00062}00062         \textcolor{comment}{//     Serial.println("{}us."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00063}00063         \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00064}00064         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a0cb709d731efe8eed0ba27d7bc5c0f04}{C\_CLICK\_UP}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00065}00065         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00066}00066             \textcolor{comment}{//digitalWrite(3, HIGH);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00067}00067             Serial.print(\textcolor{stringliteral}{"{}UP CLICK Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00068}00068             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00069}00069             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00070}00070             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00071}00071         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00072}00072         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_ad8a5a68ee5917c9b48fcccb19bc23423}{C\_CLICK\_DOWN}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00073}00073         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00074}00074             Serial.print(\textcolor{stringliteral}{"{}DOWN CLICK Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00075}00075             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00076}00076             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00077}00077             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00078}00078         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00079}00079         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a0283079e2ebfe2a36d74f58b3bda965b}{C\_LP\_CENTER}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00080}00080         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00081}00081             Serial.print(\textcolor{stringliteral}{"{}CENTER LONG PRESS Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00082}00082             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00083}00083             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00084}00084             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00085}00085         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00086}00086         \textcolor{comment}{// else if (dpad\_event == C\_LP\_RIGHT)}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00087}00087         \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00088}00088         \textcolor{comment}{//     Serial.print("{}RIGHT LONG PRESS Detected."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00089}00089         \textcolor{comment}{//     Serial.print("{}Computing Time:"{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00090}00090         \textcolor{comment}{//     Serial.print(computing\_time);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00091}00091         \textcolor{comment}{//     Serial.println("{}us."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00092}00092         \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00093}00093         \textcolor{comment}{// else if (dpad\_event == C\_LP\_LEFT)}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00094}00094         \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00095}00095         \textcolor{comment}{//     Serial.print("{}LEFT LONG PRESS Detected."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00096}00096         \textcolor{comment}{//     Serial.print("{}Computing Time:"{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00097}00097         \textcolor{comment}{//     Serial.print(computing\_time);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00098}00098         \textcolor{comment}{//     Serial.println("{}us."{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00099}00099         \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00100}00100         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a94c3a89769b4ced6c99cca3e7596e7ba}{C\_LP\_UP}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00101}00101         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00102}00102             \textcolor{comment}{//digitalWrite(3, HIGH);}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00103}00103             Serial.print(\textcolor{stringliteral}{"{}UP LONG PRESS Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00104}00104             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00105}00105             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00106}00106             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00107}00107         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00108}00108         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a2c9c5cb70e2fdd47926c1fc71a54b974}{C\_LP\_DOWN}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00109}00109         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00110}00110             Serial.print(\textcolor{stringliteral}{"{}DOWN LONG PRESS Detected."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00111}00111             Serial.print(\textcolor{stringliteral}{"{}Computing Time:"{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00112}00112             Serial.print(computing\_time);}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00113}00113             Serial.println(\textcolor{stringliteral}{"{}us."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00114}00114         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00115}00115         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (dpad\_event == \mbox{\hyperlink{_dpad_8h_a0807a57abd82dc35f7d7865ab7ae4b86}{C\_NONE\_EVENT}})}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00116}00116         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00117}00117             \textcolor{comment}{//Serial.println("{}NONE"{});}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00118}00118         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00119}00119         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00120}00120         \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00121}00121             Serial.println(\textcolor{stringliteral}{"{}Error with the Dpad event Detection."{}});}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00122}00122         \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00123}00123     \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00124}00124 \}}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00126}\mbox{\hyperlink{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_afe461d27b9c48d5921c00d521181f12f}{00126}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00127}00127 \{}
+\DoxyCodeLine{\Hypertarget{0001-_b_u_t_t_o_n_s_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00128}00128 \}}
+
+\end{DoxyCode}

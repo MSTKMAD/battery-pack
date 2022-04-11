@@ -1,0 +1,39 @@
+* POWER:
+	Toda la potencia de un fuente de aliemnteacion alla donde vayas.
+	La bateria Rover 2K tiene un salida estable y sin fluctuaciones marca de la casa.
+	Capaz de aportar hasta 10 A para un arranque limpio, y una corriente sostenible adecuada
+	a las necesidades de las maquinas mas demandantes.
+
+* Accurate Capacity control:
+	La bateria rover 2k realiza una medicion muy precisa de la bateria restante. La cual se mostrara el encender/apagar la bateria y manteniendo
+	brevemente el boton central. si la bateria baja por debajod eun umbral de seguridad, la Rover 2k emitira un mensaje de aviso. se recomienda sustituir la bateria 
+	y conectarla a un puerto de carga. NOTE: No es recomendable trabajar con la bateria por debajo de ese umbral de proteccion.
+
+* Smart power protections:
+	Las protecciones existentes en el Rover 2K, monitorizan todas las variables que puedieran
+	desencadenar problemas en el correct funcionamiento de la bateria. Si ocurriese algun cortocircuito,
+	la bateria Rover 2k, interrumpiria imediatamente la salida y mostraria un aviso en la pantalla.
+	Desenchufa la bateria de la maquina, revisa la maquina nates de volver a introducir la bateria y retomar el trabajo.
+
+* Auto Power Off.
+	La duracion de la bateria es uno de los pilares de una bateria de calidad, por ello la Rover 2k cuenta con sistemas de ahorro
+	de energia. Tras X minutos sin dar salida y no recibir ninguna accion, la Rover 2k se apagara automaticamente. Adicionalemnte, pasado 2 minutos
+	el nivel de luz que emite la pantalla disminuira.
+
+* Mileage/Consumpiton power strip:
+	La tira de consumo de potencia muestra a tiempo real el consumo/la demanda que tiene la maquina conectada. 
+	Esta medida de potencia  variara debido a 3 parametros:
+	- El tipo de maquina.
+	- El tipo de aguja.
+	- La fuerza ejercida al tatuar.
+	La tira esta dividada en 3 segmentos: Verde (Baja potencia/demanda/consumo), Amarillo-Naranaja (Medio consumo/...), y Rojo
+	(Alto consumo/...). Cuanta mas potencia marque la tira, mas rapido se agota la bateria. 
+	La duracion aproximada de la bateria es de unas 10h para un consumo bajo, 7 horas para un consumo medio y 4 horas para un consumo alto.
+
+* USB-C fast charger:
+	Gracias a la conexion USB-C y a la electronica integrada con ella, la bateria Rover 2K permite carga rapida de 2A.
+	Realizando una carga total de la bateria en 2.5h aproximadamente.
+	Cuando se conecte la bateria al cargador se encendendera un led en la parteposterior al puerto de carga
+	que se mantendra encendido hasta que la bateria se encuentre totalmente cargada.
+
+* Materiales (?) construccion (?) conectores (?)	

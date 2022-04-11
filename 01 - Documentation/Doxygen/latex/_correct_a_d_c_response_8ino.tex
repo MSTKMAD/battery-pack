@@ -1,0 +1,195 @@
+\hypertarget{_correct_a_d_c_response_8ino}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0013-\/\+SAMD\+\_\+\+Analog\+Correction/examples/\+Correct\+ADCResponse/\+Correct\+ADCResponse.ino File Reference}
+\label{_correct_a_d_c_response_8ino}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/examples/CorrectADCResponse/CorrectADCResponse.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/examples/CorrectADCResponse/CorrectADCResponse.ino}}
+{\ttfamily \#include \char`\"{}batt\+\_\+\+SAMD\+\_\+\+Analog\+Correction.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a795cb8ea3c15bf0447b0610bbb5fa309}{ADC\+\_\+\+GND\+\_\+\+PIN}}~A1
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a446d6fabea3a51c4194181160cd91db5}{ADC\+\_\+3\+V3\+\_\+\+PIN}}~A2
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a694e60dbf36abb24ba673b80c23f6480}{ADC\+\_\+\+READS\+\_\+\+SHIFT}}~8
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a2b74af2783e421090c297d85786f921c}{ADC\+\_\+\+READS\+\_\+\+COUNT}}~(1 $<$$<$ \mbox{\hyperlink{_correct_a_d_c_response_8ino_a694e60dbf36abb24ba673b80c23f6480}{ADC\+\_\+\+READS\+\_\+\+SHIFT}})
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_ad84fea98783b573d663aac2d90ee7a47}{ADC\+\_\+\+MIN\+\_\+\+GAIN}}~0x0400
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_ad3978371b23b80e425e0116ffe280fca}{ADC\+\_\+\+UNITY\+\_\+\+GAIN}}~0x0800
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a43609209e9ad76f0b389f7d4898ca558}{ADC\+\_\+\+MAX\+\_\+\+GAIN}}~(0x1000 -\/ 1)
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a01b7c84ef09e42d33170b4f151eda72e}{ADC\+\_\+\+RESOLUTION\+\_\+\+BITS}}~12
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_af6510ec9c01be68b14a02327ef5889e1}{ADC\+\_\+\+RANGE}}~(1 $<$$<$ \mbox{\hyperlink{_correct_a_d_c_response_8ino_a01b7c84ef09e42d33170b4f151eda72e}{ADC\+\_\+\+RESOLUTION\+\_\+\+BITS}})
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a863f71eeb5e87dd68029cd519a23072b}{ADC\+\_\+\+TOP\+\_\+\+VALUE}}~(\mbox{\hyperlink{_correct_a_d_c_response_8ino_af6510ec9c01be68b14a02327ef5889e1}{ADC\+\_\+\+RANGE}} -\/ 1)
+\item 
+\#define \mbox{\hyperlink{_correct_a_d_c_response_8ino_a378db303ab8f05c2f2c9601e25a7f6bd}{MAX\+\_\+\+TOP\+\_\+\+VALUE\+\_\+\+READS}}~10
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_correct_a_d_c_response_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{_correct_a_d_c_response_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_correct_a_d_c_response_8ino_abd9274a8f4dc83d4c65df78330ba1c7d}{read\+Gnd\+Level}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{_correct_a_d_c_response_8ino_a1f8fdacf373d3591974505c0bf3137fa}{read3\+V3\+Level}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a446d6fabea3a51c4194181160cd91db5}\label{_correct_a_d_c_response_8ino_a446d6fabea3a51c4194181160cd91db5}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_3V3\_PIN@{ADC\_3V3\_PIN}}
+\index{ADC\_3V3\_PIN@{ADC\_3V3\_PIN}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_3V3\_PIN}{ADC\_3V3\_PIN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+3\+V3\+\_\+\+PIN~A2}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00027}{27}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a795cb8ea3c15bf0447b0610bbb5fa309}\label{_correct_a_d_c_response_8ino_a795cb8ea3c15bf0447b0610bbb5fa309}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_GND\_PIN@{ADC\_GND\_PIN}}
+\index{ADC\_GND\_PIN@{ADC\_GND\_PIN}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_GND\_PIN}{ADC\_GND\_PIN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+GND\+\_\+\+PIN~A1}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00026}{26}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a43609209e9ad76f0b389f7d4898ca558}\label{_correct_a_d_c_response_8ino_a43609209e9ad76f0b389f7d4898ca558}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_MAX\_GAIN@{ADC\_MAX\_GAIN}}
+\index{ADC\_MAX\_GAIN@{ADC\_MAX\_GAIN}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_MAX\_GAIN}{ADC\_MAX\_GAIN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+MAX\+\_\+\+GAIN~(0x1000 -\/ 1)}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00034}{34}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_ad84fea98783b573d663aac2d90ee7a47}\label{_correct_a_d_c_response_8ino_ad84fea98783b573d663aac2d90ee7a47}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_MIN\_GAIN@{ADC\_MIN\_GAIN}}
+\index{ADC\_MIN\_GAIN@{ADC\_MIN\_GAIN}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_MIN\_GAIN}{ADC\_MIN\_GAIN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+MIN\+\_\+\+GAIN~0x0400}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00032}{32}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_af6510ec9c01be68b14a02327ef5889e1}\label{_correct_a_d_c_response_8ino_af6510ec9c01be68b14a02327ef5889e1}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_RANGE@{ADC\_RANGE}}
+\index{ADC\_RANGE@{ADC\_RANGE}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_RANGE}{ADC\_RANGE}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+RANGE~(1 $<$$<$ \mbox{\hyperlink{_correct_a_d_c_response_8ino_a01b7c84ef09e42d33170b4f151eda72e}{ADC\+\_\+\+RESOLUTION\+\_\+\+BITS}})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00036}{36}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a2b74af2783e421090c297d85786f921c}\label{_correct_a_d_c_response_8ino_a2b74af2783e421090c297d85786f921c}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_READS\_COUNT@{ADC\_READS\_COUNT}}
+\index{ADC\_READS\_COUNT@{ADC\_READS\_COUNT}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_READS\_COUNT}{ADC\_READS\_COUNT}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+READS\+\_\+\+COUNT~(1 $<$$<$ \mbox{\hyperlink{_correct_a_d_c_response_8ino_a694e60dbf36abb24ba673b80c23f6480}{ADC\+\_\+\+READS\+\_\+\+SHIFT}})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00030}{30}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a694e60dbf36abb24ba673b80c23f6480}\label{_correct_a_d_c_response_8ino_a694e60dbf36abb24ba673b80c23f6480}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_READS\_SHIFT@{ADC\_READS\_SHIFT}}
+\index{ADC\_READS\_SHIFT@{ADC\_READS\_SHIFT}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_READS\_SHIFT}{ADC\_READS\_SHIFT}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+READS\+\_\+\+SHIFT~8}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00029}{29}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a01b7c84ef09e42d33170b4f151eda72e}\label{_correct_a_d_c_response_8ino_a01b7c84ef09e42d33170b4f151eda72e}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_RESOLUTION\_BITS@{ADC\_RESOLUTION\_BITS}}
+\index{ADC\_RESOLUTION\_BITS@{ADC\_RESOLUTION\_BITS}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_RESOLUTION\_BITS}{ADC\_RESOLUTION\_BITS}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+RESOLUTION\+\_\+\+BITS~12}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00035}{35}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a863f71eeb5e87dd68029cd519a23072b}\label{_correct_a_d_c_response_8ino_a863f71eeb5e87dd68029cd519a23072b}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_TOP\_VALUE@{ADC\_TOP\_VALUE}}
+\index{ADC\_TOP\_VALUE@{ADC\_TOP\_VALUE}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_TOP\_VALUE}{ADC\_TOP\_VALUE}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+TOP\+\_\+\+VALUE~(\mbox{\hyperlink{_correct_a_d_c_response_8ino_af6510ec9c01be68b14a02327ef5889e1}{ADC\+\_\+\+RANGE}} -\/ 1)}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00037}{37}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_ad3978371b23b80e425e0116ffe280fca}\label{_correct_a_d_c_response_8ino_ad3978371b23b80e425e0116ffe280fca}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!ADC\_UNITY\_GAIN@{ADC\_UNITY\_GAIN}}
+\index{ADC\_UNITY\_GAIN@{ADC\_UNITY\_GAIN}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{ADC\_UNITY\_GAIN}{ADC\_UNITY\_GAIN}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+UNITY\+\_\+\+GAIN~0x0800}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00033}{33}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a378db303ab8f05c2f2c9601e25a7f6bd}\label{_correct_a_d_c_response_8ino_a378db303ab8f05c2f2c9601e25a7f6bd}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!MAX\_TOP\_VALUE\_READS@{MAX\_TOP\_VALUE\_READS}}
+\index{MAX\_TOP\_VALUE\_READS@{MAX\_TOP\_VALUE\_READS}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{MAX\_TOP\_VALUE\_READS}{MAX\_TOP\_VALUE\_READS}}
+{\footnotesize\ttfamily \#define MAX\+\_\+\+TOP\+\_\+\+VALUE\+\_\+\+READS~10}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00039}{39}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_correct_a_d_c_response_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!loop@{loop}}
+\index{loop@{loop}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00174}{174}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a1f8fdacf373d3591974505c0bf3137fa}\label{_correct_a_d_c_response_8ino_a1f8fdacf373d3591974505c0bf3137fa}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!read3V3Level@{read3V3Level}}
+\index{read3V3Level@{read3V3Level}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{read3V3Level()}{read3V3Level()}}
+{\footnotesize\ttfamily uint16\+\_\+t read3\+V3\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00193}{193}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_abd9274a8f4dc83d4c65df78330ba1c7d}\label{_correct_a_d_c_response_8ino_abd9274a8f4dc83d4c65df78330ba1c7d}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!readGndLevel@{readGndLevel}}
+\index{readGndLevel@{readGndLevel}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{readGndLevel()}{readGndLevel()}}
+{\footnotesize\ttfamily uint16\+\_\+t read\+Gnd\+Level (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00178}{178}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+
+\mbox{\Hypertarget{_correct_a_d_c_response_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_correct_a_d_c_response_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{CorrectADCResponse.ino@{CorrectADCResponse.ino}!setup@{setup}}
+\index{setup@{setup}!CorrectADCResponse.ino@{CorrectADCResponse.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_correct_a_d_c_response_8ino_source_l00041}{41}} of file \mbox{\hyperlink{_correct_a_d_c_response_8ino_source}{Correct\+ADCResponse.\+ino}}.
+

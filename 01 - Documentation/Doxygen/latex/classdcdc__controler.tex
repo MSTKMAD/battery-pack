@@ -1,0 +1,134 @@
+\hypertarget{classdcdc__controler}{}\doxysection{dcdc\+\_\+controler Class Reference}
+\label{classdcdc__controler}\index{dcdc\_controler@{dcdc\_controler}}
+
+
+{\ttfamily \#include $<$DCDC.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdcdc__controler_a5ee430801a0b32968cbdefc90be185f5}{dcdc\+\_\+controler}} (int16\+\_\+t \mbox{\hyperlink{_external_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}})
+\begin{DoxyCompactList}\small\item\em Construct a new dcdc controler object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdcdc__controler_ac7b758cd17cc6a9ac0d0cb32b343eb48}{Set\+Voltage}} (int volt, bool mode)
+\begin{DoxyCompactList}\small\item\em Set the Voltage object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classdcdc__controler_a2d1deab2c96b3f2b71438c146314c189}{Enable\+DCDC}} (bool enable)
+\begin{DoxyCompactList}\small\item\em Habilita la activacion del DCDC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{classdcdc__controler_a87165d02e26605110c0781bb355538f3}{encoder\+Pos}}
+\item 
+byte \mbox{\hyperlink{classdcdc__controler_aa79d22669bc45acd1fb45abd81eb90d0}{TPICvalue}}
+\item 
+int16\+\_\+t \mbox{\hyperlink{classdcdc__controler_a4e448c89822223dd17626a35216148ef}{pin\+\_\+enable}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00021}{21}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdcdc__controler_a5ee430801a0b32968cbdefc90be185f5}\label{classdcdc__controler_a5ee430801a0b32968cbdefc90be185f5}} 
+\index{dcdc\_controler@{dcdc\_controler}!dcdc\_controler@{dcdc\_controler}}
+\index{dcdc\_controler@{dcdc\_controler}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{dcdc\_controler()}{dcdc\_controler()}}
+{\footnotesize\ttfamily dcdc\+\_\+controler\+::dcdc\+\_\+controler (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{pin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct a new dcdc controler object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pin} & Pin conectado al enable del DCDC. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00048}{48}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdcdc__controler_a2d1deab2c96b3f2b71438c146314c189}\label{classdcdc__controler_a2d1deab2c96b3f2b71438c146314c189}} 
+\index{dcdc\_controler@{dcdc\_controler}!EnableDCDC@{EnableDCDC}}
+\index{EnableDCDC@{EnableDCDC}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{EnableDCDC()}{EnableDCDC()}}
+{\footnotesize\ttfamily void dcdc\+\_\+controler\+::\+Enable\+DCDC (\begin{DoxyParamCaption}\item[{bool}]{enable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Habilita la activacion del DCDC. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00082}{82}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+\mbox{\Hypertarget{classdcdc__controler_ac7b758cd17cc6a9ac0d0cb32b343eb48}\label{classdcdc__controler_ac7b758cd17cc6a9ac0d0cb32b343eb48}} 
+\index{dcdc\_controler@{dcdc\_controler}!SetVoltage@{SetVoltage}}
+\index{SetVoltage@{SetVoltage}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{SetVoltage()}{SetVoltage()}}
+{\footnotesize\ttfamily void dcdc\+\_\+controler\+::\+Set\+Voltage (\begin{DoxyParamCaption}\item[{int}]{volt,  }\item[{bool}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Voltage object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em volt} & \\
+\hline
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00062}{62}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdcdc__controler_a87165d02e26605110c0781bb355538f3}\label{classdcdc__controler_a87165d02e26605110c0781bb355538f3}} 
+\index{dcdc\_controler@{dcdc\_controler}!encoderPos@{encoderPos}}
+\index{encoderPos@{encoderPos}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{encoderPos}{encoderPos}}
+{\footnotesize\ttfamily uint16\+\_\+t dcdc\+\_\+controler\+::encoder\+Pos}
+
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00039}{39}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+\mbox{\Hypertarget{classdcdc__controler_a4e448c89822223dd17626a35216148ef}\label{classdcdc__controler_a4e448c89822223dd17626a35216148ef}} 
+\index{dcdc\_controler@{dcdc\_controler}!pin\_enable@{pin\_enable}}
+\index{pin\_enable@{pin\_enable}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{pin\_enable}{pin\_enable}}
+{\footnotesize\ttfamily int16\+\_\+t dcdc\+\_\+controler\+::pin\+\_\+enable}
+
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00041}{41}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+\mbox{\Hypertarget{classdcdc__controler_aa79d22669bc45acd1fb45abd81eb90d0}\label{classdcdc__controler_aa79d22669bc45acd1fb45abd81eb90d0}} 
+\index{dcdc\_controler@{dcdc\_controler}!TPICvalue@{TPICvalue}}
+\index{TPICvalue@{TPICvalue}!dcdc\_controler@{dcdc\_controler}}
+\doxysubsubsection{\texorpdfstring{TPICvalue}{TPICvalue}}
+{\footnotesize\ttfamily byte dcdc\+\_\+controler\+::\+TPICvalue}
+
+
+
+Definition at line \mbox{\hyperlink{_d_c_d_c_8h_source_l00040}{40}} of file \mbox{\hyperlink{_d_c_d_c_8h_source}{DCDC.\+h}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0004-\/\+DCDC/\mbox{\hyperlink{_d_c_d_c_8h}{DCDC.\+h}}\end{DoxyCompactItemize}

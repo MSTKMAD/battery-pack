@@ -1,0 +1,466 @@
+\hypertarget{display_8h_source}{}\doxysection{display.\+h}
+\label{display_8h_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/display.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/display.h}}
+\mbox{\hyperlink{display_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{bitmaps_8h}{bitmaps.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <Wire.h>}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{batt___adafruit___g_f_x_8h}{batt\_Adafruit\_GFX.h}}>}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00014}00014 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{batt___adafruit___i_s31_f_l3731_8h}{batt\_Adafruit\_IS31FL3731.h}}>}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00016}00016 \textcolor{comment}{//\#include <MilliTimer.h>}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00018}00018 \textcolor{preprocessor}{\#if DISPLAY\_SIZE == 7}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00019}00019 \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}} = 7; \textcolor{comment}{// Altura del caracter.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00020}00020 \textcolor{preprocessor}{\#elif DISPLAY\_SIZE == 6}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00021}\mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{00021}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}} = 6;   \textcolor{comment}{// Altrua del caracter.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00022}00022 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00024}00024 \textcolor{preprocessor}{\#if POWERBAR\_LOCATION == 1}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00025}\mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{00025}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\_PWBAR\_Y\_AXE}} = 6;        \textcolor{comment}{// Posicion de la barra de potencia.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00026}\mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{00026}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} = 0; \textcolor{comment}{// Altura de inicio de escritura de los caracteres.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00027}00027 \textcolor{preprocessor}{\#elif POWERBAR\_LOCATION == 0}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00028}00028 \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\_PWBAR\_Y\_AXE}} = 0;        \textcolor{comment}{// Posicion de la barra de potencia.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00029}00029 \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} = 1; \textcolor{comment}{// Altura de inicio de escritura de los caracteres.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00030}00030 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00032}\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{00032}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}} = \textcolor{keyword}{true}; \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00033}\mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{00033}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}} = \textcolor{keyword}{false}; \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00035}\mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{00035}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}} = 20; \textcolor{comment}{// Nivel de brillo alto de los Leds.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00036}\mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{00036}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}} = 5;   \textcolor{comment}{// Nivel de brillo alto de los Leds.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00037}\mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{00037}} int16\_t \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = 0;             \textcolor{comment}{// Encendido del led.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00038}\mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{00038}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}} = 0;      \textcolor{comment}{// Apagado del LED.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00040}\mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{00040}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\_DISPLAY\_ST\_BUSSY}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00041}\mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{00041}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00043}\mbox{\hyperlink{display_8h_a75d06610e3455136b80f549bed3224e6}{00043}} \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{display_8h_a75d06610e3455136b80f549bed3224e6}{C\_NUMBER\_BLINK\_LOW\_BATTERY}} = 4;   \textcolor{comment}{// Numero de veces que parpadea la pantalla de Low Batery.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00044}\mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{00044}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{C\_DELAY\_BLINK\_LOW\_BATTERY}} = 300; \textcolor{comment}{// Duracion del parpadeo del Low Battery.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00046}\mbox{\hyperlink{display_8h_affb60a59377a5a92622eec544592b426}{00046}} \textcolor{keyword}{const} int32\_t \mbox{\hyperlink{display_8h_affb60a59377a5a92622eec544592b426}{C\_TIMER\_BTW\_FRAMES}} = 75;  \textcolor{comment}{// Tiempo de refresco de la pantalla.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00047}\mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{00047}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}} = 8; \textcolor{comment}{// Tamaño del bitmap.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00049}\mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{00049}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00050}\mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{00050}} \textcolor{keyword}{const} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00052}\mbox{\hyperlink{display_8h_a124237af4436b4a3cc46f0f0021d050b}{00052}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_a124237af4436b4a3cc46f0f0021d050b}{C\_PIXEL\_START\_STRING}} = 7; \textcolor{comment}{// Pixel en que empieza la rotacion de la cadena.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00053}\mbox{\hyperlink{display_8h_af8d5d466d07d5c9e011e686e49f60849}{00053}} \textcolor{keyword}{const} int16\_t \mbox{\hyperlink{display_8h_af8d5d466d07d5c9e011e686e49f60849}{C\_PIXEL\_STOP\_STRING}} = 0;  \textcolor{comment}{// Pixel en que termina la rotacion de la cadena.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00058}\mbox{\hyperlink{display_8h_ae06228591d83902a98c2c703e9d768f9}{00058}} \textcolor{comment}{}\textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_ae06228591d83902a98c2c703e9d768f9}{SwitchScreenOff}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00059}00059 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00060}00060     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00061}00061 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00072}\mbox{\hyperlink{display_8h_a2d3d26ddec63a57cfa621b6bba2e56e7}{00072}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a2d3d26ddec63a57cfa621b6bba2e56e7}{DisplayText}}(String cadena, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, \textcolor{keywordtype}{bool} reset = \textcolor{keyword}{false}, \textcolor{keywordtype}{bool} mode\_bright = \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00073}00073 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00074}00074     uint8\_t bitmap\_char[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00075}00075                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00076}00076                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00077}00077                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00078}00078                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00079}00079                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00080}00080                              B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00082}00082     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00083}00083     \textcolor{keyword}{static} int16\_t length\_bit = 0; \textcolor{comment}{// Tamaño del bitmap de la cadena.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00084}00084     \textcolor{keywordtype}{char} char\_of\_string;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00085}00085     \textcolor{keyword}{static} int16\_t pos\_x\_display = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00086}00086     \textcolor{keyword}{static} int16\_t x\_axis\_index = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00087}00087     \textcolor{keyword}{static} String cadena\_local;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00088}00088     \textcolor{keyword}{static} \mbox{\hyperlink{class_milli_timer}{MilliTimer}} frame\_delay\_timer; \textcolor{comment}{// Timer de refresco de la pantalla.}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00089}00089     \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00090}00090     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00091}00091         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00092}00092     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00093}00093     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00094}00094     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00095}00095         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00096}00096     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00097}00097     \textcolor{keywordflow}{if} ((\mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} == \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}}) || (reset == \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00098}00098     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00099}00099         length\_bit = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00100}00100         cadena\_local = cadena;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00101}00101         \textcolor{keywordflow}{for} (uint16\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < cadena\_local.length(); \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00102}00102         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00103}00103             char\_of\_string = toupper(cadena\_local.charAt(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00104}00104             \textcolor{keywordflow}{if} (char\_of\_string >= 32 \&\& char\_of\_string <= 126)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00105}00105             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00106}00106                 length\_bit += \mbox{\hyperlink{bitmaps_8h_a4c3551c33335a4650ad6ed47e6e030e2}{width\_bitmap}}[char\_of\_string -\/ 32];}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00107}00107             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00108}00108         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00109}00109         \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\_DISPLAY\_ST\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00110}00110         \textcolor{keywordflow}{if} (length\_bit <= 15)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00111}00111         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00112}00112             x\_axis\_index = (15 -\/ length\_bit + 1) / 2;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00113}00113         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00114}00114         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00115}00115         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00116}00116             x\_axis\_index = \mbox{\hyperlink{display_8h_a124237af4436b4a3cc46f0f0021d050b}{C\_PIXEL\_START\_STRING}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00117}00117             frame\_delay\_timer.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(\mbox{\hyperlink{display_8h_affb60a59377a5a92622eec544592b426}{C\_TIMER\_BTW\_FRAMES}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00118}00118         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00119}00119     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00120}00120     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} == \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\_DISPLAY\_ST\_BUSSY}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00121}00121     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00122}00122         \textcolor{keywordflow}{if} (length\_bit <= 15)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00123}00123         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00124}00124             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00125}00125             pos\_x\_display = x\_axis\_index;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00126}00126             \textcolor{keywordflow}{for} (uint16\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < cadena\_local.length(); \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00127}00127             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00128}00128                 char\_of\_string = toupper(cadena\_local.charAt(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00129}00129                 \textcolor{keywordflow}{if} (char\_of\_string >= 32 \&\& char\_of\_string <= 126)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00130}00130                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00131}00131                     \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(char\_of\_string, bitmap\_char, \textcolor{keyword}{sizeof}(bitmap\_char));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00132}00132                     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(pos\_x\_display, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, bitmap\_char, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00133}00133                     pos\_x\_display += \mbox{\hyperlink{bitmaps_8h_a4c3551c33335a4650ad6ed47e6e030e2}{width\_bitmap}}[char\_of\_string -\/ 32];}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00134}00134                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00135}00135                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00136}00136                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00137}00137                     \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(\textcolor{charliteral}{' '}, bitmap\_char, \textcolor{keyword}{sizeof}(bitmap\_char));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00138}00138                     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(pos\_x\_display, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, bitmap\_char, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00139}00139                     pos\_x\_display += \mbox{\hyperlink{bitmaps_8h_a4c3551c33335a4650ad6ed47e6e030e2}{width\_bitmap}}[\textcolor{charliteral}{' '} -\/ 32];}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00140}00140                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00141}00141             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00142}00142             \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00143}00143         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00144}00144         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00145}00145         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00146}00146             \textcolor{keywordflow}{if} (frame\_delay\_timer.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}())}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00147}00147             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00148}00148                 \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00149}00149                 pos\_x\_display = x\_axis\_index;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00150}00150                 \textcolor{keywordflow}{for} (uint16\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < cadena\_local.length(); \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00151}00151                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00152}00152                     char\_of\_string = toupper(cadena\_local.charAt(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00153}00153                     \textcolor{keywordflow}{if} (char\_of\_string >= 32 \&\& char\_of\_string <= 126)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00154}00154                     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00155}00155                         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(char\_of\_string, bitmap\_char, \textcolor{keyword}{sizeof}(bitmap\_char));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00156}00156                         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(pos\_x\_display, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, bitmap\_char, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00157}00157                         pos\_x\_display += \mbox{\hyperlink{bitmaps_8h_a4c3551c33335a4650ad6ed47e6e030e2}{width\_bitmap}}[char\_of\_string -\/ 32];}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00158}00158                     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00159}00159                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00160}00160                     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00161}00161                         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(\textcolor{charliteral}{' '}, bitmap\_char, \textcolor{keyword}{sizeof}(bitmap\_char));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00162}00162                         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(pos\_x\_display, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, bitmap\_char, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00163}00163                         pos\_x\_display += \mbox{\hyperlink{bitmaps_8h_a4c3551c33335a4650ad6ed47e6e030e2}{width\_bitmap}}[\textcolor{charliteral}{' '} -\/ 32];}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00164}00164                     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00165}00165                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00166}00166                 \textcolor{keywordflow}{if} (x\_axis\_index == -\/length\_bit + \mbox{\hyperlink{display_8h_af8d5d466d07d5c9e011e686e49f60849}{C\_PIXEL\_STOP\_STRING}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00167}00167                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00168}00168                     \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00169}00169                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00170}00170                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00171}00171                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00172}00172                     x\_axis\_index-\/-\/;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00173}00173                     frame\_delay\_timer.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(\mbox{\hyperlink{display_8h_affb60a59377a5a92622eec544592b426}{C\_TIMER\_BTW\_FRAMES}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00174}00174                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00175}00175             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00176}00176         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00177}00177     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00178}00178     \textcolor{keywordflow}{return} \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00179}00179 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00188}\mbox{\hyperlink{display_8h_a471d98c29ea2c3cdb940f34a34198713}{00188}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a471d98c29ea2c3cdb940f34a34198713}{DisplayVolt}}(int16\_t number, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, \textcolor{keywordtype}{bool} mode\_bright = \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00189}00189 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00191}00191     uint8\_t dec\_number[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00192}00192                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00193}00193                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00194}00194                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00195}00195                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00196}00196                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00197}00197                             B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00198}00198     uint8\_t cent\_number[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00199}00199                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00200}00200                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00201}00201                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00202}00202                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00203}00203                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00204}00204                              B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00205}00205     uint8\_t unit\_number[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00206}00206                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00207}00207                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00208}00208                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00209}00209                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00210}00210                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00211}00211                              B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00212}00212     String str\_number = String(number);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00213}00213     \textcolor{keywordflow}{if} (str\_number.length() == 2)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00214}00214     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00215}00215         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(\textcolor{charliteral}{' '}, cent\_number, \textcolor{keyword}{sizeof}(cent\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00216}00216         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_number.charAt(0), dec\_number, \textcolor{keyword}{sizeof}(dec\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00217}00217         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_number.charAt(1), unit\_number, \textcolor{keyword}{sizeof}(unit\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00218}00218     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00219}00219     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (str\_number.length() == 3)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00220}00220     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00221}00221         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_number.charAt(0), cent\_number, \textcolor{keyword}{sizeof}(cent\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00222}00222         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_number.charAt(1), dec\_number, \textcolor{keyword}{sizeof}(dec\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00223}00223         \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_number.charAt(2), unit\_number, \textcolor{keyword}{sizeof}(unit\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00224}00224     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00225}00225     \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00226}00226     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00227}00227         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00228}00228     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00229}00229     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00230}00230     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00231}00231         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00232}00232     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00234}00234     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00235}00235     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(1, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, cent\_number, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00236}00236     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(4, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, dec\_number, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00237}00237     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing_a92d3cbc7273f5dfa682dc439c1d8564e}{drawPixel}}(9, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 5, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00238}00238     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(11, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, unit\_number, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00239}00239 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00248}\mbox{\hyperlink{display_8h_a3a56eed4d5aa6ce53d014bd42c72881c}{00248}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a3a56eed4d5aa6ce53d014bd42c72881c}{DisplayCap}}(int16\_t \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, \textcolor{keywordtype}{bool} mode\_bright = \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00249}00249 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00250}00250     uint8\_t dec\_number[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00251}00251                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00252}00252                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00253}00253                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00254}00254                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00255}00255                             B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00256}00256                             B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00257}00257     uint8\_t unit\_number[] = \{B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00258}00258                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00259}00259                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00260}00260                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00261}00261                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00262}00262                              B00000000,}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00263}00263                              B00000000\};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00264}00264 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00265}00265     \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}} = constrain(\mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, 0, 100);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00266}00266     \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00267}00267     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00268}00268         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00269}00269     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00270}00270     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00271}00271     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00272}00272         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00273}00273     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00274}00274 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00275}00275     String str\_capacity = String(\mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00276}00276     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}} == 100)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00277}00277     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00278}00278         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00279}00279         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(1, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ae8f95228fc459681a53086e372bae883}{Fchar}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00280}00280         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(5, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a44f63b7732a86cef17bc604f2f5bc404}{Uchar}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00281}00281         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(9, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ac0ddfb7fc45e79365bd950681c08997a}{Lchar}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00282}00282         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(12, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ac0ddfb7fc45e79365bd950681c08997a}{Lchar}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00283}00283     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00284}00284     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00285}00285     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00286}00286         \textcolor{keywordflow}{if} (str\_capacity.length() == 1)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00287}00287         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00288}00288             \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(\textcolor{charliteral}{' '}, dec\_number, \textcolor{keyword}{sizeof}(dec\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00289}00289             \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_capacity.charAt(0), unit\_number, \textcolor{keyword}{sizeof}(unit\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00290}00290         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00291}00291         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (str\_capacity.length() == 2)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00292}00292         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00293}00293             \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_capacity.charAt(0), dec\_number, \textcolor{keyword}{sizeof}(dec\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00294}00294             \mbox{\hyperlink{bitmaps_8h_a624c450621b2f947e6e22c41adbe2c7b}{Char2Bitmap}}(str\_capacity.charAt(1), unit\_number, \textcolor{keyword}{sizeof}(unit\_number));}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00295}00295         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00296}00296 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00297}00297         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00298}00298         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(11, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a18e854ea2efa1a0d4c9f8e19877c9397}{PERCENTchar}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00299}00299         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(1, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, dec\_number, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00300}00300         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(6, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, unit\_number, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00301}00301     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00302}00302 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00303}00303 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00311}\mbox{\hyperlink{display_8h_a776b1e4b14386cd3104ce5c8db56ea5f}{00311}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a776b1e4b14386cd3104ce5c8db56ea5f}{DisplayBattCharging}}(int16\_t \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, \textcolor{keywordtype}{bool} mode\_bright = \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00312}00312 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00313}00313     \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}} = constrain(\mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, 10, 100);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00314}00314     int16\_t fill\_capacity\_column;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00315}00315     \textcolor{keyword}{static} \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_blinking\_column;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00316}00316     int16\_t blinking\_column = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00317}00317     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} blink\_state = \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00318}00318     \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00319}00319     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00320}00320         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00321}00321     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00322}00322     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00323}00323     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00324}00324         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00325}00325     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00326}00326 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00327}00327     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a706575cde9922854620e9a9257188147}{Frame\_Batt\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00328}00328     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ae5ac1da28c11035e60fc282236b75463}{Frame\_Batt\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00329}00329 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00330}00330     fill\_capacity\_column = \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}} / 10;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00331}00331 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00332}00332     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(1, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 1, fill\_capacity\_column, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 5, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00333}00333 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00334}00334     blinking\_column = fill\_capacity\_column + 1;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00335}00335 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00336}00336     \textcolor{keywordflow}{if} (timer\_blinking\_column.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(500))}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00337}00337     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00338}00338         \textcolor{keywordflow}{if} (blink\_state == \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00339}00339         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00340}00340             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_ae12d09670433af17e666a203b51715f7}{writeFastVLine}}(blinking\_column, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 1, \mbox{\hyperlink{bitmaps_8h_a035c0b93babde37c8919064af8b67928}{DISPLAY\_SIZE}} -\/ 2, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00341}00341             blink\_state = \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00342}00342         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00343}00343         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (blink\_state == \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00344}00344         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00345}00345             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_ae12d09670433af17e666a203b51715f7}{writeFastVLine}}(blinking\_column, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 1, \mbox{\hyperlink{bitmaps_8h_a035c0b93babde37c8919064af8b67928}{DISPLAY\_SIZE}} -\/ 2, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00346}00346             blink\_state = \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00347}00347         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00348}00348     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00349}00349 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00350}00350 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00358}\mbox{\hyperlink{display_8h_a4fee24f1c4f33f6e9a0b4febfcd9a8c6}{00358}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a4fee24f1c4f33f6e9a0b4febfcd9a8c6}{LedWork}}(\textcolor{keywordtype}{bool} state\_led, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, \textcolor{keywordtype}{bool} mode\_bright = \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00359}00359 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00360}00360     uint16\_t x\_LED\_WORK = 2;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00361}00361     uint16\_t y\_LED\_WORK = \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\_PWBAR\_Y\_AXE}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00362}00362     \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\_MODE\_HIGH\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00363}00363     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00364}00364         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00365}00365     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00366}00366     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (mode\_bright == \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\_MODE\_LOW\_BRIGHT}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00367}00367     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00368}00368         \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00369}00369     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00370}00370 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00371}00371     \textcolor{keywordflow}{if} (state\_led == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00372}00372     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00373}00373         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < x\_LED\_WORK; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00374}00374         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00375}00375             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing_a92d3cbc7273f5dfa682dc439c1d8564e}{drawPixel}}(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}, \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\_PWBAR\_Y\_AXE}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00376}00376         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00377}00377     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00378}00378     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (state\_led == \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00379}00379     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00380}00380         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < x\_LED\_WORK; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00381}00381         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00382}00382             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing_a92d3cbc7273f5dfa682dc439c1d8564e}{drawPixel}}(\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}, \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\_PWBAR\_Y\_AXE}}, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00383}00383         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00384}00384     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00385}00385 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00391}\mbox{\hyperlink{display_8h_adbebdd005e50d4c91fb693805993c9e9}{00391}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_adbebdd005e50d4c91fb693805993c9e9}{DisplayUsbIn}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00392}00392 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00393}00393     \textcolor{keywordtype}{bool} \mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00394}00394     \textcolor{keywordtype}{bool} flag\_set\_low\_bright = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00395}00395     int16\_t index = 15;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00396}00396 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00397}00397     \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_set\_bright\_low;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00398}00398     \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_frames\_spacer;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00399}00399     \textcolor{keywordflow}{while} (\mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00400}00400     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00401}00401         \textcolor{keywordflow}{if} (timer\_frames\_spacer.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(75) != \mbox{\hyperlink{_milli_timer_8h_a2b52d1ddc05fa2d9212ee51ca4cde653}{C\_TIMER\_NOT\_EXPIRED}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00402}00402         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00403}00403             \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00404}00404             index-\/-\/;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00405}00405             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{bitmaps_8h_af83f0e08ad3e4d62e98cd7cd23f511f1}{C\_DISPLAY\_HEIGHT}} + 1, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00406}00406             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8 -\/ index, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ad77d562e53efd59c919c7d6e8917a061}{Frame\_USB\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00407}00407             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0 -\/ index, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_aeaff61afb53697d792026dbeb2a298f0}{Frame\_USB\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00408}00408             \textcolor{keywordflow}{if} (index == 0)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00409}00409             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00410}00410                 \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ad77d562e53efd59c919c7d6e8917a061}{Frame\_USB\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00411}00411                 \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_aeaff61afb53697d792026dbeb2a298f0}{Frame\_USB\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00412}00412                 delay(2000);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00413}00413                 \mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00414}00414                 \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\_LOW\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00415}00415                 \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ad77d562e53efd59c919c7d6e8917a061}{Frame\_USB\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00416}00416                 \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_aeaff61afb53697d792026dbeb2a298f0}{Frame\_USB\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00417}00417                 index = 11;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00418}00418             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00419}00419         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00420}00420     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00421}00421 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00427}\mbox{\hyperlink{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}{00427}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}{DisplayUsbOut}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00428}00428 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00429}00429     \textcolor{keywordtype}{bool} \mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00430}00430     int16\_t index = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00431}00431 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00432}00432     \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_frames\_spacer;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00433}00433 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00434}00434     \textcolor{keywordflow}{while} (\mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00435}00435     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00436}00436         \textcolor{keywordflow}{if} (timer\_frames\_spacer.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(50) != \mbox{\hyperlink{_milli_timer_8h_a2b52d1ddc05fa2d9212ee51ca4cde653}{C\_TIMER\_NOT\_EXPIRED}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00437}00437         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00438}00438             \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00439}00439             index++;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00440}00440             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00441}00441             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8 -\/ index, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ad77d562e53efd59c919c7d6e8917a061}{Frame\_USB\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00442}00442             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0 -\/ index, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_aeaff61afb53697d792026dbeb2a298f0}{Frame\_USB\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00443}00443             \textcolor{keywordflow}{if} (index == 15)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00444}00444             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00445}00445                 \mbox{\hyperlink{_b1_8ino_af94a04fad1f8789ad4d1a12a201bfd8f}{flag\_initialize}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00446}00446                 index = 11;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00447}00447             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00448}00448         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00449}00449     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00450}00450 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00451}00451 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00456}\mbox{\hyperlink{display_8h_a8aab8737ef1857c30ac109993c789563}{00456}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a8aab8737ef1857c30ac109993c789563}{DisplayDiagnosticMode}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00457}00457 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00458}00458     \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_fr\_diagnostic;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00459}00459     \textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00460}00460     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\_DISPLAY\_OFF}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00461}00461     \textcolor{keywordflow}{while} (\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} <= 30)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00462}00462     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00463}00463         \textcolor{keywordflow}{if} (timer\_fr\_diagnostic.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}(200))}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00464}00464         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00465}00465             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a0a1375129ab94b8edf9ebedd88c86891}{FACE\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00466}00466             \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ae2a9f8f829a4e38ba7ad0d22e8f63c01}{FACE\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00467}00467             \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} += 6;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00468}00468         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00469}00469     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00470}00470 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00476}\mbox{\hyperlink{display_8h_a2a4595ca249753c2b025998d6785799c}{00476}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{display_8h_a2a4595ca249753c2b025998d6785799c}{DisplayLowBattery}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00477}00477 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00478}00478     \textcolor{keyword}{static} \mbox{\hyperlink{class_milli_timer}{MilliTimer}} timer\_blink;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00479}00479     \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00480}00480     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00481}00481     \textcolor{keyword}{static} \textcolor{keywordtype}{bool} blink\_state = \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00482}00482     \textcolor{keywordflow}{if} (\mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} == \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00483}00483     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00484}00484         \mbox{\hyperlink{display_8h_ae06228591d83902a98c2c703e9d768f9}{SwitchScreenOff}}(\mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00485}00485         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ab682fb0262c27637ff18ee20c639e2bb}{Frame\_Batt\_Low\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00486}00486         \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a725f28d959ce49e6a58ce5cbddbb6bf7}{Frame\_Batt\_Low\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00487}00487         timer\_blink.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(\mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{C\_DELAY\_BLINK\_LOW\_BATTERY}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00488}00488         \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\_DISPLAY\_ST\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00489}00489         \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00490}00490     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00491}00491     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} == \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\_DISPLAY\_ST\_BUSSY}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00492}00492     \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00493}00493         \textcolor{keywordflow}{if} (timer\_blink.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}() != \mbox{\hyperlink{_milli_timer_8h_a2b52d1ddc05fa2d9212ee51ca4cde653}{C\_TIMER\_NOT\_EXPIRED}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00494}00494         \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00495}00495             \textcolor{keywordflow}{if} (blink\_state == \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00496}00496             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00497}00497                 \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++;}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00498}00498                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} == \mbox{\hyperlink{display_8h_a75d06610e3455136b80f549bed3224e6}{C\_NUMBER\_BLINK\_LOW\_BATTERY}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00499}00499                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00500}00500                     \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}} = \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\_DISPLAY\_ST\_NOT\_BUSSY}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00501}00501                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00502}00502                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00503}00503                 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00504}00504                     blink\_state = \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00505}00505                     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ab682fb0262c27637ff18ee20c639e2bb}{Frame\_Batt\_Low\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00506}00506                     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a725f28d959ce49e6a58ce5cbddbb6bf7}{Frame\_Batt\_Low\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00507}00507                     timer\_blink.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(\mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{C\_DELAY\_BLINK\_LOW\_BATTERY}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00508}00508                 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00509}00509             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00510}00510             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (blink\_state == \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\_ON}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00511}00511             \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00512}00512                 blink\_state = \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\_OFF}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00513}00513                 \mbox{\hyperlink{display_8h_ae06228591d83902a98c2c703e9d768f9}{SwitchScreenOff}}(\mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00514}00514                 timer\_blink.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(\mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{C\_DELAY\_BLINK\_LOW\_BATTERY}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00515}00515             \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00516}00516         \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00517}00517     \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00518}00518     \textcolor{keywordflow}{return} \mbox{\hyperlink{_b1_8ino_a364867f06be867552495389474b2865c}{display\_status}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00519}00519 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00524}\mbox{\hyperlink{display_8h_a3ae4f438c71c1b015e1168a6e8dfa57d}{00524}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a3ae4f438c71c1b015e1168a6e8dfa57d}{DisplayError}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}})}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00525}00525 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00526}00526     \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}} = \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\_HIGH\_BRIGHTNESS}};}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00527}00527     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a4622777d9ad3968a8f2ddae7c1d07dcc}{Frame\_Error\_1}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00528}00528     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(8, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_ae4ee084b75945efed12a803221e96264}{Frame\_Error\_2}}, \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\_TEXT\_BITMAP\_WEIGHT}}, \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\_TEXT\_CHAR\_HEIGHT}}, \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\_DISPLAY\_ON}});}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00529}00529 \}}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00530}00530 }
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00535}\mbox{\hyperlink{display_8h_a96554bd2b891de13492a5fcf99920b51}{00535}} \textcolor{keywordtype}{void} \mbox{\hyperlink{display_8h_a96554bd2b891de13492a5fcf99920b51}{ScreenON}}(\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}, int16\_t bright)}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00536}00536 \{}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00537}00537     \mbox{\hyperlink{_b1_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(0, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}}, \mbox{\hyperlink{bitmaps_8h_a9157b518e259b8d8c15a7e4075a49b25}{C\_DISPLAY\_WIDTH}}, \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\_TEXT\_CHAR\_OFFSET\_Y}} + 6, bright);}
+\DoxyCodeLine{\Hypertarget{display_8h_source_l00538}00538 \}}
+
+\end{DoxyCode}

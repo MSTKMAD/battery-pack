@@ -1,0 +1,30 @@
+\hypertarget{_t_e_s_t__8_8ino_source}{}\doxysection{TEST\+\_\+8.\+ino}
+\label{_t_e_s_t__8_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_8/TEST\_8.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/examples/TEST\_8/TEST\_8.ino}}
+\mbox{\hyperlink{_t_e_s_t__8_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{display_8h}{display.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00012}00012 \textcolor{comment}{//\#include "{}MilliTimer.h"{}}}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00014}\mbox{\hyperlink{_t_e_s_t__8_8ino_ad7d1ac2604db2782f2973047258604ee}{00014}} \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}} \mbox{\hyperlink{_t_e_s_t__8_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}} = \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\_IS31FL3731\_Wing}}();}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00015}\mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{00015}} \mbox{\hyperlink{class_milli_timer}{MilliTimer}} \mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}};}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00017}\mbox{\hyperlink{_t_e_s_t__8_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00017}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_t_e_s_t__8_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00018}00018 \{}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00019}00019     \mbox{\hyperlink{_t_e_s_t__8_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}}.\mbox{\hyperlink{class_adafruit___i_s31_f_l3731_abb2902bf5f6c86a77366682ce8c6317b}{begin}}();}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00020}00020     \mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}}.\mbox{\hyperlink{class_milli_timer_ac0d67f165ee428193b07c7c3464e960e}{set}}(10000);}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00021}00021     \textcolor{keywordflow}{while} (\mbox{\hyperlink{_t_e_s_t__8_8ino_ab7df76bfa31a988b481a675629cf9889}{timer}}.\mbox{\hyperlink{class_milli_timer_a7db6330ee7f1551b88a324fce593f8aa}{poll}}() == \mbox{\hyperlink{_milli_timer_8h_a2b52d1ddc05fa2d9212ee51ca4cde653}{C\_TIMER\_NOT\_EXPIRED}})}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00022}00022     \{}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00023}00023         \mbox{\hyperlink{display_8h_adbebdd005e50d4c91fb693805993c9e9}{DisplayUsbIn}}(\mbox{\hyperlink{_t_e_s_t__8_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00024}00024     \}}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00025}00025     \textcolor{keywordflow}{while} (\textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00026}00026     \{}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00027}00027         \mbox{\hyperlink{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}{DisplayUsbOut}}(\mbox{\hyperlink{_t_e_s_t__8_8ino_ad7d1ac2604db2782f2973047258604ee}{ledmatrix}});}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00031}\mbox{\hyperlink{_t_e_s_t__8_8ino_afe461d27b9c48d5921c00d521181f12f}{00031}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_t_e_s_t__8_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{_t_e_s_t__8_8ino_source_l00033}00033 \}}
+
+\end{DoxyCode}

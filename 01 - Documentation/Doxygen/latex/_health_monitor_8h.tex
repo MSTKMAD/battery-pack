@@ -1,0 +1,81 @@
+\hypertarget{_health_monitor_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0005-\/\+SENSING/\+Health\+Monitor.h File Reference}
+\label{_health_monitor_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/HealthMonitor.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/HealthMonitor.h}}
+{\ttfamily \#include $<$batt\+\_\+\+SAMD\+\_\+\+Analog\+Correction.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_health_monitor}{Health\+Monitor}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_health_monitor_8h_a3755f09042885d550c508cf380ee8984}{C\+\_\+\+TIME\+\_\+\+HEALTH\+\_\+\+MONITORING}} = 50
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_health_monitor_8h_ab636c8bba67427e5e3e9c5555e083a5f}{C\+\_\+\+SAMPLING\+\_\+\+TIME}} = 10
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}} = 20
+\item 
+const int16\+\_\+t \mbox{\hyperlink{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}{C\+\_\+\+COUNTER\+\_\+\+LIMIT}} = \mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}} $\ast$ \mbox{\hyperlink{_health_monitor_8h_a3755f09042885d550c508cf380ee8984}{C\+\_\+\+TIME\+\_\+\+HEALTH\+\_\+\+MONITORING}} / \mbox{\hyperlink{_health_monitor_8h_ab636c8bba67427e5e3e9c5555e083a5f}{C\+\_\+\+SAMPLING\+\_\+\+TIME}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Javi (\href{mailto:Javier@musotoku.com}{\texttt{ Javier@musotoku.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+4 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/3-\/18
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{_health_monitor_8h_source}{Health\+Monitor.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}\label{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}} 
+\index{HealthMonitor.h@{HealthMonitor.h}!C\_COUNTER\_LIMIT@{C\_COUNTER\_LIMIT}}
+\index{C\_COUNTER\_LIMIT@{C\_COUNTER\_LIMIT}!HealthMonitor.h@{HealthMonitor.h}}
+\doxysubsubsection{\texorpdfstring{C\_COUNTER\_LIMIT}{C\_COUNTER\_LIMIT}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+COUNTER\+\_\+\+LIMIT = \mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}} $\ast$ \mbox{\hyperlink{_health_monitor_8h_a3755f09042885d550c508cf380ee8984}{C\+\_\+\+TIME\+\_\+\+HEALTH\+\_\+\+MONITORING}} / \mbox{\hyperlink{_health_monitor_8h_ab636c8bba67427e5e3e9c5555e083a5f}{C\+\_\+\+SAMPLING\+\_\+\+TIME}}}
+
+
+
+Definition at line \mbox{\hyperlink{_health_monitor_8h_source_l00018}{18}} of file \mbox{\hyperlink{_health_monitor_8h_source}{Health\+Monitor.\+h}}.
+
+\mbox{\Hypertarget{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}\label{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}} 
+\index{HealthMonitor.h@{HealthMonitor.h}!C\_RISE\_COUNT@{C\_RISE\_COUNT}}
+\index{C\_RISE\_COUNT@{C\_RISE\_COUNT}!HealthMonitor.h@{HealthMonitor.h}}
+\doxysubsubsection{\texorpdfstring{C\_RISE\_COUNT}{C\_RISE\_COUNT}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+RISE\+\_\+\+COUNT = 20}
+
+
+
+Definition at line \mbox{\hyperlink{_health_monitor_8h_source_l00016}{16}} of file \mbox{\hyperlink{_health_monitor_8h_source}{Health\+Monitor.\+h}}.
+
+\mbox{\Hypertarget{_health_monitor_8h_ab636c8bba67427e5e3e9c5555e083a5f}\label{_health_monitor_8h_ab636c8bba67427e5e3e9c5555e083a5f}} 
+\index{HealthMonitor.h@{HealthMonitor.h}!C\_SAMPLING\_TIME@{C\_SAMPLING\_TIME}}
+\index{C\_SAMPLING\_TIME@{C\_SAMPLING\_TIME}!HealthMonitor.h@{HealthMonitor.h}}
+\doxysubsubsection{\texorpdfstring{C\_SAMPLING\_TIME}{C\_SAMPLING\_TIME}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+SAMPLING\+\_\+\+TIME = 10}
+
+
+
+Definition at line \mbox{\hyperlink{_health_monitor_8h_source_l00014}{14}} of file \mbox{\hyperlink{_health_monitor_8h_source}{Health\+Monitor.\+h}}.
+
+\mbox{\Hypertarget{_health_monitor_8h_a3755f09042885d550c508cf380ee8984}\label{_health_monitor_8h_a3755f09042885d550c508cf380ee8984}} 
+\index{HealthMonitor.h@{HealthMonitor.h}!C\_TIME\_HEALTH\_MONITORING@{C\_TIME\_HEALTH\_MONITORING}}
+\index{C\_TIME\_HEALTH\_MONITORING@{C\_TIME\_HEALTH\_MONITORING}!HealthMonitor.h@{HealthMonitor.h}}
+\doxysubsubsection{\texorpdfstring{C\_TIME\_HEALTH\_MONITORING}{C\_TIME\_HEALTH\_MONITORING}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+TIME\+\_\+\+HEALTH\+\_\+\+MONITORING = 50}
+
+
+
+Definition at line \mbox{\hyperlink{_health_monitor_8h_source_l00013}{13}} of file \mbox{\hyperlink{_health_monitor_8h_source}{Health\+Monitor.\+h}}.
+

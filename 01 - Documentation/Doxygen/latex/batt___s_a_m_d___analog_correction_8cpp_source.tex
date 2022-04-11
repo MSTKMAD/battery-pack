@@ -1,0 +1,37 @@
+\hypertarget{batt___s_a_m_d___analog_correction_8cpp_source}{}\doxysection{batt\+\_\+\+SAMD\+\_\+\+Analog\+Correction.\+cpp}
+\label{batt___s_a_m_d___analog_correction_8cpp_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/src/batt\_SAMD\_AnalogCorrection.cpp@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0013-\/SAMD\_AnalogCorrection/src/batt\_SAMD\_AnalogCorrection.cpp}}
+\mbox{\hyperlink{batt___s_a_m_d___analog_correction_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00002}00002 \textcolor{comment}{  Copyright (c) 2015 Arduino LLC.  All right reserved.}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00004}00004 \textcolor{comment}{  This library is free software; you can redistribute it and/or}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00005}00005 \textcolor{comment}{  modify it under the terms of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00006}00006 \textcolor{comment}{  License as published by the Free Software Foundation; either}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00007}00007 \textcolor{comment}{  version 2.1 of the License, or (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00008}00008 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00009}00009 \textcolor{comment}{  This library is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00010}00010 \textcolor{comment}{  but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00011}00011 \textcolor{comment}{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00012}00012 \textcolor{comment}{  See the GNU Lesser General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00013}00013 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00014}00014 \textcolor{comment}{  You should have received a copy of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00015}00015 \textcolor{comment}{  License along with this library; if not, write to the Free Software}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00016}00016 \textcolor{comment}{  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-\/1301  USA}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00017}00017 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{batt___s_a_m_d___analog_correction_8h}{batt\_SAMD\_AnalogCorrection.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00021}\mbox{\hyperlink{batt___s_a_m_d___analog_correction_8cpp_a18f59c674a1d116e87341e6a0db0efca}{00021}} \textcolor{keywordtype}{void} \mbox{\hyperlink{batt___s_a_m_d___analog_correction_8cpp_a18f59c674a1d116e87341e6a0db0efca}{analogReadCorrection}} (\textcolor{keywordtype}{int} offset, uint16\_t gain)}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00022}00022 \{}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00023}00023   \textcolor{comment}{// Set correction values}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00024}00024   ADC-\/>OFFSETCORR.reg = ADC\_OFFSETCORR\_OFFSETCORR(offset);}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00025}00025   ADC-\/>GAINCORR.reg = ADC\_GAINCORR\_GAINCORR(gain);}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00027}00027   \textcolor{comment}{// Enable digital correction logic}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00028}00028   ADC-\/>CTRLB.bit.CORREN = 1;}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00029}00029   \textcolor{keywordflow}{while}(ADC-\/>STATUS.bit.SYNCBUSY);}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{batt___s_a_m_d___analog_correction_8cpp_source_l00031}00031 }
+
+\end{DoxyCode}

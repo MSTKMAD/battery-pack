@@ -1,0 +1,98 @@
+\hypertarget{_primo_deep_sleep_8ino_source}{}\doxysection{Primo\+Deep\+Sleep.\+ino}
+\label{_primo_deep_sleep_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/PrimoDeepSleep/PrimoDeepSleep.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/examples/PrimoDeepSleep/PrimoDeepSleep.ino}}
+\mbox{\hyperlink{_primo_deep_sleep_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00002}00002 \textcolor{comment}{  PrimoDeepSleep.ino}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00003}00003 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00004}00004 \textcolor{comment}{  Written by Chiara Ruggeri (chiara@arduino.org)}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00005}00005 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00006}00006 \textcolor{comment}{  This example for the Arduino Primo board shows how to use}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00007}00007 \textcolor{comment}{  low power library to enter in power off mode and save power.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00008}00008 \textcolor{comment}{  This mode ensure the deepest power saving mode. If you need}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00009}00009 \textcolor{comment}{  a faster response from the board use standby function instead.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00010}00010 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00011}00011 \textcolor{comment}{  Please note that once exited from the deepest sleep mode the}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00012}00012 \textcolor{comment}{  board will reset (so setup will be run again).}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00013}00013 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00014}00014 \textcolor{comment}{  The functions enableWakeupFrom set the peripheral that will wake up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00015}00015 \textcolor{comment}{  the board. By calling it more than once you can choose more than}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00016}00016 \textcolor{comment}{  a wakeup source.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00017}00017 \textcolor{comment}{  The board will be reset when it wakes up from power off.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00018}00018 \textcolor{comment}{  You can use wakeUpCause() function to find out what signals woke up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00019}00019 \textcolor{comment}{  the board if you use more than one wakeUpBy.. function.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00020}00020 \textcolor{comment}{  }}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00021}00021 \textcolor{comment}{  This example code is in the public domain.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00022}00022 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00024}00024 \textcolor{preprocessor}{\#include "{}ArduinoLowPower.h"{}}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00027}00027 \textcolor{comment}{// Pin used to wakeup the board}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00028}\mbox{\hyperlink{_primo_deep_sleep_8ino_ad9f69bce8be75420374d227207ad9f7f}{00028}} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{_primo_deep_sleep_8ino_ad9f69bce8be75420374d227207ad9f7f}{digitalPin}} = 10;}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00030}00030 \textcolor{comment}{// Pin used in Compatarot module to wake up the board}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00031}\mbox{\hyperlink{_primo_deep_sleep_8ino_a1dc085aeaaec657b48a2e349e1aa85be}{00031}} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \mbox{\hyperlink{_primo_deep_sleep_8ino_a1dc085aeaaec657b48a2e349e1aa85be}{analogPin}} = A0;}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00034}\mbox{\hyperlink{_primo_deep_sleep_8ino_ad6f4b1cf8b20efceec7eb8cee6069de8}{00034}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_ad6f4b1cf8b20efceec7eb8cee6069de8}{StmEspPM}}(\textcolor{keywordtype}{bool} sleep)\{}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00035}00035   \textcolor{comment}{// enable USER1\_BUTTON to turn STM32 off and on when pressed.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00036}00036   \textcolor{comment}{// note that when STM32 is off you cannot load any new sketch.}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00037}00037   pinMode(USER1\_BUTTON, STM32\_IT);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00039}00039   \textcolor{comment}{// turn ESP8266 off or on}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00040}00040   digitalWrite(GPIO\_ESP\_PW, sleep ? LOW: HIGH);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00041}00041 \}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00043}\mbox{\hyperlink{_primo_deep_sleep_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00043}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}() \{}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00044}00044   Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00045}00045   pinMode(LED\_BUILTIN, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00046}00046   digitalWrite(LED\_BUILTIN, HIGH);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00047}00047   delay(500);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00048}00048   digitalWrite(LED\_BUILTIN, LOW);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00049}00049   delay(500);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00051}00051   \textcolor{comment}{//look for what peripheral woke up the board}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00052}00052   \textcolor{comment}{//reason is 0 at the first execution}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00053}00053   \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\_reason}} reason=\mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.wakeupReason();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00054}00054   \textcolor{keywordflow}{if}(reason==\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}{GPIO\_WAKEUP}}) \textcolor{comment}{//GPIO caused the wake up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00055}00055     \mbox{\hyperlink{_primo_deep_sleep_8ino_acda08c27153853ad638f27ba55401193}{doMyStuff}}();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00056}00056   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00057}00057     \textcolor{keywordflow}{if}(reason==\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}{NFC\_WAKEUP}}) \textcolor{comment}{//NFC caused the wake up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00058}00058       \mbox{\hyperlink{_primo_deep_sleep_8ino_a3dcf2939ee621f48f46d657f6d2b39f5}{doMyStuffWithNFC}}();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00059}00059   \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00060}00060     \textcolor{keywordflow}{if}(reason==\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}{ANALOG\_COMPARATOR\_WAKEUP}}) \textcolor{comment}{//Comparator caused the wake up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00061}00061       \mbox{\hyperlink{_primo_deep_sleep_8ino_a3ceb0821151260d797b8ea4e075f78bc}{doOtherStuff}}();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00063}00063   Serial.println(\textcolor{stringliteral}{"{}Hi all, I return to sleep"{}});}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00065}00065   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.companionLowPowerCallback(\mbox{\hyperlink{_primo_deep_sleep_8ino_ad6f4b1cf8b20efceec7eb8cee6069de8}{StmEspPM}});}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00066}00066   \textcolor{comment}{// Send sleep command to ESP and enable USER1\_BUTTON to turn STM off}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00067}00067   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.companionSleep();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00069}00069   \textcolor{comment}{//set digital pin 10 to wake up the board when LOW level is detected}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00070}00070   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.enableWakeupFrom(\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}{GPIO\_WAKEUP}}, \mbox{\hyperlink{_primo_deep_sleep_8ino_ad9f69bce8be75420374d227207ad9f7f}{digitalPin}}, LOW);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00071}00071   \textcolor{comment}{//let the board be woken up by any NFC field}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00072}00072   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.enableWakeupFrom(\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}{NFC\_WAKEUP}});}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00073}00073   \textcolor{comment}{//wake up the board when the voltage on pin A0 goes below the voltage on pin AREF}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00074}00074   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.enableWakeupFrom(\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}{ANALOG\_COMPARATOR\_WAKEUP}}, \mbox{\hyperlink{_primo_deep_sleep_8ino_a1dc085aeaaec657b48a2e349e1aa85be}{analogPin}}, AREF, UP);}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00075}00075   \textcolor{comment}{//go in low power mode. Note that the board will reset once it is woken up}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00076}00076   \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}}.\mbox{\hyperlink{class_arduino_low_power_class_ac2cc2c81781a56339cd512307e0fbc1f}{deepSleep}}();}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00080}\mbox{\hyperlink{_primo_deep_sleep_8ino_afe461d27b9c48d5921c00d521181f12f}{00080}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}() \{\}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00082}\mbox{\hyperlink{_primo_deep_sleep_8ino_acda08c27153853ad638f27ba55401193}{00082}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_acda08c27153853ad638f27ba55401193}{doMyStuff}}()\{}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00083}00083   \textcolor{comment}{//insert your code here}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00084}00084 \}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00086}\mbox{\hyperlink{_primo_deep_sleep_8ino_a3dcf2939ee621f48f46d657f6d2b39f5}{00086}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_a3dcf2939ee621f48f46d657f6d2b39f5}{doMyStuffWithNFC}}()\{}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00087}00087   \textcolor{comment}{//insert your code here}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00088}00088 \}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00090}\mbox{\hyperlink{_primo_deep_sleep_8ino_a3ceb0821151260d797b8ea4e075f78bc}{00090}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_primo_deep_sleep_8ino_a3ceb0821151260d797b8ea4e075f78bc}{doOtherStuff}}()\{}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00091}00091   \textcolor{comment}{//insert your code here}}
+\DoxyCodeLine{\Hypertarget{_primo_deep_sleep_8ino_source_l00092}00092 \}}
+
+\end{DoxyCode}

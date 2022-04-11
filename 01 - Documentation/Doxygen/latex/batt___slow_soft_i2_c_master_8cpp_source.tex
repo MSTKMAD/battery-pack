@@ -1,0 +1,151 @@
+\hypertarget{batt___slow_soft_i2_c_master_8cpp_source}{}\doxysection{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}
+\label{batt___slow_soft_i2_c_master_8cpp_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0007-\/SlowSoftI2CMaster/batt\_SlowSoftI2CMaster.cpp@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0007-\/SlowSoftI2CMaster/batt\_SlowSoftI2CMaster.cpp}}
+\mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00001}00001 \textcolor{comment}{/* Arduino Slow Software I2C Master }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00002}00002 \textcolor{comment}{   Copyright (c) 2017 Bernhard Nebel.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00003}00003 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00004}00004 \textcolor{comment}{   This library is free software; you can redistribute it and/or}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00005}00005 \textcolor{comment}{   modify it under the terms of the GNU Lesser General Public License}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00006}00006 \textcolor{comment}{   as published by the Free Software Foundation; either version 3 of}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00007}00007 \textcolor{comment}{   the License, or (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00008}00008 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00009}00009 \textcolor{comment}{   This library is distributed in the hope that it will be useful, but}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00010}00010 \textcolor{comment}{   WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00011}00011 \textcolor{comment}{   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00012}00012 \textcolor{comment}{   Lesser General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00013}00013 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00014}00014 \textcolor{comment}{   You should have received a copy of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00015}00015 \textcolor{comment}{   License along with this library; if not, write to the Free Software}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00016}00016 \textcolor{comment}{   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-\/1301}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00017}00017 \textcolor{comment}{   USA}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00018}00018 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00020}00020 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h}{batt\_SlowSoftI2CMaster.h}}>}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00022}\mbox{\hyperlink{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}{00022}} \mbox{\hyperlink{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}{SlowSoftI2CMaster::SlowSoftI2CMaster}}(uint8\_t sda, uint8\_t scl) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00023}00023   \_sda = sda;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00024}00024   \_scl = scl;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00025}00025   \_pullup = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00028}\mbox{\hyperlink{class_slow_soft_i2_c_master_afedcd8bdc8cf13598200b5d816cb0b62}{00028}} \mbox{\hyperlink{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}{SlowSoftI2CMaster::SlowSoftI2CMaster}}(uint8\_t sda, uint8\_t scl, \textcolor{keywordtype}{bool} pullup) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00029}00029   \_sda = sda;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00030}00030   \_scl = scl;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00031}00031   \_pullup = pullup;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00032}00032 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00033}00033 \textcolor{comment}{// Init function. Needs to be called once in the beginning.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00034}00034 \textcolor{comment}{// Returns false if SDA or SCL are low, which probably means }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00035}00035 \textcolor{comment}{// a I2C bus lockup or that the lines are not pulled up.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00036}\mbox{\hyperlink{class_slow_soft_i2_c_master_afb9bd93dd17a72e7002c5bb9cb9763ee}{00036}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_slow_soft_i2_c_master_afb9bd93dd17a72e7002c5bb9cb9763ee}{SlowSoftI2CMaster::i2c\_init}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00037}00037   digitalWrite(\_sda, LOW);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00038}00038   digitalWrite(\_scl, LOW);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00039}00039   setHigh(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00040}00040   setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00041}00041   \textcolor{keywordflow}{if} (digitalRead(\_sda) == LOW || digitalRead(\_scl) == LOW) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00042}00042   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00045}00045 \textcolor{comment}{// Start transfer function: <addr> is the 8-\/bit I2C address (including the R/W}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00046}00046 \textcolor{comment}{// bit). }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00047}00047 \textcolor{comment}{// Return: true if the slave replies with an "{}acknowledge"{}, false otherwise}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00048}\mbox{\hyperlink{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}{00048}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}{SlowSoftI2CMaster::i2c\_start}}(uint8\_t addr) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00049}00049   setLow(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00050}00050   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00051}00051   setLow(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00052}00052   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}{i2c\_write}}(addr);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00053}00053 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00055}00055 \textcolor{comment}{// Try to start transfer until an ACK is returned}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00056}\mbox{\hyperlink{class_slow_soft_i2_c_master_af8ba233d3fb9ca025b05c1cf3acbfd55}{00056}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_slow_soft_i2_c_master_af8ba233d3fb9ca025b05c1cf3acbfd55}{SlowSoftI2CMaster::i2c\_start\_wait}}(uint8\_t addr) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00057}00057   \textcolor{keywordtype}{long} retry = \mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a13944ca22af6518c25240e308545d9d1}{I2C\_MAXWAIT}};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00058}00058   \textcolor{keywordflow}{while} (!\mbox{\hyperlink{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}{i2c\_start}}(addr)) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00059}00059     \mbox{\hyperlink{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}{i2c\_stop}}();}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (-\/-\/retry == 0) \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00061}00061   \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00062}00062   \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00065}00065 \textcolor{comment}{// Repeated start function: After having claimed the bus with a start condition,}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00066}00066 \textcolor{comment}{// you can address another or the same chip again without an intervening }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00067}00067 \textcolor{comment}{// stop condition.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00068}00068 \textcolor{comment}{// Return: true if the slave replies with an "{}acknowledge"{}, false otherwise}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00069}\mbox{\hyperlink{class_slow_soft_i2_c_master_ad98eff80b3d16ecbc1ca1bf8ea56fafc}{00069}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_slow_soft_i2_c_master_ad98eff80b3d16ecbc1ca1bf8ea56fafc}{SlowSoftI2CMaster::i2c\_rep\_start}}(uint8\_t addr) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00070}00070   setHigh(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00071}00071   setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00072}00072   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00073}00073   \textcolor{keywordflow}{return} \mbox{\hyperlink{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}{i2c\_start}}(addr);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00074}00074 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00075}00075 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00076}00076 \textcolor{comment}{// Issue a stop condition, freeing the bus.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00077}\mbox{\hyperlink{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}{00077}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}{SlowSoftI2CMaster::i2c\_stop}}(\textcolor{keywordtype}{void}) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00078}00078   setLow(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00079}00079   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00080}00080   setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00081}00081   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00082}00082   setHigh(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00083}00083   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00084}00084 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00085}00085 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00086}00086 \textcolor{comment}{// Write one byte to the slave chip that had been addressed}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00087}00087 \textcolor{comment}{// by the previous start call. <value> is the byte to be sent.}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00088}00088 \textcolor{comment}{// Return: true if the slave replies with an "{}acknowledge"{}, false otherwise}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00089}\mbox{\hyperlink{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}{00089}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}{SlowSoftI2CMaster::i2c\_write}}(uint8\_t value) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00090}00090   \textcolor{keywordflow}{for} (uint8\_t curr = 0X80; curr != 0; curr >>= 1) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00091}00091     \textcolor{keywordflow}{if} (curr \& value) setHigh(\_sda); \textcolor{keywordflow}{else}  setLow(\_sda); }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00092}00092     setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00093}00093     delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00094}00094     setLow(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00095}00095   \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00096}00096   \textcolor{comment}{// get Ack or Nak}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00097}00097   setHigh(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00098}00098   setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00099}00099   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}}/2);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00100}00100   uint8\_t ack = digitalRead(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00101}00101   setLow(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00102}00102   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}}/2);  }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00103}00103   setLow(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00104}00104   \textcolor{keywordflow}{return} ack == 0;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00105}00105 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00107}00107 \textcolor{comment}{// Read one byte. If <last> is true, we send a NAK after having received }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00108}00108 \textcolor{comment}{// the byte in order to terminate the read sequence. }}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00109}\mbox{\hyperlink{class_slow_soft_i2_c_master_a8fbd3dda1bd0c8882d2f0173e8f39710}{00109}} uint8\_t \mbox{\hyperlink{class_slow_soft_i2_c_master_a8fbd3dda1bd0c8882d2f0173e8f39710}{SlowSoftI2CMaster::i2c\_read}}(\textcolor{keywordtype}{bool} last) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00110}00110   uint8\_t b = 0;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00111}00111   setHigh(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00112}00112   \textcolor{keywordflow}{for} (uint8\_t \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < 8; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00113}00113     b <<= 1;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00114}00114     delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}});}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00115}00115     setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00116}00116     \textcolor{keywordflow}{if} (digitalRead(\_sda)) b |= 1;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00117}00117     setLow(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00118}00118   \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00119}00119   \textcolor{keywordflow}{if} (last) setHigh(\_sda); \textcolor{keywordflow}{else} setLow(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00120}00120   setHigh(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00121}00121   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}}/2);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00122}00122   setLow(\_scl);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00123}00123   delayMicroseconds(\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_a62249e384b997229a3e2ae74ade334e2}{DELAY}}/2);  }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00124}00124   setLow(\_sda);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00125}00125   \textcolor{keywordflow}{return} b;}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00126}00126 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00127}00127 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00128}00128 \textcolor{keywordtype}{void} SlowSoftI2CMaster::setLow(uint8\_t \mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00129}00129     noInterrupts();}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00130}00130     \textcolor{keywordflow}{if} (\_pullup) }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00131}00131       digitalWrite(\mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, LOW);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00132}00132     pinMode(\mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00133}00133     interrupts();}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00134}00134 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00135}00135 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00137}00137 \textcolor{keywordtype}{void} SlowSoftI2CMaster::setHigh(uint8\_t \mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}) \{}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00138}00138     noInterrupts();}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00139}00139     \textcolor{keywordflow}{if} (\_pullup) }
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00140}00140       pinMode(\mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, INPUT\_PULLUP);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00141}00141     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00142}00142       pinMode(\mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, INPUT);}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00143}00143     interrupts();}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00144}00144 \}}
+\DoxyCodeLine{\Hypertarget{batt___slow_soft_i2_c_master_8cpp_source_l00145}00145 }
+
+\end{DoxyCode}

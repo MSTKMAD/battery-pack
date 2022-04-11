@@ -1,0 +1,44 @@
+\hypertarget{_flash_store_and_retrieve_8ino_source}{}\doxysection{Flash\+Store\+And\+Retrieve.\+ino}
+\label{_flash_store_and_retrieve_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/examples/FlashStoreAndRetrieve/FlashStoreAndRetrieve.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0012-\/batt\_FlashStorage/examples/FlashStoreAndRetrieve/FlashStoreAndRetrieve.ino}}
+\mbox{\hyperlink{_flash_store_and_retrieve_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00002}00002 \textcolor{comment}{  Store and retrieve an integer value in Flash memory.}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00003}00003 \textcolor{comment}{  The value is increased each time the board is restarted.}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00005}00005 \textcolor{comment}{  This example code is in the public domain.}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00006}00006 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00007}00007 \textcolor{comment}{  Written 30 Apr 2015 by Cristian Maglie }}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00008}00008 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00010}00010 \textcolor{preprocessor}{\#include <FlashStorage.h>}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00012}00012 \textcolor{comment}{// Reserve a portion of flash memory to store an "{}int"{} variable}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00013}00013 \textcolor{comment}{// and call it "{}my\_flash\_store"{}.}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00014}\mbox{\hyperlink{_flash_store_and_retrieve_8ino_a80d5be9b69e5659cc49d0a350f8990db}{00014}} \mbox{\hyperlink{_flash_store_and_retrieve_8ino_a80d5be9b69e5659cc49d0a350f8990db}{FlashStorage}}(my\_flash\_store, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00016}00016 \textcolor{comment}{// Note: the area of flash memory reserved for the variable is}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00017}00017 \textcolor{comment}{// lost every time the sketch is uploaded on the board.}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00019}\mbox{\hyperlink{_flash_store_and_retrieve_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00019}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_flash_store_and_retrieve_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}() \{}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00020}00020   SERIAL\_PORT\_MONITOR.begin(9600);}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00021}00021 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00022}00022   \textcolor{keywordtype}{int} number;}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00024}00024   \textcolor{comment}{// Read the content of "{}my\_flash\_store"{} and assign it to "{}number"{}}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00025}00025   number = my\_flash\_store.read();}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00027}00027   \textcolor{comment}{// Print the current number on the serial monitor}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00028}00028   SERIAL\_PORT\_MONITOR.println(number);}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00030}00030   \textcolor{comment}{// Save into "{}my\_flash\_store"{} the number increased by 1 for the}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00031}00031   \textcolor{comment}{// next run of the sketch}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00032}00032   my\_flash\_store.write(number + 1);}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00033}00033 \}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00034}00034 }
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00035}\mbox{\hyperlink{_flash_store_and_retrieve_8ino_afe461d27b9c48d5921c00d521181f12f}{00035}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_flash_store_and_retrieve_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}() \{}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00036}00036   \textcolor{comment}{// Do nothing...}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{_flash_store_and_retrieve_8ino_source_l00038}00038 }
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+Funcion principal de esta libreria. Comanda a la CPU a un estado de Stanby (Bajo consumo) hasta que una interrupcion configurada para ello, levante la levante/despierte.
+
+La libreria Arduino Low\+Power permite configurar nuestra CPU para que entre en modos de bajo consumo, ideal para el proyecto cuando la bateria se encuentre \char`\"{}apagada\char`\"{}.\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0cf9c6b4d41b0e02bf4984034095c65e7_autotoc_md68}{}\doxysection{Funciones}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0cf9c6b4d41b0e02bf4984034095c65e7_autotoc_md68}
+
+\begin{DoxyItemize}
+\item {\bfseries{sleep()}}\+:
+\item 
+\item {\bfseries{attach\+Interrupt\+Wakeup()}}\+:
+\item Activamos la posibilidad de disparo de una interrupcion hardward en un determinado pin ante una determianda condicion (Rise Edge, Fall Edge, High state, Low State).
+\item 
+\begin{DoxyParams}{Parameters}
+{\em pin} & \\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em callback} & \\
+\hline
+\end{DoxyParams}
+
+\item 
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\hypertarget{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0cf9c6b4d41b0e02bf4984034095c65e7_autotoc_md69}{}\doxysection{TESTs}\label{md__c___users__javi__team__dropbox__javi__rodriguez__workspace_2__p_r_o_y_e_c_t_o_s__bitbucket_0cf9c6b4d41b0e02bf4984034095c65e7_autotoc_md69}
+
+\begin{DoxyItemize}
+\item External\+Wake\+Up.
+
+This sketch demonstrates the usage of External Interrupts (on pins) to wakeup a chip in sleep mode. Sleep modes allow a significant drop in the power usage of a board while it does nothing waiting for an event to happen. Battery powered application can take advantage of these modes to enhance battery life significantly.
+
+In this sketch, shorting pin 8 to a GND will wake up the board. Please note that, if the processor is sleeping, a new sketch can\textquotesingle{}t be uploaded. To overcome this, manually reset the board (usually with a single or double tap to the RESET button)
+
+This example code is in the public domain. 
+\end{DoxyItemize}

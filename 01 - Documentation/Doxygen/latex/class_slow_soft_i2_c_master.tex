@@ -1,0 +1,154 @@
+\hypertarget{class_slow_soft_i2_c_master}{}\doxysection{Slow\+Soft\+I2\+CMaster Class Reference}
+\label{class_slow_soft_i2_c_master}\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+
+
+{\ttfamily \#include $<$batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}{Slow\+Soft\+I2\+CMaster}} (uint8\+\_\+t sda, uint8\+\_\+t scl)
+\item 
+\mbox{\hyperlink{class_slow_soft_i2_c_master_afedcd8bdc8cf13598200b5d816cb0b62}{Slow\+Soft\+I2\+CMaster}} (uint8\+\_\+t sda, uint8\+\_\+t scl, bool internal\+\_\+pullup)
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_afb9bd93dd17a72e7002c5bb9cb9763ee}{i2c\+\_\+init}} (void)
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}{i2c\+\_\+start}} (uint8\+\_\+t addr)
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_af8ba233d3fb9ca025b05c1cf3acbfd55}{i2c\+\_\+start\+\_\+wait}} (uint8\+\_\+t addr)
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_ad98eff80b3d16ecbc1ca1bf8ea56fafc}{i2c\+\_\+rep\+\_\+start}} (uint8\+\_\+t addr)
+\item 
+void \mbox{\hyperlink{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}{i2c\+\_\+stop}} (void)
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}{i2c\+\_\+write}} (uint8\+\_\+t value)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_slow_soft_i2_c_master_a8fbd3dda1bd0c8882d2f0173e8f39710}{i2c\+\_\+read}} (bool last)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_slow_soft_i2_c_master_a8cd455feaf580b896b58f551e9fd7d4c}{error}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_source_l00031}{31}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}\label{class_slow_soft_i2_c_master_af28e023e26b02cea5136b82c676e2367}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{SlowSoftI2CMaster()}{SlowSoftI2CMaster()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Slow\+Soft\+I2\+CMaster\+::\+Slow\+Soft\+I2\+CMaster (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sda,  }\item[{uint8\+\_\+t}]{scl }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00022}{22}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_afedcd8bdc8cf13598200b5d816cb0b62}\label{class_slow_soft_i2_c_master_afedcd8bdc8cf13598200b5d816cb0b62}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{SlowSoftI2CMaster()}{SlowSoftI2CMaster()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Slow\+Soft\+I2\+CMaster\+::\+Slow\+Soft\+I2\+CMaster (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sda,  }\item[{uint8\+\_\+t}]{scl,  }\item[{bool}]{internal\+\_\+pullup }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_afb9bd93dd17a72e7002c5bb9cb9763ee}\label{class_slow_soft_i2_c_master_afb9bd93dd17a72e7002c5bb9cb9763ee}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_init@{i2c\_init}}
+\index{i2c\_init@{i2c\_init}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_init()}{i2c\_init()}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_a8fbd3dda1bd0c8882d2f0173e8f39710}\label{class_slow_soft_i2_c_master_a8fbd3dda1bd0c8882d2f0173e8f39710}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_read@{i2c\_read}}
+\index{i2c\_read@{i2c\_read}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_read()}{i2c\_read()}}
+{\footnotesize\ttfamily uint8\+\_\+t Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+read (\begin{DoxyParamCaption}\item[{bool}]{last }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_ad98eff80b3d16ecbc1ca1bf8ea56fafc}\label{class_slow_soft_i2_c_master_ad98eff80b3d16ecbc1ca1bf8ea56fafc}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_rep\_start@{i2c\_rep\_start}}
+\index{i2c\_rep\_start@{i2c\_rep\_start}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_rep\_start()}{i2c\_rep\_start()}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+rep\+\_\+start (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}\label{class_slow_soft_i2_c_master_af753b0fd7b1be680f09b9da48041a312}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_start@{i2c\_start}}
+\index{i2c\_start@{i2c\_start}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_start()}{i2c\_start()}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+start (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00048}{48}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_af8ba233d3fb9ca025b05c1cf3acbfd55}\label{class_slow_soft_i2_c_master_af8ba233d3fb9ca025b05c1cf3acbfd55}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_start\_wait@{i2c\_start\_wait}}
+\index{i2c\_start\_wait@{i2c\_start\_wait}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_start\_wait()}{i2c\_start\_wait()}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+start\+\_\+wait (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{addr }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}\label{class_slow_soft_i2_c_master_a800d31f1f72046528eaeedfe91f69f6f}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_stop@{i2c\_stop}}
+\index{i2c\_stop@{i2c\_stop}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_stop()}{i2c\_stop()}}
+{\footnotesize\ttfamily void Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}\label{class_slow_soft_i2_c_master_a2651d221eda91c2af815e1e1018815c3}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!i2c\_write@{i2c\_write}}
+\index{i2c\_write@{i2c\_write}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{i2c\_write()}{i2c\_write()}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::i2c\+\_\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_slow_soft_i2_c_master_a8cd455feaf580b896b58f551e9fd7d4c}\label{class_slow_soft_i2_c_master_a8cd455feaf580b896b58f551e9fd7d4c}} 
+\index{SlowSoftI2CMaster@{SlowSoftI2CMaster}!error@{error}}
+\index{error@{error}!SlowSoftI2CMaster@{SlowSoftI2CMaster}}
+\doxysubsubsection{\texorpdfstring{error}{error}}
+{\footnotesize\ttfamily bool Slow\+Soft\+I2\+CMaster\+::error}
+
+
+
+Definition at line \mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_source_l00042}{42}} of file \mbox{\hyperlink{batt___slow_soft_i2_c_master_8h_source}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0007-\/\+Slow\+Soft\+I2\+CMaster/\mbox{\hyperlink{batt___slow_soft_i2_c_master_8h}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+h}}\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0007-\/\+Slow\+Soft\+I2\+CMaster/\mbox{\hyperlink{batt___slow_soft_i2_c_master_8cpp}{batt\+\_\+\+Slow\+Soft\+I2\+CMaster.\+cpp}}\end{DoxyCompactItemize}

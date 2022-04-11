@@ -1,0 +1,526 @@
+\hypertarget{display_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0002-\/\+DISPLAY/display.h File Reference}
+\label{display_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/display.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0002-\/DISPLAY/display.h}}
+
+
+Libreria MUSOTOKU para display 15x7.  
+
+
+{\ttfamily \#include \char`\"{}bitmaps.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$Wire.\+h$>$}\newline
+{\ttfamily \#include $<$batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h$>$}\newline
+{\ttfamily \#include $<$batt\+\_\+\+Adafruit\+\_\+\+IS31\+FL3731.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{display_8h_ae06228591d83902a98c2c703e9d768f9}{Switch\+Screen\+Off}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Apagado de la pantalla. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{display_8h_a2d3d26ddec63a57cfa621b6bba2e56e7}{Display\+Text}} (String cadena, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, bool reset=false, bool mode\+\_\+bright=\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}})
+\begin{DoxyCompactList}\small\item\em Esta funcion muestra en el display una cadena de caracteres en un scroll lateral der-\/izq. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a471d98c29ea2c3cdb940f34a34198713}{Display\+Volt}} (int16\+\_\+t number, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, bool mode\+\_\+bright=\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}})
+\begin{DoxyCompactList}\small\item\em Esta funcion imprime la pantalla de voltaje, que muestra le voltaje al que se encuentra la salida de la bateria, con un decimal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a3a56eed4d5aa6ce53d014bd42c72881c}{Display\+Cap}} (int16\+\_\+t \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, bool mode\+\_\+bright=\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}})
+\begin{DoxyCompactList}\small\item\em Esta fncion muestra la pantalla de porcentaje de capacidad de bateria. si la capacidad es 100\% muestra la pantalla FULL. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a776b1e4b14386cd3104ce5c8db56ea5f}{Display\+Batt\+Charging}} (int16\+\_\+t \mbox{\hyperlink{_b1_8ino_a6be948a502bdacee3d2a2cc1d2f97ece}{capacity}}, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, bool mode\+\_\+bright=\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}})
+\begin{DoxyCompactList}\small\item\em Esta funcion muestra el marco de una bateria, se encarga de ir rellenando e manera solida la capacidad recibida, y deja parpadeando la que seria el proximo 10\% que se encuentra cargando. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a4fee24f1c4f33f6e9a0b4febfcd9a8c6}{Led\+Work}} (bool state\+\_\+led, \mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, bool mode\+\_\+bright=\mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}})
+\begin{DoxyCompactList}\small\item\em Funcion que permite encender y apagar el boton que representa el estado de la salida del voltage. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_adbebdd005e50d4c91fb693805993c9e9}{Display\+Usb\+In}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Animacion de Entrada del USB. A los 2 segundos disminuye su brillo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}{Display\+Usb\+Out}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Anuimacion de salida del USB. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a8aab8737ef1857c30ac109993c789563}{Display\+Diagnostic\+Mode}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Animacion del modo Diagnostico. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{display_8h_a2a4595ca249753c2b025998d6785799c}{Display\+Low\+Battery}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Animacion Bateria Baja. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a3ae4f438c71c1b015e1168a6e8dfa57d}{Display\+Error}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}})
+\begin{DoxyCompactList}\small\item\em Animacion de Error. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{display_8h_a96554bd2b891de13492a5fcf99920b51}{Screen\+ON}} (\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}} \mbox{\hyperlink{swirldemo_8ino_a973488895dc8c5701b4a3cf8e8d405c8}{ledmatrix}}, int16\+\_\+t bright)
+\begin{DoxyCompactList}\small\item\em Encender toda la pantalla con una cantidad de brillo. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}{C\+\_\+\+TEXT\+\_\+\+CHAR\+\_\+\+HEIGHT}} = 6
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_aefbf190d109598ef359d888e66e55129}{C\+\_\+\+PWBAR\+\_\+\+Y\+\_\+\+AXE}} = 6
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}{C\+\_\+\+TEXT\+\_\+\+CHAR\+\_\+\+OFFSET\+\_\+Y}} = 0
+\item 
+const bool \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}} = true
+\item 
+const bool \mbox{\hyperlink{display_8h_a308ce306c360e273e64f874bb7641394}{C\+\_\+\+MODE\+\_\+\+LOW\+\_\+\+BRIGHT}} = false
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}{C\+\_\+\+HIGH\+\_\+\+BRIGHTNESS}} = 20
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_aef2aa50b26eedaac6e025b94203b9572}{C\+\_\+\+LOW\+\_\+\+BRIGHTNESS}} = 5
+\item 
+int16\+\_\+t \mbox{\hyperlink{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}{C\+\_\+\+DISPLAY\+\_\+\+ON}} = 0
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}{C\+\_\+\+DISPLAY\+\_\+\+OFF}} = 0
+\item 
+const bool \mbox{\hyperlink{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}{C\+\_\+\+DISPLAY\+\_\+\+ST\+\_\+\+BUSSY}} = false
+\item 
+const bool \mbox{\hyperlink{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}{C\+\_\+\+DISPLAY\+\_\+\+ST\+\_\+\+NOT\+\_\+\+BUSSY}} = true
+\item 
+const uint8\+\_\+t \mbox{\hyperlink{display_8h_a75d06610e3455136b80f549bed3224e6}{C\+\_\+\+NUMBER\+\_\+\+BLINK\+\_\+\+LOW\+\_\+\+BATTERY}} = 4
+\item 
+const uint16\+\_\+t \mbox{\hyperlink{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}{C\+\_\+\+DELAY\+\_\+\+BLINK\+\_\+\+LOW\+\_\+\+BATTERY}} = 300
+\item 
+const int32\+\_\+t \mbox{\hyperlink{display_8h_affb60a59377a5a92622eec544592b426}{C\+\_\+\+TIMER\+\_\+\+BTW\+\_\+\+FRAMES}} = 75
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a62882ecb136e1c6c90acb1237ae58189}{C\+\_\+\+TEXT\+\_\+\+BITMAP\+\_\+\+WEIGHT}} = 8
+\item 
+const bool \mbox{\hyperlink{display_8h_a80d6af555827af99b4244277ebbdbd80}{blink\+\_\+\+OFF}} = false
+\item 
+const bool \mbox{\hyperlink{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}{blink\+\_\+\+ON}} = true
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_a124237af4436b4a3cc46f0f0021d050b}{C\+\_\+\+PIXEL\+\_\+\+START\+\_\+\+STRING}} = 7
+\item 
+const int16\+\_\+t \mbox{\hyperlink{display_8h_af8d5d466d07d5c9e011e686e49f60849}{C\+\_\+\+PIXEL\+\_\+\+STOP\+\_\+\+STRING}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Libreria MUSOTOKU para display 15x7. 
+
+\begin{DoxyAuthor}{Author}
+Javi (\href{mailto:Javier@musotoku.com}{\texttt{ Javier@musotoku.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+4 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/8-\/4
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{display_8h_a776b1e4b14386cd3104ce5c8db56ea5f}\label{display_8h_a776b1e4b14386cd3104ce5c8db56ea5f}} 
+\index{display.h@{display.h}!DisplayBattCharging@{DisplayBattCharging}}
+\index{DisplayBattCharging@{DisplayBattCharging}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayBattCharging()}{DisplayBattCharging()}}
+{\footnotesize\ttfamily void Display\+Batt\+Charging (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{capacity,  }\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{bool}]{mode\+\_\+bright = {\ttfamily \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}}} }\end{DoxyParamCaption})}
+
+
+
+Esta funcion muestra el marco de una bateria, se encarga de ir rellenando e manera solida la capacidad recibida, y deja parpadeando la que seria el proximo 10\% que se encuentra cargando. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+{\em ledmatrix} & \\
+\hline
+{\em mode\+\_\+bright} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00311}{311}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a3a56eed4d5aa6ce53d014bd42c72881c}\label{display_8h_a3a56eed4d5aa6ce53d014bd42c72881c}} 
+\index{display.h@{display.h}!DisplayCap@{DisplayCap}}
+\index{DisplayCap@{DisplayCap}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayCap()}{DisplayCap()}}
+{\footnotesize\ttfamily void Display\+Cap (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{capacity,  }\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{bool}]{mode\+\_\+bright = {\ttfamily \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}}} }\end{DoxyParamCaption})}
+
+
+
+Esta fncion muestra la pantalla de porcentaje de capacidad de bateria. si la capacidad es 100\% muestra la pantalla FULL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capacity} & \\
+\hline
+{\em ledmatrix} & \\
+\hline
+{\em mode\+\_\+bright} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00248}{248}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a8aab8737ef1857c30ac109993c789563}\label{display_8h_a8aab8737ef1857c30ac109993c789563}} 
+\index{display.h@{display.h}!DisplayDiagnosticMode@{DisplayDiagnosticMode}}
+\index{DisplayDiagnosticMode@{DisplayDiagnosticMode}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayDiagnosticMode()}{DisplayDiagnosticMode()}}
+{\footnotesize\ttfamily void Display\+Diagnostic\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Animacion del modo Diagnostico. 
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00456}{456}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a3ae4f438c71c1b015e1168a6e8dfa57d}\label{display_8h_a3ae4f438c71c1b015e1168a6e8dfa57d}} 
+\index{display.h@{display.h}!DisplayError@{DisplayError}}
+\index{DisplayError@{DisplayError}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayError()}{DisplayError()}}
+{\footnotesize\ttfamily void Display\+Error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Animacion de Error. 
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00524}{524}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a2a4595ca249753c2b025998d6785799c}\label{display_8h_a2a4595ca249753c2b025998d6785799c}} 
+\index{display.h@{display.h}!DisplayLowBattery@{DisplayLowBattery}}
+\index{DisplayLowBattery@{DisplayLowBattery}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayLowBattery()}{DisplayLowBattery()}}
+{\footnotesize\ttfamily bool Display\+Low\+Battery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Animacion Bateria Baja. 
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00476}{476}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a2d3d26ddec63a57cfa621b6bba2e56e7}\label{display_8h_a2d3d26ddec63a57cfa621b6bba2e56e7}} 
+\index{display.h@{display.h}!DisplayText@{DisplayText}}
+\index{DisplayText@{DisplayText}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayText()}{DisplayText()}}
+{\footnotesize\ttfamily bool Display\+Text (\begin{DoxyParamCaption}\item[{String}]{cadena,  }\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{bool}]{reset = {\ttfamily false},  }\item[{bool}]{mode\+\_\+bright = {\ttfamily \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}}} }\end{DoxyParamCaption})}
+
+
+
+Esta funcion muestra en el display una cadena de caracteres en un scroll lateral der-\/izq. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cadena} & \\
+\hline
+{\em ledmatrix} & \\
+\hline
+{\em reset} & \\
+\hline
+{\em mode\+\_\+bright} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00072}{72}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_adbebdd005e50d4c91fb693805993c9e9}\label{display_8h_adbebdd005e50d4c91fb693805993c9e9}} 
+\index{display.h@{display.h}!DisplayUsbIn@{DisplayUsbIn}}
+\index{DisplayUsbIn@{DisplayUsbIn}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayUsbIn()}{DisplayUsbIn()}}
+{\footnotesize\ttfamily void Display\+Usb\+In (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Animacion de Entrada del USB. A los 2 segundos disminuye su brillo. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ledmatrix} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00391}{391}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}\label{display_8h_ae0ad89cde68353ee55f3cf3b12b49c86}} 
+\index{display.h@{display.h}!DisplayUsbOut@{DisplayUsbOut}}
+\index{DisplayUsbOut@{DisplayUsbOut}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayUsbOut()}{DisplayUsbOut()}}
+{\footnotesize\ttfamily void Display\+Usb\+Out (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Anuimacion de salida del USB. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ledmatrix} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00427}{427}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a471d98c29ea2c3cdb940f34a34198713}\label{display_8h_a471d98c29ea2c3cdb940f34a34198713}} 
+\index{display.h@{display.h}!DisplayVolt@{DisplayVolt}}
+\index{DisplayVolt@{DisplayVolt}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{DisplayVolt()}{DisplayVolt()}}
+{\footnotesize\ttfamily void Display\+Volt (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{number,  }\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{bool}]{mode\+\_\+bright = {\ttfamily \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}}} }\end{DoxyParamCaption})}
+
+
+
+Esta funcion imprime la pantalla de voltaje, que muestra le voltaje al que se encuentra la salida de la bateria, con un decimal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em number} & \\
+\hline
+{\em ledmatrix} & \\
+\hline
+{\em mode\+\_\+bright} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00188}{188}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a4fee24f1c4f33f6e9a0b4febfcd9a8c6}\label{display_8h_a4fee24f1c4f33f6e9a0b4febfcd9a8c6}} 
+\index{display.h@{display.h}!LedWork@{LedWork}}
+\index{LedWork@{LedWork}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{LedWork()}{LedWork()}}
+{\footnotesize\ttfamily void Led\+Work (\begin{DoxyParamCaption}\item[{bool}]{state\+\_\+led,  }\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{bool}]{mode\+\_\+bright = {\ttfamily \mbox{\hyperlink{display_8h_a5d90f2891b15cb085b544c8c7a03b813}{C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT}}} }\end{DoxyParamCaption})}
+
+
+
+Funcion que permite encender y apagar el boton que representa el estado de la salida del voltage. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state\+\_\+led} & \\
+\hline
+{\em ledmatrix} & \\
+\hline
+{\em mode\+\_\+bright} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00358}{358}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a96554bd2b891de13492a5fcf99920b51}\label{display_8h_a96554bd2b891de13492a5fcf99920b51}} 
+\index{display.h@{display.h}!ScreenON@{ScreenON}}
+\index{ScreenON@{ScreenON}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{ScreenON()}{ScreenON()}}
+{\footnotesize\ttfamily void Screen\+ON (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix,  }\item[{int16\+\_\+t}]{bright }\end{DoxyParamCaption})}
+
+
+
+Encender toda la pantalla con una cantidad de brillo. 
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00535}{535}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_ae06228591d83902a98c2c703e9d768f9}\label{display_8h_ae06228591d83902a98c2c703e9d768f9}} 
+\index{display.h@{display.h}!SwitchScreenOff@{SwitchScreenOff}}
+\index{SwitchScreenOff@{SwitchScreenOff}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{SwitchScreenOff()}{SwitchScreenOff()}}
+{\footnotesize\ttfamily void Switch\+Screen\+Off (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_adafruit___i_s31_f_l3731___wing}{Adafruit\+\_\+\+IS31\+FL3731\+\_\+\+Wing}}}]{ledmatrix }\end{DoxyParamCaption})}
+
+
+
+Apagado de la pantalla. 
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00058}{58}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{display_8h_a80d6af555827af99b4244277ebbdbd80}\label{display_8h_a80d6af555827af99b4244277ebbdbd80}} 
+\index{display.h@{display.h}!blink\_OFF@{blink\_OFF}}
+\index{blink\_OFF@{blink\_OFF}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{blink\_OFF}{blink\_OFF}}
+{\footnotesize\ttfamily const bool blink\+\_\+\+OFF = false}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00049}{49}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}\label{display_8h_a2e078725486e788e4ffead7c2b1e1ecd}} 
+\index{display.h@{display.h}!blink\_ON@{blink\_ON}}
+\index{blink\_ON@{blink\_ON}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{blink\_ON}{blink\_ON}}
+{\footnotesize\ttfamily const bool blink\+\_\+\+ON = true}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00050}{50}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}\label{display_8h_a2a9e38f5e60dddd5a9c4cdfd35516754}} 
+\index{display.h@{display.h}!C\_DELAY\_BLINK\_LOW\_BATTERY@{C\_DELAY\_BLINK\_LOW\_BATTERY}}
+\index{C\_DELAY\_BLINK\_LOW\_BATTERY@{C\_DELAY\_BLINK\_LOW\_BATTERY}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_DELAY\_BLINK\_LOW\_BATTERY}{C\_DELAY\_BLINK\_LOW\_BATTERY}}
+{\footnotesize\ttfamily const uint16\+\_\+t C\+\_\+\+DELAY\+\_\+\+BLINK\+\_\+\+LOW\+\_\+\+BATTERY = 300}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00044}{44}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}\label{display_8h_a18ac02c662caedd6c7d39a6c2773d9ca}} 
+\index{display.h@{display.h}!C\_DISPLAY\_OFF@{C\_DISPLAY\_OFF}}
+\index{C\_DISPLAY\_OFF@{C\_DISPLAY\_OFF}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_DISPLAY\_OFF}{C\_DISPLAY\_OFF}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+DISPLAY\+\_\+\+OFF = 0}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00038}{38}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}\label{display_8h_a652f5dd24e2b6135dca2b356e99a4bd2}} 
+\index{display.h@{display.h}!C\_DISPLAY\_ON@{C\_DISPLAY\_ON}}
+\index{C\_DISPLAY\_ON@{C\_DISPLAY\_ON}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_DISPLAY\_ON}{C\_DISPLAY\_ON}}
+{\footnotesize\ttfamily int16\+\_\+t C\+\_\+\+DISPLAY\+\_\+\+ON = 0}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00037}{37}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}\label{display_8h_a13ccd3551442b1648b0f1d08d00bb69b}} 
+\index{display.h@{display.h}!C\_DISPLAY\_ST\_BUSSY@{C\_DISPLAY\_ST\_BUSSY}}
+\index{C\_DISPLAY\_ST\_BUSSY@{C\_DISPLAY\_ST\_BUSSY}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_DISPLAY\_ST\_BUSSY}{C\_DISPLAY\_ST\_BUSSY}}
+{\footnotesize\ttfamily const bool C\+\_\+\+DISPLAY\+\_\+\+ST\+\_\+\+BUSSY = false}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00040}{40}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}\label{display_8h_a62b2b5d576c5c3ca6ca959167c314b97}} 
+\index{display.h@{display.h}!C\_DISPLAY\_ST\_NOT\_BUSSY@{C\_DISPLAY\_ST\_NOT\_BUSSY}}
+\index{C\_DISPLAY\_ST\_NOT\_BUSSY@{C\_DISPLAY\_ST\_NOT\_BUSSY}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_DISPLAY\_ST\_NOT\_BUSSY}{C\_DISPLAY\_ST\_NOT\_BUSSY}}
+{\footnotesize\ttfamily const bool C\+\_\+\+DISPLAY\+\_\+\+ST\+\_\+\+NOT\+\_\+\+BUSSY = true}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00041}{41}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}\label{display_8h_a6e1253cca08f3f94feaf9770af6b6a9e}} 
+\index{display.h@{display.h}!C\_HIGH\_BRIGHTNESS@{C\_HIGH\_BRIGHTNESS}}
+\index{C\_HIGH\_BRIGHTNESS@{C\_HIGH\_BRIGHTNESS}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_HIGH\_BRIGHTNESS}{C\_HIGH\_BRIGHTNESS}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+HIGH\+\_\+\+BRIGHTNESS = 20}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00035}{35}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_aef2aa50b26eedaac6e025b94203b9572}\label{display_8h_aef2aa50b26eedaac6e025b94203b9572}} 
+\index{display.h@{display.h}!C\_LOW\_BRIGHTNESS@{C\_LOW\_BRIGHTNESS}}
+\index{C\_LOW\_BRIGHTNESS@{C\_LOW\_BRIGHTNESS}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_LOW\_BRIGHTNESS}{C\_LOW\_BRIGHTNESS}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+LOW\+\_\+\+BRIGHTNESS = 5}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00036}{36}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a5d90f2891b15cb085b544c8c7a03b813}\label{display_8h_a5d90f2891b15cb085b544c8c7a03b813}} 
+\index{display.h@{display.h}!C\_MODE\_HIGH\_BRIGHT@{C\_MODE\_HIGH\_BRIGHT}}
+\index{C\_MODE\_HIGH\_BRIGHT@{C\_MODE\_HIGH\_BRIGHT}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_MODE\_HIGH\_BRIGHT}{C\_MODE\_HIGH\_BRIGHT}}
+{\footnotesize\ttfamily const bool C\+\_\+\+MODE\+\_\+\+HIGH\+\_\+\+BRIGHT = true}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00032}{32}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a308ce306c360e273e64f874bb7641394}\label{display_8h_a308ce306c360e273e64f874bb7641394}} 
+\index{display.h@{display.h}!C\_MODE\_LOW\_BRIGHT@{C\_MODE\_LOW\_BRIGHT}}
+\index{C\_MODE\_LOW\_BRIGHT@{C\_MODE\_LOW\_BRIGHT}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_MODE\_LOW\_BRIGHT}{C\_MODE\_LOW\_BRIGHT}}
+{\footnotesize\ttfamily const bool C\+\_\+\+MODE\+\_\+\+LOW\+\_\+\+BRIGHT = false}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00033}{33}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a75d06610e3455136b80f549bed3224e6}\label{display_8h_a75d06610e3455136b80f549bed3224e6}} 
+\index{display.h@{display.h}!C\_NUMBER\_BLINK\_LOW\_BATTERY@{C\_NUMBER\_BLINK\_LOW\_BATTERY}}
+\index{C\_NUMBER\_BLINK\_LOW\_BATTERY@{C\_NUMBER\_BLINK\_LOW\_BATTERY}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_NUMBER\_BLINK\_LOW\_BATTERY}{C\_NUMBER\_BLINK\_LOW\_BATTERY}}
+{\footnotesize\ttfamily const uint8\+\_\+t C\+\_\+\+NUMBER\+\_\+\+BLINK\+\_\+\+LOW\+\_\+\+BATTERY = 4}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00043}{43}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a124237af4436b4a3cc46f0f0021d050b}\label{display_8h_a124237af4436b4a3cc46f0f0021d050b}} 
+\index{display.h@{display.h}!C\_PIXEL\_START\_STRING@{C\_PIXEL\_START\_STRING}}
+\index{C\_PIXEL\_START\_STRING@{C\_PIXEL\_START\_STRING}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIXEL\_START\_STRING}{C\_PIXEL\_START\_STRING}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PIXEL\+\_\+\+START\+\_\+\+STRING = 7}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00052}{52}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_af8d5d466d07d5c9e011e686e49f60849}\label{display_8h_af8d5d466d07d5c9e011e686e49f60849}} 
+\index{display.h@{display.h}!C\_PIXEL\_STOP\_STRING@{C\_PIXEL\_STOP\_STRING}}
+\index{C\_PIXEL\_STOP\_STRING@{C\_PIXEL\_STOP\_STRING}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_PIXEL\_STOP\_STRING}{C\_PIXEL\_STOP\_STRING}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PIXEL\+\_\+\+STOP\+\_\+\+STRING = 0}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00053}{53}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_aefbf190d109598ef359d888e66e55129}\label{display_8h_aefbf190d109598ef359d888e66e55129}} 
+\index{display.h@{display.h}!C\_PWBAR\_Y\_AXE@{C\_PWBAR\_Y\_AXE}}
+\index{C\_PWBAR\_Y\_AXE@{C\_PWBAR\_Y\_AXE}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_PWBAR\_Y\_AXE}{C\_PWBAR\_Y\_AXE}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+PWBAR\+\_\+\+Y\+\_\+\+AXE = 6}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00025}{25}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a62882ecb136e1c6c90acb1237ae58189}\label{display_8h_a62882ecb136e1c6c90acb1237ae58189}} 
+\index{display.h@{display.h}!C\_TEXT\_BITMAP\_WEIGHT@{C\_TEXT\_BITMAP\_WEIGHT}}
+\index{C\_TEXT\_BITMAP\_WEIGHT@{C\_TEXT\_BITMAP\_WEIGHT}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_TEXT\_BITMAP\_WEIGHT}{C\_TEXT\_BITMAP\_WEIGHT}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+TEXT\+\_\+\+BITMAP\+\_\+\+WEIGHT = 8}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00047}{47}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}\label{display_8h_a02a0256d2a0509623dd6518ec30ec6a6}} 
+\index{display.h@{display.h}!C\_TEXT\_CHAR\_HEIGHT@{C\_TEXT\_CHAR\_HEIGHT}}
+\index{C\_TEXT\_CHAR\_HEIGHT@{C\_TEXT\_CHAR\_HEIGHT}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_TEXT\_CHAR\_HEIGHT}{C\_TEXT\_CHAR\_HEIGHT}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+TEXT\+\_\+\+CHAR\+\_\+\+HEIGHT = 6}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00021}{21}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}\label{display_8h_a5c62a18f0a3f0f38ce8a4f117c4f0be4}} 
+\index{display.h@{display.h}!C\_TEXT\_CHAR\_OFFSET\_Y@{C\_TEXT\_CHAR\_OFFSET\_Y}}
+\index{C\_TEXT\_CHAR\_OFFSET\_Y@{C\_TEXT\_CHAR\_OFFSET\_Y}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_TEXT\_CHAR\_OFFSET\_Y}{C\_TEXT\_CHAR\_OFFSET\_Y}}
+{\footnotesize\ttfamily const int16\+\_\+t C\+\_\+\+TEXT\+\_\+\+CHAR\+\_\+\+OFFSET\+\_\+Y = 0}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00026}{26}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+
+\mbox{\Hypertarget{display_8h_affb60a59377a5a92622eec544592b426}\label{display_8h_affb60a59377a5a92622eec544592b426}} 
+\index{display.h@{display.h}!C\_TIMER\_BTW\_FRAMES@{C\_TIMER\_BTW\_FRAMES}}
+\index{C\_TIMER\_BTW\_FRAMES@{C\_TIMER\_BTW\_FRAMES}!display.h@{display.h}}
+\doxysubsubsection{\texorpdfstring{C\_TIMER\_BTW\_FRAMES}{C\_TIMER\_BTW\_FRAMES}}
+{\footnotesize\ttfamily const int32\+\_\+t C\+\_\+\+TIMER\+\_\+\+BTW\+\_\+\+FRAMES = 75}
+
+
+
+Definition at line \mbox{\hyperlink{display_8h_source_l00046}{46}} of file \mbox{\hyperlink{display_8h_source}{display.\+h}}.
+

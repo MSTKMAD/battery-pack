@@ -1,0 +1,123 @@
+\hypertarget{batt___r_t_c_zero_8h_source}{}\doxysection{batt\+\_\+\+RTCZero.\+h}
+\label{batt___r_t_c_zero_8h_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/src/batt\_RTCZero.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0015-\/RTCZero/src/batt\_RTCZero.h}}
+\mbox{\hyperlink{batt___r_t_c_zero_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00001}00001 \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00002}00002 \textcolor{comment}{  RTC library for Arduino Zero.}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00003}00003 \textcolor{comment}{  Copyright (c) 2015 Arduino LLC. All right reserved.}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00004}00004 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00005}00005 \textcolor{comment}{  This library is free software; you can redistribute it and/or}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00006}00006 \textcolor{comment}{  modify it under the terms of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00007}00007 \textcolor{comment}{  License as published by the Free Software Foundation; either}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00008}00008 \textcolor{comment}{  version 2.1 of the License, or (at your option) any later version.}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00009}00009 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00010}00010 \textcolor{comment}{  This library is distributed in the hope that it will be useful,}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00011}00011 \textcolor{comment}{  but WITHOUT ANY WARRANTY; without even the implied warranty of}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00012}00012 \textcolor{comment}{  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00013}00013 \textcolor{comment}{  Lesser General Public License for more details.}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00014}00014 \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00015}00015 \textcolor{comment}{  You should have received a copy of the GNU Lesser General Public}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00016}00016 \textcolor{comment}{  License along with this library; if not, write to the Free Software}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00017}00017 \textcolor{comment}{  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-\/1301 USA}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00018}00018 \textcolor{comment}{*/}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00020}00020 \textcolor{preprocessor}{\#ifndef RTC\_ZERO\_H}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00021}00021 \textcolor{preprocessor}{\#define RTC\_ZERO\_H}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00023}00023 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00025}\mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{00025}} \textcolor{keyword}{typedef} void(*\mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{voidFuncPtr}})(void);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00027}\mbox{\hyperlink{class_r_t_c_zero}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{class_r_t_c_zero}{RTCZero}} \{}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00028}00028 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00030}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cc}{00030}}   \textcolor{keyword}{enum} \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cc}{Alarm\_Match}}: uint8\_t \textcolor{comment}{// Should we have this enum or just use the identifiers from /component/rtc.h ?}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00031}00031   \{}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00032}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca229a4bf48dedcd24c3058d4659fbdd2b}{00032}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca229a4bf48dedcd24c3058d4659fbdd2b}{MATCH\_OFF}}          = RTC\_MODE2\_MASK\_SEL\_OFF\_Val,          \textcolor{comment}{// Never}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00033}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccac5092377f2728d1888a72bfb638c95b9}{00033}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccac5092377f2728d1888a72bfb638c95b9}{MATCH\_SS}}           = RTC\_MODE2\_MASK\_SEL\_SS\_Val,           \textcolor{comment}{// Every Minute}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00034}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca944f42500c4e4ee3117ff8adcddc4eb1}{00034}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca944f42500c4e4ee3117ff8adcddc4eb1}{MATCH\_MMSS}}         = RTC\_MODE2\_MASK\_SEL\_MMSS\_Val,         \textcolor{comment}{// Every Hour}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00035}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccaf82fa9553250259c004ca80c3f2336cc}{00035}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccaf82fa9553250259c004ca80c3f2336cc}{MATCH\_HHMMSS}}       = RTC\_MODE2\_MASK\_SEL\_HHMMSS\_Val,       \textcolor{comment}{// Every Day}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00036}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccad27b4eb26b4e2d23b1e74ca8c7b6473a}{00036}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149ccad27b4eb26b4e2d23b1e74ca8c7b6473a}{MATCH\_DHHMMSS}}      = RTC\_MODE2\_MASK\_SEL\_DDHHMMSS\_Val,     \textcolor{comment}{// Every Month}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00037}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca75b8b65641492bbb35128bddc6164a61}{00037}}     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca75b8b65641492bbb35128bddc6164a61}{MATCH\_MMDDHHMMSS}}   = RTC\_MODE2\_MASK\_SEL\_MMDDHHMMSS\_Val,   \textcolor{comment}{// Every Year}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00038}00038     \mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca4a9fa9226a47b8b760dd53b2326b7f3e}{MATCH\_YYMMDDHHMMSS}} = RTC\_MODE2\_MASK\_SEL\_YYMMDDHHMMSS\_Val  \textcolor{comment}{// Once, on a specific date and a specific time}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00039}\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cca4a9fa9226a47b8b760dd53b2326b7f3e}{00039}}   \};}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00041}00041   \mbox{\hyperlink{class_r_t_c_zero_af74f4cc9bc122628c0023e77b7b18c76}{RTCZero}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00042}00042   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_ac6ad9d73cb8d3a0575e7cfc2b26a5412}{begin}}(\textcolor{keywordtype}{bool} resetTime = \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00044}00044   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_af2923fee4310485bc922898376f5042c}{enableAlarm}}(\mbox{\hyperlink{class_r_t_c_zero_a331ac87204394f0e197122b8962149cc}{Alarm\_Match}} match);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00045}00045   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a9c1b7a7b7f8ed3cabbdc039ede726631}{disableAlarm}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00047}00047   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a306f2bbbdfa83d21f8f577c11b73e76b}{attachInterrupt}}(\mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{voidFuncPtr}} callback);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00048}00048   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a6ca6de2448cadaa33a87cdd4278cdf27}{detachInterrupt}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00049}00049   }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00050}00050   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a2fab941e64ffe5501c30c085a5b3833e}{standbyMode}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00051}00051   }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00052}00052   \textcolor{comment}{/* Get Functions */}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00054}00054   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a914daa26d6ab1a3637a4696801532377}{getSeconds}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00055}00055   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a813435838c1c830ab61e81f2c50cd76c}{getMinutes}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00056}00056   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a4e3c72195b429d690ca5e3febb9a2d8f}{getHours}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00057}00057   }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00058}00058   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a9569ba1ee80390da5c9feb9c33681ac2}{getDay}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00059}00059   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_ab5a20277839b8d68d7469feb95b027ec}{getMonth}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00060}00060   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a87b268ab9f4e2ea4b0aca4ca7f9d48e6}{getYear}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00061}00061   }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00062}00062   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a05ca5622ea0d01662326c251d3f4e960}{getAlarmSeconds}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00063}00063   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a9b689b5208dc3bd0d80524e0d5c52873}{getAlarmMinutes}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00064}00064   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a0758261eb8ba11c90e903b5e38a6cee8}{getAlarmHours}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00066}00066   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a4b157a1820acba087ea42095505c35cc}{getAlarmDay}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00067}00067   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_a27152748cdb3ebdd15a4a51882dcd28b}{getAlarmMonth}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00068}00068   uint8\_t \mbox{\hyperlink{class_r_t_c_zero_af15b6757eeb9281446b7575c9a15ff19}{getAlarmYear}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00070}00070   \textcolor{comment}{/* Set Functions */}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00072}00072   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a654ea54b599e9269369c3d329dd41685}{setSeconds}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00073}00073   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_adeb4f4fbae93c46e227646569113cbd1}{setMinutes}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00074}00074   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a4bcc1288366d943f3328386c89d39bf3}{setHours}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00075}00075   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a2bd00b1214877c926001a8d60acad72d}{setTime}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00077}00077   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_aa1d8a2279ae41b6a7b50c5ccc974b29f}{setDay}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00078}00078   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_af91e416057bf96c8ae94b053e94ec722}{setMonth}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00079}00079   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_ad71c689f526dd7e40c6f134b2a223b81}{setYear}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00080}00080   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_ad84a83a503a798c3f90f667de21b8a44}{setDate}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00082}00082   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a1b52a726c30602d3769426974f56710f}{setAlarmSeconds}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00083}00083   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a06a7ea4b7bc9d61df4fef51329927b22}{setAlarmMinutes}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00084}00084   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a915e7bc9c446be99d52f87cdb76e6cfe}{setAlarmHours}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00085}00085   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_ac16225fa8a9c07a6e8d1157b6d699747}{setAlarmTime}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a73a1af017abdc92302c2d1b7beae5d09}{hours}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_abb1e34d12c0cdff5ba4517490308a48d}{minutes}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ad4aadbf240d357f2bf99c85ed6fe7662}{seconds}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00087}00087   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a4519ba0e3eee8a3bf03f7c14b3ffa902}{setAlarmDay}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00088}00088   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a8fe74d0c1ec7922f893addd67dc16aba}{setAlarmMonth}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00089}00089   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_ae55ef909edbb893eba4becc8676dd8d6}{setAlarmYear}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00090}00090   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a12727934884612e1a125e6be3f461058}{setAlarmDate}}(uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_ae32af3283e8bc94f56d387a0ba5082ba}{day}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a9ce9be5b22ce12d7297f8b9290adb13e}{month}}, uint8\_t \mbox{\hyperlink{_simple_r_t_c_8ino_a087b7ba6d485fe7d93b44fdf30f039e0}{year}});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00091}00091 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00092}00092   \textcolor{comment}{/* Epoch Functions */}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00094}00094   uint32\_t \mbox{\hyperlink{class_r_t_c_zero_aefda208cc548613b8af437ba6e7d1ff3}{getEpoch}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00095}00095   uint32\_t \mbox{\hyperlink{class_r_t_c_zero_ae660721e3ba20b6701431d8cd8bed697}{getY2kEpoch}}();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00096}00096   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a5427b2b365b295516944a69b66e506ba}{setEpoch}}(uint32\_t ts);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00097}00097   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_aea1cc5a935bacd8430cb3be5a87281aa}{setY2kEpoch}}(uint32\_t ts);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00098}00098   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_r_t_c_zero_a8b8b50d54f57bbdac65976e279f11791}{setAlarmEpoch}}(uint32\_t ts);}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00100}\mbox{\hyperlink{class_r_t_c_zero_a1a3b29dc63b4f9fbf0392d336adeced0}{00100}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_r_t_c_zero_a1a3b29dc63b4f9fbf0392d336adeced0}{isConfigured}}() \{}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00101}00101     \textcolor{keywordflow}{return} \_configured;}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00102}00102   \}}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00104}00104 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00105}00105   \textcolor{keywordtype}{bool} \_configured;}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00107}00107   \textcolor{keywordtype}{void} config32kOSC(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00108}00108   \textcolor{keywordtype}{void} configureClock(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00109}00109   \textcolor{keywordtype}{void} RTCreadRequest();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00110}00110   \textcolor{keywordtype}{bool} RTCisSyncing(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00111}00111   \textcolor{keywordtype}{void} RTCdisable();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00112}00112   \textcolor{keywordtype}{void} RTCenable();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00113}00113   \textcolor{keywordtype}{void} RTCreset();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00114}00114   \textcolor{keywordtype}{void} RTCresetRemove();}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00115}00115 \};}
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{batt___r_t_c_zero_8h_source_l00117}00117 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// RTC\_ZERO\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,133 @@
+\hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0005-\/\+SENSING/examples/\+TEST\+\_\+0/\+TEST\+\_\+0.ino File Reference}
+\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/examples/TEST\_0/TEST\_0.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0005-\/SENSING/examples/TEST\_0/TEST\_0.ino}}
+{\ttfamily \#include $<$Health\+Monitor.\+h$>$}\newline
+{\ttfamily \#include $<$Milli\+Timer.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a3df6766829d4e2a23ad7afffcd8999d1}{DAC\+\_\+\+PIN}}~A0
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\item 
+void \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_health_monitor}{Health\+Monitor}} \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a805e1115f500e6d8046986b3e306779b}{sensor\+\_\+1}} (3000, \mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}}, C\+\_\+\+FALL\+\_\+\+COUNT, \mbox{\hyperlink{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}{C\+\_\+\+COUNTER\+\_\+\+LIMIT}})
+\item 
+uint16\+\_\+t \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a557cbeabffc4ae613e1db945c13d140b}{sample}} = 0
+\item 
+uint16\+\_\+t \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_af6a39bfc7e1dc3b6f9c997c1c43fa996}{count}} = 0
+\item 
+uint16\+\_\+t \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a654f29211026f95a80879530898464ea}{dac\+\_\+output}}
+\item 
+\mbox{\hyperlink{class_milli_timer}{Milli\+Timer}} \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a26e44e0b5d60aea1a1a15032887d144e}{trigger\+\_\+timer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Javi (\href{mailto:Javier@musotoku.com}{\texttt{ Javier@musotoku.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2020-\/12-\/10
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2020 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a3df6766829d4e2a23ad7afffcd8999d1}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a3df6766829d4e2a23ad7afffcd8999d1}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!DAC\_PIN@{DAC\_PIN}}
+\index{DAC\_PIN@{DAC\_PIN}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{DAC\_PIN}{DAC\_PIN}}
+{\footnotesize\ttfamily \#define DAC\+\_\+\+PIN~A0}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00015}{15}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_afe461d27b9c48d5921c00d521181f12f}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!loop@{loop}}
+\index{loop@{loop}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00036}{36}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!setup@{setup}}
+\index{setup@{setup}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily void setup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00025}{25}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_af6a39bfc7e1dc3b6f9c997c1c43fa996}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_af6a39bfc7e1dc3b6f9c997c1c43fa996}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!count@{count}}
+\index{count@{count}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily uint16\+\_\+t count = 0}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00020}{20}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a654f29211026f95a80879530898464ea}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a654f29211026f95a80879530898464ea}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!dac\_output@{dac\_output}}
+\index{dac\_output@{dac\_output}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{dac\_output}{dac\_output}}
+{\footnotesize\ttfamily uint16\+\_\+t dac\+\_\+output}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00021}{21}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a557cbeabffc4ae613e1db945c13d140b}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a557cbeabffc4ae613e1db945c13d140b}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!sample@{sample}}
+\index{sample@{sample}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{sample}{sample}}
+{\footnotesize\ttfamily uint16\+\_\+t sample = 0}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00019}{19}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a805e1115f500e6d8046986b3e306779b}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a805e1115f500e6d8046986b3e306779b}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!sensor\_1@{sensor\_1}}
+\index{sensor\_1@{sensor\_1}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{sensor\_1}{sensor\_1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_health_monitor}{Health\+Monitor}} sensor\+\_\+1(3000, \mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}}, C\+\_\+\+FALL\+\_\+\+COUNT, \mbox{\hyperlink{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}{C\+\_\+\+COUNTER\+\_\+\+LIMIT}}) (\begin{DoxyParamCaption}\item[{3000}]{,  }\item[{\mbox{\hyperlink{_health_monitor_8h_a3066de0872e48de34d6184e9fffda49b}{C\+\_\+\+RISE\+\_\+\+COUNT}}}]{,  }\item[{C\+\_\+\+FALL\+\_\+\+COUNT}]{,  }\item[{\mbox{\hyperlink{_health_monitor_8h_a9d401d356b9137e774ca9b0dc4792f9c}{C\+\_\+\+COUNTER\+\_\+\+LIMIT}}}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a26e44e0b5d60aea1a1a15032887d144e}\label{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a26e44e0b5d60aea1a1a15032887d144e}} 
+\index{TEST\_0.ino@{TEST\_0.ino}!trigger\_timer@{trigger\_timer}}
+\index{trigger\_timer@{trigger\_timer}!TEST\_0.ino@{TEST\_0.ino}}
+\doxysubsubsection{\texorpdfstring{trigger\_timer}{trigger\_timer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_milli_timer}{Milli\+Timer}} trigger\+\_\+timer}
+
+
+
+Definition at line \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source_l00023}{23}} of file \mbox{\hyperlink{0005-_s_e_n_s_i_n_g_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_source}{TEST\+\_\+0.\+ino}}.
+

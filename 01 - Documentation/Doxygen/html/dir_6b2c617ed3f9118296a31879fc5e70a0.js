@@ -1,0 +1,4 @@
+var dir_6b2c617ed3f9118296a31879fc5e70a0 =
+[
+    [ "BQ27441_Basic.ino", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695" ]
+];

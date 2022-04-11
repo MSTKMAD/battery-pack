@@ -1,0 +1,307 @@
+\hypertarget{class_g_f_xcanvas1}{}\doxysection{GFXcanvas1 Class Reference}
+\label{class_g_f_xcanvas1}\index{GFXcanvas1@{GFXcanvas1}}
+
+
+A GFX 1-\/bit canvas context for graphics.  
+
+
+
+
+{\ttfamily \#include $<$batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h$>$}
+
+Inheritance diagram for GFXcanvas1\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_g_f_xcanvas1}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_g_f_xcanvas1_a3d8047501178f976fb6af095572eb5d0}{GFXcanvas1}} (uint16\+\_\+t w, uint16\+\_\+t h)
+\begin{DoxyCompactList}\small\item\em Instatiate a GFX 1-\/bit canvas context for graphics. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_g_f_xcanvas1_a5c6dad65db4c9a99544f3b5bad4c86e8}{$\sim$\+GFXcanvas1}} (void)
+\begin{DoxyCompactList}\small\item\em Delete the canvas, free memory. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_a0859d124c8dcaa147ef22a54d6e843a8}{draw\+Pixel}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y, uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Draw a pixel to the canvas framebuffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_aa282792bbb854a4a045be5ba1c8a7afc}{fill\+Screen}} (uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Fill the framebuffer completely with one color. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_a4056684c76582ee3864e8559402eaabf}{draw\+Fast\+VLine}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y, int16\+\_\+t h, uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Speed optimized vertical line drawing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_a5b59d1afa1c367d97f487c743727c460}{draw\+Fast\+HLine}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y, int16\+\_\+t w, uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Speed optimized horizontal line drawing. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_g_f_xcanvas1_aa27bc364e3d34442f28d76621dbdb530}{get\+Pixel}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y) const
+\item 
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{class_g_f_xcanvas1_aecb3c813ea1541e047a63ae121606b9b}{get\+Buffer}} (void) const
+\begin{DoxyCompactList}\small\item\em Get a pointer to the internal buffer memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_g_f_xcanvas1_a4eb78de4421384fd916883d944bf3ae8}{get\+Raw\+Pixel}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y) const
+\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_a4180a558088f9566e0b7211d9ee014a4}{draw\+Fast\+Raw\+VLine}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y, int16\+\_\+t h, uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Speed optimized vertical line drawing into the raw canvas buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_g_f_xcanvas1_a5060e55be61f5d3f767031118e2f039b}{draw\+Fast\+Raw\+HLine}} (int16\+\_\+t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\+\_\+t y, int16\+\_\+t w, uint16\+\_\+t color)
+\begin{DoxyCompactList}\small\item\em Speed optimized horizontal line drawing into the raw canvas buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A GFX 1-\/bit canvas context for graphics. 
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8h_source_l00307}{307}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8h_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_g_f_xcanvas1_a3d8047501178f976fb6af095572eb5d0}\label{class_g_f_xcanvas1_a3d8047501178f976fb6af095572eb5d0}} 
+\index{GFXcanvas1@{GFXcanvas1}!GFXcanvas1@{GFXcanvas1}}
+\index{GFXcanvas1@{GFXcanvas1}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{GFXcanvas1()}{GFXcanvas1()}}
+{\footnotesize\ttfamily GFXcanvas1\+::\+GFXcanvas1 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{w,  }\item[{uint16\+\_\+t}]{h }\end{DoxyParamCaption})}
+
+
+
+Instatiate a GFX 1-\/bit canvas context for graphics. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em w} & Display width, in pixels \\
+\hline
+{\em h} & Display height, in pixels \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01761}{1761}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a5c6dad65db4c9a99544f3b5bad4c86e8}\label{class_g_f_xcanvas1_a5c6dad65db4c9a99544f3b5bad4c86e8}} 
+\index{GFXcanvas1@{GFXcanvas1}!````~GFXcanvas1@{$\sim$GFXcanvas1}}
+\index{````~GFXcanvas1@{$\sim$GFXcanvas1}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{$\sim$GFXcanvas1()}{~GFXcanvas1()}}
+{\footnotesize\ttfamily GFXcanvas1\+::$\sim$\+GFXcanvas1 (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Delete the canvas, free memory. 
+
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01773}{1773}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_g_f_xcanvas1_a5b59d1afa1c367d97f487c743727c460}\label{class_g_f_xcanvas1_a5b59d1afa1c367d97f487c743727c460}} 
+\index{GFXcanvas1@{GFXcanvas1}!drawFastHLine@{drawFastHLine}}
+\index{drawFastHLine@{drawFastHLine}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{drawFastHLine()}{drawFastHLine()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::draw\+Fast\+HLine (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{int16\+\_\+t}]{w,  }\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Speed optimized horizontal line drawing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Line horizontal start point \\
+\hline
+{\em y} & Line vertical start point \\
+\hline
+{\em w} & Length of horizontal line to be drawn, including first point \\
+\hline
+{\em color} & Color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_adafruit___g_f_x_a4d42e7cc577c1eb5b06fe656786c9c79}{Adafruit\+\_\+\+GFX}}.
+
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01959}{1959}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a5060e55be61f5d3f767031118e2f039b}\label{class_g_f_xcanvas1_a5060e55be61f5d3f767031118e2f039b}} 
+\index{GFXcanvas1@{GFXcanvas1}!drawFastRawHLine@{drawFastRawHLine}}
+\index{drawFastRawHLine@{drawFastRawHLine}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{drawFastRawHLine()}{drawFastRawHLine()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::draw\+Fast\+Raw\+HLine (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{int16\+\_\+t}]{w,  }\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Speed optimized horizontal line drawing into the raw canvas buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Line horizontal start point \\
+\hline
+{\em y} & Line vertical start point \\
+\hline
+{\em w} & length of horizontal line to be drawn, including first point \\
+\hline
+{\em color} & Binary (on or off) color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l02053}{2053}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a4180a558088f9566e0b7211d9ee014a4}\label{class_g_f_xcanvas1_a4180a558088f9566e0b7211d9ee014a4}} 
+\index{GFXcanvas1@{GFXcanvas1}!drawFastRawVLine@{drawFastRawVLine}}
+\index{drawFastRawVLine@{drawFastRawVLine}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{drawFastRawVLine()}{drawFastRawVLine()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::draw\+Fast\+Raw\+VLine (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{int16\+\_\+t}]{h,  }\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Speed optimized vertical line drawing into the raw canvas buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Line horizontal start point \\
+\hline
+{\em y} & Line vertical start point \\
+\hline
+{\em h} & length of vertical line to be drawn, including first point \\
+\hline
+{\em color} & Binary (on or off) color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l02014}{2014}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a4056684c76582ee3864e8559402eaabf}\label{class_g_f_xcanvas1_a4056684c76582ee3864e8559402eaabf}} 
+\index{GFXcanvas1@{GFXcanvas1}!drawFastVLine@{drawFastVLine}}
+\index{drawFastVLine@{drawFastVLine}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{drawFastVLine()}{drawFastVLine()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::draw\+Fast\+VLine (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{int16\+\_\+t}]{h,  }\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Speed optimized vertical line drawing. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Line horizontal start point \\
+\hline
+{\em y} & Line vertical start point \\
+\hline
+{\em h} & Length of vertical line to be drawn, including first point \\
+\hline
+{\em color} & Color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_adafruit___g_f_x_a1cffbb1d69c5faf49cd0cff27686a837}{Adafruit\+\_\+\+GFX}}.
+
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01903}{1903}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a0859d124c8dcaa147ef22a54d6e843a8}\label{class_g_f_xcanvas1_a0859d124c8dcaa147ef22a54d6e843a8}} 
+\index{GFXcanvas1@{GFXcanvas1}!drawPixel@{drawPixel}}
+\index{drawPixel@{drawPixel}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{drawPixel()}{drawPixel()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::draw\+Pixel (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draw a pixel to the canvas framebuffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x coordinate \\
+\hline
+{\em y} & y coordinate \\
+\hline
+{\em color} & Binary (on or off) color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_adafruit___g_f_x_ab7fbf72885c873266f9c7eb53b5c8896}{Adafruit\+\_\+\+GFX}}.
+
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01786}{1786}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_aa282792bbb854a4a045be5ba1c8a7afc}\label{class_g_f_xcanvas1_aa282792bbb854a4a045be5ba1c8a7afc}} 
+\index{GFXcanvas1@{GFXcanvas1}!fillScreen@{fillScreen}}
+\index{fillScreen@{fillScreen}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{fillScreen()}{fillScreen()}}
+{\footnotesize\ttfamily void GFXcanvas1\+::fill\+Screen (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{color }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Fill the framebuffer completely with one color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & Binary (on or off) color to fill with \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_adafruit___g_f_x_a2b2730aaf2208990928f9c0f85558527}{Adafruit\+\_\+\+GFX}}.
+
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01887}{1887}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_aecb3c813ea1541e047a63ae121606b9b}\label{class_g_f_xcanvas1_aecb3c813ea1541e047a63ae121606b9b}} 
+\index{GFXcanvas1@{GFXcanvas1}!getBuffer@{getBuffer}}
+\index{getBuffer@{getBuffer}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{getBuffer()}{getBuffer()}}
+{\footnotesize\ttfamily uint8\+\_\+t $\ast$ GFXcanvas1\+::get\+Buffer (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a pointer to the internal buffer memory. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the allocated buffer 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8h_source_l00322}{322}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8h_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_aa27bc364e3d34442f28d76621dbdb530}\label{class_g_f_xcanvas1_aa27bc364e3d34442f28d76621dbdb530}} 
+\index{GFXcanvas1@{GFXcanvas1}!getPixel@{getPixel}}
+\index{getPixel@{getPixel}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{getPixel()}{getPixel()}}
+{\footnotesize\ttfamily bool GFXcanvas1\+::get\+Pixel (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y }\end{DoxyParamCaption}) const}
+
+\begin{DoxyVerb} @brief    Get the pixel color value at a given coordinate
+ @param    x   x coordinate
+ @param    y   y coordinate
+ @returns  The desired pixel's binary color value, either 0x1 (on) or 0x0
+\end{DoxyVerb}
+ (off) 
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01833}{1833}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+\mbox{\Hypertarget{class_g_f_xcanvas1_a4eb78de4421384fd916883d944bf3ae8}\label{class_g_f_xcanvas1_a4eb78de4421384fd916883d944bf3ae8}} 
+\index{GFXcanvas1@{GFXcanvas1}!getRawPixel@{getRawPixel}}
+\index{getRawPixel@{getRawPixel}!GFXcanvas1@{GFXcanvas1}}
+\doxysubsubsection{\texorpdfstring{getRawPixel()}{getRawPixel()}}
+{\footnotesize\ttfamily bool GFXcanvas1\+::get\+Raw\+Pixel (\begin{DoxyParamCaption}\item[{int16\+\_\+t}]{x,  }\item[{int16\+\_\+t}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb} @brief    Get the pixel color value at a given, unrotated coordinate.
+       This method is intended for hardware drivers to get pixel value
+       in physical coordinates.
+ @param    x   x coordinate
+ @param    y   y coordinate
+ @returns  The desired pixel's binary color value, either 0x1 (on) or 0x0
+\end{DoxyVerb}
+ (off) 
+
+Definition at line \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source_l01865}{1865}} of file \mbox{\hyperlink{batt___adafruit___g_f_x_8cpp_source}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0008-\/\+Adafruit\+\_\+\+GFX\+\_\+\+Library/\mbox{\hyperlink{batt___adafruit___g_f_x_8h}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h}}\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0008-\/\+Adafruit\+\_\+\+GFX\+\_\+\+Library/\mbox{\hyperlink{batt___adafruit___g_f_x_8cpp}{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+cpp}}\end{DoxyCompactItemize}

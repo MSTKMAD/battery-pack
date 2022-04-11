@@ -1,0 +1,110 @@
+\hypertarget{batt___arduino_low_power_8h}{}\doxysection{C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0009-\/\+LOWPOWER/batt\+\_\+\+Arduino\+Low\+Power.h File Reference}
+\label{batt___arduino_low_power_8h}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.h}}
+{\ttfamily \#include $<$Arduino.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_arduino_low_power_class}{Arduino\+Low\+Power\+Class}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{batt___arduino_low_power_8h_a37c6bf46f7f38bcc9f39fc2f9cef8037}{RTC\+\_\+\+ALARM\+\_\+\+WAKEUP}}~0x\+FF
+\end{DoxyCompactItemize}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{irq\+\_\+mode}} = uint32\+\_\+t
+\item 
+typedef void($\ast$ \mbox{\hyperlink{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}{on\+Off\+Func\+Ptr}}) (bool)
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\+\_\+reason}} \{ \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00ad3af5c0dfbbbeffe90601387b89f21ea}{OTHER\+\_\+\+WAKEUP}} = 0
+, \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}{GPIO\+\_\+\+WAKEUP}} = 1
+, \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}{NFC\+\_\+\+WAKEUP}} = 2
+, \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}{ANALOG\+\_\+\+COMPARATOR\+\_\+\+WAKEUP}} = 3
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arduino_low_power_class}{Arduino\+Low\+Power\+Class}} \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{Low\+Power}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{batt___arduino_low_power_8h_a37c6bf46f7f38bcc9f39fc2f9cef8037}\label{batt___arduino_low_power_8h_a37c6bf46f7f38bcc9f39fc2f9cef8037}} 
+\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!RTC\_ALARM\_WAKEUP@{RTC\_ALARM\_WAKEUP}}
+\index{RTC\_ALARM\_WAKEUP@{RTC\_ALARM\_WAKEUP}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}
+\doxysubsubsection{\texorpdfstring{RTC\_ALARM\_WAKEUP}{RTC\_ALARM\_WAKEUP}}
+{\footnotesize\ttfamily \#define RTC\+\_\+\+ALARM\+\_\+\+WAKEUP~0x\+FF}
+
+
+
+Definition at line \mbox{\hyperlink{batt___arduino_low_power_8h_source_l00019}{19}} of file \mbox{\hyperlink{batt___arduino_low_power_8h_source}{batt\+\_\+\+Arduino\+Low\+Power.\+h}}.
+
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}\label{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}} 
+\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!irq\_mode@{irq\_mode}}
+\index{irq\_mode@{irq\_mode}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}
+\doxysubsubsection{\texorpdfstring{irq\_mode}{irq\_mode}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{irq\+\_\+mode}} =  uint32\+\_\+t}
+
+
+
+Definition at line \mbox{\hyperlink{batt___arduino_low_power_8h_source_l00024}{24}} of file \mbox{\hyperlink{batt___arduino_low_power_8h_source}{batt\+\_\+\+Arduino\+Low\+Power.\+h}}.
+
+\mbox{\Hypertarget{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}\label{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}} 
+\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!onOffFuncPtr@{onOffFuncPtr}}
+\index{onOffFuncPtr@{onOffFuncPtr}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}
+\doxysubsubsection{\texorpdfstring{onOffFuncPtr}{onOffFuncPtr}}
+{\footnotesize\ttfamily typedef void($\ast$ on\+Off\+Func\+Ptr) (bool)}
+
+
+
+Definition at line \mbox{\hyperlink{batt___arduino_low_power_8h_source_l00028}{28}} of file \mbox{\hyperlink{batt___arduino_low_power_8h_source}{batt\+\_\+\+Arduino\+Low\+Power.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}\label{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}} 
+\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!wakeup\_reason@{wakeup\_reason}}
+\index{wakeup\_reason@{wakeup\_reason}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}
+\doxysubsubsection{\texorpdfstring{wakeup\_reason}{wakeup\_reason}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\+\_\+reason}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OTHER\_WAKEUP@{OTHER\_WAKEUP}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!OTHER\_WAKEUP@{OTHER\_WAKEUP}}}\mbox{\Hypertarget{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00ad3af5c0dfbbbeffe90601387b89f21ea}\label{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00ad3af5c0dfbbbeffe90601387b89f21ea}} 
+OTHER\+\_\+\+WAKEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GPIO\_WAKEUP@{GPIO\_WAKEUP}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!GPIO\_WAKEUP@{GPIO\_WAKEUP}}}\mbox{\Hypertarget{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}\label{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}} 
+GPIO\+\_\+\+WAKEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NFC\_WAKEUP@{NFC\_WAKEUP}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!NFC\_WAKEUP@{NFC\_WAKEUP}}}\mbox{\Hypertarget{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}\label{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}} 
+NFC\+\_\+\+WAKEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANALOG\_COMPARATOR\_WAKEUP@{ANALOG\_COMPARATOR\_WAKEUP}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!ANALOG\_COMPARATOR\_WAKEUP@{ANALOG\_COMPARATOR\_WAKEUP}}}\mbox{\Hypertarget{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}\label{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}} 
+ANALOG\+\_\+\+COMPARATOR\+\_\+\+WAKEUP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{batt___arduino_low_power_8h_source_l00030}{30}} of file \mbox{\hyperlink{batt___arduino_low_power_8h_source}{batt\+\_\+\+Arduino\+Low\+Power.\+h}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}\label{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}} 
+\index{batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}!LowPower@{LowPower}}
+\index{LowPower@{LowPower}!batt\_ArduinoLowPower.h@{batt\_ArduinoLowPower.h}}
+\doxysubsubsection{\texorpdfstring{LowPower}{LowPower}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_arduino_low_power_class}{Arduino\+Low\+Power\+Class}} Low\+Power\hspace{0.3cm}{\ttfamily [extern]}}
+

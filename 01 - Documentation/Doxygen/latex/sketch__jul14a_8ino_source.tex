@@ -1,0 +1,184 @@
+\hypertarget{sketch__jul14a_8ino_source}{}\doxysection{sketch\+\_\+jul14a.\+ino}
+\label{sketch__jul14a_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Produccion/LABVIEW/CPU TEST/sketch\_jul14a/sketch\_jul14a.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/TEST/CPU/Validacion Produccion/LABVIEW/CPU TEST/sketch\_jul14a/sketch\_jul14a.ino}}
+\mbox{\hyperlink{sketch__jul14a_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00001}\mbox{\hyperlink{sketch__jul14a_8ino_ac2e790a754ca79a6e539135dc35f4fc0}{00001}} int16\_t \mbox{\hyperlink{sketch__jul14a_8ino_ac2e790a754ca79a6e539135dc35f4fc0}{i}};}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00002}\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{00002}} \textcolor{keywordtype}{char} \mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}};}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00003}\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{00003}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}} = 2;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00004}\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{00004}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}} = 3;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00005}\mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{00005}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{C\_PIN\_LED\_3}} = 4;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00006}\mbox{\hyperlink{sketch__jul14a_8ino_a024da6491ba456e02d81dda63e99dea1}{00006}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a024da6491ba456e02d81dda63e99dea1}{C\_PIN\_ENABLE\_LDO}} = 5;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00007}\mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{00007}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{C\_PIN\_LED\_1}} = 6;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00008}\mbox{\hyperlink{sketch__jul14a_8ino_aba0c2411699d728bdd98220e5077aa68}{00008}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_aba0c2411699d728bdd98220e5077aa68}{C\_PIN\_SDA\_2}} = 7;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00009}\mbox{\hyperlink{sketch__jul14a_8ino_ab5b0073921122b49f04606d2ffa37e0f}{00009}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_ab5b0073921122b49f04606d2ffa37e0f}{C\_PIN\_SCL\_2}} = 8;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00010}\mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{00010}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{C\_PIN\_LED\_2}} = 9;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00011}\mbox{\hyperlink{sketch__jul14a_8ino_a79b5a6b661eeb453bb25c32346c7c5cb}{00011}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a79b5a6b661eeb453bb25c32346c7c5cb}{C\_PIN\_ISENSE\_RAW}} = 10;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00012}\mbox{\hyperlink{sketch__jul14a_8ino_a95114668759a29c2419811e02a7a1ea3}{00012}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_a95114668759a29c2419811e02a7a1ea3}{C\_PIN\_IOUT\_SENSE}} = A0;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00013}\mbox{\hyperlink{sketch__jul14a_8ino_ab1cdfc5d012e291bdce58e59d07c9f68}{00013}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_ab1cdfc5d012e291bdce58e59d07c9f68}{C\_PIN\_VCC\_2}} = A1;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00014}\mbox{\hyperlink{sketch__jul14a_8ino_ab072ca273b47c6fa09a87c92f98adbcd}{00014}} \textcolor{keyword}{const} uint16\_t \mbox{\hyperlink{sketch__jul14a_8ino_ab072ca273b47c6fa09a87c92f98adbcd}{C\_PIN\_VCC}} = A2;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00016}\mbox{\hyperlink{sketch__jul14a_8ino_aafaf45818e9eed2ecc2719af6c68899b}{00016}} int16\_t \mbox{\hyperlink{sketch__jul14a_8ino_aafaf45818e9eed2ecc2719af6c68899b}{iout\_sense}} = 0, \mbox{\hyperlink{sketch__jul14a_8ino_a0840834d6a5082b394e8ad61027ca5dc}{vcc}} = 0, \mbox{\hyperlink{sketch__jul14a_8ino_a1409c638bca3c3d48d841086e6459271}{vcc\_2}} = 0;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00018}\mbox{\hyperlink{sketch__jul14a_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00018}} \textcolor{keywordtype}{void} \mbox{\hyperlink{sketch__jul14a_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00019}00019 \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00020}00020   Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00021}00021   analogReference(DEFAULT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00022}00022   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{C\_PIN\_LED\_1}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00023}00023   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{C\_PIN\_LED\_2}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00024}00024   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{C\_PIN\_LED\_3}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00025}00025   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a024da6491ba456e02d81dda63e99dea1}{C\_PIN\_ENABLE\_LDO}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00026}00026   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a79b5a6b661eeb453bb25c32346c7c5cb}{C\_PIN\_ISENSE\_RAW}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00027}00027   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00028}00028   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}}, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00029}00029   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_a95114668759a29c2419811e02a7a1ea3}{C\_PIN\_IOUT\_SENSE}}, INPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00030}00030   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_ab1cdfc5d012e291bdce58e59d07c9f68}{C\_PIN\_VCC\_2}}, INPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00031}00031   pinMode(\mbox{\hyperlink{sketch__jul14a_8ino_ab072ca273b47c6fa09a87c92f98adbcd}{C\_PIN\_VCC}}, INPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00032}00032   pinMode(LED\_BUILTIN, OUTPUT);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00033}00033   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{C\_PIN\_LED\_1}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00034}00034   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{C\_PIN\_LED\_2}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00035}00035   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{C\_PIN\_LED\_3}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00036}00036   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a024da6491ba456e02d81dda63e99dea1}{C\_PIN\_ENABLE\_LDO}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00037}00037   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a79b5a6b661eeb453bb25c32346c7c5cb}{C\_PIN\_ISENSE\_RAW}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00038}00038   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00039}00039   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00041}00041   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a024da6491ba456e02d81dda63e99dea1}{C\_PIN\_ENABLE\_LDO}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00042}00042   digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a79b5a6b661eeb453bb25c32346c7c5cb}{C\_PIN\_ISENSE\_RAW}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00043}00043   delay(100);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00044}00044 \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00046}\mbox{\hyperlink{sketch__jul14a_8ino_afe461d27b9c48d5921c00d521181f12f}{00046}} \textcolor{keywordtype}{void} \mbox{\hyperlink{sketch__jul14a_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00047}00047 \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00049}00049   digitalRead(\mbox{\hyperlink{sketch__jul14a_8ino_aba0c2411699d728bdd98220e5077aa68}{C\_PIN\_SDA\_2}});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00050}00050   digitalRead(\mbox{\hyperlink{sketch__jul14a_8ino_ab5b0073921122b49f04606d2ffa37e0f}{C\_PIN\_SCL\_2}});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00051}00051   \mbox{\hyperlink{sketch__jul14a_8ino_aafaf45818e9eed2ecc2719af6c68899b}{iout\_sense}} = 0;}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00052}00052   \textcolor{comment}{// for (int i = 0; i < 8; i++)}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00053}00053   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00054}00054   \textcolor{comment}{//   iout\_sense += analogRead(C\_PIN\_IOUT\_SENSE);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00055}00055   \textcolor{comment}{//   delay(100);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00056}00056   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00057}00057   \textcolor{comment}{// iout\_sense = (iout\_sense >> 3);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00058}00058   \textcolor{comment}{// vcc = 0;}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00059}00059   \textcolor{comment}{// for (int i = 0; i < 8; i++)}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00060}00060   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00061}00061   \textcolor{comment}{//   vcc += analogRead(C\_PIN\_VCC);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00062}00062   \textcolor{comment}{//   delay(100);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00063}00063   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00064}00064   \textcolor{comment}{// vcc = (vcc >> 3);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00065}00065   \textcolor{comment}{// vcc\_2 = 0;}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00066}00066   \textcolor{comment}{// for (int i = 0; i < 8; i++)}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00067}00067   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00068}00068   \textcolor{comment}{//   vcc\_2 += analogRead(C\_PIN\_VCC\_2);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00069}00069   \textcolor{comment}{//   delay(100);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00070}00070   \textcolor{comment}{// // \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00071}00071   \textcolor{comment}{// vcc\_2 = (vcc\_2 / 8);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00073}00073   \textcolor{keywordflow}{if} (Serial.available())}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00074}00074   \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00075}00075     delay(500);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00076}00076     digitalWrite(LED\_BUILTIN, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00077}00077     \mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}} = Serial.read();}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00078}00078     \textcolor{keywordflow}{if} (\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}} == \textcolor{charliteral}{'1'})}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00079}00079     \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00080}00080       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{C\_PIN\_LED\_1}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00081}00081       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00082}00082       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00083}00083       delay(200);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00084}00084     \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00085}00085     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}} == \textcolor{charliteral}{'2'})}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00086}00086     \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00087}00087       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{C\_PIN\_LED\_2}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00088}00088       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00089}00089       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00090}00090     \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00091}00091     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}} == \textcolor{charliteral}{'3'})}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00092}00092     \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00093}00093       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{C\_PIN\_LED\_3}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00094}00094       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_acb98bb6ae394ed8febb4b08d4a937a13}{C\_PIN\_SW1}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00095}00095       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_ab60f6e6f1a2f3679e0e29c2aa11e3cab}{C\_PIN\_SW2}}, HIGH);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00096}00096     \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00097}00097     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}} == \textcolor{charliteral}{'0'})}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00098}00098     \{}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00099}00099       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a9ac01afcf22752715e02c84ac0270501}{C\_PIN\_LED\_1}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00100}00100       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a4b98871c81291134b9b5f636e9cd07c4}{C\_PIN\_LED\_2}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00101}00101       digitalWrite(\mbox{\hyperlink{sketch__jul14a_8ino_a80301bc5363768f7f27c3e17723fbee9}{C\_PIN\_LED\_3}}, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00102}00102     \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00104}00104     Serial.print(\mbox{\hyperlink{sketch__jul14a_8ino_a0f11fc08c1ec2c8146ddd0d5b8fe8355}{data}});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00105}00105     Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00106}00106     Serial.print(digitalRead(\mbox{\hyperlink{sketch__jul14a_8ino_ab5b0073921122b49f04606d2ffa37e0f}{C\_PIN\_SCL\_2}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00107}00107     Serial.print(\textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00108}00108     Serial.print(digitalRead(\mbox{\hyperlink{sketch__jul14a_8ino_aba0c2411699d728bdd98220e5077aa68}{C\_PIN\_SDA\_2}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00109}00109     Serial.print(\textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00110}00110     Serial.print(digitalRead(\mbox{\hyperlink{sketch__jul14a_8ino_ab5b0073921122b49f04606d2ffa37e0f}{C\_PIN\_SCL\_2}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00111}00111     Serial.print(\textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00112}00112     Serial.print(analogRead(\mbox{\hyperlink{sketch__jul14a_8ino_a95114668759a29c2419811e02a7a1ea3}{C\_PIN\_IOUT\_SENSE}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00113}00113     Serial.print(\textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00114}00114     Serial.print(analogRead(\mbox{\hyperlink{sketch__jul14a_8ino_ab072ca273b47c6fa09a87c92f98adbcd}{C\_PIN\_VCC}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00115}00115     Serial.print(\textcolor{charliteral}{';'});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00116}00116     Serial.print(analogRead(\mbox{\hyperlink{sketch__jul14a_8ino_ab1cdfc5d012e291bdce58e59d07c9f68}{C\_PIN\_VCC\_2}}));}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00117}00117     Serial.print(\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00118}00118     delay(500);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00119}00119     digitalWrite(LED\_BUILTIN, LOW);}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00120}00120   \}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00121}00121 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00122}00122   \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00123}00123   \textcolor{comment}{// //  Test LDO}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00124}00124   \textcolor{comment}{// digitalWrite(C\_PIN\_ENABLE\_LDO, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00125}00125   \textcolor{comment}{// digitalWrite(C\_PIN\_ISENSE\_RAW, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00126}00126 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00127}00127   \textcolor{comment}{// //-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00128}00128   \textcolor{comment}{// //  Test Digital Ports}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00129}00129   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_1, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00130}00130   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00131}00131   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_2, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00132}00132   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00133}00133   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_3, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00134}00134   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00135}00135   \textcolor{comment}{// digitalWrite(C\_PIN\_ENABLE\_LDO, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00136}00136   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00137}00137   \textcolor{comment}{// digitalWrite(C\_PIN\_ISENSE\_RAW, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00138}00138   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00139}00139   \textcolor{comment}{// digitalWrite(C\_PIN\_SW1, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00140}00140   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00141}00141   \textcolor{comment}{// digitalWrite(C\_PIN\_SW2, HIGH);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00142}00142   \textcolor{comment}{// delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00143}00143   \textcolor{comment}{// while (1)}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00144}00144   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00145}00145   \textcolor{comment}{//   /* code */}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00146}00146   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00148}00148   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_1, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00149}00149   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_2, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00150}00150   \textcolor{comment}{// digitalWrite(C\_PIN\_LED\_3, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00151}00151   \textcolor{comment}{// digitalWrite(C\_PIN\_ENABLE\_LDO, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00152}00152   \textcolor{comment}{// digitalWrite(C\_PIN\_ISENSE\_RAW, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00153}00153   \textcolor{comment}{// digitalWrite(C\_PIN\_SW1, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00154}00154   \textcolor{comment}{// digitalWrite(C\_PIN\_SW2, LOW);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00155}00155 }
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00156}00156   \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00157}00157   \textcolor{comment}{//   Test Serial Port}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00158}00158   \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00159}00159   \textcolor{comment}{// if (Serial.available())}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00160}00160   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00161}00161   \textcolor{comment}{//   data = Serial.readString();}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00162}00162   \textcolor{comment}{//   data.trim();}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00163}00163   \textcolor{comment}{//   Serial.print(data);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00164}00164   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00165}00165   \textcolor{comment}{// for (i = 0; i < 10; i++)}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00166}00166   \textcolor{comment}{// \{}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00167}00167   \textcolor{comment}{//   Serial.print("{}\(\backslash\)t"{});}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00168}00168   \textcolor{comment}{//   Serial.print(i);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00169}00169   \textcolor{comment}{//   Serial.print("{};"{});}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00170}00170   \textcolor{comment}{//   Serial.print(i + 5);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00171}00171   \textcolor{comment}{//   Serial.print("{};"{});}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00172}00172   \textcolor{comment}{//   Serial.print(i * 10);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00173}00173   \textcolor{comment}{//   Serial.print("{};"{});}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00174}00174   \textcolor{comment}{//   Serial.print(i * 2);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00175}00175   \textcolor{comment}{//   Serial.print("{}\(\backslash\)n"{});}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00176}00176   \textcolor{comment}{//   delay(500);}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00177}00177   \textcolor{comment}{// \}}}
+\DoxyCodeLine{\Hypertarget{sketch__jul14a_8ino_source_l00178}00178 \}}
+
+\end{DoxyCode}

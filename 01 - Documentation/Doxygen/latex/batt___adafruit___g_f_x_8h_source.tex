@@ -1,0 +1,312 @@
+\hypertarget{batt___adafruit___g_f_x_8h_source}{}\doxysection{batt\+\_\+\+Adafruit\+\_\+\+GFX.\+h}
+\label{batt___adafruit___g_f_x_8h_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_Adafruit\_GFX.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0008-\/Adafruit\_GFX\_Library/batt\_Adafruit\_GFX.h}}
+\mbox{\hyperlink{batt___adafruit___g_f_x_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef \_ADAFRUIT\_GFX\_H}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00002}00002 \textcolor{preprocessor}{\#define \_ADAFRUIT\_GFX\_H}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00004}00004 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00005}00005 \textcolor{preprocessor}{\#include "{}Arduino.h"{}}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00006}00006 \textcolor{preprocessor}{\#include "{}Print.h"{}}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00007}00007 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00008}00008 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00009}00009 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{batt__gfxfont_8h}{batt\_gfxfont.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00015}\mbox{\hyperlink{class_adafruit___g_f_x}{00015}} \textcolor{keyword}{class }\mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} : \textcolor{keyword}{public} Print \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00017}00017 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00018}00018   \mbox{\hyperlink{class_adafruit___g_f_x_a6f6f1abccf677eac244fa17d105133ea}{Adafruit\_GFX}}(int16\_t w, int16\_t h); \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00020}00020 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00028}00028 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00029}\mbox{\hyperlink{class_adafruit___g_f_x_ab7fbf72885c873266f9c7eb53b5c8896}{00029}}   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab7fbf72885c873266f9c7eb53b5c8896}{drawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t color) = 0;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00031}00031   \textcolor{comment}{// TRANSACTION API / CORE DRAW API}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00032}00032   \textcolor{comment}{// These MAY be overridden by the subclass to provide device-\/specific}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00033}00033   \textcolor{comment}{// optimized code.  Otherwise 'generic' versions are used.}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00034}00034   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_aa991435d3d38f6818fc93f9370c0b3e5}{startWrite}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00035}00035   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab66a1577ec595a254e4492d641b36fd8}{writePixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00036}00036   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a60133faeabc10f9d909674bc4c5aabc6}{writeFillRect}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00037}00037                              uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00038}00038   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ae12d09670433af17e666a203b51715f7}{writeFastVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00039}00039   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ad85469e8be73f90932058fba1d4e5cbd}{writeFastHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00040}00040   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ae1e5204b9251a04a57c821f69a8e638b}{writeLine}}(int16\_t x0, int16\_t y0, int16\_t x1, int16\_t y1,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00041}00041                          uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00042}00042   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab9be8787f3683151e86c1f3b5c8685d6}{endWrite}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00044}00044   \textcolor{comment}{// CONTROL API}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00045}00045   \textcolor{comment}{// These MAY be overridden by the subclass to provide device-\/specific}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00046}00046   \textcolor{comment}{// optimized code.  Otherwise 'generic' versions are used.}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00047}00047   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a6ac337c49876cee23ed062a928724675}{setRotation}}(uint8\_t r);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00048}00048   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a45028d348fe4eb23854eb86f5cf99388}{invertDisplay}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00050}00050   \textcolor{comment}{// BASIC DRAW API}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00051}00051   \textcolor{comment}{// These MAY be overridden by the subclass to provide device-\/specific}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00052}00052   \textcolor{comment}{// optimized code.  Otherwise 'generic' versions are used.}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00054}00054   \textcolor{comment}{// It's good to implement those, even if using transaction API}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00055}00055   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a1cffbb1d69c5faf49cd0cff27686a837}{drawFastVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00056}00056   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a4d42e7cc577c1eb5b06fe656786c9c79}{drawFastHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00057}00057   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_aa43cf1dfe6c17d040a0f1fd5ffbe9d69}{fillRect}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00058}00058                         uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00059}00059   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a2b2730aaf2208990928f9c0f85558527}{fillScreen}}(uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00060}00060   \textcolor{comment}{// Optional and probably not necessary to change}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00061}00061   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_aa0ff662c2b2b48c3bac51f98c777776d}{drawLine}}(int16\_t x0, int16\_t y0, int16\_t x1, int16\_t y1,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00062}00062                         uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00063}00063   \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a9ec2c2ab426503e4f7deddb93bb916f6}{drawRect}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00064}00064                         uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00066}00066   \textcolor{comment}{// These exist only with Adafruit\_GFX (no subclass overrides)}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00067}00067   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a648d2d6765e488b4556e802167d885fb}{drawCircle}}(int16\_t x0, int16\_t y0, int16\_t r, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00068}00068   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a3f2dd7b698e7b95ebf9fecf992ff802e}{drawCircleHelper}}(int16\_t x0, int16\_t y0, int16\_t r, uint8\_t cornername,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00069}00069                         uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00070}00070   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a623e031e58492fb41e9fde6a05d97c12}{fillCircle}}(int16\_t x0, int16\_t y0, int16\_t r, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00071}00071   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a2242d3560b08c6480084152b6660052a}{fillCircleHelper}}(int16\_t x0, int16\_t y0, int16\_t r, uint8\_t cornername,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00072}00072                         int16\_t delta, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00073}00073   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a49284b9cea16ecf8c15dfd0b51a841e6}{drawTriangle}}(int16\_t x0, int16\_t y0, int16\_t x1, int16\_t y1, int16\_t x2,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00074}00074                     int16\_t y2, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00075}00075   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a4cd646a3d9c9d5b3ee50010d0aa387cd}{fillTriangle}}(int16\_t x0, int16\_t y0, int16\_t x1, int16\_t y1, int16\_t x2,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00076}00076                     int16\_t y2, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00077}00077   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab496b247abec724ef80e17a30257972b}{drawRoundRect}}(int16\_t x0, int16\_t y0, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00078}00078                      int16\_t radius, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00079}00079   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a78dc59f6a508bcd3d5ac7af957b8b1ac}{fillRoundRect}}(int16\_t x0, int16\_t y0, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00080}00080                      int16\_t radius, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00081}00081   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint8\_t bitmap[], int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00082}00082                   int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00083}00083   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint8\_t bitmap[], int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00084}00084                   int16\_t h, uint16\_t color, uint16\_t bg);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00085}00085   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint8\_t *bitmap, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00086}00086                   uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00087}00087   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a805a15f1b3ea9eff5d1666b8e6db1c56}{drawBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint8\_t *bitmap, int16\_t w, int16\_t h,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00088}00088                   uint16\_t color, uint16\_t bg);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00089}00089   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_aa7797117fef7d18592d352c14fa7d820}{drawXBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint8\_t bitmap[], int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00090}00090                    int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00091}00091   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af7f146631268e8940d9c44c64c69ab80}{drawGrayscaleBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint8\_t bitmap[],}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00092}00092                            int16\_t w, int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00093}00093   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af7f146631268e8940d9c44c64c69ab80}{drawGrayscaleBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint8\_t *bitmap, int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00094}00094                            int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00095}00095   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af7f146631268e8940d9c44c64c69ab80}{drawGrayscaleBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint8\_t bitmap[],}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00096}00096                            \textcolor{keyword}{const} uint8\_t mask[], int16\_t w, int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00097}00097   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af7f146631268e8940d9c44c64c69ab80}{drawGrayscaleBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint8\_t *bitmap, uint8\_t *mask,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00098}00098                            int16\_t w, int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00099}00099   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af90e317367f3ac6dae3aa46d549ca535}{drawRGBBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint16\_t bitmap[], int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00100}00100                      int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00101}00101   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af90e317367f3ac6dae3aa46d549ca535}{drawRGBBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t *bitmap, int16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00102}00102                      int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00103}00103   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af90e317367f3ac6dae3aa46d549ca535}{drawRGBBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keyword}{const} uint16\_t bitmap[],}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00104}00104                      \textcolor{keyword}{const} uint8\_t mask[], int16\_t w, int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00105}00105   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_af90e317367f3ac6dae3aa46d549ca535}{drawRGBBitmap}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t *bitmap, uint8\_t *mask,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00106}00106                      int16\_t w, int16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00107}00107   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab7f5a29b3a3dffe30c6a3f4c1f604a5a}{drawChar}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c, uint16\_t color,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00108}00108                 uint16\_t bg, uint8\_t size);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00109}00109   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab7f5a29b3a3dffe30c6a3f4c1f604a5a}{drawChar}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c, uint16\_t color,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00110}00110                 uint16\_t bg, uint8\_t size\_x, uint8\_t size\_y);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00111}00111   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a90983ed41807de26d48bcf588d7c9a19}{getTextBounds}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string}, int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t *x1,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00112}00112                      int16\_t *y1, uint16\_t *w, uint16\_t *h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00113}00113   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a90983ed41807de26d48bcf588d7c9a19}{getTextBounds}}(\textcolor{keyword}{const} \_\_FlashStringHelper *s, int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00114}00114                      int16\_t *x1, int16\_t *y1, uint16\_t *w, uint16\_t *h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00115}00115   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a90983ed41807de26d48bcf588d7c9a19}{getTextBounds}}(\textcolor{keyword}{const} String \&str, int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t *x1,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00116}00116                      int16\_t *y1, uint16\_t *w, uint16\_t *h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00117}00117   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a39eb4a8a2c9fa4ab7d58ceffd19535d5}{setTextSize}}(uint8\_t s);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00118}00118   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a39eb4a8a2c9fa4ab7d58ceffd19535d5}{setTextSize}}(uint8\_t sx, uint8\_t sy);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00119}00119   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab0479a2bb4e09e7c39c35e35c55d6ed1}{setFont}}(\textcolor{keyword}{const} \mbox{\hyperlink{struct_g_f_xfont}{GFXfont}} *f = NULL);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00120}00120 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00121}00121 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00127}00127 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00128}\mbox{\hyperlink{class_adafruit___g_f_x_aaf96a40cad0f34dd8ec73494b3866c33}{00128}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_aaf96a40cad0f34dd8ec73494b3866c33}{setCursor}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00129}00129     \mbox{\hyperlink{class_adafruit___g_f_x_a8f8983cea8d81a7c8e9d05eef36318e2}{cursor\_x}} = \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00130}00130     \mbox{\hyperlink{class_adafruit___g_f_x_aebe0a38f6e6fd59cb81620c4696286c9}{cursor\_y}} = y;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00131}00131   \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00132}00132 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00133}00133 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00140}00140 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00141}\mbox{\hyperlink{class_adafruit___g_f_x_a59178a0e0c845a14a39b457c43567dd9}{00141}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a59178a0e0c845a14a39b457c43567dd9}{setTextColor}}(uint16\_t c) \{ \mbox{\hyperlink{class_adafruit___g_f_x_a8c6d23a386651136fd9530a5b7046591}{textcolor}} = \mbox{\hyperlink{class_adafruit___g_f_x_a23e7a4efcab0b1588dc0cafa14b1fac1}{textbgcolor}} = c; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00142}00142 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00143}00143 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00149}00149 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00150}\mbox{\hyperlink{class_adafruit___g_f_x_ab6e88c585d3ab6b4f95199361f224fc6}{00150}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ab6e88c585d3ab6b4f95199361f224fc6}{setTextColor}}(uint16\_t c, uint16\_t bg) \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00151}00151     \mbox{\hyperlink{class_adafruit___g_f_x_a8c6d23a386651136fd9530a5b7046591}{textcolor}} = c;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00152}00152     \mbox{\hyperlink{class_adafruit___g_f_x_a23e7a4efcab0b1588dc0cafa14b1fac1}{textbgcolor}} = bg;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00153}00153   \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00154}00154 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00155}00155 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00161}00161 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00162}\mbox{\hyperlink{class_adafruit___g_f_x_a2f69fe66c38989e75be3216be22359b1}{00162}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a2f69fe66c38989e75be3216be22359b1}{setTextWrap}}(\textcolor{keywordtype}{bool} w) \{ \mbox{\hyperlink{class_adafruit___g_f_x_a8c31e63d43f7285e47aa48c363d86ce9}{wrap}} = w; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00164}00164 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00177}00177 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00178}\mbox{\hyperlink{class_adafruit___g_f_x_ac3cd691e204f3df61297a9557e2ea5c7}{00178}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_ac3cd691e204f3df61297a9557e2ea5c7}{cp437}}(\textcolor{keywordtype}{bool} \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}} = \textcolor{keyword}{true}) \{ \mbox{\hyperlink{class_adafruit___g_f_x_a751d54ed0e52ca2657b194769782d5eb}{\_cp437}} = \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00180}00180   \textcolor{keyword}{using} Print::write;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00181}00181 \textcolor{preprocessor}{\#if ARDUINO >= 100}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00182}00182   \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_f_x_a8773d92cafa93d3f749fb55c535d8f2e}{write}}(uint8\_t);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00183}00183 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00184}00184   \textcolor{keyword}{virtual} \textcolor{keywordtype}{size\_t} \mbox{\hyperlink{class_adafruit___g_f_x_a8773d92cafa93d3f749fb55c535d8f2e}{write}}(uint8\_t);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00185}00185 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00186}00186 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00187}00187 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00192}00192 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00193}\mbox{\hyperlink{class_adafruit___g_f_x_a324b5361e7198ef0e79eaf4c80bddfc7}{00193}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a324b5361e7198ef0e79eaf4c80bddfc7}{width}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_f_x_ab237f850a033492f5e745d79405a097a}{\_width}}; \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00194}00194 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00195}00195 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00200}00200 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00201}\mbox{\hyperlink{class_adafruit___g_f_x_a49da524caa19e5202ed2ed7fd5a3baea}{00201}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a49da524caa19e5202ed2ed7fd5a3baea}{height}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_f_x_ab9bb0cbc2455f64dce2a5ec36307aa94}{\_height}}; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00202}00202 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00203}00203 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00208}00208 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00209}\mbox{\hyperlink{class_adafruit___g_f_x_ab90e1378511b93189a7b557d7dda5d73}{00209}}   uint8\_t \mbox{\hyperlink{class_adafruit___g_f_x_ab90e1378511b93189a7b557d7dda5d73}{getRotation}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_f_x_a37a479d28fb11906ce516e983b1af926}{rotation}}; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00211}00211   \textcolor{comment}{// get current cursor position (get rotation safe maximum values,}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00212}00212   \textcolor{comment}{// using: width() for x, height() for y)}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00213}00213 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00218}00218 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00219}\mbox{\hyperlink{class_adafruit___g_f_x_a0d1d15f5f15cad95b4c20f0e9ac9c74b}{00219}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a0d1d15f5f15cad95b4c20f0e9ac9c74b}{getCursorX}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_f_x_a8f8983cea8d81a7c8e9d05eef36318e2}{cursor\_x}}; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00221}00221 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00226}00226 \textcolor{comment}{  /************************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00227}\mbox{\hyperlink{class_adafruit___g_f_x_a81c8558cfcb717c4cfbd5475998daed1}{00227}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a81c8558cfcb717c4cfbd5475998daed1}{getCursorY}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} \mbox{\hyperlink{class_adafruit___g_f_x_aebe0a38f6e6fd59cb81620c4696286c9}{cursor\_y}}; \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00228}00228 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00229}00229 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00230}00230   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x_a682fb355070668dba526be20a9ce45af}{charBounds}}(\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c, int16\_t *\mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t *y, int16\_t *minx,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00231}00231                   int16\_t *miny, int16\_t *maxx, int16\_t *maxy);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00232}\mbox{\hyperlink{class_adafruit___g_f_x_aded338777abeac3c457660023f5c0724}{00232}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_aded338777abeac3c457660023f5c0724}{WIDTH}};        }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00233}\mbox{\hyperlink{class_adafruit___g_f_x_a2b7801fc9c405a61abe6e5916b55825b}{00233}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a2b7801fc9c405a61abe6e5916b55825b}{HEIGHT}};       }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00234}\mbox{\hyperlink{class_adafruit___g_f_x_ab237f850a033492f5e745d79405a097a}{00234}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_ab237f850a033492f5e745d79405a097a}{\_width}};       }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00235}\mbox{\hyperlink{class_adafruit___g_f_x_ab9bb0cbc2455f64dce2a5ec36307aa94}{00235}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_ab9bb0cbc2455f64dce2a5ec36307aa94}{\_height}};      }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00236}\mbox{\hyperlink{class_adafruit___g_f_x_a8f8983cea8d81a7c8e9d05eef36318e2}{00236}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a8f8983cea8d81a7c8e9d05eef36318e2}{cursor\_x}};     }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00237}\mbox{\hyperlink{class_adafruit___g_f_x_aebe0a38f6e6fd59cb81620c4696286c9}{00237}}   int16\_t \mbox{\hyperlink{class_adafruit___g_f_x_aebe0a38f6e6fd59cb81620c4696286c9}{cursor\_y}};     }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00238}\mbox{\hyperlink{class_adafruit___g_f_x_a8c6d23a386651136fd9530a5b7046591}{00238}}   uint16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a8c6d23a386651136fd9530a5b7046591}{textcolor}};   }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00239}\mbox{\hyperlink{class_adafruit___g_f_x_a23e7a4efcab0b1588dc0cafa14b1fac1}{00239}}   uint16\_t \mbox{\hyperlink{class_adafruit___g_f_x_a23e7a4efcab0b1588dc0cafa14b1fac1}{textbgcolor}}; }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00240}\mbox{\hyperlink{class_adafruit___g_f_x_a9c33cd6928ad6738a633e97727ae8773}{00240}}   uint8\_t \mbox{\hyperlink{class_adafruit___g_f_x_a9c33cd6928ad6738a633e97727ae8773}{textsize\_x}};   }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00241}\mbox{\hyperlink{class_adafruit___g_f_x_aa8588c3941eec083563c853ada3dd771}{00241}}   uint8\_t \mbox{\hyperlink{class_adafruit___g_f_x_aa8588c3941eec083563c853ada3dd771}{textsize\_y}};   }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00242}\mbox{\hyperlink{class_adafruit___g_f_x_a37a479d28fb11906ce516e983b1af926}{00242}}   uint8\_t \mbox{\hyperlink{class_adafruit___g_f_x_a37a479d28fb11906ce516e983b1af926}{rotation}};     }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00243}\mbox{\hyperlink{class_adafruit___g_f_x_a8c31e63d43f7285e47aa48c363d86ce9}{00243}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x_a8c31e63d43f7285e47aa48c363d86ce9}{wrap}};            }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00244}\mbox{\hyperlink{class_adafruit___g_f_x_a751d54ed0e52ca2657b194769782d5eb}{00244}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x_a751d54ed0e52ca2657b194769782d5eb}{\_cp437}};          }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00245}\mbox{\hyperlink{class_adafruit___g_f_x_afeb94c3253f43dada05e1270e322fa06}{00245}}   \mbox{\hyperlink{struct_g_f_xfont}{GFXfont}} *\mbox{\hyperlink{class_adafruit___g_f_x_afeb94c3253f43dada05e1270e322fa06}{gfxFont}};     }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00246}00246 \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00249}\mbox{\hyperlink{class_adafruit___g_f_x___button}{00249}} \textcolor{keyword}{class }\mbox{\hyperlink{class_adafruit___g_f_x___button}{Adafruit\_GFX\_Button}} \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00250}00250 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00251}00251 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00252}00252   \mbox{\hyperlink{class_adafruit___g_f_x___button_a2232fef797e2d21f931eeda59d790d09}{Adafruit\_GFX\_Button}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00253}00253   \textcolor{comment}{// "{}Classic"{} initButton() uses center \& size}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00254}00254   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a0cb6999a324b9999a1f4b610e36b16b6}{initButton}}(\mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} *gfx, int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00255}00255                   uint16\_t h, uint16\_t outline, uint16\_t fill,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00256}00256                   uint16\_t textcolor, \textcolor{keywordtype}{char} *label, uint8\_t textsize);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00257}00257   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a0cb6999a324b9999a1f4b610e36b16b6}{initButton}}(\mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} *gfx, int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00258}00258                   uint16\_t h, uint16\_t outline, uint16\_t fill,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00259}00259                   uint16\_t textcolor, \textcolor{keywordtype}{char} *label, uint8\_t textsize\_x,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00260}00260                   uint8\_t textsize\_y);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00261}00261   \textcolor{comment}{// New/alt initButton() uses upper-\/left corner \& size}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00262}00262   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a471d43fc4fb575b2868190d1ec832af7}{initButtonUL}}(\mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} *gfx, int16\_t x1, int16\_t y1, uint16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00263}00263                     uint16\_t h, uint16\_t outline, uint16\_t fill,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00264}00264                     uint16\_t textcolor, \textcolor{keywordtype}{char} *label, uint8\_t textsize);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00265}00265   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a471d43fc4fb575b2868190d1ec832af7}{initButtonUL}}(\mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} *gfx, int16\_t x1, int16\_t y1, uint16\_t w,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00266}00266                     uint16\_t h, uint16\_t outline, uint16\_t fill,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00267}00267                     uint16\_t textcolor, \textcolor{keywordtype}{char} *label, uint8\_t textsize\_x,}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00268}00268                     uint8\_t textsize\_y);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00269}00269   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a60b389bf3ac1546eb379ec09ebc2d16c}{drawButton}}(\textcolor{keywordtype}{bool} inverted = \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00270}00270   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x___button_ad74992b8c5e0aaf91f1bd80bad29095b}{contains}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00271}00271 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00272}00272 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00277}00277 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00278}\mbox{\hyperlink{class_adafruit___g_f_x___button_a932228d686e6dec88b8b99d03fdb59a7}{00278}}   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_adafruit___g_f_x___button_a932228d686e6dec88b8b99d03fdb59a7}{press}}(\textcolor{keywordtype}{bool} p) \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00279}00279     laststate = currstate;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00280}00280     currstate = p;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00281}00281   \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00282}00282 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00283}00283   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x___button_ad263405e09f7f2415d6fed2628637c7c}{justPressed}}();}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00284}00284   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x___button_aad3fc2981cbe9dc16dc06a781d8fee90}{justReleased}}();}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00285}00285 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00286}00286 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00291}00291 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00292}\mbox{\hyperlink{class_adafruit___g_f_x___button_adfdc75934b4acca801127fae6914fbf8}{00292}}   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_adafruit___g_f_x___button_adfdc75934b4acca801127fae6914fbf8}{isPressed}}(\textcolor{keywordtype}{void}) \{ \textcolor{keywordflow}{return} currstate; \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00293}00293 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00294}00294 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00295}00295   \mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} *\_gfx;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00296}00296   int16\_t \_x1, \_y1; \textcolor{comment}{// Coordinates of top-\/left corner}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00297}00297   uint16\_t \_w, \_h;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00298}00298   uint8\_t \_textsize\_x;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00299}00299   uint8\_t \_textsize\_y;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00300}00300   uint16\_t \_outlinecolor, \_fillcolor, \_textcolor;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00301}00301   \textcolor{keywordtype}{char} \_label[10];}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00302}00302 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00303}00303   \textcolor{keywordtype}{bool} currstate, laststate;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00304}00304 \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00307}\mbox{\hyperlink{class_g_f_xcanvas1}{00307}} \textcolor{keyword}{class }\mbox{\hyperlink{class_g_f_xcanvas1}{GFXcanvas1}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00308}00308 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00309}00309   \mbox{\hyperlink{class_g_f_xcanvas1_a3d8047501178f976fb6af095572eb5d0}{GFXcanvas1}}(uint16\_t w, uint16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00310}00310   \mbox{\hyperlink{class_g_f_xcanvas1_a5c6dad65db4c9a99544f3b5bad4c86e8}{\string~GFXcanvas1}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00311}00311   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_a0859d124c8dcaa147ef22a54d6e843a8}{drawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00312}00312   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_aa282792bbb854a4a045be5ba1c8a7afc}{fillScreen}}(uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00313}00313   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_a4056684c76582ee3864e8559402eaabf}{drawFastVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00314}00314   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_a5b59d1afa1c367d97f487c743727c460}{drawFastHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00315}00315   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_g_f_xcanvas1_aa27bc364e3d34442f28d76621dbdb530}{getPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00316}00316 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00321}00321 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00322}\mbox{\hyperlink{class_g_f_xcanvas1_aecb3c813ea1541e047a63ae121606b9b}{00322}}   uint8\_t *\mbox{\hyperlink{class_g_f_xcanvas1_aecb3c813ea1541e047a63ae121606b9b}{getBuffer}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} buffer; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00323}00323 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00324}00324 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00325}00325   \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_g_f_xcanvas1_a4eb78de4421384fd916883d944bf3ae8}{getRawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00326}00326   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_a4180a558088f9566e0b7211d9ee014a4}{drawFastRawVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00327}00327   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas1_a5060e55be61f5d3f767031118e2f039b}{drawFastRawHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00328}00328 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00329}00329 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00330}00330   uint8\_t *buffer;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00331}00331 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00332}00332 \textcolor{preprocessor}{\#ifdef \_\_AVR\_\_}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00333}00333   \textcolor{comment}{// Bitmask tables of 0x80>>X and \string~(0x80>>X), because X>>Y is slow on AVR}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00334}00334   \textcolor{keyword}{static} \textcolor{keyword}{const} uint8\_t \mbox{\hyperlink{batt__glcdfont_8c_a75acaba9e781937468d0911423bc0c35}{PROGMEM}} GFXsetBit[], GFXclrBit[];}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00335}00335 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00336}00336 \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00337}00337 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00339}\mbox{\hyperlink{class_g_f_xcanvas8}{00339}} \textcolor{keyword}{class }\mbox{\hyperlink{class_g_f_xcanvas8}{GFXcanvas8}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00340}00340 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00341}00341   \mbox{\hyperlink{class_g_f_xcanvas8_a57dcdb940a56a37cdfbb3a596f9e0ecd}{GFXcanvas8}}(uint16\_t w, uint16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00342}00342   \mbox{\hyperlink{class_g_f_xcanvas8_a340fa7ddf55936e16748bd37255d2f19}{\string~GFXcanvas8}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00343}00343   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_a596553ea995b2d7830cc3eef0c4085fc}{drawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00344}00344   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_a9362b64e0e24b34172226cab358f5a45}{fillScreen}}(uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00345}00345   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_a8b325776c7f78401534bae15a8d92437}{drawFastVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00346}00346   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_adbde83fd6c90945b6989981cd4ae642d}{drawFastHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00347}00347   uint8\_t \mbox{\hyperlink{class_g_f_xcanvas8_a596d92a61af6e59c69f132f1670ee62c}{getPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00348}00348 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00353}00353 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00354}\mbox{\hyperlink{class_g_f_xcanvas8_a7e336708e59f955ba2fdced798cca0f4}{00354}}   uint8\_t *\mbox{\hyperlink{class_g_f_xcanvas8_a7e336708e59f955ba2fdced798cca0f4}{getBuffer}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} buffer; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00355}00355 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00356}00356 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00357}00357   uint8\_t \mbox{\hyperlink{class_g_f_xcanvas8_a4ba7ffdd7a75f7377f5856547e4e1391}{getRawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00358}00358   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_aac869003b7e9be38fb9e350269cbe30a}{drawFastRawVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00359}00359   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas8_a8919acea0c1b958b511c219c4704f011}{drawFastRawHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00360}00360 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00361}00361 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00362}00362   uint8\_t *buffer;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00363}00363 \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00364}00364 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00366}\mbox{\hyperlink{class_g_f_xcanvas16}{00366}} \textcolor{keyword}{class }\mbox{\hyperlink{class_g_f_xcanvas16}{GFXcanvas16}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_adafruit___g_f_x}{Adafruit\_GFX}} \{}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00367}00367 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00368}00368   \mbox{\hyperlink{class_g_f_xcanvas16_a1087f17778b9c60db81162e66220b600}{GFXcanvas16}}(uint16\_t w, uint16\_t h);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00369}00369   \mbox{\hyperlink{class_g_f_xcanvas16_a15a79ebb2f3d86cb6a6bdc4ab1f3e9b7}{\string~GFXcanvas16}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00370}00370   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_ade30ed51e7dd07be0436b4f9407b6fd8}{drawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00371}00371   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_ae46db6d49d2943e7cb227fd0bb50b1f8}{fillScreen}}(uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00372}00372   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_a1d0f26a1252ad384612ca14b07cee98e}{byteSwap}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00373}00373   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_a182a232c8a6fd9ba0bc83c98cc7ed00f}{drawFastVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00374}00374   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_ac2ca8ecb6655eb246aa5d0af385b896c}{drawFastHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00375}00375   uint16\_t \mbox{\hyperlink{class_g_f_xcanvas16_aa0debb25a92095f1b069b649eb3e795e}{getPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00376}00376 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00381}00381 \textcolor{comment}{  /**********************************************************************/}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00382}\mbox{\hyperlink{class_g_f_xcanvas16_a967b2161a5caf36368c4c1ccddc3fb65}{00382}}   uint16\_t *\mbox{\hyperlink{class_g_f_xcanvas16_a967b2161a5caf36368c4c1ccddc3fb65}{getBuffer}}(\textcolor{keywordtype}{void})\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} buffer; \}}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00384}00384 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00385}00385   uint16\_t \mbox{\hyperlink{class_g_f_xcanvas16_af2ffc935a173c5f99e03b645cc883678}{getRawPixel}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y) \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00386}00386   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_a876be7e68dcc79cb1d7c7b0cf8d966ab}{drawFastRawVLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t h, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00387}00387   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_g_f_xcanvas16_a122d11b9843263c2738fbbd5c0dd3e86}{drawFastRawHLine}}(int16\_t \mbox{\hyperlink{manualanim_8ino_a6150e0515f7202e2fb518f7206ed97dc}{x}}, int16\_t y, int16\_t w, uint16\_t color);}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00388}00388 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00389}00389 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00390}00390   uint16\_t *buffer;}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00391}00391 \};}
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00392}00392 }
+\DoxyCodeLine{\Hypertarget{batt___adafruit___g_f_x_8h_source_l00393}00393 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_ADAFRUIT\_GFX\_H}}
+
+\end{DoxyCode}

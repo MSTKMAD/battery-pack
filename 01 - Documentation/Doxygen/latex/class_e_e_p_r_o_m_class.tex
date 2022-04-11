@@ -1,0 +1,137 @@
+\hypertarget{class_e_e_p_r_o_m_class}{}\doxysection{EEPROMClass Class Reference}
+\label{class_e_e_p_r_o_m_class}\index{EEPROMClass@{EEPROMClass}}
+
+
+{\ttfamily \#include $<$batt\+\_\+\+Flash\+As\+EEPROM.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_e_e_p_r_o_m_class_a6a2fcfebd6ba13350fac9b8e1851e637}{EEPROMClass}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{class_e_e_p_r_o_m_class_aa504020e188bc95dc1d555c6dc254d28}{read}} (int)
+\item 
+void \mbox{\hyperlink{class_e_e_p_r_o_m_class_a8ebe57942be10984c8fb6ed4b55fe69d}{write}} (int, uint8\+\_\+t)
+\item 
+void \mbox{\hyperlink{class_e_e_p_r_o_m_class_af26f78751c034f5112bb6886ddad77af}{update}} (int, uint8\+\_\+t)
+\item 
+bool \mbox{\hyperlink{class_e_e_p_r_o_m_class_a450c24cc5879179cd3a821719456dad2}{is\+Valid}} ()
+\item 
+void \mbox{\hyperlink{class_e_e_p_r_o_m_class_aa5c8b05b0e23c925f80a57b9bf5118c1}{commit}} ()
+\item 
+uint16\+\_\+t \mbox{\hyperlink{class_e_e_p_r_o_m_class_a87eb37bbd0d65f558c8935ed6189e127}{length}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8h_source_l00037}{37}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8h_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_a6a2fcfebd6ba13350fac9b8e1851e637}\label{class_e_e_p_r_o_m_class_a6a2fcfebd6ba13350fac9b8e1851e637}} 
+\index{EEPROMClass@{EEPROMClass}!EEPROMClass@{EEPROMClass}}
+\index{EEPROMClass@{EEPROMClass}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{EEPROMClass()}{EEPROMClass()}}
+{\footnotesize\ttfamily EEPROMClass\+::\+EEPROMClass (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_aa5c8b05b0e23c925f80a57b9bf5118c1}\label{class_e_e_p_r_o_m_class_aa5c8b05b0e23c925f80a57b9bf5118c1}} 
+\index{EEPROMClass@{EEPROMClass}!commit@{commit}}
+\index{commit@{commit}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}}
+{\footnotesize\ttfamily void EEPROMClass\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Write previously made eeprom changes to the underlying flash storage Use this with care\+: Each and every commit will harm the flash and reduce it\textquotesingle{}s lifetime (like with every flash memory) 
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_a450c24cc5879179cd3a821719456dad2}\label{class_e_e_p_r_o_m_class_a450c24cc5879179cd3a821719456dad2}} 
+\index{EEPROMClass@{EEPROMClass}!isValid@{isValid}}
+\index{isValid@{isValid}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{isValid()}{isValid()}}
+{\footnotesize\ttfamily bool EEPROMClass\+::is\+Valid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check whether the eeprom data is valid \begin{DoxyReturn}{Returns}
+true, if eeprom data is valid (has been written at least once), false if not 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_a87eb37bbd0d65f558c8935ed6189e127}\label{class_e_e_p_r_o_m_class_a87eb37bbd0d65f558c8935ed6189e127}} 
+\index{EEPROMClass@{EEPROMClass}!length@{length}}
+\index{length@{length}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{length()}{length()}}
+{\footnotesize\ttfamily uint16\+\_\+t EEPROMClass\+::length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8h_source_l00075}{75}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8h_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+h}}.
+
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_aa504020e188bc95dc1d555c6dc254d28}\label{class_e_e_p_r_o_m_class_aa504020e188bc95dc1d555c6dc254d28}} 
+\index{EEPROMClass@{EEPROMClass}!read@{read}}
+\index{read@{read}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily uint8\+\_\+t EEPROMClass\+::read (\begin{DoxyParamCaption}\item[{int}]{address }\end{DoxyParamCaption})}
+
+Read an eeprom cell 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+value 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_af26f78751c034f5112bb6886ddad77af}\label{class_e_e_p_r_o_m_class_af26f78751c034f5112bb6886ddad77af}} 
+\index{EEPROMClass@{EEPROMClass}!update@{update}}
+\index{update@{update}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void EEPROMClass\+::update (\begin{DoxyParamCaption}\item[{int}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Update a eeprom cell 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+\mbox{\Hypertarget{class_e_e_p_r_o_m_class_a8ebe57942be10984c8fb6ed4b55fe69d}\label{class_e_e_p_r_o_m_class_a8ebe57942be10984c8fb6ed4b55fe69d}} 
+\index{EEPROMClass@{EEPROMClass}!write@{write}}
+\index{write@{write}!EEPROMClass@{EEPROMClass}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void EEPROMClass\+::write (\begin{DoxyParamCaption}\item[{int}]{address,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+Write value to an eeprom cell 
+\begin{DoxyParams}{Parameters}
+{\em index} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp_source}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0012-\/batt\+\_\+\+Flash\+Storage/src/\mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8h}{batt\+\_\+\+Flash\+As\+EEPROM.\+h}}\item 
+C\+:/\+Users/\+Javi/\+Team Dropbox/\+Javi Rodriguez/\+Workspace/2-\/\+PROYECTOS/\+Bitbucket/03-\/\+Battery Pack/bat\+\_\+sw/\+LIBRARIES/0012-\/batt\+\_\+\+Flash\+Storage/src/\mbox{\hyperlink{batt___flash_as_e_e_p_r_o_m_8cpp}{batt\+\_\+\+Flash\+As\+EEPROM.\+cpp}}\end{DoxyCompactItemize}

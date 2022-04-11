@@ -1,0 +1,38 @@
+\hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source}{}\doxysection{TEST\+\_\+2.\+ino}
+\label{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_2/TEST\_2.ino@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0010-\/LOGGING/examples/TEST\_2/TEST\_2.ino}}
+\mbox{\hyperlink{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00011}00011 \textcolor{preprocessor}{\#include <\mbox{\hyperlink{diagnostic_8h}{diagnostic.h}}>}}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00012}\mbox{\hyperlink{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_a4fc01d736fe50cf5b977f755b675f11d}{00012}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}}()}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00013}00013 \{}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00014}00014     Serial.begin(9600);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00015}00015     \textcolor{keywordflow}{while} (!Serial)}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00016}00016     \{}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00017}00017         \textcolor{comment}{/* code */}}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00018}00018     \}}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00019}00019     uint16\_t voltage = 0;}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00020}00020     uint16\_t power = 0;}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00021}00021     \mbox{\hyperlink{diagnostic_8h_a41774915ad7225b91d8d08c3ba84ef14}{Init\_diagnostic\_elements}}();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00022}00022     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} = 0; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}} < 30; \mbox{\hyperlink{0003-_b_u_z_z_e_r_2examples_2_t_e_s_t__0_2_t_e_s_t__0_8ino_a752abcfe7ce5874cd9e8012a0346a37b}{i}}++)}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00023}00023     \{}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00024}00024         voltage = random(5000, 16000);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00025}00025         power = random(500, 5000);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00026}00026         Serial.print(voltage);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00027}00027         Serial.print(\textcolor{stringliteral}{"{};"{}});}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00028}00028         Serial.println(power);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00029}00029         \mbox{\hyperlink{diagnostic_8h_a4991e39017e0029a2d00191c9177e0c4}{Stats}}(voltage, power);}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00030}00030     \}}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00031}00031     \mbox{\hyperlink{diagnostic_8h_a67e65ea88cda76607ee65f3f0552ef32}{PrintStats}}();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00032}00032     Serial.println();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00033}00033     \textcolor{keywordtype}{int} \mbox{\hyperlink{_b1_8ino_a299d4a6025cd1492d58a67bcbbabd995}{t0}} = millis();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00034}00034     \mbox{\hyperlink{diagnostic_8h_a77f3e46990e85f7b20d653abc9999c5b}{UpdateEepromBatery}}();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00035}00035     \textcolor{keywordtype}{int} \mbox{\hyperlink{_b1_8ino_a24974b410f39e0c994c4ba643830e054}{t1}} = millis();}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00036}00036     Serial.println(\mbox{\hyperlink{_b1_8ino_a24974b410f39e0c994c4ba643830e054}{t1}} -\/ \mbox{\hyperlink{_b1_8ino_a299d4a6025cd1492d58a67bcbbabd995}{t0}});}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00039}\mbox{\hyperlink{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_afe461d27b9c48d5921c00d521181f12f}{00039}} \textcolor{keywordtype}{void} \mbox{\hyperlink{0002-_d_i_s_p_l_a_y_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}}()}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{0010-_l_o_g_g_i_n_g_2examples_2_t_e_s_t__2_2_t_e_s_t__2_8ino_source_l00041}00041 \}}
+
+\end{DoxyCode}

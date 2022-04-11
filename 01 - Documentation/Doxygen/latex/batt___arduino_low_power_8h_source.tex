@@ -1,0 +1,119 @@
+\hypertarget{batt___arduino_low_power_8h_source}{}\doxysection{batt\+\_\+\+Arduino\+Low\+Power.\+h}
+\label{batt___arduino_low_power_8h_source}\index{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.h@{C:/Users/Javi/Team Dropbox/Javi Rodriguez/Workspace/2-\/PROYECTOS/Bitbucket/03-\/Battery Pack/bat\_sw/LIBRARIES/0009-\/LOWPOWER/batt\_ArduinoLowPower.h}}
+\mbox{\hyperlink{batt___arduino_low_power_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef \_ARDUINO\_LOW\_POWER\_H\_}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00002}00002 \textcolor{preprocessor}{\#define \_ARDUINO\_LOW\_POWER\_H\_}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <Arduino.h>}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00006}00006 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_AVR}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00007}00007 \textcolor{preprocessor}{\#error The library is not compatible with AVR boards}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00008}00008 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00010}00010 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_SAMD}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00011}00011 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{batt___r_t_c_zero_8h}{batt\_RTCZero.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00012}00012 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00014}00014 \textcolor{preprocessor}{\#if defined(ARDUINO\_SAMD\_TIAN) || defined(ARDUINO\_NRF52\_PRIMO)}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00015}00015 \textcolor{comment}{// add here any board with companion chip which can be woken up}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00016}00016 \textcolor{preprocessor}{\#define BOARD\_HAS\_COMPANION\_CHIP}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00017}00017 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00019}\mbox{\hyperlink{batt___arduino_low_power_8h_a37c6bf46f7f38bcc9f39fc2f9cef8037}{00019}} \textcolor{preprocessor}{\#define RTC\_ALARM\_WAKEUP 0xFF}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00021}00021 \textcolor{preprocessor}{\#ifdef ARDUINO\_API\_VERSION}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00022}00022 \textcolor{keyword}{using} \mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{irq\_mode}} = PinStatus;}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00023}00023 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00024}\mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{00024}} \textcolor{keyword}{using} \mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{irq\_mode}} = uint32\_t;}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00025}00025 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00027}00027 \textcolor{comment}{//typedef void (*voidFuncPtr)( void ) ;}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00028}\mbox{\hyperlink{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}{00028}} \textcolor{keyword}{typedef} void (*\mbox{\hyperlink{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}{onOffFuncPtr}})(bool);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00030}\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{00030}} \textcolor{keyword}{typedef} \textcolor{keyword}{enum}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00032}\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00ad3af5c0dfbbbeffe90601387b89f21ea}{00032}}     \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00ad3af5c0dfbbbeffe90601387b89f21ea}{OTHER\_WAKEUP}} = 0,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00033}\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}{00033}}     \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a8107075b5aea94d1c5ca5ebe1f8e74f4}{GPIO\_WAKEUP}} = 1,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00034}\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}{00034}}     \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a50f8566d3cd125b330501cfa8d5ffe6a}{NFC\_WAKEUP}} = 2,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00035}00035     \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}{ANALOG\_COMPARATOR\_WAKEUP}} = 3}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00036}\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00a03f3fc3a2a319066c2b42a31ed23c640}{00036}} \} \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\_reason}};}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00038}00038 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_SAMD}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00039}00039 \textcolor{keyword}{enum} adc\_interrupt}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00040}00040 \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00041}00041     ADC\_INT\_BETWEEN,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00042}00042     ADC\_INT\_OUTSIDE,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00043}00043     ADC\_INT\_ABOVE\_MIN,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00044}00044     ADC\_INT\_BELOW\_MAX,}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00045}00045 \};}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00046}00046 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00048}\mbox{\hyperlink{class_arduino_low_power_class}{00048}} \textcolor{keyword}{class }\mbox{\hyperlink{class_arduino_low_power_class}{ArduinoLowPowerClass}}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00049}00049 \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00050}00050 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00051}\mbox{\hyperlink{class_arduino_low_power_class_a3d46417d3c8fd2476213220aa0b846e3}{00051}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a3d46417d3c8fd2476213220aa0b846e3}{idle}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00052}\mbox{\hyperlink{class_arduino_low_power_class_a1ee6c563b5cc6eadc4c999c3f670561f}{00052}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a1ee6c563b5cc6eadc4c999c3f670561f}{idle}}(uint32\_t millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00053}\mbox{\hyperlink{class_arduino_low_power_class_a41406ce74b4e8efee682bb5e861aaab9}{00053}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a41406ce74b4e8efee682bb5e861aaab9}{idle}}(\textcolor{keywordtype}{int} millis)}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00054}00054     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00055}00055         \mbox{\hyperlink{class_arduino_low_power_class_a3d46417d3c8fd2476213220aa0b846e3}{idle}}((uint32\_t)millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00056}00056     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00058}\mbox{\hyperlink{class_arduino_low_power_class_abba69e9cc0570392d3b2da783dd05b70}{00058}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_abba69e9cc0570392d3b2da783dd05b70}{sleep}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00059}\mbox{\hyperlink{class_arduino_low_power_class_aafc06b9cdab05b84762c46fb8e18e718}{00059}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_aafc06b9cdab05b84762c46fb8e18e718}{sleep}}(uint32\_t millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00060}\mbox{\hyperlink{class_arduino_low_power_class_adcc091c0391a89e7efc73031b5428e7e}{00060}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_adcc091c0391a89e7efc73031b5428e7e}{sleep}}(\textcolor{keywordtype}{int} millis)}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00061}00061     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00062}00062         \mbox{\hyperlink{class_arduino_low_power_class_abba69e9cc0570392d3b2da783dd05b70}{sleep}}((uint32\_t)millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00063}00063     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00065}\mbox{\hyperlink{class_arduino_low_power_class_ac2cc2c81781a56339cd512307e0fbc1f}{00065}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_ac2cc2c81781a56339cd512307e0fbc1f}{deepSleep}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00066}\mbox{\hyperlink{class_arduino_low_power_class_a491c35e1368687195692d736ca2896c7}{00066}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a491c35e1368687195692d736ca2896c7}{deepSleep}}(uint32\_t millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00067}\mbox{\hyperlink{class_arduino_low_power_class_a3ded3fe4369df11fe6cd36e54182c2b9}{00067}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a3ded3fe4369df11fe6cd36e54182c2b9}{deepSleep}}(\textcolor{keywordtype}{int} millis)}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00068}00068     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00069}00069         \mbox{\hyperlink{class_arduino_low_power_class_ac2cc2c81781a56339cd512307e0fbc1f}{deepSleep}}((uint32\_t)millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00071}00071 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00072}\mbox{\hyperlink{class_arduino_low_power_class_a4d526011d83fdbcd4c85b65658c36ab7}{00072}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_a4d526011d83fdbcd4c85b65658c36ab7}{attachInterruptWakeup}}(uint32\_t \mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, \mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{voidFuncPtr}} callback, \mbox{\hyperlink{batt___arduino_low_power_8h_ac64752d269f828f58428647dfda19b42}{irq\_mode}} mode);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00073}\mbox{\hyperlink{class_arduino_low_power_class_ab65a8aa666e6874f3ffb809923e99405}{00073}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_arduino_low_power_class_ab65a8aa666e6874f3ffb809923e99405}{deatchRTCInterrupt}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00074}00074 \textcolor{preprocessor}{\#ifdef BOARD\_HAS\_COMPANION\_CHIP}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00075}00075     \textcolor{keywordtype}{void} companionLowPowerCallback(\mbox{\hyperlink{batt___arduino_low_power_8h_a6b5d369311eb3b580973fce00ad07925}{onOffFuncPtr}} callback)}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00076}00076     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00077}00077         companionSleepCB = callback;}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00079}00079     \textcolor{keywordtype}{void} companionSleep()}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00080}00080     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00081}00081         companionSleepCB(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00082}00082     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00083}00083     \textcolor{keywordtype}{void} companionWakeup()}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00084}00084     \{}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00085}00085         companionSleepCB(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00086}00086     \}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00087}00087 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00089}00089 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_NRF52}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00090}00090     \textcolor{keywordtype}{void} enableWakeupFrom(\mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\_reason}} peripheral, uint32\_t \mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}} = 0xFF, uint32\_t event = 0xFF, uint32\_t option = 0xFF);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00091}00091     \mbox{\hyperlink{batt___arduino_low_power_8h_ad7b922ed9b15f76b71ada09332011f00}{wakeup\_reason}} wakeupReason();}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00092}00092 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00094}00094 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_SAMD}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00095}00095     \textcolor{keywordtype}{void} attachAdcInterrupt(uint32\_t \mbox{\hyperlink{_adc_wakeup_8ino_ac86ab61d2192250321b5877b0af1084c}{pin}}, \mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{voidFuncPtr}} callback, adc\_interrupt mode, uint16\_t lo, uint16\_t hi);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00096}00096     \textcolor{keywordtype}{void} detachAdcInterrupt();}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00097}00097 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00099}00099 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00100}00100     \textcolor{keywordtype}{void} setAlarmIn(uint32\_t millis);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00101}00101 \textcolor{preprocessor}{\#ifdef ARDUINO\_ARCH\_SAMD}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00102}00102     \mbox{\hyperlink{class_r_t_c_zero}{RTCZero}} \mbox{\hyperlink{_epoch_8ino_ac726a04a1a5835914a9f697ad5ead062}{rtc}};}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00103}00103     \mbox{\hyperlink{batt___r_t_c_zero_8h_af47ec912687cb72725d5e529eccdbb48}{voidFuncPtr}} adc\_cb;}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00104}00104     \textcolor{keyword}{friend} \textcolor{keywordtype}{void} ADC\_Handler();}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00105}00105 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00106}00106 \textcolor{preprocessor}{\#ifdef BOARD\_HAS\_COMPANION\_CHIP}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00107}00107     void (*companionSleepCB)(bool);}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00108}00108 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00109}00109 \};}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00111}00111 \textcolor{keyword}{extern} \mbox{\hyperlink{class_arduino_low_power_class}{ArduinoLowPowerClass}} \mbox{\hyperlink{batt___arduino_low_power_8h_a566fc2e3beba9d653cbee91092a0b3a8}{LowPower}};}
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{batt___arduino_low_power_8h_source_l00113}00113 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
