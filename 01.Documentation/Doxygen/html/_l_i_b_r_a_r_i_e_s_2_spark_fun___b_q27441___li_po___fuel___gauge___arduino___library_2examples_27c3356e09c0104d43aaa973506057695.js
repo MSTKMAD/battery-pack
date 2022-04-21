@@ -1,8 +1,0 @@
-var _l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695 =
-[
-    [ "loop", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html#afe461d27b9c48d5921c00d521181f12f", null ],
-    [ "printBatteryStats", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html#a41fd4778b309835359123e8457cffa8a", null ],
-    [ "setup", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html#a4fc01d736fe50cf5b977f755b675f11d", null ],
-    [ "setupBQ27441", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html#acdf8282198fa074757f6aa19099870e6", null ],
-    [ "BATTERY_CAPACITY", "_l_i_b_r_a_r_i_e_s_2_spark_fun___b_q27441___li_po___fuel___gauge___arduino___library_2examples_27c3356e09c0104d43aaa973506057695.html#a2d9dd1ddcd13a5d5ab7236df8aca10e6", null ]
-];

@@ -3710,7 +3710,7 @@ by exp-lbrs.ulp</description>
 <description>INPUT</description>
 <plain>
 <text x="243.84" y="271.78" size="6.4516" layer="94">BATTERY PACK
-Dec-2020 v1</text>
+Dec-2021 v4 </text>
 <text x="331.216" y="51.308" size="1.27" layer="97" font="vector" align="top-left">Sets fast charge current
 - R_ISET range: 590-8.9k
 - I_CHG = ~885 / R_ISET
