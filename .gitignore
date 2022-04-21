@@ -49,6 +49,9 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# Folders
+01.Documentation/Doxygen/
 XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/libraries/Adafruit_BusIO/Adafruit_BusIO_Register.cpp
 03.Firmware/libraries/Adafruit_BusIO/Adafruit_BusIO_Register.h
