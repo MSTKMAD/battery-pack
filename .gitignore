@@ -49,6 +49,8 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+*.b#*
+*.s#*
 
 # Folders
 Doxygen/*
