@@ -218,3 +218,4 @@ XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/LIBRARIES/arduino_829754/LICENSE
 03.Firmware/LIBRARIES/arduino_829754/library.properties
 03.Firmware/CODE/B1/B1.ino.feather_m0.bin
+*.b##

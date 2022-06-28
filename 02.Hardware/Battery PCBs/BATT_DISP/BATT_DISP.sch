@@ -6987,7 +6987,7 @@ v8-Feb22</text>
 <attribute name="VALUE" x="120.142" y="125.73" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="K1" gate="G$1" x="71.12" y="139.7" smashed="yes">
-<attribute name="VALUE" x="71.12" y="121.92" size="1.778" layer="96"/>
+<attribute name="VALUE" x="71.12" y="160.02" size="1.778" layer="96"/>
 </instance>
 <instance part="S1" gate="G$1" x="223.52" y="132.08" smashed="yes" rot="R180">
 <attribute name="NAME" x="217.17" y="127" size="1.778" layer="95" rot="R180" align="center-left"/>
