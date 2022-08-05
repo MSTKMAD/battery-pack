@@ -287,6 +287,7 @@ int16_t cont_idle_timer = 0;
 uint16_t sample_IOut = 0;
 uint16_t sample_VOut = 0;
 uint16_t sample_POut = 0;
+uint16_t sample_Vin = 0;
 uint16_t theory_Vout = 50;
 uint16_t capacity = 0;
 uint8_t counter_prints_static_data = 0;
@@ -415,53 +416,54 @@ void setup()
     }
 
     //============================================================== TEST MODE ==================================================================//
-    // for (int i = 0; i < 5; i++)
-    // {
-    //     test_enable = digitalRead(C_PIN_TEST_MODE);
-    //     if (test_enable == true)
-    //     {
-    //         break;
-    //     }
-    //     delay(1000);
-    // }
-    // if (test_enable == true)
-    // {
-    //     while (1)
-    //     {
-    //         for (int i = 0; i < 8; i++)
-    //         {
-    //             sample_IOut += analogRead(C_PIN_I_OUT);
-    //             sample_Vin += analogRead(C_PIN_V_IN);
-    //             sample_VOut += analogRead(C_PIN_V_OUT);
-    //         }
+    for (int i = 0; i < 5; i++)
+    {
+        test_enable = digitalRead(C_PIN_TEST_MODE);
+        if (test_enable == true)
+        {
+            break;
+        }
+        delay(1000);
+    }
+    if (test_enable == true)
+    {
+        while (1)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                sample_IOut += analogRead(C_PIN_I_OUT);
+                sample_Vin += analogRead(C_PIN_V_IN);
+                sample_VOut += analogRead(C_PIN_V_OUT);
+            }
 
-    //         sample_IOut = sample_IOut / 8;
-    //         sample_Vin = sample_Vin / 8;
-    //         sample_VOut = sample_VOut / 8;
+            sample_IOut = sample_IOut / 8;
+            sample_Vin = sample_Vin / 8;
+            sample_VOut = sample_VOut / 8;
 
-    //         digitalRead(C_PIN_FLAG_CHARG);
-    //         digitalRead(C_PIN_SCL_2);
-    //         digitalRead(C_PIN_SDA_2);
-    //         digitalRead(C_PIN_FLAG_BATTLOW);
-    //         digitalWrite(C_PIN_USB_SEL, HIGH); // <--- La idea es ir conmutando el multiplexor y comprobar que el multiplexor funciona, y los pines de la CPU funciona.
+            digitalRead(C_PIN_FLAG_CHARG);
+            digitalRead(C_PIN_SCL_2);
+            digitalRead(C_PIN_SDA_2);
+            digitalRead(C_PIN_FLAG_BATTLOW);
+            digitalWrite(C_PIN_USB_SEL, HIGH); // <--- La idea es ir conmutando el multiplexor y comprobar que el multiplexor funciona, y los pines de la CPU funciona.
 
-    //         Serial.print("\t");
-    //         Serial.print(sample_IOut);
-    //         Serial.print(";");
-    //         Serial.print(sample_Vin);
-    //         Serial.print(";");
-    //         Se7rial.print(sample_VOut);
-    //         Serial.print(";");
-    //         Serial.print(C_PIN_FLAG_CHARG);
-    //         Serial.print(";");
-    //         Serial.print(C_PIN_SCL_2); // ?
-    //         Serial.print(";");
-    //         Serial.print(C_PIN_SDA_2); // ?
-    //         Serial.print(";");
-    //         Serial.print(C_PIN_FLAG_BATTLOW);
-    //         Serial.print("\n");
-    //     }
-    // }
+            Serial5.print("\t");
+            Serial5.print(sample_IOut);
+            Serial5.print(";");
+            Serial5.print(sample_Vin);
+            Serial5.print(";");
+            Serial5.print(sample_VOut);
+            Serial5.print(";");
+            Serial5.print(C_PIN_FLAG_CHARG);
+            Serial5.print(";");
+            Serial5.print(C_PIN_SCL_2); // ?
+            Serial5.print(";");
+            Serial5.print(C_PIN_SDA_2); // ?
+            Serial5.print(";");
+            Serial5.print(C_PIN_FLAG_BATTLOW);
+            Serial5.print("\n");
+            delay(1000);
+        }
+    }
 
     /*===============================================================================================================================================*/
     //                                                                 CONTROL LOOP
@@ -476,7 +478,7 @@ void setup()
         // t1 = micros();
         under_voltage_protection.threshold = (theory_Vout - 20) * 100; // Actualizacion de la proteccion de undervoltage
 
-        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 100 / 256;
+        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 100 / 259;
         sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 189 / 39 * 3000 / 4096;
         sample_POut = (sample_IOut) * (sample_VOut) / 1000;
         // t2 = micros();
