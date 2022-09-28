@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -1266,12 +1266,12 @@ einem neuen Namen ab.</description>
 <attribute name="SOURCELIBRARY" value="Maxim_2014-06-20" x="36.98" y="9.04" size="1.778" layer="27" display="off"/>
 <attribute name="VENDOR" value="Maxim Integrated Products" x="36.98" y="9.04" size="1.778" layer="27" display="off"/>
 </element>
-<element name="R6" library="SparkFun-Resistors" package="0603" value="120k" x="39.79" y="9.99" smashed="yes" rot="R270">
+<element name="R6" library="SparkFun-Resistors" package="0603" value="10k" x="39.79" y="9.99" smashed="yes" rot="R270">
 <attribute name="NAME" x="39.854" y="11.522" size="0.6096" layer="25" font="vector" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="39.79" y="9.99" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="VALUE" x="39.208" y="10.09" size="0.4064" layer="27" font="vector" rot="R270" align="top-center"/>
 </element>
-<element name="R7" library="SparkFun-Resistors" package="0603" value="120k" x="33.78" y="11.64" smashed="yes">
+<element name="R7" library="SparkFun-Resistors" package="0603" value="10k" x="33.78" y="11.64" smashed="yes">
 <attribute name="NAME" x="32.071684375" y="11.050209375" size="0.6096" layer="25" font="vector" rot="R30" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="33.78" y="11.64" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="33.78" y="11.208" size="0.4064" layer="27" font="vector" align="top-center"/>

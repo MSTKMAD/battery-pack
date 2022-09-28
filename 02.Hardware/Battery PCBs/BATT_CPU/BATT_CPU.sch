@@ -7,7 +7,7 @@
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="1" unitdist="mm" unit="mm" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -4884,8 +4884,8 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="SUPPLY10" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="U5" library="MAX9062" deviceset="MAX9062EUK+T" device=""/>
 <part name="U6" library="MAX9062" deviceset="MAX9062EUK+T" device=""/>
-<part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="120k"/>
-<part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="120k"/>
+<part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10k"/>
+<part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="0603" value="10k"/>
 <part name="SUPPLY11" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="SUPPLY12" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="U$17" library="microbuilder" deviceset="GND" device=""/>
@@ -5015,6 +5015,9 @@ be greater or equal to 3mm</text>
 <text x="106.68" y="68.58" size="1.778" layer="91">D1</text>
 <text x="106.68" y="81.28" size="1.778" layer="91">D8</text>
 <text x="106.68" y="78.74" size="1.778" layer="91">D9</text>
+<text x="87" y="129" size="1.778" layer="91">vo/vi = 0.6
+
+5v --&gt; 3v</text>
 </plain>
 <instances>
 <instance part="C6" gate="G$1" x="25.4" y="208.28" smashed="yes">
@@ -5322,11 +5325,11 @@ be greater or equal to 3mm</text>
 <attribute name="VALUE" x="176.276" y="106.68" size="1.778" layer="96" font="vector" rot="R270" align="top-center"/>
 </instance>
 <instance part="C16" gate="G$1" x="180.34" y="127" smashed="yes" rot="MR0">
-<attribute name="NAME" x="241.05" y="130.79" size="1.27" layer="95" font="vector" rot="MR90" align="center"/>
+<attribute name="NAME" x="183.05" y="127.79" size="1.27" layer="95" font="vector" rot="MR90" align="center"/>
 <attribute name="VALUE" x="178.04" y="128.25" size="1.27" layer="96" font="vector" rot="MR90" align="center"/>
 </instance>
 <instance part="C17" gate="G$1" x="210.82" y="157.48" smashed="yes" rot="MR270">
-<attribute name="NAME" x="209.57" y="159.77" size="1.27" layer="95" font="vector" rot="MR0" align="center"/>
+<attribute name="NAME" x="210.11" y="161.55" size="1.27" layer="95" font="vector" rot="MR0" align="center"/>
 <attribute name="VALUE" x="209.57" y="155.18" size="1.27" layer="96" font="vector" rot="MR0" align="center"/>
 </instance>
 <instance part="R16" gate="G$1" x="203.2" y="101.6" smashed="yes" rot="R180">
