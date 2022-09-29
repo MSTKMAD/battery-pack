@@ -5127,11 +5127,11 @@ by exp-lbrs.ulp</description>
 </classes>
 <parts>
 <part name="S1" library="switch momentary CK KXT311LHS" deviceset="KXT311LHS" device=""/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="1k"/>
+<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="330R"/>
 <part name="U$5" library="microbuilder" deviceset="GND" device=""/>
 <part name="FLX1" library="Flex4" deviceset="FLEX4" device=""/>
 <part name="GND10" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="LED1" library="APA3010 Led" deviceset="APA3010SRCPRV-GX" device=""/>
+<part name="LED1" library="APA3010 Led" deviceset="APA3010SRCPRV-GX" device="" value="APA3010ZGC-GX"/>
 <part name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="2k2"/>
 <part name="D-" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 <part name="!CHG" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
