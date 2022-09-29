@@ -6472,14 +6472,14 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="R4" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="R6" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
-<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R8" library="rcl" deviceset="R-EU_" device="R0603" value="20k"/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX6" device=""/>
 <part name="S1" library="switch momentary CK KXT311LHS" deviceset="KXT311LHS" device=""/>
 <part name="S2" library="switch momentary CK KXT311LHS" deviceset="KXT311LHS" device=""/>
 <part name="C2" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="100n"/>
 <part name="C3" library="microbuilder" deviceset="CAP_CERAMIC" device="0805-NOOUTLINE" value="100n"/>
-<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
-<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="10K"/>
+<part name="R1" library="rcl" deviceset="R-EU_" device="R0603" value="2k2"/>
+<part name="R2" library="rcl" deviceset="R-EU_" device="R0603" value="2k2"/>
 <part name="P+2" library="microbuilder" deviceset="VCC" device=""/>
 <part name="P+3" library="microbuilder" deviceset="VCC" device=""/>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
