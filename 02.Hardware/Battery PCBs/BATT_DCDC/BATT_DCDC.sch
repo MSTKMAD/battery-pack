@@ -4322,8 +4322,8 @@ Source: &lt;a href="https://www.rectron.com/data_sheets/bat54s.pdf"&gt; Datashee
 <part name="C19" library="Wurth_Elektronik_Passive_Capacitors_rev19a" library_urn="urn:adsk.eagle:library:491551" deviceset="WCAP-CSGP_1210" device="" package3d_urn="urn:adsk.eagle:package:491820/3" technology="_885012109003" value="47uF 25V"/>
 <part name="GND28" library="SparkFun" deviceset="GND" device=""/>
 <part name="R39" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="78.7k"/>
-<part name="R40" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="78.7k"/>
-<part name="C20" library="SparkFun-Capacitors" deviceset="47NF" device="-0603-25V-5%" value="47nF"/>
+<part name="R40" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="N.A."/>
+<part name="C20" library="SparkFun-Capacitors" deviceset="47NF" device="-0603-25V-5%" value="N.A."/>
 <part name="GND29" library="SparkFun" deviceset="GND" device=""/>
 <part name="C21" library="SparkFun-Capacitors" deviceset="2.2NF/2200PF" device="-0603-50V-10%" value="2.2nF"/>
 <part name="R41" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="56k2"/>
@@ -4351,7 +4351,7 @@ Source: &lt;a href="https://www.rectron.com/data_sheets/bat54s.pdf"&gt; Datashee
 <part name="R9" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="160k"/>
 <part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="82k"/>
 <part name="Q1" library="SamacSys_Parts" deviceset="NVTFS9D6P04M8LTAG" device=""/>
-<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="470k"/>
+<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="120k"/>
 <part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="470k"/>
 <part name="R17" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="33"/>
 <part name="Q5" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
@@ -4371,7 +4371,7 @@ Source: &lt;a href="https://www.rectron.com/data_sheets/bat54s.pdf"&gt; Datashee
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
 <part name="RSENSE" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="100mR"/>
 <part name="GND8" library="SparkFun" deviceset="GND" device=""/>
-<part name="R13" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="150k"/>
+<part name="R13" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="169k"/>
 <part name="R14" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="39k"/>
 <part name="GND10" library="SparkFun" deviceset="GND" device=""/>
 <part name="K3" library="Flex_3mm" deviceset="FLEX8" device=""/>
@@ -4408,6 +4408,10 @@ como el amplificador
 quedaran desactivados
  en el modo sleep.</text>
 <text x="300.62" y="22.32" size="6.4516" layer="94">v5</text>
+<text x="317.5" y="154.94" size="1.778" layer="91">G= 1.62
+Fcut = 1/R11*C2*2PI = 300 Hz</text>
+<text x="335.28" y="119.38" size="1.778" layer="91">vo/vi = 0.1875
+3.0 v @ vi=16v</text>
 </plain>
 <instances>
 <instance part="U$34" gate="G$1" x="370.84" y="43.18" smashed="yes"/>
@@ -4513,8 +4517,8 @@ quedaran desactivados
 <attribute name="VALUE" x="53.34" y="157.48" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="R4" gate="G$1" x="50.8" y="167.64" smashed="yes" rot="MR90">
-<attribute name="NAME" x="52.324" y="167.64" size="1.778" layer="95" font="vector" rot="MR90" align="bottom-center"/>
-<attribute name="VALUE" x="49.276" y="167.64" size="1.778" layer="96" font="vector" rot="MR90" align="top-center" display="both"/>
+<attribute name="NAME" x="55.88" y="166.624" size="1.778" layer="95" font="vector" rot="MR0" align="bottom-center"/>
+<attribute name="VALUE" x="40.64" y="166.116" size="1.778" layer="96" font="vector" rot="MR0" align="top-center" display="both"/>
 </instance>
 <instance part="R5" gate="G$1" x="40.64" y="175.26" smashed="yes" rot="MR0">
 <attribute name="NAME" x="40.64" y="176.784" size="1.778" layer="95" font="vector" rot="MR0" align="bottom-center"/>
