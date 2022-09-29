@@ -3738,7 +3738,7 @@ by exp-lbrs.ulp</description>
 <part name="GND44" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
 <part name="C23" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="10UF10V10%(0805)" device="" value="10uF / 10V"/>
 <part name="GND53" library="SparkFun" deviceset="GND" device=""/>
-<part name="U9" library="BQ2970" deviceset="BQ29700DSER" device="" value="Value"/>
+<part name="U9" library="BQ2970" deviceset="BQ29700DSER" device="" value="BQ29700DSER"/>
 <part name="+RAWBATT+" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD5" device="" package3d_urn="urn:adsk.eagle:package:30841/1"/>
 <part name="-RAWBATT-" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD5" device="" package3d_urn="urn:adsk.eagle:package:30841/1"/>
 <part name="QD" library="CSD16406Q3" deviceset="CSD16406Q3" device=""/>
@@ -3747,15 +3747,15 @@ by exp-lbrs.ulp</description>
 <part name="R4" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="2K2"/>
 <part name="R7" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10K"/>
 <part name="R11" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10K"/>
-<part name="R1" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="1K1"/>
-<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="590"/>
+<part name="R1" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="1K5"/>
+<part name="R3" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="909R"/>
 <part name="R17" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10K"/>
 <part name="C1" library="SparkFun-Capacitors" deviceset="1.0UF" device="-0603-16V-10%" value="1.0uF"/>
 <part name="R20" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="330"/>
 <part name="C2" library="Tutorial - Fusion 360" library_urn="urn:adsk.eagle:library:16997205" deviceset="C" device="CHIP-0603(1608-METRIC)" package3d_urn="urn:adsk.eagle:package:16290898/2" technology="_" value="100nF"/>
 <part name="R12" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10K"/>
 <part name="GND2" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
-<part name="R5" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="1K"/>
+<part name="R5" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="100k"/>
 <part name="R6" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="10K"/>
 <part name="J1" library="ANTENNA" deviceset="70AAJ-4-M0" device=""/>
 <part name="GND3" library="SparkFun-Aesthetics" deviceset="GND" device=""/>
@@ -3795,8 +3795,8 @@ Dec-2021 v4 </text>
 <text x="331.216" y="51.308" size="1.27" layer="97" font="vector" align="top-left">Sets fast charge current
 - R_ISET range: 590-8.9k
 - I_CHG = ~885 / R_ISET
-  - EX: R_ISET = 590 : 
-       I_CHG = 1.5A</text>
+  - EX: R_ISET = 909R : 
+       I_CHG = 975mA</text>
 <text x="359.664" y="60.96" size="1.27" layer="97" font="vector" align="top-left">Sets combined system
 load and battery charge 
 currents pulled

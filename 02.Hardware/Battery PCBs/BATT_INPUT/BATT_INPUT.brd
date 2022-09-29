@@ -8,8 +8,8 @@
 </settings>
 <grid distance="0.002" unitdist="mm" unit="mm" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="17" fill="1" visible="no" active="no"/>
 <layer number="4" name="Route4" color="18" fill="1" visible="no" active="no"/>
 <layer number="5" name="Route5" color="19" fill="1" visible="no" active="no"/>
@@ -29,13 +29,13 @@
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -830,6 +830,9 @@
 <text x="50" y="46.78" size="0.6096" layer="25" font="vector" rot="R90">Falcon_BATTPACK INPUT_v4</text>
 <text x="73.07" y="62.014" size="0.6096" layer="26" font="vector" rot="MR270">Falcon_BATTPACK INPUT_v4</text>
 <text x="69.584" y="47.098" size="0.6096" layer="26" rot="MR270">July'21</text>
+<circle x="51.088" y="54.03" radius="0.101546875" width="0.1524" layer="22"/>
+<circle x="51.084" y="57.364" radius="0.09" width="0.1524" layer="22"/>
+<circle x="54.468" y="55.826" radius="0.106675" width="0.1524" layer="22"/>
 </plain>
 <libraries>
 <library name="wirepad" urn="urn:adsk.eagle:library:412">
@@ -2079,7 +2082,7 @@ design rules under a new name.</description>
 <attribute name="VDSMAX" value="25.0" x="26.06" y="39.845" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VENDOR" value="Texas Instruments" x="26.06" y="39.845" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="R1" library="SparkFun-Resistors" package="0402" value="1K1" x="60.295" y="48.755" smashed="yes" rot="MR270">
+<element name="R1" library="SparkFun-Resistors" package="0402" value="1K5" x="60.295" y="48.755" smashed="yes" rot="MR270">
 <attribute name="NAME" x="60.365" y="50.3559" size="0.6096" layer="26" font="vector" rot="MR0" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="60.295" y="48.755" size="1.778" layer="28" rot="MR270" display="off"/>
 <attribute name="VALUE" value=" " x="61.7309" y="48.755" size="0.6096" layer="28" rot="MR270" align="top-center"/>
@@ -2098,7 +2101,7 @@ design rules under a new name.</description>
 <attribute name="PROD_ID" value=" " x="54.21" y="60.515" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" value=" " x="52.7741" y="60.515" size="0.6096" layer="28" font="vector" rot="MR90" align="top-center"/>
 </element>
-<element name="R3" library="SparkFun-Resistors" package="0402" value="590" x="56.995" y="46.62" smashed="yes" rot="MR90">
+<element name="R3" library="SparkFun-Resistors" package="0402" value="909R" x="56.995" y="46.62" smashed="yes" rot="MR90">
 <attribute name="NAME" x="57" y="48.0299" size="0.6096" layer="26" font="vector" rot="MR0" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="56.995" y="46.62" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" value=" " x="55.5591" y="46.62" size="0.6096" layer="28" rot="MR90" align="top-center"/>
@@ -2116,7 +2119,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="55.429" y="49.61" size="0.6096" layer="26" font="vector" rot="MR0" align="bottom-center"/>
 <attribute name="PROD_ID" value="IC-13219" x="38.105" y="23.77" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
-<element name="U9" library="BQ2970" package="DSE0006A" value="Value" x="53.35" y="57.01" smashed="yes" rot="MR90">
+<element name="U9" library="BQ2970" package="DSE0006A" value="BQ29700DSER" x="53.35" y="57.01" smashed="yes" rot="MR90">
 <attribute name="MANUFACTURER" value="Texas Instruments" x="30.49" y="91.3" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="NAME" x="53.4626" y="55.291" size="0.6096" layer="26" font="vector" rot="SMR0"/>
 <attribute name="PARTNUMBER" value="BQ29705DSER" x="30.49" y="91.3" size="1.778" layer="28" rot="MR90" display="off"/>
@@ -2127,7 +2130,7 @@ design rules under a new name.</description>
 <attribute name="NAME" x="50.2769" y="48.012" size="0.6096" layer="26" font="vector" rot="MR90" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="48.9" y="48.045" size="1.778" layer="28" rot="MR180" display="off"/>
 </element>
-<element name="R5" library="SparkFun-Resistors" package="0402" value="1K" x="49.145" y="49.735" smashed="yes" rot="MR0">
+<element name="R5" library="SparkFun-Resistors" package="0402" value="100k" x="49.145" y="49.735" smashed="yes" rot="MR0">
 <attribute name="NAME" x="49.914" y="50.4509" size="0.6096" layer="26" font="vector" rot="MR0" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="49.145" y="49.735" size="1.778" layer="28" rot="MR0" display="off"/>
 </element>
