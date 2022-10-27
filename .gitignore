@@ -220,3 +220,171 @@ XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/CODE/B1/B1.ino.feather_m0.bin
 *.b##
 *.code-workspace
+01.Documentation/01.Diseño/Documentacion Software/Resources/Caracteres Pantalla.xlsx
+01.Documentation/01.Diseño/Documentacion Software/Resources/display led chars battery.xlsx
+01.Documentation/01.Diseño/Tests/Celda/App Note Celda 18350.docx
+01.Documentation/01.Diseño/Tests/Celda/Tests CargaDescarga Celda 18350.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/BATT_PCBS_BOM.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/Rover-MD.doc
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/CPU.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DCDC.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DISPLAY.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/INPUT.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/PUSHBUTTON.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.sch
+02.Hardware/BOMs/Battery/v8/~$BATT_PCBS_BOM.xlsx
+02.Hardware/Mecanizados/drawingspiezasrover1kv2.zip
+02.Hardware/Mecanizados/Historia promo Vídeo presentación_1.jpg
+02.Hardware/Mecanizados/Rover STL v10.zip
+02.Hardware/Mecanizados/Rover STP v10.zip
+02.Hardware/PCB Extra/ActiveLoad_4batt.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.sch
+02.Hardware/V1-ROVER-2K/BOMs/Battery/v8/BATT_PCBS_BOM.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retries.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retry.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintento 0.5ohm CC.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintentos 0.5ohm cc.png
+02.Hardware/V1-ROVER-2K/TEST/CiclosBaterias.xlsx
+02.Hardware/V1-ROVER-2K/TEST/cyclator.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Libro1.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Makinator Bishop.xlsx
+03.Firmware/LIBRARIES/0004-DCDC/TPS55330 Rladder calculation.xlsx
+03.Firmware/XXXX- MISC/cyclator/cyclator.ino
+03.Firmware/XXXX- MISC/DCDC_DAC/DCDC_DAC.ino
+01.Documentation/01.Diseño/Documentacion Software/Resources/Caracteres Pantalla.xlsx
+01.Documentation/01.Diseño/Documentacion Software/Resources/display led chars battery.xlsx
+01.Documentation/01.Diseño/Tests/Celda/App Note Celda 18350.docx
+01.Documentation/01.Diseño/Tests/Celda/Tests CargaDescarga Celda 18350.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/BATT_PCBS_BOM.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/Rover-MD.doc
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/CPU.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DCDC.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DISPLAY.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/INPUT.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/PUSHBUTTON.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.sch
+02.Hardware/BOMs/Battery/v8/~$BATT_PCBS_BOM.xlsx
+02.Hardware/Mecanizados/drawingspiezasrover1kv2.zip
+02.Hardware/Mecanizados/Historia promo Vídeo presentación_1.jpg
+02.Hardware/Mecanizados/Rover STL v10.zip
+02.Hardware/Mecanizados/Rover STP v10.zip
+02.Hardware/PCB Extra/ActiveLoad_4batt.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.sch
+02.Hardware/V1-ROVER-2K/BOMs/Battery/v8/BATT_PCBS_BOM.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retries.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retry.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintento 0.5ohm CC.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintentos 0.5ohm cc.png
+02.Hardware/V1-ROVER-2K/TEST/CiclosBaterias.xlsx
+02.Hardware/V1-ROVER-2K/TEST/cyclator.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Libro1.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Makinator Bishop.xlsx
+03.Firmware/LIBRARIES/0004-DCDC/TPS55330 Rladder calculation.xlsx
+03.Firmware/XXXX- MISC/cyclator/cyclator.ino
+03.Firmware/XXXX- MISC/DCDC_DAC/DCDC_DAC.ino
+01.Documentation/01.Diseño/Documentacion Software/Resources/Caracteres Pantalla.xlsx
+01.Documentation/01.Diseño/Documentacion Software/Resources/display led chars battery.xlsx
+01.Documentation/01.Diseño/Tests/Celda/App Note Celda 18350.docx
+01.Documentation/01.Diseño/Tests/Celda/Tests CargaDescarga Celda 18350.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/BATT_PCBS_BOM.xlsx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CONN/CONN_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/CPU/CPU_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DCDC/DCDC_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/DISPLAY/DISPLAY_TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/INPUT/INPUT_DOC_FA.zip
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-MD.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON-TP.docx
+01.Documentation/02.Fabricacion/01.Last Release/PUSHBUTTON/PUSHBUTTON_Doc_Fa.zip
+01.Documentation/02.Fabricacion/01.Last Release/Rover-MD.doc
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/CPU.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DCDC.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/DISPLAY.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/INPUT.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/BOMs/PUSHBUTTON.xlsx
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/CPU/BATT_CPU.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DCDC/BATT_DCDC.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/DISPLAY/BATT_DISP.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.sch
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.brd
+01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.sch
+02.Hardware/BOMs/Battery/v8/~$BATT_PCBS_BOM.xlsx
+02.Hardware/Mecanizados/drawingspiezasrover1kv2.zip
+02.Hardware/Mecanizados/Historia promo Vídeo presentación_1.jpg
+02.Hardware/Mecanizados/Rover STL v10.zip
+02.Hardware/Mecanizados/Rover STP v10.zip
+02.Hardware/PCB Extra/ActiveLoad_4batt.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.brd
+02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.sch
+02.Hardware/V1-ROVER-2K/BOMs/Battery/v8/BATT_PCBS_BOM.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retries.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retry.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintento 0.5ohm CC.png
+02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintentos 0.5ohm cc.png
+02.Hardware/V1-ROVER-2K/TEST/CiclosBaterias.xlsx
+02.Hardware/V1-ROVER-2K/TEST/cyclator.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Libro1.xlsx
+02.Hardware/V1-ROVER-2K/TEST/Makinator Bishop.xlsx
+03.Firmware/LIBRARIES/0004-DCDC/TPS55330 Rladder calculation.xlsx
+03.Firmware/XXXX- MISC/cyclator/cyclator.ino
+03.Firmware/XXXX- MISC/DCDC_DAC/DCDC_DAC.ino

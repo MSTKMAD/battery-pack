@@ -20,7 +20,7 @@ const int chipSelect = 10;
 //
 
 /*    Babysitter      */
-const uint16_t BATTERY_CAPACITY = 2010; // e.g. 850mAh battery
+const uint16_t BATTERY_CAPACITY = 1500; // e.g. 850mAh battery
 const uint16_t DESIGNE_ENERGY = BATTERY_CAPACITY * 3.7f;
 const uint16_t TERMITANTE_VOLTAGE = 3;
 const uint16_t TAPER_CURRENT = 150;
@@ -73,7 +73,7 @@ int32_t cont = 0;
 int32_t cont_cycle = 0;
 int state = CHARGING;
 int16_t cont_five = 0;
-uint16_t theory_cap = 0;
+uint32_t theory_cap = 0;
 /*     TIMER       */
 int32_t timer_wd = 0;
 bool wd_flag = false;
@@ -101,9 +101,6 @@ void initialization()
   pinMode(PIN_LOAD_1, OUTPUT);
   pinMode(PIN_LOAD_2, OUTPUT);
   pinMode(PIN_CHARGE_ON, OUTPUT);
-  digitalWrite(PIN_CHARGE_ON, LOW);
-  digitalWrite(PIN_LOAD_1, LOW);
-  digitalWrite(PIN_LOAD_2, LOW);
   Serial.begin(9600);
   setupBQ27441();
   setupSD();
@@ -224,8 +221,7 @@ void ReadBatteryStats()
 void setup()
 {
   initialization();
-
-  digitalWrite(PIN_CHARGE_ON, HIGH);
+  state = CHARGING;
 }
 void loop()
 {
@@ -266,11 +262,11 @@ void loop()
     if (cont == C_TIMER_LOGGING)
     {
       cont = 0;
-      //    if (dataFile)
-      //    {
-      //      dataFile.println(toPrint);
-      //      dataFile.close();
-      //    }
+      // if (dataFile)
+      // {
+      //  dataFile.println(toPrint);
+      // dataFile.close();
+      //}
       bool state_load_1 = digitalRead(PIN_LOAD_1);
       bool state_load_2 = digitalRead(PIN_LOAD_2);
       bool state_charge = digitalRead(PIN_CHARGE_ON);
@@ -279,14 +275,14 @@ void loop()
       digitalWrite(PIN_CHARGE_ON, LOW);
       delay(5000);
       ReadBatteryStats();
-      if ( volts >= 3600) {
-        theory_cap = (volts - 3600);
+      if ( volts >= 3400) {
+        theory_cap = (volts - 3400);
         theory_cap = theory_cap * 85;
-        theory_cap = theory_cap / 500;
+        theory_cap = theory_cap / 750;
         theory_cap = theory_cap  + 15;
         theory_cap = constrain(theory_cap, 15, 100);
       } else {
-        theory_cap = constrain(((volts - 3300) * 15 / 300), 0, 15);
+        theory_cap = constrain(((volts - 3000) * 15 / 300), 0, 15);
       }
       toPrint += String(theory_cap) + ";";
       Serial.println(toPrint);
@@ -299,23 +295,23 @@ void loop()
       digitalWrite(PIN_LOAD_1, state_load_1);
       digitalWrite(PIN_LOAD_2, state_load_2);
       digitalWrite(PIN_CHARGE_ON, state_charge);
-      delay(2000);
-      if (state == DISCHARGE)
+      //delay(2000);
+    }
+    if (state == DISCHARGE)
+    {
+
+      digitalWrite(PIN_CHARGE_ON, LOW);
+      digitalWrite(PIN_LOAD_1, HIGH);
+      digitalWrite(PIN_LOAD_2, HIGH);
+
+      if (volts <= 3000)
       {
-
-        digitalWrite(PIN_CHARGE_ON, LOW);
-        digitalWrite(PIN_LOAD_1, HIGH);
-        digitalWrite(PIN_LOAD_2, HIGH);
-
-        if (volts <= 3300)
+        cont_five++;
+        if (cont_five == 2)
         {
-          cont_five++;
-          if (cont_five == 2)
-          {
-            flag_cycle = true;
-            state = CHARGING;
-            cont_five = 0;
-          }
+          flag_cycle = true;
+          state = CHARGING;
+          cont_five = 0;
         }
       }
     }
