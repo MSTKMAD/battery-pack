@@ -312,23 +312,6 @@ XXXX- MISC/cyclator/cyclator.ino
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.sch
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.brd
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.sch
-02.Hardware/BOMs/Battery/v8/~$BATT_PCBS_BOM.xlsx
-02.Hardware/Mecanizados/drawingspiezasrover1kv2.zip
-02.Hardware/Mecanizados/Historia promo Vídeo presentación_1.jpg
-02.Hardware/Mecanizados/Rover STL v10.zip
-02.Hardware/Mecanizados/Rover STP v10.zip
-02.Hardware/PCB Extra/ActiveLoad_4batt.brd
-02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.brd
-02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.sch
-02.Hardware/V1-ROVER-2K/BOMs/Battery/v8/BATT_PCBS_BOM.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retries.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retry.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintento 0.5ohm CC.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintentos 0.5ohm cc.png
-02.Hardware/V1-ROVER-2K/TEST/CiclosBaterias.xlsx
-02.Hardware/V1-ROVER-2K/TEST/cyclator.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Libro1.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Makinator Bishop.xlsx
 03.Firmware/LIBRARIES/0004-DCDC/TPS55330 Rladder calculation.xlsx
 03.Firmware/XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/XXXX- MISC/DCDC_DAC/DCDC_DAC.ino
@@ -368,23 +351,4 @@ XXXX- MISC/cyclator/cyclator.ino
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/INPUT/BATT_INPUT.sch
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.brd
 01.Documentation/02.Fabricacion/02.Pedidos Produccion/Setti/27-09/PCB/PUSHBUTTON/BATT_BUTTONS.sch
-02.Hardware/BOMs/Battery/v8/~$BATT_PCBS_BOM.xlsx
-02.Hardware/Mecanizados/drawingspiezasrover1kv2.zip
-02.Hardware/Mecanizados/Historia promo Vídeo presentación_1.jpg
-02.Hardware/Mecanizados/Rover STL v10.zip
-02.Hardware/Mecanizados/Rover STP v10.zip
-02.Hardware/PCB Extra/ActiveLoad_4batt.brd
-02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.brd
-02.Hardware/V1-ROVER-2K/Battery PCBs/BATT_DCDC/BATT_DCDC.sch
-02.Hardware/V1-ROVER-2K/BOMs/Battery/v8/BATT_PCBS_BOM.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retries.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/0ohm CC retry.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintento 0.5ohm CC.png
-02.Hardware/V1-ROVER-2K/TEST/Chargers and Gauge/reintentos 0.5ohm cc.png
-02.Hardware/V1-ROVER-2K/TEST/CiclosBaterias.xlsx
-02.Hardware/V1-ROVER-2K/TEST/cyclator.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Libro1.xlsx
-02.Hardware/V1-ROVER-2K/TEST/Makinator Bishop.xlsx
-03.Firmware/LIBRARIES/0004-DCDC/TPS55330 Rladder calculation.xlsx
-03.Firmware/XXXX- MISC/cyclator/cyclator.ino
-03.Firmware/XXXX- MISC/DCDC_DAC/DCDC_DAC.ino
+02.HARDWARE
