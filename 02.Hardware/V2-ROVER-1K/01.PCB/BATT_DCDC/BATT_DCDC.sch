@@ -3623,6 +3623,7 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="K2" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX8" device=""/>
+<part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value=" "/>
 </parts>
 <sheets>
 <sheet>
@@ -3879,6 +3880,10 @@ BW=10Hz</text>
 <instance part="K1" gate="&gt;NAME" x="360.68" y="55.88" smashed="yes">
 <attribute name="NAME" x="358.14" y="74.12" size="1.778" layer="95"/>
 <attribute name="VALUE" x="358.14" y="53.34" size="1.778" layer="96"/>
+</instance>
+<instance part="R9" gate="G$1" x="170.18" y="162.56" smashed="yes" rot="R270">
+<attribute name="NAME" x="175.26" y="166.624" size="1.778" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="175.26" y="166.116" size="1.778" layer="96" font="vector" align="top-center"/>
 </instance>
 </instances>
 <busses>
@@ -4145,17 +4150,15 @@ BW=10Hz</text>
 </net>
 <net name="FB_DAC" class="0">
 <segment>
-<pinref part="U3" gate="A" pin="FB"/>
-<wire x1="93.98" y1="185.42" x2="93.98" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="93.98" y1="167.64" x2="170.18" y2="167.64" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="167.64" x2="170.18" y2="193.04" width="0.1524" layer="91"/>
-<pinref part="R43" gate="G$1" pin="2"/>
-<label x="116.84" y="167.64" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="K2" gate="G$1" pin="P$1"/>
 <wire x1="360.68" y1="121.92" x2="340.36" y2="121.92" width="0.1524" layer="91"/>
 <label x="342.9" y="121.92" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
+</segment>
+<segment>
+<pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="157.48" x2="170.18" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="154.94" x2="185.42" y2="154.94" width="0.1524" layer="91"/>
+<label x="177.8" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -4489,6 +4492,18 @@ BW=10Hz</text>
 <pinref part="R5" gate="G$1" pin="2"/>
 <wire x1="33.02" y1="182.88" x2="30.48" y2="182.88" width="0.1524" layer="91"/>
 <label x="30.48" y="182.88" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
+<net name="FB" class="0">
+<segment>
+<pinref part="U3" gate="A" pin="FB"/>
+<wire x1="93.98" y1="185.42" x2="93.98" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="167.64" x2="170.18" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="167.64" x2="170.18" y2="193.04" width="0.1524" layer="91"/>
+<pinref part="R43" gate="G$1" pin="2"/>
+<label x="116.84" y="167.64" size="1.778" layer="95"/>
+<pinref part="R9" gate="G$1" pin="1"/>
+<junction x="170.18" y="167.64"/>
 </segment>
 </net>
 </nets>
