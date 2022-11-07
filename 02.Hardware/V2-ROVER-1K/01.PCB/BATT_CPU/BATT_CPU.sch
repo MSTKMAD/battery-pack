@@ -8581,7 +8581,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="C19" library="microbuilder" deviceset="CAP_CERAMIC" device="0603_NO" value="100n"/>
 <part name="R48" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="10k"/>
 <part name="Q1" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
-<part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value=" "/>
+<part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="47k"/>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="Q3" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value=" "/>
@@ -8604,7 +8604,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="C22" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="4.7UF" device="0603" package3d_urn="urn:adsk.eagle:package:37414/1" value="4.7uF"/>
 <part name="R3" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="560K"/>
 <part name="Q2" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
-<part name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value=" "/>
+<part name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="U$3" library="microbuilder" deviceset="GND" device=""/>
 <part name="Q4" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="4K7"/>
@@ -8623,6 +8623,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="SUPPLY11" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
 <part name="Q5" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
 <part name="R18" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
+<part name="U$31" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8952,7 +8953,7 @@ LOW BATT DETECTOR</text>
 </instance>
 <instance part="K2" gate="G$1" x="335.28" y="149.86" smashed="yes">
 <attribute name="NAME" x="335.28" y="152.86" size="1.778" layer="95"/>
-<attribute name="VALUE" x="335.28" y="116.84" size="1.778" layer="96"/>
+<attribute name="VALUE" x="340.36" y="116.84" size="1.778" layer="96"/>
 </instance>
 <instance part="SUPPLY13" gate="G$1" x="114.3" y="223.52" smashed="yes">
 <attribute name="VALUE" x="114.3" y="226.314" size="1.778" layer="96" align="bottom-center"/>
@@ -8969,33 +8970,33 @@ LOW BATT DETECTOR</text>
 <instance part="SUPPLY2" gate="G$1" x="274.32" y="198.12" smashed="yes">
 <attribute name="VALUE" x="274.32" y="200.914" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="VBUS" gate="G$1" x="324.6" y="103.08" smashed="yes" rot="R270">
-<attribute name="NAME" x="309.36" y="103.715" size="1.778" layer="95"/>
-<attribute name="TP_SIGNAL_NAME" x="323.33" y="100.54" size="1.778" layer="97" rot="R270"/>
+<instance part="VBUS" gate="G$1" x="355.08" y="105.62" smashed="yes" rot="R270">
+<attribute name="NAME" x="357.62" y="106.255" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="353.81" y="103.08" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="VBUS1" gate="G$1" x="324.6" y="108.16" smashed="yes" rot="R270">
-<attribute name="NAME" x="309.36" y="108.795" size="1.778" layer="95"/>
-<attribute name="TP_SIGNAL_NAME" x="323.33" y="105.62" size="1.778" layer="97" rot="R270"/>
+<instance part="VBUS1" gate="G$1" x="355.08" y="115.78" smashed="yes" rot="R270">
+<attribute name="NAME" x="357.62" y="116.415" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="353.81" y="113.24" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="VBUS2" gate="G$1" x="334.76" y="108.16" smashed="yes" rot="R270">
-<attribute name="NAME" x="319.52" y="108.795" size="1.778" layer="95"/>
-<attribute name="TP_SIGNAL_NAME" x="333.49" y="105.62" size="1.778" layer="97" rot="R270"/>
+<instance part="VBUS2" gate="G$1" x="355.08" y="110.7" smashed="yes" rot="R270">
+<attribute name="NAME" x="357.62" y="111.335" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="353.81" y="108.16" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="VBUS3" gate="G$1" x="334.76" y="103.08" smashed="yes" rot="R270">
-<attribute name="NAME" x="319.52" y="103.715" size="1.778" layer="95"/>
-<attribute name="TP_SIGNAL_NAME" x="333.49" y="100.54" size="1.778" layer="97" rot="R270"/>
+<instance part="VBUS3" gate="G$1" x="355.08" y="100.54" smashed="yes" rot="R270">
+<attribute name="NAME" x="357.62" y="101.175" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="353.81" y="98" size="1.778" layer="97" rot="R270"/>
 </instance>
-<instance part="VBUS4" gate="G$1" x="344.92" y="108.16" smashed="yes" rot="R270">
-<attribute name="NAME" x="329.68" y="108.795" size="1.778" layer="95"/>
-<attribute name="TP_SIGNAL_NAME" x="343.65" y="105.62" size="1.778" layer="97" rot="R270"/>
+<instance part="VBUS4" gate="G$1" x="355.08" y="95.46" smashed="yes" rot="R270">
+<attribute name="NAME" x="357.62" y="96.095" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="353.81" y="92.92" size="1.778" layer="97" rot="R270"/>
 </instance>
 <instance part="C5" gate="G$1" x="215.9" y="66.04" smashed="yes">
 <attribute name="NAME" x="217.424" y="68.961" size="1.778" layer="95" font="vector"/>
 <attribute name="VALUE" x="217.424" y="63.881" size="1.778" layer="96" font="vector"/>
 </instance>
-<instance part="C10" gate="G$1" x="144.78" y="17.78" smashed="yes">
-<attribute name="NAME" x="146.304" y="20.701" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="146.304" y="15.621" size="1.778" layer="96" font="vector"/>
+<instance part="C10" gate="G$1" x="177.8" y="17.78" smashed="yes">
+<attribute name="NAME" x="179.324" y="20.701" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="179.324" y="15.621" size="1.778" layer="96" font="vector"/>
 </instance>
 <instance part="C12" gate="G$1" x="149.86" y="63.5" smashed="yes">
 <attribute name="NAME" x="151.384" y="66.421" size="1.778" layer="95" font="vector"/>
@@ -9009,17 +9010,17 @@ LOW BATT DETECTOR</text>
 <attribute name="NAME" x="207.264" y="68.961" size="1.778" layer="95" font="vector"/>
 <attribute name="VALUE" x="207.264" y="63.881" size="1.778" layer="96" font="vector"/>
 </instance>
-<instance part="C22" gate="G$1" x="154.94" y="17.78" smashed="yes">
-<attribute name="NAME" x="156.464" y="20.701" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="156.464" y="15.621" size="1.778" layer="96" font="vector"/>
+<instance part="C22" gate="G$1" x="187.96" y="17.78" smashed="yes">
+<attribute name="NAME" x="189.484" y="20.701" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="189.484" y="15.621" size="1.778" layer="96" font="vector"/>
 </instance>
 <instance part="R3" gate="G$1" x="187.96" y="68.58" smashed="yes" rot="R90">
 <attribute name="NAME" x="186.436" y="68.58" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="189.484" y="68.58" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
 </instance>
-<instance part="Q2" gate="G$1" x="218.44" y="33.02" smashed="yes" rot="R90">
-<attribute name="NAME" x="209.55" y="46.99" size="1.778" layer="95" align="center-left"/>
-<attribute name="VALUE" x="209.55" y="44.45" size="1.778" layer="96" align="center-left"/>
+<instance part="Q2" gate="G$1" x="218.44" y="33.02" smashed="yes" rot="MR90">
+<attribute name="NAME" x="227.33" y="46.99" size="1.778" layer="95" rot="MR0" align="center-left"/>
+<attribute name="VALUE" x="227.33" y="44.45" size="1.778" layer="96" rot="MR0" align="center-left"/>
 </instance>
 <instance part="R4" gate="G$1" x="208.28" y="30.48" smashed="yes">
 <attribute name="NAME" x="208.28" y="32.004" size="1.778" layer="95" font="vector" align="bottom-center"/>
@@ -9029,8 +9030,8 @@ LOW BATT DETECTOR</text>
 <attribute name="VALUE" x="216.916" y="5.08" size="1.27" layer="96"/>
 </instance>
 <instance part="Q4" gate="G$1" x="218.44" y="20.32" smashed="yes">
-<attribute name="NAME" x="215.9" y="27.94" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="215.9" y="25.4" size="1.778" layer="96" rot="MR0"/>
+<attribute name="NAME" x="226.06" y="20.32" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="233.68" y="15.24" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="R1" gate="G$1" x="266.7" y="20.32" smashed="yes" rot="R90">
 <attribute name="NAME" x="271.78" y="23.876" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
@@ -9050,16 +9051,16 @@ LOW BATT DETECTOR</text>
 <attribute name="NAME" x="164.084" y="66.421" size="1.778" layer="95" font="vector"/>
 <attribute name="VALUE" x="164.084" y="61.341" size="1.778" layer="96" font="vector"/>
 </instance>
-<instance part="R6" gate="G$1" x="165.1" y="25.4" smashed="yes" rot="R180">
-<attribute name="NAME" x="165.1" y="23.876" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
-<attribute name="VALUE" x="165.1" y="26.924" size="1.778" layer="96" font="vector" rot="R180" align="top-center"/>
+<instance part="R6" gate="G$1" x="147.32" y="30.48" smashed="yes" rot="R90">
+<attribute name="NAME" x="145.796" y="30.48" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="148.844" y="30.48" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
 </instance>
-<instance part="C24" gate="G$1" x="172.72" y="17.78" smashed="yes">
-<attribute name="NAME" x="174.244" y="20.701" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="174.244" y="15.621" size="1.778" layer="96" font="vector"/>
+<instance part="C24" gate="G$1" x="147.32" y="17.78" smashed="yes">
+<attribute name="NAME" x="148.844" y="20.701" size="1.778" layer="95" font="vector"/>
+<attribute name="VALUE" x="148.844" y="15.621" size="1.778" layer="96" font="vector"/>
 </instance>
-<instance part="U$4" gate="G$1" x="154.94" y="7.62" smashed="yes">
-<attribute name="VALUE" x="153.416" y="5.08" size="1.27" layer="96"/>
+<instance part="U$4" gate="G$1" x="187.96" y="7.62" smashed="yes">
+<attribute name="VALUE" x="186.436" y="5.08" size="1.27" layer="96"/>
 </instance>
 <instance part="U$9" gate="G$1" x="205.74" y="58.42" smashed="yes">
 <attribute name="VALUE" x="204.216" y="55.88" size="1.27" layer="96"/>
@@ -9088,6 +9089,9 @@ LOW BATT DETECTOR</text>
 <instance part="R18" gate="G$1" x="345.44" y="210.82" smashed="yes" rot="R270">
 <attribute name="NAME" x="346.964" y="210.82" size="1.778" layer="95" font="vector" rot="R270" align="bottom-center"/>
 <attribute name="VALUE" x="343.916" y="210.82" size="1.778" layer="96" font="vector" rot="R270" align="top-center"/>
+</instance>
+<instance part="U$31" gate="G$1" x="147.32" y="7.62" smashed="yes">
+<attribute name="VALUE" x="145.796" y="5.08" size="1.27" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -9244,15 +9248,17 @@ LOW BATT DETECTOR</text>
 <wire x1="218.44" y1="15.24" x2="218.44" y2="10.16" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="C22" gate="G$1" pin="2"/>
-<wire x1="154.94" y1="15.24" x2="154.94" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="154.94" y1="10.16" x2="144.78" y2="10.16" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$1" pin="2"/>
-<wire x1="144.78" y1="10.16" x2="144.78" y2="15.24" width="0.1524" layer="91"/>
 <pinref part="C24" gate="G$1" pin="2"/>
-<wire x1="172.72" y1="15.24" x2="172.72" y2="10.16" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="10.16" x2="154.94" y2="10.16" width="0.1524" layer="91"/>
-<junction x="154.94" y="10.16"/>
+<wire x1="147.32" y1="15.24" x2="147.32" y2="10.16" width="0.1524" layer="91"/>
+<pinref part="U$31" gate="G$1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C22" gate="G$1" pin="2"/>
+<wire x1="187.96" y1="15.24" x2="187.96" y2="10.16" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="10.16" x2="177.8" y2="10.16" width="0.1524" layer="91"/>
+<pinref part="C10" gate="G$1" pin="2"/>
+<wire x1="177.8" y1="10.16" x2="177.8" y2="15.24" width="0.1524" layer="91"/>
+<junction x="187.96" y="10.16"/>
 <pinref part="U$4" gate="G$1" pin="GND"/>
 </segment>
 <segment>
@@ -9355,13 +9361,13 @@ LOW BATT DETECTOR</text>
 <label x="317.5" y="144.78" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<pinref part="Q2" gate="G$1" pin="D"/>
-<wire x1="203.2" y1="40.64" x2="208.28" y2="40.64" width="0.1524" layer="91"/>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="203.2" y1="30.48" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="40.64" x2="185.42" y2="40.64" width="0.1524" layer="91"/>
-<junction x="203.2" y="40.64"/>
 <label x="198.12" y="40.64" size="1.778" layer="95"/>
+<pinref part="Q2" gate="G$1" pin="S"/>
+<wire x1="213.36" y1="40.64" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
+<junction x="203.2" y="40.64"/>
 </segment>
 </net>
 <net name="VDDCORE" class="0">
@@ -9835,7 +9841,6 @@ LOW BATT DETECTOR</text>
 <pinref part="U8" gate="A" pin="VCC"/>
 <wire x1="208.28" y1="210.82" x2="210.82" y2="210.82" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="210.82" x2="210.82" y2="223.52" width="0.1524" layer="91"/>
-<label x="210.82" y="233.68" size="1.27" layer="95"/>
 <pinref part="SUPPLY15" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
@@ -9863,6 +9868,26 @@ LOW BATT DETECTOR</text>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="SUPPLY9" gate="G$1" pin="VCC"/>
 <wire x1="256.54" y1="27.94" x2="256.54" y2="25.4" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="U$30" gate="G$1" pin="VDD"/>
+<wire x1="269.24" y1="58.42" x2="248.92" y2="58.42" width="0.1524" layer="91"/>
+<label x="251.46" y="58.42" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R6" gate="G$1" pin="2"/>
+<label x="139.7" y="40.64" size="1.778" layer="95"/>
+<wire x1="147.32" y1="40.64" x2="147.32" y2="35.56" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="C10" gate="G$1" pin="1"/>
+<pinref part="C22" gate="G$1" pin="1"/>
+<wire x1="187.96" y1="22.86" x2="187.96" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="187.96" y1="25.4" x2="177.8" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="177.8" y1="25.4" x2="177.8" y2="22.86" width="0.1524" layer="91"/>
+<junction x="177.8" y="25.4"/>
+<wire x1="177.8" y1="25.4" x2="167.64" y2="25.4" width="0.1524" layer="91"/>
+<label x="167.64" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -9903,7 +9928,7 @@ LOW BATT DETECTOR</text>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="213.36" y1="30.48" x2="218.44" y2="30.48" width="0.1524" layer="91"/>
 <wire x1="218.44" y1="25.4" x2="218.44" y2="33.02" width="0.1524" layer="91"/>
-<junction x="218.44" y="33.02"/>
+<junction x="218.44" y="30.48"/>
 </segment>
 </net>
 <net name="C2P" class="0">
@@ -9965,12 +9990,11 @@ LOW BATT DETECTOR</text>
 <label x="251.46" y="66.04" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="Q2" gate="G$1" pin="S"/>
-<wire x1="223.52" y1="40.64" x2="228.6" y2="40.64" width="0.1524" layer="91"/>
 <label x="228.6" y="40.64" size="1.778" layer="95"/>
 <pinref part="C25" gate="G$1" pin="1"/>
 <wire x1="228.6" y1="40.64" x2="238.76" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="228.6" y1="38.1" x2="228.6" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="Q2" gate="G$1" pin="D"/>
 <junction x="228.6" y="40.64"/>
 </segment>
 </net>
@@ -9981,28 +10005,7 @@ LOW BATT DETECTOR</text>
 <label x="251.46" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="VDD" class="0">
-<segment>
-<pinref part="U$30" gate="G$1" pin="VDD"/>
-<wire x1="269.24" y1="58.42" x2="248.92" y2="58.42" width="0.1524" layer="91"/>
-<label x="251.46" y="58.42" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="R6" gate="G$1" pin="2"/>
-<wire x1="154.94" y1="25.4" x2="160.02" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="C22" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="22.86" x2="154.94" y2="25.4" width="0.1524" layer="91"/>
-<pinref part="C10" gate="G$1" pin="1"/>
-<wire x1="154.94" y1="25.4" x2="144.78" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="25.4" x2="144.78" y2="22.86" width="0.1524" layer="91"/>
-<junction x="154.94" y="25.4"/>
-<wire x1="144.78" y1="25.4" x2="144.78" y2="30.48" width="0.1524" layer="91"/>
-<wire x1="144.78" y1="30.48" x2="182.88" y2="30.48" width="0.1524" layer="91"/>
-<junction x="144.78" y="25.4"/>
-<label x="177.8" y="30.48" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="!RES" class="0">
+<net name="!RES_OLED" class="0">
 <segment>
 <pinref part="U$30" gate="G$1" pin="!RES"/>
 <wire x1="269.24" y1="55.88" x2="248.92" y2="55.88" width="0.1524" layer="91"/>
@@ -10010,12 +10013,11 @@ LOW BATT DETECTOR</text>
 </segment>
 <segment>
 <pinref part="R6" gate="G$1" pin="1"/>
-<wire x1="170.18" y1="25.4" x2="172.72" y2="25.4" width="0.1524" layer="91"/>
 <pinref part="C24" gate="G$1" pin="1"/>
-<wire x1="172.72" y1="25.4" x2="182.88" y2="25.4" width="0.1524" layer="91"/>
-<wire x1="172.72" y1="22.86" x2="172.72" y2="25.4" width="0.1524" layer="91"/>
-<junction x="172.72" y="25.4"/>
-<label x="177.8" y="25.4" size="1.778" layer="95"/>
+<wire x1="147.32" y1="25.4" x2="157.48" y2="25.4" width="0.1524" layer="91"/>
+<wire x1="147.32" y1="22.86" x2="147.32" y2="25.4" width="0.1524" layer="91"/>
+<junction x="147.32" y="25.4"/>
+<label x="152.4" y="25.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="IREF" class="0">
@@ -10044,7 +10046,7 @@ LOW BATT DETECTOR</text>
 <wire x1="195.58" y1="78.74" x2="231.14" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="CPU_OP_SWITCH" class="0">
+<net name="!CPU_OP_SWITCH" class="0">
 <segment>
 <pinref part="U1" gate="G$1" pin="PA17/I2C/I1/SERCOM1+3.1"/>
 <wire x1="104.14" y1="48.26" x2="121.92" y2="48.26" width="0.1524" layer="91"/>
