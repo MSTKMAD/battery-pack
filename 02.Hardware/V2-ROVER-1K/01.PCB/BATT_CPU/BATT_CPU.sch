@@ -8624,6 +8624,8 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="Q5" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
 <part name="R18" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="U$31" library="microbuilder" deviceset="GND" device=""/>
+<part name="C27" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0603-25V-5%" package3d_urn="urn:adsk.eagle:package:37414/1" value="0.1uF"/>
+<part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -8644,7 +8646,7 @@ direct Replacement</text>
 <text x="106.68" y="53.34" size="1.778" layer="91">D5</text>
 <text x="106.68" y="45.72" size="1.778" layer="91">D10</text>
 <text x="106.68" y="55.88" size="1.778" layer="91">D2</text>
-<text x="10.16" y="55.88" size="1.778" layer="91">A1</text>
+<text x="10.16" y="30.48" size="1.778" layer="91">A1</text>
 <wire x1="134.62" y1="167.64" x2="261.62" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <text x="276.86" y="246.38" size="2.54" layer="94">CHARGING DETECTOR
 LOW BATT DETECTOR</text>
@@ -8733,28 +8735,28 @@ LOW BATT DETECTOR</text>
 <instance part="U$2" gate="G$1" x="55.88" y="198.12" smashed="yes">
 <attribute name="VALUE" x="54.356" y="195.58" size="1.27" layer="96"/>
 </instance>
-<instance part="C3" gate="G$1" x="10.16" y="83.82" smashed="yes">
-<attribute name="NAME" x="7.87" y="85.07" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
-<attribute name="VALUE" x="12.46" y="85.07" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
+<instance part="C3" gate="G$1" x="10.16" y="58.42" smashed="yes">
+<attribute name="NAME" x="7.87" y="59.67" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
+<attribute name="VALUE" x="12.46" y="59.67" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
 </instance>
-<instance part="U$7" gate="G$1" x="10.16" y="78.74" smashed="yes">
-<attribute name="VALUE" x="8.636" y="76.2" size="1.27" layer="96"/>
+<instance part="U$7" gate="G$1" x="10.16" y="53.34" smashed="yes">
+<attribute name="VALUE" x="8.636" y="50.8" size="1.27" layer="96"/>
 </instance>
-<instance part="C9" gate="G$1" x="10.16" y="66.04" smashed="yes">
-<attribute name="NAME" x="7.87" y="67.29" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
-<attribute name="VALUE" x="12.46" y="67.29" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
+<instance part="C9" gate="G$1" x="10.16" y="40.64" smashed="yes">
+<attribute name="NAME" x="7.87" y="41.89" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
+<attribute name="VALUE" x="12.46" y="41.89" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
 </instance>
-<instance part="U$14" gate="G$1" x="10.16" y="60.96" smashed="yes">
-<attribute name="VALUE" x="8.636" y="58.42" size="1.27" layer="96"/>
+<instance part="U$14" gate="G$1" x="10.16" y="35.56" smashed="yes">
+<attribute name="VALUE" x="8.636" y="33.02" size="1.27" layer="96"/>
 </instance>
 <instance part="SUPPLY1" gate="G$1" x="73.66" y="223.52" smashed="yes">
 <attribute name="VALUE" x="73.66" y="226.314" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY3" gate="G$1" x="10.16" y="91.44" smashed="yes">
-<attribute name="VALUE" x="10.16" y="94.234" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY3" gate="G$1" x="10.16" y="66.04" smashed="yes">
+<attribute name="VALUE" x="10.16" y="68.834" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY4" gate="G$1" x="10.16" y="71.12" smashed="yes">
-<attribute name="VALUE" x="10.16" y="73.914" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY4" gate="G$1" x="10.16" y="45.72" smashed="yes">
+<attribute name="VALUE" x="10.16" y="48.514" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="SUPPLY5" gate="G$1" x="22.86" y="91.44" smashed="yes">
 <attribute name="VALUE" x="22.86" y="94.234" size="1.778" layer="96" align="bottom-center"/>
@@ -8789,15 +8791,15 @@ LOW BATT DETECTOR</text>
 <attribute name="NAME" x="71.37" y="206.99" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
 <attribute name="VALUE" x="75.96" y="206.99" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
 </instance>
-<instance part="C11" gate="G$1" x="10.16" y="43.18" smashed="yes">
-<attribute name="NAME" x="7.87" y="44.43" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
-<attribute name="VALUE" x="12.46" y="44.43" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
+<instance part="C11" gate="G$1" x="10.16" y="17.78" smashed="yes">
+<attribute name="NAME" x="7.87" y="19.03" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
+<attribute name="VALUE" x="12.46" y="19.03" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
 </instance>
-<instance part="U$16" gate="G$1" x="10.16" y="38.1" smashed="yes">
-<attribute name="VALUE" x="8.636" y="35.56" size="1.27" layer="96"/>
+<instance part="U$16" gate="G$1" x="10.16" y="12.7" smashed="yes">
+<attribute name="VALUE" x="8.636" y="10.16" size="1.27" layer="96"/>
 </instance>
-<instance part="SUPPLY10" gate="G$1" x="10.16" y="48.26" smashed="yes">
-<attribute name="VALUE" x="10.16" y="51.054" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY10" gate="G$1" x="10.16" y="22.86" smashed="yes">
+<attribute name="VALUE" x="10.16" y="25.654" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="U6" gate="A" x="299.72" y="220.98" smashed="yes">
 <attribute name="NAME" x="307.6956" y="189.4586" size="2.0828" layer="95" ratio="6" rot="SR0"/>
@@ -9085,6 +9087,13 @@ LOW BATT DETECTOR</text>
 <instance part="U$31" gate="G$1" x="147.32" y="7.62" smashed="yes">
 <attribute name="VALUE" x="145.796" y="5.08" size="1.27" layer="96"/>
 </instance>
+<instance part="C27" gate="G$1" x="12.7" y="93.98" smashed="yes">
+<attribute name="NAME" x="14.224" y="94.361" size="1.778" layer="95"/>
+<attribute name="VALUE" x="14.224" y="89.281" size="1.778" layer="96"/>
+</instance>
+<instance part="U$32" gate="G$1" x="12.7" y="88.9" smashed="yes">
+<attribute name="VALUE" x="11.176" y="86.36" size="1.27" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -9291,6 +9300,10 @@ LOW BATT DETECTOR</text>
 <wire x1="269.24" y1="60.96" x2="248.92" y2="60.96" width="0.1524" layer="91"/>
 <label x="251.46" y="60.96" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U$32" gate="G$1" pin="GND"/>
+<pinref part="C27" gate="G$1" pin="2"/>
+</segment>
 </net>
 <net name="MOSI" class="0">
 <segment>
@@ -9394,6 +9407,9 @@ LOW BATT DETECTOR</text>
 <wire x1="27.94" y1="93.98" x2="27.94" y2="99.06" width="0.1524" layer="91"/>
 <label x="15.24" y="99.06" size="1.778" layer="95"/>
 <wire x1="27.94" y1="99.06" x2="12.7" y2="99.06" width="0.1524" layer="91"/>
+<pinref part="C27" gate="G$1" pin="1"/>
+<wire x1="12.7" y1="99.06" x2="10.16" y2="99.06" width="0.1524" layer="91"/>
+<junction x="12.7" y="99.06"/>
 </segment>
 <segment>
 <pinref part="K2" gate="G$1" pin="P$10"/>
@@ -9469,7 +9485,7 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="C3" gate="G$1" pin="1"/>
 <pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
-<wire x1="10.16" y1="91.44" x2="10.16" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="66.04" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C9" gate="G$1" pin="1"/>
@@ -10077,6 +10093,13 @@ LOW BATT DETECTOR</text>
 </sheet>
 </sheets>
 <errors>
+<approved hash="102,1,299.72,213.36,VCC,VCC_2,,,,"/>
+<approved hash="102,1,114.3,223.52,VCC,VCC_2,,,,"/>
+<approved hash="102,1,210.82,223.52,VCC,VCC_2,,,,"/>
+<approved hash="102,1,228.6,233.68,VCC,VCC_2,,,,"/>
+<approved hash="102,1,274.32,198.12,VCC,VCC_2,,,,"/>
+<approved hash="102,1,266.7,27.94,VCC,VCC_2,,,,"/>
+<approved hash="102,1,256.54,27.94,VCC,VCC_2,,,,"/>
 <approved hash="201,1,256.54,27.94,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,266.7,27.94,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,274.32,198.12,VCC,VCC\, VCC_2,,,,"/>
@@ -10088,11 +10111,15 @@ LOW BATT DETECTOR</text>
 <approved hash="104,1,27.94,81.28,U1,VDDIN,VCC,,,"/>
 <approved hash="104,1,27.94,20.32,U1,GNDA,GND,,,"/>
 <approved hash="104,1,27.94,88.9,U1,VDDIO,VCC,,,"/>
+<approved hash="104,1,208.28,210.82,U8,VCC,VCC_2,,,"/>
+<approved hash="104,1,302.26,210.82,U6,VCC,VCC_2,,,"/>
+<approved hash="104,1,302.26,203.2,U6,GND_2,GND,,,"/>
 <approved hash="106,1,27.94,53.34,A2,,,,,"/>
 <approved hash="106,1,104.14,86.36,A3,,,,,"/>
 <approved hash="106,1,104.14,66.04,D0,,,,,"/>
 <approved hash="106,1,104.14,63.5,MISO,,,,,"/>
 <approved hash="106,1,27.94,50.8,MOSI,,,,,"/>
+<approved hash="106,1,27.94,43.18,RXI,,,,,"/>
 <approved hash="106,1,27.94,48.26,SCK,,,,,"/>
 <approved hash="208,1,10.16,91.44,VCC,sup,,,,"/>
 <approved hash="208,1,10.16,71.12,VCC,sup,,,,"/>

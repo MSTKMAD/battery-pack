@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -3624,6 +3624,7 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="K2" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX8" device=""/>
 <part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="7k5"/>
+<part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="330"/>
 </parts>
 <sheets>
 <sheet>
@@ -3885,6 +3886,10 @@ BW=10Hz</text>
 <attribute name="NAME" x="175.26" y="164.084" size="1.778" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="175.26" y="161.036" size="1.778" layer="96" font="vector" align="top-center"/>
 </instance>
+<instance part="R10" gate="G$1" x="335.28" y="71.12" smashed="yes">
+<attribute name="NAME" x="335.28" y="72.644" size="1.778" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="335.28" y="69.596" size="1.778" layer="96" font="vector" align="top-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4043,8 +4048,8 @@ BW=10Hz</text>
 <label x="342.9" y="119.38" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<label x="337.82" y="58.42" size="1.778" layer="95"/>
-<wire x1="358.14" y1="58.42" x2="335.28" y2="58.42" width="0.1524" layer="91"/>
+<label x="347.98" y="58.42" size="1.778" layer="95"/>
+<wire x1="358.14" y1="58.42" x2="345.44" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$8"/>
 </segment>
 </net>
@@ -4212,9 +4217,9 @@ BW=10Hz</text>
 <label x="266.7" y="96.52" size="1.778" layer="95"/>
 </segment>
 <segment>
-<wire x1="358.14" y1="60.96" x2="335.28" y2="60.96" width="0.1524" layer="91"/>
+<wire x1="358.14" y1="60.96" x2="345.44" y2="60.96" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$7"/>
-<label x="337.82" y="60.96" size="1.778" layer="95"/>
+<label x="347.98" y="60.96" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$8" class="0">
@@ -4316,9 +4321,9 @@ BW=10Hz</text>
 <junction x="17.78" y="68.58"/>
 </segment>
 <segment>
-<wire x1="358.14" y1="63.5" x2="335.28" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="358.14" y1="63.5" x2="345.44" y2="63.5" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$6"/>
-<label x="337.82" y="63.5" size="1.778" layer="95"/>
+<label x="347.98" y="63.5" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VOUTSENSE" class="0">
@@ -4402,9 +4407,9 @@ BW=10Hz</text>
 <label x="342.9" y="116.84" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<label x="337.82" y="76.2" size="1.778" layer="95"/>
+<label x="347.98" y="76.2" size="1.778" layer="95"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$1"/>
-<wire x1="358.14" y1="76.2" x2="335.28" y2="76.2" width="0.1524" layer="91"/>
+<wire x1="358.14" y1="76.2" x2="345.44" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="48.26" y1="228.6" x2="40.64" y2="228.6" width="0.1524" layer="91"/>
@@ -4441,9 +4446,9 @@ BW=10Hz</text>
 <label x="342.9" y="99.06" size="1.778" layer="95"/>
 </segment>
 <segment>
-<label x="337.82" y="66.04" size="1.778" layer="95"/>
-<wire x1="358.14" y1="66.04" x2="335.28" y2="66.04" width="0.1524" layer="91"/>
-<pinref part="K1" gate="&gt;NAME" pin="P$5"/>
+<wire x1="330.2" y1="71.12" x2="317.5" y2="71.12" width="0.1524" layer="91"/>
+<pinref part="R10" gate="G$1" pin="1"/>
+<label x="320.04" y="71.12" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWCLK" class="0">
@@ -4453,9 +4458,9 @@ BW=10Hz</text>
 <label x="342.9" y="109.22" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<label x="337.82" y="71.12" size="1.778" layer="95"/>
-<wire x1="358.14" y1="71.12" x2="335.28" y2="71.12" width="0.1524" layer="91"/>
-<pinref part="K1" gate="&gt;NAME" pin="P$3"/>
+<wire x1="358.14" y1="66.04" x2="345.44" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="K1" gate="&gt;NAME" pin="P$5"/>
+<label x="347.98" y="66.04" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWDIO" class="0">
@@ -4465,8 +4470,8 @@ BW=10Hz</text>
 <label x="342.9" y="111.76" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<label x="337.82" y="73.66" size="1.778" layer="95"/>
-<wire x1="358.14" y1="73.66" x2="335.28" y2="73.66" width="0.1524" layer="91"/>
+<label x="347.98" y="73.66" size="1.778" layer="95"/>
+<wire x1="358.14" y1="73.66" x2="345.44" y2="73.66" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$2"/>
 </segment>
 </net>
@@ -4477,8 +4482,8 @@ BW=10Hz</text>
 <label x="342.9" y="106.68" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
 </segment>
 <segment>
-<label x="337.82" y="68.58" size="1.778" layer="95"/>
-<wire x1="358.14" y1="68.58" x2="335.28" y2="68.58" width="0.1524" layer="91"/>
+<label x="347.98" y="68.58" size="1.778" layer="95"/>
+<wire x1="358.14" y1="68.58" x2="345.44" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$4"/>
 </segment>
 </net>
@@ -4504,6 +4509,13 @@ BW=10Hz</text>
 <label x="116.84" y="167.64" size="1.778" layer="95"/>
 <pinref part="R9" gate="G$1" pin="1"/>
 <junction x="170.18" y="167.64"/>
+</segment>
+</net>
+<net name="N$6" class="0">
+<segment>
+<pinref part="R10" gate="G$1" pin="2"/>
+<pinref part="K1" gate="&gt;NAME" pin="P$3"/>
+<wire x1="340.36" y1="71.12" x2="358.14" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
