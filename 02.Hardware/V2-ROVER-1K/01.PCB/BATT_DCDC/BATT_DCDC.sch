@@ -3560,7 +3560,7 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="U3" library="TPS55330" deviceset="TPS55330RTET" device=""/>
 <part name="L1" library="Inductance_2.2uH" deviceset="74437349100" device="" value="2.2uH - 74437346022"/>
 <part name="D2" library="B520C-13-F" deviceset="B520C-13-F" device=""/>
-<part name="R38" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value=" "/>
+<part name="R38" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="78.7k"/>
 <part name="GND17" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND24" library="SparkFun" deviceset="GND" device=""/>
 <part name="C10" library="SparkFun-Capacitors" deviceset="47NF" device="-0603-25V-5%" value="47nF"/>
@@ -3574,19 +3574,19 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="R41" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="56k2"/>
 <part name="C22" library="SparkFun-Capacitors" deviceset="270PF" device="-0603-50V-5%" value="270PF"/>
 <part name="GND30" library="SparkFun" deviceset="GND" device=""/>
-<part name="R43" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value=" "/>
+<part name="R43" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="78.7k"/>
 <part name="C12" library="Wurth_Elektronik_Passive_Capacitors_rev19a" library_urn="urn:adsk.eagle:library:491551" deviceset="WCAP-CSGP_1210" device="" package3d_urn="urn:adsk.eagle:package:491820/3" technology="_885012109003" value="47uF 16V"/>
 <part name="Q2" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="GND4" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND9" library="SparkFun" deviceset="GND" device=""/>
-<part name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="470k"/>
+<part name="R4" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="33"/>
 <part name="C24" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
 <part name="GND50" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND58" library="SparkFun" deviceset="GND" device=""/>
 <part name="Q1" library="SamacSys_Parts" deviceset="NVTFS9D6P04M8LTAG" device=""/>
-<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="120K"/>
-<part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="470k"/>
+<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
+<part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="Q5" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND2" library="SparkFun" deviceset="GND" device=""/>
@@ -3623,7 +3623,7 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="K2" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX8" device=""/>
-<part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value=" "/>
+<part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="7k5"/>
 </parts>
 <sheets>
 <sheet>
@@ -3882,8 +3882,8 @@ BW=10Hz</text>
 <attribute name="VALUE" x="358.14" y="53.34" size="1.778" layer="96"/>
 </instance>
 <instance part="R9" gate="G$1" x="170.18" y="162.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="175.26" y="166.624" size="1.778" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="175.26" y="166.116" size="1.778" layer="96" font="vector" align="top-center"/>
+<attribute name="NAME" x="175.26" y="164.084" size="1.778" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="175.26" y="161.036" size="1.778" layer="96" font="vector" align="top-center"/>
 </instance>
 </instances>
 <busses>
