@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -3315,78 +3315,6 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </deviceset>
 </devicesets>
 </library>
-<library name="BAT54S">
-<description>&lt;Schottky Diodes &amp; Rectifiers SOT23 0.2A 30V Schot tky Dblr&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
-<packages>
-<package name="SOT95P240X110-3N">
-<description>&lt;b&gt;sot 23&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="-1.1" y="0.95" dx="1.1" dy="0.6" layer="1"/>
-<smd name="2" x="-1.1" y="-0.95" dx="1.1" dy="0.6" layer="1"/>
-<smd name="3" x="1.1" y="0" dx="1.1" dy="0.6" layer="1"/>
-<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-1.9" y1="1.75" x2="1.9" y2="1.75" width="0.05" layer="51"/>
-<wire x1="1.9" y1="1.75" x2="1.9" y2="-1.75" width="0.05" layer="51"/>
-<wire x1="1.9" y1="-1.75" x2="-1.9" y2="-1.75" width="0.05" layer="51"/>
-<wire x1="-1.9" y1="-1.75" x2="-1.9" y2="1.75" width="0.05" layer="51"/>
-<wire x1="-0.65" y1="1.45" x2="0.65" y2="1.45" width="0.1" layer="51"/>
-<wire x1="0.65" y1="1.45" x2="0.65" y2="-1.45" width="0.1" layer="51"/>
-<wire x1="0.65" y1="-1.45" x2="-0.65" y2="-1.45" width="0.1" layer="51"/>
-<wire x1="-0.65" y1="-1.45" x2="-0.65" y2="1.45" width="0.1" layer="51"/>
-<wire x1="-0.65" y1="0.5" x2="0.3" y2="1.45" width="0.1" layer="51"/>
-<wire x1="-0.2" y1="1.45" x2="0.2" y2="1.45" width="0.2" layer="21"/>
-<wire x1="0.2" y1="1.45" x2="0.2" y2="-1.45" width="0.2" layer="21"/>
-<wire x1="0.2" y1="-1.45" x2="-0.2" y2="-1.45" width="0.2" layer="21"/>
-<wire x1="-0.2" y1="-1.45" x2="-0.2" y2="1.45" width="0.2" layer="21"/>
-<wire x1="-1.65" y1="1.5" x2="-0.55" y2="1.5" width="0.2" layer="21"/>
-</package>
-</packages>
-<symbols>
-<symbol name="BAT54S">
-<wire x1="5.08" y1="2.54" x2="17.78" y2="2.54" width="0.254" layer="94"/>
-<wire x1="17.78" y1="-5.08" x2="17.78" y2="2.54" width="0.254" layer="94"/>
-<wire x1="17.78" y1="-5.08" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
-<wire x1="5.08" y1="2.54" x2="5.08" y2="-5.08" width="0.254" layer="94"/>
-<text x="19.05" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
-<text x="19.05" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
-<pin name="A" x="0" y="0" length="middle"/>
-<pin name="K" x="0" y="-2.54" length="middle"/>
-<pin name="A/K" x="22.86" y="0" length="middle" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="BAT54S" prefix="D">
-<description>&lt;b&gt;Schottky Diodes &amp; Rectifiers SOT23 0.2A 30V Schot tky Dblr&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="https://www.rectron.com/data_sheets/bat54s.pdf"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="BAT54S" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SOT95P240X110-3N">
-<connects>
-<connect gate="G$1" pin="A" pad="1"/>
-<connect gate="G$1" pin="A/K" pad="3"/>
-<connect gate="G$1" pin="K" pad="2"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ARROW_PART_NUMBER" value="BAT54S" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/bat54s/rectron?region=nac" constant="no"/>
-<attribute name="DESCRIPTION" value="Schottky Diodes &amp; Rectifiers SOT23 0.2A 30V Schot tky Dblr" constant="no"/>
-<attribute name="HEIGHT" value="1.1mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="Rectron" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="BAT54S" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="583-BAT54S" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Rectron/BAT54S?qs=7pEAo90IqNGRiqD7TkybWA%3D%3D" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="Flex">
 <packages>
 <package name="FLEX6">
@@ -3541,6 +3469,108 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 </deviceset>
 </devicesets>
 </library>
+<library name="BAT54SW_115">
+<packages>
+<package name="SOT65P210X110-3N">
+<wire x1="0.68" y1="1.1" x2="0.68" y2="-1.1" width="0.127" layer="51"/>
+<wire x1="0.68" y1="-1.1" x2="-0.68" y2="-1.1" width="0.127" layer="51"/>
+<wire x1="-0.68" y1="-1.1" x2="-0.68" y2="1.1" width="0.127" layer="51"/>
+<wire x1="-0.68" y1="1.1" x2="0.68" y2="1.1" width="0.127" layer="51"/>
+<wire x1="0.68" y1="0.55" x2="0.68" y2="1.1" width="0.127" layer="21"/>
+<wire x1="0.68" y1="1.1" x2="-0.68" y2="1.1" width="0.127" layer="21"/>
+<wire x1="0.68" y1="-1.1" x2="0.68" y2="-0.55" width="0.127" layer="21"/>
+<wire x1="0.68" y1="-1.1" x2="-0.68" y2="-1.1" width="0.127" layer="21"/>
+<circle x="-1.15" y="1.45" radius="0.1" width="0.2" layer="21"/>
+<circle x="-0.35" y="0.7" radius="0.1" width="0.2" layer="51"/>
+<wire x1="1.72" y1="0.5" x2="1.72" y2="-0.5" width="0.05" layer="39"/>
+<wire x1="1.72" y1="-0.5" x2="0.93" y2="-0.5" width="0.05" layer="39"/>
+<wire x1="0.93" y1="-0.5" x2="0.93" y2="-1.35" width="0.05" layer="39"/>
+<wire x1="0.93" y1="-1.35" x2="-0.93" y2="-1.35" width="0.05" layer="39"/>
+<wire x1="-1.72" y1="-1.15" x2="-1.72" y2="1.15" width="0.05" layer="39"/>
+<wire x1="-0.93" y1="1.35" x2="0.93" y2="1.35" width="0.05" layer="39"/>
+<wire x1="0.93" y1="1.35" x2="0.93" y2="0.5" width="0.05" layer="39"/>
+<wire x1="0.93" y1="0.5" x2="1.72" y2="0.5" width="0.05" layer="39"/>
+<wire x1="-0.93" y1="1.35" x2="-0.93" y2="1.15" width="0.05" layer="39"/>
+<wire x1="-0.93" y1="1.15" x2="-1.72" y2="1.15" width="0.05" layer="39"/>
+<wire x1="-0.93" y1="-1.35" x2="-0.93" y2="-1.15" width="0.05" layer="39"/>
+<wire x1="-0.93" y1="-1.15" x2="-1.72" y2="-1.15" width="0.05" layer="39"/>
+<text x="-2.540709375" y="2.540709375" size="1.270359375" layer="25">&gt;NAME</text>
+<text x="-2.5443" y="-3.81645" size="1.27215" layer="27">&gt;VALUE</text>
+<smd name="3" x="0.97" y="0" dx="0.99" dy="0.5" layer="1" roundness="25"/>
+<smd name="1" x="-0.97" y="0.65" dx="0.99" dy="0.5" layer="1" roundness="25"/>
+<smd name="2" x="-0.97" y="-0.65" dx="0.99" dy="0.5" layer="1" roundness="25"/>
+</package>
+</packages>
+<symbols>
+<symbol name="BAT54SW,115">
+<text x="-7.37615" y="-8.391640625" size="1.78033125" layer="96">&gt;VALUE</text>
+<text x="-7.65023125" y="11.2028" size="1.78371875" layer="95">&gt;NAME</text>
+<wire x1="-7.62" y1="5.08" x2="0" y2="5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-5.08" x2="-7.62" y2="-5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="-5.08" x2="-7.62" y2="0" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="0" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="0" x2="-5.588" y2="0" width="0.254" layer="94"/>
+<wire x1="-5.588" y1="0" x2="-5.588" y2="1.27" width="0.254" layer="94"/>
+<wire x1="-5.588" y1="0" x2="-5.588" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-5.588" y1="-1.27" x2="-3.048" y2="0" width="0.254" layer="94"/>
+<wire x1="-3.048" y1="0" x2="-5.588" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-3.048" y1="1.778" x2="-3.048" y2="0" width="0.254" layer="94"/>
+<wire x1="-3.048" y1="0" x2="-3.048" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="-3.048" y1="-1.778" x2="-3.81" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-1.778" x2="-3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="-3.048" y1="1.778" x2="-2.286" y2="1.778" width="0.254" layer="94"/>
+<wire x1="-2.286" y1="1.778" x2="-2.286" y2="1.27" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="-3.048" y2="0" width="0.254" layer="94"/>
+<wire x1="0" y1="0" x2="2.032" y2="0" width="0.254" layer="94"/>
+<wire x1="2.032" y1="0" x2="2.032" y2="1.27" width="0.254" layer="94"/>
+<wire x1="2.032" y1="0" x2="2.032" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.032" y1="-1.27" x2="4.572" y2="0" width="0.254" layer="94"/>
+<wire x1="4.572" y1="0" x2="2.032" y2="1.27" width="0.254" layer="94"/>
+<wire x1="4.572" y1="1.778" x2="4.572" y2="0" width="0.254" layer="94"/>
+<wire x1="4.572" y1="0" x2="4.572" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="4.572" y1="-1.778" x2="3.81" y2="-1.778" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.778" x2="3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="4.572" y1="1.778" x2="5.334" y2="1.778" width="0.254" layer="94"/>
+<wire x1="5.334" y1="1.778" x2="5.334" y2="1.27" width="0.254" layer="94"/>
+<wire x1="7.62" y1="0" x2="4.572" y2="0" width="0.254" layer="94"/>
+<circle x="0" y="0" radius="0.254" width="0.254" layer="94"/>
+<pin name="A-C" x="0" y="7.62" visible="pad" length="short" direction="pas" rot="R270"/>
+<pin name="A" x="-10.16" y="0" visible="pad" length="short" direction="pas"/>
+<pin name="C" x="10.16" y="0" visible="pad" length="short" direction="pas" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="BAT54SW,115" prefix="D">
+<description>BAT54W Series 30 V 600 mA SMT Schottky Barrier Double Diode -SOT-323 &lt;a href="https://pricing.snapeda.com/parts/BAT54SW%2C115/Nexperia%20USA%20Inc./view-part?ref=eda"&gt;Check availability&lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="BAT54SW,115" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT65P210X110-3N">
+<connects>
+<connect gate="G$1" pin="A" pad="1"/>
+<connect gate="G$1" pin="A-C" pad="3"/>
+<connect gate="G$1" pin="C" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="AVAILABILITY" value="In Stock"/>
+<attribute name="DESCRIPTION" value=" Diode Array 1 Pair Series Connection Schottky 30 V 200mA (DC) Surface Mount SC-70, SOT-323 "/>
+<attribute name="MF" value="Nexperia USA Inc."/>
+<attribute name="MP" value="BAT54SW,115"/>
+<attribute name="PACKAGE" value="SOT-323 Nexperia USA Inc."/>
+<attribute name="PRICE" value="None"/>
+<attribute name="PURCHASE-URL" value="https://pricing.snapeda.com/search/part/BAT54SW,115/?ref=eda"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="COMPANY" value="ADAFRUIT INDUSTRIES"/>
@@ -3595,7 +3625,7 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="FRAME2" library="microbuilder" deviceset="FRAME_A3" device=""/>
 <part name="R12" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="8k2"/>
 <part name="GND5" library="SparkFun" deviceset="GND" device=""/>
-<part name="C2" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="0.1uF"/>
+<part name="C2" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="100n"/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
 <part name="RSENSE" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="100mR"/>
@@ -3606,7 +3636,6 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="169k"/>
 <part name="R2" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="39k"/>
 <part name="GND3" library="SparkFun" deviceset="GND" device=""/>
-<part name="D1" library="BAT54S" deviceset="BAT54S" device=""/>
 <part name="GND7" library="SparkFun" deviceset="GND" device=""/>
 <part name="SUPPLY4" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="U7" library="MCP6071" deviceset="MCP6071T-E/OT" device=""/>
@@ -3623,8 +3652,17 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <part name="SUPPLY2" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="K2" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX8" device=""/>
-<part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="7k5"/>
+<part name="R9" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="5k6"/>
 <part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="330R"/>
+<part name="C5" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="100n"/>
+<part name="C6" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="100n"/>
+<part name="GND10" library="SparkFun" deviceset="GND" device=""/>
+<part name="GND12" library="SparkFun" deviceset="GND" device=""/>
+<part name="SUPPLY5" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
+<part name="SUPPLY6" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
+<part name="R13" library="SparkFun-Resistors" deviceset="RESISTOR" device="0402" value="7k5"/>
+<part name="GND15" library="SparkFun" deviceset="GND" device=""/>
+<part name="D1" library="BAT54SW_115" deviceset="BAT54SW,115" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -3643,7 +3681,8 @@ BW=10Hz</text>
 <wire x1="309.88" y1="38.1" x2="312.42" y2="38.1" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="312.42" y1="38.1" x2="312.42" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
 <text x="17.78" y="116.84" size="5.08" layer="94">IOSENSE LOWPASS FILTERING</text>
-<text x="35.56" y="241.3" size="5.08" layer="94">STEP UP DCDC CONVERTER</text>
+<text x="35.56" y="241.3" size="5.08" layer="94">STEP UP DCDC CONVERTER
+ROVER1K - NOV'22-v1</text>
 </plain>
 <instances>
 <instance part="U3" gate="A" x="91.44" y="203.2" smashed="yes">
@@ -3821,15 +3860,11 @@ BW=10Hz</text>
 <instance part="GND3" gate="1" x="276.86" y="63.24" smashed="yes">
 <attribute name="VALUE" x="274.32" y="60.7" size="1.778" layer="96"/>
 </instance>
-<instance part="D1" gate="G$1" x="243.48" y="81.09" smashed="yes">
-<attribute name="NAME" x="262.53" y="88.71" size="1.778" layer="95" align="center-left"/>
-<attribute name="VALUE" x="262.53" y="86.17" size="1.778" layer="96" align="center-left"/>
+<instance part="GND7" gate="1" x="231.2" y="61.19" smashed="yes">
+<attribute name="VALUE" x="228.66" y="58.65" size="1.778" layer="96"/>
 </instance>
-<instance part="GND7" gate="1" x="231.2" y="63.73" smashed="yes">
-<attribute name="VALUE" x="228.66" y="61.19" size="1.778" layer="96"/>
-</instance>
-<instance part="SUPPLY4" gate="G$1" x="238.21" y="89.02" smashed="yes">
-<attribute name="VALUE" x="238.21" y="91.814" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY4" gate="G$1" x="240.75" y="91.56" smashed="yes">
+<attribute name="VALUE" x="240.75" y="94.354" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="U7" gate="A" x="134.62" y="71.12" smashed="yes">
 <attribute name="NAME" x="150.2156" y="82.7786" size="2.0828" layer="95" ratio="6" rot="SR0"/>
@@ -3882,13 +3917,44 @@ BW=10Hz</text>
 <attribute name="NAME" x="358.14" y="74.12" size="1.778" layer="95"/>
 <attribute name="VALUE" x="358.14" y="53.34" size="1.778" layer="96"/>
 </instance>
-<instance part="R9" gate="G$1" x="170.18" y="162.56" smashed="yes" rot="R270">
-<attribute name="NAME" x="175.26" y="164.084" size="1.778" layer="95" font="vector" align="bottom-center"/>
-<attribute name="VALUE" x="175.26" y="161.036" size="1.778" layer="96" font="vector" align="top-center"/>
+<instance part="R9" gate="G$1" x="175.26" y="167.64" smashed="yes">
+<attribute name="NAME" x="175.26" y="173.736" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="175.26" y="169.164" size="1.778" layer="96" font="vector" rot="R180" align="top-center"/>
 </instance>
 <instance part="R10" gate="G$1" x="335.28" y="71.12" smashed="yes">
 <attribute name="NAME" x="335.28" y="72.644" size="1.778" layer="95" font="vector" align="bottom-center"/>
 <attribute name="VALUE" x="335.28" y="69.596" size="1.778" layer="96" font="vector" align="top-center"/>
+</instance>
+<instance part="C5" gate="G$1" x="185.42" y="93.98" smashed="yes" rot="MR0">
+<attribute name="NAME" x="189.484" y="98.679" size="1.778" layer="95" font="vector" rot="MR180"/>
+<attribute name="VALUE" x="189.484" y="96.139" size="1.778" layer="96" font="vector" rot="MR180"/>
+</instance>
+<instance part="C6" gate="G$1" x="96.52" y="93.98" smashed="yes" rot="MR0">
+<attribute name="NAME" x="100.584" y="98.679" size="1.778" layer="95" font="vector" rot="MR180"/>
+<attribute name="VALUE" x="100.584" y="96.139" size="1.778" layer="96" font="vector" rot="MR180"/>
+</instance>
+<instance part="GND10" gate="1" x="185.42" y="88.9" smashed="yes">
+<attribute name="VALUE" x="182.88" y="86.36" size="1.778" layer="96"/>
+</instance>
+<instance part="GND12" gate="1" x="96.52" y="88.9" smashed="yes">
+<attribute name="VALUE" x="93.98" y="86.36" size="1.778" layer="96"/>
+</instance>
+<instance part="SUPPLY5" gate="G$1" x="185.42" y="99.06" smashed="yes">
+<attribute name="VALUE" x="185.42" y="101.854" size="1.778" layer="96" align="bottom-center"/>
+</instance>
+<instance part="SUPPLY6" gate="G$1" x="96.52" y="99.06" smashed="yes">
+<attribute name="VALUE" x="96.52" y="101.854" size="1.778" layer="96" align="bottom-center"/>
+</instance>
+<instance part="R13" gate="G$1" x="170.18" y="157.48" smashed="yes" rot="R270">
+<attribute name="NAME" x="175.26" y="159.004" size="1.778" layer="95" font="vector" align="bottom-center"/>
+<attribute name="VALUE" x="175.26" y="155.956" size="1.778" layer="96" font="vector" align="top-center"/>
+</instance>
+<instance part="GND15" gate="1" x="170.18" y="144.78" smashed="yes">
+<attribute name="VALUE" x="167.64" y="142.24" size="1.778" layer="96"/>
+</instance>
+<instance part="D1" gate="G$1" x="251.46" y="81.28" smashed="yes" rot="MR90">
+<attribute name="VALUE" x="243.068359375" y="73.90385" size="1.78033125" layer="96" rot="MR90"/>
+<attribute name="NAME" x="259.11023125" y="72.1628" size="1.78371875" layer="95" rot="MR0"/>
 </instance>
 </instances>
 <busses>
@@ -4021,12 +4087,6 @@ BW=10Hz</text>
 <wire x1="276.86" y1="65.78" x2="276.86" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="GND7" gate="1" pin="GND"/>
-<pinref part="D1" gate="G$1" pin="A"/>
-<wire x1="243.48" y1="81.09" x2="231.2" y2="81.09" width="0.1524" layer="91"/>
-<wire x1="231.2" y1="81.09" x2="231.2" y2="66.27" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <pinref part="GND11" gate="1" pin="GND"/>
 <wire x1="134.62" y1="50.8" x2="134.62" y2="53.34" width="0.1524" layer="91"/>
 <pinref part="U7" gate="A" pin="VSS"/>
@@ -4051,6 +4111,26 @@ BW=10Hz</text>
 <label x="347.98" y="58.42" size="1.778" layer="95"/>
 <wire x1="358.14" y1="58.42" x2="345.44" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="K1" gate="&gt;NAME" pin="P$8"/>
+</segment>
+<segment>
+<pinref part="C5" gate="G$1" pin="2"/>
+<pinref part="GND10" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="C6" gate="G$1" pin="2"/>
+<pinref part="GND12" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="R13" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="152.4" x2="170.18" y2="147.32" width="0.1524" layer="91"/>
+<pinref part="GND15" gate="1" pin="GND"/>
+</segment>
+<segment>
+<pinref part="D1" gate="G$1" pin="A"/>
+<wire x1="251.46" y1="71.12" x2="251.46" y2="66.04" width="0.1524" layer="91"/>
+<pinref part="GND7" gate="1" pin="GND"/>
+<wire x1="231.2" y1="63.73" x2="231.2" y2="66.04" width="0.1524" layer="91"/>
+<wire x1="231.2" y1="66.04" x2="251.46" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="VSOURCE" class="0">
@@ -4161,9 +4241,8 @@ BW=10Hz</text>
 </segment>
 <segment>
 <pinref part="R9" gate="G$1" pin="2"/>
-<wire x1="170.18" y1="157.48" x2="170.18" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="154.94" x2="185.42" y2="154.94" width="0.1524" layer="91"/>
-<label x="177.8" y="154.94" size="1.778" layer="95"/>
+<wire x1="180.34" y1="167.64" x2="198.12" y2="167.64" width="0.1524" layer="91"/>
+<label x="190.5" y="167.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -4257,12 +4336,6 @@ BW=10Hz</text>
 <pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
 </segment>
 <segment>
-<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
-<pinref part="D1" gate="G$1" pin="K"/>
-<wire x1="243.48" y1="78.55" x2="238.21" y2="78.55" width="0.1524" layer="91"/>
-<wire x1="238.21" y1="78.55" x2="238.21" y2="89.02" width="0.1524" layer="91"/>
-</segment>
-<segment>
 <wire x1="134.62" y1="60.96" x2="134.62" y2="58.42" width="0.1524" layer="91"/>
 <pinref part="U7" gate="A" pin="VDD"/>
 <wire x1="134.62" y1="58.42" x2="137.16" y2="58.42" width="0.1524" layer="91"/>
@@ -4277,6 +4350,20 @@ BW=10Hz</text>
 <pinref part="K2" gate="G$1" pin="P$12"/>
 <wire x1="360.68" y1="93.98" x2="340.36" y2="93.98" width="0.1524" layer="91"/>
 <label x="342.9" y="93.98" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="C5" gate="G$1" pin="1"/>
+<pinref part="SUPPLY5" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="SUPPLY6" gate="G$1" pin="VCC"/>
+</segment>
+<segment>
+<pinref part="D1" gate="G$1" pin="C"/>
+<pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
+<wire x1="251.46" y1="91.44" x2="240.75" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="240.75" y1="91.44" x2="240.75" y2="91.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -4328,16 +4415,17 @@ BW=10Hz</text>
 </net>
 <net name="VOUTSENSE" class="0">
 <segment>
-<pinref part="D1" gate="G$1" pin="A/K"/>
 <wire x1="266.34" y1="81.09" x2="266.34" y2="81.28" width="0.1524" layer="91"/>
-<wire x1="266.34" y1="81.28" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="R2" gate="G$1" pin="1"/>
+<wire x1="266.34" y1="81.28" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="81.28" x2="284.48" y2="81.28" width="0.1524" layer="91"/>
 <wire x1="276.86" y1="78.74" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
 <junction x="276.86" y="81.28"/>
 <pinref part="R1" gate="G$1" pin="2"/>
 <wire x1="276.86" y1="83.82" x2="276.86" y2="81.28" width="0.1524" layer="91"/>
 <label x="284.48" y="81.28" size="1.778" layer="95" xref="yes"/>
+<pinref part="D1" gate="G$1" pin="A-C"/>
+<wire x1="259.08" y1="81.28" x2="266.34" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="K2" gate="G$1" pin="P$9"/>
@@ -4509,6 +4597,8 @@ BW=10Hz</text>
 <label x="116.84" y="167.64" size="1.778" layer="95"/>
 <pinref part="R9" gate="G$1" pin="1"/>
 <junction x="170.18" y="167.64"/>
+<pinref part="R13" gate="G$1" pin="1"/>
+<wire x1="170.18" y1="167.64" x2="170.18" y2="162.56" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
