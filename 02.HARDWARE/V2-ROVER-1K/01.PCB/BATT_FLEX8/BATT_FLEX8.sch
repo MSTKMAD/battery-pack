@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -157,89 +157,6 @@
 </layers>
 <schematic xreflabel="%F%N/%S.%C%R" xrefpart="/%S.%C%R">
 <libraries>
-<library name="Flex">
-<packages>
-<package name="FLEX6">
-<description>WR-FPC 1mm SMT Horiz. Bot. Contact Hinge type WR-FPC 1mm 06pins Hinge type SMT Horizontal Bottom Contact</description>
-<smd name="1" x="-2.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<wire x1="-3.3" y1="-2.52" x2="-3.3" y2="1.62" width="0.127" layer="21"/>
-<wire x1="-3.3" y1="1.62" x2="7.08" y2="1.62" width="0.127" layer="21"/>
-<wire x1="7.08" y1="1.62" x2="7.08" y2="-2.52" width="0.127" layer="21"/>
-<wire x1="7.08" y1="-2.52" x2="-3.3" y2="-2.52" width="0.127" layer="21"/>
-<text x="-3.7" y="-3.968" size="1.27" layer="27">&gt;VALUE</text>
-<text x="-3.8" y="1.95" size="1.27" layer="25">&gt;NAME</text>
-<circle x="-3" y="-1.6" radius="0.1" width="0.1524" layer="21"/>
-<smd name="2" x="-1.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="3" x="-0.9" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="4" x="-0.1" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="5" x="0.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="6" x="1.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="7" x="2.3" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="8" x="3.1" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="9" x="3.9" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="10" x="4.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="11" x="5.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="12" x="6.3" y="-0.25" dx="0.4" dy="3" layer="1"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SINGLEROW-6">
-<text x="0" y="3" size="1.778" layer="95">&gt;NAME</text>
-<text x="0" y="-33.02" size="1.778" layer="96">&gt;VALUE</text>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-30.48" x2="10.16" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-30.48" x2="10.16" y2="2.54" width="0.254" layer="94"/>
-<wire x1="10.16" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<pin name="P$1" x="0" y="0" length="short"/>
-<pin name="P$2" x="0" y="-2.54" length="short"/>
-<pin name="P$3" x="0" y="-5.08" length="short"/>
-<pin name="P$4" x="0" y="-7.62" length="short"/>
-<pin name="P$5" x="0" y="-10.16" length="short"/>
-<pin name="P$6" x="0" y="-12.7" length="short"/>
-<pin name="P$7" x="0" y="-15.24" length="short"/>
-<pin name="P$8" x="0" y="-17.78" length="short"/>
-<pin name="P$9" x="0" y="-20.32" length="short"/>
-<pin name="P$10" x="0" y="-22.86" length="short"/>
-<pin name="P$11" x="0" y="-25.4" length="short"/>
-<pin name="P$12" x="0" y="-27.94" length="short"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="FLEX6" prefix="K">
-<description>&lt;b&gt;WR-FPC 1mm SMT Horiz. Bot. Contact Hinge type WR-FPC 1mm 06 pins Hinge type SMT Horizontal Bottom Contact
-;&lt;/b&gt;=&gt;Code : Con_FPC_ZIF_1.00_6861xx148922_686106148922
-&lt;p&gt;&lt;a href="http://katalog.we-online.de/media/images/eican/Con_FPC_ZIF_1.00_686110148922_pf2.jpg"&gt;
-&lt;img src="http://katalog.we-online.de/media/thumbs2/eican/thb_Con_FPC_ZIF_1.00_686110148922_pf2.jpg" width="320"&gt;&lt;/a&gt;&lt;p&gt;
-Details see: &lt;a href="http://katalog.we-online.de/em/datasheet/6861xx148922.pdf"&gt;http://katalog.we-online.de/em/datasheet/6861xx148922.pdf&lt;/a&gt;&lt;p&gt;
-Created 2014-10-08, Karrer Zheng&lt;br&gt;
-2014 (C) Wurth Elektronik</description>
-<gates>
-<gate name="G$1" symbol="SINGLEROW-6" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="FLEX6">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$10" pad="10"/>
-<connect gate="G$1" pin="P$11" pad="11"/>
-<connect gate="G$1" pin="P$12" pad="12"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-<connect gate="G$1" pin="P$3" pad="3"/>
-<connect gate="G$1" pin="P$4" pad="4"/>
-<connect gate="G$1" pin="P$5" pad="5"/>
-<connect gate="G$1" pin="P$6" pad="6"/>
-<connect gate="G$1" pin="P$7" pad="7"/>
-<connect gate="G$1" pin="P$8" pad="8"/>
-<connect gate="G$1" pin="P$9" pad="9"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="Flex_3mm">
 <packages>
 <package name="FLEX8">
@@ -321,12 +238,8 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 </class>
 </classes>
 <parts>
-<part name="K1" library="Flex" deviceset="FLEX6" device=""/>
-<part name="K2" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K3" library="Flex_3mm" deviceset="FLEX8" device=""/>
 <part name="K4" library="Flex_3mm" deviceset="FLEX8" device=""/>
-<part name="K5" library="Flex" deviceset="FLEX6" device=""/>
-<part name="K6" library="Flex" deviceset="FLEX6" device=""/>
 <part name="K7" library="Flex_3mm" deviceset="FLEX8" device=""/>
 <part name="K8" library="Flex_3mm" deviceset="FLEX8" device=""/>
 </parts>
@@ -335,14 +248,6 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <plain>
 </plain>
 <instances>
-<instance part="K1" gate="G$1" x="46.99" y="87.63" smashed="yes">
-<attribute name="NAME" x="46.99" y="90.63" size="1.778" layer="95"/>
-<attribute name="VALUE" x="46.99" y="54.61" size="1.778" layer="96"/>
-</instance>
-<instance part="K2" gate="G$1" x="24.13" y="87.63" smashed="yes" rot="MR0">
-<attribute name="NAME" x="24.13" y="90.63" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="24.13" y="54.61" size="1.778" layer="96" rot="MR0"/>
-</instance>
 <instance part="K3" gate="&gt;NAME" x="121.92" y="72.39" smashed="yes" rot="MR0">
 <attribute name="NAME" x="124.46" y="90.63" size="1.778" layer="95" rot="MR0"/>
 <attribute name="VALUE" x="124.46" y="69.85" size="1.778" layer="96" rot="MR0"/>
@@ -350,14 +255,6 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <instance part="K4" gate="&gt;NAME" x="151.13" y="72.39" smashed="yes">
 <attribute name="NAME" x="148.59" y="90.63" size="1.778" layer="95"/>
 <attribute name="VALUE" x="148.59" y="69.85" size="1.778" layer="96"/>
-</instance>
-<instance part="K5" gate="G$1" x="46.99" y="48.26" smashed="yes">
-<attribute name="NAME" x="46.99" y="51.26" size="1.778" layer="95"/>
-<attribute name="VALUE" x="46.99" y="15.24" size="1.778" layer="96"/>
-</instance>
-<instance part="K6" gate="G$1" x="24.13" y="48.26" smashed="yes" rot="MR0">
-<attribute name="NAME" x="24.13" y="51.26" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="24.13" y="15.24" size="1.778" layer="96" rot="MR0"/>
 </instance>
 <instance part="K7" gate="&gt;NAME" x="121.92" y="45.72" smashed="yes" rot="MR0">
 <attribute name="NAME" x="124.46" y="63.96" size="1.778" layer="95" rot="MR0"/>
@@ -453,174 +350,6 @@ Created 2014-10-08, Karrer Zheng&lt;br&gt;
 <pinref part="K8" gate="&gt;NAME" pin="P$8"/>
 <wire x1="124.46" y1="48.26" x2="148.59" y2="48.26" width="0.1524" layer="91"/>
 <label x="132.08" y="48.26" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-12" class="0">
-<segment>
-<pinref part="K1" gate="G$1" pin="P$12"/>
-<pinref part="K2" gate="G$1" pin="P$12"/>
-<wire x1="46.99" y1="59.69" x2="24.13" y2="59.69" width="0.1524" layer="91"/>
-<label x="31.75" y="59.69" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K5" gate="G$1" pin="P$12"/>
-<pinref part="K6" gate="G$1" pin="P$12"/>
-<wire x1="46.99" y1="20.32" x2="24.13" y2="20.32" width="0.1524" layer="91"/>
-<label x="31.75" y="20.32" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-11" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$11"/>
-<pinref part="K1" gate="G$1" pin="P$11"/>
-<wire x1="24.13" y1="62.23" x2="46.99" y2="62.23" width="0.1524" layer="91"/>
-<label x="31.75" y="62.23" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$11"/>
-<pinref part="K5" gate="G$1" pin="P$11"/>
-<wire x1="24.13" y1="22.86" x2="46.99" y2="22.86" width="0.1524" layer="91"/>
-<label x="31.75" y="22.86" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-10" class="0">
-<segment>
-<pinref part="K1" gate="G$1" pin="P$10"/>
-<pinref part="K2" gate="G$1" pin="P$10"/>
-<wire x1="46.99" y1="64.77" x2="24.13" y2="64.77" width="0.1524" layer="91"/>
-<label x="31.75" y="64.77" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K5" gate="G$1" pin="P$10"/>
-<pinref part="K6" gate="G$1" pin="P$10"/>
-<wire x1="46.99" y1="25.4" x2="24.13" y2="25.4" width="0.1524" layer="91"/>
-<label x="31.75" y="25.4" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-9" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$9"/>
-<pinref part="K1" gate="G$1" pin="P$9"/>
-<wire x1="24.13" y1="67.31" x2="46.99" y2="67.31" width="0.1524" layer="91"/>
-<label x="31.75" y="67.31" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$9"/>
-<pinref part="K5" gate="G$1" pin="P$9"/>
-<wire x1="24.13" y1="27.94" x2="46.99" y2="27.94" width="0.1524" layer="91"/>
-<label x="31.75" y="27.94" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-8" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$8"/>
-<wire x1="24.13" y1="69.85" x2="46.99" y2="69.85" width="0.1524" layer="91"/>
-<pinref part="K1" gate="G$1" pin="P$8"/>
-<label x="31.75" y="69.85" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$8"/>
-<wire x1="24.13" y1="30.48" x2="46.99" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="K5" gate="G$1" pin="P$8"/>
-<label x="31.75" y="30.48" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-7" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$7"/>
-<pinref part="K1" gate="G$1" pin="P$7"/>
-<wire x1="24.13" y1="72.39" x2="46.99" y2="72.39" width="0.1524" layer="91"/>
-<label x="31.75" y="72.39" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$7"/>
-<pinref part="K5" gate="G$1" pin="P$7"/>
-<wire x1="24.13" y1="33.02" x2="46.99" y2="33.02" width="0.1524" layer="91"/>
-<label x="31.75" y="33.02" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-6" class="0">
-<segment>
-<pinref part="K1" gate="G$1" pin="P$6"/>
-<pinref part="K2" gate="G$1" pin="P$6"/>
-<wire x1="46.99" y1="74.93" x2="24.13" y2="74.93" width="0.1524" layer="91"/>
-<label x="31.75" y="74.93" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K5" gate="G$1" pin="P$6"/>
-<pinref part="K6" gate="G$1" pin="P$6"/>
-<wire x1="46.99" y1="35.56" x2="24.13" y2="35.56" width="0.1524" layer="91"/>
-<label x="31.75" y="35.56" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-5" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$5"/>
-<pinref part="K1" gate="G$1" pin="P$5"/>
-<wire x1="24.13" y1="77.47" x2="46.99" y2="77.47" width="0.1524" layer="91"/>
-<label x="31.75" y="77.47" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$5"/>
-<pinref part="K5" gate="G$1" pin="P$5"/>
-<wire x1="24.13" y1="38.1" x2="46.99" y2="38.1" width="0.1524" layer="91"/>
-<label x="31.75" y="38.1" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-4" class="0">
-<segment>
-<pinref part="K1" gate="G$1" pin="P$4"/>
-<pinref part="K2" gate="G$1" pin="P$4"/>
-<wire x1="46.99" y1="80.01" x2="24.13" y2="80.01" width="0.1524" layer="91"/>
-<label x="31.75" y="80.01" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K5" gate="G$1" pin="P$4"/>
-<pinref part="K6" gate="G$1" pin="P$4"/>
-<wire x1="46.99" y1="40.64" x2="24.13" y2="40.64" width="0.1524" layer="91"/>
-<label x="31.75" y="40.64" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-3" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$3"/>
-<pinref part="K1" gate="G$1" pin="P$3"/>
-<wire x1="24.13" y1="82.55" x2="46.99" y2="82.55" width="0.1524" layer="91"/>
-<label x="31.75" y="82.55" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$3"/>
-<pinref part="K5" gate="G$1" pin="P$3"/>
-<wire x1="24.13" y1="43.18" x2="46.99" y2="43.18" width="0.1524" layer="91"/>
-<label x="31.75" y="43.18" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-2" class="0">
-<segment>
-<pinref part="K1" gate="G$1" pin="P$2"/>
-<pinref part="K2" gate="G$1" pin="P$2"/>
-<wire x1="46.99" y1="85.09" x2="24.13" y2="85.09" width="0.1524" layer="91"/>
-<label x="31.75" y="85.09" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K5" gate="G$1" pin="P$2"/>
-<pinref part="K6" gate="G$1" pin="P$2"/>
-<wire x1="46.99" y1="45.72" x2="24.13" y2="45.72" width="0.1524" layer="91"/>
-<label x="31.75" y="45.72" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="F12-1" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$1"/>
-<pinref part="K1" gate="G$1" pin="P$1"/>
-<wire x1="24.13" y1="87.63" x2="46.99" y2="87.63" width="0.1524" layer="91"/>
-<label x="31.75" y="87.63" size="1.778" layer="95"/>
-</segment>
-<segment>
-<pinref part="K6" gate="G$1" pin="P$1"/>
-<pinref part="K5" gate="G$1" pin="P$1"/>
-<wire x1="24.13" y1="48.26" x2="46.99" y2="48.26" width="0.1524" layer="91"/>
-<label x="31.75" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="F8-1" class="0">
