@@ -3,10 +3,10 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1936,8 +1936,7 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <parts>
 <part name="VOUT+" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="VOUT-" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="VBUS" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="GND" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
+<part name="GND_IN" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX8" device=""/>
 <part name="VOUT+1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="VOUT-1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
@@ -1945,7 +1944,6 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <part name="H2" library="S1761-42R" deviceset="S1761-42R" device=""/>
 <part name="SWCLK" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="SWDIO" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="VCC" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="!RESET" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="TXO" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="Q1" library="PJA3416AE_R1_00001" deviceset="PJA3416AE_R1_00001" device=""/>
@@ -1964,11 +1962,8 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <attribute name="NAME" x="17.78" y="48.26" size="1.778" layer="95" rot="R180"/>
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="46.99" size="1.778" layer="97" rot="R90"/>
 </instance>
-<instance part="VBUS" gate="G$1" x="19.05" y="40.64" smashed="yes" rot="R90">
+<instance part="GND_IN" gate="G$1" x="19.05" y="40.64" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="41.91" size="1.778" layer="97" rot="R90"/>
-</instance>
-<instance part="GND" gate="G$1" x="19.05" y="30.48" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="20.32" y="31.75" size="1.778" layer="97" rot="R90"/>
 </instance>
 <instance part="K1" gate="&gt;NAME" x="106.68" y="58.42" smashed="yes">
 <attribute name="NAME" x="104.14" y="76.66" size="1.778" layer="95"/>
@@ -1988,21 +1983,18 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <instance part="SWDIO" gate="G$1" x="19.05" y="68.58" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="69.85" size="1.778" layer="97" rot="R90"/>
 </instance>
-<instance part="VCC" gate="G$1" x="19.05" y="76.2" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="20.32" y="77.47" size="1.778" layer="97" rot="R90"/>
-</instance>
 <instance part="!RESET" gate="G$1" x="19.05" y="80.01" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="81.28" size="1.778" layer="97" rot="R90"/>
 </instance>
 <instance part="TXO" gate="G$1" x="19.05" y="83.82" smashed="yes" rot="R90">
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="85.09" size="1.778" layer="97" rot="R90"/>
 </instance>
-<instance part="Q1" gate="A" x="55.88" y="40.64" smashed="yes" rot="R270">
-<attribute name="NAME" x="59.182" y="38.735" size="2.54" layer="95" ratio="10" rot="SR0"/>
+<instance part="Q1" gate="A" x="68.58" y="33.02" smashed="yes" rot="R270">
+<attribute name="NAME" x="71.882" y="31.115" size="2.54" layer="95" ratio="10" rot="SR0"/>
 </instance>
 <instance part="D1" gate="G$1" x="58.42" y="60.96" smashed="yes" rot="R270">
-<attribute name="NAME" x="67.31" y="50.8" size="1.778" layer="95" rot="R270"/>
-<attribute name="VALUE" x="64.77" y="50.8" size="1.778" layer="96" rot="R270"/>
+<attribute name="NAME" x="63.5" y="57.15" size="1.778" layer="95"/>
+<attribute name="VALUE" x="63.5" y="54.61" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -2049,17 +2041,18 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <wire x1="104.14" y1="78.74" x2="91.44" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="VCC" gate="G$1" pin="TP"/>
-<wire x1="21.59" y1="76.2" x2="40.64" y2="76.2" width="0.1524" layer="91"/>
-<label x="26.67" y="76.2" size="1.778" layer="95"/>
+<pinref part="Q1" gate="A" pin="G"/>
+<wire x1="68.58" y1="33.02" x2="53.34" y2="33.02" width="0.1524" layer="91"/>
+<label x="53.34" y="33.02" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 <segment>
-<pinref part="VBUS" gate="G$1" pin="TP"/>
-<wire x1="21.59" y1="40.64" x2="40.64" y2="40.64" width="0.1524" layer="91"/>
-<label x="24.13" y="40.64" size="1.778" layer="95"/>
-<pinref part="Q1" gate="A" pin="G"/>
-<wire x1="40.64" y1="40.64" x2="41.91" y2="40.64" width="0.1524" layer="91"/>
-<wire x1="55.88" y1="40.64" x2="41.91" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="H2" gate="G$1" pin="1"/>
+<wire x1="21.59" y1="30.48" x2="27.94" y2="30.48" width="0.1524" layer="91"/>
+<pinref part="H1" gate="G$1" pin="1"/>
+<wire x1="27.94" y1="30.48" x2="34.29" y2="30.48" width="0.1524" layer="91"/>
+<junction x="27.94" y="30.48"/>
+<label x="25.4" y="30.48" size="1.778" layer="95"/>
+<label x="22.86" y="30.48" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="SWCLK" class="0">
@@ -2112,22 +2105,21 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 </net>
 <net name="GND_IN" class="0">
 <segment>
-<pinref part="GND" gate="G$1" pin="TP"/>
-<pinref part="H2" gate="G$1" pin="1"/>
-<wire x1="21.59" y1="30.48" x2="27.94" y2="30.48" width="0.1524" layer="91"/>
-<pinref part="H1" gate="G$1" pin="1"/>
-<wire x1="27.94" y1="30.48" x2="34.29" y2="30.48" width="0.1524" layer="91"/>
-<junction x="27.94" y="30.48"/>
+<pinref part="GND_IN" gate="G$1" pin="TP"/>
+<wire x1="21.59" y1="40.64" x2="33.02" y2="40.64" width="0.1524" layer="91"/>
+<label x="22.86" y="40.64" size="1.778" layer="95"/>
+</segment>
+<segment>
 <pinref part="Q1" gate="A" pin="S"/>
-<wire x1="34.29" y1="30.48" x2="48.26" y2="30.48" width="0.1524" layer="91"/>
-<junction x="34.29" y="30.48"/>
+<wire x1="53.34" y1="22.86" x2="60.96" y2="22.86" width="0.1524" layer="91"/>
+<label x="50.8" y="22.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND" class="0">
 <segment>
 <pinref part="Q1" gate="A" pin="D"/>
-<wire x1="63.5" y1="30.48" x2="73.66" y2="30.48" width="0.1524" layer="91"/>
-<label x="66.04" y="30.48" size="1.778" layer="95"/>
+<wire x1="76.2" y1="22.86" x2="86.36" y2="22.86" width="0.1524" layer="91"/>
+<label x="78.74" y="22.86" size="1.778" layer="95"/>
 </segment>
 <segment>
 <label x="93.98" y="60.96" size="1.778" layer="95"/>
