@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -4152,9 +4152,9 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U$10" library="microbuilder" deviceset="GND" device=""/>
 <part name="X2" library="adafruit2" deviceset="XTAL" device="-3.2X1.5" value="32.768"/>
 <part name="U$2" library="microbuilder" deviceset="GND" device=""/>
-<part name="C3" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C3" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$7" library="microbuilder" deviceset="GND" device=""/>
-<part name="C9" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C9" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$14" library="microbuilder" deviceset="GND" device=""/>
 <part name="SUPPLY1" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
@@ -4167,8 +4167,8 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U3" library="TPS78230DDCR" deviceset="TPS78230DDCR" device=""/>
 <part name="BATT_CPU" library="BeagleBone_Blue_R3" deviceset="FRAMES_A3L-LOC" device="" value="BATT_CPU v1"/>
 <part name="U$12" library="microbuilder" deviceset="VBUS" device=""/>
-<part name="C7" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
-<part name="C11" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C7" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
+<part name="C11" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$16" library="microbuilder" deviceset="GND" device=""/>
 <part name="SUPPLY10" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="U6" library="MAX9062" deviceset="MAX9062EUK+T" device=""/>
@@ -4178,7 +4178,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="8k2"/>
 <part name="U$21" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$22" library="microbuilder" deviceset="VBUS" device=""/>
-<part name="C15" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C15" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
 <part name="C18" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
 <part name="U$23" library="microbuilder" deviceset="GND" device=""/>
@@ -4197,23 +4197,23 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U$19" library="microbuilder" deviceset="GND" device=""/>
 <part name="SUPPLY6" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="SUPPLY7" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
-<part name="C13" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
-<part name="C16" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C13" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
+<part name="C16" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$20" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$24" library="microbuilder" deviceset="GND" device=""/>
 <part name="R7" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="2k2"/>
 <part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100R"/>
-<part name="C17" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C17" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$26" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$30" library="OLED 66 64x48" deviceset="64X32_OLED_049" device=""/>
-<part name="C19" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C19" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="R48" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="10k"/>
 <part name="Q1" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
 <part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="47k"/>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="Q3" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
-<part name="K2" library="Flex" deviceset="FLEX6" device=""/>
+<part name="K2" library="Flex" deviceset="FLEX6" device="" value="FLEX12"/>
 <part name="SUPPLY13" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
 <part name="SUPPLY14" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="SUPPLY15" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
@@ -4224,8 +4224,8 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="VBUS2" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 <part name="VBUS3" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 <part name="VBUS4" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
-<part name="C5" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
-<part name="C10" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C5" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
+<part name="C10" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="C12" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="1.0UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="1.0uF"/>
 <part name="C20" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="2.2UF" device="-0603-10V-20%" package3d_urn="urn:adsk.eagle:package:37414/1" value="2.2uF"/>
 <part name="C21" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="4.7UF" device="0603" package3d_urn="urn:adsk.eagle:package:37414/1" value="4.7uF"/>
@@ -4241,10 +4241,10 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="SUPPLY9" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
 <part name="C23" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="1.0UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="1.0uF"/>
 <part name="R6" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="4k7"/>
-<part name="C24" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C24" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$4" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$9" library="microbuilder" deviceset="GND" device=""/>
-<part name="C25" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C25" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="C26" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
 <part name="U$11" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$15" library="microbuilder" deviceset="GND" device=""/>
@@ -4252,7 +4252,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="Q5" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
 <part name="R18" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="U$31" library="microbuilder" deviceset="GND" device=""/>
-<part name="C27" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100nF"/>
+<part name="C27" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 </parts>
 <sheets>
@@ -4265,7 +4265,6 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <wire x1="134.62" y1="121.92" x2="134.62" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="134.62" y1="167.64" x2="134.62" y2="256.54" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="383.54" y1="91.44" x2="289.56" y2="91.44" width="0.1524" layer="94" style="shortdash"/>
-<text x="20.32" y="104.14" size="1.778" layer="95">RXLED</text>
 <wire x1="289.56" y1="91.44" x2="134.62" y2="91.44" width="0.1524" layer="94" style="shortdash"/>
 <text x="165.1" y="228.6" size="2.54" layer="94">BUZZER</text>
 <text x="25.4" y="195.58" size="1.4224" layer="94">AP7354D-30W5-7 
@@ -4274,7 +4273,7 @@ direct Replacement</text>
 <text x="106.68" y="53.34" size="1.778" layer="91">D5</text>
 <text x="106.68" y="45.72" size="1.778" layer="91">D10</text>
 <text x="106.68" y="55.88" size="1.778" layer="91">D2</text>
-<text x="10.16" y="30.48" size="1.778" layer="91">A1</text>
+<text x="17.78" y="33.02" size="1.778" layer="91">A1</text>
 <wire x1="134.62" y1="167.64" x2="261.62" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <text x="276.86" y="246.38" size="2.54" layer="94">CHARGING DETECTOR
 LOW BATT DETECTOR</text>
@@ -4297,9 +4296,14 @@ LOW BATT DETECTOR</text>
 <text x="106.68" y="68.58" size="1.778" layer="91">D1</text>
 <text x="106.68" y="81.28" size="1.778" layer="91">D8</text>
 <text x="106.68" y="78.74" size="1.778" layer="91">D9</text>
-<text x="307.98" y="40.1" size="1.778" layer="91">vo/vi = 0.6
+<text x="302.9" y="35.02" size="1.778" layer="91">5v --&gt; 3v
+Vo = 3V @Vi=5V
+vo/vi = 0.6
 
-5v --&gt; 3v</text>
+</text>
+<text x="167.64" y="269.24" size="5.08" layer="94">BATT_CPU
+ROVER1K
+NOV'22-v1</text>
 </plain>
 <instances>
 <instance part="C6" gate="G$1" x="12.7" y="208.28" smashed="yes">
@@ -4363,12 +4367,12 @@ LOW BATT DETECTOR</text>
 <instance part="U$2" gate="G$1" x="55.88" y="198.12" smashed="yes">
 <attribute name="VALUE" x="54.356" y="195.58" size="1.27" layer="96"/>
 </instance>
-<instance part="C3" gate="G$1" x="10.16" y="58.42" smashed="yes">
-<attribute name="NAME" x="7.87" y="59.67" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
-<attribute name="VALUE" x="12.46" y="59.67" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
+<instance part="C3" gate="G$1" x="10.16" y="60.96" smashed="yes">
+<attribute name="NAME" x="7.87" y="62.21" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
+<attribute name="VALUE" x="12.46" y="62.21" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
 </instance>
-<instance part="U$7" gate="G$1" x="10.16" y="53.34" smashed="yes">
-<attribute name="VALUE" x="8.636" y="50.8" size="1.27" layer="96"/>
+<instance part="U$7" gate="G$1" x="10.16" y="55.88" smashed="yes">
+<attribute name="VALUE" x="8.636" y="53.34" size="1.27" layer="96"/>
 </instance>
 <instance part="C9" gate="G$1" x="10.16" y="40.64" smashed="yes">
 <attribute name="NAME" x="7.87" y="41.89" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
@@ -4380,11 +4384,11 @@ LOW BATT DETECTOR</text>
 <instance part="SUPPLY1" gate="G$1" x="73.66" y="223.52" smashed="yes">
 <attribute name="VALUE" x="73.66" y="226.314" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY3" gate="G$1" x="10.16" y="66.04" smashed="yes">
-<attribute name="VALUE" x="10.16" y="68.834" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY3" gate="G$1" x="10.16" y="68.58" smashed="yes">
+<attribute name="VALUE" x="10.16" y="71.374" size="1.778" layer="96" align="bottom-center"/>
 </instance>
-<instance part="SUPPLY4" gate="G$1" x="10.16" y="45.72" smashed="yes">
-<attribute name="VALUE" x="10.16" y="48.514" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY4" gate="G$1" x="10.16" y="48.26" smashed="yes">
+<attribute name="VALUE" x="10.16" y="51.054" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="SUPPLY5" gate="G$1" x="22.86" y="91.44" smashed="yes">
 <attribute name="VALUE" x="22.86" y="94.234" size="1.778" layer="96" align="bottom-center"/>
@@ -4426,8 +4430,8 @@ LOW BATT DETECTOR</text>
 <instance part="U$16" gate="G$1" x="10.16" y="12.7" smashed="yes">
 <attribute name="VALUE" x="8.636" y="10.16" size="1.27" layer="96"/>
 </instance>
-<instance part="SUPPLY10" gate="G$1" x="10.16" y="22.86" smashed="yes">
-<attribute name="VALUE" x="10.16" y="25.654" size="1.778" layer="96" align="bottom-center"/>
+<instance part="SUPPLY10" gate="G$1" x="10.16" y="25.4" smashed="yes">
+<attribute name="VALUE" x="10.16" y="28.194" size="1.778" layer="96" align="bottom-center"/>
 </instance>
 <instance part="U6" gate="A" x="299.72" y="220.98" smashed="yes">
 <attribute name="NAME" x="307.6956" y="189.4586" size="2.0828" layer="95" ratio="6" rot="SR0"/>
@@ -4830,12 +4834,24 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="U$17" gate="G$1" pin="GND"/>
 <pinref part="S2" gate="G$1" pin="NO_2"/>
-<wire x1="248.92" y1="134.62" x2="248.92" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="134.62" x2="248.92" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="S2" gate="G$1" pin="NO_1"/>
+<wire x1="248.92" y1="137.16" x2="248.92" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="218.44" y1="142.24" x2="213.36" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="142.24" x2="213.36" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="137.16" x2="248.92" y2="137.16" width="0.1524" layer="91"/>
+<junction x="248.92" y="137.16"/>
 </segment>
 <segment>
 <pinref part="U$19" gate="G$1" pin="GND"/>
 <pinref part="S1" gate="G$1" pin="NO_2"/>
-<wire x1="170.18" y1="134.62" x2="170.18" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="134.62" x2="170.18" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="S1" gate="G$1" pin="NO_1"/>
+<wire x1="170.18" y1="137.16" x2="170.18" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="139.7" y1="142.24" x2="137.16" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="142.24" x2="137.16" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="137.16" y1="137.16" x2="170.18" y2="137.16" width="0.1524" layer="91"/>
+<junction x="170.18" y="137.16"/>
 </segment>
 <segment>
 <pinref part="U$20" gate="G$1" pin="GND"/>
@@ -4849,9 +4865,15 @@ LOW BATT DETECTOR</text>
 </segment>
 <segment>
 <pinref part="S3" gate="G$1" pin="NO_2"/>
-<wire x1="200.66" y1="109.22" x2="205.74" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="200.66" y1="109.22" x2="203.2" y2="109.22" width="0.1524" layer="91"/>
 <pinref part="U$13" gate="G$1" pin="GND"/>
+<wire x1="203.2" y1="109.22" x2="205.74" y2="109.22" width="0.1524" layer="91"/>
 <wire x1="205.74" y1="101.6" x2="205.74" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="S3" gate="G$1" pin="NO_1"/>
+<wire x1="170.18" y1="109.22" x2="170.18" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="104.14" x2="203.2" y2="104.14" width="0.1524" layer="91"/>
+<wire x1="203.2" y1="104.14" x2="203.2" y2="109.22" width="0.1524" layer="91"/>
+<junction x="203.2" y="109.22"/>
 </segment>
 <segment>
 <pinref part="U$26" gate="G$1" pin="GND"/>
@@ -4865,9 +4887,8 @@ LOW BATT DETECTOR</text>
 <wire x1="101.6" y1="180.34" x2="101.6" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="101.6" y1="167.64" x2="93.98" y2="167.64" width="0.1524" layer="91"/>
 <pinref part="R16" gate="G$1" pin="1"/>
-<wire x1="101.6" y1="167.64" x2="86.36" y2="167.64" width="0.1524" layer="91"/>
+<wire x1="93.98" y1="167.64" x2="86.36" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="167.64" x2="86.36" y2="172.72" width="0.1524" layer="91"/>
-<junction x="101.6" y="167.64"/>
 </segment>
 <segment>
 <pinref part="K2" gate="G$1" pin="P$2"/>
@@ -5015,6 +5036,7 @@ LOW BATT DETECTOR</text>
 <pinref part="Q2" gate="G$1" pin="S"/>
 <wire x1="213.36" y1="40.64" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
 <junction x="203.2" y="40.64"/>
+<label x="185.42" y="40.64" size="1.778" layer="95" rot="R180" xref="yes"/>
 </segment>
 </net>
 <net name="VDDCORE" class="0">
@@ -5039,8 +5061,11 @@ LOW BATT DETECTOR</text>
 <label x="15.24" y="99.06" size="1.778" layer="95"/>
 <wire x1="27.94" y1="99.06" x2="12.7" y2="99.06" width="0.1524" layer="91"/>
 <pinref part="C27" gate="G$1" pin="1"/>
-<wire x1="12.7" y1="99.06" x2="10.16" y2="99.06" width="0.1524" layer="91"/>
 <junction x="12.7" y="99.06"/>
+<wire x1="12.7" y1="99.06" x2="7.62" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="99.06" x2="7.62" y2="106.68" width="0.1524" layer="91"/>
+<wire x1="7.62" y1="106.68" x2="15.24" y2="106.68" width="0.1524" layer="91"/>
+<label x="15.24" y="106.68" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
 <pinref part="K2" gate="G$1" pin="P$10"/>
@@ -5116,11 +5141,12 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="C3" gate="G$1" pin="1"/>
 <pinref part="SUPPLY3" gate="G$1" pin="VCC"/>
-<wire x1="10.16" y1="66.04" x2="10.16" y2="63.5" width="0.1524" layer="91"/>
+<wire x1="10.16" y1="68.58" x2="10.16" y2="66.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="C9" gate="G$1" pin="1"/>
 <pinref part="SUPPLY4" gate="G$1" pin="VCC"/>
+<wire x1="10.16" y1="48.26" x2="10.16" y2="45.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="U1" gate="G$1" pin="VDDIO"/>
@@ -5139,6 +5165,7 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="C11" gate="G$1" pin="1"/>
 <pinref part="SUPPLY10" gate="G$1" pin="VCC"/>
+<wire x1="10.16" y1="25.4" x2="10.16" y2="22.86" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="SUPPLY7" gate="G$1" pin="VCC"/>
@@ -5375,8 +5402,8 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="S1" gate="G$1" pin="COM_2"/>
 <pinref part="R8" gate="G$1" pin="2"/>
-<wire x1="170.18" y1="144.78" x2="177.8" y2="144.78" width="0.1524" layer="91"/>
 <pinref part="R9" gate="G$1" pin="2"/>
+<wire x1="170.18" y1="144.78" x2="177.8" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="144.78" x2="182.88" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="177.8" y1="144.78" x2="177.8" y2="147.32" width="0.1524" layer="91"/>
 <junction x="177.8" y="144.78"/>
@@ -5387,13 +5414,20 @@ LOW BATT DETECTOR</text>
 <segment>
 <pinref part="S2" gate="G$1" pin="COM_2"/>
 <pinref part="R12" gate="G$1" pin="2"/>
-<wire x1="248.92" y1="144.78" x2="256.54" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="248.92" y1="144.78" x2="251.46" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="144.78" x2="256.54" y2="144.78" width="0.1524" layer="91"/>
 <wire x1="256.54" y1="144.78" x2="256.54" y2="147.32" width="0.1524" layer="91"/>
 <pinref part="R13" gate="G$1" pin="1"/>
 <wire x1="256.54" y1="144.78" x2="264.16" y2="144.78" width="0.1524" layer="91"/>
 <junction x="256.54" y="144.78"/>
 <junction x="256.54" y="144.78"/>
 <pinref part="C16" gate="G$1" pin="1"/>
+<pinref part="S2" gate="G$1" pin="COM_1"/>
+<wire x1="218.44" y1="144.78" x2="213.36" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="144.78" x2="213.36" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="157.48" x2="251.46" y2="157.48" width="0.1524" layer="91"/>
+<wire x1="251.46" y1="157.48" x2="251.46" y2="144.78" width="0.1524" layer="91"/>
+<junction x="251.46" y="144.78"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -5406,7 +5440,13 @@ LOW BATT DETECTOR</text>
 <junction x="213.36" y="111.76"/>
 <pinref part="C17" gate="G$1" pin="1"/>
 <pinref part="S3" gate="G$1" pin="COM_2"/>
-<wire x1="213.36" y1="111.76" x2="200.66" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="111.76" x2="205.74" y2="111.76" width="0.1524" layer="91"/>
+<pinref part="S3" gate="G$1" pin="COM_1"/>
+<wire x1="205.74" y1="111.76" x2="200.66" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="111.76" x2="170.18" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="124.46" x2="205.74" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="124.46" x2="205.74" y2="111.76" width="0.1524" layer="91"/>
+<junction x="205.74" y="111.76"/>
 </segment>
 </net>
 <net name="S_POWER" class="0">
@@ -5749,10 +5789,7 @@ LOW BATT DETECTOR</text>
 <approved hash="106,1,27.94,50.8,MOSI,,,,,"/>
 <approved hash="106,1,27.94,43.18,RXI,,,,,"/>
 <approved hash="106,1,27.94,48.26,SCK,,,,,"/>
-<approved hash="208,1,10.16,91.44,VCC,sup,,,,"/>
-<approved hash="208,1,10.16,71.12,VCC,sup,,,,"/>
 <approved hash="208,1,22.86,91.44,VCC,sup,,,,"/>
-<approved hash="208,1,10.16,48.26,VCC,sup,,,,"/>
 <approved hash="208,1,256.54,160.02,VCC,sup,,,,"/>
 <approved hash="208,1,177.8,160.02,VCC,sup,,,,"/>
 <approved hash="208,1,55.88,218.44,VCC,out,,,,"/>
