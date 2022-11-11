@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -4254,6 +4254,8 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U$31" library="microbuilder" deviceset="GND" device=""/>
 <part name="C27" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
+<part name="VBUS5" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="VBUS6" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 </parts>
 <sheets>
 <sheet>
@@ -4726,6 +4728,12 @@ NOV'22-v1</text>
 <instance part="U$32" gate="G$1" x="12.7" y="88.9" smashed="yes">
 <attribute name="VALUE" x="11.176" y="86.36" size="1.27" layer="96"/>
 </instance>
+<instance part="VBUS5" gate="G$1" x="322.06" y="103.08" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="320.79" y="100.54" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="VBUS6" gate="G$1" x="322.06" y="98" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="320.79" y="95.46" size="1.778" layer="97" rot="R270"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -5036,6 +5044,12 @@ NOV'22-v1</text>
 <wire x1="213.36" y1="40.64" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
 <junction x="203.2" y="40.64"/>
 <label x="185.42" y="40.64" size="1.778" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="VBUS5" gate="G$1" pin="TP"/>
+<wire x1="324.6" y1="103.08" x2="340.36" y2="103.08" width="0.1524" layer="91"/>
+<wire x1="340.36" y1="103.08" x2="340.36" y2="104.14" width="0.1524" layer="91"/>
+<label x="330.2" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VDDCORE" class="0">
@@ -5364,6 +5378,12 @@ NOV'22-v1</text>
 <pinref part="K2" gate="G$1" pin="P$7"/>
 <wire x1="335.28" y1="134.62" x2="314.96" y2="134.62" width="0.1524" layer="91"/>
 <label x="317.5" y="134.62" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
+</segment>
+<segment>
+<pinref part="VBUS6" gate="G$1" pin="TP"/>
+<wire x1="324.6" y1="98" x2="340.36" y2="98" width="0.1524" layer="91"/>
+<wire x1="340.36" y1="98" x2="340.36" y2="99.06" width="0.1524" layer="91"/>
+<label x="330.2" y="99.06" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VINSENSE" class="0">
