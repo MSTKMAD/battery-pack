@@ -11,7 +11,7 @@
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
 <layer number="15" name="Route15" color="23" fill="1" visible="no" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -886,12 +886,12 @@
 <wire x1="53.71" y1="44.76" x2="54.6" y2="43.22" width="0.1524" layer="25"/>
 <wire x1="53.66" y1="44.79" x2="53.65" y2="44.17" width="0.1524" layer="25"/>
 <wire x1="53.66" y1="44.79" x2="54.27" y2="44.54" width="0.1524" layer="25"/>
-<text x="47.45" y="45.88" size="0.8128" layer="25">Adjust
+<text x="47.69" y="49.06" size="1.27" layer="25">Adjust
 to pin.</text>
-<text x="37.56" y="49.62" size="0.8128" layer="25">TEST_PROD_BATT_TOP
+<text x="34.58906875" y="43.767046875" size="0.8128" layer="25" rot="R55">TEST_BATT_TOP
 rover1k
 v1-Nov22</text>
-<text x="46.23" y="45.85" size="0.8128" layer="25" rot="R90">GND</text>
+<text x="42.59" y="45.43" size="0.8128" layer="25" rot="R90">GND</text>
 </plain>
 <libraries>
 </libraries>
