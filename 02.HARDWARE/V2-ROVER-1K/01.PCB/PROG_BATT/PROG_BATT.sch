@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -8215,13 +8215,13 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </class>
 </classes>
 <parts>
-<part name="VBUS9" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
+<part name="VBUS" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="!RESET" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="SWCLK" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="VCC" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="SWDIO" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="GND" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
-<part name="VBUS10" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
+<part name="VBUS1" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="J1" library="302-S201" deviceset="302-S201" device=""/>
 <part name="U3" library="ATE1D-5M3-10-Z" deviceset="ATE1D-5M3-10-Z" device=""/>
 <part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
@@ -8237,6 +8237,7 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="JP4" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1E" device="" package3d_urn="urn:adsk.eagle:package:15455/1"/>
 <part name="C1" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="100UF-POLAR" device="-RADIAL-2.5MM-25V-20%" package3d_urn="urn:adsk.eagle:package:37415/1" value="100uF"/>
 <part name="JP3" library="SparkFun-Jumpers" library_urn="urn:adsk.eagle:library:528" deviceset="JUMPER-SMT_3_1-NC_PASTE" device="_NO-SILK" package3d_urn="urn:adsk.eagle:package:39291/1"/>
+<part name="TXO1" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 </parts>
 <sheets>
 <sheet>
@@ -17303,7 +17304,7 @@ std connector</text>
 <rectangle x1="261.4295" y1="244.2337" x2="286.0929" y2="244.2591" layer="201"/>
 </plain>
 <instances>
-<instance part="VBUS9" gate="G$1" x="119.38" y="256.54" smashed="yes">
+<instance part="VBUS" gate="G$1" x="119.38" y="256.54" smashed="yes">
 <attribute name="VALUE" x="116.84" y="251.714" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="116.84" y="259.588" size="1.778" layer="95" font="vector"/>
 </instance>
@@ -17327,7 +17328,7 @@ std connector</text>
 <attribute name="VALUE" x="116.84" y="202.184" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="116.84" y="210.058" size="1.778" layer="95" font="vector"/>
 </instance>
-<instance part="VBUS10" gate="G$1" x="119.38" y="198.12" smashed="yes">
+<instance part="VBUS1" gate="G$1" x="119.38" y="198.12" smashed="yes">
 <attribute name="VALUE" x="116.84" y="193.294" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="116.84" y="201.168" size="1.778" layer="95" font="vector"/>
 </instance>
@@ -17388,19 +17389,23 @@ std connector</text>
 <instance part="JP3" gate="G$1" x="309.88" y="176.53" smashed="yes" rot="R180">
 <attribute name="NAME" x="307.34" y="176.149" size="1.778" layer="95" font="vector" rot="R180"/>
 </instance>
+<instance part="TXO1" gate="G$1" x="119.38" y="181.61" smashed="yes">
+<attribute name="VALUE" x="116.84" y="176.784" size="1.778" layer="96" font="vector"/>
+<attribute name="NAME" x="116.84" y="184.658" size="1.778" layer="95" font="vector"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VBUS" class="0">
 <segment>
-<pinref part="VBUS9" gate="G$1" pin="1"/>
+<pinref part="VBUS" gate="G$1" pin="1"/>
 <wire x1="127" y1="256.54" x2="153.67" y2="256.54" width="0.1524" layer="91"/>
 <wire x1="153.67" y1="256.54" x2="153.67" y2="257.81" width="0.1524" layer="91"/>
 <label x="133.35" y="256.54" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="VBUS10" gate="G$1" pin="1"/>
+<pinref part="VBUS1" gate="G$1" pin="1"/>
 <wire x1="127" y1="198.12" x2="153.67" y2="198.12" width="0.1524" layer="91"/>
 <label x="134.62" y="198.12" size="1.778" layer="95"/>
 </segment>
@@ -17587,6 +17592,11 @@ std connector</text>
 <label x="321.31" y="176.53" size="0.0508" layer="95" font="vector"/>
 <label x="322.58" y="203.2" size="0.0508" layer="95" font="vector"/>
 <label x="332.74" y="176.53" size="0.0508" layer="95" font="vector"/>
+</segment>
+<segment>
+<pinref part="TXO1" gate="G$1" pin="1"/>
+<wire x1="127" y1="181.61" x2="153.67" y2="181.61" width="0.1524" layer="91"/>
+<label x="134.62" y="181.61" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GND_PSU" class="0">
