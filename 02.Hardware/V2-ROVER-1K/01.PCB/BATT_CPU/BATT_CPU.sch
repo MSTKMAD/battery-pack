@@ -3603,89 +3603,6 @@ Source: &lt;a href="https://www.diodes.com/assets/Datasheets/BSS84W.pdf"&gt; Dat
 </deviceset>
 </devicesets>
 </library>
-<library name="Flex">
-<packages>
-<package name="FLEX6">
-<description>WR-FPC 1mm SMT Horiz. Bot. Contact Hinge type WR-FPC 1mm 06pins Hinge type SMT Horizontal Bottom Contact</description>
-<smd name="1" x="-2.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<wire x1="-3.3" y1="-2.52" x2="-3.3" y2="1.62" width="0.127" layer="21"/>
-<wire x1="-3.3" y1="1.62" x2="7.08" y2="1.62" width="0.127" layer="21"/>
-<wire x1="7.08" y1="1.62" x2="7.08" y2="-2.52" width="0.127" layer="21"/>
-<wire x1="7.08" y1="-2.52" x2="-3.3" y2="-2.52" width="0.127" layer="21"/>
-<text x="-3.7" y="-3.968" size="1.27" layer="27">&gt;VALUE</text>
-<text x="-3.8" y="1.95" size="1.27" layer="25">&gt;NAME</text>
-<circle x="-3" y="-1.6" radius="0.1" width="0.1524" layer="21"/>
-<smd name="2" x="-1.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="3" x="-0.9" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="4" x="-0.1" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="5" x="0.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="6" x="1.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="7" x="2.3" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="8" x="3.1" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="9" x="3.9" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="10" x="4.7" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="11" x="5.5" y="-0.25" dx="0.4" dy="3" layer="1"/>
-<smd name="12" x="6.3" y="-0.25" dx="0.4" dy="3" layer="1"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SINGLEROW-6">
-<text x="0" y="3" size="1.778" layer="95">&gt;NAME</text>
-<text x="0" y="-33.02" size="1.778" layer="96">&gt;VALUE</text>
-<wire x1="2.54" y1="2.54" x2="2.54" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="2.54" y1="-30.48" x2="10.16" y2="-30.48" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-30.48" x2="10.16" y2="2.54" width="0.254" layer="94"/>
-<wire x1="10.16" y1="2.54" x2="2.54" y2="2.54" width="0.254" layer="94"/>
-<pin name="P$1" x="0" y="0" length="short"/>
-<pin name="P$2" x="0" y="-2.54" length="short"/>
-<pin name="P$3" x="0" y="-5.08" length="short"/>
-<pin name="P$4" x="0" y="-7.62" length="short"/>
-<pin name="P$5" x="0" y="-10.16" length="short"/>
-<pin name="P$6" x="0" y="-12.7" length="short"/>
-<pin name="P$7" x="0" y="-15.24" length="short"/>
-<pin name="P$8" x="0" y="-17.78" length="short"/>
-<pin name="P$9" x="0" y="-20.32" length="short"/>
-<pin name="P$10" x="0" y="-22.86" length="short"/>
-<pin name="P$11" x="0" y="-25.4" length="short"/>
-<pin name="P$12" x="0" y="-27.94" length="short"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="FLEX6" prefix="K">
-<description>&lt;b&gt;WR-FPC 1mm SMT Horiz. Bot. Contact Hinge type WR-FPC 1mm 06 pins Hinge type SMT Horizontal Bottom Contact
-;&lt;/b&gt;=&gt;Code : Con_FPC_ZIF_1.00_6861xx148922_686106148922
-&lt;p&gt;&lt;a href="http://katalog.we-online.de/media/images/eican/Con_FPC_ZIF_1.00_686110148922_pf2.jpg"&gt;
-&lt;img src="http://katalog.we-online.de/media/thumbs2/eican/thb_Con_FPC_ZIF_1.00_686110148922_pf2.jpg" width="320"&gt;&lt;/a&gt;&lt;p&gt;
-Details see: &lt;a href="http://katalog.we-online.de/em/datasheet/6861xx148922.pdf"&gt;http://katalog.we-online.de/em/datasheet/6861xx148922.pdf&lt;/a&gt;&lt;p&gt;
-Created 2014-10-08, Karrer Zheng&lt;br&gt;
-2014 (C) Wurth Elektronik</description>
-<gates>
-<gate name="G$1" symbol="SINGLEROW-6" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="FLEX6">
-<connects>
-<connect gate="G$1" pin="P$1" pad="1"/>
-<connect gate="G$1" pin="P$10" pad="10"/>
-<connect gate="G$1" pin="P$11" pad="11"/>
-<connect gate="G$1" pin="P$12" pad="12"/>
-<connect gate="G$1" pin="P$2" pad="2"/>
-<connect gate="G$1" pin="P$3" pad="3"/>
-<connect gate="G$1" pin="P$4" pad="4"/>
-<connect gate="G$1" pin="P$5" pad="5"/>
-<connect gate="G$1" pin="P$6" pad="6"/>
-<connect gate="G$1" pin="P$7" pad="7"/>
-<connect gate="G$1" pin="P$8" pad="8"/>
-<connect gate="G$1" pin="P$9" pad="9"/>
-</connects>
-<technologies>
-<technology name=""/>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="SparkFun-Capacitors" urn="urn:adsk.eagle:library:510">
 <description>&lt;h3&gt;SparkFun Capacitors&lt;/h3&gt;
 This library contains capacitors. 
@@ -4117,6 +4034,135 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 </deviceset>
 </devicesets>
 </library>
+<library name="DF40C_2.0_-20DS-0.4V_51_">
+<description>&lt;Board to Board &amp; Mezzanine Connectors 20P 2-ROW RECEPT VERT SMT 2.0MM HGHT&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="DF40C2020DS04V51">
+<description>&lt;b&gt;DF40C(2.0)-20DS-0.4V(51)-1&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-1.8" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="2" x="-1.8" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="3" x="-1.4" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="4" x="-1.4" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="5" x="-1" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="6" x="-1" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="7" x="-0.6" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="8" x="-0.6" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="9" x="-0.2" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="10" x="-0.2" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="11" x="0.2" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="12" x="0.2" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="13" x="0.6" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="14" x="0.6" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="15" x="1" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="16" x="1" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="17" x="1.4" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="18" x="1.4" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="19" x="1.8" y="-1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<smd name="20" x="1.8" y="1.54" dx="0.7" dy="0.2" layer="1" rot="R90"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-3.3" y1="1.47" x2="3.3" y2="1.47" width="0.1" layer="51"/>
+<wire x1="3.3" y1="1.47" x2="3.3" y2="-1.47" width="0.1" layer="51"/>
+<wire x1="3.3" y1="-1.47" x2="-3.3" y2="-1.47" width="0.1" layer="51"/>
+<wire x1="-3.3" y1="-1.47" x2="-3.3" y2="1.47" width="0.1" layer="51"/>
+<wire x1="-4.3" y1="2.89" x2="4.3" y2="2.89" width="0.1" layer="51"/>
+<wire x1="4.3" y1="2.89" x2="4.3" y2="-2.89" width="0.1" layer="51"/>
+<wire x1="4.3" y1="-2.89" x2="-4.3" y2="-2.89" width="0.1" layer="51"/>
+<wire x1="-4.3" y1="-2.89" x2="-4.3" y2="2.89" width="0.1" layer="51"/>
+<wire x1="-2.2" y1="1.47" x2="-3.3" y2="1.47" width="0.2" layer="21"/>
+<wire x1="-3.3" y1="1.47" x2="-3.3" y2="-1.47" width="0.2" layer="21"/>
+<wire x1="-3.3" y1="-1.47" x2="-2.2" y2="-1.47" width="0.2" layer="21"/>
+<wire x1="2.2" y1="1.47" x2="3.3" y2="1.47" width="0.2" layer="21"/>
+<wire x1="3.3" y1="1.47" x2="3.3" y2="-1.47" width="0.2" layer="21"/>
+<wire x1="3.3" y1="-1.47" x2="2.2" y2="-1.47" width="0.2" layer="21"/>
+<wire x1="-1.8" y1="-2.4" x2="-1.8" y2="-2.4" width="0.1" layer="21"/>
+<wire x1="-1.8" y1="-2.4" x2="-1.8" y2="-2.3" width="0.1" layer="21" curve="180"/>
+<wire x1="-1.8" y1="-2.3" x2="-1.8" y2="-2.3" width="0.1" layer="21"/>
+<wire x1="-1.8" y1="-2.3" x2="-1.8" y2="-2.4" width="0.1" layer="21" curve="180"/>
+</package>
+</packages>
+<symbols>
+<symbol name="DF40C_2.0_-20DS-0.4V_51_">
+<wire x1="5.08" y1="2.54" x2="17.78" y2="2.54" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-25.4" x2="17.78" y2="2.54" width="0.254" layer="94"/>
+<wire x1="17.78" y1="-25.4" x2="5.08" y2="-25.4" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-25.4" width="0.254" layer="94"/>
+<text x="19.05" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="19.05" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="1" x="0" y="0" length="middle"/>
+<pin name="2" x="22.86" y="0" length="middle" rot="R180"/>
+<pin name="3" x="0" y="-2.54" length="middle"/>
+<pin name="4" x="22.86" y="-2.54" length="middle" rot="R180"/>
+<pin name="5" x="0" y="-5.08" length="middle"/>
+<pin name="6" x="22.86" y="-5.08" length="middle" rot="R180"/>
+<pin name="7" x="0" y="-7.62" length="middle"/>
+<pin name="8" x="22.86" y="-7.62" length="middle" rot="R180"/>
+<pin name="9" x="0" y="-10.16" length="middle"/>
+<pin name="10" x="22.86" y="-10.16" length="middle" rot="R180"/>
+<pin name="11" x="0" y="-12.7" length="middle"/>
+<pin name="12" x="22.86" y="-12.7" length="middle" rot="R180"/>
+<pin name="13" x="0" y="-15.24" length="middle"/>
+<pin name="14" x="22.86" y="-15.24" length="middle" rot="R180"/>
+<pin name="15" x="0" y="-17.78" length="middle"/>
+<pin name="16" x="22.86" y="-17.78" length="middle" rot="R180"/>
+<pin name="17" x="0" y="-20.32" length="middle"/>
+<pin name="18" x="22.86" y="-20.32" length="middle" rot="R180"/>
+<pin name="19" x="0" y="-22.86" length="middle"/>
+<pin name="20" x="22.86" y="-22.86" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DF40C_2.0_-20DS-0.4V_51_" prefix="J">
+<description>&lt;b&gt;Board to Board &amp; Mezzanine Connectors 20P 2-ROW RECEPT VERT SMT 2.0MM HGHT&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.hirose.com/product/document?clcode=CL0684-4003-3-51&amp;productname=DF40C-60DP-0.4V(51)&amp;series=DF40&amp;documenttype=Catalog&amp;lang=en&amp;documentid=D31649_en"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="DF40C_2.0_-20DS-0.4V_51_" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DF40C2020DS04V51">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
+<attribute name="DESCRIPTION" value="Board to Board &amp; Mezzanine Connectors 20P 2-ROW RECEPT VERT SMT 2.0MM HGHT" constant="no"/>
+<attribute name="HEIGHT" value="2.1mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Hirose" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="DF40C(2.0)-20DS-0.4V(51)" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="798-DF40C2020DS04V51" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Hirose-Connector/DF40C2.0-20DS-0.4V51?qs=3aug5cyrIbdA5dYbMRd5pw%3D%3D" constant="no"/>
+<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="COMPANY" value="ADAFRUIT INDUSTRIES"/>
@@ -4213,7 +4259,6 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="Q3" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
-<part name="K2" library="Flex" deviceset="FLEX6" device="" value="FLEX12"/>
 <part name="SUPPLY13" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
 <part name="SUPPLY14" library="SparkFun-PowerSymbols" deviceset="VCC" device=""/>
 <part name="SUPPLY15" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
@@ -4256,6 +4301,7 @@ Warning: This is the KIT version of this package. This package has a smaller dia
 <part name="U$32" library="microbuilder" deviceset="GND" device=""/>
 <part name="VBUS5" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 <part name="VBUS6" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="J1" library="DF40C_2.0_-20DS-0.4V_51_" deviceset="DF40C_2.0_-20DS-0.4V_51_" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4584,10 +4630,6 @@ NOV'22-v1</text>
 <attribute name="NAME" x="84.836" y="177.8" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="87.884" y="177.8" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
 </instance>
-<instance part="K2" gate="G$1" x="335.28" y="149.86" smashed="yes">
-<attribute name="NAME" x="335.28" y="152.86" size="1.778" layer="95"/>
-<attribute name="VALUE" x="340.36" y="116.84" size="1.778" layer="96"/>
-</instance>
 <instance part="SUPPLY13" gate="G$1" x="114.3" y="223.52" smashed="yes">
 <attribute name="VALUE" x="114.3" y="226.314" size="1.778" layer="96" align="bottom-center"/>
 </instance>
@@ -4733,6 +4775,9 @@ NOV'22-v1</text>
 </instance>
 <instance part="VBUS6" gate="G$1" x="322.06" y="98" smashed="yes" rot="R270">
 <attribute name="TP_SIGNAL_NAME" x="320.79" y="95.46" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="J1" gate="G$1" x="325.12" y="137.16" smashed="yes" rot="R180">
+<attribute name="NAME" x="318.77" y="165.1" size="1.778" layer="95" align="center-left"/>
 </instance>
 </instances>
 <busses>
@@ -4899,11 +4944,6 @@ NOV'22-v1</text>
 <wire x1="86.36" y1="167.64" x2="86.36" y2="172.72" width="0.1524" layer="91"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$2"/>
-<wire x1="335.28" y1="147.32" x2="314.96" y2="147.32" width="0.1524" layer="91"/>
-<label x="317.5" y="147.32" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="U$3" gate="G$1" pin="GND"/>
 <pinref part="Q4" gate="G$1" pin="S"/>
 <wire x1="218.44" y1="15.24" x2="218.44" y2="10.16" width="0.1524" layer="91"/>
@@ -4962,6 +5002,11 @@ NOV'22-v1</text>
 <segment>
 <pinref part="U$32" gate="G$1" pin="GND"/>
 <pinref part="C27" gate="G$1" pin="2"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="8"/>
+<wire x1="302.26" y1="144.78" x2="292.1" y2="144.78" width="0.1524" layer="91"/>
+<label x="294.64" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MOSI" class="0">
@@ -5031,11 +5076,6 @@ NOV'22-v1</text>
 <junction x="17.78" y="218.44"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$3"/>
-<wire x1="335.28" y1="144.78" x2="314.96" y2="144.78" width="0.1524" layer="91"/>
-<label x="317.5" y="144.78" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="203.2" y1="30.48" x2="203.2" y2="40.64" width="0.1524" layer="91"/>
 <wire x1="203.2" y1="40.64" x2="185.42" y2="40.64" width="0.1524" layer="91"/>
@@ -5050,6 +5090,11 @@ NOV'22-v1</text>
 <wire x1="324.6" y1="103.08" x2="340.36" y2="103.08" width="0.1524" layer="91"/>
 <wire x1="340.36" y1="103.08" x2="340.36" y2="104.14" width="0.1524" layer="91"/>
 <label x="330.2" y="104.14" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="6"/>
+<wire x1="302.26" y1="142.24" x2="292.1" y2="142.24" width="0.1524" layer="91"/>
+<label x="294.64" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VDDCORE" class="0">
@@ -5081,15 +5126,15 @@ NOV'22-v1</text>
 <label x="15.24" y="106.68" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$10"/>
-<wire x1="335.28" y1="127" x2="314.96" y2="127" width="0.1524" layer="91"/>
-<label x="317.5" y="127" size="1.778" layer="95"/>
-</segment>
-<segment>
 <pinref part="VBUS1" gate="G$1" pin="TP"/>
 <wire x1="357.62" y1="115.78" x2="369.4" y2="115.78" width="0.1524" layer="91"/>
 <wire x1="369.4" y1="115.78" x2="369.4" y2="115.9" width="0.1524" layer="91"/>
 <label x="360.3" y="115.7" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="14"/>
+<wire x1="302.26" y1="152.4" x2="292.1" y2="152.4" width="0.1524" layer="91"/>
+<label x="294.64" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWCLK" class="0">
@@ -5099,14 +5144,14 @@ NOV'22-v1</text>
 <label x="111.76" y="17.78" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$6"/>
-<wire x1="335.28" y1="137.16" x2="314.96" y2="137.16" width="0.1524" layer="91"/>
-<label x="317.5" y="137.16" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="VBUS2" gate="G$1" pin="TP"/>
 <wire x1="357.62" y1="110.7" x2="368.9" y2="110.7" width="0.1524" layer="91"/>
 <label x="360.4" y="111" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="12"/>
+<wire x1="302.26" y1="149.86" x2="292.1" y2="149.86" width="0.1524" layer="91"/>
+<label x="294.64" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWDIO" class="0">
@@ -5116,15 +5161,15 @@ NOV'22-v1</text>
 <label x="111.76" y="15.24" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$5"/>
-<wire x1="335.28" y1="139.7" x2="314.96" y2="139.7" width="0.1524" layer="91"/>
-<label x="317.5" y="139.7" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="VBUS3" gate="G$1" pin="TP"/>
 <wire x1="357.62" y1="100.54" x2="368.7" y2="100.54" width="0.1524" layer="91"/>
 <wire x1="368.7" y1="100.54" x2="368.7" y2="100.6" width="0.1524" layer="91"/>
 <label x="359.9" y="100.7" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="10"/>
+<wire x1="302.26" y1="147.32" x2="292.1" y2="147.32" width="0.1524" layer="91"/>
+<label x="294.64" y="147.32" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
@@ -5305,9 +5350,9 @@ NOV'22-v1</text>
 <label x="111.76" y="83.82" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$9"/>
-<wire x1="335.28" y1="129.54" x2="314.96" y2="129.54" width="0.1524" layer="91"/>
-<label x="317.5" y="129.54" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
+<pinref part="J1" gate="G$1" pin="11"/>
+<wire x1="325.12" y1="149.86" x2="335.28" y2="149.86" width="0.1524" layer="91"/>
+<label x="327.66" y="149.86" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="S_UP" class="0">
@@ -5356,9 +5401,9 @@ NOV'22-v1</text>
 <label x="15.24" y="55.88" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$8"/>
-<wire x1="335.28" y1="132.08" x2="314.96" y2="132.08" width="0.1524" layer="91"/>
-<label x="317.5" y="132.08" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
+<pinref part="J1" gate="G$1" pin="15"/>
+<wire x1="325.12" y1="154.94" x2="335.28" y2="154.94" width="0.1524" layer="91"/>
+<label x="327.66" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="A2" class="0">
@@ -5375,15 +5420,15 @@ NOV'22-v1</text>
 <label x="17.78" y="45.72" size="1.778" layer="95"/>
 </segment>
 <segment>
-<pinref part="K2" gate="G$1" pin="P$7"/>
-<wire x1="335.28" y1="134.62" x2="314.96" y2="134.62" width="0.1524" layer="91"/>
-<label x="317.5" y="134.62" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="VBUS6" gate="G$1" pin="TP"/>
 <wire x1="324.6" y1="98" x2="340.36" y2="98" width="0.1524" layer="91"/>
 <wire x1="340.36" y1="98" x2="340.36" y2="99.06" width="0.1524" layer="91"/>
 <label x="330.2" y="99.06" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="7"/>
+<wire x1="325.12" y1="144.78" x2="335.28" y2="144.78" width="0.1524" layer="91"/>
+<label x="327.66" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VINSENSE" class="0">
@@ -5499,26 +5544,26 @@ NOV'22-v1</text>
 </net>
 <net name="EN_DCDC" class="0">
 <segment>
-<pinref part="K2" gate="G$1" pin="P$4"/>
-<wire x1="335.28" y1="142.24" x2="314.96" y2="142.24" width="0.1524" layer="91"/>
-<label x="317.5" y="142.24" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="PA16/I2C/I0/SERCOM1+3.0"/>
 <wire x1="104.14" y1="50.8" x2="121.92" y2="50.8" width="0.1524" layer="91"/>
 <label x="111.76" y="50.8" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="9"/>
+<wire x1="325.12" y1="147.32" x2="335.28" y2="147.32" width="0.1524" layer="91"/>
+<label x="327.66" y="147.32" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="OP_SWITCH" class="0">
-<segment>
-<pinref part="K2" gate="G$1" pin="P$11"/>
-<wire x1="335.28" y1="124.46" x2="314.96" y2="124.46" width="0.1524" layer="91"/>
-<label x="317.5" y="124.46" size="1.778" layer="95"/>
-</segment>
 <segment>
 <label x="365.76" y="220.98" size="1.778" layer="95"/>
 <pinref part="Q5" gate="G$1" pin="D"/>
 <wire x1="363.22" y1="220.98" x2="381" y2="220.98" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="13"/>
+<wire x1="325.12" y1="152.4" x2="335.28" y2="152.4" width="0.1524" layer="91"/>
+<label x="327.66" y="152.4" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VCC_2" class="0">
@@ -5530,11 +5575,6 @@ NOV'22-v1</text>
 <wire x1="114.3" y1="218.44" x2="114.3" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="111.76" y1="218.44" x2="114.3" y2="218.44" width="0.1524" layer="91"/>
 <junction x="114.3" y="218.44"/>
-</segment>
-<segment>
-<pinref part="K2" gate="G$1" pin="P$12"/>
-<wire x1="335.28" y1="121.92" x2="314.96" y2="121.92" width="0.1524" layer="91"/>
-<label x="317.5" y="121.92" size="1.778" layer="95"/>
 </segment>
 <segment>
 <pinref part="U8" gate="A" pin="VCC"/>
@@ -5587,6 +5627,11 @@ NOV'22-v1</text>
 <junction x="177.8" y="25.4"/>
 <wire x1="177.8" y1="25.4" x2="167.64" y2="25.4" width="0.1524" layer="91"/>
 <label x="167.64" y="25.4" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="16"/>
+<wire x1="302.26" y1="154.94" x2="292.1" y2="154.94" width="0.1524" layer="91"/>
+<label x="294.64" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -5729,14 +5774,14 @@ NOV'22-v1</text>
 </net>
 <net name="FB_DAC" class="0">
 <segment>
-<pinref part="K2" gate="G$1" pin="P$1"/>
-<wire x1="335.28" y1="149.86" x2="314.96" y2="149.86" width="0.1524" layer="91"/>
-<label x="317.5" y="149.86" size="1.778" layer="95" rot="MR0" align="bottom-right"/>
-</segment>
-<segment>
 <pinref part="U1" gate="G$1" pin="PA02/EINT2/AIN0/Y0/VOUT"/>
 <wire x1="104.14" y1="91.44" x2="121.92" y2="91.44" width="0.1524" layer="91"/>
 <label x="111.76" y="91.44" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="5"/>
+<wire x1="325.12" y1="142.24" x2="335.28" y2="142.24" width="0.1524" layer="91"/>
+<label x="327.66" y="142.24" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -5776,6 +5821,42 @@ NOV'22-v1</text>
 <pinref part="U$30" gate="G$1" pin="VCC"/>
 <wire x1="269.24" y1="43.18" x2="248.92" y2="43.18" width="0.1524" layer="91"/>
 <label x="251.46" y="43.18" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="18"/>
+<pinref part="J1" gate="G$1" pin="20"/>
+<wire x1="302.26" y1="157.48" x2="302.26" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="302.26" y1="160.02" x2="294.64" y2="160.02" width="0.1524" layer="91"/>
+<junction x="302.26" y="160.02"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="17"/>
+<pinref part="J1" gate="G$1" pin="19"/>
+<wire x1="325.12" y1="157.48" x2="325.12" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="160.02" x2="332.74" y2="160.02" width="0.1524" layer="91"/>
+<junction x="325.12" y="160.02"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="1"/>
+<pinref part="J1" gate="G$1" pin="3"/>
+<wire x1="325.12" y1="137.16" x2="325.12" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="325.12" y1="137.16" x2="335.28" y2="137.16" width="0.1524" layer="91"/>
+<junction x="325.12" y="137.16"/>
+</segment>
+</net>
+<net name="N$21" class="0">
+<segment>
+<pinref part="J1" gate="G$1" pin="4"/>
+<pinref part="J1" gate="G$1" pin="2"/>
+<wire x1="302.26" y1="139.7" x2="302.26" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="302.26" y1="137.16" x2="297.18" y2="137.16" width="0.1524" layer="91"/>
+<junction x="302.26" y="137.16"/>
 </segment>
 </net>
 </nets>
@@ -5839,11 +5920,6 @@ will not be understood (or retained) with this version.
 Since Version 8.3, EAGLE supports the association of 3D packages
 with devices in libraries, schematics, and board files. Those 3D
 packages will not be understood (or retained) with this version.
-</note>
-<note version="9.0" severity="warning">
-Since Version 9.0, EAGLE supports the align property for labels. 
-Labels in schematic will not be understood with this version. Update EAGLE to the latest version 
-for full support of labels. 
 </note>
 </compatibility>
 </eagle>
