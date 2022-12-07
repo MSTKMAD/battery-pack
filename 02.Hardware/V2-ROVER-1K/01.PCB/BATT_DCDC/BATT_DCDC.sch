@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -3712,8 +3712,8 @@ Source: &lt;a href="https://datasheet.datasheetarchive.com/originals/distributor
 <text x="287.02" y="71.12" size="1.778" layer="91">vo/vi = 0.1875
 3.0 v @ vi=16v</text>
 <text x="228.6" y="99.06" size="5.08" layer="94">VOUT SENSE</text>
-<text x="157.48" y="40.64" size="1.778" layer="91">G=16
-BW=10Hz</text>
+<text x="177.8" y="48.26" size="1.778" layer="91">G=16
+BW=13Hz</text>
 <wire x1="5.08" y1="132.08" x2="210.82" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="210.82" y1="132.08" x2="287.02" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="287.02" y1="132.08" x2="312.42" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
@@ -3725,6 +3725,17 @@ BW=10Hz</text>
 <text x="17.78" y="116.84" size="5.08" layer="94">IOSENSE LOWPASS FILTERING</text>
 <text x="35.56" y="241.3" size="5.08" layer="94">STEP UP DCDC CONVERTER
 ROVER1K - NOV'22-v1</text>
+<text x="81.28" y="45.72" size="1.778" layer="91">G=1.6
+BW=312Hz</text>
+<text x="12.7" y="10.16" size="1.778" layer="91">CONJUNTO
+---------
+G=26
+BW=10Hz
+
+Incluyendo Rsense
+----------------
+IOSENSE(V) = 2.6V/A
+Fondo Escala 3V @ 1.15A</text>
 </plain>
 <instances>
 <instance part="U3" gate="A" x="91.44" y="203.2" smashed="yes">
@@ -4286,7 +4297,8 @@ ROVER1K - NOV'22-v1</text>
 <segment>
 <pinref part="R9" gate="G$1" pin="2"/>
 <wire x1="180.34" y1="167.64" x2="198.12" y2="167.64" width="0.1524" layer="91"/>
-<label x="190.5" y="167.64" size="1.778" layer="95"/>
+<label x="185.42" y="165.1" size="1.778" layer="95"/>
+<label x="198.12" y="167.64" size="1.778" layer="95" xref="yes"/>
 </segment>
 <segment>
 <wire x1="322.58" y1="106.68" x2="335.28" y2="106.68" width="0.1524" layer="91"/>
@@ -4445,8 +4457,8 @@ ROVER1K - NOV'22-v1</text>
 <pinref part="RSENSE" gate="G$1" pin="2"/>
 <wire x1="17.78" y1="66.04" x2="17.78" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="17.78" y1="68.58" x2="17.78" y2="101.6" width="0.1524" layer="91"/>
-<wire x1="17.78" y1="101.6" x2="22.86" y2="101.6" width="0.1524" layer="91"/>
-<label x="22.86" y="101.6" size="1.778" layer="95" xref="yes"/>
+<wire x1="17.78" y1="101.6" x2="15.24" y2="101.6" width="0.1524" layer="91"/>
+<label x="15.24" y="101.6" size="1.778" layer="95" rot="MR0" xref="yes"/>
 <pinref part="U1" gate="A" pin="VIN+"/>
 <wire x1="45.72" y1="68.58" x2="17.78" y2="68.58" width="0.1524" layer="91"/>
 <junction x="17.78" y="68.58"/>
