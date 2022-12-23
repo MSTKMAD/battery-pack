@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -4443,7 +4443,7 @@ direct Replacement</text>
 <wire x1="134.62" y1="167.64" x2="261.62" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <text x="276.86" y="246.38" size="2.54" layer="94">CHARGING DETECTOR
 LOW BATT DETECTOR</text>
-<text x="45.72" y="114.3" size="2.54" layer="94">CPU</text>
+<text x="60.96" y="116.84" size="2.54" layer="94">CPU</text>
 <wire x1="261.62" y1="167.64" x2="289.56" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="289.56" y1="167.64" x2="383.54" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="261.62" y1="167.64" x2="261.62" y2="254" width="0.1524" layer="94" style="shortdash"/>
@@ -4470,6 +4470,9 @@ vo/vi = 0.6
 <text x="167.64" y="269.24" size="5.08" layer="94">BATT_CPU
 ROVER1K
 NOV'22-v1</text>
+<text x="144.78" y="86.36" size="2.54" layer="94">DISPLAY</text>
+<text x="139.7" y="162.56" size="2.54" layer="94">SWITCHES</text>
+<text x="350.52" y="162.56" size="2.54" layer="94">CONNECTOR</text>
 </plain>
 <instances>
 <instance part="C6" gate="G$1" x="12.7" y="208.28" smashed="yes">
@@ -4897,13 +4900,12 @@ NOV'22-v1</text>
 <instance part="J1" gate="G$1" x="325.12" y="137.16" smashed="yes" rot="R180">
 <attribute name="NAME" x="318.77" y="165.1" size="1.778" layer="95" align="center-left"/>
 </instance>
-<instance part="JP1" gate="G$1" x="314.96" y="119.38" smashed="yes">
-<attribute name="NAME" x="317.5" y="119.761" size="1.778" layer="95" font="vector"/>
-<attribute name="VALUE" x="317.5" y="118.999" size="1.778" layer="96" font="vector" align="top-left"/>
+<instance part="JP1" gate="G$1" x="314.96" y="119.38" smashed="yes" rot="MR0">
+<attribute name="NAME" x="312.42" y="119.761" size="1.778" layer="95" font="vector" rot="MR0"/>
 </instance>
 <instance part="C28" gate="G$1" x="340.36" y="43.18" smashed="yes">
-<attribute name="NAME" x="338.07" y="44.43" size="1.27" layer="95" font="vector" rot="R90" align="center"/>
-<attribute name="VALUE" x="342.66" y="44.43" size="1.27" layer="96" font="vector" rot="R90" align="center"/>
+<attribute name="NAME" x="346.73" y="48.51" size="1.778" layer="95" font="vector" rot="R180" align="center"/>
+<attribute name="VALUE" x="346.73" y="45.48" size="1.778" layer="96" font="vector" rot="R180" align="center"/>
 </instance>
 <instance part="U$33" gate="G$1" x="340.36" y="35.56" smashed="yes">
 <attribute name="VALUE" x="338.836" y="33.02" size="1.27" layer="96"/>
@@ -5071,6 +5073,7 @@ NOV'22-v1</text>
 <pinref part="R16" gate="G$1" pin="1"/>
 <wire x1="93.98" y1="167.64" x2="86.36" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="86.36" y1="167.64" x2="86.36" y2="172.72" width="0.1524" layer="91"/>
+<junction x="93.98" y="167.64"/>
 </segment>
 <segment>
 <pinref part="U$3" gate="G$1" pin="GND"/>
@@ -5949,8 +5952,8 @@ NOV'22-v1</text>
 </segment>
 <segment>
 <pinref part="JP1" gate="G$1" pin="2"/>
-<wire x1="309.88" y1="119.38" x2="297.18" y2="119.38" width="0.1524" layer="91"/>
-<label x="297.18" y="119.38" size="1.778" layer="95"/>
+<wire x1="320.04" y1="119.38" x2="332.74" y2="119.38" width="0.1524" layer="91"/>
+<label x="332.74" y="119.38" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="LOW_BATT" class="0">
@@ -6003,10 +6006,11 @@ NOV'22-v1</text>
 <label x="251.46" y="43.18" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="N$20" class="0">
+<net name="SPARE1" class="0">
 <segment>
 <pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="325.12" y1="137.16" x2="335.28" y2="137.16" width="0.1524" layer="91"/>
+<label x="327.66" y="137.16" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="PWM_DAC" class="0">
@@ -6018,8 +6022,8 @@ NOV'22-v1</text>
 <segment>
 <pinref part="JP1" gate="G$1" pin="1"/>
 <wire x1="314.96" y1="124.46" x2="314.96" y2="127" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="127" x2="320.04" y2="127" width="0.1524" layer="91"/>
-<label x="314.96" y="127" size="1.778" layer="95"/>
+<wire x1="314.96" y1="127" x2="309.88" y2="127" width="0.1524" layer="91"/>
+<label x="314.96" y="127" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 <net name="DAC" class="0">
@@ -6031,8 +6035,8 @@ NOV'22-v1</text>
 <segment>
 <pinref part="JP1" gate="G$1" pin="3"/>
 <wire x1="314.96" y1="114.3" x2="314.96" y2="111.76" width="0.1524" layer="91"/>
-<wire x1="314.96" y1="111.76" x2="320.04" y2="111.76" width="0.1524" layer="91"/>
-<label x="317.5" y="111.76" size="1.778" layer="95"/>
+<wire x1="314.96" y1="111.76" x2="309.88" y2="111.76" width="0.1524" layer="91"/>
+<label x="312.42" y="111.76" size="1.778" layer="95" rot="MR0"/>
 </segment>
 </net>
 </nets>
@@ -6065,7 +6069,6 @@ NOV'22-v1</text>
 <approved hash="106,1,104.14,66.04,D0,,,,,"/>
 <approved hash="106,1,104.14,63.5,MISO,,,,,"/>
 <approved hash="106,1,27.94,50.8,MOSI,,,,,"/>
-<approved hash="106,1,27.94,43.18,RXI,,,,,"/>
 <approved hash="106,1,27.94,48.26,SCK,,,,,"/>
 <approved hash="208,1,22.86,91.44,VCC,sup,,,,"/>
 <approved hash="208,1,256.54,160.02,VCC,sup,,,,"/>
