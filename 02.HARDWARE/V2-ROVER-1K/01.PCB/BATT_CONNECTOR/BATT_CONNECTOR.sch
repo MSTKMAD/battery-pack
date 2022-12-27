@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -1536,8 +1536,8 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 </class>
 </classes>
 <parts>
-<part name="VOUT+" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="VOUT-" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
+<part name="VO+" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
+<part name="VO-" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="GND" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX11" device=""/>
 <part name="VOUT+1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
@@ -1557,11 +1557,11 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <plain>
 </plain>
 <instances>
-<instance part="VOUT+" gate="G$1" x="19.05" y="55.88" smashed="yes" rot="R90">
+<instance part="VO+" gate="G$1" x="19.05" y="55.88" smashed="yes" rot="R90">
 <attribute name="NAME" x="17.78" y="58.42" size="1.778" layer="95" rot="R180"/>
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="57.15" size="1.778" layer="97" rot="R90"/>
 </instance>
-<instance part="VOUT-" gate="G$1" x="19.05" y="45.72" smashed="yes" rot="R90">
+<instance part="VO-" gate="G$1" x="19.05" y="45.72" smashed="yes" rot="R90">
 <attribute name="NAME" x="17.78" y="48.26" size="1.778" layer="95" rot="R180"/>
 <attribute name="TP_SIGNAL_NAME" x="20.32" y="46.99" size="1.778" layer="97" rot="R90"/>
 </instance>
@@ -1610,7 +1610,7 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <net name="VOUT+" class="0">
 <segment>
 <pinref part="VOUT+1" gate="G$1" pin="TP"/>
-<pinref part="VOUT+" gate="G$1" pin="TP"/>
+<pinref part="VO+" gate="G$1" pin="TP"/>
 <wire x1="21.59" y1="60.96" x2="21.59" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="21.59" y1="55.88" x2="31.75" y2="55.88" width="0.1524" layer="91"/>
 <junction x="21.59" y="55.88"/>
@@ -1628,7 +1628,7 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <net name="VOUT-" class="0">
 <segment>
 <pinref part="VOUT-1" gate="G$1" pin="TP"/>
-<pinref part="VOUT-" gate="G$1" pin="TP"/>
+<pinref part="VO-" gate="G$1" pin="TP"/>
 <wire x1="21.59" y1="50.8" x2="21.59" y2="45.72" width="0.1524" layer="91"/>
 <junction x="21.59" y="45.72"/>
 <label x="25.4" y="45.72" size="1.778" layer="95"/>
