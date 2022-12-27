@@ -3,14 +3,14 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="2" altunitdist="mil" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="2" name="Route2" color="11" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="11" fill="1" visible="no" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -30,11 +30,11 @@
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="14" fill="1" visible="no" active="yes"/>
-<layer number="22" name="bPlace" color="13" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="14" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="14" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="13" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -47,9 +47,9 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
@@ -59,8 +59,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="yes"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -843,37 +843,28 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <smd name="2" x="3" y="1.85" dx="1" dy="0.7" layer="1"/>
 <smd name="3" x="-3" y="-1.85" dx="1" dy="0.7" layer="1"/>
 <smd name="4" x="3" y="-1.85" dx="1" dy="0.7" layer="1"/>
-<text x="-0.5" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="-0.5" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
 <wire x1="-2.6" y1="-2.6" x2="2.6" y2="-2.6" width="0.2" layer="51"/>
 <wire x1="2.6" y1="-2.6" x2="2.6" y2="2.6" width="0.2" layer="51"/>
 <wire x1="2.6" y1="2.6" x2="-2.6" y2="2.6" width="0.2" layer="51"/>
 <wire x1="-2.6" y1="2.6" x2="-2.6" y2="-2.6" width="0.2" layer="51"/>
 <wire x1="-2.5" y1="2.6" x2="2.5" y2="2.6" width="0.1" layer="21"/>
-<wire x1="2.5" y1="2.6" x2="2.5" y2="2.6" width="0.1" layer="21"/>
 <wire x1="2.5" y1="2.6" x2="-2.5" y2="2.6" width="0.1" layer="21"/>
-<wire x1="-2.5" y1="2.6" x2="-2.5" y2="2.6" width="0.1" layer="21"/>
 <wire x1="-2.6" y1="-2.6" x2="2.6" y2="-2.6" width="0.1" layer="21"/>
-<wire x1="2.6" y1="-2.6" x2="2.6" y2="-2.6" width="0.1" layer="21"/>
 <wire x1="2.6" y1="-2.6" x2="-2.6" y2="-2.6" width="0.1" layer="21"/>
-<wire x1="-2.6" y1="-2.6" x2="-2.6" y2="-2.6" width="0.1" layer="21"/>
 <wire x1="-5.5" y1="3.6" x2="4.5" y2="3.6" width="0.1" layer="51"/>
 <wire x1="4.5" y1="3.6" x2="4.5" y2="-3.6" width="0.1" layer="51"/>
 <wire x1="4.5" y1="-3.6" x2="-5.5" y2="-3.6" width="0.1" layer="51"/>
 <wire x1="-5.5" y1="-3.6" x2="-5.5" y2="3.6" width="0.1" layer="51"/>
-<wire x1="2.6" y1="1" x2="2.6" y2="1" width="0.1" layer="21"/>
 <wire x1="2.6" y1="1" x2="2.6" y2="-1" width="0.1" layer="21"/>
-<wire x1="2.6" y1="-1" x2="2.6" y2="-1" width="0.1" layer="21"/>
 <wire x1="2.6" y1="-1" x2="2.6" y2="1" width="0.1" layer="21"/>
-<wire x1="-2.6" y1="1" x2="-2.6" y2="1" width="0.1" layer="21"/>
 <wire x1="-2.6" y1="1" x2="-2.6" y2="-1" width="0.1" layer="21"/>
-<wire x1="-2.6" y1="-1" x2="-2.6" y2="-1" width="0.1" layer="21"/>
 <wire x1="-2.6" y1="-1" x2="-2.6" y2="1" width="0.1" layer="21"/>
-<wire x1="-4.5" y1="2" x2="-4.5" y2="2" width="0.2" layer="21"/>
 <wire x1="-4.5" y1="2" x2="-4.4" y2="2" width="0.2" layer="21" curve="180"/>
-<wire x1="-4.4" y1="2" x2="-4.4" y2="2" width="0.2" layer="21"/>
 <wire x1="-4.4" y1="2" x2="-4.5" y2="2" width="0.2" layer="21" curve="180"/>
 <wire x1="-4.5" y1="2" x2="-4.4" y2="2" width="0.2" layer="21"/>
+<dimension x1="-2.6" y1="-2.6" x2="2.6" y2="-2.6" x3="0" y3="-6" textsize="1.778" layer="21"/>
+<dimension x1="-3.5" y1="-2.2" x2="3.5" y2="-2.2" x3="0" y3="-10.9" textsize="1.778" layer="21"/>
+<smd name="GND" x="0" y="2.5" dx="1" dy="0.6" layer="1"/>
 </package>
 </packages>
 </library>
@@ -1807,8 +1798,6 @@ einem neuen Namen ab.</description>
 <contactref element="C15" pad="2"/>
 <contactref element="C18" pad="2"/>
 <contactref element="R17" pad="1"/>
-<contactref element="S2" pad="4"/>
-<contactref element="S1" pad="4"/>
 <contactref element="C13" pad="2"/>
 <contactref element="C16" pad="2"/>
 <contactref element="S3" pad="4"/>
@@ -1962,10 +1951,6 @@ einem neuen Namen ab.</description>
 <wire x1="8.868" y1="3.514" x2="9.638" y2="4.284" width="0.254" layer="16"/>
 <wire x1="14.098" y1="4.284" x2="9.638" y2="4.284" width="0.254" layer="16"/>
 <wire x1="14.098" y1="4.284" x2="14.868" y2="3.514" width="0.254" layer="16"/>
-<contactref element="S1" pad="3"/>
-<wire x1="2.912" y1="16.07" x2="8.912" y2="16.07" width="0.254" layer="16"/>
-<contactref element="S2" pad="3"/>
-<wire x1="20.889" y1="12.37" x2="21.4988" y2="12.9798" width="0.2032" layer="16"/>
 <wire x1="21.4988" y1="12.9798" x2="21.4988" y2="14.89" width="0.2032" layer="16"/>
 <wire x1="5.51" y1="31.24" x2="4.38" y2="31.24" width="0.254" layer="16"/>
 <wire x1="4.38" y1="31.24" x2="4.35" y2="31.21" width="0.254" layer="16"/>
@@ -2022,6 +2007,13 @@ einem neuen Namen ab.</description>
 <wire x1="16.945" y1="26.305" x2="17.15" y2="26.51" width="0.2032" layer="1"/>
 <wire x1="3.505" y1="14.15" x2="3.425" y2="14.23" width="0.3048" layer="1"/>
 <wire x1="3.425" y1="14.23" x2="2.23" y2="14.23" width="0.3048" layer="1"/>
+<contactref element="S2" pad="GND"/>
+<contactref element="S1" pad="GND"/>
+<contactref element="S1" pad="3"/>
+<contactref element="S1" pad="4"/>
+<contactref element="S2" pad="3"/>
+<contactref element="S2" pad="4"/>
+<contactref element="S3" pad="GND"/>
 </signal>
 <signal name="MOSI">
 <contactref element="U1" pad="19"/>
@@ -2560,8 +2552,9 @@ einem neuen Namen ab.</description>
 <wire x1="18.834" y1="3.3" x2="17.844" y2="3.3" width="0.2032" layer="16"/>
 <contactref element="S2" pad="1"/>
 <wire x1="14.889" y1="16.07" x2="14.919" y2="16.1" width="0.254" layer="16"/>
-<wire x1="20.859" y1="16.1" x2="20.889" y2="16.07" width="0.254" layer="16"/>
-<wire x1="14.919" y1="16.1" x2="20.859" y2="16.1" width="0.3048" layer="16"/>
+<wire x1="20.809" y1="15.99" x2="14.969" y2="15.99" width="0.3048" layer="16"/>
+<wire x1="14.889" y1="16.07" x2="14.969" y2="15.99" width="0.3048" layer="16"/>
+<wire x1="20.889" y1="16.07" x2="20.809" y2="15.99" width="0.3048" layer="16"/>
 </signal>
 <signal name="N$1">
 <contactref element="R7" pad="2"/>
@@ -2629,10 +2622,10 @@ einem neuen Namen ab.</description>
 <wire x1="10.9534" y1="16.14" x2="11.6034" y2="15.49" width="0.2032" layer="2"/>
 <wire x1="19.145" y1="25.22" x2="18.59" y2="25.775" width="0.254" layer="16"/>
 <wire x1="18.59" y1="26.455" x2="18.59" y2="25.775" width="0.254" layer="16"/>
-<wire x1="19.145" y1="17.745" x2="18.49155" y2="17.09155" width="0.254" layer="16"/>
-<wire x1="11.83155" y1="17.09155" x2="10.9534" y2="16.2134" width="0.254" layer="16"/>
+<wire x1="19.145" y1="17.745" x2="18.78155" y2="17.38155" width="0.254" layer="16"/>
+<wire x1="12.12155" y1="17.38155" x2="10.9534" y2="16.2134" width="0.254" layer="16"/>
 <wire x1="10.9534" y1="16.14" x2="10.9534" y2="16.2134" width="0.2032" layer="16"/>
-<wire x1="11.83155" y1="17.09155" x2="18.49155" y2="17.09155" width="0.254" layer="16"/>
+<wire x1="12.12155" y1="17.38155" x2="18.78155" y2="17.38155" width="0.254" layer="16"/>
 <wire x1="19.145" y1="25.22" x2="19.145" y2="17.745" width="0.254" layer="16"/>
 </signal>
 <signal name="EN_DCDC">
