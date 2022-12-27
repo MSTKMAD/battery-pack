@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -3040,8 +3040,6 @@ Warning: This is the KIT version of the AXIAL-0.3 package. This package has a sm
 <wire x1="-4.5" y1="2" x2="-4.4" y2="2" width="0.2" layer="21" curve="180"/>
 <wire x1="-4.4" y1="2" x2="-4.5" y2="2" width="0.2" layer="21" curve="180"/>
 <wire x1="-4.5" y1="2" x2="-4.4" y2="2" width="0.2" layer="21"/>
-<dimension x1="-2.6" y1="-2.6" x2="2.6" y2="-2.6" x3="0" y3="-6" textsize="1.778" layer="21"/>
-<dimension x1="-3.5" y1="-2.2" x2="3.5" y2="-2.2" x3="0" y3="-10.9" textsize="1.778" layer="21"/>
 <smd name="GND" x="0" y="2.5" dx="1" dy="0.6" layer="1"/>
 </package>
 </packages>
