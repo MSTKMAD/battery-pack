@@ -3,12 +3,12 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
 <layer number="15" name="Route15" color="23" fill="1" visible="no" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -1344,7 +1344,7 @@ design rules under a new name.</description>
 </elements>
 <signals>
 <signal name="VBUS">
-<polygon width="0.0762" layer="2" isolate="0.4064">
+<polygon width="0.0762" layer="2" isolate="0.4064" rank="2">
 <vertex x="81.97" y="101.2"/>
 <vertex x="81.97" y="80.7"/>
 <vertex x="106.41" y="80.7"/>
@@ -1403,6 +1403,38 @@ design rules under a new name.</description>
 <contactref element="K1" pad="12"/>
 <wire x1="89.39" y1="92.49" x2="89.53" y2="92.63" width="0.6096" layer="16"/>
 <wire x1="89.53" y1="92.63" x2="89.53" y2="95.16" width="0.6096" layer="16"/>
+<via x="93.45" y="83.31" extent="1-16" drill="0.35"/>
+<via x="94.16" y="83.27" extent="1-16" drill="0.35"/>
+<via x="94.84" y="83.25" extent="1-16" drill="0.35"/>
+<via x="95.49" y="83.21" extent="1-16" drill="0.35"/>
+<wire x1="94.44" y1="84.652" x2="94.44" y2="83.55" width="0.6096" layer="16"/>
+<wire x1="94.44" y1="83.55" x2="94.16" y2="83.27" width="0.6096" layer="16"/>
+<wire x1="94.16" y1="83.27" x2="93.49" y2="83.27" width="0.6096" layer="16"/>
+<wire x1="93.49" y1="83.27" x2="93.45" y2="83.31" width="0.6096" layer="16"/>
+<wire x1="94.16" y1="83.27" x2="94.82" y2="83.27" width="0.6096" layer="16"/>
+<wire x1="94.82" y1="83.27" x2="94.84" y2="83.25" width="0.6096" layer="16"/>
+<wire x1="94.84" y1="83.25" x2="95.45" y2="83.25" width="0.6096" layer="16"/>
+<wire x1="95.45" y1="83.25" x2="95.49" y2="83.21" width="0.6096" layer="16"/>
+<polygon width="0.0762" layer="2" isolate="0.254">
+<vertex x="92.25" y="82.48"/>
+<vertex x="92.76" y="81.97"/>
+<vertex x="96.35" y="81.97"/>
+<vertex x="96.81" y="82.43"/>
+<vertex x="96.81" y="84.57"/>
+<vertex x="92.25" y="84.57"/>
+</polygon>
+<polygon width="0.0762" layer="15" isolate="0.254">
+<vertex x="92.36" y="84.96"/>
+<vertex x="92.36" y="82.23"/>
+<vertex x="92.75" y="81.84"/>
+<vertex x="92.78" y="81.81"/>
+<vertex x="96.11" y="81.81"/>
+<vertex x="96.37" y="81.81"/>
+<vertex x="96.94" y="82.38"/>
+<vertex x="96.94" y="84.9"/>
+<vertex x="96.91" y="84.93"/>
+<vertex x="92.39" y="84.93"/>
+</polygon>
 </signal>
 <signal name="VOUT-">
 <contactref element="VOUT-1" pad="TP"/>
