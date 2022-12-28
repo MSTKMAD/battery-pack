@@ -3,10 +3,10 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -572,8 +572,6 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <part name="SWCLK" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="SWDIO" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 <part name="TXO" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
-<part name="GND" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
-<part name="RXI" library="SparkFun-Connectors" deviceset="CONN_01" device="POGOPIN_HOLE_LARGE"/>
 </parts>
 <sheets>
 <sheet>
@@ -595,14 +593,6 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <instance part="TXO" gate="G$1" x="72.39" y="86.36" smashed="yes">
 <attribute name="VALUE" x="69.85" y="81.534" size="1.778" layer="96" font="vector"/>
 <attribute name="NAME" x="69.85" y="89.408" size="1.778" layer="95" font="vector"/>
-</instance>
-<instance part="GND" gate="G$1" x="72.39" y="45.72" smashed="yes">
-<attribute name="VALUE" x="69.85" y="40.894" size="1.778" layer="96" font="vector"/>
-<attribute name="NAME" x="69.85" y="48.768" size="1.778" layer="95" font="vector"/>
-</instance>
-<instance part="RXI" gate="G$1" x="72.39" y="35.56" smashed="yes">
-<attribute name="VALUE" x="69.85" y="30.734" size="1.778" layer="96" font="vector"/>
-<attribute name="NAME" x="69.85" y="38.608" size="1.778" layer="95" font="vector"/>
 </instance>
 </instances>
 <busses>
@@ -634,20 +624,6 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <label x="82.55" y="76.2" size="1.778" layer="95"/>
 <pinref part="!RESET" gate="G$1" pin="1"/>
 <wire x1="80.01" y1="76.2" x2="93.98" y2="76.2" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="GND" class="0">
-<segment>
-<pinref part="GND" gate="G$1" pin="1"/>
-<wire x1="80.01" y1="45.72" x2="93.98" y2="45.72" width="0.1524" layer="91"/>
-<label x="86.36" y="45.72" size="1.778" layer="95"/>
-</segment>
-</net>
-<net name="RXI" class="0">
-<segment>
-<pinref part="RXI" gate="G$1" pin="1"/>
-<wire x1="80.01" y1="35.56" x2="93.98" y2="35.56" width="0.1524" layer="91"/>
-<label x="86.36" y="35.56" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
