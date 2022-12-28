@@ -4360,7 +4360,6 @@ by exp-lbrs.ulp</description>
 <part name="C2" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="100n"/>
 <part name="SUPPLY3" library="SparkFun-PowerSymbols" library_urn="urn:adsk.eagle:library:530" deviceset="VCC" device=""/>
 <part name="GND6" library="SparkFun" deviceset="GND" device=""/>
-<part name="RSENSE" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="100mR"/>
 <part name="GND8" library="SparkFun" deviceset="GND" device=""/>
 <part name="C3" library="SparkFun-Capacitors" deviceset="10UF" device="-0805-10V-10%" value="10uF"/>
 <part name="U$1" library="microbuilder" deviceset="FIDUCIAL" device="&quot;&quot;"/>
@@ -4411,6 +4410,7 @@ by exp-lbrs.ulp</description>
 <part name="GND16" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND18" library="SparkFun" deviceset="GND" device=""/>
 <part name="C9" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="N.A."/>
+<part name="RSNS" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="100mR"/>
 </parts>
 <sheets>
 <sheet>
@@ -4595,10 +4595,6 @@ Fondo Escala 3V @ 2A</text>
 <instance part="GND6" gate="1" x="25.4" y="45.72" smashed="yes">
 <attribute name="VALUE" x="22.86" y="43.18" size="1.778" layer="96"/>
 </instance>
-<instance part="RSENSE" gate="G$1" x="25.4" y="60.96" smashed="yes" rot="R90">
-<attribute name="NAME" x="23.876" y="60.96" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="26.924" y="60.96" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
-</instance>
 <instance part="GND8" gate="1" x="33.02" y="78.74" smashed="yes">
 <attribute name="VALUE" x="30.48" y="76.2" size="1.778" layer="96"/>
 </instance>
@@ -4767,6 +4763,10 @@ Fondo Escala 3V @ 2A</text>
 <attribute name="NAME" x="189.484" y="159.639" size="1.778" layer="95" font="vector" rot="MR180"/>
 <attribute name="VALUE" x="189.484" y="157.099" size="1.778" layer="96" font="vector" rot="MR180"/>
 </instance>
+<instance part="RSNS" gate="G$1" x="15.24" y="60.96" smashed="yes" rot="R90">
+<attribute name="NAME" x="22.86" y="61.976" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
+<attribute name="VALUE" x="22.86" y="57.404" size="1.778" layer="96" font="vector" rot="R180" align="top-center"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4881,8 +4881,10 @@ Fondo Escala 3V @ 2A</text>
 </segment>
 <segment>
 <pinref part="GND6" gate="1" pin="GND"/>
-<wire x1="25.4" y1="48.26" x2="25.4" y2="55.88" width="0.1524" layer="91"/>
-<pinref part="RSENSE" gate="G$1" pin="1"/>
+<wire x1="25.4" y1="48.26" x2="25.4" y2="53.34" width="0.1524" layer="91"/>
+<pinref part="RSNS" gate="G$1" pin="1"/>
+<wire x1="15.24" y1="55.88" x2="15.24" y2="53.34" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="53.34" x2="25.4" y2="53.34" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R12" gate="G$1" pin="2"/>
@@ -5268,14 +5270,15 @@ Fondo Escala 3V @ 2A</text>
 </net>
 <net name="VOUT-" class="0">
 <segment>
-<pinref part="RSENSE" gate="G$1" pin="2"/>
-<wire x1="25.4" y1="66.04" x2="25.4" y2="68.58" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="68.58" x2="25.4" y2="101.6" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="101.6" x2="22.86" y2="101.6" width="0.1524" layer="91"/>
 <label x="22.86" y="101.6" size="1.778" layer="95" rot="MR0" xref="yes"/>
 <pinref part="U1" gate="A" pin="VIN+"/>
 <wire x1="53.34" y1="68.58" x2="25.4" y2="68.58" width="0.1524" layer="91"/>
 <junction x="25.4" y="68.58"/>
+<pinref part="RSNS" gate="G$1" pin="2"/>
+<wire x1="15.24" y1="66.04" x2="15.24" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="68.58" x2="25.4" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <wire x1="355.6" y1="53.34" x2="342.9" y2="53.34" width="0.1524" layer="91"/>
