@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -9200,9 +9200,9 @@ std connector</text>
 <attribute name="NAME" x="-67.564" y="-187.96" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
 <attribute name="VALUE" x="-64.516" y="-187.96" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
 </instance>
-<instance part="R26" gate="G$1" x="-48.26" y="-162.56" smashed="yes" rot="R90">
-<attribute name="NAME" x="-49.784" y="-162.56" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
-<attribute name="VALUE" x="-56.896" y="-160.02" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
+<instance part="R26" gate="G$1" x="-50.8" y="-162.56" smashed="yes" rot="R90">
+<attribute name="NAME" x="-52.324" y="-162.56" size="1.778" layer="95" font="vector" rot="R90" align="bottom-center"/>
+<attribute name="VALUE" x="-59.436" y="-160.02" size="1.778" layer="96" font="vector" rot="R90" align="top-center"/>
 </instance>
 <instance part="GND17" gate="1" x="-66.04" y="-198.12" smashed="yes">
 <attribute name="VALUE" x="-68.58" y="-200.66" size="1.778" layer="96"/>
@@ -9435,11 +9435,6 @@ std connector</text>
 <pinref part="SUPPLY21" gate="G$1" pin="VCC"/>
 <wire x1="69.85" y1="-102.87" x2="57.15" y2="-102.87" width="0.1524" layer="91"/>
 <wire x1="57.15" y1="-102.87" x2="57.15" y2="-100.33" width="0.1524" layer="91"/>
-</segment>
-<segment>
-<pinref part="J2" gate="G$1" pin="1"/>
-<wire x1="50.8" y1="21.59" x2="36.83" y2="21.59" width="0.1524" layer="91"/>
-<label x="39.37" y="21.59" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="7.62" y1="-81.28" x2="-2.54" y2="-81.28" width="0.1524" layer="91"/>
@@ -10028,17 +10023,17 @@ std connector</text>
 </net>
 <net name="N$21" class="0">
 <segment>
-<wire x1="-48.26" y1="-167.64" x2="-48.26" y2="-170.18" width="0.1524" layer="91"/>
-<wire x1="-48.26" y1="-170.18" x2="-50.8" y2="-175.26" width="0.1524" layer="91"/>
-<wire x1="-17.78" y1="-170.18" x2="-48.26" y2="-170.18" width="0.1524" layer="91"/>
-<junction x="-48.26" y="-170.18"/>
+<wire x1="-50.8" y1="-167.64" x2="-50.8" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="-170.18" x2="-50.8" y2="-175.26" width="0.1524" layer="91"/>
+<wire x1="-17.78" y1="-170.18" x2="-50.8" y2="-170.18" width="0.1524" layer="91"/>
+<junction x="-50.8" y="-170.18"/>
 <wire x1="-66.04" y1="-182.88" x2="-66.04" y2="-170.18" width="0.1524" layer="91"/>
 <wire x1="-17.78" y1="-170.18" x2="-17.78" y2="-175.26" width="0.1524" layer="91"/>
 <wire x1="-83.82" y1="-175.26" x2="-81.28" y2="-175.26" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="-175.26" x2="-81.28" y2="-170.18" width="0.1524" layer="91"/>
 <wire x1="-81.28" y1="-170.18" x2="-66.04" y2="-170.18" width="0.1524" layer="91"/>
 <junction x="-66.04" y="-170.18"/>
-<wire x1="-66.04" y1="-170.18" x2="-48.26" y2="-170.18" width="0.1524" layer="91"/>
+<wire x1="-66.04" y1="-170.18" x2="-50.8" y2="-170.18" width="0.1524" layer="91"/>
 <pinref part="U1" gate="A" pin="ADJ"/>
 <pinref part="R19" gate="G$1" pin="2"/>
 <pinref part="R23" gate="G$1" pin="2"/>
@@ -10132,9 +10127,9 @@ std connector</text>
 <segment>
 <wire x1="-83.82" y1="-177.8" x2="-73.66" y2="-177.8" width="0.1524" layer="91"/>
 <wire x1="-73.66" y1="-177.8" x2="-73.66" y2="-157.48" width="0.1524" layer="91"/>
-<wire x1="-73.66" y1="-157.48" x2="-48.26" y2="-157.48" width="0.1524" layer="91"/>
-<wire x1="-48.26" y1="-157.48" x2="-10.16" y2="-157.48" width="0.1524" layer="91"/>
-<junction x="-48.26" y="-157.48"/>
+<wire x1="-73.66" y1="-157.48" x2="-50.8" y2="-157.48" width="0.1524" layer="91"/>
+<wire x1="-50.8" y1="-157.48" x2="-10.16" y2="-157.48" width="0.1524" layer="91"/>
+<junction x="-50.8" y="-157.48"/>
 <wire x1="-10.16" y1="-157.48" x2="0" y2="-157.48" width="0.1524" layer="91"/>
 <wire x1="0" y1="-160.02" x2="0" y2="-157.48" width="0.1524" layer="91"/>
 <wire x1="0" y1="-157.48" x2="12.7" y2="-157.48" width="0.1524" layer="91"/>
@@ -10338,6 +10333,11 @@ std connector</text>
 <pinref part="R11" gate="G$1" pin="1"/>
 <wire x1="-251.46" y1="-35.56" x2="-259.08" y2="-35.56" width="0.1524" layer="91"/>
 <label x="-259.08" y="-35.56" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J2" gate="G$1" pin="1"/>
+<wire x1="50.8" y1="21.59" x2="36.83" y2="21.59" width="0.1524" layer="91"/>
+<label x="39.37" y="21.59" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="SWO" class="0">
