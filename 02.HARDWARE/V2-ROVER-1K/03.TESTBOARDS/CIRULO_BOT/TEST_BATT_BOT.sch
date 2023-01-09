@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -615,13 +615,6 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <wire x1="80.01" y1="55.88" x2="93.98" y2="55.88" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="SWDIO" class="0">
-<segment>
-<label x="82.55" y="66.04" size="1.778" layer="95"/>
-<pinref part="SWDIO" gate="G$1" pin="1"/>
-<wire x1="80.01" y1="66.04" x2="93.98" y2="66.04" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="TXO" class="0">
 <segment>
 <label x="82.55" y="86.36" size="1.778" layer="95"/>
@@ -636,18 +629,25 @@ Also note, the SNAP packages are for using a snappable style connector. We sell 
 <wire x1="80.01" y1="76.2" x2="93.98" y2="76.2" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="GND" class="0">
-<segment>
-<pinref part="GND" gate="G$1" pin="1"/>
-<wire x1="80.01" y1="45.72" x2="93.98" y2="45.72" width="0.1524" layer="91"/>
-<label x="86.36" y="45.72" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="RXI" class="0">
 <segment>
 <pinref part="RXI" gate="G$1" pin="1"/>
 <wire x1="80.01" y1="35.56" x2="93.98" y2="35.56" width="0.1524" layer="91"/>
 <label x="86.36" y="35.56" size="1.778" layer="95"/>
+</segment>
+</net>
+<net name="SWDIO" class="0">
+<segment>
+<label x="82.55" y="45.72" size="1.778" layer="95"/>
+<wire x1="80.01" y1="45.72" x2="93.98" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="GND" gate="G$1" pin="1"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<wire x1="80.01" y1="66.04" x2="93.98" y2="66.04" width="0.1524" layer="91"/>
+<label x="86.36" y="66.04" size="1.778" layer="95"/>
+<pinref part="SWDIO" gate="G$1" pin="1"/>
 </segment>
 </net>
 </nets>
