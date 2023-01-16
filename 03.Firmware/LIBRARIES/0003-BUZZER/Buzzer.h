@@ -29,13 +29,13 @@ const uint16_t C_SOUND_ERROR = 12;
 
 const uint16_t C_NOTES_START_1[] = {NOTE_E6, 125, 5, NOTE_G6, 125, 5, NOTE_E7, 125, 5, NOTE_C7, 125, 5, NOTE_D7, 125, 5, NOTE_G7, 125, 5};
 const uint16_t C_NOTES_END_1[] = {NOTE_G7, 125, 5, NOTE_D7, 125, 5, NOTE_C7, 125, 5, NOTE_E7, 125, 5, NOTE_G6, 125, 5, NOTE_E6, 125, 5};
-const uint16_t C_NOTES_DOWN_1[] = {NOTE_E6, 10, 10, NOTE_B5, 10, 10};
-const uint16_t C_NOTES_UP_1[] = {NOTE_B5, 10, 10, NOTE_E6, 10, 10};
-const uint16_t C_NOTES_ON_1[] = {NOTE_B5, 100, 0, NOTE_E6, 200, 0};
-const uint16_t C_NOTES_OFF_1[] = {NOTE_E6, 100, 0, NOTE_B5, 200, 0};
+const uint16_t C_NOTES_DOWN_1[] = {NOTE_D8, 10, 10, NOTE_A7, 10, 10};
+const uint16_t C_NOTES_UP_1[] = {NOTE_B7, 10, 10, NOTE_E8, 10, 10};
+const uint16_t C_NOTES_ON_1[] = {NOTE_B7, 100, 0, NOTE_E8, 200, 0};
+const uint16_t C_NOTES_OFF_1[] = {NOTE_E8, 100, 0, NOTE_B7, 200, 0};
 const uint16_t C_NOTES_CHARGE_IN[] = {NOTE_C5, 125, 10, NOTE_C7, 125, 10, NOTE_C6, 125, 10};
 const uint16_t C_NOTES_CHARGE_OUT[] = {NOTE_C6, 125, 10, NOTE_C7, 125, 10, NOTE_C5, 125, 10};
-const uint16_t C_NOTES_LOW_BATTERY[] = {NOTE_B3, 200, 10, NOTE_F3, 200, 10, NOTE_B3, 200, 10, NOTE_F3, 200, 10, NOTE_B3, 200, 10, NOTE_F3, 200, 10, NOTE_B3, 200, 10, NOTE_F3, 200, 10};
+const uint16_t C_NOTES_LOW_BATTERY[] = {NOTE_B7, 200, 10, NOTE_F7, 200, 10, NOTE_B7, 200, 10, NOTE_F7, 200, 10, NOTE_B7, 200, 10, NOTE_F7, 200, 10};
 const uint16_t C_NOTES_FULL_CHARGE[] = {NOTE_DS5, 150, 10, NOTE_DS5, 150, 10, NOTE_DS5, 150, 10, NOTE_DS5, 400, 5, NOTE_B4, 400, 5, NOTE_CS5, 400, 5, NOTE_DS5, 150, 150, NOTE_CS5, 150, 5, NOTE_DS5, 500, 5};
 const uint16_t C_NOTES_DEATHBATTERY[] = {NOTE_G5, 100, 10, NOTE_G5, 100, 10, NOTE_G5, 100, 10};
 const uint16_t C_NOTES_ERROR[] = {NOTE_C8, 100, 50, NOTE_C8, 100, 50, NOTE_C8, 100, 50, NOTE_C8, 100, 50};
@@ -106,7 +106,7 @@ void InitBuzzer(uint16_t mode = C_MODE_DEFAULT, uint16_t pin_buzzer = C_PIN_BUZZ
         memcpy(SOUND_FULL_CHARGE, C_NOTES_FULL_CHARGE, sizeof(C_NOTES_FULL_CHARGE));
         size_sound_full_charge = (sizeof(C_NOTES_FULL_CHARGE) / sizeof(C_NOTES_FULL_CHARGE[0])) / 3;
         memcpy(SOUND_LOW_BATTERY, C_NOTES_LOW_BATTERY, sizeof(C_NOTES_LOW_BATTERY));
-        size_sound_low_battery = (sizeof(C_NOTES_LOW_BATTERY) / sizeof(C_NOTES_LOW_BATTERY[0])) / 3;
+        size_sound_low_battery = 6;
         memcpy(SOUND_ERROR, C_NOTES_ERROR, sizeof(C_NOTES_ERROR));
         size_sound_error = (sizeof(C_NOTES_ERROR) / sizeof(C_NOTES_ERROR[0])) / 3;
         break;
@@ -133,7 +133,7 @@ void InitBuzzer(uint16_t mode = C_MODE_DEFAULT, uint16_t pin_buzzer = C_PIN_BUZZ
         memcpy(SOUND_FULL_CHARGE, C_NOTES_FULL_CHARGE, sizeof(C_NOTES_FULL_CHARGE));
         size_sound_full_charge = (sizeof(C_NOTES_FULL_CHARGE) / sizeof(C_NOTES_FULL_CHARGE[0])) / 3;
         memcpy(SOUND_LOW_BATTERY, C_NOTES_LOW_BATTERY, sizeof(C_NOTES_LOW_BATTERY));
-        size_sound_low_battery = (sizeof(C_NOTES_LOW_BATTERY) / sizeof(C_NOTES_LOW_BATTERY[0])) / 3;
+        size_sound_low_battery = 6;
         memcpy(SOUND_ERROR, C_NOTES_ERROR, sizeof(C_NOTES_ERROR));
         size_sound_error = (sizeof(C_NOTES_ERROR) / sizeof(C_NOTES_ERROR[0])) / 3;
         break;
@@ -223,30 +223,20 @@ uint16_t getSound(uint16_t *local, uint16_t sound_id)
 void playSound(int16_t num)
 {
     uint16_t index = 0;
-    bool buzzer_state = C_BUZZER_NOT_BUSSY;
+    bool buzzer_state = C_BUZZER_BUSSY;
     uint16_t local_sound[100];
     uint16_t size_sound = 0;
+    Serial5.printf("Size_sound %d \n\r", size_sound);
     size_sound = getSound(local_sound, num);
-    index = 0;
-    tone(C_PIN_BUZZER, local_sound[index], local_sound[index + 1]);
-    timer_buzzer.set(local_sound[index + 1] + local_sound[index + 2]);
-    buzzer_state = C_BUZZER_BUSSY;
-    while (buzzer_state == C_BUZZER_BUSSY)
+    Serial5.printf("Size_sound %d \n\r", size_sound);
+    timer_buzzer.set(10);
+    for (uint16_t i = 0; i/3 < size_sound; i += 3)
     {
-        if (timer_buzzer.poll() != C_TIMER_NOT_EXPIRED)
-        {
-            index += 3;
-            if ((index / 3) >= size_sound)
-            {
-                buzzer_state = C_BUZZER_NOT_BUSSY;
-                //noTone(C_PIN_BUZZER);
-            }
-            else
-            {
-                tone(C_PIN_BUZZER, local_sound[index], local_sound[index + 1]);
-                timer_buzzer.set(local_sound[index + 1] + local_sound[index + 2]);
-                buzzer_state = C_BUZZER_BUSSY;
-            }
-        }
+        Serial5.printf("%d/%d\n", i, size_sound);
+        while (timer_buzzer.poll() == C_TIMER_NOT_EXPIRED)
+            ;
+        tone(C_PIN_BUZZER, local_sound[i], local_sound[i + 1]);
+        timer_buzzer.set(local_sound[i + 1] + local_sound[i + 2]);
+        
     }
 }
