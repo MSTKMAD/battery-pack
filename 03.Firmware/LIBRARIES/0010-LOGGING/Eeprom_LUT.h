@@ -8,48 +8,50 @@
  * @copyright Copyright (c) 2021
  * 
  */
-// const uint8_t C_INIT_STATE = 0xBD;
-// const uint8_t C_MODEL = 0xBD;
-// const uint8_t C_SERIAL_NUMBER = 0xBD;
+const uint8_t HOURS_PM = 10;
+const uint16_t LOG_PER_HOUR = 10;
+const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
+typedef struct EEPROM
+{
+    uint8_t serial_number;
+    uint8_t integrated_version;
+    uint16_t work_time;
+    uint16_t power_errors;
+    uint16_t consumption_errors;
+    uint16_t voltage_errors;
+    uint16_t save_voltage;
+    bool flag_init;
+    bool flag_corruption;
+    uint16_t array_power_use[46];   // 500w to 5000w in step of 100w -> 46 step
+    uint16_t array_percent_use[21]; // 0% to 100% in step of 5% -> 21 step
+    uint16_t pm_power[PM_POSITIONS];
+    uint16_t pm_percent[PM_POSITIONS];
+    uint16_t pm_voltage[PM_POSITIONS];
+    uint16_t pm_errors[PM_POSITIONS];
+    uint32_t checksum;
+};
 
-/**
- * @brief RAM LUT EEPROM
- * 
- */
-const uint16_t C_RAM_HACK_START_SOUND = 0;
-const uint16_t C_RAM_HACK_END_SOUND = 1;
-const uint16_t C_RAM_HACK_CHARGE_SOUND = 2;
-const uint16_t C_RAM_HACK_FULL_CHARGE_SOUND = 3;
-const uint16_t C_RAM_HACK_START_DISPLAY = 4;
-const uint16_t C_RAM_SERIAL_NUMBER = 5;
-const uint16_t C_RAM_WORK_TIME = 6;
-const uint16_t C_RAM_POWER_ERROR = 7;
-const uint16_t C_RAM_CONSUMPTION_ERROR = 8;
-const uint16_t C_RAM_VOLTAGE_ERROR = 9;
-const uint16_t C_RAM_INSTANT_VOLTAGE = 10;
-const uint16_t C_RAM_INSTANT_CURRENT = 11;
-const uint16_t C_RAM_INSTANT_POWER = 12;
-const uint16_t C_RAM_THEORY_VOLTAGE = 13;
-const uint16_t C_RAM_MODEL = 14;
-const uint16_t C_RAM_CAPACITY = 15;
-const uint16_t C_RAM_HACK_END_DISPLAY = 16;
-const uint16_t C_RAM_BAT_CHECKSUM = 16;
-const uint16_t C_NUM_ELEMENTS = 17; //          NOTE: MODIFICAR CADA VEZ QUE SE AÑADA UN ELEMENTO!!!!
+const uint8_t C_POWER_ERROR = 0;
+const uint8_t C_CONSUMPTION_ERROR = 1;
+const uint8_t C_VOLTAGE_ERROR = 2;
+const uint8_t C_WORK_TIME = 3;
 
-/**
- * @brief Baterie LUT EEPROM
- * 
- */
-const uint16_t POS_EEPROM_INIT = 0x0000;              // byte -> 1 pos
-const uint16_t POS_EEPROM_FLAG_CORRUPTION = 0x0001;   // byte -> 1 pos
-const uint16_t POS_EEPROM_MODEL = 0x0002;             // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_CHECKSUM = 0x0004;          // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_SERIAL_NUMBER = 0x0006;     // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_WORK_TIME = 0x0008;         // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_POWER_ERROR = 0x000A;       // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_CONSUMPTION_ERROR = 0x000C; // uint16_t   -> 2 pos
-const uint16_t POS_EEPROM_VOLTAGE_ERROR = 0x000E;     // uint16_t   -> 2 pos
-const uint16_t C_BAT_EEPROM_SIZE = POS_EEPROM_VOLTAGE_ERROR + 2;
+const uint8_t C_FLAG_CORRUPTION = 4;
+const uint8_t C_FLAG_INIT = 5;
 
-// const uint16_t POS_EEPROM_VOLTS_ARRAY = 0x0005;       // uint16_t[111]  -> 222 pos Feature desestimada 28-03
-// const uint16_t POS_EEPROM_POWER_ARRAY = 0x00E3;       // uint16_t[46]   -> 92 pos Feature desestimada 28-03
+const uint8_t C_SERIAL_NUMBER = 6;
+const uint8_t C_INTEGRATED_VERSION = 7;
+
+const uint8_t C_THEORY_VOLTAGE = 8;
+
+const uint8_t C_POWER_USE = 9;
+const uint8_t C_PERCENT_USE = 10;
+
+const uint8_t C_PM_POWER = 11;
+const uint8_t C_PM_PERCENT = 12;
+const uint8_t C_PM_VOLTAGE = 13;
+const uint8_t C_PM_ERRORS = 14;
+
+const uint8_t C_ERROR_PWR = 1001;
+const uint8_t C_ERROR_VOLT = 1002;
+const uint8_t C_ERROR_CONS = 1003;
