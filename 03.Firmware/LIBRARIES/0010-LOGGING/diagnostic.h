@@ -12,10 +12,17 @@
 #ifndef EEPROM_EMULATION_SIZE
 #define EEPROM_EMULATION_SIZE 127
 #endif
+#ifndef INTEGRATED_VERSION
+#define INTEGRATED_VERSION 0
+#endif
+#ifndef MAX_VOLTAGE
+#define MAX_VOLTAGE 120
+#endif
+#ifndef MIN_VOLTAGE
+#define MIN_VOLTAGE 50
+#endif
 
 #include <batt_FlashStorage.h>
-#include <batt_SlowSoftI2CMaster.h>
-#include "EepromBitBang.h"
 #include "Eeprom_LUT.h"
 /*extern "C"
 {
@@ -25,54 +32,17 @@
 /**
  *                  CONSTANTS
  */
-const uint16_t MIN_VOLTAGE = 5000;
-const uint16_t MAX_VOLTAGE = 16000;
 const uint16_t MIN_WATS = 500;
 const uint16_t MAX_WATS = 5000;
 
 /**
  *                  VARIABLES
  */
-typedef struct
-{
-    int16_t data[EEPROM_EMULATION_SIZE];
-    boolean valid;
-} EEPROM_EMULATION;
 
-typedef struct
-{
-    uint16_t value = 0;
-    char category[2] = {'X', 'X'}; // category[0] = 'S' (Serial Port); category[1] = 'B' Baterie Eeprom, 'C' Chasis Eeprom
-    String name = "NoName";
-} Element;
+FlashStorage(flash_eeprom, EEPROM);
+EEPROM local_eeprom;
+uint32_t checksum;
 
-Element elements[C_NUM_ELEMENTS];
-EEPROM_EMULATION _eeprom_RAM;
-
-bool _dirty = false;
-int eeprom_index = 0;
-
-uint16_t voltage_values[111]; // 5000V - 16000 step of 100mV = 111 positions
-uint16_t power_values[46];    // 500mW - 5000mW step of 100mW = 46 postions.
-
-uint8_t init_flag = 0;
-
-FlashStorage(eeprom_flash, EEPROM_EMULATION);
-
-/**
- *      FUNCTIONS
- */
-/**
- * @brief Reset de las posiciones de la EEPROM de la Bateria
- * 
- */
-void ResetBateriaEeprom()
-{
-    for (uint32_t i = POS_EEPROM_CHECKSUM; i < C_BAT_EEPROM_SIZE; i++)
-    {
-        writeEEPROM(i, 0xFF);
-    }
-}
 /**
  * @brief Inicializacion del valor de los elementos de diagnostico.
  *          Cada elemento posee el valor, el nombre y la categoria:
@@ -80,177 +50,113 @@ void ResetBateriaEeprom()
  *          * Guardado en EEPROM (X,B,C). X no se guarda, B se guarda en la Bateria y C se guarda en el Chasis.
  * 
  */
-bool Init_diagnostic_elements()
+bool Init_local_eeprom()
 {
-    // Calculo del CheckSum
-    uint16_t checksum = 0;
-    // Read EEPROM memory.
-    _eeprom_RAM = eeprom_flash.read();
-
-    elements[C_RAM_HACK_START_SOUND].category[0] = {'X'};
-    elements[C_RAM_HACK_START_SOUND].category[1] = {'C'};
-    elements[C_RAM_HACK_START_SOUND].name = "HACK_START_SOUND";
-
-    elements[C_RAM_HACK_END_SOUND].category[0] = {'S'};
-    elements[C_RAM_HACK_END_SOUND].category[1] = {'C'};
-    elements[C_RAM_HACK_END_SOUND].name = "HACK_END_SOUND";
-
-    elements[C_RAM_HACK_CHARGE_SOUND].category[0] = {'S'};
-    elements[C_RAM_HACK_CHARGE_SOUND].category[1] = {'C'};
-    elements[C_RAM_HACK_CHARGE_SOUND].name = "HACK_CHARGE_SOUND";
-
-    elements[C_RAM_HACK_FULL_CHARGE_SOUND].category[0] = {'X'};
-    elements[C_RAM_HACK_FULL_CHARGE_SOUND].category[1] = {'C'};
-    elements[C_RAM_HACK_FULL_CHARGE_SOUND].name = "HACK_FULL_CHARGE_SOUND";
-
-    elements[C_RAM_HACK_START_DISPLAY].category[0] = {'X'};
-    elements[C_RAM_HACK_START_DISPLAY].category[1] = {'C'};
-    elements[C_RAM_HACK_START_DISPLAY].name = "HACK_START_DISPLAY";
-
-    elements[C_RAM_HACK_END_DISPLAY].category[0] = {'X'};
-    elements[C_RAM_HACK_END_DISPLAY].category[1] = {'C'};
-    elements[C_RAM_HACK_END_DISPLAY].name = "HACK_END_DISPLAY";
-
-    elements[C_RAM_SERIAL_NUMBER].category[0] = {'X'};
-    elements[C_RAM_SERIAL_NUMBER].category[1] = {'B'};
-    elements[C_RAM_SERIAL_NUMBER].name = "SERIAL NUMBER";
-    elements[C_RAM_SERIAL_NUMBER].value = ReadWordEEPROM(POS_EEPROM_SERIAL_NUMBER);
-
-    elements[C_RAM_WORK_TIME].category[0] = {'X'};
-    elements[C_RAM_WORK_TIME].category[1] = {'B'};
-    elements[C_RAM_WORK_TIME].name = "Work Time";
-    elements[C_RAM_WORK_TIME].value = ReadWordEEPROM(POS_EEPROM_WORK_TIME);
-    checksum += elements[C_RAM_WORK_TIME].value;
-
-    elements[C_RAM_POWER_ERROR].category[0] = {'X'};
-    elements[C_RAM_POWER_ERROR].category[1] = {'B'};
-    elements[C_RAM_POWER_ERROR].name = "Power Error";
-    elements[C_RAM_POWER_ERROR].value = ReadWordEEPROM(POS_EEPROM_POWER_ERROR);
-    checksum += elements[C_RAM_POWER_ERROR].value;
-
-    elements[C_RAM_CONSUMPTION_ERROR].category[0] = {'X'};
-    elements[C_RAM_CONSUMPTION_ERROR].category[1] = {'B'};
-    elements[C_RAM_CONSUMPTION_ERROR].name = "Consumption Error";
-    elements[C_RAM_CONSUMPTION_ERROR].value = ReadWordEEPROM(POS_EEPROM_CONSUMPTION_ERROR);
-    checksum += elements[C_RAM_CONSUMPTION_ERROR].value;
-
-    elements[C_RAM_VOLTAGE_ERROR].category[0] = {'X'};
-    elements[C_RAM_VOLTAGE_ERROR].category[1] = {'B'};
-    elements[C_RAM_VOLTAGE_ERROR].name = "Voltage Error";
-    elements[C_RAM_VOLTAGE_ERROR].value = ReadWordEEPROM(POS_EEPROM_VOLTAGE_ERROR);
-    checksum += elements[C_RAM_VOLTAGE_ERROR].value;
-
-    elements[C_RAM_INSTANT_VOLTAGE].category[0] = {'S'};
-    elements[C_RAM_INSTANT_VOLTAGE].category[1] = {'X'};
-    elements[C_RAM_INSTANT_VOLTAGE].name = "Instant Voltage";
-    elements[C_RAM_INSTANT_VOLTAGE].value = 0;
-
-    elements[C_RAM_INSTANT_POWER].category[0] = {'S'};
-    elements[C_RAM_INSTANT_POWER].category[1] = {'X'};
-    elements[C_RAM_INSTANT_POWER].name = "Instant Power";
-    elements[C_RAM_INSTANT_POWER].value = 0;
-
-    elements[C_RAM_INSTANT_CURRENT].category[0] = {'S'};
-    elements[C_RAM_INSTANT_CURRENT].category[1] = {'X'};
-    elements[C_RAM_INSTANT_CURRENT].name = "Instant Power";
-    elements[C_RAM_INSTANT_CURRENT].value = 0;
-
-    elements[C_RAM_THEORY_VOLTAGE].category[0] = {'X'};
-    elements[C_RAM_THEORY_VOLTAGE].category[1] = {'C'};
-    elements[C_RAM_THEORY_VOLTAGE].name = "Voltage programed";
-
-    elements[C_RAM_MODEL].category[0] = {'X'};
-    elements[C_RAM_MODEL].category[1] = {'B'};
-    elements[C_RAM_MODEL].name = "Model";
-    elements[C_RAM_MODEL].value = ReadWordEEPROM(POS_EEPROM_MODEL);
-
-    elements[C_RAM_BAT_CHECKSUM].category[0] = {'X'};
-    elements[C_RAM_BAT_CHECKSUM].category[1] = {'X'};
-    elements[C_RAM_BAT_CHECKSUM].name = "Checksum";
-    elements[C_RAM_BAT_CHECKSUM].value = ReadWordEEPROM(POS_EEPROM_CHECKSUM);
-
-    elements[C_RAM_CAPACITY].category[0] = {'S'};
-    elements[C_RAM_CAPACITY].category[1] = {'X'};
-    elements[C_RAM_CAPACITY].name = "Capacity";
-
-    /* 
-        Feature en pausa 28-03-2022.
-    //ReadArrayEEPROM(POS_EEPROM_VOLTS_ARRAY, &voltage_values[0], (sizeof(voltage_values) / sizeof(voltage_values[0])));
-    //ReadArrayEEPROM(POS_EEPROM_POWER_ARRAY, &power_values[0], (sizeof(power_values) / sizeof(power_values[0])));
-
-    // for (uint i = 0; i < (sizeof(power_values) / sizeof(power_values[0])); i++)
-    // {
-    //     checksum += power_values[i];
-    // }
-    // for (uint i = 0; i < (sizeof(voltage_values) / sizeof(voltage_values[0])); i++)
-    // {
-    //     checksum += voltage_values[i];
-    // }
-    */
-
-    eeprom_index = 0;
-    for (int i = 0; i < C_NUM_ELEMENTS; i++)
+    local_eeprom = flash_eeprom.read();
+    if ((local_eeprom.flag_init == false) && (local_eeprom.flag_corruption == false))
     {
-        if ((elements[i].category[1] == 'C'))
+        Serial5.println("EEPROM sin Incializar.");
+        Serial5.print("Inicializando...");
+        local_eeprom.serial_number = 0;
+        local_eeprom.integrated_version = INTEGRATED_VERSION;
+        local_eeprom.work_time = 0;
+        local_eeprom.power_errors = 0;
+        local_eeprom.consumption_errors = 0;
+        local_eeprom.voltage_errors = 0;
+        local_eeprom.save_voltage = 0;
+        local_eeprom.flag_init = true;
+        local_eeprom.flag_corruption = false;
+        for (int16_t i = 0; i < 71; i++)
         {
-            elements[i].value = _eeprom_RAM.data[eeprom_index];
-            eeprom_index++;
-            eeprom_index = constrain(eeprom_index, 0, EEPROM_EMULATION_SIZE);
+            local_eeprom.array_power_use[i] = 0;
         }
-    }
-    // Initialization to 0 if value 0xFFFF;
-    for (int i = 0; i < C_NUM_ELEMENTS; i++)
-    {
-        if ((elements[i].category[1] == 'B'))
+        for (uint16_t i = 0; i < 21; i++)
         {
-            if (elements[i].value == 0xFFFF)
-            {
-                elements[i].value = 0;
-            }
+            local_eeprom.array_percent_use[i] = 0;
         }
-    }
-
-    //Serial5.println(checksum + 1);
-    //Serial5.println(elements[C_RAM_BAT_CHECKSUM].value);
-    if (elements[C_RAM_BAT_CHECKSUM].value == 0)
-    {
-        return false;
-
-        Serial5.println("EEPROM FAIL");
+        local_eeprom.checksum = 0;
+        local_eeprom.checksum += local_eeprom.serial_number;
+        local_eeprom.checksum += local_eeprom.integrated_version;
+        local_eeprom.checksum += local_eeprom.work_time;
+        local_eeprom.checksum += local_eeprom.power_errors;
+        local_eeprom.checksum += local_eeprom.consumption_errors;
+        local_eeprom.checksum += local_eeprom.voltage_errors;
+        local_eeprom.checksum += local_eeprom.save_voltage;
+        local_eeprom.checksum += local_eeprom.flag_init;
+        local_eeprom.checksum += local_eeprom.flag_corruption;
+        for (size_t i = 0; i < 71; i++)
+        {
+            local_eeprom.checksum += local_eeprom.array_power_use[i];
+        }
+        for (size_t i = 0; i < 21; i++)
+        {
+            local_eeprom.checksum += local_eeprom.array_percent_use[i];
+        }
+        flash_eeprom.write(local_eeprom);
+        Serial5.println("INICIALIZADA");
+        return 1;
     }
     else
     {
-        if ((checksum + 1) != elements[C_RAM_BAT_CHECKSUM].value)
+        if (local_eeprom.flag_corruption == true)
         {
-            Serial5.println("FALLO DE CHECKSUM!!!");
-            ResetBateriaEeprom();
-            writeEEPROM(POS_EEPROM_FLAG_CORRUPTION, 0x00);
-            return true;
+            return 0;
         }
         else
         {
-            Serial5.println("CHECKSUM CORRECTO :)");
-            return true;
+            Serial5.println("EEPROM Inicializada.");
+            Serial5.println("Volcando EEPROM.");
+            Serial5.println(local_eeprom.serial_number);
+            Serial5.println(local_eeprom.integrated_version);
+            Serial5.println(local_eeprom.work_time);
+            Serial5.println(local_eeprom.power_errors);
+            Serial5.println(local_eeprom.consumption_errors);
+            Serial5.println(local_eeprom.voltage_errors);
+            Serial5.println(local_eeprom.save_voltage);
+            Serial5.println(local_eeprom.flag_init);
+            Serial5.println(local_eeprom.flag_corruption);
+            for (int16_t i = 0; i < 71; i++)
+            {
+                Serial5.print(local_eeprom.array_power_use[i]);
+                Serial5.print(",");
+            }
+            Serial5.println();
+            for (uint16_t i = 0; i < 21; i++)
+            {
+                Serial5.print(local_eeprom.array_percent_use[i]);
+                Serial5.print(",");
+            }
+            Serial5.println();
+            uint32_t checksum;
+            checksum = 0;
+            checksum += local_eeprom.serial_number;
+            checksum += local_eeprom.integrated_version;
+            checksum += local_eeprom.work_time;
+            checksum += local_eeprom.power_errors;
+            checksum += local_eeprom.consumption_errors;
+            checksum += local_eeprom.voltage_errors;
+            checksum += local_eeprom.save_voltage;
+            checksum += local_eeprom.flag_init;
+            checksum += local_eeprom.flag_corruption;
+            for (size_t i = 0; i < 71; i++)
+            {
+                checksum += local_eeprom.array_power_use[i];
+            }
+            for (size_t i = 0; i < 21; i++)
+            {
+                checksum += local_eeprom.array_percent_use[i];
+            }
+            Serial5.println("Volcado de EEPROM Finalizado.");
+            if (checksum == local_eeprom.checksum)
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
-
-    byte data8 = 0;
-    for (int i = 0; i <= POS_EEPROM_CHECKSUM + 1; i++)
-    {
-        readEEPROM(i, &data8);
-        Serial5.print(data8);
-        Serial5.print(",");
-    }
-    Serial5.println();
-
-    // for (int i = 0; i < C_NUM_ELEMENTS; i++)
-    // {
-    //     Serial5.print(elements[i].value);
-    //     Serial5.print(",");
-    // }
-    // Serial5.println();
-
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
 }
 /**
  * @brief Actualizar el valor en Ram de una variable de adiagnostico
@@ -260,15 +166,28 @@ bool Init_diagnostic_elements()
  */
 void LogDiagnosticData(int16_t data, int16_t address)
 {
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    address = constrain(address, 0, C_NUM_ELEMENTS);
-    if (elements[address].value != data)
+    int16_t wats_pos = 0;
+    int16_t perc_pos = 0;
+    switch (address)
     {
-        _dirty = true;
-        elements[address].value = data;
+
+    case C_THEORY_VOLTAGE:
+        local_eeprom.save_voltage = data;
+        break;
+
+    case C_POWER_USE:
+        wats_pos = (data - MIN_WATS) / 100;
+        local_eeprom.array_power_use[wats_pos]++;
+        break;
+
+    case C_PERCENT_USE:
+        perc_pos = data / 5;
+        local_eeprom.array_percent_use[perc_pos]++;
+        break;
+
+    default:
+        break;
     }
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
 }
 /**
  * @brief Lectura del valor de un elemento de diagnostico.
@@ -278,7 +197,16 @@ void LogDiagnosticData(int16_t data, int16_t address)
  */
 uint16_t ReadDiagnosticData(int16_t address)
 {
-    return elements[address].value;
+    switch (address)
+    {
+    case C_THEORY_VOLTAGE:
+        return local_eeprom.save_voltage;
+        break;
+
+    default:
+        return 0;
+        break;
+    }
 }
 /**
  * @brief Incrementar el valor de una variable de diagnostico en un valor
@@ -286,271 +214,78 @@ uint16_t ReadDiagnosticData(int16_t address)
  * @param inc Valor de incremento
  * @param address Direccion en la memoria RAM de la variable.
  */
-void IncrementDiagnosticData(int16_t inc, int16_t address)
+void IncrementDiagnosticData(int16_t address)
 {
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    if (elements[address].value >= 0xFFEE)
+    switch (address)
     {
-        elements[address].value = 0xFFEE;
-    }
-    else
-    {
-        elements[address].value = elements[address].value + inc;
-    }
-
-    _dirty = true;
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-}
-
-/**
- * @brief Muestreo por el puerto serie de las variable de diagnostico con categoria de Serial Port 'S'
- * 
- */
-void PrintDiagnosticData()
-{
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    for (int16_t i = 0; i < C_NUM_ELEMENTS; i++)
-    {
-        if (elements[i].category[0] == 'S')
+    case C_POWER_ERROR:
+        local_eeprom.power_errors += 1;
+        break;
+    case C_CONSUMPTION_ERROR:
+        local_eeprom.consumption_errors += 1;
+        break;
+    case C_VOLTAGE_ERROR:
+        local_eeprom.voltage_errors += 1;
+        break;
+    case C_WORK_TIME:
+        static int cont_hour = 0;
+        cont_hour++;
+        if (cont_hour == 10)
         {
-            //SEGGER_RTT_printf(0, "%s%d;", RTT_CTRL_TEXT_WHITE, elements[i].value);
-            Serial.print(elements[i].value);
-            Serial.print(";");
+            local_eeprom.work_time += 1;
+            cont_hour = 0;
         }
+        break;
+
+    default:
+        break;
     }
-    //SEGGER_RTT_printf(0, "\n");
-    Serial.println();
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
 }
 
 /**
  * @brief Guardado en la EEPROM del chasis de las variables de diagnostico con categoria de Memoria 'C'.
  * 
  */
-void SaveEepromChasis()
+void SaveEeprom()
 {
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    if (_dirty == true)
+    local_eeprom.checksum = 0;
+    local_eeprom.checksum += local_eeprom.serial_number;
+    local_eeprom.checksum += local_eeprom.integrated_version;
+    local_eeprom.checksum += local_eeprom.work_time;
+    local_eeprom.checksum += local_eeprom.power_errors;
+    local_eeprom.checksum += local_eeprom.consumption_errors;
+    local_eeprom.checksum += local_eeprom.voltage_errors;
+    local_eeprom.checksum += local_eeprom.save_voltage;
+    local_eeprom.checksum += local_eeprom.flag_init;
+    local_eeprom.checksum += local_eeprom.flag_corruption;
+    for (size_t i = 0; i < 71; i++)
     {
-        eeprom_index = 0;
-        for (int16_t i = 0; i < C_NUM_ELEMENTS; i++)
-        {
-            if ((elements[i].category[1] == 'C'))
-            {
-                _eeprom_RAM.data[eeprom_index] = elements[i].value;
-                eeprom_index++;
-                eeprom_index = constrain(eeprom_index, 0, EEPROM_EMULATION_SIZE);
-            }
-        }
-        _eeprom_RAM.valid = true;
-        eeprom_flash.write(_eeprom_RAM);
-        _dirty = false;
+        local_eeprom.checksum += local_eeprom.array_power_use[i];
     }
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-}
-
-/**
- * @brief Devuelve true si la memoeria RAM contiene datos y false si la memeoria RAM esta vacia.
- * 
- * @return true 
- * @return false 
- */
-bool isValid()
-{
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    return _eeprom_RAM.valid;
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-}
-
-/**
- * @brief Incremento de las estadisticas del valor de voltahe y potencia usado.
- * 
- * @param volts 
- * @param wats 
- */
-/*
-    Feature en pausa 28-03-2022.
-void Stats(uint16_t volts, uint16_t wats)
-{
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    int16_t voltage_pos = 0, wats_pos = 0;
-
-    voltage_pos = (volts - MIN_VOLTAGE) / 100;
-    voltage_values[voltage_pos]++;
-
-    wats_pos = (wats - MIN_WATS) / 100;
-    power_values[wats_pos]++;
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-}
-*/
-
-/**
- * @brief Actualizacion de la memoria EEPROM de la Bateria.
- * 
- */
-bool UpdateEepromBatery()
-{
-    uint16_t scrap = 0;
-    // uint16_t scrap1_array[111];
-    // uint16_t scrap2_array[46];
-    uint16_t checksum = 0;
-
-    scrap = ReadWordEEPROM(POS_EEPROM_WORK_TIME);
-    Serial5.print(scrap);
-    Serial5.print("/");
-    Serial5.println(elements[C_RAM_WORK_TIME].value);
-    checksum += elements[C_RAM_WORK_TIME].value;
-    if (elements[C_RAM_WORK_TIME].value != scrap)
+    for (size_t i = 0; i < 21; i++)
     {
-        WriteWordEEPROM(POS_EEPROM_WORK_TIME, elements[C_RAM_WORK_TIME].value);
-        if (ReadWordEEPROM(POS_EEPROM_WORK_TIME) != elements[C_RAM_WORK_TIME].value)
-        {
-            return false;
-        }
+        local_eeprom.checksum += local_eeprom.array_percent_use[i];
     }
-
-    scrap = ReadWordEEPROM(POS_EEPROM_POWER_ERROR);
-    Serial5.print(scrap);
-    Serial5.print("/");
-    Serial5.println(elements[C_RAM_POWER_ERROR].value);
-    checksum += elements[C_RAM_POWER_ERROR].value;
-    if (elements[C_RAM_POWER_ERROR].value != scrap)
-    {
-        WriteWordEEPROM(POS_EEPROM_POWER_ERROR, elements[C_RAM_POWER_ERROR].value);
-        if (ReadWordEEPROM(POS_EEPROM_POWER_ERROR) != elements[C_RAM_POWER_ERROR].value)
-        {
-            return false;
-        }
-    }
-
-    scrap = ReadWordEEPROM(POS_EEPROM_CONSUMPTION_ERROR);
-    Serial5.print(scrap);
-    Serial5.print("/");
-    Serial5.println(elements[C_RAM_CONSUMPTION_ERROR].value);
-    checksum += elements[C_RAM_CONSUMPTION_ERROR].value;
-    if (elements[C_RAM_CONSUMPTION_ERROR].value != scrap)
-    {
-        WriteWordEEPROM(POS_EEPROM_CONSUMPTION_ERROR, elements[C_RAM_CONSUMPTION_ERROR].value);
-        if (ReadWordEEPROM(POS_EEPROM_CONSUMPTION_ERROR) != elements[C_RAM_CONSUMPTION_ERROR].value)
-        {
-            return false;
-        }
-    }
-
-    scrap = ReadWordEEPROM(POS_EEPROM_VOLTAGE_ERROR);
-    Serial5.print(scrap);
-    Serial5.print("/");
-    Serial5.println(elements[C_RAM_VOLTAGE_ERROR].value);
-    checksum += elements[C_RAM_VOLTAGE_ERROR].value;
-    if (elements[C_RAM_VOLTAGE_ERROR].value != scrap)
-    {
-        WriteWordEEPROM(POS_EEPROM_VOLTAGE_ERROR, elements[C_RAM_VOLTAGE_ERROR].value);
-        if (ReadWordEEPROM(POS_EEPROM_VOLTAGE_ERROR) != elements[C_RAM_VOLTAGE_ERROR].value)
-        {
-            return false;
-        }
-    }
-    /*
-        Feature en pausa 28-03-2022.
-        
-    // ReadArrayEEPROM(POS_EEPROM_VOLTS_ARRAY, &scrap1_array[0], (sizeof(scrap1_array) / sizeof(scrap1_array[0])));
-    // for (uint i = 0; i < (sizeof(voltage_values) / sizeof(voltage_values[0])); i++)
-    // {
-    //     checksum += voltage_values[i];
-    //     Serial5.print(scrap1_array[i]);
-    //     Serial5.print("/");
-    //     Serial5.println(voltage_values[i]);
-    //     if (scrap1_array[i] != voltage_values[i])
-    //     {
-    //         WriteWordEEPROM(POS_EEPROM_VOLTS_ARRAY + i * 2, voltage_values[i]);
-    //         if (ReadWordEEPROM(POS_EEPROM_VOLTS_ARRAY + i * 2) != voltage_values[i])
-    //         {
-    //             return false;
-    //         }
-    //     }
-    // }
-
-    // ReadArrayEEPROM(POS_EEPROM_POWER_ARRAY, &scrap2_array[0], (sizeof(scrap2_array) / sizeof(scrap2_array[0])));
-    // for (uint i = 0; i < (sizeof(power_values) / sizeof(power_values[0])); i++)
-    // {
-    //     checksum += power_values[i];
-    //     Serial5.print(scrap2_array[i]);
-    //     Serial5.print("/");
-    //     Serial5.println(power_values[i]);
-    //     if (scrap2_array[i] != power_values[i])
-    //     {
-    //         WriteWordEEPROM(POS_EEPROM_POWER_ARRAY + i * 2, power_values[i]);
-    //         if (ReadWordEEPROM(POS_EEPROM_POWER_ARRAY + i * 2) != power_values[i])
-    //         {
-    //             return false;
-    //         }
-    //     }
-    // }
-    */
-
-    Serial5.println(checksum + 1);
-    WriteWordEEPROM(POS_EEPROM_CHECKSUM, checksum + 1);
-    return true;
-    // uint8_t data8;
-    // for (int i = 0; i <= POS_EEPROM_CHECKSUM + 1; i++)
-    // {
-    //     readEEPROM(i, &data8);
-    //     Serial5.print(data8);
-    //     Serial5.print(",");
-    // }
-    // Serial5.println();
+    flash_eeprom.write(local_eeprom);
 }
 /**
- * @brief Muestreo por el puerto serie de los valores acumulados de las estadisticas de potencia y voltage.
+ * @brief Logeo de los valores del postmortem
  * 
+ * @param value 
+ * @param address 
  */
-/*
-    Feature en pausa 28-03-2022.
-void PrintStats()
+void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_value, int16_t errors_value)
 {
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    for (uint i = 0; i < sizeof(voltage_values) / sizeof(voltage_values[0]); i++)
+    Serial5.println("PM-Logging");
+    for (int i = 0; i < PM_POSITIONS - 1; i++)
     {
-        Serial.print(voltage_values[i]);
-        Serial.print(";");
+        local_eeprom.pm_power[i] = local_eeprom.pm_power[i + 1];
+        local_eeprom.pm_percent[i] = local_eeprom.pm_percent[i + 1];
+        local_eeprom.pm_voltage[i] = local_eeprom.pm_voltage[i + 1];
+        local_eeprom.pm_errors[i] = local_eeprom.pm_errors[i + 1];
     }
-    for (uint i = 0; i < sizeof(power_values) / sizeof(power_values[0]); i++)
-    {
-        Serial.print(power_values[i]);
-        Serial.print(";");
-    }
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-}*/
-
-/**
- * @brief Impresion por el puerto serie de los datos estaticos.
- * 
- */
-void PrintStaticData()
-{
-    pinMode(C_PIN_SCL_2, OUTPUT);
-    pinMode(C_PIN_SDA_2, OUTPUT);
-    Serial.print("\t");
-    Serial.print(elements[C_RAM_MODEL].value);
-    Serial.print(";");
-    Serial.print(elements[C_RAM_SERIAL_NUMBER].value);
-    Serial.print(";");
-    Serial.print(elements[C_RAM_CONSUMPTION_ERROR].value);
-    Serial.print(";");
-    Serial.print(elements[C_RAM_POWER_ERROR].value);
-    Serial.print(";");
-    Serial.print(elements[C_RAM_VOLTAGE_ERROR].value);
-    Serial.print(";");
-    Serial.print(elements[C_RAM_WORK_TIME].value);
-    Serial.print(";");
-    // PrintStats(); Feature en pausa 28-03-2022.
-    Serial.print("\n");
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-    //SEGGER_RTT_printf(0, "\n");
+    local_eeprom.pm_power[PM_POSITIONS - 1] = power_value;
+    local_eeprom.pm_percent[PM_POSITIONS - 1] = percnt_value;
+    local_eeprom.pm_voltage[PM_POSITIONS - 1] = voltage_value;
+    local_eeprom.pm_errors[PM_POSITIONS - 1] = errors_value;
 }
