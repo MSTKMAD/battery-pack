@@ -60,6 +60,7 @@ void initDisplay()
     OLED_display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     OLED_display.clearDisplay();
     OLED_display.display();
+    OLED_display.setTextColor(WHITE); //Color por defecto del texto.
 }
 /**
  * @brief 
