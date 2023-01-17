@@ -32,6 +32,7 @@ int16_t num_swft = 0;
 uint16_t cursor_y = 0;
 bool underscore_st = true;
 bool end_flag = false;
+bool active_question = false;
 
 MilliTimer blink_underscore;
 
@@ -64,6 +65,7 @@ void setup()
         while (button_event == C_NONE_EVENT)
         {
             button_event = ReadDirPad();
+
             if (blink_underscore.poll(500) != C_TIMER_NOT_EXPIRED)
             {
                 if (underscore_st)
@@ -137,7 +139,7 @@ void setup()
         {
             if (array_letras[char_index] == 0xFA)
             {
-                end_flag = true;
+                active_question = true;
             }
             else
             {
@@ -176,6 +178,73 @@ void setup()
                 cursor_x_underscore = cursor_x_name;
             }
         }
+        if (active_question == true)
+        {
+            uint8_t confirm = 0;
+            OLED_display.clearDisplay();
+            OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
+            OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+            OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+            while (active_question == true)
+            {
+                button_event = ReadDirPad();
+
+                if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP))
+                {
+                    OLED_display.drawChar(0, 16, 0x00, WHITE, BLACK, 2);
+                    OLED_display.drawChar(52, 16, 0x18, WHITE, BLACK, 2);
+                    confirm = 1;
+                }
+                else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN))
+                {
+                    OLED_display.drawChar(0, 16, 0x18, WHITE, BLACK, 2);
+                    OLED_display.drawChar(52, 16, 0x00, WHITE, BLACK, 2);
+                    confirm = 2;
+                }
+                else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+                {
+                    if (confirm == 2)
+                    {
+                        end_flag = true;
+                        active_question = false;
+                    }
+                    else if (confirm == 1)
+                    {
+                        active_question = false;
+                        OLED_display.clearDisplay();
+                        OLED_display.setTextSize(2);
+                        OLED_display.setTextColor(WHITE);
+                        OLED_display.setCursor(0, 0);
+                        OLED_display.drawChar(0, 0, 0x1B, WHITE, BLACK, 2);
+                        OLED_display.drawChar(28, 0, init_char, WHITE, BLACK, 2);
+                        OLED_display.drawChar(52, 0, 0x1A, WHITE, BLACK, 2);
+                        OLED_display.display();
+                        OLED_display.fillRect(16, 16, 64, 16, BLACK);
+                        if (num_char < 5)
+                        {
+                            cursor_x_name = 0;
+                            for (int i = 0; i < num_char; i++)
+                            {
+                                OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
+                                cursor_x_name += 12;
+                            }
+                        }
+                        else
+                        {
+                            cursor_x_name = 52 - num_char * 12;
+                            for (int i = 0; i < num_char; i++)
+                            {
+                                OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
+                                cursor_x_name += 12;
+                            }
+                        }
+                        cursor_x_underscore = cursor_x_name;
+                    }
+                }
+                OLED_display.display();
+            }
+        }
+
         OLED_display.display();
         button_event = ReadDirPad();
     }
@@ -197,14 +266,13 @@ void setup()
     }
     else
     {
-        int num_spaces = 3;
+        int num_spaces = 5;
         for (int j = num_char - 1; j >= 0; j--)
         {
             name[j + num_spaces] = name[j];
         }
         for (int i = 1; i <= num_spaces; i++)
         {
-            /* code */
             name[(num_spaces + num_char * 2) - i] = 0x00;
             name[i - 1] = 0x00;
         }
@@ -213,9 +281,7 @@ void setup()
 
         for (int k = 0; k < 4; k++)
         {
-            /* code */
-
-            for (int i = 0; i <= (num_swft / 4); i++)
+            for (int i = 0; i <= (num_swft / 4)+1; i++)
             {
                 cursor_x_name = i * -4;
                 for (int j = 0; j < num_char; j++)
