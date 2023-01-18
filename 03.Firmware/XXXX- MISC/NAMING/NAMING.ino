@@ -156,7 +156,7 @@ void setup()
                     name[num_char] = array_letras[char_index];
                     num_char++;
                 }
-                OLED_display.fillRect(16, 16, 64, 16, BLACK);
+                OLED_display.fillRect(0, 16, 64, 16, BLACK);
                 if (num_char < 5)
                 {
                     cursor_x_name = 0;
@@ -183,7 +183,7 @@ void setup()
             uint8_t confirm = 0;
             OLED_display.clearDisplay();
             OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
-            OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+            //OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
             OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
             while (active_question == true)
             {
@@ -239,6 +239,7 @@ void setup()
                             }
                         }
                         cursor_x_underscore = cursor_x_name;
+                        char_index = 0;
                     }
                 }
                 OLED_display.display();
