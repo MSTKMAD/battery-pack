@@ -25,7 +25,7 @@ const int16_t C_PIN_BUTT_UP = 3;
 const int16_t C_PIN_BUTT_DOWN = 4;
 //const int16_t C_PIN_BUTT_RIGHT = 6;
 //const int16_t C_PIN_BUTT_LEFT = 7;
-const int16_t C_PIN_BUTT_CENTER = 13;
+const int16_t C_PIN_BUTT_CENTER = 7;
 
 const int16_t C_TIMER_DEBOUNCE = 50;
 const int32_t C_TIMER_LONGPRESS = 1000 + C_TIMER_DEBOUNCE;

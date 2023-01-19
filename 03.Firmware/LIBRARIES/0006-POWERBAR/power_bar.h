@@ -10,7 +10,7 @@
  */
 
 //#include <Adafruit_IS31FL3731.h>
-//#include <display.h>
+//#include <OLED_display.h>
 //#include <MilliTimer.h>
 const int16_t MAX_POWER_DISPLAYED = 2500;
 const int16_t LEDS_IN_POWERBAR = 15;
@@ -24,45 +24,40 @@ MilliTimer refresh_timer;
  * @brief Esta funcion se encarga de encender y apagar los leds necesario en la barra de potencia.
  * 
  * @param leds 
- * @param ledmatrix 
- * @param mode_bright 
+ * @param OLED_display 
  */
-void PowerBar(int16_t leds, Adafruit_IS31FL3731_Wing ledmatrix, bool mode_bright = C_MODE_HIGH_BRIGHT)
+void PowerBar(int16_t leds)
 {
-    leds = constrain(leds, 0, LEDS_IN_POWERBAR);
-    if (mode_bright == C_MODE_HIGH_BRIGHT)
-    {
-        C_DISPLAY_ON = C_HIGH_BRIGHTNESS;
-    }
-    else if (mode_bright == C_MODE_LOW_BRIGHT)
-    {
-        C_DISPLAY_ON = C_LOW_BRIGHTNESS;
-    }
+    int xsize_rect_powerbar = C_DISPLAY_WIDTH;
+    int ysize_rect_powerbar = 18;
+
+    int cursor_x = 0;
+
+    leds = constrain(leds, 0, 40);
+
     if (leds == 0)
     {
-        ledmatrix.drawFastHLine(0, C_PWBAR_Y_AXE, LEDS_IN_POWERBAR, C_DISPLAY_OFF);
+        OLED_display.fillRect(4, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, BLACK);
+        OLED_display.display();
     }
     else
     {
-
         for (int16_t i = 0; i <= leds; i++)
         {
-            ledmatrix.drawPixel(i, C_PWBAR_Y_AXE, C_DISPLAY_ON);
+            OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, 2, 7, WHITE);
+            cursor_x += 4;
         }
-        for (int16_t i = leds; i < LEDS_IN_POWERBAR; i++)
-        {
-            ledmatrix.drawPixel(i, C_PWBAR_Y_AXE, C_DISPLAY_OFF);
-        }
+        OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, ysize_rect_powerbar, BLACK);
     }
+    OLED_display.display();
 }
 /**
  * @brief Actualiza la cantidad de leds encendidos en la barra de potencia segun el parametro de entrada "power_sample"
  * 
  * @param power_sample 
- * @param ledmatrix 
- * @param mode_bright_display 
+ * @param OLED_display 
  */
-void UpdatePowerBar(int16_t power_sample, Adafruit_IS31FL3731_Wing ledmatrix, bool mode_bright_display)
+void UpdatePowerBar(int16_t power_sample)
 {
     static int16_t high_sample = 0;
 
@@ -74,7 +69,7 @@ void UpdatePowerBar(int16_t power_sample, Adafruit_IS31FL3731_Wing ledmatrix, bo
     if (refresh_timer.poll(25) != C_TIMER_NOT_EXPIRED)
     {
         uint16_t num_leds = (high_sample + (power_by_led / 2)) / power_by_led;
-        PowerBar(num_leds, ledmatrix, mode_bright_display);
+        PowerBar(num_leds);
         high_sample = 0;
     }
 }
@@ -82,32 +77,16 @@ void UpdatePowerBar(int16_t power_sample, Adafruit_IS31FL3731_Wing ledmatrix, bo
  * @brief  Funcion que permite encender y apagar el boton que representa el estado de la salida del voltage.
  * 
  * @param state_led 
- * @param ledmatrix 
- * @param mode_bright 
+ * @param OLED_display 
  */
-void LedWork(bool state_led, Adafruit_IS31FL3731_Wing ledmatrix, bool mode_bright = C_MODE_HIGH_BRIGHT)
+void LedWork(bool state_led)
 {
-    if (mode_bright == C_MODE_HIGH_BRIGHT)
-    {
-        C_DISPLAY_ON = C_HIGH_BRIGHTNESS;
-    }
-    else if (mode_bright == C_MODE_LOW_BRIGHT)
-    {
-        C_DISPLAY_ON = C_LOW_BRIGHTNESS;
-    }
-
     if (state_led == true)
     {
-        for (int i = 0; i < x_LED_WORK; i++)
-        {
-            ledmatrix.drawPixel(i, C_PWBAR_Y_AXE, C_DISPLAY_ON);
-        }
+        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, WHITE);
     }
     else if (state_led == false)
     {
-        for (int i = 0; i < x_LED_WORK; i++)
-        {
-            ledmatrix.drawPixel(i, C_PWBAR_Y_AXE, C_DISPLAY_OFF);
-        }
+        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, BLACK);
     }
 }

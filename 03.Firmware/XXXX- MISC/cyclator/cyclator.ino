@@ -20,7 +20,7 @@ const int chipSelect = 10;
 //
 
 /*    Babysitter      */
-const uint16_t BATTERY_CAPACITY = 1500; // e.g. 850mAh battery
+const uint16_t BATTERY_CAPACITY = 1000; // e.g. 850mAh battery
 const uint16_t DESIGNE_ENERGY = BATTERY_CAPACITY * 3.7f;
 const uint16_t TERMITANTE_VOLTAGE = 3;
 const uint16_t TAPER_CURRENT = 150;
@@ -32,7 +32,7 @@ const int16_t PIN_LOAD_2 = 6;
 const int16_t PIN_CHARGE_ON = 5;
 
 const int16_t CHARGING = 0xAA;
-const int16_t DISCHARGE = 0x55;
+const int16_t DISCHARGING = 0x55;
 //
 /*     TIMER       */
 const int32_t C_TIMER_WD = 5 * 60000;
@@ -41,7 +41,7 @@ const int32_t C_BREATH_TIME = 2 * 60000;
 
 const int32_t C_TIMER_LOGGING = 60;
 const int32_t C_TIMER_CHARGE = 3 * 3600;
-const int32_t C_TIMER_DISCHARGE = 3 * 3600;
+const int32_t C_TIMER_DISCHARGING = 3 * 3600;
 
 //--------------- VARIABLE --------------//
 /*    Babysitter      */
@@ -221,7 +221,7 @@ void ReadBatteryStats()
 void setup()
 {
   initialization();
-  state = CHARGING;
+  state = DISCHARGING;
 }
 void loop()
 {
@@ -235,9 +235,6 @@ void loop()
     // Serial.print(";");
     ReadBatteryStats();
     Serial.println(toPrint);
-
-
-
     if (state == CHARGING)
     {
 
@@ -247,7 +244,7 @@ void loop()
 
       if ((theory_cap == 100) && (currentavg == 0))
       {
-        state = DISCHARGE;
+        state = DISCHARGING;
         cycle++;
         EEPROM.write(0, cycle);
         cont_cycle = 0.0;
@@ -275,15 +272,10 @@ void loop()
       digitalWrite(PIN_CHARGE_ON, LOW);
       delay(5000);
       ReadBatteryStats();
-      if ( volts >= 3400) {
-        theory_cap = (volts - 3400);
-        theory_cap = theory_cap * 85;
-        theory_cap = theory_cap / 750;
-        theory_cap = theory_cap  + 15;
-        theory_cap = constrain(theory_cap, 15, 100);
-      } else {
-        theory_cap = constrain(((volts - 3000) * 15 / 300), 0, 15);
-      }
+      theory_cap = (volts - 3300);
+      theory_cap = theory_cap * 85;
+      theory_cap = theory_cap / 800;
+      theory_cap = constrain(theory_cap, 0, 100);
       toPrint += String(theory_cap) + ";";
       Serial.println(toPrint);
       File dataFile = SD.open("datalog.csv", FILE_WRITE);
@@ -296,8 +288,15 @@ void loop()
       digitalWrite(PIN_LOAD_2, state_load_2);
       digitalWrite(PIN_CHARGE_ON, state_charge);
       //delay(2000);
+      if (state == DISCHARGING)
+      {
+        if (volts <= 3300)
+        {
+          state = CHARGING;
+        }
+      }
     }
-    if (state == DISCHARGE)
+    if (state == DISCHARGING)
     {
 
       digitalWrite(PIN_CHARGE_ON, LOW);

@@ -1385,6 +1385,11 @@ size_t Adafruit_GFX::write(uint8_t c)
         {
           cursor_x += 14; // Advance x one char
         }
+        else
+        {
+          cursor_x += textsize_x * 6;
+        }
+        
       }
       else
       {
