@@ -57,7 +57,7 @@ bool Init_local_eeprom()
     {
         Serial5.println("EEPROM sin Incializar.");
         Serial5.print("Inicializando...");
-        local_eeprom.serial_number = 0;
+        //local_eeprom.serial_number = 0;
         local_eeprom.integrated_version = INTEGRATED_VERSION;
         local_eeprom.work_time = 0;
         local_eeprom.power_errors = 0;

@@ -8,12 +8,16 @@
  * @copyright Copyright (c) 2021
  * 
  */
+
+
+#define POSICION_MEMORIA 0x0000C100     //Ordenacion BigEndian
+
 const uint8_t HOURS_PM = 10;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 typedef struct EEPROM
 {
-    uint8_t serial_number;
+    uint16_t serial_number;
     uint8_t integrated_version;
     uint16_t work_time;
     uint16_t power_errors;
