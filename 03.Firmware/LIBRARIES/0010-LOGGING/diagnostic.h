@@ -63,6 +63,7 @@ bool Init_local_eeprom()
         local_eeprom.power_errors = 0;
         local_eeprom.consumption_errors = 0;
         local_eeprom.voltage_errors = 0;
+        local_eeprom.shortcircuit_errors = 0;
         local_eeprom.save_voltage = 0;
         local_eeprom.flag_init = true;
         local_eeprom.flag_corruption = false;
@@ -81,6 +82,7 @@ bool Init_local_eeprom()
         local_eeprom.checksum += local_eeprom.power_errors;
         local_eeprom.checksum += local_eeprom.consumption_errors;
         local_eeprom.checksum += local_eeprom.voltage_errors;
+        local_eeprom.checksum += local_eeprom.shortcircuit_errors;
         local_eeprom.checksum += local_eeprom.save_voltage;
         local_eeprom.checksum += local_eeprom.flag_init;
         local_eeprom.checksum += local_eeprom.flag_corruption;
@@ -112,6 +114,7 @@ bool Init_local_eeprom()
             Serial5.println(local_eeprom.power_errors);
             Serial5.println(local_eeprom.consumption_errors);
             Serial5.println(local_eeprom.voltage_errors);
+            Serial5.println(local_eeprom.shortcircuit_errors);
             Serial5.println(local_eeprom.save_voltage);
             Serial5.println(local_eeprom.flag_init);
             Serial5.println(local_eeprom.flag_corruption);
@@ -135,6 +138,7 @@ bool Init_local_eeprom()
             checksum += local_eeprom.power_errors;
             checksum += local_eeprom.consumption_errors;
             checksum += local_eeprom.voltage_errors;
+            checksum += local_eeprom.shortcircuit_errors;
             checksum += local_eeprom.save_voltage;
             checksum += local_eeprom.flag_init;
             checksum += local_eeprom.flag_corruption;
@@ -227,6 +231,9 @@ void IncrementDiagnosticData(int16_t address)
     case C_VOLTAGE_ERROR:
         local_eeprom.voltage_errors += 1;
         break;
+    case C_SHORT_CIRCUIT_ERROR:
+        local_eeprom.shortcircuit_errors += 1;
+        break;
     case C_WORK_TIME:
         static int cont_hour = 0;
         cont_hour++;
@@ -255,6 +262,7 @@ void SaveEeprom()
     local_eeprom.checksum += local_eeprom.power_errors;
     local_eeprom.checksum += local_eeprom.consumption_errors;
     local_eeprom.checksum += local_eeprom.voltage_errors;
+    local_eeprom.checksum += local_eeprom.shortcircuit_errors;
     local_eeprom.checksum += local_eeprom.save_voltage;
     local_eeprom.checksum += local_eeprom.flag_init;
     local_eeprom.checksum += local_eeprom.flag_corruption;

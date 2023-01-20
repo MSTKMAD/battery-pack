@@ -9,8 +9,7 @@
  * 
  */
 
-
-#define POSICION_MEMORIA 0x0000C100     //Ordenacion BigEndian
+#define POSICION_MEMORIA 0x0000C100 //Ordenacion BigEndian
 
 const uint8_t HOURS_PM = 10;
 const uint16_t LOG_PER_HOUR = 10;
@@ -23,6 +22,7 @@ typedef struct EEPROM
     uint16_t power_errors;
     uint16_t consumption_errors;
     uint16_t voltage_errors;
+    uint16_t shortcircuit_errors;
     uint16_t save_voltage;
     bool flag_init;
     bool flag_corruption;
@@ -38,23 +38,24 @@ typedef struct EEPROM
 const uint8_t C_POWER_ERROR = 0;
 const uint8_t C_CONSUMPTION_ERROR = 1;
 const uint8_t C_VOLTAGE_ERROR = 2;
-const uint8_t C_WORK_TIME = 3;
+const uint8_t C_SHORT_CIRCUIT_ERROR = 3;
+const uint8_t C_WORK_TIME = 4;
 
-const uint8_t C_FLAG_CORRUPTION = 4;
-const uint8_t C_FLAG_INIT = 5;
+const uint8_t C_FLAG_CORRUPTION = 5;
+const uint8_t C_FLAG_INIT = 6;
 
-const uint8_t C_SERIAL_NUMBER = 6;
-const uint8_t C_INTEGRATED_VERSION = 7;
+const uint8_t C_SERIAL_NUMBER = 7;
+const uint8_t C_INTEGRATED_VERSION = 8;
 
-const uint8_t C_THEORY_VOLTAGE = 8;
+const uint8_t C_THEORY_VOLTAGE = 9;
 
-const uint8_t C_POWER_USE = 9;
-const uint8_t C_PERCENT_USE = 10;
+const uint8_t C_POWER_USE = 10;
+const uint8_t C_PERCENT_USE = 11;
 
-const uint8_t C_PM_POWER = 11;
-const uint8_t C_PM_PERCENT = 12;
-const uint8_t C_PM_VOLTAGE = 13;
-const uint8_t C_PM_ERRORS = 14;
+const uint8_t C_PM_POWER = 12;
+const uint8_t C_PM_PERCENT = 13;
+const uint8_t C_PM_VOLTAGE = 14;
+const uint8_t C_PM_ERRORS = 15;
 
 const uint8_t C_ERROR_PWR = 1001;
 const uint8_t C_ERROR_VOLT = 1002;

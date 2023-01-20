@@ -63,9 +63,10 @@ const int16_t C_SW_ST_STOP = 0x04;
 const int16_t C_SW_ST_DIAGNOSTIC = 0x05;
 const int16_t C_SW_ST_USB = 0x07;
 
-const int16_t C_LIMIT_COMSUPTION_PROT = 450;
-const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 2000;
-const int16_t C_LIMIT_OVERPOWER_PROT = 4000;
+const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A
+const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida.
+const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida.
+const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 3000; // 3A
 const int16_t C_RETRY_750_COUNT = 750;
 
 const int32_t C_TIME_TO_LIGHT_DOWN = 3000; // 3s
@@ -123,6 +124,7 @@ const uint16_t C_ERROR_OVERCURRENT = 0x10;
 const uint16_t C_ERROR_OVERPOWER = 0x11;
 const uint16_t C_ERROR_OUPUT_UNDERVOLTAGE = 0x12;
 const uint16_t C_ERROR_INPUT_UNDERVOLTAGE = 0x13;
+const uint16_t C_ERROR_SHORTCIRCUIT = 0x14;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -136,7 +138,7 @@ const uint16_t C_ERROR_INPUT_UNDERVOLTAGE = 0x13;
 HealthMonitor boost_check(50, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
- *      - Umbral : 450 mah.
+ *      - Umbral : 1000 ah.
  *      - Ts = 10 ms
  *      - Time spam = 1500ms
  * 
@@ -145,7 +147,7 @@ HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 10, 1500)
 
 /**
  * @brief HealthMonitor de la potencia de salida.
- *      - Umbral : 4000 mW. (mA x mV / 1000)
+ *      - Umbral : 5000 mW. (mA x mV / 1000)
  *      - Ts = 10 ms
  *      - Time spam = 2000 ms
  * 
@@ -154,12 +156,20 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 10, 2000);
 
 /**
  * @brief HealthMonitor del theory_Vout de salida.
- *      - Umbral : 2000 mV
+ *      - Umbral : 1000 mV
  *      - Ts = 10 ms
  *      - Time spam = 1000 ms
  * 
  */
 HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 10, 1000);
+/**
+ * @brief HealthMonitor del short_circuit de salida.
+ *      - Umbral : 3000 mA
+ *      - Ts = 10 ms
+ *      - Time spam = 500 ms
+ * 
+ */
+HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 10, 500);
 
 //--------------------------------------- Timers variables-------------------------------------
 MilliTimer timer_encendido;
@@ -196,6 +206,7 @@ bool switch_on = true;
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec = 0;
 int16_t consmptn_event_protection_counter = 0;
+int16_t shortcircuit_event_protection_counter = 0;
 int16_t OP_event_protection_counter = 0;
 int16_t UV_event_protection_counter = 0;
 uint16_t click_events = 0;
@@ -314,7 +325,12 @@ void setup()
     if (!Init_local_eeprom()) // Incializacion EEPROM
     {
         flag_eeprom_init_fail = true;
+        Serial5.println("Fallo de lectura de EEPROM");
+    }else
+    {
+        Serial5.println("Lectura Correcta de EEPROM");
     }
+    
 
     //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
     capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
@@ -429,6 +445,26 @@ void setup()
             //t1 = micros();
             if (sw_status == C_SW_ST_RUN)
             {
+
+                //      Shortcircuit Monitor     //
+                if (short_current_protection.check(sample_IOut) == true)
+                {
+
+                    shortcircuit_event_protection_counter++;
+                    if (shortcircuit_event_protection_counter == MAX_NUM_PROTECTION_EVENTS)
+                    {
+                        flag_error = true;
+                        error = C_ERROR_SHORTCIRCUIT;
+                        IncrementDiagnosticData(C_SHORT_CIRCUIT_ERROR);
+                        short_current_protection.setCounter(0);
+                    }
+                    else
+                    {
+                        protection_event_delay.set(100);
+                        protection_event_delay_flag = true;
+                        short_current_protection.setCounter(C_RETRY_750_COUNT);
+                    }
+                }
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
@@ -477,8 +513,6 @@ void setup()
                     //------------ PROTECCIONES--------------//
                     if (mask_protection_state == C_MASK_DEACTIVATE)
                     {
-
-                        /*
                         //      Consumption Monitor     //
                         if (over_consumption_protection.check(sample_IOut) == true)
                         {
@@ -488,7 +522,7 @@ void setup()
                             {
                                 flag_error = true;
                                 error = C_ERROR_OVERCURRENT;
-                                IncrementDiagnosticData(1, C_RAM_CONSUMPTION_ERROR);
+                                IncrementDiagnosticData(C_CONSUMPTION_ERROR);
                                 over_consumption_protection.setCounter(0);
                             }
                             else
@@ -508,7 +542,7 @@ void setup()
                             {
                                 flag_error = true;
                                 error = C_ERROR_OVERPOWER;
-                                IncrementDiagnosticData(1, C_RAM_POWER_ERROR);
+                                IncrementDiagnosticData(C_POWER_ERROR);
                                 over_power_protection.setCounter(0);
                             }
                             else
@@ -520,7 +554,6 @@ void setup()
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
                         }
-                        */
                         //      Voltage Monitor        //
                         if ((under_voltage_protection.check(sample_VOut) == false) && (under_voltage_protection.getCounter() == 0))
                         {
@@ -881,6 +914,14 @@ void setup()
                     OLED_display.display();
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_INPUT_UNDERVOLTAGE);
                     break;
+                case C_ERROR_SHORTCIRCUIT:
+                    OLED_display.clearDisplay();
+                    OLED_display.setCursor(0, 8);
+                    OLED_display.setTextSize(2);
+                    OLED_display.print("SrtCi");
+                    OLED_display.display();
+                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_SHORTCIRCUIT);
+                    break;
                 default:
                     OLED_display.clearDisplay();
                     OLED_display.setCursor(0, 8);
@@ -988,16 +1029,18 @@ void setup()
                 switch (error)
                 {
                 case C_ERROR_OVERPOWER:
-                    Serial5.printf("OP ERROR\n\r");
+                    Serial5.printf("OverPower ERROR\n\r");
                     break;
                 case C_ERROR_OVERCURRENT:
-                    Serial5.printf("OC ERROR\n\r");
+                    Serial5.printf("OverCurrent ERROR\n\r");
                     break;
                 case C_ERROR_OUPUT_UNDERVOLTAGE:
-                    Serial5.printf("OUV ERROR\n\r");
+                    Serial5.printf("Output UnderVoltage ERROR\n\r");
                     break;
                 case C_ERROR_INPUT_UNDERVOLTAGE:
-                    Serial5.printf("IUV ERROR\n\r");
+                    Serial5.printf("Input UnderVoltage ERROR\n\r");
+                case C_ERROR_SHORTCIRCUIT:
+                    Serial5.printf("SHORTCIRCUIT ERROR\n\r");
                     break;
                 default:
                     break;

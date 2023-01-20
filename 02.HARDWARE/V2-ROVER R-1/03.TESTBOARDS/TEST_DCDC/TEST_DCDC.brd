@@ -2498,7 +2498,7 @@ design rules under a new name.</description>
 <attribute name="MOUSER_PRICE-STOCK" value="" x="6" y="61" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MOUSER_TESTING_PART_NUMBER" value="" x="6" y="61" size="1.778" layer="27" rot="R270" display="off"/>
 <attribute name="MOUSER_TESTING_PRICE-STOCK" value="" x="6" y="61" size="1.778" layer="27" rot="R270" display="off"/>
-<attribute name="NAME" x="-70" y="93.46" size="1.27" layer="25" rot="R270" align="center"/>
+<attribute name="NAME" x="6.03" y="63.06" size="1.27" layer="25" rot="R270" align="center"/>
 <attribute name="VALUE" x="6" y="57.46" size="1.27" layer="27" rot="R270" align="center"/>
 </element>
 <element name="R13" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" " x="24.865" y="54" smashed="yes">
