@@ -49,6 +49,8 @@ const uint8_t C_INTEGRATED_VERSION = 8;
 
 const uint8_t C_THEORY_VOLTAGE = 9;
 
+const uint8_t C_NUM_DIAG_DATA = 10;
+
 const uint8_t C_POWER_USE = 10;
 const uint8_t C_PERCENT_USE = 11;
 

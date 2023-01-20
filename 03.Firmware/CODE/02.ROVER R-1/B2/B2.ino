@@ -326,11 +326,11 @@ void setup()
     {
         flag_eeprom_init_fail = true;
         Serial5.println("Fallo de lectura de EEPROM");
-    }else
+    }
+    else
     {
         Serial5.println("Lectura Correcta de EEPROM");
     }
-    
 
     //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
     capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
@@ -346,6 +346,10 @@ void setup()
         LogDiagnosticData(50, C_THEORY_VOLTAGE);
         theory_Vout = 50;
     }
+
+    // TESTEO MODO DIAGNOSTICO.
+    //SI EL BOTON X y el BOTON Y estan pulsados:
+    DiagnosticMode();
 
     playSound(C_SOUND_UP);
     delay(1000);

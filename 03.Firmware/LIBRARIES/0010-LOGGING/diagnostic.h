@@ -297,3 +297,31 @@ void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_va
     local_eeprom.pm_voltage[PM_POSITIONS - 1] = voltage_value;
     local_eeprom.pm_errors[PM_POSITIONS - 1] = errors_value;
 }
+/**
+ * @brief 
+ * 
+ */
+void DiagnosticMode()
+{
+    uint16_t diagnostic_chain[10];
+    local_eeprom = flash_eeprom.read();
+    diagnostic_chain[0] = local_eeprom.serial_number;
+    diagnostic_chain[1] = local_eeprom.integrated_version;
+    diagnostic_chain[2] = local_eeprom.work_time;
+    diagnostic_chain[3] = local_eeprom.power_errors;
+    diagnostic_chain[4] = local_eeprom.consumption_errors;
+    diagnostic_chain[5] = local_eeprom.voltage_errors;
+    diagnostic_chain[6] = local_eeprom.shortcircuit_errors;
+    diagnostic_chain[7] = local_eeprom.save_voltage;
+    diagnostic_chain[8] = local_eeprom.flag_init;
+    diagnostic_chain[9] = local_eeprom.flag_corruption;
+
+    char buffer[50];
+    for (int i = 0; i < sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]); i++)
+    {
+        sprintf(buffer, "0x%04X ", diagnostic_chain[i]);
+        Serial5.print(buffer);
+    }
+    Serial5.println();
+    DisplayArray(diagnostic_chain, sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]));
+}
