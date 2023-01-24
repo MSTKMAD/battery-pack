@@ -7701,9 +7701,9 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <parts>
 <part name="J1" library="302-S201" deviceset="302-S201" device=""/>
 <part name="U3" library="ATE1D-5M3-10-Z" deviceset="ATE1D-5M3-10-Z" device=""/>
-<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C13" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 <part name="D3" library="SparkFun-LED" library_urn="urn:adsk.eagle:library:529" deviceset="LED" device="3MM" package3d_urn="urn:adsk.eagle:package:39361/1"/>
-<part name="R40" library="SparkFun" deviceset="RESISTOR" device="0805-RES" value="10K"/>
+<part name="R40" library="SparkFun" deviceset="RESISTOR" device="0805-RES" value="220"/>
 <part name="J2" library="SparkFun-Connectors" library_urn="urn:adsk.eagle:library:513" deviceset="6_PIN_SERIAL_TARGET" device="" package3d_urn="urn:adsk.eagle:package:38009/1"/>
 <part name="JP1" library="jumper" library_urn="urn:adsk.eagle:library:252" deviceset="JP1Q" device="" package3d_urn="urn:adsk.eagle:package:15455/1"/>
 <part name="Z1" library="MMSZ5231B-7-F" deviceset="MMSZ5231B-7-F" device=""/>
