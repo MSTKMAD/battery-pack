@@ -250,6 +250,6 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
         sprintf(buffer, "%04X", array_to_display[i]);
         OLED_display.print(buffer);
         OLED_display.display();
-        delay(1000);
+        delay(333);
     }
 }
