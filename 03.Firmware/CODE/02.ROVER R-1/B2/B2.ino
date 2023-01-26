@@ -69,9 +69,10 @@ const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida.
 const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 3000; // 3A
 const int16_t C_RETRY_750_COUNT = 750;
 
-const int32_t C_TIME_TO_LIGHT_DOWN = 3000; // 3s
-const int32_t C_TIME_IDLE_30_SEG = 30000;  // 3 s
-const int32_t C_TIME_INIT_SCREEN = 1000;   // 1 s
+const int32_t C_TIME_TO_LIGHT_DOWN = 3000;    // 3 s
+const int32_t C_TIME_IDLE_30_SEG = 30000;     // 3 s
+const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s
+const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000; // 5 s
 
 const uint32_t C_WATCH_DOG_TIME_MS = 1000;
 
@@ -193,7 +194,9 @@ MilliTimer timer_end_screen;
 MilliTimer timer_refresh_screen;
 MilliTimer timer_log_sec;
 MilliTimer timer_active;
-
+MilliTimer delay_live_view;
+MilliTimer afk_timer;
+MilliTimer timer_check_diagnostic;
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;
 int16_t sound = C_SOUND_MUTE;
@@ -220,28 +223,16 @@ uint16_t sample_POut = 0;
 uint16_t sample_VIN = 0;
 uint16_t theory_Vout = 50;
 uint16_t capacity = 0;
-uint8_t counter_prints_static_data = 0;
-uint8_t afk_counter = 0;
 String data;
 bool enable_starting_text = true;
 bool enable_starting_sound = false;
 bool enable_ending_text = true;
 bool enable_ending_sound = false;
-bool enable_charge_sound = false;
-bool enable_death_battery_sound = false;
-bool enable_full_charge_sound = false;
-bool enable_live_view = false;
-MilliTimer delay_live_view;
-MilliTimer afk_timer;
-bool new_text_received = false;
-bool change_text_answered = false;
-bool cmd_go_sleep = false;
-bool print_diagnostic_static_data = false;
-bool diag_check = false;
-bool test_enable = false;
 bool flag_eeprom_init_fail = false;
-bool flag_eeprom_upgrade_fail = false;
 uint16_t error;
+bool flag_diagnostic_active = false;
+bool active_confirmation_question = false;
+uint16_t confirm = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool low_batt_sound = false;
@@ -277,7 +268,8 @@ bool arrancado = false;
 bool flag_stop = false;
 
 //int16_t flag_encendido = C_TIMER_IDLE;
-int16_t flag_waiting = C_TIMER_IDLE;
+uint16_t flag_waiting = C_TIMER_IDLE;
+uint16_t flag_diagnostic_timer = C_TIMER_IDLE;
 
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1;
@@ -326,11 +318,11 @@ void setup()
     {
         flag_eeprom_init_fail = true;
         Serial5.println("Fallo de lectura de EEPROM");
-    }else
+    }
+    else
     {
         Serial5.println("Lectura Correcta de EEPROM");
     }
-    
 
     //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
     capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
@@ -847,28 +839,122 @@ void setup()
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
+
                     // Comprobar causante del despertar.
                     if (flag_irq_center_button == true)
                     {
                         go_sleep = false;
-                        timer_irq_button_center.set(1200);
+                        flag_diagnostic_timer = C_TIMER_IDLE;
+                        timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
                     }
                 }
                 else if (go_sleep == false)
                 {
-                    //--- Comprobacion del boton central-----
                     if (flag_irq_center_button == true)
                     {
-                        if (timer_irq_button_center.poll() != C_TIMER_NOT_EXPIRED)
+                        if ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+                        {
+                            if (flag_diagnostic_active == false)
+                            {
+                                if (flag_diagnostic_timer == C_TIMER_IDLE)
+                                {
+                                    Serial5.println("Timer activado.");
+                                    flag_diagnostic_timer = C_TIMER_ARMED;
+                                    timer_check_diagnostic.set(C_TIME_DIAGNOSTIC_CHECK);
+                                }
+                                else if (flag_diagnostic_timer == C_TIMER_ARMED)
+                                {
+                                    if (timer_check_diagnostic.poll() != C_TIMER_NOT_EXPIRED)
+                                    {
+                                        Serial5.println("Timer terminado");
+                                        flag_diagnostic_active = true;
+                                        flag_diagnostic_timer = C_TIMER_IDLE;
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                while (flag_diagnostic_active == true)
+                                {
+                                    initDisplay();
+                                    Serial5.println("Pregunta activa.");
+                                    // Pregunta sobre si diagnostico o no.
+                                    OLED_display.clearDisplay();
+                                    OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
+                                    OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+                                    OLED_display.display();
+                                    active_confirmation_question = true;
+                                    while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
+                                    {
+                                    }
+
+                                    while (active_confirmation_question == true)
+                                    {
+                                        button_event = ReadDirPad();
+
+                                        if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
+                                        {
+                                            OLED_display.drawChar(0, 16, 0x00, WHITE, BLACK, 2);
+                                            OLED_display.drawChar(52, 16, 0x18, WHITE, BLACK, 2);
+                                            confirm = 1;
+                                        }
+                                        else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // Yes
+                                        {
+                                            OLED_display.drawChar(0, 16, 0x18, WHITE, BLACK, 2);
+                                            OLED_display.drawChar(52, 16, 0x00, WHITE, BLACK, 2);
+                                            confirm = 2;
+                                        }
+                                        else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+                                        {
+                                            if (confirm == 2) // Yes
+                                            {
+                                                active_confirmation_question = false;
+                                                Serial5.println("yes");
+                                            }
+                                            else if (confirm == 1) // NO
+                                            {
+                                                active_confirmation_question = false;
+                                                flag_diagnostic_active = false;
+                                                Serial5.println("no");
+                                                OLED_display.clearDisplay();
+                                                timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
+                                            }
+                                        }
+                                        OLED_display.display();
+                                    }
+                                    if (flag_diagnostic_active == true)
+                                    {
+                                        Serial5.println("INICIO DIAGNOSTICO");
+                                        DiagnosticMode();
+                                        OLED_display.clearDisplay();
+                                        OLED_display.setCursor(0, 0);
+                                        OLED_display.print("DIAG");
+                                        OLED_display.setCursor(0, 16);
+                                        OLED_display.print("END");
+                                        OLED_display.display();
+                                        delay(2000);
+                                        OLED_display.clearDisplay();
+                                        OLED_display.setCursor(0, 0);
+                                        OLED_display.print("THANK");
+                                        OLED_display.setCursor(0, 16);
+                                        OLED_display.print("YOU");
+                                        OLED_display.display();
+                                        flag_diagnostic_active = false;
+                                        Serial5.println("FIN DIAGNOSTICO");
+                                    }
+                                }
+                            }
+                        }
+                        else if (timer_irq_button_center.poll() != C_TIMER_NOT_EXPIRED)
                         {
                             go_sleep = true;
+                            Serial5.println("A mimir");
                         }
-                        else
+                        //--- Comprobacion del boton central-----
+                        else if (button_event == C_LP_CENTER) // Si se mantiene apretado el botoncentral desde el despertar se inicia la bateria
                         {
-                            if (button_event == C_LP_CENTER) // Si se mantiene apretado el botoncentral desde el despertar se inicia la bateria
-                            {
-                                flag_initialize = true;
-                            }
+                            flag_initialize = true;
+                            Serial5.println("Bon dia");
                         }
                     }
                 }

@@ -232,3 +232,24 @@ bool DisplayNoBattery()
         delay(750);
     }
 }
+/**
+ * @brief 
+ * 
+ */
+void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
+{
+    char buffer[50];
+    for (int i = 0; i < size_array; i++)
+    {
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(2);
+        OLED_display.setCursor(9, 0);
+        sprintf(buffer, "%04X", i);
+        OLED_display.print(buffer);
+        OLED_display.setCursor(9, 16);
+        sprintf(buffer, "%04X", array_to_display[i]);
+        OLED_display.print(buffer);
+        OLED_display.display();
+        delay(333);
+    }
+}
