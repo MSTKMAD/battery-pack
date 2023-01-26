@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2023
  * 
  */
-#include <Adafruit_SSD1306_096.h>
+#include "Adafruit_SSD1306_096.h"
 #include "MilliTimer.h"
 #include <Wire.h>
 
@@ -239,7 +239,7 @@ void setup()
             }
             display.display();
 
-            if ((flag_vcc_tested == true) || (flag_vcc_2_tested == true))
+            if ((flag_vcc_tested == true) && (flag_vcc_2_tested == true))
             {
                 if (digitalRead(C_PIN_TEST_1) == false)
                 {
@@ -260,7 +260,7 @@ void setup()
             display.print("OP_SWTICH: ");
 
             display.display();
-            if ((flag_en_dcdc_tested == true) || (flag_op_switch_tested == true))
+            if ((flag_en_dcdc_tested == true) && (flag_op_switch_tested == true))
             {
                 if (digitalRead(C_PIN_TEST_2) == false)
                 {
