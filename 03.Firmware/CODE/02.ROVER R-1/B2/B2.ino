@@ -38,6 +38,7 @@ const uint16_t C_PIN_V_IN = A5;
 #include <diagnostic.h>
 #include <power_bar.h>
 #include <batt_ArduinoLowPower.h>
+#include <NAMING.h>
 
 //============================================================== CONSTANTS ===========================================================//
 
@@ -194,9 +195,10 @@ MilliTimer timer_end_screen;
 MilliTimer timer_refresh_screen;
 MilliTimer timer_log_sec;
 MilliTimer timer_active;
-MilliTimer delay_live_view;
-MilliTimer afk_timer;
 MilliTimer timer_check_diagnostic;
+MilliTimer timer_waiting_naming;
+MilliTimer timer_active_naming;
+
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;
 int16_t sound = C_SOUND_MUTE;
@@ -271,6 +273,10 @@ bool flag_stop = false;
 //int16_t flag_encendido = C_TIMER_IDLE;
 uint16_t flag_waiting = C_TIMER_IDLE;
 uint16_t flag_diagnostic_timer = C_TIMER_IDLE;
+int16_t flag_timer_naming = C_TIMER_IDLE;
+
+bool flag_waiting_naming = true;
+bool flag_naming_active = false;
 
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1;
@@ -332,6 +338,15 @@ void setup()
         DisplayCap(i);
         delay(200 / i);
     }
+    delay(1000);
+    SwitchScreenOff();
+    if (ReadDiagnosticData(C_FLAG_ENABLE_NAME) == true)
+    {
+        ShowName();
+    }
+    SwitchScreenOff();
+    playSound(C_SOUND_UP);
+
     //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
     theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
     if (theory_Vout == 0)
@@ -340,9 +355,74 @@ void setup()
         theory_Vout = 50;
     }
 
-    playSound(C_SOUND_UP);
-    delay(1000);
-    SwitchScreenOff();
+    //------------------------ CHECKEO PARA APP NAMING ------------------------------
+    timer_waiting_naming.set(5000);
+    while (flag_waiting_naming == true)
+    {
+        if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+        {
+            if (flag_naming_active == false)
+            {
+                if (flag_timer_naming == C_TIMER_IDLE)
+                {
+                    Serial5.println("Timer Naming Activado.");
+                    timer_active_naming.set(3000);
+                    flag_timer_naming = C_TIMER_ARMED;
+                }
+                else if (flag_timer_naming == C_TIMER_ARMED)
+                {
+                    if (timer_active_naming.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        flag_naming_active = true;
+                        flag_timer_naming = C_TIMER_IDLE;
+                    }
+                }
+            }
+            else
+            {
+                Serial5.println("Naming Activado");
+                Serial5.println("Loading");
+                OLED_display.clearDisplay();
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(0, 0);
+                OLED_display.print("Loading...");
+                OLED_display.drawRect(0, 16, 64, 16, WHITE);
+                for (uint16_t i = 0; i <= 100; i++)
+                {
+                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+                    delay(8000 / 101);
+                    OLED_display.display();
+                }
+                delay(2000);
+                SwitchScreenOff();
+                delay(2000);
+                OLED_display.clearDisplay();
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(8, 12);
+                OLED_display.print("NICKNAME");
+                OLED_display.drawRect(0, 0, 64, 32, WHITE);
+                OLED_display.display();
+                playSound(C_SOUND_CHARGE_IN);
+                delay(4000);
+                Serial5.println("Configuracion Naming");
+                Config_Naming();
+                LogDiagnosticData(true, C_FLAG_ENABLE_NAME);
+                SwitchScreenOff();
+                // Guardado EEPROM
+                //RESETs Flags
+                flag_waiting_naming = false;
+            }
+        }
+        else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED)
+        {
+            flag_waiting_naming = false;
+        }
+        else if (button_event == C_LP_CENTER)
+        {
+            flag_waiting_naming = false;
+        }
+        button_event = ReadDirPad();
+    }
 
     /*===============================================================================================================================================*/
     //                                                                 CONTROL LOOP

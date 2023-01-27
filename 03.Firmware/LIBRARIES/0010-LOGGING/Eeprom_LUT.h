@@ -28,8 +28,11 @@ typedef struct EEPROM
     uint16_t save_voltage;
     bool flag_init;
     bool flag_corruption;
-    uint16_t array_power_use[POWER_USE_POSITIONS];
-    uint16_t array_percent_use[PERCENT_USE_POSITIONS];
+    bool flag_naming_enable;
+    uint16_t name[25];
+    uint16_t num_char_in_name;
+    uint16_t array_power_use[46];   // 500w to 5000w in step of 100w -> 46 step
+    uint16_t array_percent_use[21]; // 0% to 100% in step of 5% -> 21 step
     uint16_t pm_power[PM_POSITIONS];
     uint16_t pm_percent[PM_POSITIONS];
     uint16_t pm_voltage[PM_POSITIONS];
@@ -45,21 +48,23 @@ const uint8_t C_WORK_TIME = 4;
 
 const uint8_t C_FLAG_CORRUPTION = 5;
 const uint8_t C_FLAG_INIT = 6;
+const uint8_t C_FLAG_ENABLE_NAME = 7;
 
-const uint8_t C_SERIAL_NUMBER = 7;
-const uint8_t C_INTEGRATED_VERSION = 8;
+const uint8_t C_NAME = 8;
 
-const uint8_t C_THEORY_VOLTAGE = 9;
+const uint8_t C_SERIAL_NUMBER = 9;
+const uint8_t C_INTEGRATED_VERSION = 10;
 
-const uint8_t C_NUM_DIAG_DATA = 10;
+const uint8_t C_NUM_DIAG_DATA = 11;
 
-const uint8_t C_POWER_USE = 10;
-const uint8_t C_PERCENT_USE = 11;
+const uint8_t C_POWER_USE = 12;
+const uint8_t C_PERCENT_USE = 13;
+const uint8_t C_THEORY_VOLTAGE = 14;
 
-const uint8_t C_PM_POWER = 12;
-const uint8_t C_PM_PERCENT = 13;
-const uint8_t C_PM_VOLTAGE = 14;
-const uint8_t C_PM_ERRORS = 15;
+const uint8_t C_PM_POWER = 15;
+const uint8_t C_PM_PERCENT = 16;
+const uint8_t C_PM_VOLTAGE = 17;
+const uint8_t C_PM_ERRORS = 18;
 
 const uint8_t C_ERROR_PWR = 1001;
 const uint8_t C_ERROR_VOLT = 1002;

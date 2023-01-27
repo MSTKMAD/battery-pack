@@ -67,6 +67,11 @@ bool Init_local_eeprom()
         local_eeprom.save_voltage = 0;
         local_eeprom.flag_init = true;
         local_eeprom.flag_corruption = false;
+        for (int16_t i = 0; i < 25; i++)
+        {
+            local_eeprom.name[i] = 0;
+        }
+        local_eeprom.num_char_in_name = 0;
         for (int16_t i = 0; i < 71; i++)
         {
             local_eeprom.array_power_use[i] = 0;
@@ -86,6 +91,11 @@ bool Init_local_eeprom()
         local_eeprom.checksum += local_eeprom.save_voltage;
         local_eeprom.checksum += local_eeprom.flag_init;
         local_eeprom.checksum += local_eeprom.flag_corruption;
+        for (int16_t i = 0; i < 25; i++)
+        {
+            local_eeprom.checksum += local_eeprom.name[i];
+        }
+        local_eeprom.checksum += local_eeprom.num_char_in_name;
         for (size_t i = 0; i < 71; i++)
         {
             local_eeprom.checksum += local_eeprom.array_power_use[i];
@@ -118,6 +128,13 @@ bool Init_local_eeprom()
             Serial5.println(local_eeprom.save_voltage);
             Serial5.println(local_eeprom.flag_init);
             Serial5.println(local_eeprom.flag_corruption);
+            Serial5.println(local_eeprom.num_char_in_name);
+            for (int16_t i = 0; i < 25; i++)
+            {
+                Serial5.print(local_eeprom.name[i]);
+                Serial5.print(",");
+            }
+            Serial5.println();
             for (int16_t i = 0; i < 71; i++)
             {
                 Serial5.print(local_eeprom.array_power_use[i]);
@@ -142,6 +159,11 @@ bool Init_local_eeprom()
             checksum += local_eeprom.save_voltage;
             checksum += local_eeprom.flag_init;
             checksum += local_eeprom.flag_corruption;
+            for (int16_t i = 0; i < 25; i++)
+            {
+                checksum += local_eeprom.name[i];
+            }
+            checksum += local_eeprom.num_char_in_name;
             for (size_t i = 0; i < 71; i++)
             {
                 checksum += local_eeprom.array_power_use[i];
@@ -151,6 +173,7 @@ bool Init_local_eeprom()
                 checksum += local_eeprom.array_percent_use[i];
             }
             Serial5.println("Volcado de EEPROM Finalizado.");
+            Serial5.printf("Checksum: %d\nEEPROM Checkcum:%d\n", checksum, local_eeprom.checksum);
             if (checksum == local_eeprom.checksum)
             {
                 return 1;
@@ -189,6 +212,9 @@ void LogDiagnosticData(int16_t data, int16_t address)
         local_eeprom.array_percent_use[perc_pos]++;
         break;
 
+    case C_FLAG_ENABLE_NAME:
+        local_eeprom.flag_naming_enable = data;
+
     default:
         break;
     }
@@ -206,6 +232,9 @@ uint16_t ReadDiagnosticData(int16_t address)
     case C_THEORY_VOLTAGE:
         return local_eeprom.save_voltage;
         break;
+
+    case C_FLAG_ENABLE_NAME:
+        return local_eeprom.flag_naming_enable;
 
     default:
         return 0;
@@ -266,6 +295,11 @@ void SaveEeprom()
     local_eeprom.checksum += local_eeprom.save_voltage;
     local_eeprom.checksum += local_eeprom.flag_init;
     local_eeprom.checksum += local_eeprom.flag_corruption;
+    for (int16_t i = 0; i < 25; i++)
+    {
+        local_eeprom.checksum += local_eeprom.name[i];
+    }
+    local_eeprom.checksum += local_eeprom.num_char_in_name;
     for (size_t i = 0; i < 71; i++)
     {
         local_eeprom.checksum += local_eeprom.array_power_use[i];
@@ -348,5 +382,36 @@ void DiagnosticMode()
         Serial5.print(buffer);
     }
     Serial5.println();
+ 
     DisplayArray(diagnostic_chain, sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]));
+}
+
+/**
+ * @brief 
+ * 
+ * @param array_to_display 
+ */
+void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
+{
+    for (uint16_t i = 0; i < 25; i++)
+    {
+        local_eeprom.name[i] = array_to_display[i];
+    }
+    local_eeprom.num_char_in_name = num_char;
+    SaveEeprom();
+}
+
+/**
+ * @brief 
+ * 
+ * @param array_to_name 
+ * @return uint16_t 
+ */
+uint16_t ReadNameEEPROM(char array_to_name[])
+{
+    for (uint16_t i = 0; i < 25; i++)
+    {
+        array_to_name[i] = local_eeprom.name[i];
+    }
+    return local_eeprom.num_char_in_name;
 }
