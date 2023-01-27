@@ -337,7 +337,7 @@ void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_va
  */
 void DiagnosticMode()
 {
-    uint16_t diagnostic_chain[10 + PM_POSITIONS * 4 + POWER_USE_POSITIONS + PERCENT_USE_POSITIONS];
+    uint16_t diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + PERCENT_USE_POSITIONS];
     local_eeprom = flash_eeprom.read();
     diagnostic_chain[0] = local_eeprom.serial_number;
     diagnostic_chain[1] = local_eeprom.integrated_version;
@@ -349,30 +349,37 @@ void DiagnosticMode()
     diagnostic_chain[7] = local_eeprom.save_voltage;
     diagnostic_chain[8] = local_eeprom.flag_init;
     diagnostic_chain[9] = local_eeprom.flag_corruption;
+    diagnostic_chain[10] = local_eeprom.flag_naming_enable;
+    diagnostic_chain[11] = local_eeprom.num_char_in_name;
+
+    for (int i = 0; i < 25; i++)
+    {
+        diagnostic_chain[12 + i] = local_eeprom.name[i];
+    }
 
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[10 + i] = local_eeprom.pm_power[i];
+        diagnostic_chain[12 + NUM_POS_NAME + i] = local_eeprom.pm_power[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[10 + PM_POSITIONS + i] = local_eeprom.pm_percent[i];
+        diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS + i] = local_eeprom.pm_percent[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[10 + PM_POSITIONS * 2 + i] = local_eeprom.pm_voltage[i];
+        diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS * 2 + i] = local_eeprom.pm_voltage[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[10 + PM_POSITIONS * 3 + i] = local_eeprom.pm_errors[i];
+        diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS * 3 + i] = local_eeprom.pm_errors[i];
     }
     for (uint16_t i = 0; i < POWER_USE_POSITIONS; i++)
     {
-        diagnostic_chain[10 + PM_POSITIONS * 4 + i] = local_eeprom.array_power_use[i];
+        diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS * 4 + i] = local_eeprom.array_power_use[i];
     }
     for (uint16_t i = 0; i < PERCENT_USE_POSITIONS; i++)
     {
-        diagnostic_chain[10 + PM_POSITIONS * 4 + POWER_USE_POSITIONS + i] = local_eeprom.array_percent_use[i];
+        diagnostic_chain[12 + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + i] = local_eeprom.array_percent_use[i];
     }
 
     char buffer[50];
@@ -382,7 +389,7 @@ void DiagnosticMode()
         Serial5.print(buffer);
     }
     Serial5.println();
- 
+
     DisplayArray(diagnostic_chain, sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]));
 }
 
