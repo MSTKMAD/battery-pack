@@ -848,7 +848,7 @@ void setup()
                         Serial5.println("Hi??");
                         go_sleep = false;
                         flag_diagnostic_timer = C_TIMER_IDLE;
-                        timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
+                        timer_irq_button_center.set(C_TIMER_LONGPRESS + 200);
                     }
                 }
                 else if (go_sleep == false)
