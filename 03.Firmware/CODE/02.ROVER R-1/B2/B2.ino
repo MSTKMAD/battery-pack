@@ -495,7 +495,7 @@ void setup()
                             cont_active = 0;
                         }
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
-                        Serial5.printf("Vin:%d\n\r", sample_VIN);
+                        Serial5.printf("Vin:%d\n", sample_VIN);
                         if (sample_VIN <= 3300)
                         {
                             DisplayLowBattery();
@@ -540,7 +540,7 @@ void setup()
                             }
                             else
                             {
-                                Serial5.printf("OP %d\n\r", consmptn_event_protection_counter);
+                                Serial5.printf("OP %d\n", consmptn_event_protection_counter);
                                 protection_event_delay.set(100);
                                 protection_event_delay_flag = true;
                                 over_power_protection.setCounter(over_power_protection.limit / 2);
@@ -561,7 +561,7 @@ void setup()
                             }
                             else
                             {
-                                Serial5.printf("OUV %d\n\r", consmptn_event_protection_counter);
+                                Serial5.printf("OUV %d\n", consmptn_event_protection_counter);
                                 protection_event_delay.set(100);
                                 protection_event_delay_flag = true;
                                 under_voltage_protection.setCounter(under_voltage_protection.limit / 2);
@@ -640,7 +640,7 @@ void setup()
 
                 if (button_event == C_LP_CENTER)
                 {
-                    Serial5.printf("Longpress CENTER");
+                    Serial5.println("Longpress CENTER");
                     click_events++;
                     timer_refresh_screen.set(1000);
                     if (click_events == 1)
@@ -691,7 +691,7 @@ void setup()
                     //----- Subida de voltaje --------//
                     if (button_event == C_LP_UP)
                     {
-                        Serial5.printf("Longpress UP");
+                        Serial5.println("Longpress UP");
                         if (theory_Vout < MAX_VOLTAGE)
                         {
                             theory_Vout += 10;
@@ -701,7 +701,7 @@ void setup()
                     }
                     else if (button_event == C_CLICK_UP)
                     {
-                        Serial5.printf("Click UP");
+                        Serial5.println("Click UP");
                         if (theory_Vout < MAX_VOLTAGE)
                         {
                             theory_Vout += 1;
@@ -712,7 +712,7 @@ void setup()
                     //------ Bajada del Voltaje------//
                     else if (button_event == C_LP_DOWN)
                     {
-                        Serial5.printf("Longpress DOWN");
+                        Serial5.println("Longpress DOWN");
                         if (theory_Vout > MIN_VOLTAGE)
                         {
                             theory_Vout -= 10;
@@ -722,7 +722,7 @@ void setup()
                     }
                     else if (button_event == C_CLICK_DOWN)
                     {
-                        Serial5.printf("Click DOWN");
+                        Serial5.println("Click DOWN");
                         if (theory_Vout > MIN_VOLTAGE)
                         {
                             theory_Vout -= 1;
@@ -833,6 +833,7 @@ void setup()
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW);                                          // Apagado de la alimentacion secundaria.
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar
                     //t2 = micros();
+                    Serial5.println("Zzz");
                     LowPower.sleep();
                     //Serial5.printf(" Apagado: %d us \t", t2 - t1);
                     //Serial5.println();
@@ -844,6 +845,7 @@ void setup()
                     // Comprobar causante del despertar.
                     if (flag_irq_center_button == true)
                     {
+                        Serial5.println("Hi??");
                         go_sleep = false;
                         flag_diagnostic_timer = C_TIMER_IDLE;
                         timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
@@ -856,30 +858,30 @@ void setup()
                         if ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                         {
                             if (flag_enable_diagnostic == true)
-                        {
-                            if (flag_diagnostic_active == false)
                             {
-                                if (flag_diagnostic_timer == C_TIMER_IDLE)
+                                if (flag_diagnostic_active == false)
                                 {
-                                    Serial5.println("Timer activado.");
-                                    flag_diagnostic_timer = C_TIMER_ARMED;
-                                    timer_check_diagnostic.set(C_TIME_DIAGNOSTIC_CHECK);
-                                }
-                                else if (flag_diagnostic_timer == C_TIMER_ARMED)
-                                {
-                                    if (timer_check_diagnostic.poll() != C_TIMER_NOT_EXPIRED)
+                                    if (flag_diagnostic_timer == C_TIMER_IDLE)
                                     {
-                                        Serial5.println("Timer terminado");
-                                        flag_diagnostic_active = true;
-                                        flag_diagnostic_timer = C_TIMER_IDLE;
+                                        Serial5.println("Timer activado.");
+                                        flag_diagnostic_timer = C_TIMER_ARMED;
+                                        timer_check_diagnostic.set(C_TIME_DIAGNOSTIC_CHECK);
+                                    }
+                                    else if (flag_diagnostic_timer == C_TIMER_ARMED)
+                                    {
+                                        if (timer_check_diagnostic.poll() != C_TIMER_NOT_EXPIRED)
+                                        {
+                                            Serial5.println("Timer terminado");
+                                            flag_diagnostic_active = true;
+                                            flag_diagnostic_timer = C_TIMER_IDLE;
+                                        }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                while (flag_diagnostic_active == true)
+                                else
                                 {
-                                    initDisplay();
+                                    while (flag_diagnostic_active == true)
+                                    {
+                                        initDisplay();
                                         OLED_display.clearDisplay();
                                         OLED_display.setTextSize(2);
                                         OLED_display.setCursor(10, 10);
@@ -889,24 +891,24 @@ void setup()
                                         playSound(C_SOUND_CHARGE_IN);
                                         delay(1000);
 
-                                    Serial5.println("Pregunta activa.");
-                                    // Pregunta sobre si diagnostico o no.
-                                    OLED_display.clearDisplay();
+                                        Serial5.println("Pregunta activa.");
+                                        // Pregunta sobre si diagnostico o no.
+                                        OLED_display.clearDisplay();
                                         OLED_display.setCursor(0, 0);
                                         OLED_display.print("START");
                                         OLED_display.drawChar(0, 16, 0x59, WHITE, BLACK, 2);
                                         OLED_display.drawChar(52, 16, 0x4E, WHITE, BLACK, 2);
-                                    OLED_display.display();
-                                    active_confirmation_question = true;
-                                    while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
-                                    {
-                                    }
+                                        OLED_display.display();
+                                        active_confirmation_question = true;
+                                        while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
+                                        {
+                                        }
 
-                                    while (active_confirmation_question == true)
-                                    {
-                                        button_event = ReadDirPad();
+                                        while (active_confirmation_question == true)
+                                        {
+                                            button_event = ReadDirPad();
 
-                                        if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
+                                            if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
                                             {
                                                 active_confirmation_question = false;
                                                 flag_diagnostic_active = false;
@@ -918,12 +920,12 @@ void setup()
                                             {
                                                 active_confirmation_question = false;
                                                 Serial5.println("yes");
-                                        }
+                                            }
 
-                                        OLED_display.display();
-                                    }
-                                    if (flag_diagnostic_active == true)
-                                    {
+                                            OLED_display.display();
+                                        }
+                                        if (flag_diagnostic_active == true)
+                                        {
                                             for (int i = 9; i >= 0; i--)
                                             {
                                                 OLED_display.clearDisplay();
@@ -934,23 +936,23 @@ void setup()
                                                 delay(1000);
                                             }
 
-                                        Serial5.println("INICIO DIAGNOSTICO");
-                                        DiagnosticMode();
-                                        OLED_display.clearDisplay();
-                                        OLED_display.setCursor(0, 0);
+                                            Serial5.println("INICIO DIAGNOSTICO");
+                                            DiagnosticMode();
+                                            OLED_display.clearDisplay();
+                                            OLED_display.setCursor(0, 0);
                                             OLED_display.print("TEST");
-                                        OLED_display.setCursor(0, 16);
-                                        OLED_display.print("END");
-                                        OLED_display.display();
-                                        delay(2000);
-                                        OLED_display.clearDisplay();
-                                        OLED_display.setCursor(0, 0);
-                                        OLED_display.print("THANK");
-                                        OLED_display.setCursor(0, 16);
-                                        OLED_display.print("YOU");
-                                        OLED_display.display();
-                                        flag_diagnostic_active = false;
-                                        Serial5.println("FIN DIAGNOSTICO");
+                                            OLED_display.setCursor(0, 16);
+                                            OLED_display.print("END");
+                                            OLED_display.display();
+                                            delay(2000);
+                                            OLED_display.clearDisplay();
+                                            OLED_display.setCursor(0, 0);
+                                            OLED_display.print("THANK");
+                                            OLED_display.setCursor(0, 16);
+                                            OLED_display.print("YOU");
+                                            OLED_display.display();
+                                            flag_diagnostic_active = false;
+                                            Serial5.println("FIN DIAGNOSTICO");
                                             playSound(C_SOUND_CHARGE_OUT);
                                             OLED_display.clearDisplay();
                                             timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
@@ -1079,7 +1081,7 @@ void setup()
                 flag_display_capacity = false;
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO STOP\n\r");
+                Serial5.println("Change TO STOP");
                 trigger_Display_volt = true;
                 timer_idle.set(30000);
                 timer_recover_voltage.set(1000);
@@ -1102,7 +1104,7 @@ void setup()
                 flag_low_battery = false;
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO STOP\n\r");
+                Serial5.println("Change TO STOP");
                 playSound(C_SOUND_OFF);
                 timer_idle.set(30000);
                 timer_recover_voltage.set(1000);
@@ -1120,7 +1122,7 @@ void setup()
                 flag_low_battery = false;
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO ERROR\n\r");
+                Serial5.println("Change TO ERROR");
                 display_error_status = C_DISPLAY_ST_BUSSY;
                 timer_display_error.set(500);
                 SwitchScreenOff();
@@ -1129,18 +1131,18 @@ void setup()
                 switch (error)
                 {
                 case C_ERROR_OVERPOWER:
-                    Serial5.printf("OverPower ERROR\n\r");
+                    Serial5.printf("OverPower ERROR\n");
                     break;
                 case C_ERROR_OVERCURRENT:
-                    Serial5.printf("OverCurrent ERROR\n\r");
+                    Serial5.printf("OverCurrent ERROR\n");
                     break;
                 case C_ERROR_OUPUT_UNDERVOLTAGE:
-                    Serial5.printf("Output UnderVoltage ERROR\n\r");
+                    Serial5.printf("Output UnderVoltage ERROR\n");
                     break;
                 case C_ERROR_INPUT_UNDERVOLTAGE:
-                    Serial5.printf("Input UnderVoltage ERROR\n\r");
+                    Serial5.printf("Input UnderVoltage ERROR\n");
                 case C_ERROR_SHORTCIRCUIT:
-                    Serial5.printf("SHORTCIRCUIT ERROR\n\r");
+                    Serial5.printf("SHORTCIRCUIT ERROR\n");
                     break;
                 default:
                     break;
@@ -1170,7 +1172,7 @@ void setup()
                     /* Clear Flags */
                     flag_stop = false;
                     /* Change-State Effects */
-                    Serial5.printf("Change TO RUN\n\r");
+                    Serial5.printf("Change TO RUN\n");
                     playSound(C_SOUND_ON);
                 }
             }
@@ -1190,7 +1192,7 @@ void setup()
                 go_sleep = true;
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO SLEEP\n\r");
+                Serial5.printf("Change TO SLEEP\n");
                 timer_end_screen.set(1000);
             }
         }
@@ -1213,8 +1215,8 @@ void setup()
                 flag_sound_end = false;
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO START\n\r");
                 flag_enable_diagnostic = true;
+                Serial5.printf("Change TO START\n");
                 initDisplay();
                 trigger_Display_volt = true;
                 DisplayLogo();
@@ -1237,7 +1239,7 @@ void setup()
                 /* Clear Flags */
 
                 /* Change-State Effects */
-                Serial5.printf("Change TO STOP\n\r");
+                Serial5.printf("Change TO STOP\n");
                 timer_idle.set(30000);
                 trigger_Display_volt = true;
                 timer_recover_voltage.set(1000);
@@ -1314,7 +1316,7 @@ void setup()
         {
             cont_log_sec++;
 
-            Serial5.printf("%d\n\r", cont_log_sec);
+            Serial5.printf("%d\n-----------------\n", cont_log_sec);
         }
         while ((t2 - t1) < C_PROGRAM_CYCLE_PERIOD)
         {

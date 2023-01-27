@@ -222,21 +222,18 @@ uint16_t getSound(uint16_t *local, uint16_t sound_id)
  */
 void playSound(int16_t num)
 {
+    Serial5.printf("Sound %d\n", num);
     uint16_t index = 0;
     bool buzzer_state = C_BUZZER_BUSSY;
     uint16_t local_sound[100];
     uint16_t size_sound = 0;
-    Serial5.printf("Size_sound %d \n\r", size_sound);
     size_sound = getSound(local_sound, num);
-    Serial5.printf("Size_sound %d \n\r", size_sound);
     timer_buzzer.set(10);
-    for (uint16_t i = 0; i/3 < size_sound; i += 3)
+    for (uint16_t i = 0; i / 3 < size_sound; i += 3)
     {
-        Serial5.printf("%d/%d\n", i, size_sound);
         while (timer_buzzer.poll() == C_TIMER_NOT_EXPIRED)
             ;
         tone(C_PIN_BUZZER, local_sound[i], local_sound[i + 1]);
         timer_buzzer.set(local_sound[i + 1] + local_sound[i + 2]);
-        
     }
 }
