@@ -230,6 +230,7 @@ bool enable_ending_text = true;
 bool enable_ending_sound = false;
 bool flag_eeprom_init_fail = false;
 uint16_t error;
+bool flag_enable_diagnostic = false;
 bool flag_diagnostic_active = false;
 bool active_confirmation_question = false;
 uint16_t confirm = 0;
@@ -854,6 +855,8 @@ void setup()
                     {
                         if ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                         {
+                            if (flag_enable_diagnostic == true)
+                        {
                             if (flag_diagnostic_active == false)
                             {
                                 if (flag_diagnostic_timer == C_TIMER_IDLE)
@@ -877,11 +880,22 @@ void setup()
                                 while (flag_diagnostic_active == true)
                                 {
                                     initDisplay();
+                                        OLED_display.clearDisplay();
+                                        OLED_display.setTextSize(2);
+                                        OLED_display.setCursor(10, 10);
+                                        OLED_display.drawRect(0, 0, 64, 32, WHITE);
+                                        OLED_display.print("TEST");
+                                        OLED_display.display();
+                                        playSound(C_SOUND_CHARGE_IN);
+                                        delay(1000);
+
                                     Serial5.println("Pregunta activa.");
                                     // Pregunta sobre si diagnostico o no.
                                     OLED_display.clearDisplay();
-                                    OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
-                                    OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+                                        OLED_display.setCursor(0, 0);
+                                        OLED_display.print("START");
+                                        OLED_display.drawChar(0, 16, 0x59, WHITE, BLACK, 2);
+                                        OLED_display.drawChar(52, 16, 0x4E, WHITE, BLACK, 2);
                                     OLED_display.display();
                                     active_confirmation_question = true;
                                     while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
@@ -893,25 +907,6 @@ void setup()
                                         button_event = ReadDirPad();
 
                                         if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
-                                        {
-                                            OLED_display.drawChar(0, 16, 0x00, WHITE, BLACK, 2);
-                                            OLED_display.drawChar(52, 16, 0x18, WHITE, BLACK, 2);
-                                            confirm = 1;
-                                        }
-                                        else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // Yes
-                                        {
-                                            OLED_display.drawChar(0, 16, 0x18, WHITE, BLACK, 2);
-                                            OLED_display.drawChar(52, 16, 0x00, WHITE, BLACK, 2);
-                                            confirm = 2;
-                                        }
-                                        else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
-                                        {
-                                            if (confirm == 2) // Yes
-                                            {
-                                                active_confirmation_question = false;
-                                                Serial5.println("yes");
-                                            }
-                                            else if (confirm == 1) // NO
                                             {
                                                 active_confirmation_question = false;
                                                 flag_diagnostic_active = false;
@@ -919,16 +914,31 @@ void setup()
                                                 OLED_display.clearDisplay();
                                                 timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
                                             }
+                                            else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // Yes
+                                            {
+                                                active_confirmation_question = false;
+                                                Serial5.println("yes");
                                         }
+
                                         OLED_display.display();
                                     }
                                     if (flag_diagnostic_active == true)
                                     {
+                                            for (int i = 9; i >= 0; i--)
+                                            {
+                                                OLED_display.clearDisplay();
+                                                OLED_display.setTextSize(2);
+                                                OLED_display.setCursor(28, 10);
+                                                OLED_display.print(i);
+                                                OLED_display.display();
+                                                delay(1000);
+                                            }
+
                                         Serial5.println("INICIO DIAGNOSTICO");
                                         DiagnosticMode();
                                         OLED_display.clearDisplay();
                                         OLED_display.setCursor(0, 0);
-                                        OLED_display.print("DIAG");
+                                            OLED_display.print("TEST");
                                         OLED_display.setCursor(0, 16);
                                         OLED_display.print("END");
                                         OLED_display.display();
@@ -941,6 +951,10 @@ void setup()
                                         OLED_display.display();
                                         flag_diagnostic_active = false;
                                         Serial5.println("FIN DIAGNOSTICO");
+                                            playSound(C_SOUND_CHARGE_OUT);
+                                            OLED_display.clearDisplay();
+                                            timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
+                                        }
                                     }
                                 }
                             }
@@ -1200,6 +1214,7 @@ void setup()
 
                 /* Change-State Effects */
                 Serial5.printf("Change TO START\n\r");
+                flag_enable_diagnostic = true;
                 initDisplay();
                 trigger_Display_volt = true;
                 DisplayLogo();
