@@ -8,6 +8,7 @@
  * @copyright Copyright (c) 2023
  * 
  */
+#include "Arduino.h"
 #include "Adafruit_SSD1306_096.h"
 #include "MilliTimer.h"
 #include <Wire.h>
@@ -56,7 +57,7 @@ const uint16_t UPPER_TOL = 100 + TOLERANCIA;
 
 Adafruit_SSD1306 display(128, 64, C_PIN_MOSI, C_PIN_SCK, C_PIN_MISO, C_PIN_DSP_RST, C_PIN_SS);
 
-MCP4725 MCP(0x62); // 0x62 or 0x63
+MCP4725 MCP(0x60, &Wire);
 
 bool flag_testing = false;
 bool flag_dac_test = false;
@@ -69,63 +70,11 @@ uint16_t vout_sample = 0;
 uint16_t iout_sample = 0;
 uint16_t dac_count = 0;
 
-const static unsigned char __attribute__((progmem)) MusotokuLogo[] = {
-    0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00,
-    0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80,
-    0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0,
-    0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60,
-    0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30,
-    0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18,
-    0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x10, 0x83, 0xc1, 0xe0, 0x00, 0x04,
-    0x80, 0x00, 0x63, 0x10, 0x84, 0x22, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x77, 0x10, 0x88, 0x12, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x5d, 0x10, 0x84, 0x02, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x49, 0x10, 0x83, 0xc2, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x10, 0x80, 0x22, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x10, 0x80, 0x12, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x10, 0x88, 0x12, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x10, 0x84, 0x22, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x41, 0x0f, 0x03, 0xc1, 0xa0, 0x00, 0x04,
-    0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10,
-    0xe0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1c,
-    0x80, 0x00, 0x7f, 0x0f, 0x04, 0x22, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x84, 0x42, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x84, 0x82, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x85, 0x02, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x86, 0x02, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x86, 0x02, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x85, 0x02, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x84, 0x82, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x10, 0x84, 0x42, 0x10, 0x00, 0x04,
-    0x80, 0x00, 0x08, 0x0f, 0x04, 0x21, 0xe0, 0x00, 0x04,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04,
-    0xc0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c,
-    0x60, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x18,
-    0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30,
-    0x18, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x60,
-    0x0c, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xc0,
-    0x06, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x80,
-    0x03, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00
-
-};
-
 void setup()
 {
-    Wire.begin();
-    Serial.begin(9600);
+    //Wire.setClock(100000);
     MCP.begin(C_PIN_SDA, C_PIN_SCL);
+    Serial.begin(9600);
 
     pinMode(C_PIN_EN_DCDC, OUTPUT);
     pinMode(C_PIN_OP_SWITCH, OUTPUT);
@@ -147,7 +96,134 @@ void setup()
     digitalWrite(C_PIN_R1, LOW);
     digitalWrite(C_PIN_R2, LOW);
     digitalWrite(C_PIN_R3, LOW);
+    analogReadResolution(12);
+    display.begin();
+    /* Fase de Testeo de Placa de Testeo */
+    uint16_t r_sel = 0;
+    uint16_t volt = 50;
+    while (1)
+    {
+        Serial.println("Bip-Bip"); //HeartBit enviado al DUT.
+        display.clearDisplay();
+        display.setTextSize(1);
+        display.setCursor(0, 0);
+        display.print("TEST CARD");
+        display.setTextColor(WHITE);
+        // 4 Voltios de Salida por V_USB
+        if (digitalRead(C_PIN_TEST_1) == LOW)
+        {
+            // R1
+            digitalWrite(C_PIN_R1, HIGH);
+            digitalWrite(C_PIN_R2, LOW);
+            digitalWrite(C_PIN_R3, LOW);
+            digitalWrite(C_PIN_EN_DCDC, LOW);
+            digitalWrite(C_PIN_OP_SWITCH, LOW);
+            r_sel = 1;
+        }
+        else if (digitalRead(C_PIN_TEST_2) == LOW)
+        {
+            // R2
+            digitalWrite(C_PIN_R1, LOW);
+            digitalWrite(C_PIN_R2, HIGH);
+            digitalWrite(C_PIN_R3, LOW);
+            digitalWrite(C_PIN_EN_DCDC, LOW);
+            digitalWrite(C_PIN_OP_SWITCH, HIGH);
+            r_sel = 2;
+        }
+        else if (digitalRead(C_PIN_TEST_3) == LOW)
+        {
+            // R3
+            digitalWrite(C_PIN_R1, LOW);
+            digitalWrite(C_PIN_R2, LOW);
+            digitalWrite(C_PIN_R3, HIGH);
+            digitalWrite(C_PIN_EN_DCDC, HIGH);
+            digitalWrite(C_PIN_OP_SWITCH, LOW);
+            r_sel = 3;
+        }
+        switch (r_sel)
+        {
+        case 1:
+            display.setCursor(0, 40);
+            display.print("OP_SWITCH");
+            display.setCursor(64, 40);
+            display.print("-> OFF");
+            display.setCursor(0, 50);
+            display.print("EN_DCDC");
+            display.setCursor(64, 50);
+            display.print("-> OFF");
+            display.setCursor(100, 0);
+            display.printf("1");
+            break;
+        case 2:
+            display.setCursor(0, 40);
+            display.print("OP_SWITCH");
+            display.setCursor(64, 40);
+            display.print("-> ON");
+            display.setCursor(0, 50);
+            display.print("EN_DCDC");
+            display.setCursor(64, 50);
+            display.print("-> OFF");
+            display.setCursor(100, 0);
+            display.printf("2");
+            break;
+        case 3:
+            display.setCursor(0, 40);
+            display.print("OP_SWITCH");
+            display.setCursor(64, 40);
+            display.print("-> OFF");
+            display.setCursor(0, 50);
+            display.print("EN_DCDC");
+            display.setCursor(64, 50);
+            display.print("-> ON");
+            display.setCursor(100, 0);
+            display.printf("3");
+            break;
 
+        default:
+            display.setCursor(0, 40);
+            display.print("OP_SWITCH");
+            display.setCursor(64, 40);
+            display.print("-> ");
+            display.setCursor(0, 50);
+            display.print("EN_DCDC");
+            display.setCursor(64, 50);
+            display.print("-> ");
+            break;
+        }
+        display.setCursor(0, 10);
+        display.printf("IO");
+        display.setCursor(64, 10);
+        display.printf("= %d mV", analogRead(C_PIN_IO_SENSE) * 3300 / 4096);
+
+        display.setCursor(0, 20);
+        display.print("VO");
+        display.setCursor(64, 20);
+        display.printf("= %d mV", analogRead(C_PIN_VOUT_SENSE) * 3300 / 4096);
+        volt += 5;
+        if (volt == 120)
+        {
+            volt = 50;
+        }
+        if (!MCP.isConnected())
+        {
+            display.setCursor(60, 0);
+            display.printf("ERROR", volt);
+        }
+        else
+        {
+            display.setCursor(60, 0);
+            display.printf("Good", volt);
+        }
+
+        dac_count = 1781 - (((volt - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+        MCP.setValue(dac_count);
+        display.setCursor(0, 30);
+        display.print("FB_DAC");
+        display.setCursor(64, 30);
+        display.printf("= %d mV", volt);
+        display.display();
+        delay(250);
+    }
     display.begin();
     display.clearDisplay();
     display.setTextSize(2);
@@ -247,10 +323,10 @@ void setup()
             display.setCursor(0, 50);
             display.print("VOUT");
 
-            for (int i = MIN_VOLTAGE; i < MAX_VOLTAGE; i)
+            for (int i = MIN_VOLTAGE; i < MAX_VOLTAGE; i++)
             {
                 dac_count = C_DAC_MIN_COUNT - (((i - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-                MCP.setValue(dac_count);
+                //MCP.setValue(dac_count);
                 display.setCursor(70, 25);
                 display.print(dac_count);
                 display.setCursor(70, 50);
@@ -307,7 +383,7 @@ void setup()
             digitalWrite(C_PIN_R1, HIGH);
 
             dac_count = C_DAC_MIN_COUNT - (((C_VOUT_TEST_2 - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-            MCP.setValue(dac_count);
+            // MCP.setValue(dac_count);
 
             vout_sample = 0;
             for (int i = 0; i < 8; i++)
@@ -359,7 +435,7 @@ void setup()
 
             digitalWrite(C_PIN_R2, HIGH);
             dac_count = C_DAC_MIN_COUNT - (((C_VOUT_TEST_3 - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-            MCP.setValue(dac_count);
+            // MCP.setValue(dac_count);
 
             vout_sample = 0;
             for (int i = 0; i < 8; i++)
