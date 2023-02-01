@@ -15,18 +15,12 @@
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
 //============================================================== PINES ===========================================================//
-const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1;
-//const uint16_t C_PIN_FLAG_CHARG = 5;
-const uint16_t C_PIN_OP_SWITCH = 13;
-//const uint16_t C_PIN_USB_SEL = 7;
-//const uint16_t C_PIN_TEST_MODE = 9;
-//const uint16_t C_PIN_SDA_2 = 10;
-const uint16_t C_PIN_EN_DCDC = 11;
-//const uint16_t C_PIN_SCL_2 = 13;
-
-const uint16_t C_PIN_I_OUT = A1;
-const uint16_t C_PIN_V_OUT = A4;
-const uint16_t C_PIN_V_IN = A5;
+const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
+const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
+const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
+const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
+const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
 //============================================================== INCLUDES ===========================================================//
 #include <MilliTimer.h>
@@ -44,48 +38,33 @@ const uint16_t C_PIN_V_IN = A5;
 
 const uint32_t C_PROGRAM_CYCLE_PERIOD = 5000; // Duracion minima del ciclo de programa en us.
 
-const bool C_MASK_DEACTIVATE = false;
-const bool C_MASK_ACTIVATE = true;
+const bool C_MASK_DEACTIVATE = false; // Flag que indica que la mascara de las portecciones esta desactivada.
+const bool C_MASK_ACTIVATE = true;    // Flag que indica que la mascara de las portecciones esta desactivada.
 
-const uint16_t MAX_NUM_PROTECTION_EVENTS = 6;
+const uint16_t MAX_NUM_PROTECTION_EVENTS = 6; // Numero de vecces que tiene que saltar una proteccion para dar el aviso por pantalla.
 
-const bool C_OFF = false;
-const bool C_ON = true;
+const bool C_OUTPUT_OFF = false; // Flag que identeifica la salida como desconectada
+const bool C_OUTPUT_ON = true;   // Flag que identifica la salida como conectada
 
-const int16_t C_TIMER_ARMED = 0;
-const int16_t C_TIMER_IDLE = 1;
-const int16_t C_TIMER_DONE = 2;
+const int16_t C_TIMER_ARMED = 0; // Identificador de un Timer como armado y contando.
+const int16_t C_TIMER_IDLE = 1;  // Identifiador de un Timer esperando a ser iniciado.
+const int16_t C_TIMER_DONE = 2;  // Identificador de un Timer que ha finalizado la cuenta
 
-const int16_t C_SW_ST_RUN = 0x00;
-const int16_t C_SW_ST_SLEEP = 0x01;
-const int16_t C_SW_ST_START_UP = 0x02;
-const int16_t C_SW_ST_ERROR = 0x03;
-const int16_t C_SW_ST_STOP = 0x04;
-const int16_t C_SW_ST_DIAGNOSTIC = 0x05;
-const int16_t C_SW_ST_USB = 0x07;
+const int16_t C_SW_ST_RUN = 0x00;      // Esto Software que identifica el sistema encendido y con la salida activada.
+const int16_t C_SW_ST_SLEEP = 0x01;    // Estado Software que identifica el sistema "apagado" en estado de bajo consumo.
+const int16_t C_SW_ST_START_UP = 0x02; // Estado Software que identifica el sistema durante los protocolos de encendido.
+const int16_t C_SW_ST_ERROR = 0x03;    // Estado Softawre que identifica a el sistema durante la atencion a un error.
+const int16_t C_SW_ST_STOP = 0x04;     // Estado Software que identifica a el sistema encendido y con la salida desactivada.
 
-const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A
-const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida.
-const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida.
-const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 3000; // 3A
+const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A  Limite de la proteccion de consumo.
+const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. Diferencial de tension de la proteccion de Undervoltage de la tension de salida
+const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
+const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 3000; // 3A. Limite de la porteccion de cortocircuito.
 const int16_t C_RETRY_750_COUNT = 750;
 
-const int32_t C_TIME_TO_LIGHT_DOWN = 3000;    // 3 s
-const int32_t C_TIME_IDLE_30_SEG = 30000;     // 3 s
-const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s
-const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000; // 5 s
-
-const uint32_t C_WATCH_DOG_TIME_MS = 1000;
-
-const String C_DIAGNOSTIC_PASSWORD = "FPO";
-
-uint8_t C_TXT_SLEEP = 2;
-uint8_t C_TXT_ASK_OFF = 2;
-
-const bool C_USB_CONNECTED = true;
-const bool C_USB_DISCONNECTED = false;
-
-const uint8_t C_NUMB_PRINTS_STATIC_DATA = 5;
+const int32_t C_TIME_IDLE_30_SEG = 30000;     // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
+const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
+const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000; // 5 s. Ventana de tiempo que tiene que mantenerse la condicion de inicio del modo diagnostico.
 
 const uint8_t C_LOW_BATTERY_LEVEL = 15;  // Porcentaje de bateria  partir del cual no se puede asegurar un correcto funcionamiento.
 const uint8_t C_EMPTY_BATTERY_LEVEL = 5; // Porcentaje de bateria  partir del cual no se permite encender la bateria.
@@ -95,38 +74,18 @@ const uint16_t C_IDLE_TIMER_COUNT = 15 * 2; // 15 Minutos para que se apage la b
 
 const uint16_t C_EEPROM_UPDATE_TIME = 15; //min
 
-//-------------------------------- Diagnostic Commands-------------------------------------
-const String C_CMD_DISPLAY_STARTING_OFF = "DspStOFF";
-const String C_CMD_DISPLAY_STARTING_ON = "DspStON";
-const String C_CMD_DISPLAY_ENDING_OFF = "DspEndOFF";
-const String C_CMD_DISPLAY_ENDING_ON = "DspEndON";
-const String C_CMD_SOUND_STARTING_OFF = "SndStrOFF";
-const String C_CMD_SOUND_STARTING_ON = "SndSrtON";
-const String C_CMD_SOUND_ENDING_OFF = "SndEndOFF";
-const String C_CMD_SOUND_ENDING_ON = "SndEndON";
-const String C_CMD_SOUND_FULL_CHARGE_OFF = "SndFChgOFF";
-const String C_CMD_SOUND_FULL_CHARGE_ON = "SndFChgOFF";
-const String C_CMS_SOUND_DEATH_BATTERY_OFF = "SndDthBttOFF";
-const String C_CMS_SOUND_DEATH_BATTERY_ON = "SndDthBttON";
-const String C_CMS_SOUND_CHARGE_START_OFF = "SndChgStOFF";
-const String C_CMS_SOUND_CHARGE_START_ON = "SndChgStON";
-const String C_CMD_LIVE_OFF = "LiveOFF";
-const String C_CMD_LIVE_ON = "LiveON";
-const String C_CMD_DIAGNOSTIC_STOP = "GO_SLEEP";
-
-const String C_LIVE_CMD_OUT_ON = "EnableOut";
-const String C_LIVE_CMD_OUT_OFF = "DisnableOut";
-const String C_LIVE_CMD_VOLT_UP_1 = "VoltUp1";
-const String C_LIVE_CMD_VOLT_UP_10 = "VoltUp10";
-const String C_LIVE_CMD_VOLT_DOWN_1 = "VoltDown1";
-const String C_LIVE_CMD_VOLT_DOWN_10 = "VoltDown10";
-const String C_LIVE_CMD_OFF_LIVE_VIEW = "LiveViewOff";
-
+//-------------------------------- Protections IDs -------------------------------------
 const uint16_t C_ERROR_OVERCURRENT = 0x10;
 const uint16_t C_ERROR_OVERPOWER = 0x11;
 const uint16_t C_ERROR_OUPUT_UNDERVOLTAGE = 0x12;
 const uint16_t C_ERROR_INPUT_UNDERVOLTAGE = 0x13;
 const uint16_t C_ERROR_SHORTCIRCUIT = 0x14;
+
+//--------------------------------- Configuracion UI E/S --------------------------------------
+const bool C_STARTING_TEXT = true;
+const bool C_STARTING_SOUND = false;
+const bool C_ENDING_TEXT = true;
+const bool C_ENDING_SOUND = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -140,7 +99,7 @@ const uint16_t C_ERROR_SHORTCIRCUIT = 0x14;
 HealthMonitor boost_check(50, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
- *      - Umbral : 1000 ah.
+ *      - Umbral : 1000 mA.
  *      - Ts = 10 ms
  *      - Time spam = 1500ms
  * 
@@ -177,123 +136,99 @@ HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 10, 500);
 MilliTimer timer_encendido;
 
 dcdc_controler DCDC(C_PIN_EN_DCDC);
-MilliTimer protection_event_delay;
-MilliTimer timer_diagnostic_querist;
-MilliTimer timer_sec_count;
-MilliTimer timer_print_diagnostic;
-MilliTimer timer_display_capacity;
-MilliTimer timer_recover_voltage;
-MilliTimer timer_wait_sleep;
-MilliTimer timer_irq_button_center;
-MilliTimer timer_idle;
-MilliTimer timer_display_error;
-MilliTimer timer_info_error;
-MilliTimer debug_serial_timer;
-MilliTimer timer_retry_upgrade_eeprom;
-MilliTimer timer_init_screen;
-MilliTimer timer_end_screen;
-MilliTimer timer_refresh_screen;
-MilliTimer timer_log_sec;
-MilliTimer timer_active;
-MilliTimer timer_check_diagnostic;
-MilliTimer timer_waiting_naming;
-MilliTimer timer_active_naming;
-MilliTimer timer_blink_error;
+MilliTimer protection_event_delay;  // Delay impuesto entre detecciones de erroes.
+MilliTimer timer_sec_count;         // Timer contador de segundos.
+MilliTimer timer_display_capacity;  // Timer para el muestreo de la capacidad en el arranque.
+MilliTimer timer_recover_voltage;   // Timer que controla el tiempo que se deja para que la bateria se recupere antes de realizar una medicion de capacidad.
+MilliTimer timer_wait_sleep;        // Timer que controla el tiempo entre los checkeos del boton central durante el protocolo de apagado.
+MilliTimer timer_irq_button_center; // Timer que controla el tiempo tras el cual, si no hay eventos que saquen al sistema de SLEEP, el sistema vuelve al estado de bajo consumo.
+MilliTimer timer_idle;              // Timer que controla el tiempo de inactividad sobre el sistema.
+MilliTimer timer_display_error;     // Timer que controla el tiempo que se muestra por pantalla el aviso de error.
+MilliTimer timer_init_screen;       // Timer que controla el tiempo que se muestra el logo durante el encendido.
+MilliTimer timer_end_screen;        // Timer que controla el tiempo que se muestra la pantalla de apagado.
+MilliTimer timer_refresh_screen;    // Timer que control el tiempo tras el cual se refresca la infomracion de la pantalla durante el estadado de Run y Stop.
+MilliTimer timer_log_sec;           // Timer que cuenta hasta un seg para el logeo temporal.
+MilliTimer timer_log_active;        // Timer que controla el intervalo de tiempo que tiene que pasar el sistema en el estado de RUN para realizar un log de ciertas variables de estado.
+MilliTimer timer_check_diagnostic;  // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en modo diagnostico.
+MilliTimer timer_waiting_naming;    // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_active_naming;     // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
 
 //--------------------------------------- States variables-------------------------------------
-int16_t sw_status = C_SW_ST_SLEEP;
-int16_t sound = C_SOUND_MUTE;
-int16_t button_event = C_NONE_EVENT;
-bool usb_status = C_USB_DISCONNECTED;
-bool sw_output = C_OFF, hw_output = C_OFF, user_output = C_OFF;
-bool output_mode = C_NON_BOOST_MODE;
-bool switch_on = true;
-bool blink_error_state = false;
+int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
+bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
+bool output_mode = C_NON_BOOST_MODE;                                                 // Contenedor del modo de la tension de salida.
+bool blink_error_state = false;                                                      // Identificador del estado del parapadeo de la barra de potencia durante el mostrado de un error.
+bool mask_protection_state = C_MASK_DEACTIVATE;                                      // Identificador del estado de la mascara de las protecciones.
+bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 
 //--------------------------------------- Counters variables-------------------------------------
-int32_t cont_sec = 0;
-int16_t consmptn_event_protection_counter = 0;
-int16_t shortcircuit_event_protection_counter = 0;
-int16_t OP_event_protection_counter = 0;
-int16_t UV_event_protection_counter = 0;
-uint16_t click_events = 0;
-int16_t cont_idle_timer = 0;
-uint32_t cont_log_sec = 0;
-uint32_t cont_active = 0;
+int32_t cont_sec_log = 0;                          // Contador de los segundos en el intervalo del logeo de la EEPROM.
+int16_t consmptn_event_protection_counter = 0;     // Contador del numero de eventos de error de consumo pre aviso por pantalla.
+int16_t shortcircuit_event_protection_counter = 0; // Contador del numero de eventos de error de cortocircuito pre aviso por pantalla.
+int16_t OP_event_protection_counter = 0;           // Contador del numero de eventos de error de sobre portencia (Over Power) pre aviso por pantalla.
+int16_t UV_event_protection_counter = 0;           // Contador del numero de eventos de error de Under Voltage pre aviso por pantalla.
+uint16_t long_press_events = 0;                    // Contador del numero de longpress consectivos.
+int16_t cont_idle_timer = 0;                       // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
+uint32_t cont_log_sec = 0;                         // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
+uint32_t cont_log_active = 0;                      //  Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+
 //--------------------------------------- Diagnostics variables-------------------------------------
-uint16_t sample_IOut = 0;
-uint16_t sample_VOut = 0;
-uint16_t sample_POut = 0;
-uint16_t sample_VIN = 0;
-uint16_t theory_Vout = 50;
-uint16_t capacity = 0;
-String data;
-bool enable_starting_text = true;
-bool enable_starting_sound = false;
-bool enable_ending_text = true;
-bool enable_ending_sound = false;
-bool flag_eeprom_init_fail = false;
-uint16_t error;
-bool flag_enable_diagnostic = false;
-bool flag_diagnostic_active = false;
-bool active_confirmation_question = false;
-uint16_t confirm = 0;
+int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
+int16_t button_event = C_NONE_EVENT; // Contenedor del evento producido en la botonera.
+uint16_t theory_Vout = 50;           // Contenedor del valor de la tension de salida fijado por el sistema.
+uint16_t sample_IOut = 0;            // Muestra ponderizada la corriente de salida.
+uint16_t sample_VOut = 0;            // Muestra ponderizada de la tension de salida.
+uint16_t sample_POut = 0;            // Muestra de la potencia instantanea en la salida.
+uint16_t sample_VIN = 0;             // Muestra de la tension de entrada-
+uint16_t capacity = 0;               // Capacidad de la bateria
+uint16_t error;                      // Contenedor de la ID del error que ha saltado.
 
 //-------------------------------------- FLAGS--------------------------------------------
-bool low_batt_sound = false;
-bool low_batt_display = false;
-bool flag_low_battery = false;
-bool flag_empty_battery = false;
+bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
+bool flag_eeprom_init_fail = false;             // Flag que indica si se ha producido un fallo durante la inicializacion de la EEPROM
 
-bool reset_text = true;
+bool flag_low_battery = false;   //Flag que indica si la capacidad se encuentra por debajo del umbral de bateria baja.
+bool flag_empty_battery = false; // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria vacia.
 
-bool protection_event_delay_flag = false;
-bool mask_protection_state = C_MASK_DEACTIVATE;
-volatile bool flag_error = false;
+bool flag_protection_event_delay = false; // Flag que indica que se tiene que realizar un delay por la deteccion de un evento de las proteccion.
+volatile bool flag_error = false;         // Flag que indica la deteccion de un error.
 
-bool display_status = C_DISPLAY_ST_NOT_BUSSY;
-bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;
-bool flag_msg_init = false;
-bool flag_msg_sleep = false;
-bool trigger_Display_volt = true;
-bool flag_display_capacity = false;
+bool flag_msg_init = false;              // Flag que indica si se ha terminado de mostrar el mensaje de encendido en la pantalla durante el protocolo de encendido.
+bool flag_msg_sleep = false;             // Flag que indica si se ha terminado de mostrar el mensaje de apagado en la pantalla durante el protocolo de apagado.
+bool flag_sound_init = false;            // Flag que indica si se ha terminado de sonar el sonido de encendido en la pantalla durante el protocolo de encendido.
+bool flag_sound_end = false;             // Flag que indica si se ha terminado de sonar el sonido de apagado en la pantalla durante el protocolo de apagado.
+bool flag_display_capacity_init = false; // Flag que indica si se esta mostrando la capacidad en la pantalla durante el protocolo de encendido.
 
-volatile bool flag_irq_center_button = false;
+bool trigger_Display_volt = true; // Flag que indica si se tiene que actualizar la pantalla con la informacion del voltaje.
 
-bool flag_sound_init = false;
-bool flag_sound_end = false;
+bool flag_first_sleep = true; // Flag que indica si es la primera vez que el sistema se va al estado SLEEP.
+                              // NOTE: Esto ocurre tras la insercion de la bateria.
 
-bool flag_sleep = false;
-bool go_sleep = true;
-bool flag_initialize = false;
-bool flag_usb_change = false;
-bool flag_work = false;
-bool flag_center_button_press = false;
-bool arrancado = false;
-bool flag_stop = false;
+volatile bool flag_irq_center_button = false; // Flag que indica la deteccion de una interrupcion por el boton central.
 
-//int16_t flag_encendido = C_TIMER_IDLE;
-uint16_t flag_waiting = C_TIMER_IDLE;
-uint16_t flag_diagnostic_timer = C_TIMER_IDLE;
-int16_t flag_timer_naming = C_TIMER_IDLE;
+bool flag_sleep = false;               // Flag que marca el cambio al estado de SLEEP
+bool go_deep_sleep = true;             // Flag que marca el inicio de la rutina para entrar en modo bajo consumo.
+bool flag_initialize = false;          // Flag que marca el cambio al estado de START_UP
+bool flag_init2stop = false;           // Flag que marca el cambio de estado de START_UP a STOP
+bool flag_center_button_press = false; // Flag que indica si el boton central se encuentra presionado.
+bool arrancado = false;                // Flag que indica si la secuencia de arrancado a finalizado.
+bool flag_enable_off = false;          // Flag que indica la posibilidad de iniciar el protocolo de apagado.
 
-bool flag_waiting_naming = true;
-bool flag_naming_active = false;
+uint16_t flag_waiting = C_TIMER_IDLE;          // Flag que indica el estado del timer "timer_wait_sleep"
+uint16_t flag_diagnostic_timer = C_TIMER_IDLE; // Flag que indica el estado del timer "timer_check_diagnostic"
+int16_t flag_timer_naming = C_TIMER_IDLE;      // Flag que indica el estado del timer "timer_active_naming"
+
+bool flag_enable_diagnostic = false; // Flag que indica si es posible entrar el modo diagnostico.
+                                     // NOTE: Esto se hace para evitar que se pueda acceder al modo diagnostico nada mas insertar la bateria.
+
+bool flag_diagnostic_active = false; // Flag que indica si el modo diagnostico esta activo.
+bool flag_waiting_naming = true;     //Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
+bool flag_naming_active = false;     // Flag que indica si la configuracion del naming esta activa.
 
 //-------------------------------------- PROFILING --------------------------------------------
-uint32_t t1;
+uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
-
-uint32_t t1_text;
-uint32_t t2_text;
-uint32_t t1_encendido;
-uint32_t t2_encendido;
-uint32_t t1_sound;
-uint32_t t2_sound;
-uint32_t t1_cap;
-uint32_t t2_cap;
-uint32_t t1_state;
-uint32_t t2_state;
 
 /*===============================================================================================================================================*/
 //                                                                 SET UP
@@ -306,14 +241,8 @@ void setup()
     pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
     pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
     pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
-    //pinMode(C_PIN_FLAG_CHARG, INPUT_PULLUP);
-    //pinMode(C_PIN_TEST_MODE, INPUT_PULLUP);
     pinMode(C_PIN_OP_SWITCH, OUTPUT);
     pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
-
-    //pinMode(C_PIN_SCL_2, OUTPUT);
-    //pinMode(C_PIN_SDA_2, OUTPUT);
-    //pinMode(C_PIN_USB_SEL, OUTPUT);
 
     //------------------------ INITIALITATION PERIFERICOS ----------------------------
     Wire.begin();
@@ -322,7 +251,7 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
     initDisplay();                              // Inicializacion de la pantalla
-    //DisplayLogo();
+
     if (!Init_local_eeprom()) // Incializacion EEPROM
     {
         flag_eeprom_init_fail = true;
@@ -350,6 +279,7 @@ void setup()
     playSound(C_SOUND_UP);
 
     //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
+
     theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
     if (theory_Vout == 0)
     {
@@ -358,32 +288,37 @@ void setup()
     }
 
     //------------------------ CHECKEO PARA APP NAMING ------------------------------
-    timer_waiting_naming.set(5000);
+
+    timer_waiting_naming.set(5000); // Incio de la ventana de tiempo
+
     while (flag_waiting_naming == true)
     {
         if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
         {
-            if (flag_naming_active == false)
+            if (flag_naming_active == false) // Configuracio NO activada
             {
-                if (flag_timer_naming == C_TIMER_IDLE)
+                if (flag_timer_naming == C_TIMER_IDLE) // Timer No iniciado
                 {
                     Serial5.println("Timer Naming Activado.");
                     timer_active_naming.set(3000);
                     flag_timer_naming = C_TIMER_ARMED;
                 }
-                else if (flag_timer_naming == C_TIMER_ARMED)
+                else if (flag_timer_naming == C_TIMER_ARMED) // Timer Armado
                 {
-                    if (timer_active_naming.poll() != C_TIMER_NOT_EXPIRED)
+                    if (timer_active_naming.poll() != C_TIMER_NOT_EXPIRED) // Timer cumplido
                     {
-                        flag_naming_active = true;
+                        flag_naming_active = true; // Inicio de la configuracion del naming.
                         flag_timer_naming = C_TIMER_IDLE;
                     }
                 }
             }
             else
             {
+
                 Serial5.println("Naming Activado");
                 Serial5.println("Loading");
+
+                // Pantalla de carga del Naming.
                 OLED_display.clearDisplay();
                 OLED_display.setTextSize(1);
                 OLED_display.setCursor(0, 0);
@@ -396,8 +331,12 @@ void setup()
                     OLED_display.display();
                 }
                 delay(2000);
+
+                // Apagado Dramatico!
                 SwitchScreenOff();
                 delay(2000);
+
+                // Pantalla de Presentacion
                 OLED_display.clearDisplay();
                 OLED_display.setTextSize(1);
                 OLED_display.setCursor(8, 12);
@@ -407,23 +346,27 @@ void setup()
                 playSound(C_SOUND_CHARGE_IN);
                 delay(4000);
                 Serial5.println("Configuracion Naming");
+
+                // Inicio de la configuracion
                 Config_Naming();
+
+                // Guardado en EEPROM
                 LogDiagnosticData(true, C_FLAG_ENABLE_NAME);
                 SwitchScreenOff();
-                // Guardado EEPROM
+
                 //RESETs Flags
                 flag_waiting_naming = false;
             }
         }
-        else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED)
+        else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED) // La ventana de tiempo cumple sin que se active la configuracion
         {
             flag_waiting_naming = false;
         }
-        else if (button_event == C_LP_CENTER)
+        else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
         {
             flag_waiting_naming = false;
         }
-        button_event = ReadDirPad();
+        button_event = ReadDirPad(); // Lectura de la botonera.
     }
 
     /*===============================================================================================================================================*/
@@ -458,7 +401,7 @@ void setup()
         if (sw_status == C_SW_ST_START_UP)
         {
             //---------------- SONIDO DE ENCENDIDO --------------------//
-            if (enable_starting_sound == false)
+            if (C_STARTING_SOUND == false)
             {
                 flag_sound_init = true;
             }
@@ -468,7 +411,7 @@ void setup()
                 flag_sound_init = true;
             }
             //---------------- TEXTO DE ENCENDIDO --------------------//
-            if (enable_starting_text == false)
+            if (C_STARTING_TEXT == false)
             {
                 flag_msg_init = true;
             }
@@ -481,15 +424,15 @@ void setup()
             }
 
             //-------------------- MOSTRADO DE LA CAPACIDAD AL FINAL DEL ENCENDIDO --------------------//
-            if ((flag_msg_init == true) && (flag_display_capacity == false) && (flag_sound_init == true))
+            if ((flag_msg_init == true) && (flag_display_capacity_init == false) && (flag_sound_init == true))
             {
                 //t1_cap = micros();
-                flag_display_capacity = true;
+                flag_display_capacity_init = true;
                 capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
                 DisplayCap(capacity); // Actualizacion de la pantalla con la Capacidad
                 timer_display_capacity.set(1000);
             }
-            else if (flag_display_capacity == true) // Mientras este presionado el boton central no se dejara de mostrar la capacidad.
+            else if (flag_display_capacity_init == true) // Mientras este presionado el boton central no se dejara de mostrar la capacidad.
             {
                 if (timer_display_capacity.poll() != C_TIMER_NOT_EXPIRED)
                 {
@@ -500,7 +443,7 @@ void setup()
                     }
                     else
                     {
-                        flag_work = true;
+                        flag_init2stop = true;
                     }
                 }
                 else
@@ -535,15 +478,16 @@ void setup()
                     }
                     else
                     {
+                        Serial5.printf("ShC %d\n", shortcircuit_event_protection_counter);
                         protection_event_delay.set(100);
-                        protection_event_delay_flag = true;
+                        flag_protection_event_delay = true;
                         short_current_protection.setCounter(C_RETRY_750_COUNT);
                     }
                 }
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-
+                    // planicie a 5v
                     DCDC.SetVoltage(50, C_NON_BOOST_MODE);
                     digitalWrite(C_PIN_OP_SWITCH, LOW);
                     delay(50);
@@ -551,34 +495,41 @@ void setup()
                     int tiempo_bajada = 60;     // ms
                     int steps_subida = 10;
                     int steps_bajada = 10;
+
+                    // Rampa de subida
                     for (int i = 0; i < steps_subida; i++)
                     {
                         DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_NON_BOOST_MODE);
                         delay(tiempo_arrancado / steps_subida);
                     }
+                    // Rampa de Bajada
                     for (int i = steps_bajada; i >= 0; i--)
                     {
                         DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_NON_BOOST_MODE);
                         delay(tiempo_bajada / steps_bajada);
                     }
 
+                    // Voltaje Objetivo
                     DCDC.SetVoltage(theory_Vout, C_NON_BOOST_MODE);
                     arrancado = true;
                 }
                 else if (arrancado)
                 {
-                    //------------ TIMER ACTIVE -------------//
-                    if (timer_active.poll(1000) != C_TIMER_NOT_EXPIRED)
+                    //------------ TEMPORIZADOR PARA LOGEO -------------//
+                    if (timer_log_active.poll(1000) != C_TIMER_NOT_EXPIRED)
                     {
-                        cont_active++;
-                        if (cont_active == 60)
+                        // Contador  de segundos
+                        cont_log_active++;
+                        if (cont_log_active == 60) // A la hora logeo en EEPROM.
                         {
                             PostMortemLog(sample_POut, capacity, theory_Vout, 0);
-                            cont_active = 0;
+                            cont_log_active = 0;
                         }
+
+                        // Sensado de la tension de entrada para prevenir apagado no deseado
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
                         Serial5.printf("Vin:%d\n", sample_VIN);
-                        if (sample_VIN <= 3300)
+                        if (sample_VIN <= 3200)
                         {
                             DisplayLowBattery();
                             playSound(C_SOUND_LOW_BATTERY);
@@ -602,8 +553,9 @@ void setup()
                             }
                             else
                             {
+                                Serial5.printf("CON %d\n", consmptn_event_protection_counter);
                                 protection_event_delay.set(100);
-                                protection_event_delay_flag = true;
+                                flag_protection_event_delay = true;
                                 over_consumption_protection.setCounter(C_RETRY_750_COUNT);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
@@ -622,9 +574,9 @@ void setup()
                             }
                             else
                             {
-                                Serial5.printf("OP %d\n", consmptn_event_protection_counter);
+                                Serial5.printf("OP %d\n", OP_event_protection_counter);
                                 protection_event_delay.set(100);
-                                protection_event_delay_flag = true;
+                                flag_protection_event_delay = true;
                                 over_power_protection.setCounter(over_power_protection.limit / 2);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
@@ -643,9 +595,9 @@ void setup()
                             }
                             else
                             {
-                                Serial5.printf("OUV %d\n", consmptn_event_protection_counter);
+                                Serial5.printf("OUV %d\n", UV_event_protection_counter);
                                 protection_event_delay.set(100);
-                                protection_event_delay_flag = true;
+                                flag_protection_event_delay = true;
                                 under_voltage_protection.setCounter(under_voltage_protection.limit / 2);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
@@ -653,33 +605,33 @@ void setup()
                     }
                     else if (mask_protection_state == C_MASK_ACTIVATE)
                     {
-                        if ((protection_event_delay_flag == true) && (protection_event_delay.poll() != C_TIMER_NOT_EXPIRED))
+                        if ((flag_protection_event_delay == true) && (protection_event_delay.poll() != C_TIMER_NOT_EXPIRED))
                         {
                             mask_protection_state = C_MASK_DEACTIVATE;
                         }
                     }
                 }
-            }
 
+                //------- Actualizacion de la barra de potencia ----------//
+
+                UpdatePowerBar(sample_POut);
+            }
             else if (sw_status == C_SW_ST_STOP) // STOP
             {
                 //-------  Checkeo de bateria baja -------//
                 if (flag_low_battery == false)
                 {
+                    //  Temporizador de recupracion del voltaje antes de medir capacidad
                     if (timer_recover_voltage.poll() != C_TIMER_NOT_EXPIRED)
                     {
-                        //t1_cap = micros();
-                        flag_stop = true;
-                        capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
-                        if (flag_low_battery == true)
+                        flag_enable_off = true;
+                        capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery); // Calculo de la capacidad
+                        if (flag_low_battery == true)                                                 // Aviso por bateria baja
                         {
                             DisplayCap(capacity);
                             delay(750);
                             trigger_Display_volt = true;
                         }
-                        //t2_cap = micros();
-                        //Serial5.printf(" Check Batt Low: %d us \t", t2_cap - t1_cap);
-                        //Serial5.println();
                     }
                 }
 
@@ -708,43 +660,46 @@ void setup()
             }
 
             //--------------- CONTROL DE LOS EVENTOS DE LA BOTONERA ---------------------//
+
+            // Si no se ha pulsado nada durante un rato se refresca la pantalla.
             if (button_event == C_NONE_EVENT)
             {
                 if (timer_refresh_screen.poll() != C_TIMER_NOT_EXPIRED)
                 {
                     trigger_Display_volt = true;
-                    click_events = 0;
+                    long_press_events = 0;
                 }
             }
             else
             {
                 sound = C_SOUND_MUTE;
 
-                if (button_event == C_LP_CENTER)
+                if (button_event == C_LP_CENTER) // LongPress Central
                 {
                     Serial5.println("Longpress CENTER");
-                    click_events++;
-                    timer_refresh_screen.set(1000);
-                    if (click_events == 1)
+                    long_press_events++;
+                    timer_refresh_screen.set(1000); // Inicio del timer por si se suelta el boton central.
+                    if (long_press_events == 1)
                     {
-                        if (flag_stop == true)
+                        if (flag_enable_off == true) // si estamos en el estado STOP se pasa a mostrar la capacidad
                         {
                             DisplayCap(capacity);
                         }
                         else
                         {
-                            click_events--;
+                            long_press_events--; // Si no estamos en el estado STOP reseteamos el contador.
                         }
                     }
-                    else if ((click_events >= 2) && (click_events < 5))
+                    else if ((long_press_events >= 2) && (long_press_events < 5))
                     {
+                        // Pantalla de Confirmacion de Apagado.
                         OLED_display.clearDisplay();
                         OLED_display.setCursor(16, 0);
                         OLED_display.setTextSize(2);
                         OLED_display.print("OFF");
                         OLED_display.setCursor(0, 16);
                         OLED_display.setTextSize(2);
-                        switch (click_events)
+                        switch (long_press_events)
                         {
                         case 2:
                             OLED_display.print("3");
@@ -760,12 +715,12 @@ void setup()
                             break;
                         }
                         OLED_display.display();
-                        playSound(C_SOUND_UP);
+                        playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
                     }
-                    else if (click_events == 5)
+                    else if (long_press_events == 5) // Al 5 evento de LongPress nos vamos al estado SLEEP.
                     {
                         flag_sleep = true;
-                        click_events = 0;
+                        long_press_events = 0;
                     }
                 }
                 else
@@ -814,7 +769,7 @@ void setup()
                     }
                 }
 
-                theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE);
+                theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
             }
 
             //-------------- ACTUALIZACION DEL DISPLAY (CON SONIDO)---------------------//
@@ -828,26 +783,19 @@ void setup()
                 DisplayVolt(theory_Vout);
                 trigger_Display_volt = false;
             }
-
-            //------- Actualizacion de la barra de potencia ----------//
-            sample_POut += 10;
-            if (sample_POut == MAX_POWER_DISPLAYED)
-            {
-                sample_POut = 0;
-            }
-
-            UpdatePowerBar(sample_POut);
         }
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
         else if (sw_status == C_SW_ST_SLEEP)
         {
-            if (switch_on)
+            // Filtrado de la primera vez que se entra en el modo SLEEP
+            // Ocurre al insertar la bateria y alimentar el sistema.
+            if (flag_first_sleep)
             {
                 flag_msg_sleep = true;
-                switch_on = false;
+                flag_first_sleep = false;
             }
             //----------- MENSAJE DE APAGADO --------------
-            if (enable_ending_text == false)
+            if (C_ENDING_TEXT == false)
             {
                 flag_msg_sleep = true;
                 SwitchScreenOff();
@@ -863,7 +811,7 @@ void setup()
                 }
             }
             //------------- SONIDO DE APAGADO -------------
-            if (enable_ending_sound == false)
+            if (C_ENDING_SOUND == false)
             {
                 flag_sound_end = true;
             }
@@ -904,7 +852,7 @@ void setup()
             }
             else if (flag_waiting == C_TIMER_DONE)
             {
-                if (go_sleep == true)
+                if (go_deep_sleep == true)
                 {
                     //----------- RUTINA APAGADO ---------------
                     if (flag_irq_center_button == true)
@@ -914,12 +862,9 @@ void setup()
                     SaveEeprom();                                                                       // Salvado en EEPROM
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW);                                          // Apagado de la alimentacion secundaria.
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar
-                    //t2 = micros();
                     Serial5.println("Zzz");
                     LowPower.sleep();
-                    //Serial5.printf(" Apagado: %d us \t", t2 - t1);
-                    //Serial5.println();
-                    //t1_state = micros();
+
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
@@ -928,41 +873,44 @@ void setup()
                     if (flag_irq_center_button == true)
                     {
                         Serial5.println("Hi??");
-                        go_sleep = false;
-                        flag_diagnostic_timer = C_TIMER_IDLE;
-                        timer_irq_button_center.set(C_TIMER_LONGPRESS + 200);
+                        go_deep_sleep = false;
+                        flag_diagnostic_timer = C_TIMER_IDLE;                 // Reset del timer "timer_check_diagnostic"
+                        timer_irq_button_center.set(C_TIMER_LONGPRESS + 200); // Inicio de la ventana para volver a entrar en el modo bajo consumo si no hay activacion.
                     }
                 }
-                else if (go_sleep == false)
+                else if (go_deep_sleep == false)
                 {
                     if (flag_irq_center_button == true)
                     {
+
                         if ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                         {
                             if (flag_enable_diagnostic == true)
                             {
-                                if (flag_diagnostic_active == false)
+                                if (flag_diagnostic_active == false) // Modo Daignostico Desactivado.
                                 {
-                                    if (flag_diagnostic_timer == C_TIMER_IDLE)
+                                    if (flag_diagnostic_timer == C_TIMER_IDLE) // Timer no Activado
                                     {
                                         Serial5.println("Timer activado.");
                                         flag_diagnostic_timer = C_TIMER_ARMED;
                                         timer_check_diagnostic.set(C_TIME_DIAGNOSTIC_CHECK);
                                     }
-                                    else if (flag_diagnostic_timer == C_TIMER_ARMED)
+                                    else if (flag_diagnostic_timer == C_TIMER_ARMED) // Timer Activado
                                     {
-                                        if (timer_check_diagnostic.poll() != C_TIMER_NOT_EXPIRED)
+                                        if (timer_check_diagnostic.poll() != C_TIMER_NOT_EXPIRED) // Timer cumplido.
                                         {
                                             Serial5.println("Timer terminado");
-                                            flag_diagnostic_active = true;
-                                            flag_diagnostic_timer = C_TIMER_IDLE;
+                                            flag_diagnostic_active = true;        // Activacion del Modo diagnostico.
+                                            flag_diagnostic_timer = C_TIMER_IDLE; //Reset del timer
                                         }
                                     }
                                 }
                                 else
                                 {
+                                    // MODO DIAGNOSTICO ACTIVADO
                                     while (flag_diagnostic_active == true)
                                     {
+                                        // Ventana de presentacion
                                         initDisplay();
                                         OLED_display.clearDisplay();
                                         OLED_display.setTextSize(2);
@@ -973,41 +921,44 @@ void setup()
                                         playSound(C_SOUND_CHARGE_IN);
                                         delay(1000);
 
-                                        Serial5.println("Pregunta activa.");
                                         // Pregunta sobre si diagnostico o no.
+                                        Serial5.println("Pregunta activa.");
                                         OLED_display.clearDisplay();
                                         OLED_display.setCursor(0, 0);
                                         OLED_display.print("START");
                                         OLED_display.drawChar(0, 16, 0x59, WHITE, BLACK, 2);
                                         OLED_display.drawChar(52, 16, 0x4E, WHITE, BLACK, 2);
                                         OLED_display.display();
-                                        active_confirmation_question = true;
+                                        flag_active_confirmation_question = true;
+
+                                        // Espera Activa hasta confirmar que todos los boton no se estan apretando
                                         while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
                                         {
                                         }
-
-                                        while (active_confirmation_question == true)
+                                        while (flag_active_confirmation_question == true) // Espera hasta que se reciba una respuesta.
                                         {
-                                            button_event = ReadDirPad();
+                                            button_event = ReadDirPad(); // Lectura de la botonera
 
                                             if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
                                             {
-                                                active_confirmation_question = false;
+                                                flag_active_confirmation_question = false;
                                                 flag_diagnostic_active = false;
                                                 Serial5.println("no");
                                                 OLED_display.clearDisplay();
-                                                timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
+                                                timer_irq_button_center.set(C_TIMER_LONGPRESS + 200);
                                             }
                                             else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // Yes
                                             {
-                                                active_confirmation_question = false;
+                                                flag_active_confirmation_question = false;
                                                 Serial5.println("yes");
                                             }
 
                                             OLED_display.display();
                                         }
+                                        // Inicio del modo diagnostico
                                         if (flag_diagnostic_active == true)
                                         {
+                                            // Cuenta atras preparatoria
                                             for (int i = 9; i >= 0; i--)
                                             {
                                                 OLED_display.clearDisplay();
@@ -1018,8 +969,11 @@ void setup()
                                                 delay(1000);
                                             }
 
+                                            //Volcado de datos.
                                             Serial5.println("INICIO DIAGNOSTICO");
                                             DiagnosticMode();
+
+                                            // Pantallas despedida
                                             OLED_display.clearDisplay();
                                             OLED_display.setCursor(0, 0);
                                             OLED_display.print("TEST");
@@ -1037,19 +991,20 @@ void setup()
                                             Serial5.println("FIN DIAGNOSTICO");
                                             playSound(C_SOUND_CHARGE_OUT);
                                             OLED_display.clearDisplay();
-                                            timer_irq_button_center.set(C_TIMER_LONGPRESS_LOOP + 200);
+
+                                            timer_irq_button_center.set(C_TIMER_LONGPRESS + 200); // Reinicio del Timer para vuelta a modo bajo consumo.
                                         }
                                     }
                                 }
                             }
                         }
-                        else if (timer_irq_button_center.poll() != C_TIMER_NOT_EXPIRED)
+                        else if (timer_irq_button_center.poll() != C_TIMER_NOT_EXPIRED) // Expira la ventana de tiempo para despertar o entrar en modo diagnostico.
                         {
-                            go_sleep = true;
+                            go_deep_sleep = true;
                             Serial5.println("A mimir");
                         }
                         //--- Comprobacion del boton central-----
-                        else if (button_event == C_LP_CENTER) // Si se mantiene apretado el botoncentral desde el despertar se inicia la bateria
+                        else if (button_event == C_LP_CENTER) // Si se mantiene apretado el boton central desde el despertar se inicia la bateria
                         {
                             flag_initialize = true;
                             Serial5.println("Bon dia");
@@ -1094,6 +1049,8 @@ void setup()
                 default:
                     break;
                 }
+
+                // Parpadeo de la barra de potencia
                 if (timer_blink_error.poll(200) != C_TIMER_NOT_EXPIRED)
                 {
                     blink_error_state = !blink_error_state;
@@ -1106,11 +1063,9 @@ void setup()
                 {
                     PowerBar(LEDS_IN_POWERBAR);
                 }
+
+                // Control del tiempo que se muestra el error.
                 if (timer_display_error.poll() != C_TIMER_NOT_EXPIRED)
-                {
-                    timer_info_error.set(1000);
-                }
-                if (timer_info_error.poll() != C_TIMER_NOT_EXPIRED)
                 {
                     display_error_status = C_DISPLAY_ST_NOT_BUSSY;
                 }
@@ -1140,20 +1095,20 @@ void setup()
         if (sw_status == C_SW_ST_START_UP)
         {
             //----------- TO STOP -----------
-            if (flag_work == true)
+            if (flag_init2stop == true)
             {
                 /* New State */
                 sw_status = C_SW_ST_STOP;
 
                 /* Output */
-                sw_output = C_OFF;
-                user_output = C_OFF;
+                sw_output = C_OUTPUT_OFF;
+                user_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
                 flag_msg_init = false;
-                flag_work = false;
+                flag_init2stop = false;
                 flag_sound_init = false;
-                flag_display_capacity = false;
+                flag_display_capacity_init = false;
 
                 /* Change-State Effects */
                 Serial5.println("Change TO STOP");
@@ -1172,8 +1127,8 @@ void setup()
                 sw_status = C_SW_ST_STOP;
 
                 /* Output */
-                user_output = C_OFF;
-                sw_output = C_OFF;
+                user_output = C_OUTPUT_OFF;
+                sw_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
                 flag_low_battery = false;
@@ -1191,7 +1146,7 @@ void setup()
                 sw_status = C_SW_ST_ERROR;
 
                 /* Output */
-                sw_output = C_OFF;
+                sw_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
                 flag_low_battery = false;
@@ -1199,7 +1154,7 @@ void setup()
                 /* Change-State Effects */
                 Serial5.println("Change TO ERROR");
                 display_error_status = C_DISPLAY_ST_BUSSY;
-                timer_display_error.set(500);
+                timer_display_error.set(1500);
                 SwitchScreenOff();
                 PowerBar(0);
                 playSound(C_SOUND_ERROR);
@@ -1242,10 +1197,10 @@ void setup()
                     /* New State */
                     sw_status = C_SW_ST_RUN;
                     /* Output */
-                    sw_output = C_ON;
-                    user_output = C_ON; // Activacion de la salida.
+                    sw_output = C_OUTPUT_ON;
+                    user_output = C_OUTPUT_ON; // Activacion de la salida.
                     /* Clear Flags */
-                    flag_stop = false;
+                    flag_enable_off = false;
                     /* Change-State Effects */
                     Serial5.printf("Change TO RUN\n");
                     playSound(C_SOUND_ON);
@@ -1258,13 +1213,13 @@ void setup()
                 sw_status = C_SW_ST_SLEEP;
 
                 /* Output */
-                sw_output = C_OFF;
+                sw_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
                 flag_msg_sleep = false;
                 flag_sound_end = false;
                 flag_sleep = false;
-                go_sleep = true;
+                go_deep_sleep = true;
 
                 /* Change-State Effects */
                 Serial5.printf("Change TO SLEEP\n");
@@ -1281,7 +1236,7 @@ void setup()
                 sw_status = C_SW_ST_START_UP;
 
                 /* Output */
-                sw_output = C_OFF;
+                sw_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
                 flag_initialize = false;
@@ -1308,8 +1263,8 @@ void setup()
                 sw_status = C_SW_ST_STOP;
 
                 /* Output */
-                sw_output = C_OFF;
-                user_output = C_OFF;
+                sw_output = C_OUTPUT_OFF;
+                user_output = C_OUTPUT_OFF;
 
                 /* Clear Flags */
 
@@ -1325,49 +1280,49 @@ void setup()
         //=============================================================================================================================================
 
         //============================================================== OUTPUT MANAGEMENT ===========================================================//
-        if (sw_output == C_OFF)
+        if (sw_output == C_OUTPUT_OFF)
         {
-            hw_output = C_OFF;
+            hw_output = C_OUTPUT_OFF;
         }
         else
         {
-            if (user_output == C_ON)
+            if (user_output == C_OUTPUT_ON)
             {
-                hw_output = C_ON;
+                hw_output = C_OUTPUT_ON;
             }
             else
             {
-                hw_output = C_OFF;
+                hw_output = C_OUTPUT_OFF;
             }
         }
-        if (hw_output == C_ON)
+        if (hw_output == C_OUTPUT_ON)
         {
-            theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE);
-            DCDC.SetVoltage(theory_Vout, output_mode);
-            digitalWrite(C_PIN_OP_SWITCH, LOW);
-            LedWork(C_ON);
+            theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
+            DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
+            digitalWrite(C_PIN_OP_SWITCH, LOW);                             // Activacion del transistor de salida
+            LedWork(C_OUTPUT_ON);                                           // se enciende el Led que indica que la salida esta activa
         }
-        else if (hw_output == C_OFF)
+        else if (hw_output == C_OUTPUT_OFF)
         {
-            digitalWrite(C_PIN_OP_SWITCH, HIGH);
+            digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
+            LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
+
+            // Limpieza y reset de variables de las protecciones.
             consmptn_event_protection_counter = 0;
             OP_event_protection_counter = 0;
             UV_event_protection_counter = 0;
-            LedWork(C_OFF);
         }
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
         //============================================================ TIMER LOGEO EEPROM  =============================================================//
         if (timer_sec_count.poll(1000) != C_TIMER_NOT_EXPIRED)
         {
-            cont_sec++;
-            if (cont_sec == C_EEPROM_UPDATE_TIME * 60)
+            cont_sec_log++;
+            if (cont_sec_log == C_EEPROM_UPDATE_TIME * 60)
             {
                 if (flag_eeprom_init_fail == true)
                 {
                     Serial5.println("Inicializando EEPROM..");
-                    //while (!Init_diagnostic_elements())
-                    //  ;
                     flag_eeprom_init_fail = false;
                 }
                 else
@@ -1377,7 +1332,7 @@ void setup()
                     SaveEeprom();
                     Serial5.println("EEPROM Actualizada.");
                 }
-                cont_sec = 0;
+                cont_sec_log = 0;
             }
         }
 
@@ -1424,23 +1379,26 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
     analogReadCorrection(12, 2055);
     analogReadResolution(12);
 
+    // Lectura del ADC
     for (int i = 0; i < 8; i++)
     {
         sample += analogRead(pin_battery);
     }
 
+    //Calculo del voltaje de la bateria
     batt_voltage = sample / 8 * 3000 / 4096 * 250 / 150;
-
+    
+    //Calculo del porcentaje  de bateria actual
     percent = constrain(((batt_voltage - 3300) * 100 / 800), 0, 100);
 
-    if (percent <= C_EMPTY_BATTERY_LEVEL)
+    if (percent <= C_EMPTY_BATTERY_LEVEL) // Porcentaje por debajo del valor de bateria vacia.
     {
         *empty_batt = true;
         *lowbattery = true;
         playSound(C_SOUND_DEATH_BATTERY);
         DisplayNoBattery();
     }
-    else if (percent <= C_LOW_BATTERY_LEVEL)
+    else if (percent <= C_LOW_BATTERY_LEVEL) // Porcentaje por debajo del valor de bateria baja.
     {
         *empty_batt = false;
         *lowbattery = true;
