@@ -198,6 +198,7 @@ MilliTimer timer_active;
 MilliTimer timer_check_diagnostic;
 MilliTimer timer_waiting_naming;
 MilliTimer timer_active_naming;
+MilliTimer timer_blink_error;
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;
@@ -207,6 +208,7 @@ bool usb_status = C_USB_DISCONNECTED;
 bool sw_output = C_OFF, hw_output = C_OFF, user_output = C_OFF;
 bool output_mode = C_NON_BOOST_MODE;
 bool switch_on = true;
+bool blink_error_state = false;
 
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec = 0;
@@ -1065,52 +1067,44 @@ void setup()
                 switch (error)
                 {
                 case C_ERROR_OVERPOWER:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("OvPw");
-                    OLED_display.display();
+                    OLED_display.fillCircle(31, 14, 13, WHITE);
+                    OLED_display.fillRect(30, 6, 3, 12, BLACK);
+                    OLED_display.fillRect(30, 20, 3, 3, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERPOWER);
                     break;
                 case C_ERROR_OVERCURRENT:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("OvCu");
-                    OLED_display.display();
+                    OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
+                    OLED_display.fillRect(30, 7, 3, 12, BLACK);
+                    OLED_display.fillRect(30, 21, 3, 3, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERCURRENT);
                     break;
                 case C_ERROR_OUPUT_UNDERVOLTAGE:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("UnVo");
-                    OLED_display.display();
+                    OLED_display.drawBitmap(0, 0, error_square, 64, 30, WHITE, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OUPUT_UNDERVOLTAGE);
                     break;
                 case C_ERROR_INPUT_UNDERVOLTAGE:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("UnVi");
-                    OLED_display.display();
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_INPUT_UNDERVOLTAGE);
                     break;
                 case C_ERROR_SHORTCIRCUIT:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("SrtCi");
-                    OLED_display.display();
+                    OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
+                    OLED_display.fillRect(30, 7, 3, 12, BLACK);
+                    OLED_display.fillRect(30, 21, 3, 3, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_SHORTCIRCUIT);
                     break;
                 default:
-                    OLED_display.clearDisplay();
-                    OLED_display.setCursor(0, 8);
-                    OLED_display.setTextSize(2);
-                    OLED_display.print("ERROR");
-                    OLED_display.display();
                     break;
+                }
+                if (timer_blink_error.poll(200) != C_TIMER_NOT_EXPIRED)
+                {
+                    blink_error_state = !blink_error_state;
+                }
+                if (blink_error_state == true)
+                {
+                    OLED_display.fillRect(0, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, BLACK);
+                }
+                else
+                {
+                    PowerBar(LEDS_IN_POWERBAR);
                 }
                 if (timer_display_error.poll() != C_TIMER_NOT_EXPIRED)
                 {
@@ -1129,6 +1123,7 @@ void setup()
                 consmptn_event_protection_counter = 0;
                 OP_event_protection_counter = 0;
                 UV_event_protection_counter = 0;
+                SwitchScreenOff();
                 // -------------- GUARDADO EN EEPROM -----------------
                 SaveEeprom();
             }

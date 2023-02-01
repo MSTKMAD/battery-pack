@@ -13,6 +13,7 @@
 #include <power_bar.h>
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1;
 MilliTimer timer_blink_error;
+uint16_t cont;
 bool blink_error_state = false;
 void setup()
 {
@@ -25,17 +26,40 @@ void setup()
 
 void loop()
 {
+
     OLED_display.setCursor(27, 7);
     OLED_display.setTextSize(2);
     OLED_display.setTextColor(BLACK);
     //OLED_display.print("!");
-    //OLED_display.drawCircle(32,14,14,WHITE);
-    OLED_display.fillTriangle(31,0,15,26,48,26,WHITE);
-    OLED_display.fillRect(30,7,3,12,BLACK);
-    OLED_display.fillRect(30,21,3,3,BLACK);
-    OLED_display.display();
+    //OLED_display.fillTriangle(31,0,15,26,48,26,WHITE);
+    //OLED_display.fillCircle(31, 14, 13, WHITE);
+    //OLED_display.fillRect(30, 6, 3, 12, BLACK);
+    //OLED_display.fillRect(30, 20, 3, 3, BLACK);
+    OLED_display.clearDisplay();
+    if (cont < 10)
+    {
+        OLED_display.drawBitmap(0, 0, error_square, 64, 30, WHITE, BLACK);
+    }
+    else if (cont < 20)
+    {
+        OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
+        OLED_display.fillRect(30, 7, 3, 12, BLACK);
+        OLED_display.fillRect(30, 21, 3, 3, BLACK);
+    }
+    else if (cont < 30)
+    {
+        OLED_display.fillCircle(31, 14, 13, WHITE);
+        OLED_display.fillRect(30, 6, 3, 12, BLACK);
+        OLED_display.fillRect(30, 20, 3, 3, BLACK);
+    }
+    else
+    {
+        cont = 0;
+    }
+
     if (timer_blink_error.poll(200) != C_TIMER_NOT_EXPIRED)
     {
+        cont++;
         blink_error_state = !blink_error_state;
     }
     if (blink_error_state == true)
@@ -46,4 +70,5 @@ void loop()
     {
         PowerBar(LEDS_IN_POWERBAR);
     }
+    OLED_display.display();
 }
