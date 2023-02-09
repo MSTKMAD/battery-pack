@@ -33,7 +33,7 @@ void PowerBar(int16_t leds)
 
     int cursor_x = 0;
 
-    leds = constrain(leds, 0, 40);
+    leds = constrain(leds, 0, LEDS_IN_POWERBAR);
 
     if (leds == 0)
     {
