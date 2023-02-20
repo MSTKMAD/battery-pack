@@ -2,7 +2,7 @@
  * @file B2.ino
  * @author Javi (Javier@musotoku.com)
  * @brief 
- *      V1: Fork de la version B1_V11-RC1. *      
+ *      V1: Fork de la version B1_V11-RC1.  
  * 
  * @version V1
  * @date 2022-11-10
@@ -153,6 +153,9 @@ MilliTimer timer_check_diagnostic;  // Timer que controla la ventana de tiempo d
 MilliTimer timer_waiting_naming;    // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
 MilliTimer timer_active_naming;     // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
 MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
+MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte la señal de op switch.
+MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
+MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
@@ -171,7 +174,7 @@ int16_t UV_event_protection_counter = 0;           // Contador del numero de eve
 uint16_t long_press_events = 0;                    // Contador del numero de longpress consectivos.
 int16_t cont_idle_timer = 0;                       // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
 uint32_t cont_log_sec = 0;                         // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
-uint32_t cont_log_active = 0;                      //  Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_log_active = 0;                      // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -183,6 +186,9 @@ uint16_t sample_POut = 0;            // Muestra de la potencia instantanea en la
 uint16_t sample_VIN = 0;             // Muestra de la tension de entrada-
 uint16_t capacity = 0;               // Capacidad de la bateria
 uint16_t error;                      // Contenedor de la ID del error que ha saltado.
+bool test_op_switch = false;         // Variable del modod test que almacena el valor de opswitch
+bool test_en_dcdc = false;           // Variable del modod test que almacena el valor de endcdc.
+bool test_dac = false;               // Variable del modod test que almacena el valor del dac.
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
@@ -226,6 +232,7 @@ bool flag_diagnostic_active = false; // Flag que indica si el modo diagnostico e
 bool flag_waiting_naming = true;     //Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
 bool flag_naming_active = false;     // Flag que indica si la configuracion del naming esta activa.
 
+bool test_mode_activate = false;
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -251,8 +258,7 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
     initDisplay();                              // Inicializacion de la pantalla
-
-    if (!Init_local_eeprom()) // Incializacion EEPROM
+    if (!Init_local_eeprom())                   // Incializacion EEPROM
     {
         flag_eeprom_init_fail = true;
         Serial5.println("Fallo de lectura de EEPROM");
@@ -260,6 +266,57 @@ void setup()
     else
     {
         Serial5.println("Lectura Correcta de EEPROM");
+    }
+
+    if (local_eeprom.test_mode == true)
+    {
+        test_mode_activate = true;
+        while (test_mode_activate)
+        {
+            sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
+            sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+
+            OLED_display.clearDisplay();
+            OLED_display.setTextSize(1);
+            OLED_display.setCursor(0, 0);
+            OLED_display.printf("I %d", sample_IOut);
+            OLED_display.setCursor(0, 16);
+            OLED_display.printf("V %d", sample_VOut);
+            OLED_display.display();
+
+            if (timer_test_op_switch.poll(300) != C_TIMER_NOT_EXPIRED)
+            {
+                test_op_switch = !test_op_switch;
+                digitalWrite(C_PIN_OP_SWITCH, test_op_switch);
+            }
+
+            if (timer_test_en_dcdc.poll(200) != C_TIMER_NOT_EXPIRED)
+            {
+                test_en_dcdc = !test_en_dcdc;
+                digitalWrite(C_PIN_EN_DCDC, test_en_dcdc);
+            }
+
+            if (timer_test_dac.poll(500) != C_TIMER_NOT_EXPIRED)
+            {
+                if (test_dac == true)
+                {
+                    DCDC.SetVoltage(60, C_NON_BOOST_MODE);
+                    test_dac = false;
+                }
+                else
+                {
+                    DCDC.SetVoltage(120, C_NON_BOOST_MODE);
+                    test_dac = true;
+                }
+            }
+
+            if (digitalRead(C_PIN_BUTT_CENTER) == button_pressed)
+            {
+                local_eeprom.test_mode = false;
+                test_mode_activate = false;
+            }
+        }
+        SaveEeprom();
     }
 
     //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
@@ -379,7 +436,7 @@ void setup()
         //============================================================== SENSADO ==================================================================//
 
         under_voltage_protection.threshold = (theory_Vout - 20) * 100;                          // Actualizacion de la proteccion de undervoltage
-        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 100 / 259;             // Lectura de la Corriente de Salida
+        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
         sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 201 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
         sample_POut = (sample_IOut) * (sample_VOut) / 1000;                                     // Calculo de la potencia de salida
         //========================================================== BOOST MODE MONITOR ===========================================================//
@@ -455,9 +512,7 @@ void setup()
                 }
             }
         }
-
         /*_______________________________________________________________RUN / STOP__________________________________________________________________*/
-
         else if ((sw_status == C_SW_ST_RUN) || (sw_status == C_SW_ST_STOP))
         {
             //t1 = micros();
@@ -510,7 +565,7 @@ void setup()
                     }
 
                     // Voltaje Objetivo
-                    DCDC.SetVoltage(theory_Vout, C_NON_BOOST_MODE);
+                    DCDC.SetVoltage(theory_Vout, output_mode);
                     arrancado = true;
                 }
                 else if (arrancado)
@@ -1086,7 +1141,6 @@ void setup()
         //=============================================================================================================================================
         //                                                             END STATE MACHINE
         //=============================================================================================================================================
-
         //=============================================================================================================================================
         //                                                             STATUS MANAGEMENT
         //=============================================================================================================================================
@@ -1322,8 +1376,16 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    Serial5.println("Inicializando EEPROM..");
-                    flag_eeprom_init_fail = false;
+                    if (!Init_local_eeprom()) // Incializacion EEPROM
+                    {
+                        flag_eeprom_init_fail = true;
+                        Serial5.println("Fallo de lectura de EEPROM");
+                    }
+                    else
+                    {
+                        flag_eeprom_init_fail = false;
+                        Serial5.println("Lectura Correcta de EEPROM");
+                    }
                 }
                 else
                 {
@@ -1341,7 +1403,6 @@ void setup()
 
         //====================================================== Control del tiempo del ciclo de control ========================================================//
         t2 = micros();
-        t2_state = micros();
         if (timer_log_sec.poll(1000) != C_TIMER_NOT_EXPIRED)
         {
             cont_log_sec++;
@@ -1387,7 +1448,7 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
 
     //Calculo del voltaje de la bateria
     batt_voltage = sample / 8 * 3000 / 4096 * 250 / 150;
-    
+
     //Calculo del porcentaje  de bateria actual
     percent = constrain(((batt_voltage - 3300) * 100 / 800), 0, 100);
 
