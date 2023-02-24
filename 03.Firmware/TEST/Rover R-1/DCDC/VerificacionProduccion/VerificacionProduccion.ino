@@ -2,7 +2,7 @@
  * @file VerificacionProduccion.ino
  * @author Javi (Javier@musotoku.com)
  * @brief 
- * @version 0.1
+ * @version 2
  * @date 2023-01-25
  * 
  * @copyright Copyright (c) 2023
@@ -43,15 +43,17 @@ const uint16_t C_FASE_0 = 4;
 const uint16_t C_FASE_1 = 5;
 const uint16_t C_FASE_2 = 6;
 const uint16_t C_FASE_3 = 7;
+const uint16_t C_FASE_4 = 8;
 
-const uint16_t C_VOUT_FASE_0 = 4000; // V BUS
-const uint16_t C_VOUT_FASE_1 = 6000;
+const uint16_t C_VOUT_FASE_0 = 500;
+const uint16_t C_VOUT_FASE_1 = 3000;
 const uint16_t C_VOUT_FASE_2 = 500;
+const uint16_t C_VOUT_FASE_3 = 10000;
 
 const uint16_t C_VOUT_TEST_2 = 50;
-const uint16_t C_VOUT_TEST_3 = 50;
+const uint16_t C_VOUT_TEST_3 = 98;
 
-const uint16_t TOLERANCIA = 10; // %
+const uint16_t TOLERANCIA = 15; // %
 const uint16_t LOWER_TOL = 100 - TOLERANCIA;
 const uint16_t UPPER_TOL = 100 + TOLERANCIA;
 
@@ -59,16 +61,20 @@ Adafruit_SSD1306 display(128, 64, C_PIN_MOSI, C_PIN_SCK, C_PIN_MISO, C_PIN_DSP_R
 
 MCP4725 MCP(0x60, &Wire);
 
-bool flag_testing = false;
-bool flag_dac_test = false;
+MilliTimer timer_t1, timer_t3;
+
+bool flag_testing = true;
+uint16_t flag_dac_test = 0;
 bool flag_1w_tested = false;
-bool flag_8w_tested = false;
+bool flag_4w_tested = false;
 
 uint16_t status = 0;
-uint16_t fase = 0;
-uint16_t vout_sample = 0;
+uint16_t fase = C_FASE_0;
+uint32_t vout_sample = 0;
 uint16_t iout_sample = 0;
 uint16_t dac_count = 0;
+
+uint16_t volt_test_2 = 40;
 
 void setup()
 {
@@ -101,7 +107,14 @@ void setup()
     /* Fase de Testeo de Placa de Testeo */
     uint16_t r_sel = 0;
     uint16_t volt = 50;
-    while (1)
+    digitalWrite(C_PIN_EN_DCDC, HIGH);
+    digitalWrite(C_PIN_OP_SWITCH, HIGH);
+    status = C_TEST_0;
+    fase = C_FASE_0;
+    timer_t1.set(2000);
+    display.clearDisplay();
+
+    /* while (1)
     {
         Serial.println("Bip-Bip"); //HeartBit enviado al DUT.
         display.clearDisplay();
@@ -190,286 +203,384 @@ void setup()
             display.print("-> ");
             break;
         }
-        display.setCursor(0, 10);
-        display.printf("IO");
-        display.setCursor(64, 10);
-        display.printf("= %d mV", analogRead(C_PIN_IO_SENSE) * 3300 / 4096);
+    display.setCursor(0, 10);
+    display.printf("IO");
+    display.setCursor(64, 10);
+    display.printf("= %d mV", analogRead(C_PIN_IO_SENSE) * 3300 / 4096);
 
-        display.setCursor(0, 20);
-        display.print("VO");
-        display.setCursor(64, 20);
-        display.printf("= %d mV", analogRead(C_PIN_VOUT_SENSE) * 3300 / 4096);
-        volt += 5;
-        if (volt == 120)
-        {
-            volt = 50;
-        }
-        if (!MCP.isConnected())
-        {
-            display.setCursor(60, 0);
-            display.printf("ERROR", volt);
-        }
-        else
-        {
-            display.setCursor(60, 0);
-            display.printf("Good", volt);
-        }
-
-        dac_count = 1781 - (((volt - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-        MCP.setValue(dac_count);
-        display.setCursor(0, 30);
-        display.print("FB_DAC");
-        display.setCursor(64, 30);
-        display.printf("= %d mV", volt);
-        display.display();
-        delay(250);
+    display.setCursor(0, 20);
+    display.print("VO");
+    display.setCursor(64, 20);
+    display.printf("= %d mV", analogRead(C_PIN_VOUT_SENSE) * 3300 / 4096);
+    volt += 5;
+    if (volt == 120)
+    {
+        volt = 50;
     }
+    if (!MCP.isConnected())
+    {
+        display.setCursor(60, 0);
+        display.printf("ERROR", volt);
+    }
+    else
+    {
+        display.setCursor(60, 0);
+        display.printf("Good", volt);
+    }
+
+    dac_count = 1781 - (((volt - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+    MCP.setValue(dac_count);
+    display.setCursor(0, 30);
+    display.print("FB_DAC");
+    display.setCursor(64, 30);
+    display.printf("= %d mV", volt);
+    display.display();
+    delay(250);
+    }*/
+
     display.begin();
     display.clearDisplay();
-    display.setTextSize(2);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.print("Fase");
-    display.setCursor(0, 25);
-    display.print("Programacion");
-    display.display();
-
     status = C_TEST_0;
 
     while (flag_testing == true)
     {
+        if (digitalRead(C_PIN_TEST_1) == LOW)
+        {
+            digitalWrite(C_PIN_R1, LOW);
+            digitalWrite(C_PIN_R2, LOW);
+            digitalWrite(C_PIN_R3, LOW);
+            // EN_DCDC = OFF - OP_SWITCH = OFF
+            digitalWrite(C_PIN_EN_DCDC, HIGH);
+            digitalWrite(C_PIN_OP_SWITCH, HIGH);
+            status = C_TEST_0;
+            fase = C_FASE_0;
+            timer_t1.set(2000);
+            display.clearDisplay();
+        }
+        else if (digitalRead(C_PIN_TEST_2) == LOW)
+        {
+            digitalWrite(C_PIN_R1, LOW);
+            digitalWrite(C_PIN_R2, LOW);
+            digitalWrite(C_PIN_R3, LOW);
+            display.clearDisplay();
+            display.setTextSize(2);
+            display.setTextColor(WHITE);
+            // EN_DCDC = ON - OP_SWITCH = ON
+            digitalWrite(C_PIN_EN_DCDC, LOW);
+            digitalWrite(C_PIN_OP_SWITCH, LOW);
+            volt_test_2 = 40;
+            flag_dac_test = 0;
+            status = C_TEST_1;
+        }
+        else if (digitalRead(C_PIN_TEST_3) == LOW)
+        {
+            flag_1w_tested = true;
+            flag_4w_tested = false;
+            dac_count = 1781 - (((50 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+            MCP.setValue(dac_count);
+            display.clearDisplay();
+            display.setTextSize(2);
+            display.setTextColor(WHITE);
+            display.fillRect(64, 0, 1, 64, WHITE);
+            display.display();
+            digitalWrite(C_PIN_R1, LOW);
+            digitalWrite(C_PIN_R2, LOW);
+            digitalWrite(C_PIN_R3, HIGH);
+            digitalWrite(C_PIN_EN_DCDC, LOW);
+            digitalWrite(C_PIN_OP_SWITCH, LOW);
+            status = C_TEST_2;
+        }
+
         if (status == C_TEST_0)
         {
-            display.clearDisplay();
-            display.setCursor(0, 0);
-            display.print("Test 0");
-            display.setCursor(0, 25);
-            display.print("EN DCDC");
-            display.setCursor(0, 50);
-            display.print("OP SWITCH");
-
-            vout_sample = 0;
-            for (int i = 0; i < 8; i++)
+            if (fase != C_FASE_4)
             {
-                vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                delay(50);
-            }
+                display.setTextSize(2);
+                display.setTextColor(WHITE);
+                display.fillRect(64, 0, 1, 64, WHITE);
+                display.fillRect(0, 32, 128, 1, WHITE);
 
-            vout_sample = vout_sample / 8 * 208 / 39 * 3000 / 4096;
+                dac_count = 1781 - (((100 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+                MCP.setValue(dac_count);
 
-            if (fase == C_FASE_0)
-            {
-                display.setCursor(70, 25);
-                display.print("OFF");
-                display.setCursor(70, 50);
-                display.print("ON");
-                // EN_DCDC = OFF - OP_SWITCH = ON
-                digitalWrite(C_PIN_EN_DCDC, true);
-                digitalWrite(C_PIN_OP_SWITCH, true);
-
-                if (vout_sample <= C_VOUT_FASE_0)
+                vout_sample = 0;
+                for (int i = 0; i < 32; i++)
                 {
-                    fase = C_FASE_1;
+                    vout_sample += analogRead(C_PIN_VOUT_SENSE);
+                    delay(10);
                 }
-            }
-            else if (fase == C_FASE_1)
-            {
-                display.setCursor(70, 25);
-                display.print("ON");
-                display.setCursor(70, 50);
-                display.print("ON");
-                // EN_DCDC = ON - OP_SWITCH = ON
-                digitalWrite(C_PIN_EN_DCDC, true);
-                digitalWrite(C_PIN_OP_SWITCH, true);
 
-                if (vout_sample <= C_VOUT_FASE_1)
-                {
-                    fase = C_FASE_2;
-                }
-            }
-            else if (fase == C_FASE_2)
-            {
-                display.setCursor(70, 25);
-                display.print("ON");
-                display.setCursor(70, 50);
-                display.print("OFF");
-                // EN_DCDC = ON - OP_SWITCH = OFF
-                digitalWrite(C_PIN_EN_DCDC, true);
-                digitalWrite(C_PIN_OP_SWITCH, true);
+                vout_sample = vout_sample / 32 * 208 / 39 * 3300 / 4096;
 
-                if (vout_sample <= C_VOUT_FASE_2)
+                if (fase == C_FASE_0)
                 {
-                    display.clearDisplay();
-                    display.setCursor(0, 0);
-                    display.print("Test 0");
-                    display.setCursor(0, 25);
-                    display.print("DONE");
-                    display.setCursor(0, 50);
-                    display.print("PRESS TEST 1");
-                    if (digitalRead(C_PIN_TEST_1) == false)
+                    if (vout_sample < C_VOUT_FASE_0)
                     {
-                        status = C_TEST_1;
+                        Serial.println("Fase 0.");
+                        Serial.println(vout_sample);
+                        fase = C_FASE_1;
+                        display.setCursor(10, 10);
+                        display.print("YES");
+                        timer_t1.set(2000);
+                        // EN_DCDC = OFF - OP_SWITCH = ON
+                        digitalWrite(C_PIN_EN_DCDC, HIGH);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                    }
+                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        Serial.println("Fase 0.");
+                        Serial.println(vout_sample);
+                        timer_t1.set(2000);
+                        fase = C_FASE_1;
+                        display.setCursor(10, 10);
+                        display.print("NO");
+                        // EN_DCDC = OFF - OP_SWITCH = ON
+                        digitalWrite(C_PIN_EN_DCDC, HIGH);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
                     }
                 }
+                else if (fase == C_FASE_1)
+                {
+
+                    if ((vout_sample <= (4000 * UPPER_TOL / 100)) && (vout_sample >= (C_VOUT_FASE_1 * LOWER_TOL / 100)))
+                    {
+                        Serial.println("Fase 1.");
+                        Serial.println(vout_sample);
+                        fase = C_FASE_2;
+                        display.setCursor(74, 10);
+                        display.print("YES");
+                        timer_t1.set(2000);
+                        // EN_DCDC = ON - OP_SWITCH = OFF
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, HIGH);
+                    }
+                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        Serial.println("Fase 1.");
+                        Serial.println(vout_sample);
+                        timer_t1.set(2000);
+                        fase = C_FASE_2;
+                        display.setCursor(74, 10);
+                        display.print("NO");
+                        // EN_DCDC = ON - OP_SWITCH = OFF
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, HIGH);
+                    }
+                }
+                else if (fase == C_FASE_2)
+                {
+
+                    if (vout_sample < C_VOUT_FASE_2)
+                    {
+                        fase = C_FASE_3;
+                        Serial.println("Fase 2.");
+                        Serial.println(vout_sample);
+                        display.setCursor(10, 42);
+                        display.print("YES");
+                        timer_t1.set(2000);
+                        // EN_DCDC = ON - OP_SWITCH = ON
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                    }
+                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        Serial.println("Fase 2.");
+                        Serial.println(vout_sample);
+                        timer_t1.set(2000);
+                        fase = C_FASE_3;
+                        display.setCursor(10, 42);
+                        display.print("NO");
+                        // EN_DCDC = ON - OP_SWITCH = ON
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                    }
+                }
+                else if (fase == C_FASE_3)
+                {
+                    if ((vout_sample >= (C_VOUT_FASE_3 * LOWER_TOL / 100)) && (vout_sample <= (C_VOUT_FASE_3 * UPPER_TOL / 100)))
+                    {
+                        fase = C_FASE_4;
+                        Serial.println("Fase 3.");
+                        Serial.println(vout_sample);
+                        display.setCursor(74, 42);
+                        display.print("YES");
+                        timer_t1.set(2000);
+                    }
+                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        Serial.println("Fase 3.");
+                        Serial.println(vout_sample);
+                        timer_t1.set(2000);
+                        fase = C_FASE_4;
+                        display.setCursor(74, 42);
+                        display.print("NO");
+                    }
+                }
+                display.display();
             }
-            display.display();
         }
         else if (status == C_TEST_1)
         {
-            display.setCursor(0, 0);
-            display.print("Test 1");
-            display.setCursor(0, 25);
-            display.print("DAC");
-            display.setCursor(0, 50);
-            display.print("VOUT");
-
-            for (int i = MIN_VOLTAGE; i < MAX_VOLTAGE; i++)
+            if (flag_dac_test == 0)
             {
-                dac_count = C_DAC_MIN_COUNT - (((i - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-                //MCP.setValue(dac_count);
-                display.setCursor(70, 25);
-                display.print(dac_count);
-                display.setCursor(70, 50);
-                display.print(i);
-
-                vout_sample = 0;
-                for (int j = 0; j < 8; j++)
+                if (volt_test_2 < MAX_VOLTAGE)
                 {
-                    vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                    delay(50);
-                }
-                vout_sample = vout_sample / 8 * 208 / 39 * 3000 / 4096;
+                    volt_test_2 += 10;
+                    dac_count = 1781 - (((volt_test_2 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+                    MCP.setValue(dac_count);
+                    display.clearDisplay();
+                    display.setCursor(30, 30);
+                    display.print(volt_test_2 / 10);
+                    vout_sample = 0;
+                    delay(1000);
+                    for (int j = 0; j < 8; j++)
+                    {
+                        vout_sample += analogRead(C_PIN_VOUT_SENSE);
+                        delay(50);
+                    }
+                    vout_sample = vout_sample / 8 * 208 / 39 * 3300 / 4096;
 
-                if ((vout_sample <= (i * LOWER_TOL)) || (vout_sample >= (i * UPPER_TOL)))
-                {
-                    flag_dac_test = false;
+                    if ((vout_sample >= (volt_test_2 * LOWER_TOL)) && (vout_sample <= (volt_test_2 * UPPER_TOL)))
+                    {
+                        display.setCursor(70, 30);
+                        display.print("GOOD");
+                    }
+                    else
+                    {
+                        flag_dac_test = 2;
+                        display.setCursor(70, 30);
+                        display.print("BAD");
+                    }
+
+                    display.display();
                 }
+                else if (flag_dac_test == 0)
+                {
+                    flag_dac_test = 2;
+                }
+
+                display.display();
             }
-            if (flag_dac_test == true)
+            else if (flag_dac_test == 2)
             {
-                display.clearDisplay();
-                display.setCursor(0, 0);
-                display.print("Test 1");
-                display.setCursor(0, 25);
-                display.print("CORRECT");
-                display.setCursor(0, 50);
-                display.print("PRESS TEST 2");
-                if (digitalRead(C_PIN_TEST_2) == false)
-                {
-                    status = C_TEST_2;
-                }
             }
-            else
-            {
-                display.clearDisplay();
-                display.setCursor(0, 0);
-                display.print("Test 1");
-                display.setCursor(0, 25);
-                display.print("ERROR");
-                display.setCursor(0, 50);
-                display.print("RESET");
-            }
-
-            display.display();
         }
         else if (status == C_TEST_2)
         {
-            display.clearDisplay();
-            display.setCursor(0, 0);
-            display.print("Test 2");
-            display.setCursor(0, 25);
-            display.print("POWER 1W");
-
-            digitalWrite(C_PIN_R1, HIGH);
-
-            dac_count = C_DAC_MIN_COUNT - (((C_VOUT_TEST_2 - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-            // MCP.setValue(dac_count);
-
-            vout_sample = 0;
-            for (int i = 0; i < 8; i++)
-            {
-                vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                delay(50);
-            }
-
-            vout_sample = vout_sample / 8 * 208 / 39 * 3000 / 4096;
-
-            iout_sample = 0;
-            for (int i = 0; i < 8; i++)
-            {
-                iout_sample += analogRead(C_PIN_IO_SENSE);
-                delay(50);
-            }
-
-            iout_sample = iout_sample / 8 * 208 / 39 * 3000 / 4096;
-
-            if (((iout_sample * vout_sample / 1000) >= (1000 * LOWER_TOL / 100)) && ((iout_sample * vout_sample / 1000) <= (1000 * UPPER_TOL / 100)))
-            {
-                flag_1w_tested = true;
-            }
-
             if (flag_1w_tested == true)
             {
-                display.clearDisplay();
-                display.setCursor(0, 0);
-                display.print("Test 2");
-                display.setCursor(0, 25);
-                display.print("CORRECT");
-                display.setCursor(0, 50);
-                display.print("PRESS TEST 3");
-                if (digitalRead(C_PIN_TEST_3) == false)
+                vout_sample = 0;
+                iout_sample = 0;
+                for (int i = 0; i < 32; i++)
                 {
-                    status = C_TEST_3;
+                    vout_sample += analogRead(C_PIN_VOUT_SENSE);
+                    iout_sample += analogRead(C_PIN_IO_SENSE);
+                    delay(75);
+                }
+                vout_sample = vout_sample / 32;
+                iout_sample = iout_sample / 32;
+
+                vout_sample = vout_sample * 208 / 39 * 3300 / 4096;
+                iout_sample = iout_sample * 3300 / 4096 * 10 / 15;
+                Serial.println(vout_sample);
+                Serial.println(iout_sample);
+                display.setCursor(10, 30);
+                display.print(vout_sample);
+                display.setCursor(10, 50);
+                display.print(iout_sample);
+
+                if ((iout_sample >= (200 * LOWER_TOL / 100)) && (iout_sample <= (200 * UPPER_TOL / 100)))
+                {
+                    if ((vout_sample >= (5000 * LOWER_TOL / 100)) && (vout_sample <= (5000 * UPPER_TOL / 100)))
+                    {
+                        display.setCursor(10, 0);
+                        display.print("GOOD");
+                        flag_1w_tested = false;
+                        flag_4w_tested = true;
+                        dac_count = 1781 - (((100 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+                        MCP.setValue(dac_count);
+                    }
+                    else
+                    {
+                        display.setCursor(10, 0);
+                        display.print("GOOD");
+                        flag_1w_tested = false;
+                        flag_4w_tested = true;
+                        dac_count = 1781 - (((100 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+                        MCP.setValue(dac_count);
+                    }
+                }
+                else
+                {
+                    display.setCursor(10, 0);
+                    display.print("BAD");
+                    flag_1w_tested = false;
+                    flag_4w_tested = true;
+                    dac_count = 1781 - (((100 - MIN_VOLTAGE) * (1781 - 174)) / (MAX_VOLTAGE - MIN_VOLTAGE));
+                    MCP.setValue(dac_count);
                 }
             }
-
-            display.display();
-        }
-        else if (status == C_TEST_3)
-        {
-            display.clearDisplay();
-            display.setCursor(0, 0);
-            display.print("Test 3");
-            display.setCursor(0, 25);
-            display.print("Power 8W");
-
-            digitalWrite(C_PIN_R2, HIGH);
-            dac_count = C_DAC_MIN_COUNT - (((C_VOUT_TEST_3 - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
-            // MCP.setValue(dac_count);
-
-            vout_sample = 0;
-            for (int i = 0; i < 8; i++)
+            else if (flag_4w_tested == true)
             {
-                vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                delay(50);
-            }
+                vout_sample = 0;
+                iout_sample = 0;
+                for (int i = 0; i < 32; i++)
+                {
+                    vout_sample += analogRead(C_PIN_VOUT_SENSE);
+                    iout_sample += analogRead(C_PIN_IO_SENSE);
+                    delay(75);
+                }
+                vout_sample = vout_sample / 32;
+                iout_sample = iout_sample / 32;
 
-            vout_sample = vout_sample / 8 * 208 / 39 * 3000 / 4096;
+                vout_sample = vout_sample * 208 / 39 * 3300 / 4096;
+                iout_sample = iout_sample * 3300 / 4096 * 10 / 15;
+                Serial.println(vout_sample);
+                Serial.println(iout_sample);
+                display.setCursor(80, 30);
+                display.print(vout_sample);
+                display.setCursor(80, 50);
+                display.print(iout_sample);
 
-            iout_sample = 0;
-            for (int i = 0; i < 8; i++)
-            {
-                iout_sample += analogRead(C_PIN_IO_SENSE);
-                delay(50);
-            }
-
-            iout_sample = iout_sample / 8 * 208 / 39 * 3000 / 4096;
-
-            if (((iout_sample * vout_sample / 1000) >= (8000 * LOWER_TOL / 100)) && ((iout_sample * vout_sample / 1000) <= (8000 * UPPER_TOL / 100)))
-            {
-                flag_8w_tested = true;
-            }
-
-            if (flag_8w_tested == true)
-            {
-                display.clearDisplay();
-                display.setCursor(0, 0);
-                display.print("Test 3");
-                display.setCursor(0, 25);
-                display.print("CORRECT");
-                display.setCursor(0, 50);
-                display.print("TEST ENDED");
-                flag_testing = false;
+                if ((iout_sample >= (400 * LOWER_TOL / 100)) && (iout_sample <= (400 * UPPER_TOL / 100)))
+                {
+                    if ((vout_sample >= (10000 * 95 / 100)) && (vout_sample <= (10000 * 105 / 100)))
+                    {
+                        display.setCursor(80, 0);
+                        display.print("GOOD");
+                        flag_1w_tested = false;
+                        flag_4w_tested = false;
+                        digitalWrite(C_PIN_R1, LOW);
+                        digitalWrite(C_PIN_R2, LOW);
+                        digitalWrite(C_PIN_R3, LOW);
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, HIGH);
+                    }
+                    else
+                    {
+                        display.setCursor(80, 0);
+                        display.print("BAD");
+                        flag_1w_tested = false;
+                        flag_4w_tested = false;
+                        digitalWrite(C_PIN_R1, LOW);
+                        digitalWrite(C_PIN_R2, LOW);
+                        digitalWrite(C_PIN_R3, LOW);
+                        digitalWrite(C_PIN_EN_DCDC, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, HIGH);
+                    }
+                }
+                else
+                {
+                    display.setCursor(80, 0);
+                    display.print("BAD");
+                    flag_1w_tested = false;
+                    flag_4w_tested = false;
+                    digitalWrite(C_PIN_R1, LOW);
+                    digitalWrite(C_PIN_R2, LOW);
+                    digitalWrite(C_PIN_R3, LOW);
+                    digitalWrite(C_PIN_EN_DCDC, LOW);
+                    digitalWrite(C_PIN_OP_SWITCH, HIGH);
+                }
             }
             display.display();
         }

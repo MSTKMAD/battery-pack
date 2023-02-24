@@ -2,7 +2,7 @@
  * @file VerificacionProduccion.ino
  * @author Javi (Javier@musotoku.com)
  * @brief 
- * @version 0.1
+ * @version 2
  * @date 2023-01-24
  * 
  * @copyright Copyright (c) 2023
@@ -32,6 +32,8 @@ const uint16_t C_PIN_VCC_CPU = A0;        // 1.5v es correcto
 const uint16_t C_PIN_VCC_2_CPU = A1;      // 1.5v es correcto
 const uint16_t C_PIN_FB_DAC = A2;         // 0 - 1.4v
 
+const uint16_t C_OFFSET_ADC = 75;
+
 const uint16_t C_TEST_0 = 0;
 const uint16_t C_TEST_1 = 1;
 const uint16_t C_TEST_2 = 2;
@@ -40,13 +42,15 @@ const uint16_t C_TEST_3 = 3;
 const uint16_t TOLERANCIA = 10; // %
 const uint16_t LOWER_TOL = 100 - TOLERANCIA;
 const uint16_t UPPER_TOL = 100 + TOLERANCIA;
-const uint16_t VCC_ADC_VALUE = 1500 * 4096 / 3300;
-const uint16_t VCC_2_ADC_VALUE = 1500 * 4096 / 3300;
+const uint16_t VCC_ADC_VALUE = 1500;
+const uint16_t VCC_2_ADC_VALUE = 1500;
+const uint16_t DAC_LOW_VALUE = 174;
+const uint16_t DAC_HIGH_VALUE = 1551;
 
 Adafruit_SSD1306 display(128, 64, C_PIN_MOSI, C_PIN_SCK, C_PIN_MISO, C_PIN_DSP_RST, C_PIN_SS);
 
 bool flag_programacion_ok = false;
-bool flag_testing = false;
+bool flag_testing = true;
 bool flag_vcc_tested = false;
 bool flag_vcc_2_tested = false;
 bool flag_en_dcdc_tested = false;
@@ -54,15 +58,27 @@ bool flag_op_switch_tested = false;
 bool flag_dac_tested = false;
 bool flag_vout_tested = false;
 bool flag_iout_tested = false;
-char data = 0;
 
-uint16_t status = C_TEST_0;
+bool prev_st_op_switch = false;
+bool act_st_op_switch = false;
+bool prev_st_en_dcdc = false;
+bool act_st_en_dcdc = false;
+String data;
+
+uint16_t status = C_TEST_1;
 uint16_t vcc_sense = 0;
 uint16_t vcc_2_sense = 0;
 uint16_t fb_dac_sense = 0;
 
+uint16_t cont_op_swtch = 0;
+uint16_t cont_en_dcdc = 0;
+uint16_t cont_dac = 0;
+
 void setup()
 {
+    Serial2.setRX(9);
+    Serial2.setTX(8);
+    Serial2.begin(57600);
     Serial.begin(9600);
     pinMode(C_PIN_SW1, OUTPUT);
     pinMode(C_PIN_SW2, OUTPUT);
@@ -85,9 +101,12 @@ void setup()
     digitalWrite(C_PIN_SW2, HIGH);
     analogReadResolution(12);
     display.begin();
+    display.clearDisplay();
+    display.setTextSize(2);
+    display.setTextColor(WHITE);
     /* Fase de Testeo de Placa de Testeo */
     uint16_t vol_sel = 0;
-    while (1)
+    /*while (1)
     {
         Serial.println("Bip-Bip"); //HeartBit enviado al DUT.
         display.clearDisplay();
@@ -167,47 +186,30 @@ void setup()
 
     /*                                  */
 
-    display.clearDisplay();
-    display.setTextSize(2);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.print("Fase");
-    display.setCursor(0, 25);
-    display.print("Programacion");
-    display.display();
-
-    // Programacion
-
-    while (flag_programacion_ok == false)
-    {
-        Serial.print("Bip-Bip"); //HeartBit enviado al DUT.
-        if (Serial.available())
-        {
-            data = Serial.read();
-            if (data == 'A')
-            {
-                flag_programacion_ok = true;
-            }
-        }
-        delay(100);
-    }
-
-    status = C_TEST_0;
-
+    status = C_TEST_1;
+    // 4v
+    digitalWrite(C_PIN_SW1, LOW);
+    digitalWrite(C_PIN_SW2, HIGH);
     while (flag_testing == true)
     {
-        if (status == C_TEST_0)
+        if (digitalRead(C_PIN_TEST_1) == false)
         {
-            display.clearDisplay();
-            display.setTextSize(2);
-            display.setTextColor(WHITE);
-            display.setCursor(0, 0);
-            display.print("Test 0");
-            display.setCursor(0, 25);
-            display.print("VCC: ");
-            display.setCursor(0, 50);
-            display.print("VCC 2: ");
+            status = C_TEST_1;
+        }
+        else if (digitalRead(C_PIN_TEST_2) == false)
+        {
+            cont_en_dcdc = 0;
+            cont_op_swtch = 0;
+            status = C_TEST_2;
+        }
+        else if (digitalRead(C_PIN_TEST_3) == false)
+        {
+            cont_dac = 0;
+            status = C_TEST_3;
+        }
 
+        if (status == C_TEST_1)
+        {
             for (int i = 0; i < 8; i++)
             {
                 vcc_sense += analogRead(C_PIN_VCC_CPU);
@@ -216,69 +218,39 @@ void setup()
             vcc_sense = vcc_sense / 8;
             vcc_2_sense = vcc_2_sense / 8;
 
-            if (vcc_sense >= (VCC_ADC_VALUE * LOWER_TOL / 100))
-            {
-                if (vcc_sense <= (VCC_ADC_VALUE * UPPER_TOL / 100))
-                {
-                    flag_vcc_tested = true;
-                }
-                else
-                {
-                    flag_vcc_tested = false;
-                }
-            }
-            else
-            {
-                flag_vcc_tested = false;
-            }
-            if (vcc_2_sense >= (VCC_2_ADC_VALUE * LOWER_TOL / 100))
-            {
-                if (vcc_2_sense <= (VCC_2_ADC_VALUE * UPPER_TOL / 100))
-                {
-                    flag_vcc_tested = true;
-                }
-                else
-                {
-                    flag_vcc_tested = false;
-                }
-            }
-            else
-            {
-                flag_vcc_tested = false;
-            }
-            if (flag_vcc_tested == true)
-            {
-                display.setCursor(70, 25);
-                display.print("OK");
-            }
-            else
-            {
-                display.setCursor(70, 25);
-                display.print("ERROR");
-            }
+            vcc_sense = (vcc_sense - C_OFFSET_ADC) * 3300 / 4095;
+            vcc_2_sense = (vcc_2_sense - C_OFFSET_ADC) * 3300 / 4095;
 
-            if (flag_vcc_2_tested == true)
-            {
-
-                display.setCursor(70, 50);
-                display.print("OK");
-            }
-            else
-            {
-                display.setCursor(70, 50);
-                display.print("ERROR");
-            }
-            display.display();
-
-            if ((flag_vcc_tested == true) && (flag_vcc_2_tested == true))
+            Serial.println(vcc_2_sense);
+            if ((vcc_2_sense >= (VCC_ADC_VALUE * LOWER_TOL / 100)) && (vcc_2_sense <= (VCC_ADC_VALUE * UPPER_TOL / 100)))
             {
                 if (digitalRead(C_PIN_TEST_1) == false)
                 {
-                    status = C_TEST_1;
+                    flag_programacion_ok = true;
+                }
+                if (Serial2.available())
+                {
+                    data = Serial2.readStringUntil('\n');
+                    display.clearDisplay();
+                    display.setCursor(0, 0);
+                    display.print("N. Serie:");
+                    display.setCursor(0, 25);
+                    display.print(data);
+                    Serial.println(data);
                 }
             }
+            else
+            {
+                display.clearDisplay();
+                display.setTextSize(2);
+                display.setCursor(20, 20);
+                display.print("Waiting");
+                display.setCursor(30, 40);
+                display.print("Card");
+            }
+            display.display();
         }
-        else if (status == C_TEST_1) // EN_DCDC y OP_SWITCH
+        else if (status == C_TEST_2) // EN_DCDC y OP_SWITCH
         {
             display.clearDisplay();
             display.setTextSize(2);
@@ -286,37 +258,35 @@ void setup()
             display.setCursor(0, 0);
             display.print("Test 1");
             display.setCursor(0, 25);
-            display.print("EN_DCDC: ");
+            display.print("EN: ");
             display.setCursor(0, 50);
-            display.print("OP_SWTICH: ");
+            display.print("OP: ");
 
-            display.display();
-            if ((flag_en_dcdc_tested == true) && (flag_op_switch_tested == true))
-            {
-                if (digitalRead(C_PIN_TEST_2) == false)
-                {
-                    status = C_TEST_2;
-                }
-            }
-        }
-        else if (status == C_TEST_2)
-        {
-            display.clearDisplay();
-            display.setTextSize(2);
-            display.setTextColor(WHITE);
-            display.setCursor(0, 0);
-            display.print("Test 2");
-            display.setCursor(0, 25);
-            display.print("DAC: ");
+            prev_st_en_dcdc = act_st_en_dcdc;
+            act_st_en_dcdc = digitalRead(C_PIN_EN_DCDC);
+            prev_st_op_switch = act_st_op_switch;
+            act_st_op_switch = digitalRead(C_PIN_OP_SWITCH);
 
-            display.display();
-            if (flag_dac_tested == true)
+            if ((prev_st_op_switch == false) && (act_st_op_switch == true))
             {
-                if (digitalRead(C_PIN_TEST_3) == false)
-                {
-                    status = C_TEST_3;
-                }
+                cont_op_swtch++;
             }
+            if ((prev_st_en_dcdc == false) && (act_st_en_dcdc == true))
+            {
+                cont_en_dcdc++;
+            }
+
+            if (cont_op_swtch >= 5)
+            {
+                display.setCursor(70, 25);
+                display.print("OK");
+            }
+            if (cont_en_dcdc >= 5)
+            {
+                display.setCursor(70, 50);
+                display.print("OK");
+            }
+            display.display();
         }
         else if (status == C_TEST_3)
         {
@@ -324,20 +294,41 @@ void setup()
             display.setTextSize(2);
             display.setTextColor(WHITE);
             display.setCursor(0, 0);
-            display.print("Test 3");
-            display.setCursor(0, 25);
-            display.print("Iout: ");
-            display.setCursor(0, 50);
-            display.print("Vout: ");
+            display.print("Test 2");
+            display.setCursor(0, 32);
+            display.print("DAC: ");
 
-            display.display();
-            if (flag_dac_tested == true)
+            if (cont_dac < 15)
             {
-                if (digitalRead(C_PIN_TEST_3) == false)
+                fb_dac_sense = analogRead(C_PIN_FB_DAC);
+                Serial.printf("DAC: %d\n", fb_dac_sense);
+                if (fb_dac_sense >= (DAC_LOW_VALUE * LOWER_TOL / 100))
                 {
-                    flag_testing = false;
+                    if (fb_dac_sense <= (DAC_LOW_VALUE * UPPER_TOL / 100))
+                    {
+                        cont_dac++;
+                    }
                 }
             }
+            else if (cont_dac < 30)
+            {
+                fb_dac_sense = analogRead(C_PIN_FB_DAC);
+                Serial.printf("DAC: %d\n", fb_dac_sense);
+                if (fb_dac_sense >= (DAC_HIGH_VALUE * LOWER_TOL / 100))
+                {
+                    if (fb_dac_sense <= (DAC_HIGH_VALUE * UPPER_TOL / 100))
+                    {
+                        cont_dac++;
+                    }
+                }
+            }
+
+            if (cont_dac >= 30)
+            {
+                display.setCursor(70, 32);
+                display.print("OK");
+            }
+            display.display();
         }
     }
 }

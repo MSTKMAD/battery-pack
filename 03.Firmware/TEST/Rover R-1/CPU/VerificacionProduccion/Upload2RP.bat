@@ -2,7 +2,7 @@
 @echo off
 :: Board a usar en la compilacion
 set board=rp2040:rp2040:rpipico
-set port=COM3
+set port=COM4
 set sketch=.\VerificacionProduccion.ino
 set libraries="C:/Users/Javi/Team Dropbox/JRODRIGUEZ/Repositorios/01.Rover/03.Firmware/Libraries"
 
