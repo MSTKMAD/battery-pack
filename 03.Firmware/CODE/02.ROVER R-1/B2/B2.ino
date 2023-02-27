@@ -232,7 +232,7 @@ bool flag_diagnostic_active = false; // Flag que indica si el modo diagnostico e
 bool flag_waiting_naming = true;     //Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
 bool flag_naming_active = false;     // Flag que indica si la configuracion del naming esta activa.
 
-bool test_mode_activate = false;
+bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el voltage de entrada es demasiado bajo en el estado de RUN.
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -575,7 +575,7 @@ void setup()
                     {
                         // Contador  de segundos
                         cont_log_active++;
-                        if (cont_log_active == 60) // A la hora logeo en EEPROM.
+                        if (cont_log_active == 3600) // A la hora logeo en EEPROM.
                         {
                             PostMortemLog(sample_POut, capacity, theory_Vout, 0);
                             cont_log_active = 0;
@@ -583,11 +583,25 @@ void setup()
 
                         // Sensado de la tension de entrada para prevenir apagado no deseado
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
-                        Serial5.printf("Vin:%d\n", sample_VIN);
+                        Serial5.printf("Vin:%d\nContador:%d\n", sample_VIN, cont_log_active);
                         if (sample_VIN <= 3200)
                         {
-                            DisplayLowBattery();
-                            playSound(C_SOUND_LOW_BATTERY);
+                            if (flag_low_vin_detected)
+                            {
+                                if ((cont_log_active % 300) == 0)
+                                {
+                                    DisplayLowBattery();
+                                    playSound(C_SOUND_LOW_BATTERY);
+                                    trigger_Display_volt = true;
+                                }
+                            }
+                            else
+                            {
+                                flag_low_vin_detected = true;
+                                DisplayLowBattery();
+                                playSound(C_SOUND_LOW_BATTERY);
+                                trigger_Display_volt = true;
+                            }
                         }
                     }
 
