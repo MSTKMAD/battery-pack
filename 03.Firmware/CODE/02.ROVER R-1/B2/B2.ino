@@ -331,6 +331,7 @@ void setup()
     if (ReadDiagnosticData(C_FLAG_ENABLE_NAME) == true)
     {
         ShowName();
+        delay(2000);
     }
     SwitchScreenOff();
     playSound(C_SOUND_UP);

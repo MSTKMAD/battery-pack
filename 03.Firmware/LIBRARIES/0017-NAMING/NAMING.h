@@ -281,6 +281,7 @@ void Config_Naming()
         }
     }
     SaveNameEEPROM(name, num_char);
+    delay(2000);
 }
 void ShowName()
 {
