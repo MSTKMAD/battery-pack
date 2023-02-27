@@ -738,6 +738,7 @@ void setup()
                     {
                         if (flag_enable_off == true) // si estamos en el estado STOP se pasa a mostrar la capacidad
                         {
+                            OLED_display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
                             DisplayCap(capacity);
                         }
                         else
