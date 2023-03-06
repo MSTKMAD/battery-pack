@@ -253,3 +253,22 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
         delay(333);
     }
 }
+/**
+ * @brief
+ *
+ * @param current
+ * @param voltage
+ * @param theory_voltage
+ */
+void DebugDisplay(uint32_t current, uint32_t voltage, uint32_t theory_voltage, uint32_t power)
+{
+    OLED_display.clearDisplay();
+    OLED_display.setTextSize(1);
+    OLED_display.setCursor(0, 0);
+    OLED_display.printf("I %d", current);
+    OLED_display.setCursor(0, 10);
+    OLED_display.printf("V %d/%d", voltage, theory_voltage);
+    OLED_display.setCursor(0, 20);
+    OLED_display.printf("P %d", power);
+    OLED_display.display();
+}
