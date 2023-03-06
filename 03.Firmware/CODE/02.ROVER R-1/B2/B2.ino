@@ -558,6 +558,10 @@ void setup()
                         DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_NON_BOOST_MODE);
                         delay(tiempo_arrancado / steps_subida);
                     }
+                    sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                    sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                    sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                    UpdatePowerBar(sample_POut);
                     // Rampa de Bajada
                     for (int i = steps_bajada; i >= 0; i--)
                     {
@@ -681,10 +685,6 @@ void setup()
                         }
                     }
                 }
-
-                //------- Actualizacion de la barra de potencia ----------//
-
-                UpdatePowerBar(sample_POut);
             }
             else if (sw_status == C_SW_ST_STOP) // STOP
             {
@@ -854,6 +854,10 @@ void setup()
                 DisplayVolt(theory_Vout);
                 trigger_Display_volt = false;
             }
+            // DebugDisplay(sample_IOut, sample_VOut, theory_Vout, sample_POut);
+
+            //------- Actualizacion de la barra de potencia ----------//
+            UpdatePowerBar(sample_POut);
         }
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
         else if (sw_status == C_SW_ST_SLEEP)
@@ -1208,6 +1212,7 @@ void setup()
                 playSound(C_SOUND_OFF);
                 timer_idle.set(30000);
                 timer_recover_voltage.set(1000);
+                // PowerBar(0);
             }
             //----------- TO ERROR -----------
             if (flag_error == true)
