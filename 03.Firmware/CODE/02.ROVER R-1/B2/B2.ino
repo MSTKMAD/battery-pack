@@ -298,6 +298,8 @@ void setup()
 
             if (timer_test_dac.poll(500) != C_TIMER_NOT_EXPIRED)
             {
+                Serial5.println(local_eeprom.serial_number);
+
                 if (test_dac == true)
                 {
                     DCDC.SetVoltage(60, C_NON_BOOST_MODE);
