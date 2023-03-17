@@ -96,9 +96,9 @@ const bool C_ENDING_SOUND = false;
  *      - Ts = 10 ms.
  *      - T boost = 100ms.
  *      - T no boost = 1s
- * 
+ *
  */
-HealthMonitor boost_check(50, 10, 1, 100);
+HealthMonitor boost_check(20, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
  *      - Umbral : 1000 mA.
@@ -191,6 +191,7 @@ uint16_t error;                      // Contenedor de la ID del error que ha sal
 bool test_op_switch = false;         // Variable del modod test que almacena el valor de opswitch
 bool test_en_dcdc = false;           // Variable del modod test que almacena el valor de endcdc.
 bool test_dac = false;               // Variable del modod test que almacena el valor del dac.
+uint32_t sample_raw_io = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
@@ -497,9 +498,10 @@ void setup()
 
         //============================================================== SENSADO ==================================================================//
 
-        under_voltage_protection.threshold = (theory_Vout - 20) * 100;                          // Actualizacion de la proteccion de undervoltage
-        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
-        sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 201 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+        under_voltage_protection.threshold = (theory_Vout - 20) * 100;            // Actualizacion de la proteccion de undervoltage
+        sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15; // Lectura de la Corriente de Salida
+        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+        sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
         sample_POut = (sample_IOut) * (sample_VOut) / 1000;                                     // Calculo de la potencia de salida
         //========================================================== BOOST MODE MONITOR ===========================================================//
 
@@ -599,8 +601,9 @@ void setup()
 #ifdef SERIAL_DEBUG
                         Serial5.printf("ShC %d\n", shortcircuit_event_protection_counter);
 #endif
-                        flag_protection_event_delay = true;
-                        short_current_protection.setCounter(C_RETRY_750_COUNT);
+                        // protection_event_delay.set(100);
+                        // flag_protection_event_delay = true;
+                        // short_current_protection.setCounter(C_RETRY_750_COUNT);
                     }
                 }
                 //------------- ARRANCADO--------------//
@@ -620,7 +623,11 @@ void setup()
                     for (int i = 0; i < steps_subida; i++)
                     {
                         Watchdog.reset();
+                        DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                        boost_check.check(sample_raw_io);
                         delay(tiempo_arrancado / steps_subida);
+                        over_consumption_protection.getSample(C_PIN_I_OUT);
                     }
                     sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
                     sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
@@ -630,11 +637,16 @@ void setup()
                     for (int i = steps_bajada; i >= 0; i--)
                     {
                         Watchdog.reset();
+                        DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                        boost_check.check(sample_raw_io);
                         delay(tiempo_bajada / steps_bajada);
+                        over_consumption_protection.getSample(C_PIN_I_OUT);
                     }
 
                     // Voltaje Objetivo
-                    DCDC.SetVoltage(theory_Vout, output_mode);
+                    DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                    output_mode = C_BOOST_MODE;
                     arrancado = true;
                 }
                 else if (arrancado)
