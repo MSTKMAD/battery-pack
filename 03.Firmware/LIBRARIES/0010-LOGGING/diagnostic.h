@@ -1,12 +1,12 @@
 /**
  * @file diagnostic.h
  * @author Javi (Javier@musotoku.com)
- * @brief 
+ * @brief
  * @version 1
  * @date 2021-01-14
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
 #ifndef EEPROM_EMULATION_SIZE
@@ -48,16 +48,20 @@ uint32_t checksum;
  *          Cada elemento posee el valor, el nombre y la categoria:
  *          * Serial Port (X o S). Con X no se muestra con S si.
  *          * Guardado en EEPROM (X,B,C). X no se guarda, B se guarda en la Bateria y C se guarda en el Chasis.
- * 
+ *
  */
 bool Init_local_eeprom()
 {
+    Watchdog.reset();
     local_eeprom = flash_eeprom.read();
+    Watchdog.reset();
     if ((local_eeprom.flag_init == false) && (local_eeprom.flag_corruption == false))
     {
+#ifdef SERIAL_DEBUG
         Serial5.println("EEPROM sin Incializar.");
         Serial5.print("Inicializando...");
-        //local_eeprom.serial_number = 12345;
+#endif
+        // local_eeprom.serial_number = 12345;
         local_eeprom.integrated_version = INTEGRATED_VERSION;
         local_eeprom.work_time = 0;
         local_eeprom.power_errors = 0;
@@ -71,15 +75,18 @@ bool Init_local_eeprom()
         for (int16_t i = 0; i < 25; i++)
         {
             local_eeprom.name[i] = 0;
+            Watchdog.reset();
         }
         local_eeprom.num_char_in_name = 0;
-        for (int16_t i = 0; i < 71; i++)
+        for (int16_t i = 0; i < 46; i++)
         {
             local_eeprom.array_power_use[i] = 0;
+            Watchdog.reset();
         }
         for (uint16_t i = 0; i < 21; i++)
         {
             local_eeprom.array_percent_use[i] = 0;
+            Watchdog.reset();
         }
         local_eeprom.checksum = 0;
         local_eeprom.checksum += local_eeprom.serial_number;
@@ -96,18 +103,24 @@ bool Init_local_eeprom()
         for (int16_t i = 0; i < 25; i++)
         {
             local_eeprom.checksum += local_eeprom.name[i];
+            Watchdog.reset();
         }
         local_eeprom.checksum += local_eeprom.num_char_in_name;
-        for (size_t i = 0; i < 71; i++)
+        for (size_t i = 0; i < 46; i++)
         {
             local_eeprom.checksum += local_eeprom.array_power_use[i];
+            Watchdog.reset();
         }
         for (size_t i = 0; i < 21; i++)
         {
             local_eeprom.checksum += local_eeprom.array_percent_use[i];
+            Watchdog.reset();
         }
         flash_eeprom.write(local_eeprom);
+        Watchdog.reset();
+#ifdef SERIAL_DEBUG
         Serial5.println("INICIALIZADA");
+#endif
         return 1;
     }
     else
@@ -118,6 +131,7 @@ bool Init_local_eeprom()
         }
         else
         {
+#ifdef SERIAL_DEBUG
             Serial5.println("EEPROM Inicializada.");
             Serial5.println("Volcando EEPROM.");
             Serial5.println(local_eeprom.serial_number);
@@ -138,7 +152,7 @@ bool Init_local_eeprom()
                 Serial5.print(",");
             }
             Serial5.println();
-            for (int16_t i = 0; i < 71; i++)
+            for (int16_t i = 0; i < 46; i++)
             {
                 Serial5.print(local_eeprom.array_power_use[i]);
                 Serial5.print(",");
@@ -150,6 +164,7 @@ bool Init_local_eeprom()
                 Serial5.print(",");
             }
             Serial5.println();
+#endif
             uint32_t checksum;
             checksum = 0;
             checksum += local_eeprom.serial_number;
@@ -166,18 +181,23 @@ bool Init_local_eeprom()
             for (int16_t i = 0; i < 25; i++)
             {
                 checksum += local_eeprom.name[i];
+                Watchdog.reset();
             }
             checksum += local_eeprom.num_char_in_name;
-            for (size_t i = 0; i < 71; i++)
+            for (size_t i = 0; i < 46; i++)
             {
                 checksum += local_eeprom.array_power_use[i];
+                Watchdog.reset();
             }
             for (size_t i = 0; i < 21; i++)
             {
                 checksum += local_eeprom.array_percent_use[i];
+                Watchdog.reset();
             }
+#ifdef SERIAL_DEBUG
             Serial5.println("Volcado de EEPROM Finalizado.");
             Serial5.printf("Checksum: %d\nEEPROM Checkcum:%d\n", checksum, local_eeprom.checksum);
+#endif
             if (checksum == local_eeprom.checksum)
             {
                 return 1;
@@ -191,7 +211,7 @@ bool Init_local_eeprom()
 }
 /**
  * @brief Actualizar el valor en Ram de una variable de adiagnostico
- * 
+ *
  * @param data Valor del dato
  * @param address Direccion en la memoria RAM de la variable
  */
@@ -225,9 +245,9 @@ void LogDiagnosticData(int16_t data, int16_t address)
 }
 /**
  * @brief Lectura del valor de un elemento de diagnostico.
- * 
+ *
  * @param address
- * 
+ *
  */
 uint16_t ReadDiagnosticData(int16_t address)
 {
@@ -250,7 +270,7 @@ uint16_t ReadDiagnosticData(int16_t address)
 }
 /**
  * @brief Incrementar el valor de una variable de diagnostico en un valor
- * 
+ *
  * @param inc Valor de incremento
  * @param address Direccion en la memoria RAM de la variable.
  */
@@ -287,7 +307,7 @@ void IncrementDiagnosticData(int16_t address)
 
 /**
  * @brief Guardado en la EEPROM del chasis de las variables de diagnostico con categoria de Memoria 'C'.
- * 
+ *
  */
 void SaveEeprom()
 {
@@ -306,27 +326,33 @@ void SaveEeprom()
     for (int16_t i = 0; i < 25; i++)
     {
         local_eeprom.checksum += local_eeprom.name[i];
+        Watchdog.reset();
     }
     local_eeprom.checksum += local_eeprom.num_char_in_name;
-    for (size_t i = 0; i < 71; i++)
+    for (size_t i = 0; i < 46; i++)
     {
         local_eeprom.checksum += local_eeprom.array_power_use[i];
+        Watchdog.reset();
     }
     for (size_t i = 0; i < 21; i++)
     {
         local_eeprom.checksum += local_eeprom.array_percent_use[i];
+        Watchdog.reset();
     }
+    Watchdog.reset();
     flash_eeprom.write(local_eeprom);
 }
 /**
  * @brief Logeo de los valores del postmortem
- * 
- * @param value 
- * @param address 
+ *
+ * @param value
+ * @param address
  */
 void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_value, int16_t errors_value)
 {
+#ifdef SERIAL_DEBUG
     Serial5.println("PM-Logging");
+#endif
     for (int i = 0; i < PM_POSITIONS - 1; i++)
     {
         local_eeprom.pm_power[i] = local_eeprom.pm_power[i + 1];
@@ -340,8 +366,8 @@ void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_va
     local_eeprom.pm_errors[PM_POSITIONS - 1] = errors_value;
 }
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void DiagnosticMode()
 {
@@ -395,17 +421,21 @@ void DiagnosticMode()
     for (int i = 0; i < sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]); i++)
     {
         sprintf(buffer, "0x%04X ", diagnostic_chain[i]);
+#ifdef SERIAL_DEBUG
         Serial5.print(buffer);
+#endif
     }
+#ifdef SERIAL_DEBUG
     Serial5.println();
+#endif
 
     DisplayArray(diagnostic_chain, sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]));
 }
 
 /**
- * @brief 
- * 
- * @param array_to_display 
+ * @brief
+ *
+ * @param array_to_display
  */
 void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
 {
@@ -418,10 +448,10 @@ void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
 }
 
 /**
- * @brief 
- * 
- * @param array_to_name 
- * @return uint16_t 
+ * @brief
+ *
+ * @param array_to_name
+ * @return uint16_t
  */
 uint16_t ReadNameEEPROM(char array_to_name[])
 {

@@ -1,14 +1,14 @@
 /**
  * @file NAMING.h
  * @author Javi (Javier@musotoku.com)
- * @brief 
+ * @brief
  * @version 1
  * @date 2023-01-27
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
-//#include <Dpad.h>
+// #include <Dpad.h>
 const uint8_t C_PHASE_NAME = 0;
 const uint8_t C_PHASE_CONFIRM = 1;
 const uint8_t init_char = 0x41;
@@ -47,8 +47,10 @@ void Config_Naming()
     cursor_y = 16;
     while (end_flag == false)
     {
+        Watchdog.reset();
         while (button_event_naming == C_NONE_EVENT)
         {
+            Watchdog.reset();
             button_event_naming = ReadDirPad();
 
             if (blink_underscore.poll(500) != C_TIMER_NOT_EXPIRED)
@@ -149,6 +151,7 @@ void Config_Naming()
                     {
                         OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
                         cursor_x_name += 12;
+                        Watchdog.reset();
                     }
                 }
                 else
@@ -158,6 +161,7 @@ void Config_Naming()
                     {
                         OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
                         cursor_x_name += 12;
+                        Watchdog.reset();
                     }
                 }
                 cursor_x_underscore = cursor_x_name;
@@ -168,10 +172,11 @@ void Config_Naming()
             uint8_t confirm = 0;
             OLED_display.clearDisplay();
             OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
-            //OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+            // OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
             OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
             while (active_question == true)
             {
+                Watchdog.reset();
                 button_event_naming = ReadDirPad();
 
                 if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
@@ -204,6 +209,7 @@ void Config_Naming()
                         OLED_display.drawChar(28, 0, init_char, WHITE, BLACK, 2);
                         OLED_display.drawChar(52, 0, 0x1A, WHITE, BLACK, 2);
                         OLED_display.display();
+                        Watchdog.reset();
                         OLED_display.fillRect(16, 16, 64, 16, BLACK);
                         if (num_char < 5)
                         {
@@ -228,17 +234,19 @@ void Config_Naming()
                     }
                 }
                 OLED_display.display();
+                Watchdog.reset();
             }
         }
 
         OLED_display.display();
+        Watchdog.reset();
         button_event_naming = ReadDirPad();
     }
 
     OLED_display.clearDisplay();
     OLED_display.setCursor(0, 0);
     OLED_display.print("Hi!");
-
+    Watchdog.reset();
     num_swft = num_char * 12 - 64;
     if (num_swft < 0)
     {
@@ -247,6 +255,7 @@ void Config_Naming()
         {
             OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
             cursor_x_name += 12;
+            Watchdog.reset();
         }
         OLED_display.display();
     }
@@ -256,39 +265,58 @@ void Config_Naming()
         for (int j = num_char - 1; j >= 0; j--)
         {
             name[j + num_spaces] = name[j];
+            Watchdog.reset();
         }
         for (int i = 1; i <= num_spaces; i++)
         {
             name[(num_spaces + num_char * 2) - i] = 0x00;
             name[i - 1] = 0x00;
+            Watchdog.reset();
         }
         num_char = num_char + num_spaces * 2;
         num_swft = num_char * 12 - 64;
 
         for (int k = 0; k < 4; k++)
         {
+            Watchdog.reset();
             for (int i = 0; i <= (num_swft / 4) + 1; i++)
             {
+                Watchdog.reset();
                 cursor_x_name = i * -4;
                 for (int j = 0; j < num_char; j++)
                 {
+                    Watchdog.reset();
                     OLED_display.drawChar(cursor_x_name, cursor_y, name[j], WHITE, BLACK, 2);
                     cursor_x_name += 12;
                 }
                 OLED_display.display();
-                delay(100);
+                // delay(100);
+                for (int i = 0; i < 10; i++)
+                {
+                    delay(10);
+                    Watchdog.reset();
+                }
             }
         }
     }
     SaveNameEEPROM(name, num_char);
-    delay(2000);
+    // delay(2000);
+    for (int i = 0; i < 200; i++)
+    {
+        delay(10);
+        Watchdog.reset();
+    }
 }
 void ShowName()
 {
+#ifdef SERIAL_DEBUG
     Serial5.println("ShowName");
+#endif
     char name_to_display[25];
     uint16_t num_char_to_show = ReadNameEEPROM(name_to_display);
+#ifdef SERIAL_DEBUG
     Serial5.println(num_char_to_show);
+#endif
     OLED_display.clearDisplay();
     OLED_display.setTextSize(2);
     OLED_display.setCursor(0, 0);

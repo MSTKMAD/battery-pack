@@ -1,12 +1,12 @@
 /**
  * @file HealthMonitor.h
  * @author Javi (Javier@musotoku.com)
- * @brief 
+ * @brief
  * @version 4
  * @date 2020-3-18
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 #include <batt_SAMD_AnalogCorrection.h>
 
@@ -32,11 +32,11 @@ public:
 
   /**
    * @brief Construct a new Health Monitor object
-   * 
-   * @param thres 
-   * @param inc 
-   * @param dec 
-   * @param lim 
+   *
+   * @param thres
+   * @param inc
+   * @param dec
+   * @param lim
    */
   HealthMonitor(uint16_t thres, uint8_t inc, uint8_t dec, uint16_t lim)
   {
@@ -48,8 +48,8 @@ public:
   }
   /**
    * @brief Set the Counter object
-   * 
-   * @param value 
+   *
+   * @param value
    */
   void setCounter(uint16_t value)
   {
@@ -58,8 +58,8 @@ public:
 
   /**
    * @brief Get the Counter object
-   * 
-   * @return uint16_t 
+   *
+   * @return uint16_t
    */
   uint16_t getCounter()
   {
@@ -72,9 +72,9 @@ public:
 
   /**
    * @brief Check the input and return an alarm if the conter exceed the count limit..
-   * 
-   * @param sample 
-   * @return boolean 
+   *
+   * @param sample
+   * @return boolean
    */
   boolean check(uint16_t sample)
   {
@@ -104,9 +104,9 @@ public:
 
   /**
    * @brief Get the Sample object from an ADC pin.
-   * 
-   * @param ADCpin 
-   * @return uint16_t 
+   *
+   * @param ADCpin
+   * @return uint16_t
    */
   uint16_t getSample(uint16_t ADCpin)
   {
@@ -114,19 +114,29 @@ public:
     analogReadResolution(12); // Set analog input resolution to max, 12-bits
     int16_t out_sample = 0;
     int16_t sample = 0;
-    for (int i = (sizeof(sense_values) / sizeof(sense_values[0])) - 1; i >= 1; i--)
-    {
-      sense_values[i] = sense_values[i - 1];
-      out_sample += sense_values[i];
-    }
 
     for (int i = 0; i < 8; i++)
     {
       sample += analogRead(ADCpin);
     }
+    sample = sample / 8;
 
-    sample = (sample / 8 + out_sample) / 8;
-    sense_values[0] = sample;
+    // for (int i = 7; i >= 1; i--)
+    // {
+    //   sense_values[i] = sense_values[i - 1];
+    // }
+    // out_sample += sense_values[7] / 4;
+    // out_sample += sense_values[6] / 4;
+    // out_sample += sense_values[5] / 4;
+    // out_sample += sense_values[4] / 4;
+    // out_sample += sense_values[3] / 2;
+    // out_sample += sense_values[2] / 2;
+    // out_sample += sense_values[1];
+    // out_sample += sample;
+    
+
+    // sample = out_sample / 4;
+    // sense_values[0] = sample;
     return sample;
   }
 };

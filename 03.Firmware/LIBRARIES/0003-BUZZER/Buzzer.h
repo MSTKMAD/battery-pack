@@ -1,15 +1,15 @@
 /**
  * @file Buzzer.h
  * @author Javi (Javier@musotoku.com)
- * @brief 
+ * @brief
  * @version 2
  * @date 2021-02-11
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 #include "notes.h"
-//#include <MilliTimer.h>
+// #include <MilliTimer.h>
 
 uint16_t C_PIN_BUZZER = 2;
 
@@ -74,8 +74,8 @@ const uint16_t C_MODE_DEFAULT = 0x11;
 
 /**
  * @brief Inicializacion del buzzer con la seleccion del sonido de cada accion.
- * 
- * @param mode 
+ *
+ * @param mode
  */
 void InitBuzzer(uint16_t mode = C_MODE_DEFAULT, uint16_t pin_buzzer = C_PIN_BUZZER)
 {
@@ -141,10 +141,10 @@ void InitBuzzer(uint16_t mode = C_MODE_DEFAULT, uint16_t pin_buzzer = C_PIN_BUZZ
 }
 /**
  * @brief Get the Sound object
- * 
- * @param local 
- * @param sound_id 
- * @return uint16_t 
+ *
+ * @param local
+ * @param sound_id
+ * @return uint16_t
  */
 uint16_t getSound(uint16_t *local, uint16_t sound_id)
 {
@@ -215,14 +215,16 @@ uint16_t getSound(uint16_t *local, uint16_t sound_id)
 }
 /**
  * @brief Funcion que reproduce los sonidos.
- * 
- * @param num 
- * @return true 
- * @return false 
+ *
+ * @param num
+ * @return true
+ * @return false
  */
 void playSound(int16_t num)
 {
+#ifdef SERIAL_DEBUG
     Serial5.printf("Sound %d\n", num);
+#endif
     uint16_t index = 0;
     bool buzzer_state = C_BUZZER_BUSSY;
     uint16_t local_sound[100];
@@ -232,7 +234,9 @@ void playSound(int16_t num)
     for (uint16_t i = 0; i / 3 < size_sound; i += 3)
     {
         while (timer_buzzer.poll() == C_TIMER_NOT_EXPIRED)
-            ;
+        {
+            Watchdog.reset();
+        };
         tone(C_PIN_BUZZER, local_sound[i], local_sound[i + 1]);
         timer_buzzer.set(local_sound[i + 1] + local_sound[i + 2]);
     }

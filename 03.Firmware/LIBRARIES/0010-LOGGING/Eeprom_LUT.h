@@ -17,7 +17,7 @@ const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 const uint16_t NUM_POS_NAME = 25;
 const uint16_t POWER_USE_POSITIONS = 46;   // 500w to 5000w in step of 100w -> 46 step
 const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 step
-typedef struct EEPROM
+struct EEPROM
 {
     uint16_t serial_number;
     uint8_t integrated_version;
@@ -69,6 +69,6 @@ const uint8_t C_PM_PERCENT = 17;
 const uint8_t C_PM_VOLTAGE = 18;
 const uint8_t C_PM_ERRORS = 19;
 
-const uint8_t C_ERROR_PWR = 1001;
-const uint8_t C_ERROR_VOLT = 1002;
-const uint8_t C_ERROR_CONS = 1003;
+const uint16_t C_ERROR_PWR = 1001;
+const uint16_t C_ERROR_VOLT = 1002;
+const uint16_t C_ERROR_CONS = 1003;

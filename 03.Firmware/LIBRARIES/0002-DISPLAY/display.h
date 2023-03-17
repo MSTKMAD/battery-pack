@@ -199,8 +199,11 @@ void DisplayCap(int capacity)
  *
  */
 
-bool DisplayLowBattery()
+void DisplayLowBattery()
 {
+#ifdef SERIAL_DEBUG
+    Serial5.printf("Display LowBatt\n");
+#endif
     OLED_display.clearDisplay();
     OLED_display.setTextSize(2);
     OLED_display.setCursor(0, 0);
@@ -214,10 +217,16 @@ bool DisplayLowBattery()
  *
  */
 
-bool DisplayNoBattery()
+void DisplayNoBattery()
 {
+#ifdef SERIAL_DEBUG
+    Serial5.printf("Display Empty Battery\n");
+#endif
     for (uint16_t i = 0; i < 3; i++)
     {
+#ifdef SERIAL_DEBUG
+        Serial5.printf("Display Empty Battery %d\n", i);
+#endif
         OLED_display.clearDisplay();
         OLED_display.setTextSize(2);
         OLED_display.setCursor(0, 0);
@@ -225,11 +234,22 @@ bool DisplayNoBattery()
         OLED_display.setCursor(0, 16);
         OLED_display.print("Batt");
         OLED_display.display();
-        delay(750);
+        // delay(750);
+        for (int i = 0; i < 75; i++)
+        {
+            delay(10);
+            Watchdog.reset();
+        }
+
         OLED_display.clearDisplay();
         OLED_display.drawBitmap(0, 0, batt_empty, 64, 32, BLACK, WHITE);
         OLED_display.display();
-        delay(750);
+        // delay(750);
+        for (int i = 0; i < 75; i++)
+        {
+            delay(10);
+            Watchdog.reset();
+        }
     }
 }
 /**
@@ -260,12 +280,12 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
  * @param voltage
  * @param theory_voltage
  */
-void DebugDisplay(uint32_t current, uint32_t voltage, uint32_t theory_voltage, uint32_t power)
+void DebugDisplay(uint32_t current, uint32_t current_raw, uint32_t voltage, uint32_t theory_voltage, uint32_t power)
 {
     OLED_display.clearDisplay();
     OLED_display.setTextSize(1);
     OLED_display.setCursor(0, 0);
-    OLED_display.printf("I %d", current);
+    OLED_display.printf("I %d/%d", current, current_raw);
     OLED_display.setCursor(0, 10);
     OLED_display.printf("V %d/%d", voltage, theory_voltage);
     OLED_display.setCursor(0, 20);
