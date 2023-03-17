@@ -1,14 +1,14 @@
 /**
  * @file B2.ino
  * @author Javi (Javier@musotoku.com)
- * @brief 
- *      V1: Fork de la version B1_V11-RC1.  
- * 
+ * @brief
+ *      V1: Fork de la version B1_V11-RC1.
+ *
  * @version V1
  * @date 2022-11-10
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #define INTEGRATED_VERSION 1
 
@@ -1009,10 +1009,10 @@ void setup()
                 {
                     playSound(sound);
                 }
-                DisplayVolt(theory_Vout);
+                // DisplayVolt(theory_Vout);
                 trigger_Display_volt = false;
             }
-            // DebugDisplay(sample_IOut, sample_VOut, theory_Vout, sample_POut);
+            DebugDisplay(sample_IOut, sample_raw_io, sample_VOut, theory_Vout, sample_POut);
 
             //------- Actualizacion de la barra de potencia ----------//
             UpdatePowerBar(sample_POut);
@@ -1696,11 +1696,11 @@ void IrqCenterButtonHandler()
 }
 
 /**
- * @brief 
- * 
- * @param pin_battery 
- * @param lowbattery 
- * @return int16_t 
+ * @brief
+ *
+ * @param pin_battery
+ * @param lowbattery
+ * @return int16_t
  */
 int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
 {
