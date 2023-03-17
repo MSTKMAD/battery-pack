@@ -278,12 +278,12 @@ void setup()
 
             if (cont_op_swtch >= 5)
             {
-                display.setCursor(70, 25);
+                display.setCursor(70, 50);
                 display.print("OK");
             }
             if (cont_en_dcdc >= 5)
             {
-                display.setCursor(70, 50);
+                display.setCursor(70, 25);
                 display.print("OK");
             }
             display.display();

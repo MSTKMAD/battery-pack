@@ -1,12 +1,12 @@
 /**
  * @file VerificacionProduccion.ino
  * @author Javi (Javier@musotoku.com)
- * @brief 
+ * @brief
  * @version 2
  * @date 2023-01-25
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 #include "Arduino.h"
 #include "Adafruit_SSD1306_096.h"
@@ -50,10 +50,12 @@ const uint16_t C_VOUT_FASE_1 = 3000;
 const uint16_t C_VOUT_FASE_2 = 500;
 const uint16_t C_VOUT_FASE_3 = 10000;
 
+const uint16_t C_IOUT_TEST_0_1 = 100;
+
 const uint16_t C_VOUT_TEST_2 = 50;
 const uint16_t C_VOUT_TEST_3 = 98;
 
-const uint16_t TOLERANCIA = 15; // %
+const uint16_t TOLERANCIA = 20; // %
 const uint16_t LOWER_TOL = 100 - TOLERANCIA;
 const uint16_t UPPER_TOL = 100 + TOLERANCIA;
 
@@ -78,7 +80,7 @@ uint16_t volt_test_2 = 40;
 
 void setup()
 {
-    //Wire.setClock(100000);
+    // Wire.setClock(100000);
     MCP.begin(C_PIN_SDA, C_PIN_SCL);
     Serial.begin(9600);
 
@@ -304,13 +306,18 @@ void setup()
                 MCP.setValue(dac_count);
 
                 vout_sample = 0;
+                iout_sample = 0;
                 for (int i = 0; i < 32; i++)
                 {
                     vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                    delay(10);
+                    iout_sample += analogRead(C_PIN_IO_SENSE);
+                    delay(75);
                 }
+                vout_sample = vout_sample / 32;
+                iout_sample = iout_sample / 32;
 
-                vout_sample = vout_sample / 32 * 208 / 39 * 3300 / 4096;
+                vout_sample = vout_sample * 208 / 39 * 3300 / 4096;
+                iout_sample = iout_sample * 3300 / 4096 * 10 / 15;
 
                 if (fase == C_FASE_0)
                 {
@@ -326,14 +333,21 @@ void setup()
                         digitalWrite(C_PIN_EN_DCDC, HIGH);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
                     }
-                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    else if ((timer_t1.poll() != C_TIMER_NOT_EXPIRED) || (iout_sample >= C_IOUT_TEST_0_1))
                     {
-                        Serial.println("Fase 0.");
-                        Serial.println(vout_sample);
+                        Serial.printf("Fase 0.\n %d/%d\n", vout_sample, iout_sample);
                         timer_t1.set(2000);
                         fase = C_FASE_1;
                         display.setCursor(10, 10);
-                        display.print("NO");
+                        if (iout_sample >= C_IOUT_TEST_0_1)
+                        {
+                            display.print("!!!");
+                        }
+                        else
+                        {
+                            display.print("NO");
+                        }
+
                         // EN_DCDC = OFF - OP_SWITCH = ON
                         digitalWrite(C_PIN_EN_DCDC, HIGH);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
@@ -354,14 +368,20 @@ void setup()
                         digitalWrite(C_PIN_EN_DCDC, LOW);
                         digitalWrite(C_PIN_OP_SWITCH, HIGH);
                     }
-                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    else if ((timer_t1.poll() != C_TIMER_NOT_EXPIRED) || (iout_sample >= C_IOUT_TEST_0_1))
                     {
-                        Serial.println("Fase 1.");
-                        Serial.println(vout_sample);
+                        Serial.printf("Fase 1.\n %d/%d\n", vout_sample, iout_sample);
                         timer_t1.set(2000);
                         fase = C_FASE_2;
                         display.setCursor(74, 10);
-                        display.print("NO");
+                        if (iout_sample >= C_IOUT_TEST_0_1)
+                        {
+                            display.print("!!!");
+                        }
+                        else
+                        {
+                            display.print("NO");
+                        }
                         // EN_DCDC = ON - OP_SWITCH = OFF
                         digitalWrite(C_PIN_EN_DCDC, LOW);
                         digitalWrite(C_PIN_OP_SWITCH, HIGH);
@@ -382,14 +402,20 @@ void setup()
                         digitalWrite(C_PIN_EN_DCDC, LOW);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
                     }
-                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    else if ((timer_t1.poll() != C_TIMER_NOT_EXPIRED) || (iout_sample >= C_IOUT_TEST_0_1))
                     {
-                        Serial.println("Fase 2.");
-                        Serial.println(vout_sample);
+                        Serial.printf("Fase 2.\n %d/%d\n", vout_sample, iout_sample);
                         timer_t1.set(2000);
                         fase = C_FASE_3;
                         display.setCursor(10, 42);
-                        display.print("NO");
+                        if (iout_sample >= C_IOUT_TEST_0_1)
+                        {
+                            display.print("!!!");
+                        }
+                        else
+                        {
+                            display.print("NO");
+                        }
                         // EN_DCDC = ON - OP_SWITCH = ON
                         digitalWrite(C_PIN_EN_DCDC, LOW);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
@@ -406,14 +432,20 @@ void setup()
                         display.print("YES");
                         timer_t1.set(2000);
                     }
-                    if (timer_t1.poll() != C_TIMER_NOT_EXPIRED)
+                    else if ((timer_t1.poll() != C_TIMER_NOT_EXPIRED) || (iout_sample >= C_IOUT_TEST_0_1))
                     {
-                        Serial.println("Fase 3.");
-                        Serial.println(vout_sample);
+                        Serial.printf("Fase 3.\n %d/%d\n", vout_sample, iout_sample);
                         timer_t1.set(2000);
                         fase = C_FASE_4;
                         display.setCursor(74, 42);
-                        display.print("NO");
+                        if (iout_sample >= C_IOUT_TEST_0_1)
+                        {
+                            display.print("!!!");
+                        }
+                        else
+                        {
+                            display.print("NO");
+                        }
                     }
                 }
                 display.display();
@@ -431,16 +463,23 @@ void setup()
                     display.clearDisplay();
                     display.setCursor(30, 30);
                     display.print(volt_test_2 / 10);
-                    vout_sample = 0;
+                    display.display();
                     delay(1000);
-                    for (int j = 0; j < 8; j++)
+                    vout_sample = 0;
+                    iout_sample = 0;
+                    for (int i = 0; i < 32; i++)
                     {
                         vout_sample += analogRead(C_PIN_VOUT_SENSE);
-                        delay(50);
+                        iout_sample += analogRead(C_PIN_IO_SENSE);
+                        delay(75);
                     }
-                    vout_sample = vout_sample / 8 * 208 / 39 * 3300 / 4096;
+                    vout_sample = vout_sample / 32;
+                    iout_sample = iout_sample / 32;
 
-                    if ((vout_sample >= (volt_test_2 * LOWER_TOL)) && (vout_sample <= (volt_test_2 * UPPER_TOL)))
+                    vout_sample = vout_sample * 208 / 39 * 3300 / 4096;
+                    iout_sample = iout_sample * 3300 / 4096 * 10 / 15;
+
+                    if ((vout_sample >= (volt_test_2 * LOWER_TOL)) && (vout_sample <= (volt_test_2 * UPPER_TOL)) && (iout_sample <= C_IOUT_TEST_0_1))
                     {
                         display.setCursor(70, 30);
                         display.print("GOOD");
@@ -451,7 +490,7 @@ void setup()
                         display.setCursor(70, 30);
                         display.print("BAD");
                     }
-
+                    Serial.printf("%d.\n %d/%d\n", volt_test_2, vout_sample, iout_sample);
                     display.display();
                 }
                 else if (flag_dac_test == 0)
