@@ -74,7 +74,7 @@ const uint8_t C_EMPTY_BATTERY_LEVEL = 5; // Porcentaje de bateria  partir del cu
 const uint16_t C_IDLE_TIMER_COUNT = 15 * 2; // 15 Minutos para que se apage la bateria por inactividad.
                                             // NOTE: El contador es de 30seg, por eso se multiplica por 2-
 
-const uint16_t C_EEPROM_UPDATE_TIME = 15; //min
+const uint16_t C_EEPROM_UPDATE_TIME = 15; // min
 
 //-------------------------------- Protections IDs -------------------------------------
 const uint16_t C_ERROR_OVERCURRENT = 0x10;
@@ -196,7 +196,7 @@ bool test_dac = false;               // Variable del modod test que almacena el 
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
 bool flag_eeprom_init_fail = false;             // Flag que indica si se ha producido un fallo durante la inicializacion de la EEPROM
 
-bool flag_low_battery = false;   //Flag que indica si la capacidad se encuentra por debajo del umbral de bateria baja.
+bool flag_low_battery = false;   // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria baja.
 bool flag_empty_battery = false; // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria vacia.
 
 bool flag_protection_event_delay = false; // Flag que indica que se tiene que realizar un delay por la deteccion de un evento de las proteccion.
@@ -231,7 +231,7 @@ bool flag_enable_diagnostic = false; // Flag que indica si es posible entrar el 
                                      // NOTE: Esto se hace para evitar que se pueda acceder al modo diagnostico nada mas insertar la bateria.
 
 bool flag_diagnostic_active = false; // Flag que indica si el modo diagnostico esta activo.
-bool flag_waiting_naming = true;     //Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
+bool flag_waiting_naming = true;     // Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
 bool flag_naming_active = false;     // Flag que indica si la configuracion del naming esta activa.
 
 bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el voltage de entrada es demasiado bajo en el estado de RUN.
@@ -545,7 +545,7 @@ void setup()
             //-------------------- MOSTRADO DE LA CAPACIDAD AL FINAL DEL ENCENDIDO --------------------//
             if ((flag_msg_init == true) && (flag_display_capacity_init == false) && (flag_sound_init == true))
             {
-                //t1_cap = micros();
+                // t1_cap = micros();
                 flag_display_capacity_init = true;
                 Watchdog.reset();
                 capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
@@ -578,7 +578,7 @@ void setup()
         /*_______________________________________________________________RUN / STOP__________________________________________________________________*/
         else if ((sw_status == C_SW_ST_RUN) || (sw_status == C_SW_ST_STOP))
         {
-            //t1 = micros();
+            // t1 = micros();
             if (sw_status == C_SW_ST_RUN)
             {
 
@@ -1646,10 +1646,10 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
         sample += analogRead(pin_battery);
     }
 
-    //Calculo del voltaje de la bateria
+    // Calculo del voltaje de la bateria
     batt_voltage = sample / 8 * 3000 / 4096 * 250 / 150;
 
-    //Calculo del porcentaje  de bateria actual
+    // Calculo del porcentaje  de bateria actual
     percent = constrain(((batt_voltage - 3300) * 100 / 800), 0, 100);
 
     if (percent <= C_EMPTY_BATTERY_LEVEL) // Porcentaje por debajo del valor de bateria vacia.
