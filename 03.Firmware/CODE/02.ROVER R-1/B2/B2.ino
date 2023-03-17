@@ -76,6 +76,14 @@ const uint16_t C_IDLE_TIMER_COUNT = 15 * 2; // 15 Minutos para que se apage la b
 
 const uint16_t C_EEPROM_UPDATE_TIME = 15; // min
 
+//------------------------------- Causas de Resets--------------------------------------
+const uint8_t C_RCAUSE_SYST = 0x16;  // Reset causado por un reset de systema.
+const uint8_t C_RCAUSE_WDT = 0x15;   // Reset causado por el Watchdog timer
+const uint8_t C_RCAUSE_EXT = 0x14;   // Reset causado por un efecto externo.
+const uint8_t C_RCAUSE_BOD33 = 0x12; // Reset por un BOD33
+const uint8_t C_RCAUSE_BOD12 = 0x11; // Reset por un BOD12
+const uint8_t C_RCAUSE_POR = 0x10;   // Reset por un Power On Reset.
+
 //-------------------------------- Protections IDs -------------------------------------
 const uint16_t C_ERROR_OVERCURRENT = 0x10;
 const uint16_t C_ERROR_OVERPOWER = 0x11;
@@ -197,6 +205,7 @@ bool test_dac = false;               // Variable del modod test que almacena el 
 uint32_t sample_raw_io = 0;
 uint16_t test_sammple_IOut = 0;
 uint16_t test_sammple_VOut = 0;
+uint16_t reset_cause = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
@@ -257,6 +266,7 @@ void setup()
 {
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
+    Watchdog.enable(100);
     //------------------------- INIT PIN-------------------------------
     pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
     pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
@@ -264,6 +274,35 @@ void setup()
     pinMode(C_PIN_OP_SWITCH, OUTPUT);
     pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
 
+    //-------------------------- Reset Cause---------------------------
+
+    reset_cause = Watchdog.resetCause();
+    Serial5.printf("%04x\n", reset_cause);
+    if (reset_cause & 0x01)
+    {
+        Serial5.println("Reset Power On Reset");
+    }
+    else if (reset_cause & 0x02)
+    {
+        Serial5.println("Reset BOD12");
+    }
+    else if (reset_cause & 0x04)
+    {
+        Serial5.println("Reset BOD33");
+    }
+    else if (reset_cause & 0x10)
+    {
+        Serial5.println("Reset External");
+    }
+    else if (reset_cause & 0x20)
+    {
+        Serial5.println("Reset WatchDog");
+    }
+    else if (reset_cause & 0x40)
+    {
+        Serial5.println("Reset System");
+    }
+   // delay(500);
     //------------------------ INITIALITATION PERIFERICOS ----------------------------
     Wire.begin();
 
@@ -1104,7 +1143,7 @@ void setup()
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
-                    Watchdog.enable();
+                    Watchdog.enable(100);
                     // Comprobar causante del despertar.
                     if (flag_irq_center_button == true)
                     {
