@@ -158,6 +158,8 @@ MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de poten
 MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte la señal de op switch.
 MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
+MilliTimer timer_5min_low_bat_msg;  // Timer para espaciar los avisos de bateria baja en el estado RUN.
+MilliTimer timer_test_sensing;
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
@@ -177,6 +179,7 @@ uint16_t long_press_events = 0;                    // Contador del numero de lon
 int16_t cont_idle_timer = 0;                       // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
 uint32_t cont_log_sec = 0;                         // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
 uint32_t cont_log_active = 0;                      // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_test_sample = 0;
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -192,6 +195,8 @@ bool test_op_switch = false;         // Variable del modod test que almacena el 
 bool test_en_dcdc = false;           // Variable del modod test que almacena el valor de endcdc.
 bool test_dac = false;               // Variable del modod test que almacena el valor del dac.
 uint32_t sample_raw_io = 0;
+uint16_t test_sammple_IOut = 0;
+uint16_t test_sammple_VOut = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
@@ -235,6 +240,7 @@ bool flag_diagnostic_active = false; // Flag que indica si el modo diagnostico e
 bool flag_waiting_naming = true;     // Flag que indica el estado de la ventana de tiempo para detectar la activacion de la entrada a la configuracion del naming.
 bool flag_naming_active = false;     // Flag que indica si la configuracion del naming esta activa.
 
+bool test_mode_activate = false;    // Flag que indica si el modo test esta activado o no.
 bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el voltage de entrada es demasiado bajo en el estado de RUN.
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
@@ -282,13 +288,14 @@ void setup()
     if (local_eeprom.test_mode == true)
     {
         test_mode_activate = true;
+        OLED_display.clearDisplay();
+        timer_test_sensing.set(1000);
         while (test_mode_activate)
         {
             Watchdog.reset();
             sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
             sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-
-            OLED_display.clearDisplay();
+            OLED_display.fillRect(0, 0, 50, 32, BLACK);
             OLED_display.setTextSize(1);
             OLED_display.setCursor(0, 0);
             OLED_display.printf("I %d", sample_IOut);
@@ -297,13 +304,43 @@ void setup()
             OLED_display.display();
             Watchdog.reset();
 
-            if (timer_test_op_switch.poll(300) != C_TIMER_NOT_EXPIRED)
+            if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
             {
+                test_sammple_IOut /= cont_test_sample;
+                test_sammple_VOut /= cont_test_sample;
+                if ((test_sammple_IOut >= (1000 * 95 / 100)) && (test_sammple_IOut <= (1000 * 105 / 100)))
+                {
+                    OLED_display.setCursor(50, 0);
+                    OLED_display.printf("OK");
+                }
+                else
+                {
+                    OLED_display.setCursor(50, 0);
+                    OLED_display.printf("BAD");
+                }
+
+                if ((test_sammple_VOut >= (8000 * 95 / 100)) && (test_sammple_VOut <= (8000 * 105 / 100)))
+                {
+                    OLED_display.setCursor(50, 16);
+                    OLED_display.printf("OK");
+                }
+                else
+                {
+                    OLED_display.setCursor(50, 16);
+                    OLED_display.printf("BAD");
+                }
+            }
+
+            if (timer_test_op_switch.poll(100) != C_TIMER_NOT_EXPIRED)
+            {
+                test_sammple_IOut += sample_IOut;
+                test_sammple_VOut += sample_VOut;
+                cont_test_sample++;
                 test_op_switch = !test_op_switch;
                 digitalWrite(C_PIN_OP_SWITCH, test_op_switch);
             }
 
-            if (timer_test_en_dcdc.poll(200) != C_TIMER_NOT_EXPIRED)
+            if (timer_test_en_dcdc.poll(50) != C_TIMER_NOT_EXPIRED)
             {
                 test_en_dcdc = !test_en_dcdc;
                 digitalWrite(C_PIN_EN_DCDC, test_en_dcdc);
@@ -482,9 +519,30 @@ void setup()
         {
             Watchdog.reset();
             flag_waiting_naming = false;
+            sw_status = C_SW_ST_START_UP;
+
+            /* Output */
+            sw_output = C_OUTPUT_OFF;
+
+            /* Clear Flags */
+            flag_initialize = false;
+            flag_waiting = C_TIMER_IDLE;
+            flag_msg_sleep = false;
+            flag_sound_end = false;
+
+            /* Change-State Effects */
+            flag_enable_diagnostic = true;
 #ifdef SERIAL_DEBUG
+            Serial5.printf("Change TO START\n");
 #endif
+            initDisplay();
+            trigger_Display_volt = true;
+            DisplayLogo();
+            timer_init_screen.set(C_TIME_INIT_SCREEN);
+            flag_first_sleep = false;
+            Watchdog.reset();
         }
+
         button_event = ReadDirPad(); // Lectura de la botonera.
     }
 
