@@ -38,7 +38,7 @@ const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondie
 
 //============================================================== CONSTANTS ===========================================================//
 
-const uint32_t C_PROGRAM_CYCLE_PERIOD = 5000; // Duracion minima del ciclo de programa en us.
+const uint32_t C_PROGRAM_CYCLE_PERIOD = 25000; // Duracion minima del ciclo de programa en us.
 
 const bool C_MASK_DEACTIVATE = false; // Flag que indica que la mascara de las portecciones esta desactivada.
 const bool C_MASK_ACTIVATE = true;    // Flag que indica que la mascara de las portecciones esta desactivada.
@@ -104,35 +104,35 @@ HealthMonitor boost_check(50, 10, 1, 100);
  *      - Umbral : 1000 mA.
  *      - Ts = 10 ms
  *      - Time spam = 1500ms
- * 
+ *
  */
-HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 10, 1500);
+HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 1, 600);
 
 /**
  * @brief HealthMonitor de la potencia de salida.
  *      - Umbral : 5000 mW. (mA x mV / 1000)
  *      - Ts = 10 ms
  *      - Time spam = 2000 ms
- * 
+ *
  */
-HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 10, 2000);
+HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
 
 /**
  * @brief HealthMonitor del theory_Vout de salida.
  *      - Umbral : 1000 mV
  *      - Ts = 10 ms
  *      - Time spam = 1000 ms
- * 
+ *
  */
-HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 10, 1000);
+HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 1, 400);
 /**
  * @brief HealthMonitor del short_circuit de salida.
  *      - Umbral : 3000 mA
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 500 ms
- * 
+ *
  */
-HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 10, 500);
+HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
 
 //--------------------------------------- Timers variables-------------------------------------
 MilliTimer timer_encendido;
@@ -238,6 +238,10 @@ bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
+uint32_t cont_per = 0;
+uint32_t prog_cycle = 0;
+uint32_t max_prog_cycle = 0;
+uint32_t min_prog_cycle = 0xFFFF;
 
 /*===============================================================================================================================================*/
 //                                                                 SET UP
@@ -694,7 +698,7 @@ void setup()
 #endif
                                 protection_event_delay.set(100);
                                 flag_protection_event_delay = true;
-                                over_consumption_protection.setCounter(C_RETRY_750_COUNT);
+                                // over_consumption_protection.setCounter(C_RETRY_750_COUNT);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
                         }
@@ -717,7 +721,7 @@ void setup()
 #endif
                                 protection_event_delay.set(100);
                                 flag_protection_event_delay = true;
-                                over_power_protection.setCounter(over_power_protection.limit / 2);
+                                // over_power_protection.setCounter(over_power_protection.limit / 2);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
                         }
@@ -740,7 +744,7 @@ void setup()
 #endif
                                 protection_event_delay.set(100);
                                 flag_protection_event_delay = true;
-                                under_voltage_protection.setCounter(under_voltage_protection.limit / 2);
+                                // under_voltage_protection.setCounter(under_voltage_protection.limit / 2);
                                 mask_protection_state = C_MASK_ACTIVATE;
                             }
                         }
@@ -1149,10 +1153,15 @@ void setup()
                                                 OLED_display.setCursor(28, 10);
                                                 OLED_display.print(i);
                                                 OLED_display.display();
-                                                delay(1000);
+                                                // delay(1000);
+                                                for (int i = 0; i < 100; i++)
+                                                {
+                                                    delay(10);
+                                                    Watchdog.reset();
+                                                }
                                             }
 
-                                            //Volcado de datos.
+                                            // Volcado de datos.
 #ifdef SERIAL_DEBUG
                                             Serial5.println("INICIO DIAGNOSTICO");
 #endif
@@ -1218,19 +1227,19 @@ void setup()
             {
                 switch (error)
                 {
-                case C_ERROR_OVERPOWER:
+                case C_ERROR_OVERPOWER: // Circulo
                     OLED_display.fillCircle(31, 14, 13, WHITE);
                     OLED_display.fillRect(30, 6, 3, 12, BLACK);
                     OLED_display.fillRect(30, 20, 3, 3, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERPOWER);
                     break;
-                case C_ERROR_OVERCURRENT:
+                case C_ERROR_OVERCURRENT: // Triangulo
                     OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
                     OLED_display.fillRect(30, 7, 3, 12, BLACK);
                     OLED_display.fillRect(30, 21, 3, 3, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERCURRENT);
                     break;
-                case C_ERROR_OUPUT_UNDERVOLTAGE:
+                case C_ERROR_OUPUT_UNDERVOLTAGE: // Cuadrado
                     OLED_display.drawBitmap(0, 0, error_square, 64, 30, WHITE, BLACK);
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OUPUT_UNDERVOLTAGE);
                     break;
@@ -1275,6 +1284,7 @@ void setup()
                 consmptn_event_protection_counter = 0;
                 OP_event_protection_counter = 0;
                 UV_event_protection_counter = 0;
+                shortcircuit_event_protection_counter = 0;
                 SwitchScreenOff();
                 // -------------- GUARDADO EN EEPROM -----------------
                 SaveEeprom();
@@ -1571,12 +1581,31 @@ void setup()
 
         //====================================================== Control del tiempo del ciclo de control ========================================================//
         t2 = micros();
+        cont_per++;
+        if (max_prog_cycle < (t2 - t1))
+        {
+            max_prog_cycle = t2 - t1;
+        }
+        if (min_prog_cycle > (t2 - t1))
+        {
+            min_prog_cycle = t2 - t1;
+        }
+
+        prog_cycle += t2 - t1;
         if (timer_log_sec.poll(1000) != C_TIMER_NOT_EXPIRED)
         {
             cont_log_sec++;
-
-            Serial5.printf("%d\n-----------------\n", cont_log_sec);
+            prog_cycle /= cont_per;
+            Serial5.printf("MAX Prog cycle avrg:%d us\n", max_prog_cycle);
+            Serial5.printf("AVG Prog cycle avrg:%d us\n", prog_cycle);
+            Serial5.printf("MIN Prog cycle avrg:%d us\n", min_prog_cycle);
+            Serial5.printf("-------- %d ---------\n\n", cont_log_sec);
+            prog_cycle = 0;
+            cont_per = 0;
+            min_prog_cycle = max_prog_cycle;
+            max_prog_cycle = 0;
         }
+
         while ((t2 - t1) < C_PROGRAM_CYCLE_PERIOD)
         {
             t2 = micros();
