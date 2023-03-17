@@ -61,7 +61,7 @@ const int16_t C_SW_ST_STOP = 0x04;     // Estado Software que identifica a el si
 const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A  Limite de la proteccion de consumo.
 const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. Diferencial de tension de la proteccion de Undervoltage de la tension de salida
 const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
-const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 3000; // 3A. Limite de la porteccion de cortocircuito.
+const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 1900; // 1.9A. Limite de la porteccion de cortocircuito.
 const int16_t C_RETRY_750_COUNT = 750;
 
 const int32_t C_TIME_IDLE_30_SEG = 30000;     // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
