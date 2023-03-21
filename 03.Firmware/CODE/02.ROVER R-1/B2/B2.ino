@@ -203,8 +203,8 @@ bool test_op_switch = false;         // Variable del modod test que almacena el 
 bool test_en_dcdc = false;           // Variable del modod test que almacena el valor de endcdc.
 bool test_dac = false;               // Variable del modod test que almacena el valor del dac.
 uint32_t sample_raw_io = 0;
-uint16_t test_sammple_IOut = 0;
-uint16_t test_sammple_VOut = 0;
+uint32_t test_sammple_IOut = 0;
+uint32_t test_sammple_VOut = 0;
 uint16_t reset_cause = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
@@ -302,7 +302,7 @@ void setup()
     {
         Serial5.println("Reset System");
     }
-   // delay(500);
+    // delay(500);
     //------------------------ INITIALITATION PERIFERICOS ----------------------------
     Wire.begin();
 
@@ -334,19 +334,19 @@ void setup()
             Watchdog.reset();
             sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
             sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-            OLED_display.fillRect(0, 0, 50, 32, BLACK);
-            OLED_display.setTextSize(1);
-            OLED_display.setCursor(0, 0);
-            OLED_display.printf("I %d", sample_IOut);
-            OLED_display.setCursor(0, 16);
-            OLED_display.printf("V %d", sample_VOut);
-            OLED_display.display();
+
             Watchdog.reset();
 
             if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
             {
                 test_sammple_IOut /= cont_test_sample;
                 test_sammple_VOut /= cont_test_sample;
+                OLED_display.fillRect(0, 0, 50, 32, BLACK);
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(0, 0);
+                OLED_display.printf("I %d", test_sammple_IOut);
+                OLED_display.setCursor(0, 16);
+                OLED_display.printf("V %d", test_sammple_VOut);
                 if ((test_sammple_IOut >= (1000 * 95 / 100)) && (test_sammple_IOut <= (1000 * 105 / 100)))
                 {
                     OLED_display.setCursor(50, 0);
@@ -368,6 +368,7 @@ void setup()
                     OLED_display.setCursor(50, 16);
                     OLED_display.printf("BAD");
                 }
+                OLED_display.display();
             }
 
             if (timer_test_op_switch.poll(100) != C_TIMER_NOT_EXPIRED)
