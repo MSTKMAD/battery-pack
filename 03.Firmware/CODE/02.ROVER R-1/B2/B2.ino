@@ -575,7 +575,6 @@ void setup()
 #ifdef SERIAL_DEBUG
             Serial5.printf("Change TO START\n");
 #endif
-            initDisplay();
             trigger_Display_volt = true;
             DisplayLogo();
             timer_init_screen.set(C_TIME_INIT_SCREEN);
@@ -1142,8 +1141,10 @@ void setup()
                     LowPower.sleep();
 
                     //---------- RUTINA DE DESPERTAR-----------------
-                    detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
+                    detachInterrupt(C_PIN_BUTT_CENTER); // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
+                    delay(100);
+                    initDisplay();
                     Watchdog.enable(100);
                     // Comprobar causante del despertar.
                     if (flag_irq_center_button == true)
@@ -1194,7 +1195,6 @@ void setup()
                                     {
                                         Watchdog.reset();
                                         // Ventana de presentacion
-                                        initDisplay();
                                         OLED_display.clearDisplay();
                                         OLED_display.setTextSize(2);
                                         OLED_display.setCursor(10, 10);
@@ -1579,7 +1579,6 @@ void setup()
 #ifdef SERIAL_DEBUG
                 Serial5.printf("Change TO START\n");
 #endif
-                initDisplay();
                 trigger_Display_volt = true;
                 DisplayLogo();
                 timer_init_screen.set(C_TIME_INIT_SCREEN);
