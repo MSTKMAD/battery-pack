@@ -88,6 +88,9 @@ bool Init_local_eeprom()
             local_eeprom.array_percent_use[i] = 0;
             Watchdog.reset();
         }
+        local_eeprom.num_wdt_errors = 0;
+
+        // Checksum calculate
         local_eeprom.checksum = 0;
         local_eeprom.checksum += local_eeprom.serial_number;
         local_eeprom.checksum += local_eeprom.integrated_version;
@@ -116,6 +119,7 @@ bool Init_local_eeprom()
             local_eeprom.checksum += local_eeprom.array_percent_use[i];
             Watchdog.reset();
         }
+        local_eeprom.checksum += local_eeprom.num_wdt_errors;
         flash_eeprom.write(local_eeprom);
         Watchdog.reset();
 #ifdef SERIAL_DEBUG
@@ -164,6 +168,7 @@ bool Init_local_eeprom()
                 Serial5.print(",");
             }
             Serial5.println();
+            Serial5.println(local_eeprom.num_wdt_errors);
 #endif
             uint32_t checksum;
             checksum = 0;
@@ -194,6 +199,7 @@ bool Init_local_eeprom()
                 checksum += local_eeprom.array_percent_use[i];
                 Watchdog.reset();
             }
+            checksum += local_eeprom.num_wdt_errors;
 #ifdef SERIAL_DEBUG
             Serial5.println("Volcado de EEPROM Finalizado.");
             Serial5.printf("Checksum: %d\nEEPROM Checkcum:%d\n", checksum, local_eeprom.checksum);
@@ -299,6 +305,9 @@ void IncrementDiagnosticData(int16_t address)
             cont_hour = 0;
         }
         break;
+    case C_NUM_WDT_ERRORS:
+        local_eeprom.num_wdt_errors += 1;
+        break;
 
     default:
         break;
@@ -339,6 +348,7 @@ void SaveEeprom()
         local_eeprom.checksum += local_eeprom.array_percent_use[i];
         Watchdog.reset();
     }
+    local_eeprom.checksum += local_eeprom.num_wdt_errors;
     Watchdog.reset();
     flash_eeprom.write(local_eeprom);
 }
@@ -371,7 +381,7 @@ void PostMortemLog(int16_t power_value, int16_t percnt_value, int16_t voltage_va
  */
 void DiagnosticMode()
 {
-    uint16_t diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + PERCENT_USE_POSITIONS];
+    uint16_t diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + PERCENT_USE_POSITIONS];
     local_eeprom = flash_eeprom.read();
     diagnostic_chain[0] = local_eeprom.serial_number;
     diagnostic_chain[1] = local_eeprom.integrated_version;
@@ -386,35 +396,36 @@ void DiagnosticMode()
     diagnostic_chain[10] = local_eeprom.flag_corruption;
     diagnostic_chain[11] = local_eeprom.flag_naming_enable;
     diagnostic_chain[12] = local_eeprom.num_char_in_name;
+    diagnostic_chain[13] = local_eeprom.num_wdt_errors;
 
     for (int i = 0; i < 25; i++)
     {
-        diagnostic_chain[13 + i] = local_eeprom.name[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + i] = local_eeprom.name[i];
     }
 
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + i] = local_eeprom.pm_power[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + i] = local_eeprom.pm_power[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS + i] = local_eeprom.pm_percent[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS + i] = local_eeprom.pm_percent[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS * 2 + i] = local_eeprom.pm_voltage[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS * 2 + i] = local_eeprom.pm_voltage[i];
     }
     for (int i = 0; i < PM_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS * 3 + i] = local_eeprom.pm_errors[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS * 3 + i] = local_eeprom.pm_errors[i];
     }
     for (uint16_t i = 0; i < POWER_USE_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS * 4 + i] = local_eeprom.array_power_use[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS * 4 + i] = local_eeprom.array_power_use[i];
     }
     for (uint16_t i = 0; i < PERCENT_USE_POSITIONS; i++)
     {
-        diagnostic_chain[13 + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + i] = local_eeprom.array_percent_use[i];
+        diagnostic_chain[NUM_NON_ARRAY_POS + NUM_POS_NAME + PM_POSITIONS * 4 + POWER_USE_POSITIONS + i] = local_eeprom.array_percent_use[i];
     }
 
     char buffer[50];

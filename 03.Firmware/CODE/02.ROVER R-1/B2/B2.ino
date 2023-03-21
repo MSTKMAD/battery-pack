@@ -206,6 +206,7 @@ uint32_t sample_raw_io = 0;
 uint32_t test_sammple_IOut = 0;
 uint32_t test_sammple_VOut = 0;
 uint16_t reset_cause = 0;
+uint16_t reset_register = 0;
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
@@ -276,31 +277,37 @@ void setup()
 
     //-------------------------- Reset Cause---------------------------
 
-    reset_cause = Watchdog.resetCause();
-    Serial5.printf("%04x\n", reset_cause);
-    if (reset_cause & 0x01)
+    reset_register = Watchdog.resetCause();
+    Serial5.printf("%04x\n", reset_register);
+    if (reset_register & 0x01)
     {
         Serial5.println("Reset Power On Reset");
+        reset_cause = C_RCAUSE_POR;
     }
-    else if (reset_cause & 0x02)
+    else if (reset_register & 0x02)
     {
         Serial5.println("Reset BOD12");
+        reset_cause = C_RCAUSE_BOD12;
     }
-    else if (reset_cause & 0x04)
+    else if (reset_register & 0x04)
     {
         Serial5.println("Reset BOD33");
+        reset_cause = C_RCAUSE_BOD33;
     }
-    else if (reset_cause & 0x10)
+    else if (reset_register & 0x10)
     {
         Serial5.println("Reset External");
+        reset_cause = C_RCAUSE_EXT;
     }
-    else if (reset_cause & 0x20)
+    else if (reset_register & 0x20)
     {
         Serial5.println("Reset WatchDog");
+        reset_cause = C_RCAUSE_WDT;
     }
-    else if (reset_cause & 0x40)
+    else if (reset_register & 0x40)
     {
         Serial5.println("Reset System");
+        reset_cause = C_RCAUSE_SYST;
     }
     // delay(500);
     //------------------------ INITIALITATION PERIFERICOS ----------------------------
@@ -310,9 +317,11 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
     initDisplay();                              // Inicializacion de la pantalla
-    if (!Init_local_eeprom())                   // Incializacion EEPROM
+    if ((reset_cause != C_RCAUSE_BOD12) || (reset_cause != C_RCAUSE_BOD33) || (reset_cause != C_RCAUSE_WDT))
     {
-        flag_eeprom_init_fail = true;
+        if (!Init_local_eeprom()) // Incializacion EEPROM
+        {
+            flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
         Serial5.println("Fallo de lectura de EEPROM");
 #endif
@@ -444,13 +453,12 @@ void setup()
             Watchdog.reset();
         }
     }
-    Watchdog.reset();
-    SwitchScreenOff();
-    playSound(C_SOUND_UP);
-
-    //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
-    Watchdog.reset();
-    theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
+        Watchdog.reset();
+        SwitchScreenOff();
+        playSound(C_SOUND_UP);
+        //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
+        Watchdog.reset();
+        theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
     if (theory_Vout == 0)
     {
         LogDiagnosticData(50, C_THEORY_VOLTAGE);
@@ -580,9 +588,14 @@ void setup()
             timer_init_screen.set(C_TIME_INIT_SCREEN);
             flag_first_sleep = false;
             Watchdog.reset();
-        }
+            }
 
-        button_event = ReadDirPad(); // Lectura de la botonera.
+            button_event = ReadDirPad(); // Lectura de la botonera.
+        }
+    }
+    else if (reset_cause == C_RCAUSE_WDT)
+    {
+        IncrementDiagnosticData(C_NUM_WDT_ERRORS);
     }
 
     /*===============================================================================================================================================*/
@@ -1141,7 +1154,7 @@ void setup()
                     LowPower.sleep();
 
                     //---------- RUTINA DE DESPERTAR-----------------
-                    detachInterrupt(C_PIN_BUTT_CENTER); // Desactivar interrupcion
+                    detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
                     delay(100);
                     initDisplay();

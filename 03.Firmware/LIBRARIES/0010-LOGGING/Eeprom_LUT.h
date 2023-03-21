@@ -15,6 +15,7 @@ const uint8_t HOURS_PM = 10;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 const uint16_t NUM_POS_NAME = 25;
+const uint16_t NUM_NON_ARRAY_POS = 14;
 const uint16_t POWER_USE_POSITIONS = 46;   // 500w to 5000w in step of 100w -> 46 step
 const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 step
 struct EEPROM
@@ -32,6 +33,7 @@ struct EEPROM
     bool flag_corruption;
     bool flag_naming_enable;
     uint16_t num_char_in_name;
+    uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
     uint16_t array_power_use[46];   // 500w to 5000w in step of 100w -> 46 step
     uint16_t array_percent_use[21]; // 0% to 100% in step of 5% -> 21 step
@@ -68,6 +70,8 @@ const uint8_t C_PM_POWER = 16;
 const uint8_t C_PM_PERCENT = 17;
 const uint8_t C_PM_VOLTAGE = 18;
 const uint8_t C_PM_ERRORS = 19;
+
+const uint8_t C_NUM_WDT_ERRORS = 20;
 
 const uint16_t C_ERROR_PWR = 1001;
 const uint16_t C_ERROR_VOLT = 1002;
