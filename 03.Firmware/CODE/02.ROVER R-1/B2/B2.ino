@@ -268,12 +268,7 @@ void setup()
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
     Watchdog.enable(100);
-    //------------------------- INIT PIN-------------------------------
-    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-    pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
-    pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
-    pinMode(C_PIN_OP_SWITCH, OUTPUT);
-    pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
+    Wire.begin();
 
     //-------------------------- Reset Cause---------------------------
 
@@ -310,284 +305,290 @@ void setup()
         reset_cause = C_RCAUSE_SYST;
     }
     // delay(500);
-    //------------------------ INITIALITATION PERIFERICOS ----------------------------
-    Wire.begin();
-
-    digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
-    digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
-    InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
-    initDisplay();                              // Inicializacion de la pantalla
-    if ((reset_cause != C_RCAUSE_BOD12) || (reset_cause != C_RCAUSE_BOD33) || (reset_cause != C_RCAUSE_WDT))
+    if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        if (!Init_local_eeprom()) // Incializacion EEPROM
+        //------------------------- INIT PIN-------------------------------
+        pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
+        pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
+        pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
+        pinMode(C_PIN_OP_SWITCH, OUTPUT);
+        pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
+        //------------------------ INITIALITATION PERIFERICOS ----------------------------
+
+        digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
+        digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
+        InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
+        initDisplay();                              // Inicializacion de la pantalla
+        if (!Init_local_eeprom())                   // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
-        Serial5.println("Fallo de lectura de EEPROM");
+            Serial5.println("Fallo de lectura de EEPROM");
 #endif
-    }
-    else
-    {
+        }
+        else
+        {
 #ifdef SERIAL_DEBUG
-        Serial5.println("Lectura Correcta de EEPROM");
+            Serial5.println("Lectura Correcta de EEPROM");
 #endif
-    }
-
-    if (local_eeprom.test_mode == true)
-    {
-        test_mode_activate = true;
-        OLED_display.clearDisplay();
-        timer_test_sensing.set(1000);
-        while (test_mode_activate)
-        {
-            Watchdog.reset();
-            sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
-            sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-
-            Watchdog.reset();
-
-            if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
-            {
-                test_sammple_IOut /= cont_test_sample;
-                test_sammple_VOut /= cont_test_sample;
-                OLED_display.fillRect(0, 0, 50, 32, BLACK);
-                OLED_display.setTextSize(1);
-                OLED_display.setCursor(0, 0);
-                OLED_display.printf("I %d", test_sammple_IOut);
-                OLED_display.setCursor(0, 16);
-                OLED_display.printf("V %d", test_sammple_VOut);
-                if ((test_sammple_IOut >= (1000 * 95 / 100)) && (test_sammple_IOut <= (1000 * 105 / 100)))
-                {
-                    OLED_display.setCursor(50, 0);
-                    OLED_display.printf("OK");
-                }
-                else
-                {
-                    OLED_display.setCursor(50, 0);
-                    OLED_display.printf("BAD");
-                }
-
-                if ((test_sammple_VOut >= (8000 * 95 / 100)) && (test_sammple_VOut <= (8000 * 105 / 100)))
-                {
-                    OLED_display.setCursor(50, 16);
-                    OLED_display.printf("OK");
-                }
-                else
-                {
-                    OLED_display.setCursor(50, 16);
-                    OLED_display.printf("BAD");
-                }
-                OLED_display.display();
-            }
-
-            if (timer_test_op_switch.poll(100) != C_TIMER_NOT_EXPIRED)
-            {
-                test_sammple_IOut += sample_IOut;
-                test_sammple_VOut += sample_VOut;
-                cont_test_sample++;
-                test_op_switch = !test_op_switch;
-                digitalWrite(C_PIN_OP_SWITCH, test_op_switch);
-            }
-
-            if (timer_test_en_dcdc.poll(50) != C_TIMER_NOT_EXPIRED)
-            {
-                test_en_dcdc = !test_en_dcdc;
-                digitalWrite(C_PIN_EN_DCDC, test_en_dcdc);
-            }
-
-            if (timer_test_dac.poll(500) != C_TIMER_NOT_EXPIRED)
-            {
-                Serial5.println(local_eeprom.serial_number);
-
-                if (test_dac == true)
-                {
-                    DCDC.SetVoltage(60, C_NON_BOOST_MODE);
-                    test_dac = false;
-                }
-                else
-                {
-                    DCDC.SetVoltage(120, C_NON_BOOST_MODE);
-                    test_dac = true;
-                }
-            }
-
-            if (digitalRead(C_PIN_BUTT_CENTER) == button_pressed)
-            {
-                local_eeprom.test_mode = false;
-                test_mode_activate = false;
-            }
         }
-        SaveEeprom();
-        Watchdog.reset();
-    }
 
-    //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
-    Watchdog.reset();
-    capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
-    for (int i = 0; i <= capacity; i += 1)
-    {
-        DisplayCap(i);
-        for (int j = 0; j < 100 / i; j++)
+        if (local_eeprom.test_mode == true)
         {
-            delay(1);
+            test_mode_activate = true;
+            OLED_display.clearDisplay();
+            timer_test_sensing.set(1000);
+            while (test_mode_activate)
+            {
+                Watchdog.reset();
+                sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
+                sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+
+                Watchdog.reset();
+
+                if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
+                {
+                    test_sammple_IOut /= cont_test_sample;
+                    test_sammple_VOut /= cont_test_sample;
+                    OLED_display.fillRect(0, 0, 50, 32, BLACK);
+                    OLED_display.setTextSize(1);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.printf("I %d", test_sammple_IOut);
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.printf("V %d", test_sammple_VOut);
+                    if ((test_sammple_IOut >= (1000 * 95 / 100)) && (test_sammple_IOut <= (1000 * 105 / 100)))
+                    {
+                        OLED_display.setCursor(50, 0);
+                        OLED_display.printf("OK");
+                    }
+                    else
+                    {
+                        OLED_display.setCursor(50, 0);
+                        OLED_display.printf("BAD");
+                    }
+
+                    if ((test_sammple_VOut >= (8000 * 95 / 100)) && (test_sammple_VOut <= (8000 * 105 / 100)))
+                    {
+                        OLED_display.setCursor(50, 16);
+                        OLED_display.printf("OK");
+                    }
+                    else
+                    {
+                        OLED_display.setCursor(50, 16);
+                        OLED_display.printf("BAD");
+                    }
+                    OLED_display.display();
+                }
+
+                if (timer_test_op_switch.poll(100) != C_TIMER_NOT_EXPIRED)
+                {
+                    test_sammple_IOut += sample_IOut;
+                    test_sammple_VOut += sample_VOut;
+                    cont_test_sample++;
+                    test_op_switch = !test_op_switch;
+                    digitalWrite(C_PIN_OP_SWITCH, test_op_switch);
+                }
+
+                if (timer_test_en_dcdc.poll(50) != C_TIMER_NOT_EXPIRED)
+                {
+                    test_en_dcdc = !test_en_dcdc;
+                    digitalWrite(C_PIN_EN_DCDC, test_en_dcdc);
+                }
+
+                if (timer_test_dac.poll(500) != C_TIMER_NOT_EXPIRED)
+                {
+                    Serial5.println(local_eeprom.serial_number);
+
+                    if (test_dac == true)
+                    {
+                        DCDC.SetVoltage(60, C_NON_BOOST_MODE);
+                        test_dac = false;
+                    }
+                    else
+                    {
+                        DCDC.SetVoltage(120, C_NON_BOOST_MODE);
+                        test_dac = true;
+                    }
+                }
+
+                if (digitalRead(C_PIN_BUTT_CENTER) == button_pressed)
+                {
+                    local_eeprom.test_mode = false;
+                    test_mode_activate = false;
+                }
+            }
+            SaveEeprom();
             Watchdog.reset();
         }
-    }
-    // delay 1s
-    for (int i = 0; i < 100; i++)
-    {
-        delay(10);
-        Watchdog.reset();
-    }
 
-    SwitchScreenOff();
-    if (ReadDiagnosticData(C_FLAG_ENABLE_NAME) == true)
-    {
+        //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
         Watchdog.reset();
-        ShowName();
-
-        // delay(2000);
-        for (int i = 0; i < 200; i++)
+        capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
+        for (int i = 0; i <= capacity; i += 1)
+        {
+            DisplayCap(i);
+            for (int j = 0; j < 100 / i; j++)
+            {
+                delay(1);
+                Watchdog.reset();
+            }
+        }
+        // delay 1s
+        for (int i = 0; i < 100; i++)
         {
             delay(10);
             Watchdog.reset();
         }
-    }
+
+        SwitchScreenOff();
+        if (ReadDiagnosticData(C_FLAG_ENABLE_NAME) == true)
+        {
+            Watchdog.reset();
+            ShowName();
+
+            // delay(2000);
+            for (int i = 0; i < 200; i++)
+            {
+                delay(10);
+                Watchdog.reset();
+            }
+        }
         Watchdog.reset();
         SwitchScreenOff();
         playSound(C_SOUND_UP);
         //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
         Watchdog.reset();
         theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
-    if (theory_Vout == 0)
-    {
-        LogDiagnosticData(50, C_THEORY_VOLTAGE);
-        theory_Vout = 50;
-    }
-
-    //------------------------ CHECKEO PARA APP NAMING ------------------------------
-
-    timer_waiting_naming.set(5000); // Incio de la ventana de tiempo
-
-    while (flag_waiting_naming == true)
-    {
-        Watchdog.reset();
-        if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+        if (theory_Vout == 0)
         {
-            if (flag_naming_active == false) // Configuracio NO activada
+            LogDiagnosticData(50, C_THEORY_VOLTAGE);
+            theory_Vout = 50;
+        }
+
+        //------------------------ CHECKEO PARA APP NAMING ------------------------------
+
+        timer_waiting_naming.set(5000); // Incio de la ventana de tiempo
+
+        while (flag_waiting_naming == true)
+        {
+            Watchdog.reset();
+            if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
             {
-                if (flag_timer_naming == C_TIMER_IDLE) // Timer No iniciado
+                if (flag_naming_active == false) // Configuracio NO activada
                 {
-#ifdef SERIAL_DEBUG
-                    Serial5.println("Timer Naming Activado.");
-#endif
-                    timer_active_naming.set(3000);
-                    flag_timer_naming = C_TIMER_ARMED;
-                }
-                else if (flag_timer_naming == C_TIMER_ARMED) // Timer Armado
-                {
-                    if (timer_active_naming.poll() != C_TIMER_NOT_EXPIRED) // Timer cumplido
+                    if (flag_timer_naming == C_TIMER_IDLE) // Timer No iniciado
                     {
-                        flag_naming_active = true; // Inicio de la configuracion del naming.
-                        flag_timer_naming = C_TIMER_IDLE;
+#ifdef SERIAL_DEBUG
+                        Serial5.println("Timer Naming Activado.");
+#endif
+                        timer_active_naming.set(3000);
+                        flag_timer_naming = C_TIMER_ARMED;
+                    }
+                    else if (flag_timer_naming == C_TIMER_ARMED) // Timer Armado
+                    {
+                        if (timer_active_naming.poll() != C_TIMER_NOT_EXPIRED) // Timer cumplido
+                        {
+                            flag_naming_active = true; // Inicio de la configuracion del naming.
+                            flag_timer_naming = C_TIMER_IDLE;
+                        }
                     }
                 }
-            }
-            else
-            {
+                else
+                {
 #ifdef SERIAL_DEBUG
-                Serial5.println("Naming Activado");
-                Serial5.println("Loading");
+                    Serial5.println("Naming Activado");
+                    Serial5.println("Loading");
 #endif
 
-                // Pantalla de carga del Naming.
-                OLED_display.clearDisplay();
-                OLED_display.setTextSize(1);
-                OLED_display.setCursor(0, 0);
-                OLED_display.print("Loading...");
-                OLED_display.drawRect(0, 16, 64, 16, WHITE);
-                for (uint16_t i = 0; i <= 100; i++)
-                {
-                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
-                    delay(8000 / 101);
+                    // Pantalla de carga del Naming.
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(1);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("Loading...");
+                    OLED_display.drawRect(0, 16, 64, 16, WHITE);
+                    for (uint16_t i = 0; i <= 100; i++)
+                    {
+                        OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+                        delay(8000 / 101);
+                        OLED_display.display();
+                        Watchdog.reset();
+                    }
+
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                    // Apagado Dramatico!
+                    SwitchScreenOff();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                    // Pantalla de Presentacion
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(1);
+                    OLED_display.setCursor(8, 12);
+                    OLED_display.print("NICKNAME");
+                    OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     OLED_display.display();
                     Watchdog.reset();
-                }
-
-                // delay(2000);
-                for (int i = 0; i < 200; i++)
-                {
-                    delay(10);
-                    Watchdog.reset();
-                }
-                // Apagado Dramatico!
-                SwitchScreenOff();
-                // delay(2000);
-                for (int i = 0; i < 200; i++)
-                {
-                    delay(10);
-                    Watchdog.reset();
-                }
-                // Pantalla de Presentacion
-                OLED_display.clearDisplay();
-                OLED_display.setTextSize(1);
-                OLED_display.setCursor(8, 12);
-                OLED_display.print("NICKNAME");
-                OLED_display.drawRect(0, 0, 64, 32, WHITE);
-                OLED_display.display();
-                Watchdog.reset();
-                playSound(C_SOUND_CHARGE_IN);
-                // delay(4000);
-                for (int i = 0; i < 400; i++)
-                {
-                    delay(10);
-                    Watchdog.reset();
-                }
+                    playSound(C_SOUND_CHARGE_IN);
+                    // delay(4000);
+                    for (int i = 0; i < 400; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
 #ifdef SERIAL_DEBUG
-                Serial5.println("Configuracion Naming");
+                    Serial5.println("Configuracion Naming");
 #endif
-                Watchdog.reset();
-                // Inicio de la configuracion
-                Config_Naming();
+                    Watchdog.reset();
+                    // Inicio de la configuracion
+                    Config_Naming();
 
-                // Guardado en EEPROM
-                LogDiagnosticData(true, C_FLAG_ENABLE_NAME);
-                SwitchScreenOff();
-                Watchdog.reset();
-                // RESETs Flags
-                flag_waiting_naming = false;
+                    // Guardado en EEPROM
+                    LogDiagnosticData(true, C_FLAG_ENABLE_NAME);
+                    SwitchScreenOff();
+                    Watchdog.reset();
+                    // RESETs Flags
+                    flag_waiting_naming = false;
+                }
             }
-        }
-        else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED) // La ventana de tiempo cumple sin que se active la configuracion
-        {
-            Watchdog.reset();
-            flag_waiting_naming = false;
-        }
-        else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
-        {
-            Watchdog.reset();
-            flag_waiting_naming = false;
-            sw_status = C_SW_ST_START_UP;
+            else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED) // La ventana de tiempo cumple sin que se active la configuracion
+            {
+                Watchdog.reset();
+                flag_waiting_naming = false;
+                sw_status = C_SW_ST_SLEEP;
+            }
+            else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
+            {
+                Watchdog.reset();
+                flag_waiting_naming = false;
+                sw_status = C_SW_ST_START_UP;
 
-            /* Output */
-            sw_output = C_OUTPUT_OFF;
+                /* Output */
+                sw_output = C_OUTPUT_OFF;
 
-            /* Clear Flags */
-            flag_initialize = false;
-            flag_waiting = C_TIMER_IDLE;
-            flag_msg_sleep = false;
-            flag_sound_end = false;
+                /* Clear Flags */
+                flag_initialize = false;
+                flag_waiting = C_TIMER_IDLE;
+                flag_msg_sleep = false;
+                flag_sound_end = false;
 
-            /* Change-State Effects */
-            flag_enable_diagnostic = true;
+                /* Change-State Effects */
+                flag_enable_diagnostic = true;
 #ifdef SERIAL_DEBUG
-            Serial5.printf("Change TO START\n");
+                Serial5.printf("Change TO START\n");
 #endif
-            trigger_Display_volt = true;
-            DisplayLogo();
-            timer_init_screen.set(C_TIME_INIT_SCREEN);
-            flag_first_sleep = false;
-            Watchdog.reset();
+                trigger_Display_volt = true;
+                DisplayLogo();
+                timer_init_screen.set(C_TIME_INIT_SCREEN);
+                flag_first_sleep = false;
+                Watchdog.reset();
             }
 
             button_event = ReadDirPad(); // Lectura de la botonera.
@@ -596,6 +597,10 @@ void setup()
     else if (reset_cause == C_RCAUSE_WDT)
     {
         IncrementDiagnosticData(C_NUM_WDT_ERRORS);
+#ifdef SERIAL_DEBUG
+        Serial5.printf("Increment WTD\n");
+#endif
+        SaveEeprom();
     }
 
     /*===============================================================================================================================================*/
@@ -605,7 +610,9 @@ void setup()
     {
         Watchdog.reset();
         t1 = micros(); // Control del periodo del ciclo de trabajpo.
-
+#ifdef SERIAL_DEBUG
+        Serial5.println(sw_status);
+#endif
         //============================================================== SENSADO ==================================================================//
 
         under_voltage_protection.threshold = (theory_Vout - 20) * 100;            // Actualizacion de la proteccion de undervoltage
@@ -1061,10 +1068,10 @@ void setup()
                 {
                     playSound(sound);
                 }
-                // DisplayVolt(theory_Vout);
+                DisplayVolt(theory_Vout);
                 trigger_Display_volt = false;
             }
-            DebugDisplay(sample_IOut, sample_raw_io, sample_VOut, theory_Vout, sample_POut);
+            // DebugDisplay(sample_IOut, sample_raw_io, sample_VOut, theory_Vout, sample_POut);
 
             //------- Actualizacion de la barra de potencia ----------//
             UpdatePowerBar(sample_POut);
