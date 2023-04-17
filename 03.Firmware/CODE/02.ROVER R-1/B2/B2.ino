@@ -62,7 +62,6 @@ const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A  Limite de la proteccion d
 const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. Diferencial de tension de la proteccion de Undervoltage de la tension de salida
 const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
 const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 1900; // 1.9A. Limite de la porteccion de cortocircuito.
-const int16_t C_RETRY_750_COUNT = 750;
 
 const int32_t C_TIME_IDLE_30_SEG = 30000;     // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
 const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
@@ -167,7 +166,7 @@ MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte
 MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_5min_low_bat_msg;  // Timer para espaciar los avisos de bateria baja en el estado RUN.
-MilliTimer timer_test_sensing;
+MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
@@ -187,7 +186,7 @@ uint16_t long_press_events = 0;                    // Contador del numero de lon
 int16_t cont_idle_timer = 0;                       // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
 uint32_t cont_log_sec = 0;                         // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
 uint32_t cont_log_active = 0;                      // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
-uint32_t cont_test_sample = 0;
+uint32_t cont_test_sample = 0;                     // Contador que acumula el numero de muestras que se toman.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -202,11 +201,11 @@ uint16_t error;                      // Contenedor de la ID del error que ha sal
 bool test_op_switch = false;         // Variable del modod test que almacena el valor de opswitch
 bool test_en_dcdc = false;           // Variable del modod test que almacena el valor de endcdc.
 bool test_dac = false;               // Variable del modod test que almacena el valor del dac.
-uint32_t sample_raw_io = 0;
-uint32_t test_sammple_IOut = 0;
-uint32_t test_sammple_VOut = 0;
-uint16_t reset_cause = 0;
-uint16_t reset_register = 0;
+uint32_t sample_raw_io = 0;          // Valor de la corriente sin filtrar.
+uint32_t test_sammple_IOut = 0;      // Valor de la corriente durante el modo test.
+uint32_t test_sammple_VOut = 0;      // Valor de la tension de salida durante el modo test.
+uint16_t reset_cause = 0;            // Variable que almacena la causa de los inicios del sistema.
+uint16_t reset_register = 0;         // Valriable que almacena el valor leido del registro de la causa del reset.
 
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
