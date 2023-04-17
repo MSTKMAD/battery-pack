@@ -507,10 +507,15 @@ void setup()
                     OLED_display.drawRect(0, 16, 64, 16, WHITE);
                     for (uint16_t i = 0; i <= 100; i++)
                     {
-                        OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
-                        delay(8000 / 101);
-                        OLED_display.display();
                         Watchdog.reset();
+                        OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+
+                        for (int j = 0; j < 5; j++)
+                        {
+                            delay(10);
+                            Watchdog.reset();
+                        }
+                        OLED_display.display();
                     }
 
                     // delay(2000);
@@ -528,6 +533,9 @@ void setup()
                         Watchdog.reset();
                     }
                     // Pantalla de Presentacion
+#ifdef SERIAL_DEBUG
+                    Serial5.println("Screen Name");
+#endif
                     OLED_display.clearDisplay();
                     OLED_display.setTextSize(1);
                     OLED_display.setCursor(8, 12);
