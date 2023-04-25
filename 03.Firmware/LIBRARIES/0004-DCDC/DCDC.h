@@ -4,9 +4,9 @@
  * @brief Libreria que describe la clase del DCDC.
  * @version 2
  * @date 2020-12-18
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 #include <Wire.h>
 
@@ -23,8 +23,8 @@ const bool C_NON_BOOST_MODE = false;
 const uint16_t C_VDAC_MIN = 1435;                          // mv del DAC para dar a la salida el MIN_VOLTAGE
 const uint16_t C_VDAC_MAX = 140;                           // mv del DAC para dar a la salida el MAX_VOLTAGE
 const uint16_t C_DAC_RESOLUTON = 1024;                     // Fondo de escala del DAC
-const uint16_t C_DAC_MIN_COUNT = C_VDAC_MIN * 1024 / 3000; //cuentas dac para dar el Minimo voltaje permitido (5v)
-const uint16_t C_DAC_MAX_COUNT = C_VDAC_MAX * 1024 / 3000; //cuentas dac para dar el Minimo voltaje permitido (5v)
+const uint16_t C_DAC_MIN_COUNT = C_VDAC_MIN * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
+const uint16_t C_DAC_MAX_COUNT = C_VDAC_MAX * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
 
 const uint16_t C_PIN_DAC = A0;
 class dcdc_controler
@@ -36,7 +36,7 @@ public:
 
     /**
      * @brief Construct a new dcdc controler object
-     * 
+     *
      * @param pin Pin conectado al enable del DCDC.
      */
     dcdc_controler(int16_t pin)
@@ -48,24 +48,24 @@ public:
 
     /**
      * @brief Set the Voltage object
-     * 
-     * @param volt 
-     * @param mode 
+     *
+     * @param volt
+     * @param mode
      */
     void SetVoltage(int volt, bool mode)
     {
-        //if (mode == C_BOOST_MODE)
-        //{
-        //  volt += 5;
-        //}
+        if (mode == C_BOOST_MODE)
+        {
+            volt += 3;
+        }
         volt = constrain(volt, MIN_VOLTAGE, MAX_VOLTAGE);
         dac_count = C_DAC_MIN_COUNT - (((volt - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));
         analogWrite(C_PIN_DAC, dac_count);
     }
     /**
      * @brief Habilita la activacion del DCDC.
-     * 
-     * @param enable 
+     *
+     * @param enable
      */
     void EnableDCDC(bool enable = LOW)
     {

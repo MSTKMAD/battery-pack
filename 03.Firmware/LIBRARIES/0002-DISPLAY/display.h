@@ -4,9 +4,9 @@
  * @brief Libreria MUSOTOKU para OLED_display 15x7.
  * @version 4
  * @date 2020-8-4
- * 
+ *
  * @copyright Copyright (c) 2020
- * 
+ *
  */
 #include "bitmaps.h"
 #include <Wire.h>
@@ -21,9 +21,9 @@
 // #include <Adafruit_IS31FL3731.h>
 
 #include <Adafruit_GFX.h>
-//#include <batt_Adafruit_IS31FL3731.h>
+// #include <batt_Adafruit_IS31FL3731.h>
 #include <Adafruit_SSD1306_049.h>
-//#include <MilliTimer.h>
+// #include <MilliTimer.h>
 Adafruit_SSD1306 OLED_display(0);
 #define X_SIZE 64
 #define Y_SiZE 32
@@ -53,17 +53,18 @@ const int16_t C_PIXEL_START_STRING = 7; // Pixel en que empieza la rotacion de l
 const int16_t C_PIXEL_STOP_STRING = 0;  // Pixel en que termina la rotacion de la cadena.
 /**
  * @brief Construct a new init Display object
- * 
+ *
  */
 void initDisplay()
 {
     OLED_display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     OLED_display.clearDisplay();
     OLED_display.display();
+    OLED_display.setTextColor(WHITE); // Color por defecto del texto.
 }
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void DisplayLogo()
 {
@@ -80,7 +81,7 @@ void DisplayLogo()
 }
 /**
  * @brief Apagado de la pantalla.
- * 
+ *
  */
 void SwitchScreenOff()
 {
@@ -89,7 +90,7 @@ void SwitchScreenOff()
 }
 /**
  * @brief Encender toda la pantalla con una cantidad de brillo.
- * 
+ *
  */
 void ScreenON()
 {
@@ -97,8 +98,8 @@ void ScreenON()
     OLED_display.display();
 }
 /**
- * @brief 
- * 
+ * @brief
+ *
  */
 void DisplayEndScreen()
 {
@@ -114,9 +115,9 @@ void DisplayEndScreen()
 
 /**
  * @brief Esta funcion imprime la pantalla de voltaje, que muestra le voltaje al que se encuentra la salida de la bateria, con un decimal.
- * 
- * @param number 
- * @param OLED_display 
+ *
+ * @param number
+ * @param OLED_display
  */
 void DisplayVolt(int16_t number)
 {
@@ -129,7 +130,7 @@ void DisplayVolt(int16_t number)
     OLED_display.setTextSize(4);
     OLED_display.setTextColor(WHITE);
 
-    OLED_display.fillRect(0, 0, X_SIZE, 28, BLACK); // clears the screen and buffer
+    OLED_display.fillRect(0, 0, X_SIZE, 30, BLACK); // clears the screen and buffer
     intPart = number / 10;
     decPart = intPart / 10;
     fracPart = number - 10 * intPart;
@@ -153,9 +154,9 @@ void DisplayVolt(int16_t number)
 
 /**
  * @brief Esta fncion muestra la pantalla de porcentaje de capacidad de bateria. si la capacidad es 100% muestra la pantalla FULL.
- * 
- * @param capacity 
- * @param OLED_display 
+ *
+ * @param capacity
+ * @param OLED_display
  */
 void DisplayCap(int capacity)
 {
@@ -195,11 +196,14 @@ void DisplayCap(int capacity)
 
 /**
  * @brief Animacion Bateria Baja.
- * 
+ *
  */
 
-bool DisplayLowBattery()
+void DisplayLowBattery()
 {
+#ifdef SERIAL_DEBUG
+    Serial5.printf("Display LowBatt\n");
+#endif
     OLED_display.clearDisplay();
     OLED_display.setTextSize(2);
     OLED_display.setCursor(0, 0);
@@ -210,13 +214,19 @@ bool DisplayLowBattery()
 }
 /**
  * @brief Bateria Agotada
- * 
+ *
  */
 
-bool DisplayNoBattery()
+void DisplayNoBattery()
 {
+#ifdef SERIAL_DEBUG
+    Serial5.printf("Display Empty Battery\n");
+#endif
     for (uint16_t i = 0; i < 3; i++)
     {
+#ifdef SERIAL_DEBUG
+        Serial5.printf("Display Empty Battery %d\n", i);
+#endif
         OLED_display.clearDisplay();
         OLED_display.setTextSize(2);
         OLED_display.setCursor(0, 0);
@@ -224,10 +234,66 @@ bool DisplayNoBattery()
         OLED_display.setCursor(0, 16);
         OLED_display.print("Batt");
         OLED_display.display();
-        delay(750);
+        // delay(750);
+        for (int i = 0; i < 75; i++)
+        {
+            delay(10);
+            Watchdog.reset();
+        }
+
         OLED_display.clearDisplay();
         OLED_display.drawBitmap(0, 0, batt_empty, 64, 32, BLACK, WHITE);
         OLED_display.display();
-        delay(750);
+        // delay(750);
+        for (int i = 0; i < 75; i++)
+        {
+            delay(10);
+            Watchdog.reset();
+        }
     }
+}
+/**
+ * @brief
+ *
+ */
+void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
+{
+    char buffer[50];
+    for (int i = 0; i < size_array; i++)
+    {
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(2);
+        OLED_display.setCursor(9, 0);
+        sprintf(buffer, "%04X", i);
+        OLED_display.print(buffer);
+        OLED_display.setCursor(9, 16);
+        sprintf(buffer, "%04X", array_to_display[i]);
+        OLED_display.print(buffer);
+        OLED_display.display();
+        // delay(333);
+        for (int j = 0; j < 33; j++)
+        {
+            Watchdog.reset();
+            delay(10);
+        }
+    }
+}
+/**
+ * @brief
+ *
+ * @param current
+ * @param voltage
+ * @param theory_voltage
+ */
+void DebugDisplay(uint32_t current, uint32_t current_raw, uint32_t voltage, uint32_t theory_voltage, uint32_t power)
+{
+    OLED_display.clearDisplay();
+    OLED_display.setTextSize(1);
+    OLED_display.setCursor(0, 0);
+    OLED_display.printf("I %d/%d", current, current_raw);
+    OLED_display.setCursor(0, 10);
+    OLED_display.printf("V %d/%d", voltage, theory_voltage);
+    OLED_display.setCursor(0, 20);
+    OLED_display.printf("P %d", power);
+    OLED_display.display();
 }

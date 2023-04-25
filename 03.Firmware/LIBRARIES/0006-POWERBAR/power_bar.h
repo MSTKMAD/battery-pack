@@ -4,14 +4,14 @@
  * @brief Esta libreria contiene las funciones y cosntantes encesarias para controlar la ultima fila de leds de matriz de leds de 15x7, con el funcion de reproducir el funcionamiento de una barra de potencia. Esta barra iluminara mas leds o menos en funcion de la potencia que se este suminsitrando por parte de la bateria a la maquina.
  * @version 1
  * @date 2021-02-24
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
-//#include <Adafruit_IS31FL3731.h>
-//#include <OLED_display.h>
-//#include <MilliTimer.h>
+// #include <Adafruit_IS31FL3731.h>
+// #include <OLED_display.h>
+// #include <MilliTimer.h>
 const int16_t MAX_POWER_DISPLAYED = 2500;
 const int16_t LEDS_IN_POWERBAR = 15;
 const uint16_t x_LED_WORK = 1;
@@ -22,9 +22,9 @@ MilliTimer refresh_timer;
 
 /**
  * @brief Esta funcion se encarga de encender y apagar los leds necesario en la barra de potencia.
- * 
- * @param leds 
- * @param OLED_display 
+ *
+ * @param leds
+ * @param OLED_display
  */
 void PowerBar(int16_t leds)
 {
@@ -33,7 +33,7 @@ void PowerBar(int16_t leds)
 
     int cursor_x = 0;
 
-    leds = constrain(leds, 0, 40);
+    leds = constrain(leds, 0, LEDS_IN_POWERBAR);
 
     if (leds == 0)
     {
@@ -53,9 +53,9 @@ void PowerBar(int16_t leds)
 }
 /**
  * @brief Actualiza la cantidad de leds encendidos en la barra de potencia segun el parametro de entrada "power_sample"
- * 
- * @param power_sample 
- * @param OLED_display 
+ *
+ * @param power_sample
+ * @param OLED_display
  */
 void UpdatePowerBar(int16_t power_sample)
 {
@@ -66,18 +66,18 @@ void UpdatePowerBar(int16_t power_sample)
         high_sample = power_sample;
     }
 
-    if (refresh_timer.poll(25) != C_TIMER_NOT_EXPIRED)
-    {
-        uint16_t num_leds = (high_sample + (power_by_led / 2)) / power_by_led;
-        PowerBar(num_leds);
-        high_sample = 0;
-    }
+    // if (refresh_timer.poll(25) != C_TIMER_NOT_EXPIRED)
+    //{
+    uint16_t num_leds = (high_sample + (power_by_led / 2)) / power_by_led;
+    PowerBar(num_leds);
+    high_sample = 0;
+    //}
 }
 /**
  * @brief  Funcion que permite encender y apagar el boton que representa el estado de la salida del voltage.
- * 
- * @param state_led 
- * @param OLED_display 
+ *
+ * @param state_led
+ * @param OLED_display
  */
 void LedWork(bool state_led)
 {
@@ -89,4 +89,5 @@ void LedWork(bool state_led)
     {
         OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, BLACK);
     }
+    OLED_display.display();
 }
