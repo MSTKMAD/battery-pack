@@ -62,6 +62,9 @@ const int32_t C_TIME_IDLE_30_SEG = 30000;     // 30 s. Contador auxiliar para po
 const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
 const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000; // 5 s. Ventana de tiempo que tiene que mantenerse la condicion de inicio del modo diagnostico.
 
+const int32_t C_MIN_PERIOD_LOG_PM = 60 / LOG_PER_HOUR; // Periodo de tiempo cada logeo del PM,
+const int32_t C_MIN_PERIOD_WARNING_LOW_BATT = 5 * 60;  // 5 min. Periodo de tiempo cada logeo del PM,
+
 const uint8_t C_LOW_BATTERY_LEVEL = 15;  // Porcentaje de bateria  partir del cual no se puede asegurar un correcto funcionamiento.
 const uint8_t C_EMPTY_BATTERY_LEVEL = 5; // Porcentaje de bateria  partir del cual no se permite encender la bateria.
 
@@ -770,26 +773,30 @@ void setup()
                     {
                         // Contador  de segundos
                         cont_log_active++;
-                        if (cont_log_active == 3600) // A la hora logeo en EEPROM.
-                        {
-                            PostMortemLog(sample_POut, capacity, theory_Vout, 0);
-                            cont_log_active = 0;
-                        }
-
+                        cont_low_batt_run++;
                         // Sensado de la tension de entrada para prevenir apagado no deseado
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
 #ifdef SERIAL_DEBUG
                         Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
+
+                        if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
+                        {
+                            PostMortemLog(sample_POut, capacity, theory_Vout, 0);
+                            LogDiagnosticData(sample_POut, C_POWER_USE);
+                            LogDiagnosticData(sample_VIN, C_PERCENT_USE);
+                            cont_log_active = 0;
+                        }
 #endif
                         if (sample_VIN <= 3200)
                         {
                             if (flag_low_vin_detected)
                             {
-                                if ((cont_log_active % 300) == 0)
+                                if (cont_low_batt_run == C_MIN_PERIOD_WARNING_LOW_BATT)
                                 {
                                     DisplayLowBattery();
                                     playSound(C_SOUND_LOW_BATTERY);
                                     trigger_Display_volt = true;
+                                    cont_low_batt_run = 0;
                                 }
                             }
                             else
@@ -1424,6 +1431,8 @@ void setup()
 
                 /* Clear Flags */
                 flag_low_battery = false;
+                cont_log_active = 0;
+                cont_low_batt_run = 0;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1445,6 +1454,8 @@ void setup()
 
                 /* Clear Flags */
                 flag_low_battery = false;
+                cont_log_active = 0;
+                cont_low_batt_run = 0;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
