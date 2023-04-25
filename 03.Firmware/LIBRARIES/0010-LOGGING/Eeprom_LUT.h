@@ -9,7 +9,7 @@
  * 
  */
 
-#define POSICION_MEMORIA 0x0000AA00 //Ordenacion BigEndian
+#define POSICION_MEMORIA 0x0000AB00 //Ordenacion BigEndian
 
 const uint8_t HOURS_PM = 8;
 const uint16_t LOG_PER_HOUR = 10;
