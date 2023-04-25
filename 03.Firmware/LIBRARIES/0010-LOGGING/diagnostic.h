@@ -425,14 +425,13 @@ void DiagnosticMode()
     }
 
     char buffer[50];
+#ifdef SERIAL_DEBUG
     for (int i = 0; i < sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]); i++)
     {
         sprintf(buffer, "0x%04X ", diagnostic_chain[i]);
-#ifdef SERIAL_DEBUG
         Serial5.print(buffer);
-#endif
+        Watchdog.reset();
     }
-#ifdef SERIAL_DEBUG
     Serial5.println();
 #endif
 

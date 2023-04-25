@@ -14,7 +14,7 @@
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
-#define SERIAL_DEBUG
+// #define SERIAL_DEBUG
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
@@ -610,7 +610,42 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
+        if (!Init_local_eeprom()) // Incializacion EEPROM
+        {
+            flag_eeprom_init_fail = true;
+#ifdef SERIAL_DEBUG
+            Serial5.println("Fallo de lectura de EEPROM");
+#endif
+        }
+        else
+        {
+#ifdef SERIAL_DEBUG
+            Serial5.println("Lectura Correcta de EEPROM");
+#endif
+        }
         SaveEeprom();
+    }
+    else if (reset_cause == C_RCAUSE_BOD33)
+    {
+#ifdef SERIAL_DEBUG
+        Serial5.printf("Reset BOD33\n");
+#endif
+        if (!Init_local_eeprom()) // Incializacion EEPROM
+        {
+            flag_eeprom_init_fail = true;
+#ifdef SERIAL_DEBUG
+            Serial5.println("Fallo de lectura de EEPROM");
+#endif
+        }
+        else
+        {
+#ifdef SERIAL_DEBUG
+            Serial5.println("Lectura Correcta de EEPROM");
+#endif
+        }
+        while (1)
+        {
+        }
     }
 
     /*===============================================================================================================================================*/
@@ -1676,6 +1711,7 @@ void setup()
 
         //====================================================== Control del tiempo del ciclo de control ========================================================//
         t2 = micros();
+#ifdef SERIAL_DEBUG
         cont_per++;
         if (max_prog_cycle < (t2 - t1))
         {
