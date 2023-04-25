@@ -270,7 +270,12 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
         sprintf(buffer, "%04X", array_to_display[i]);
         OLED_display.print(buffer);
         OLED_display.display();
-        delay(333);
+        // delay(333);
+        for (int j = 0; j < 33; j++)
+        {
+            Watchdog.reset();
+            delay(10);
+        }
     }
 }
 /**

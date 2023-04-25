@@ -276,22 +276,19 @@ void Config_Naming()
         num_char = num_char + num_spaces * 2;
         num_swft = num_char * 12 - 64;
 
-        for (int k = 0; k < 4; k++)
+        for (int k = 0; k < 3; k++)
         {
-            Watchdog.reset();
             for (int i = 0; i <= (num_swft / 4) + 1; i++)
             {
-                Watchdog.reset();
                 cursor_x_name = i * -4;
                 for (int j = 0; j < num_char; j++)
                 {
-                    Watchdog.reset();
                     OLED_display.drawChar(cursor_x_name, cursor_y, name[j], WHITE, BLACK, 2);
                     cursor_x_name += 12;
                 }
                 OLED_display.display();
                 // delay(100);
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     delay(10);
                     Watchdog.reset();
@@ -336,7 +333,7 @@ void ShowName()
     else
     {
         num_swft = num_char_to_show * 12 - 64;
-        for (int k = 0; k < 4; k++)
+        for (int k = 0; k < 3; k++)
         {
             for (int i = 0; i <= (num_swft / 4) + 1; i++)
             {
@@ -347,7 +344,11 @@ void ShowName()
                     cursor_x_name += 12;
                 }
                 OLED_display.display();
-                delay(100);
+                for (int i = 0; i < 5; i++)
+                {
+                    delay(10);
+                    Watchdog.reset();
+                }
             }
         }
     }

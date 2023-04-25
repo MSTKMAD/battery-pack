@@ -374,3 +374,5 @@ XXXX- MISC/cyclator/cyclator.ino
 *.bat
 
 *.jflash
+
+03.Firmware/TEST/Rover R-1/DCDC/VerificacionProduccion/build/

@@ -9,9 +9,9 @@
  * 
  */
 
-#define POSICION_MEMORIA 0x0000AA00 //Ordenacion BigEndian
+#define POSICION_MEMORIA 0x0000AB00 //Ordenacion BigEndian
 
-const uint8_t HOURS_PM = 10;
+const uint8_t HOURS_PM = 8;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 const uint16_t NUM_POS_NAME = 25;
@@ -35,8 +35,8 @@ struct EEPROM
     uint16_t num_char_in_name;
     uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
-    uint16_t array_power_use[46];   // 500w to 5000w in step of 100w -> 46 step
-    uint16_t array_percent_use[21]; // 0% to 100% in step of 5% -> 21 step
+    uint16_t array_power_use[46];   // 500mW to 5000mW in step of 100mW -> 46 step
+    uint16_t array_percent_use[21]; // 3300 to 4100 in step of 20mv -> 21 step
     uint16_t pm_power[PM_POSITIONS];
     uint16_t pm_percent[PM_POSITIONS];
     uint16_t pm_voltage[PM_POSITIONS];

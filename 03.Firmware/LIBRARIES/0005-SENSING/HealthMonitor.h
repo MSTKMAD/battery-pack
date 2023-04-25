@@ -110,7 +110,7 @@ public:
    */
   uint16_t getSample(uint16_t ADCpin)
   {
-    analogReadCorrection(12, 2055);
+    //analogReadCorrection(12, 2055);
     analogReadResolution(12); // Set analog input resolution to max, 12-bits
     int16_t out_sample = 0;
     int16_t sample = 0;

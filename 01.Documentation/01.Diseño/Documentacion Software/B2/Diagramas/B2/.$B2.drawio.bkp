@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-04-18T08:33:45.663Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" version="21.1.2" etag="OBRt__nnRUrknUEuJcYp" type="device" pages="11">
+<mxfile host="Electron" modified="2023-04-18T08:33:11.833Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" version="21.1.2" etag="NOGqsNyl_8akhw_AMo8W" type="device" pages="11">
   <diagram name="B2" id="glGocLATi1if9tQTDRDP">
     <mxGraphModel dx="3547" dy="2269" grid="1" gridSize="10" guides="1" tooltips="0" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
@@ -192,7 +192,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="h6twncE5I4OJgi1WDBt--54" value="Control de ciclo de programa (25ms)" style="rounded=1;whiteSpace=wrap;html=1;" parent="KJZN4QSeBZsimf8XrtOt-1" vertex="1">
+        <mxCell id="h6twncE5I4OJgi1WDBt--54" value="Control de ciclo de programa (20ms)" style="rounded=1;whiteSpace=wrap;html=1;" parent="KJZN4QSeBZsimf8XrtOt-1" vertex="1">
           <mxGeometry x="-1294" y="2450" width="120" height="60" as="geometry" />
         </mxCell>
         <UserObject label="SLEEP STATE" link="data:page/id,gC9tiWxsxMA9k27ofBVB" id="21zlbozu3UNSe2jRhIxl-0">

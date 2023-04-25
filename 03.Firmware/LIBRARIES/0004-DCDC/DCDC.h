@@ -56,7 +56,7 @@ public:
     {
         if (mode == C_BOOST_MODE)
         {
-            volt += 5;
+            volt += 3;
         }
         volt = constrain(volt, MIN_VOLTAGE, MAX_VOLTAGE);
         dac_count = C_DAC_MIN_COUNT - (((volt - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));

@@ -233,12 +233,14 @@ void LogDiagnosticData(int16_t data, int16_t address)
         break;
 
     case C_POWER_USE:
+        data = constrain(data, MIN_WATS, MAX_WATS);
         wats_pos = (data - MIN_WATS) / 100;
         local_eeprom.array_power_use[wats_pos]++;
         break;
 
     case C_PERCENT_USE:
-        perc_pos = data / 5;
+        data = constrain(data, 3300, 4100);
+        perc_pos = (data - 3300) / 20;
         local_eeprom.array_percent_use[perc_pos]++;
         break;
 
@@ -297,13 +299,7 @@ void IncrementDiagnosticData(int16_t address)
         local_eeprom.shortcircuit_errors += 1;
         break;
     case C_WORK_TIME:
-        static int cont_hour = 0;
-        cont_hour++;
-        if (cont_hour == 10)
-        {
-            local_eeprom.work_time += 1;
-            cont_hour = 0;
-        }
+        local_eeprom.work_time += 1;
         break;
     case C_NUM_WDT_ERRORS:
         local_eeprom.num_wdt_errors += 1;
@@ -429,14 +425,13 @@ void DiagnosticMode()
     }
 
     char buffer[50];
+#ifdef SERIAL_DEBUG
     for (int i = 0; i < sizeof(diagnostic_chain) / sizeof(diagnostic_chain[0]); i++)
     {
         sprintf(buffer, "0x%04X ", diagnostic_chain[i]);
-#ifdef SERIAL_DEBUG
         Serial5.print(buffer);
-#endif
+        Watchdog.reset();
     }
-#ifdef SERIAL_DEBUG
     Serial5.println();
 #endif
 
