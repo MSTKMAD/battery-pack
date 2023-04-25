@@ -40,11 +40,6 @@ const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondie
 
 const uint32_t C_PROGRAM_CYCLE_PERIOD = 25000; // Duracion minima del ciclo de programa en us.
 
-const bool C_MASK_DEACTIVATE = false; // Flag que indica que la mascara de las portecciones esta desactivada.
-const bool C_MASK_ACTIVATE = true;    // Flag que indica que la mascara de las portecciones esta desactivada.
-
-const uint16_t MAX_NUM_PROTECTION_EVENTS = 6; // Numero de vecces que tiene que saltar una proteccion para dar el aviso por pantalla.
-
 const bool C_OUTPUT_OFF = false; // Flag que identeifica la salida como desconectada
 const bool C_OUTPUT_ON = true;   // Flag que identifica la salida como conectada
 
@@ -126,6 +121,11 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
 
 /**
  * @brief HealthMonitor del theory_Vout de salida.
+ *      Esta proteccion funciona de la siguiente manera. Debidoa que el HM compara el sample
+ *      con un treshold y se activa s ese valor esta por encima, en el caso de esta proteccion
+ *      queremos que se active si esta por debajo, de manera que tendremoq ue utilizar la rampa de bajada, de manera
+ *      que cada vez que el HM no salte, disminuya el contador. En el momento que el contador llegue a 0, se considera que
+ *      la proteccion tiene que saltar. Lo resets se localizaran al limite superior.
  *      - Umbral : 1000 mV
  *      - Ts = 10 ms
  *      - Time spam = 1000 ms
@@ -165,7 +165,6 @@ MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de poten
 MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte la señal de op switch.
 MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
-MilliTimer timer_5min_low_bat_msg;  // Timer para espaciar los avisos de bateria baja en el estado RUN.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 
 //--------------------------------------- States variables-------------------------------------
@@ -173,20 +172,16 @@ int16_t sw_status = C_SW_ST_SLEEP;                                              
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
 bool output_mode = C_NON_BOOST_MODE;                                                 // Contenedor del modo de la tension de salida.
 bool blink_error_state = false;                                                      // Identificador del estado del parapadeo de la barra de potencia durante el mostrado de un error.
-bool mask_protection_state = C_MASK_DEACTIVATE;                                      // Identificador del estado de la mascara de las protecciones.
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 
 //--------------------------------------- Counters variables-------------------------------------
-int32_t cont_sec_log = 0;                          // Contador de los segundos en el intervalo del logeo de la EEPROM.
-int16_t consmptn_event_protection_counter = 0;     // Contador del numero de eventos de error de consumo pre aviso por pantalla.
-int16_t shortcircuit_event_protection_counter = 0; // Contador del numero de eventos de error de cortocircuito pre aviso por pantalla.
-int16_t OP_event_protection_counter = 0;           // Contador del numero de eventos de error de sobre portencia (Over Power) pre aviso por pantalla.
-int16_t UV_event_protection_counter = 0;           // Contador del numero de eventos de error de Under Voltage pre aviso por pantalla.
-uint16_t long_press_events = 0;                    // Contador del numero de longpress consectivos.
-int16_t cont_idle_timer = 0;                       // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
-uint32_t cont_log_sec = 0;                         // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
-uint32_t cont_log_active = 0;                      // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
-uint32_t cont_test_sample = 0;                     // Contador que acumula el numero de muestras que se toman.
+int32_t cont_sec_log = 0;       // Contador de los segundos en el intervalo del logeo de la EEPROM.
+uint16_t long_press_events = 0; // Contador del numero de longpress consectivos.
+int16_t cont_idle_timer = 0;    // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
+uint32_t cont_log_sec = 0;      // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
+uint32_t cont_log_active = 0;   // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_low_batt_run = 0; // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
+uint32_t cont_test_sample = 0;  // Contador que acumula el numero de muestras que se toman.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -214,7 +209,7 @@ bool flag_eeprom_init_fail = false;             // Flag que indica si se ha prod
 bool flag_low_battery = false;   // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria baja.
 bool flag_empty_battery = false; // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria vacia.
 
-bool flag_protection_event_delay = false; // Flag que indica que se tiene que realizar un delay por la deteccion de un evento de las proteccion.
+volatile bool flag_error = false; // Flag que indica la deteccion de un error.
 volatile bool flag_error = false;         // Flag que indica la deteccion de un error.
 
 bool flag_msg_init = false;              // Flag que indica si se ha terminado de mostrar el mensaje de encendido en la pantalla durante el protocolo de encendido.
@@ -463,6 +458,11 @@ void setup()
             LogDiagnosticData(50, C_THEORY_VOLTAGE);
             theory_Vout = 50;
         }
+        //------------------------ INICIALIZACION DE PROTECCIONES------------------------
+        over_consumption_protection.setCounter(0);
+        over_power_protection.setCounter(0);
+        under_voltage_protection.setCounter(under_voltage_protection.limit);
+        short_current_protection.setCounter(0);
 
         //------------------------ CHECKEO PARA APP NAMING ------------------------------
 
@@ -712,23 +712,13 @@ void setup()
                 if (short_current_protection.check(sample_IOut) == true)
                 {
 
-                    shortcircuit_event_protection_counter++;
-                    if (shortcircuit_event_protection_counter == MAX_NUM_PROTECTION_EVENTS)
-                    {
-                        flag_error = true;
-                        error = C_ERROR_SHORTCIRCUIT;
-                        IncrementDiagnosticData(C_SHORT_CIRCUIT_ERROR);
-                        short_current_protection.setCounter(0);
-                    }
-                    else
-                    {
+                    flag_error = true;
+                    error = C_ERROR_SHORTCIRCUIT;
+                    IncrementDiagnosticData(C_SHORT_CIRCUIT_ERROR);
+                    short_current_protection.setCounter(0);
 #ifdef SERIAL_DEBUG
-                        Serial5.printf("ShC %d\n", shortcircuit_event_protection_counter);
+                    Serial5.printf("ShC \n");
 #endif
-                        // protection_event_delay.set(100);
-                        // flag_protection_event_delay = true;
-                        // short_current_protection.setCounter(C_RETRY_750_COUNT);
-                    }
                 }
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
@@ -811,86 +801,42 @@ void setup()
                             }
                         }
                     }
-
                     //------------ PROTECCIONES--------------//
-                    if (mask_protection_state == C_MASK_DEACTIVATE)
+                    //      Consumption Monitor     //
+                    if (over_consumption_protection.check(sample_IOut) == true)
                     {
-                        //      Consumption Monitor     //
-                        if (over_consumption_protection.check(sample_IOut) == true)
-                        {
+                        flag_error = true;
+                        error = C_ERROR_OVERCURRENT;
+                        IncrementDiagnosticData(C_CONSUMPTION_ERROR);
+                        over_consumption_protection.setCounter(0);
 
-                            consmptn_event_protection_counter++;
-                            if (consmptn_event_protection_counter == MAX_NUM_PROTECTION_EVENTS)
-                            {
-                                flag_error = true;
-                                error = C_ERROR_OVERCURRENT;
-                                IncrementDiagnosticData(C_CONSUMPTION_ERROR);
-                                over_consumption_protection.setCounter(0);
-                            }
-                            else
-                            {
 #ifdef SERIAL_DEBUG
-                                Serial5.printf("CON %d\n", consmptn_event_protection_counter);
+                        Serial5.printf("CON \n");
 #endif
-                                protection_event_delay.set(100);
-                                flag_protection_event_delay = true;
-                                // over_consumption_protection.setCounter(C_RETRY_750_COUNT);
-                                mask_protection_state = C_MASK_ACTIVATE;
-                            }
-                        }
-                        //      Power Monitor       //
-                        if (over_power_protection.check(sample_POut) == true)
-                        {
-
-                            OP_event_protection_counter++;
-                            if (OP_event_protection_counter == MAX_NUM_PROTECTION_EVENTS)
-                            {
-                                flag_error = true;
-                                error = C_ERROR_OVERPOWER;
-                                IncrementDiagnosticData(C_POWER_ERROR);
-                                over_power_protection.setCounter(0);
-                            }
-                            else
-                            {
-#ifdef SERIAL_DEBUG
-                                Serial5.printf("OP %d\n", OP_event_protection_counter);
-#endif
-                                protection_event_delay.set(100);
-                                flag_protection_event_delay = true;
-                                // over_power_protection.setCounter(over_power_protection.limit / 2);
-                                mask_protection_state = C_MASK_ACTIVATE;
-                            }
-                        }
-                        //      Voltage Monitor        //
-                        if ((under_voltage_protection.check(sample_VOut) == false) && (under_voltage_protection.getCounter() == 0))
-                        {
-
-                            UV_event_protection_counter++;
-                            if (UV_event_protection_counter == MAX_NUM_PROTECTION_EVENTS)
-                            {
-                                flag_error = true;
-                                error = C_ERROR_OUPUT_UNDERVOLTAGE;
-                                IncrementDiagnosticData(C_VOLTAGE_ERROR);
-                                under_voltage_protection.setCounter(under_voltage_protection.limit);
-                            }
-                            else
-                            {
-#ifdef SERIAL_DEBUG
-                                Serial5.printf("OUV %d\n", UV_event_protection_counter);
-#endif
-                                protection_event_delay.set(100);
-                                flag_protection_event_delay = true;
-                                // under_voltage_protection.setCounter(under_voltage_protection.limit / 2);
-                                mask_protection_state = C_MASK_ACTIVATE;
-                            }
-                        }
                     }
-                    else if (mask_protection_state == C_MASK_ACTIVATE)
+                    //      Power Monitor       //
+                    if (over_power_protection.check(sample_POut) == true)
                     {
-                        if ((flag_protection_event_delay == true) && (protection_event_delay.poll() != C_TIMER_NOT_EXPIRED))
-                        {
-                            mask_protection_state = C_MASK_DEACTIVATE;
-                        }
+                        flag_error = true;
+                        error = C_ERROR_OVERPOWER;
+                        IncrementDiagnosticData(C_POWER_ERROR);
+                        over_power_protection.setCounter(0);
+
+#ifdef SERIAL_DEBUG
+                        Serial5.printf("OP \n");
+#endif
+                    }
+                    //      Voltage Monitor        //
+                    if ((under_voltage_protection.check(sample_VOut) == false) && (under_voltage_protection.getCounter() == 0))
+                    {
+                        flag_error = true;
+                        error = C_ERROR_OUPUT_UNDERVOLTAGE;
+                        IncrementDiagnosticData(C_VOLTAGE_ERROR);
+                        under_voltage_protection.setCounter(under_voltage_protection.limit);
+
+#ifdef SERIAL_DEBUG
+                        Serial5.printf("OUV \n");
+#endif
                     }
                 }
             }
@@ -1383,7 +1329,7 @@ void setup()
                 case C_ERROR_INPUT_UNDERVOLTAGE:
                     PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_INPUT_UNDERVOLTAGE);
                     break;
-                case C_ERROR_SHORTCIRCUIT:
+                case C_ERROR_SHORTCIRCUIT: // Triangulo
                     OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
                     OLED_display.fillRect(30, 7, 3, 12, BLACK);
                     OLED_display.fillRect(30, 21, 3, 3, BLACK);
@@ -1418,10 +1364,11 @@ void setup()
             if ((display_error_status == C_DISPLAY_ST_NOT_BUSSY))
             {
                 flag_error = false;
-                consmptn_event_protection_counter = 0;
-                OP_event_protection_counter = 0;
-                UV_event_protection_counter = 0;
-                shortcircuit_event_protection_counter = 0;
+
+                over_consumption_protection.setCounter(0);
+                over_power_protection.setCounter(0);
+                under_voltage_protection.setCounter(under_voltage_protection.limit);
+                short_current_protection.setCounter(0);
                 SwitchScreenOff();
                 // -------------- GUARDADO EN EEPROM -----------------
                 SaveEeprom();
@@ -1668,9 +1615,10 @@ void setup()
             LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
 
             // Limpieza y reset de variables de las protecciones.
-            consmptn_event_protection_counter = 0;
-            OP_event_protection_counter = 0;
-            UV_event_protection_counter = 0;
+            over_consumption_protection.setCounter(0);
+            over_power_protection.setCounter(0);
+            under_voltage_protection.setCounter(under_voltage_protection.limit);
+            short_current_protection.setCounter(0);
         }
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
@@ -1736,12 +1684,13 @@ void setup()
             Serial5.printf("AVG Prog cycle avrg:%d us\n", prog_cycle);
             Serial5.printf("MIN Prog cycle avrg:%d us\n", min_prog_cycle);
             Serial5.printf("-------- %d ---------\n\n", cont_log_sec);
+            Serial5.printf("RAM: %d \n", freeMemory());
             prog_cycle = 0;
             cont_per = 0;
             min_prog_cycle = max_prog_cycle;
             max_prog_cycle = 0;
         }
-
+#endif
         while ((t2 - t1) < C_PROGRAM_CYCLE_PERIOD)
         {
             t2 = micros();
