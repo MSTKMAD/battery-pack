@@ -1572,7 +1572,7 @@ void setup()
                 flag_sleep = false;
                 go_deep_sleep = true;
 
-/* Change-State Effects */
+                /* Change-State Effects */
 #ifdef SERIAL_DEBUG
                 Serial5.printf("Change TO SLEEP\n");
 #endif
@@ -1772,7 +1772,7 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
     int16_t percent = 0;
     int32_t batt_voltage = 0;
     int16_t sample = 0;
-    analogReadCorrection(12, 2055);
+    // analogReadCorrection(12, 2055);
     analogReadResolution(12);
 
     // Lectura del ADC
