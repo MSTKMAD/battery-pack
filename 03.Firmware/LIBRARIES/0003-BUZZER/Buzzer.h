@@ -27,6 +27,8 @@ const uint16_t C_SOUND_FULL_CHARGE = 10;
 const uint16_t C_SOUND_LOW_BATTERY = 11;
 const uint16_t C_SOUND_ERROR = 12;
 
+// Cada una de las melodias esta formada por Nota+Duracion de Nota en ms + Tiempo en silencio antes de la siguiente nota.
+
 const uint16_t C_NOTES_START_1[] = {NOTE_E6, 125, 5, NOTE_G6, 125, 5, NOTE_E7, 125, 5, NOTE_C7, 125, 5, NOTE_D7, 125, 5, NOTE_G7, 125, 5};
 const uint16_t C_NOTES_END_1[] = {NOTE_G7, 125, 5, NOTE_D7, 125, 5, NOTE_C7, 125, 5, NOTE_E7, 125, 5, NOTE_G6, 125, 5, NOTE_E6, 125, 5};
 const uint16_t C_NOTES_DOWN_1[] = {NOTE_D8, 10, 10, NOTE_A7, 10, 10};
@@ -44,6 +46,7 @@ MilliTimer timer_buzzer;
 
 const bool C_BUZZER_BUSSY = true;
 const bool C_BUZZER_NOT_BUSSY = false;
+
 uint16_t SOUND_START[100];
 uint16_t size_sound_start;
 uint16_t SOUND_END[100];
@@ -86,7 +89,7 @@ void InitBuzzer(uint16_t mode = C_MODE_DEFAULT, uint16_t pin_buzzer = C_PIN_BUZZ
     {
     case C_MODE_DEFAULT:
         memcpy(SOUND_START, C_NOTES_START_1, sizeof(C_NOTES_START_1));
-        size_sound_start = (sizeof(C_NOTES_START_1) / sizeof(C_NOTES_START_1[0])) / 3;
+        size_sound_start = (sizeof(C_NOTES_START_1) / sizeof(C_NOTES_START_1[0])) / 3; // Caluclo de numero de notas: Tamaño del array/ (tamaño de una nota * 3) <- Se divide por 3 por Nota+Duracion+Espacio siguiente nota
         memcpy(SOUND_END, C_NOTES_END_1, sizeof(C_NOTES_END_1));
         size_sound_end = (sizeof(C_NOTES_END_1) / sizeof(C_NOTES_END_1[0])) / 3;
         memcpy(SOUND_UP, C_NOTES_UP_1, sizeof(C_NOTES_UP_1));
@@ -229,7 +232,9 @@ void playSound(int16_t num)
     bool buzzer_state = C_BUZZER_BUSSY;
     uint16_t local_sound[100];
     uint16_t size_sound = 0;
+
     size_sound = getSound(local_sound, num);
+
     timer_buzzer.set(10);
     for (uint16_t i = 0; i / 3 < size_sound; i += 3)
     {

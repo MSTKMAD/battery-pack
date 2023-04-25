@@ -144,10 +144,14 @@ HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 1, 400);
  */
 HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
 
-//--------------------------------------- Timers variables-------------------------------------
-MilliTimer timer_encendido;
-
+/**
+ * @brief
+ *
+ * @return dcdc_controler
+ */
 dcdc_controler DCDC(C_PIN_EN_DCDC);
+
+//--------------------------------------- Timers variables-------------------------------------
 MilliTimer protection_event_delay;  // Delay impuesto entre detecciones de erroes.
 MilliTimer timer_sec_count;         // Timer contador de segundos.
 MilliTimer timer_display_capacity;  // Timer para el muestreo de la capacidad en el arranque.
@@ -213,7 +217,6 @@ bool flag_low_battery = false;   // Flag que indica si la capacidad se encuentra
 bool flag_empty_battery = false; // Flag que indica si la capacidad se encuentra por debajo del umbral de bateria vacia.
 
 volatile bool flag_error = false; // Flag que indica la deteccion de un error.
-volatile bool flag_error = false;         // Flag que indica la deteccion de un error.
 
 bool flag_msg_init = false;              // Flag que indica si se ha terminado de mostrar el mensaje de encendido en la pantalla durante el protocolo de encendido.
 bool flag_msg_sleep = false;             // Flag que indica si se ha terminado de mostrar el mensaje de apagado en la pantalla durante el protocolo de apagado.
@@ -962,7 +965,7 @@ void setup()
                         }
                         else
                         {
-                            long_press_events--; // Si no estamos en el estado STOP reseteamos el contador.
+                            long_press_events--; // Si no estamos en el estado STOP reseteamos el contador, esperando estar en el estado de STOP
                         }
                     }
                     else if ((long_press_events >= 2) && (long_press_events < 5))
@@ -1148,7 +1151,7 @@ void setup()
                     }
                     SaveEeprom();                                                                       // Salvado en EEPROM
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW);                                          // Apagado de la alimentacion secundaria.
-                    LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar
+                    LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar por flanco de bajada del boton central
 #ifdef SERIAL_DEBUG
                     Serial5.println("Zzz");
 #endif
