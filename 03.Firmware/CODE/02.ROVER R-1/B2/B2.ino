@@ -417,6 +417,9 @@ void setup()
                     test_mode_activate = false;
                 }
             }
+            digitalWrite(C_PIN_EN_DCDC, LOW);    // Activacion del EN_DCDC
+            digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
+            DCDC.SetVoltage(50, C_NON_BOOST_MODE);
             SaveEeprom();
             Watchdog.reset();
         }
