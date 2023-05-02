@@ -816,6 +816,7 @@ void setup()
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
 #ifdef SERIAL_DEBUG
                         Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
+#endif
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
                         {
@@ -824,12 +825,11 @@ void setup()
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;
                         }
-#endif
                         if (sample_VIN <= 3200)
                         {
                             if (flag_low_vin_detected)
                             {
-                                if (cont_low_batt_run == C_MIN_PERIOD_WARNING_LOW_BATT)
+                                if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
                                 {
                                     DisplayLowBattery();
                                     playSound(C_SOUND_LOW_BATTERY);
@@ -843,6 +843,7 @@ void setup()
                                 DisplayLowBattery();
                                 playSound(C_SOUND_LOW_BATTERY);
                                 trigger_Display_volt = true;
+                                cont_low_batt_run = 0;
                             }
                         }
                     }
@@ -1471,6 +1472,7 @@ void setup()
                 flag_low_battery = false;
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
+                flag_low_vin_detected = false;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1494,6 +1496,7 @@ void setup()
                 flag_low_battery = false;
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
+                flag_low_vin_detected = false;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
