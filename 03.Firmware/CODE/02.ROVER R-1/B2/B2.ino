@@ -134,7 +134,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      - Time spam = 1000 ms
  *
  */
-HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 1, 400);
+HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 1, 10, 400);
 /**
  * @brief HealthMonitor del short_circuit de salida.
  *      - Umbral : 3000 mA
