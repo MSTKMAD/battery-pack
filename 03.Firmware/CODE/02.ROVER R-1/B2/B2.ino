@@ -40,6 +40,9 @@ const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondie
 
 const uint32_t C_PROGRAM_CYCLE_PERIOD = 25000; // Duracion minima del ciclo de programa en us.
 
+const uint16_t C_VIN_MAX_CAP = 4050; // Valor de la tension de entrada correspondiente al 100% de capacidad.
+const uint16_t C_VIN_MIN_CAP = 3300; // Valor de la tension de entrada correspondiente al 0% de capacidad.
+
 const bool C_OUTPUT_OFF = false; // Flag que identeifica la salida como desconectada
 const bool C_OUTPUT_ON = true;   // Flag que identifica la salida como conectada
 
@@ -1791,7 +1794,7 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
     batt_voltage = sample / 8 * 3000 / 4096 * 250 / 150;
 
     // Calculo del porcentaje  de bateria actual
-    percent = constrain(((batt_voltage - 3300) * 100 / 800), 0, 100);
+    percent = constrain(((batt_voltage - C_VIN_MIN_CAP) * 100 / (C_VIN_MAX_CAP-C_VIN_MIN_CAP)), 0, 100);
 
     if (percent <= C_EMPTY_BATTERY_LEVEL) // Porcentaje por debajo del valor de bateria vacia.
     {
