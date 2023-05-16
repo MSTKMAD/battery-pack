@@ -4618,7 +4618,7 @@ vo/vi = 0.6
 </text>
 <text x="165.1" y="264.16" size="5.08" layer="94">BATT_CPU
 rover1k
-Dec'22-V2</text>
+May'24-V3</text>
 <text x="144.78" y="81.28" size="2.54" layer="94">DISPLAY</text>
 <text x="139.7" y="162.56" size="2.54" layer="94">SWITCHES</text>
 <text x="350.52" y="162.56" size="2.54" layer="94">CONNECTOR</text>
