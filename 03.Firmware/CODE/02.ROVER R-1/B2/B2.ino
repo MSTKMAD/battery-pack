@@ -40,6 +40,9 @@ const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondie
 
 const uint32_t C_PROGRAM_CYCLE_PERIOD = 25000; // Duracion minima del ciclo de programa en us.
 
+const uint16_t C_VIN_MAX_CAP = 4050; // Valor de la tension de entrada correspondiente al 100% de capacidad.
+const uint16_t C_VIN_MIN_CAP = 3300; // Valor de la tension de entrada correspondiente al 0% de capacidad.
+
 const bool C_OUTPUT_OFF = false; // Flag que identeifica la salida como desconectada
 const bool C_OUTPUT_ON = true;   // Flag que identifica la salida como conectada
 
@@ -134,7 +137,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      - Time spam = 1000 ms
  *
  */
-HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 10, 1, 400);
+HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 1, 10, 400);
 /**
  * @brief HealthMonitor del short_circuit de salida.
  *      - Umbral : 3000 mA
@@ -182,13 +185,14 @@ bool blink_error_state = false;                                                 
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 
 //--------------------------------------- Counters variables-------------------------------------
-int32_t cont_sec_log = 0;       // Contador de los segundos en el intervalo del logeo de la EEPROM.
-uint16_t long_press_events = 0; // Contador del numero de longpress consectivos.
-int16_t cont_idle_timer = 0;    // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
-uint32_t cont_log_sec = 0;      // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
-uint32_t cont_log_active = 0;   // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
-uint32_t cont_low_batt_run = 0; // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
-uint32_t cont_test_sample = 0;  // Contador que acumula el numero de muestras que se toman.
+int32_t cont_sec_log = 0;           // Contador de los segundos en el intervalo del logeo de la EEPROM.
+uint16_t long_press_events = 0;     // Contador del numero de longpress consectivos.
+int16_t cont_idle_timer = 0;        // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
+uint32_t cont_log_sec = 0;          // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
+uint32_t cont_log_active = 0;       // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_low_batt_run = 0;     // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
+uint32_t cont_test_sample = 0;      // Contador que acumula el numero de muestras que se toman.
+uint32_t cont_low_batt_triggers = 0; // Contador que acumulada las veces que el voltaje de entrada esta por debajo del umbral antes de dar la 1º alarma.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -830,9 +834,11 @@ void setup()
                         }
                         if (sample_VIN <= 3200)
                         {
-                            if (flag_low_vin_detected)
+                            if (cont_low_batt_triggers >= 5)
                             {
-                                if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
+                                if (flag_low_vin_detected)
+                                {
+                                    if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
                                 {
                                     DisplayLowBattery();
                                     playSound(C_SOUND_LOW_BATTERY);
@@ -844,10 +850,19 @@ void setup()
                             {
                                 flag_low_vin_detected = true;
                                 DisplayLowBattery();
-                                playSound(C_SOUND_LOW_BATTERY);
-                                trigger_Display_volt = true;
-                                cont_low_batt_run = 0;
+                                    playSound(C_SOUND_LOW_BATTERY);
+                                    trigger_Display_volt = true;
+                                    cont_low_batt_run = 0;
+                                }
                             }
+                            else
+                            {
+                                cont_low_batt_triggers++;
+                            }
+                        }
+                        else
+                        {
+                            cont_low_batt_triggers--;
                         }
                     }
                     //------------ PROTECCIONES--------------//
@@ -1476,6 +1491,7 @@ void setup()
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
+                cont_low_batt_triggers = 0;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1500,6 +1516,7 @@ void setup()
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
+                cont_low_batt_triggers = 0;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1791,7 +1808,7 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
     batt_voltage = sample / 8 * 3000 / 4096 * 250 / 150;
 
     // Calculo del porcentaje  de bateria actual
-    percent = constrain(((batt_voltage - 3300) * 100 / 800), 0, 100);
+    percent = constrain(((batt_voltage - C_VIN_MIN_CAP) * 100 / (C_VIN_MAX_CAP - C_VIN_MIN_CAP)), 0, 100);
 
     if (percent <= C_EMPTY_BATTERY_LEVEL) // Porcentaje por debajo del valor de bateria vacia.
     {

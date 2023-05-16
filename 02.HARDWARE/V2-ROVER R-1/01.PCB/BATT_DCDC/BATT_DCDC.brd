@@ -10,7 +10,7 @@
 <grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="0.1" altunitdist="mm" altunit="mm"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Route2" color="21" fill="1" visible="no" active="yes"/>
+<layer number="2" name="Route2" color="21" fill="1" visible="yes" active="yes"/>
 <layer number="3" name="Route3" color="4" fill="3" visible="no" active="no"/>
 <layer number="4" name="Route4" color="1" fill="4" visible="no" active="no"/>
 <layer number="5" name="Route5" color="4" fill="4" visible="no" active="no"/>
@@ -24,19 +24,19 @@
 <layer number="13" name="Route13" color="4" fill="5" visible="no" active="no"/>
 <layer number="14" name="Route14" color="1" fill="6" visible="no" active="no"/>
 <layer number="15" name="Route15" color="13" fill="1" visible="no" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="13" fill="1" visible="no" active="yes"/>
-<layer number="23" name="tOrigins" color="14" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="13" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="14" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="14" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="13" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -47,10 +47,10 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
@@ -59,8 +59,8 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -3464,18 +3464,16 @@ v2-DEC'22</text>
 <vertex x="73.4" y="30.8"/>
 </polygon>
 <polygon width="0.0762" layer="42">
-<vertex x="66.9" y="27.3"/>
-<vertex x="66.9" y="25.4"/>
-<vertex x="67" y="25.4"/>
+<vertex x="66.94" y="27.3"/>
+<vertex x="66.94" y="25.4"/>
 <vertex x="67.2" y="25.4"/>
-<vertex x="67.2" y="25.5"/>
 <vertex x="67.2" y="27.3"/>
 </polygon>
 <polygon width="0.0762" layer="42">
-<vertex x="72.5" y="35.3"/>
-<vertex x="72.5" y="34.3"/>
-<vertex x="71.8" y="34.3"/>
-<vertex x="71.8" y="35.3"/>
+<vertex x="72.38" y="35.3"/>
+<vertex x="72.38" y="34.3"/>
+<vertex x="71.88" y="34.3"/>
+<vertex x="71.88" y="35.3"/>
 </polygon>
 <polygon width="0.0762" layer="42">
 <vertex x="74.08" y="27.27"/>
@@ -5084,7 +5082,7 @@ einem neuen Namen ab.</description>
 <wire x1="71.57" y1="19.97" x2="70.31" y2="18.71" width="0.3048" layer="1"/>
 <wire x1="70.03" y1="18.71" x2="70.31" y2="18.71" width="0.254" layer="1"/>
 <wire x1="70.03" y1="18.71" x2="70.03" y2="18.55" width="0.254" layer="1"/>
-<via x="60.56671875" y="24.63391875" extent="1-16" drill="0.25"/>
+<via x="61.04671875" y="24.64391875" extent="1-16" drill="0.25"/>
 <contactref element="C3" pad="1"/>
 <wire x1="67.48" y1="13.37" x2="67.48" y2="12.32" width="0.8128" layer="16"/>
 <wire x1="67.48" y1="12.32" x2="66.84" y2="12.32" width="0.8128" layer="16"/>
@@ -5165,11 +5163,11 @@ einem neuen Namen ab.</description>
 <wire x1="65.36" y1="10.81" x2="65.15" y2="11.02" width="0.4064" layer="1"/>
 <wire x1="65.15" y1="11.02" x2="64.92" y2="11.02" width="0.4064" layer="1"/>
 <polygon width="0.0762" layer="1" isolate="0.3048" thermals="no">
-<vertex x="58.91" y="25.43"/>
-<vertex x="58.91" y="23.7"/>
-<vertex x="59.01" y="23.6"/>
-<vertex x="60.91" y="23.6"/>
-<vertex x="60.91" y="25.43"/>
+<vertex x="58.79" y="26.23"/>
+<vertex x="58.79" y="23.33"/>
+<vertex x="58.92" y="23.2"/>
+<vertex x="61.41" y="23.2"/>
+<vertex x="61.41" y="26.23"/>
 </polygon>
 <wire x1="66.115" y1="13.58" x2="66.105" y2="13.57" width="0.3048" layer="1"/>
 <wire x1="66.105" y1="13.57" x2="65.22" y2="13.57" width="0.3048" layer="1"/>
@@ -5333,12 +5331,12 @@ einem neuen Namen ab.</description>
 <via x="77.33" y="19.74" extent="1-16" drill="0.25"/>
 <via x="76.25" y="33.01" extent="1-16" drill="0.25"/>
 <contactref element="RSNS" pad="1"/>
-<wire x1="59.91" y1="24.62" x2="60.5528" y2="24.62" width="0.3048" layer="1"/>
-<wire x1="60.5528" y1="24.62" x2="60.56671875" y2="24.63391875" width="0.3048" layer="1"/>
-<via x="60.55671875" y="23.94391875" extent="1-16" drill="0.25"/>
-<via x="59.49671875" y="24.71391875" extent="1-16" drill="0.25"/>
-<via x="59.33671875" y="23.91391875" extent="1-16" drill="0.25"/>
-<via x="59.95671875" y="24.32391875" extent="1-16" drill="0.25"/>
+<wire x1="59.91" y1="24.62" x2="61.04671875" y2="24.62" width="0.3048" layer="1"/>
+<wire x1="61.04671875" y1="24.62" x2="61.04671875" y2="24.64391875" width="0.3048" layer="1"/>
+<via x="61.04671875" y="23.91391875" extent="1-16" drill="0.25"/>
+<via x="59.28671875" y="25.85391875" extent="1-16" drill="0.25"/>
+<via x="59.23671875" y="23.79391875" extent="1-16" drill="0.25"/>
+<via x="60.56671875" y="25.86391875" extent="1-16" drill="0.25"/>
 <wire x1="67.584" y1="12.82" x2="67.38" y2="12.656153125" width="0" layer="19" extent="15-15"/>
 </signal>
 <signal name="PB22/I6/SERCOM5.2">
@@ -5665,10 +5663,10 @@ einem neuen Namen ab.</description>
 <wire x1="61.04" y1="20.815" x2="61.04" y2="20.365" width="0.6096" layer="1"/>
 <wire x1="61.04" y1="20.365" x2="62.498" y2="20.365" width="0.6096" layer="1"/>
 <polygon width="0.0762" layer="16">
-<vertex x="59.81" y="23.21"/>
+<vertex x="59.81" y="23.22"/>
 <vertex x="59.81" y="20.38"/>
 <vertex x="62.98" y="20.38"/>
-<vertex x="62.98" y="23.21"/>
+<vertex x="62.98" y="23.22"/>
 </polygon>
 <wire x1="62.64" y1="22.71" x2="62.53" y2="22.82" width="0.6096" layer="16"/>
 <contactref element="K1" pad="12"/>
@@ -5823,53 +5821,50 @@ einem neuen Namen ab.</description>
 <wire x1="61.99" y1="26.1" x2="61.45" y2="25.56" width="0.3048" layer="1"/>
 <wire x1="61.45" y1="25.56" x2="61.44" y2="25.56" width="0.2032" layer="1"/>
 <via x="61.44" y="25.56" extent="1-16" drill="0.25"/>
-<wire x1="62.3" y1="27.42295625" x2="59.49" y2="30.23295625" width="0.3048" layer="2"/>
 <wire x1="59.48" y1="31.2" x2="59.49" y2="31.19" width="0.2032" layer="2"/>
 <wire x1="59.49" y1="31.19" x2="59.49" y2="30.23295625" width="0.3048" layer="2"/>
-<wire x1="62.3" y1="27.42295625" x2="62.3" y2="26.41" width="0.3048" layer="2"/>
-<wire x1="61.44" y1="25.56" x2="61.45" y2="25.56" width="0.2032" layer="2"/>
-<wire x1="62.3" y1="26.41" x2="61.45" y2="25.56" width="0.3048" layer="2"/>
+<wire x1="61.44" y1="25.56" x2="62.12" y2="25.56" width="0.2032" layer="2"/>
+<wire x1="63.39" y1="26.83" x2="62.12" y2="25.56" width="0.3048" layer="2"/>
+<wire x1="59.49" y1="30.23295625" x2="60.09675625" y2="29.6262" width="0.3048" layer="2"/>
+<wire x1="60.09675625" y1="29.6262" x2="62.53" y2="29.6262" width="0.3048" layer="2"/>
+<wire x1="62.53" y1="29.6262" x2="63.39" y2="28.7662" width="0.3048" layer="2"/>
+<wire x1="63.39" y1="28.7662" x2="63.39" y2="26.83" width="0.3048" layer="2"/>
 </signal>
 <signal name="VOUT-">
 <contactref element="U1" pad="3"/>
 <wire x1="60.6346" y1="29.34" x2="60.6146" y2="29.32" width="0.254" layer="1"/>
-<via x="60.44" y="26.89" extent="1-16" drill="0.25"/>
-<via x="61.5" y="27.06" extent="1-16" drill="0.25"/>
+<via x="61.53" y="26.79" extent="1-16" drill="0.25"/>
+<via x="61.42" y="28.04" extent="1-16" drill="0.25"/>
 <polygon width="0.0762" layer="1" isolate="0.254" thermals="no">
-<vertex x="58.81" y="28.2"/>
+<vertex x="58.81" y="28.91"/>
 <vertex x="58.81" y="26.9"/>
-<vertex x="59.39" y="26.32"/>
-<vertex x="60.61" y="26.32"/>
-<vertex x="60.61" y="26.3"/>
-<vertex x="61.01" y="26.3"/>
-<vertex x="61.11" y="26.4"/>
-<vertex x="61.81" y="26.4"/>
-<vertex x="62.11" y="26.7"/>
-<vertex x="62.11" y="27.3"/>
-<vertex x="61.21" y="28.2"/>
+<vertex x="59.13" y="26.58"/>
+<vertex x="61.83" y="26.58"/>
+<vertex x="61.83" y="28.34"/>
+<vertex x="61.26" y="28.91"/>
 </polygon>
 <polygon width="0.0762" layer="16" isolate="0.254" thermals="no">
-<vertex x="60" y="28.1"/>
-<vertex x="60" y="26.3"/>
-<vertex x="60.1" y="26.2"/>
-<vertex x="61.5" y="26.2"/>
-<vertex x="62.2" y="26.9"/>
-<vertex x="62.2" y="27"/>
-<vertex x="61" y="28.2"/>
-<vertex x="60" y="28.2"/>
+<vertex x="58.78" y="28.94"/>
+<vertex x="58.78" y="26.98"/>
+<vertex x="59.18" y="26.58"/>
+<vertex x="61.88" y="26.58"/>
+<vertex x="61.92" y="26.62"/>
+<vertex x="61.92" y="28.25"/>
+<vertex x="61.23" y="28.94"/>
 </polygon>
 <contactref element="K1" pad="11"/>
-<wire x1="63.635" y1="24.925" x2="63.635" y2="19.55" width="0.6096" layer="16"/>
-<wire x1="61.5" y1="27.06" x2="63.635" y2="24.925" width="0.6096" layer="16"/>
+<wire x1="63.635" y1="25.805" x2="63.635" y2="19.55" width="0.6096" layer="16"/>
+<wire x1="63.635" y1="25.805" x2="61.42" y2="28.02" width="0.6096" layer="16"/>
+<wire x1="61.42" y1="28.04" x2="61.42" y2="28.02" width="0.6096" layer="16"/>
 <contactref element="RSNS" pad="2"/>
 <wire x1="60.6346" y1="29.34" x2="59.72" y2="29.34" width="0.3048" layer="1"/>
 <wire x1="59.46" y1="27.87" x2="59.91" y2="27.42" width="0.3048" layer="1"/>
 <wire x1="59.72" y1="29.34" x2="59.46" y2="29.08" width="0.3048" layer="1"/>
 <wire x1="59.46" y1="29.08" x2="59.46" y2="27.87" width="0.3048" layer="1"/>
-<wire x1="59.91" y1="27.42" x2="61.14" y2="27.42" width="0.3048" layer="1"/>
-<wire x1="61.14" y1="27.42" x2="61.5" y2="27.06" width="0.3048" layer="1"/>
-<via x="60.93" y="27.4" extent="1-16" drill="0.25"/>
-<via x="60.36" y="27.88" extent="1-16" drill="0.25"/>
+<wire x1="59.91" y1="27.42" x2="60.8" y2="27.42" width="0.3048" layer="1"/>
+<wire x1="60.8" y1="27.42" x2="61.42" y2="28.04" width="0.3048" layer="1"/>
+<via x="60.31" y="28.54" extent="1-16" drill="0.25"/>
+<via x="59.4" y="28.53" extent="1-16" drill="0.25"/>
 </signal>
 <signal name="VOUTSENSE">
 <contactref element="R2" pad="1"/>
@@ -6515,7 +6510,6 @@ einem neuen Namen ab.</description>
 <approved hash="6,16,a6342cf92bc86f00"/>
 <approved hash="6,16,f8d301d7115d311e"/>
 <approved hash="6,16,7f689c5b2edbe5c4"/>
-<approved hash="6,16,32e44d6813b06601"/>
 <approved hash="8,16,acdeb8568bcdaf39"/>
 <approved hash="21,19,f28ef08b708b728e"/>
 <approved hash="5,16,c0281a5cba4d103f"/>
@@ -6543,7 +6537,6 @@ einem neuen Namen ab.</description>
 <approved hash="19,2,fe7abca45f438312"/>
 <approved hash="19,2,b5d2ff3fbc301777"/>
 <approved hash="6,16,94b6947957d056b9"/>
-<approved hash="6,16,272d292425840feb"/>
 <approved hash="6,16,7a0a5a30c0ae42a8"/>
 <approved hash="21,19,d0a82ea832abcea9"/>
 <approved hash="6,16,591287b69ed202d9"/>
