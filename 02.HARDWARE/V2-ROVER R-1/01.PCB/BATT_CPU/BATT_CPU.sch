@@ -4563,6 +4563,13 @@ Source: &lt;a href="https://www.mouser.com/datasheet/2/268/mic803-778690.pdf"&gt
 <part name="IC1" library="MIC803-26D3VC3-TR" deviceset="MIC803-26D3VC3-TR" device=""/>
 <part name="R19" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="10k"/>
 <part name="J3" library="SparkFun-Jumpers" library_urn="urn:adsk.eagle:library:528" deviceset="JUMPER-SMT_2_NC_PASTE" device="_SILK" package3d_urn="urn:adsk.eagle:package:39282/1" value="N.C"/>
+<part name="VOUTSENSE" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="VCC_2" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="EN_DCDC" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="OP_SWITCH" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="RXI" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="FB_DAC" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
+<part name="IOSENSE" library="BeagleBone_Blue_R3" deviceset="TESTPAD_TPSQ" device="B1,27"/>
 </parts>
 <sheets>
 <sheet>
@@ -4573,7 +4580,6 @@ Source: &lt;a href="https://www.mouser.com/datasheet/2/268/mic803-778690.pdf"&gt
 <wire x1="134.62" y1="88.9" x2="134.62" y2="121.92" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="134.62" y1="121.92" x2="134.62" y2="167.64" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="134.62" y1="167.64" x2="134.62" y2="256.54" width="0.1524" layer="94" style="shortdash"/>
-<wire x1="383.54" y1="91.44" x2="289.56" y2="88.9" width="0.1524" layer="94" style="shortdash"/>
 <wire x1="289.56" y1="88.9" x2="134.62" y2="88.9" width="0.1524" layer="94" style="shortdash"/>
 <text x="165.1" y="228.6" size="2.54" layer="94">BUZZER</text>
 <text x="25.4" y="195.58" size="1.4224" layer="94">AP7354D-30W5-7 
@@ -4613,9 +4619,10 @@ vo/vi = 0.6
 <text x="165.1" y="264.16" size="5.08" layer="94">BATT_CPU
 rover1k
 Dec'22-V2</text>
-<text x="144.78" y="86.36" size="2.54" layer="94">DISPLAY</text>
+<text x="144.78" y="81.28" size="2.54" layer="94">DISPLAY</text>
 <text x="139.7" y="162.56" size="2.54" layer="94">SWITCHES</text>
 <text x="350.52" y="162.56" size="2.54" layer="94">CONNECTOR</text>
+<wire x1="383.54" y1="88.9" x2="289.56" y2="88.9" width="0.1524" layer="94" style="shortdash"/>
 </plain>
 <instances>
 <instance part="C6" gate="G$1" x="12.7" y="208.28" smashed="yes">
@@ -5066,6 +5073,27 @@ Dec'22-V2</text>
 </instance>
 <instance part="J3" gate="G$1" x="33.02" y="167.64" smashed="yes" rot="R180">
 <attribute name="NAME" x="33.02" y="166.116" size="1.778" layer="95" font="vector" ratio="7" rot="R180" align="bottom-center"/>
+</instance>
+<instance part="VOUTSENSE" gate="G$1" x="353.048" y="124.416" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="121.876" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="VCC_2" gate="G$1" x="353.048" y="129.496" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="126.956" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="EN_DCDC" gate="G$1" x="353.048" y="134.576" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="132.036" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="OP_SWITCH" gate="G$1" x="353.048" y="139.656" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="137.116" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="RXI" gate="G$1" x="353.048" y="144.736" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="142.196" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="FB_DAC" gate="G$1" x="353.048" y="149.816" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="147.276" size="1.778" layer="97" rot="R270"/>
+</instance>
+<instance part="IOSENSE" gate="G$1" x="353.048" y="154.896" smashed="yes" rot="R270">
+<attribute name="TP_SIGNAL_NAME" x="351.778" y="152.356" size="1.778" layer="97" rot="R270"/>
 </instance>
 </instances>
 <busses>
@@ -5692,6 +5720,12 @@ Dec'22-V2</text>
 <label x="327.66" y="152.4" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="13"/>
 </segment>
+<segment>
+<pinref part="VOUTSENSE" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="124.416" x2="355.588" y2="124.46" width="0.1524" layer="91"/>
+<wire x1="355.588" y1="124.46" x2="368.3" y2="124.46" width="0.1524" layer="91"/>
+<label x="358.14" y="124.46" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="S_UP" class="0">
 <segment>
@@ -5742,6 +5776,12 @@ Dec'22-V2</text>
 <wire x1="325.12" y1="160.02" x2="335.28" y2="160.02" width="0.1524" layer="91"/>
 <label x="327.66" y="160.02" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="19"/>
+</segment>
+<segment>
+<pinref part="IOSENSE" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="154.896" x2="368.3" y2="154.896" width="0.1524" layer="91"/>
+<wire x1="368.3" y1="154.896" x2="368.3" y2="154.94" width="0.1524" layer="91"/>
+<label x="358.14" y="154.94" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="A2" class="0">
@@ -5901,6 +5941,12 @@ Dec'22-V2</text>
 <label x="327.66" y="147.32" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="9"/>
 </segment>
+<segment>
+<pinref part="EN_DCDC" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="134.576" x2="368.3" y2="134.576" width="0.1524" layer="91"/>
+<wire x1="368.3" y1="134.576" x2="368.3" y2="134.62" width="0.1524" layer="91"/>
+<label x="358.14" y="134.62" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="OP_SWITCH" class="0">
 <segment>
@@ -5917,6 +5963,12 @@ Dec'22-V2</text>
 <wire x1="325.12" y1="154.94" x2="335.28" y2="154.94" width="0.1524" layer="91"/>
 <label x="327.66" y="154.94" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="15"/>
+</segment>
+<segment>
+<pinref part="OP_SWITCH" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="139.656" x2="355.588" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="355.588" y1="139.7" x2="368.3" y2="139.7" width="0.1524" layer="91"/>
+<label x="358.14" y="139.7" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VCC_2" class="0">
@@ -5990,6 +6042,12 @@ Dec'22-V2</text>
 <wire x1="302.26" y1="154.94" x2="292.1" y2="154.94" width="0.1524" layer="91"/>
 <label x="294.64" y="154.94" size="1.778" layer="95"/>
 <pinref part="J1" gate="G$1" pin="16"/>
+</segment>
+<segment>
+<pinref part="VCC_2" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="129.496" x2="355.588" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="355.588" y1="129.54" x2="368.3" y2="129.54" width="0.1524" layer="91"/>
+<label x="358.14" y="129.54" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$4" class="0">
@@ -6141,6 +6199,12 @@ Dec'22-V2</text>
 <wire x1="320.04" y1="119.38" x2="332.74" y2="119.38" width="0.1524" layer="91"/>
 <label x="332.74" y="119.38" size="1.778" layer="95" rot="MR0"/>
 </segment>
+<segment>
+<pinref part="FB_DAC" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="149.816" x2="355.588" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="355.588" y1="149.86" x2="368.3" y2="149.86" width="0.1524" layer="91"/>
+<label x="358.14" y="149.86" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="LOW_BATT" class="0">
 <segment>
@@ -6173,6 +6237,12 @@ Dec'22-V2</text>
 <pinref part="J1" gate="G$1" pin="5"/>
 <wire x1="325.12" y1="142.24" x2="335.28" y2="142.24" width="0.1524" layer="91"/>
 <label x="327.66" y="142.24" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="RXI" gate="G$1" pin="TP"/>
+<wire x1="355.588" y1="144.736" x2="370.84" y2="144.736" width="0.1524" layer="91"/>
+<wire x1="370.84" y1="144.736" x2="370.84" y2="144.78" width="0.1524" layer="91"/>
+<label x="358.14" y="144.78" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VCC_OLED" class="0">
