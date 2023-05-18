@@ -6254,7 +6254,7 @@ May'24-V3</text>
 </sheets>
 <errors>
 <approved hash="102,1,299.72,213.36,VCC,VCC_2,,,,"/>
-<approved hash="102,1,114.3,223.52,VCC,VCC_2,,,,"/>
+<approved hash="102,1,121.92,220.98,VCC,VCC_2,,,,"/>
 <approved hash="102,1,210.82,223.52,VCC,VCC_2,,,,"/>
 <approved hash="102,1,228.6,233.68,VCC,VCC_2,,,,"/>
 <approved hash="102,1,274.32,198.12,VCC,VCC_2,,,,"/>
@@ -6265,7 +6265,7 @@ May'24-V3</text>
 <approved hash="201,1,274.32,198.12,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,228.6,233.68,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,210.82,223.52,VCC,VCC\, VCC_2,,,,"/>
-<approved hash="201,1,114.3,223.52,VCC,VCC\, VCC_2,,,,"/>
+<approved hash="201,1,121.92,220.98,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,299.72,213.36,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="104,1,27.94,86.36,U1,VDDA,VCC,,,"/>
 <approved hash="104,1,27.94,81.28,U1,VDDIN,VCC,,,"/>
@@ -6280,11 +6280,15 @@ May'24-V3</text>
 <approved hash="106,1,104.14,63.5,MISO,,,,,"/>
 <approved hash="106,1,27.94,50.8,MOSI,,,,,"/>
 <approved hash="106,1,27.94,48.26,SCK,,,,,"/>
+<approved hash="106,1,325.12,137.16,SPARE1,,,,,"/>
+<approved hash="208,1,10.16,68.58,VCC,sup,,,,"/>
+<approved hash="208,1,10.16,48.26,VCC,sup,,,,"/>
 <approved hash="208,1,22.86,91.44,VCC,sup,,,,"/>
+<approved hash="208,1,10.16,25.4,VCC,sup,,,,"/>
 <approved hash="208,1,256.54,160.02,VCC,sup,,,,"/>
 <approved hash="208,1,177.8,160.02,VCC,sup,,,,"/>
-<approved hash="208,1,55.88,218.44,VCC,out,,,,"/>
-<approved hash="208,1,73.66,223.52,VCC,sup,,,,"/>
+<approved hash="208,1,63.5,215.9,VCC,out,,,,"/>
+<approved hash="208,1,81.28,220.98,VCC,sup,,,,"/>
 <approved hash="208,1,213.36,129.54,VCC,sup,,,,"/>
 <approved hash="208,1,342.9,238.76,VCC,sup,,,,"/>
 </errors>
