@@ -32,6 +32,7 @@ struct EEPROM
     bool flag_init;
     bool flag_corruption;
     bool flag_naming_enable;
+    bool nitro_status;
     uint16_t num_char_in_name;
     uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
@@ -54,24 +55,25 @@ const uint8_t C_TEST_MODE = 5;
 const uint8_t C_FLAG_CORRUPTION = 6;
 const uint8_t C_FLAG_INIT = 7;
 const uint8_t C_FLAG_ENABLE_NAME = 8;
+const uint8_t C_NITRO_STATUS = 9;
 
-const uint8_t C_NAME = 9;
+const uint8_t C_NAME = 10;
 
-const uint8_t C_SERIAL_NUMBER = 10;
-const uint8_t C_INTEGRATED_VERSION = 11;
+const uint8_t C_SERIAL_NUMBER = 11;
+const uint8_t C_INTEGRATED_VERSION = 12;
 
-const uint8_t C_NUM_DIAG_DATA = 12;
+const uint8_t C_NUM_DIAG_DATA = 13;
 
-const uint8_t C_POWER_USE = 13;
-const uint8_t C_PERCENT_USE = 14;
-const uint8_t C_THEORY_VOLTAGE = 15;
+const uint8_t C_POWER_USE = 14;
+const uint8_t C_PERCENT_USE = 15;
+const uint8_t C_THEORY_VOLTAGE = 16;
 
-const uint8_t C_PM_POWER = 16;
-const uint8_t C_PM_PERCENT = 17;
-const uint8_t C_PM_VOLTAGE = 18;
-const uint8_t C_PM_ERRORS = 19;
+const uint8_t C_PM_POWER = 17;
+const uint8_t C_PM_PERCENT = 18;
+const uint8_t C_PM_VOLTAGE = 19;
+const uint8_t C_PM_ERRORS = 20;
 
-const uint8_t C_NUM_WDT_ERRORS = 20;
+const uint8_t C_NUM_WDT_ERRORS = 21;
 
 const uint16_t C_ERROR_PWR = 1001;
 const uint16_t C_ERROR_VOLT = 1002;
