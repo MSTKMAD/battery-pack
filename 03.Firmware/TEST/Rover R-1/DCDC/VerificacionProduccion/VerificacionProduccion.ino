@@ -461,7 +461,7 @@ void setup()
                 display.setCursor(80, 50);
                 display.print(iout_sample);
 
-                if ((iout_sample >= (400 * LOWER_TOL / 100)) && (iout_sample <= (400 * UPPER_TOL / 100)))
+                if ((iout_sample >= (280 * LOWER_TOL / 100)) && (iout_sample <= (280 * UPPER_TOL / 100)))
                 {
                     if ((vout_sample >= (7000 * 95 / 100)) && (vout_sample <= (7000 * 105 / 100)))
                     {
