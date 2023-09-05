@@ -13,7 +13,7 @@
 #define INTEGRATED_VERSION 103
 
 #define MAX_VOLTAGE 120
-#define MIN_VOLTAGE 50
+#define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
@@ -773,45 +773,67 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-                    // planicie a 5v
-                    DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                    digitalWrite(C_PIN_OP_SWITCH, LOW);
-                    Watchdog.reset();
-                    delay(50);
-                    int tiempo_arrancado = 200; // ms
-                    int tiempo_bajada = 60;     // ms
-                    int steps_subida = 10;
-                    int steps_bajada = 10;
-
-                    // Rampa de subida
-                    for (int i = 0; i < steps_subida; i++)
+                    if (theory_Vout >= 50)
                     {
-                        Watchdog.reset();
-                        DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                        boost_check.check(sample_raw_io);
-                        delay(tiempo_arrancado / steps_subida);
-                        over_consumption_protection.getSample(C_PIN_I_OUT);
-                    }
-                    sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
-                    sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-                    sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                    UpdatePowerBar(sample_POut);
-                    // Rampa de Bajada
-                    for (int i = steps_bajada; i >= 0; i--)
-                    {
-                        Watchdog.reset();
-                        DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
-                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                        boost_check.check(sample_raw_io);
-                        delay(tiempo_bajada / steps_bajada);
-                        over_consumption_protection.getSample(C_PIN_I_OUT);
-                    }
+                        /*
 
-                    // Voltaje Objetivo
-                    DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                    output_mode = C_BOOST_MODE;
-                    arrancado = true;
+                        // planicie a 5v
+                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                        Watchdog.reset();
+                        delay(50);
+                        int tiempo_arrancado = 200; // ms
+                        int tiempo_bajada = 60;     // ms
+                        int steps_subida = 10;
+                        int steps_bajada = 10;
+
+                        // Rampa de subida
+                        for (int i = 0; i < steps_subida; i++)
+                        {
+                            Watchdog.reset();
+                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_arrancado / steps_subida);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                        }
+                        sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                        sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                        sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                        UpdatePowerBar(sample_POut);
+                        // Rampa de Bajada
+                        for (int i = steps_bajada; i >= 0; i--)
+                        {
+                            Watchdog.reset();
+                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_bajada / steps_bajada);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                        }
+
+                        // Voltaje Objetivo
+                        */
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        arrancado = true;
+                        Watchdog.reset();
+                    }
+                    else
+                    {
+                        pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                        DCDC.SetVoltage(60, C_BOOST_MODE);
+                        for (int i = 0; i < 20; i++)
+                        {
+                            delay(10);
+                            Watchdog.reset();
+                        }
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        arrancado = true;
+                        Watchdog.reset();
+                    }
                 }
                 else if (arrancado)
                 {
@@ -1678,15 +1700,23 @@ void setup()
         }
         if (hw_output == C_OUTPUT_ON)
         {
+
             theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
             DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
-            digitalWrite(C_PIN_OP_SWITCH, LOW);                             // Activacion del transistor de salida
-            LedWork(C_OUTPUT_ON);                                           // se enciende el Led que indica que la salida esta activa
+            if (theory_Vout >= 50)
+            {
+                pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+            }
+
+            LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
         }
         else if (hw_output == C_OUTPUT_OFF)
         {
+            pinMode(C_PIN_OP_SWITCH, OUTPUT);
             digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
-            LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
+
+            LedWork(C_OUTPUT_OFF); // Apagado del led indicador de salida activada.
 
             // Limpieza y reset de variables de las protecciones.
             over_consumption_protection.setCounter(0);
