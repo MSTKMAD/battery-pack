@@ -185,13 +185,13 @@ bool blink_error_state = false;                                                 
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 
 //--------------------------------------- Counters variables-------------------------------------
-int32_t cont_sec_log = 0;           // Contador de los segundos en el intervalo del logeo de la EEPROM.
-uint16_t long_press_events = 0;     // Contador del numero de longpress consectivos.
-int16_t cont_idle_timer = 0;        // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
-uint32_t cont_log_sec = 0;          // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
-uint32_t cont_log_active = 0;       // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
-uint32_t cont_low_batt_run = 0;     // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
-uint32_t cont_test_sample = 0;      // Contador que acumula el numero de muestras que se toman.
+int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
+uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
+int16_t cont_idle_timer = 0;         // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
+uint32_t cont_log_sec = 0;           // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
+uint32_t cont_log_active = 0;        // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_low_batt_run = 0;      // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
+uint32_t cont_test_sample = 0;       // Contador que acumula el numero de muestras que se toman.
 uint32_t cont_low_batt_triggers = 0; // Contador que acumulada las veces que el voltaje de entrada esta por debajo del umbral antes de dar la 1º alarma.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
@@ -775,8 +775,6 @@ void setup()
                 {
                     if (theory_Vout >= 50)
                     {
-                        /*
-
                         // planicie a 5v
                         DCDC.SetVoltage(50, C_NON_BOOST_MODE);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
@@ -786,12 +784,13 @@ void setup()
                         int tiempo_bajada = 60;     // ms
                         int steps_subida = 10;
                         int steps_bajada = 10;
+                        int increment_nitro = 40;
 
                         // Rampa de subida
                         for (int i = 0; i < steps_subida; i++)
                         {
                             Watchdog.reset();
-                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                            DCDC.SetVoltage((theory_Vout + increment_nitro - 50) / steps_subida * i + 50, C_BOOST_MODE);
                             sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                             boost_check.check(sample_raw_io);
                             delay(tiempo_arrancado / steps_subida);
@@ -805,7 +804,7 @@ void setup()
                         for (int i = steps_bajada; i >= 0; i--)
                         {
                             Watchdog.reset();
-                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                            DCDC.SetVoltage((theory_Vout + increment_nitro - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
                             sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                             boost_check.check(sample_raw_io);
                             delay(tiempo_bajada / steps_bajada);
@@ -813,11 +812,6 @@ void setup()
                         }
 
                         // Voltaje Objetivo
-                        */
-                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                        output_mode = C_BOOST_MODE;
-                        arrancado = true;
-                        Watchdog.reset();
                     }
                     else
                     {
@@ -851,7 +845,7 @@ void setup()
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
                         {
-                            PostMortemLog(sample_POut, capacity, sample_VOut/100, 0);
+                            PostMortemLog(sample_POut, capacity, sample_VOut / 100, 0);
                             LogDiagnosticData(sample_POut, C_POWER_USE);
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;
@@ -863,17 +857,17 @@ void setup()
                                 if (flag_low_vin_detected)
                                 {
                                     if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
-                                {
-                                    DisplayLowBattery();
-                                    playSound(C_SOUND_LOW_BATTERY);
-                                    trigger_Display_volt = true;
-                                    cont_low_batt_run = 0;
+                                    {
+                                        DisplayLowBattery();
+                                        playSound(C_SOUND_LOW_BATTERY);
+                                        trigger_Display_volt = true;
+                                        cont_low_batt_run = 0;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                flag_low_vin_detected = true;
-                                DisplayLowBattery();
+                                else
+                                {
+                                    flag_low_vin_detected = true;
+                                    DisplayLowBattery();
                                     playSound(C_SOUND_LOW_BATTERY);
                                     trigger_Display_volt = true;
                                     cont_low_batt_run = 0;
