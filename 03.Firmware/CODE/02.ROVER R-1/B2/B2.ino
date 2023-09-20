@@ -283,8 +283,8 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
-    pinMode(C_PIN_TEST, OUTPUT);
-    digitalWrite(C_PIN_TEST, LOW);
+    //pinMode(C_PIN_TEST, OUTPUT);
+    //digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
     Watchdog.enable(100);
