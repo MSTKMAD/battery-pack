@@ -10,11 +10,11 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 103
+#define INTEGRATED_VERSION 120
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
-// #define SERIAL_DEBUG
+#define SERIAL_DEBUG
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
@@ -61,9 +61,10 @@ const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. D
 const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
 const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 1900; // 1.9A. Limite de la porteccion de cortocircuito.
 
-const int32_t C_TIME_IDLE_30_SEG = 30000;     // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
-const int32_t C_TIME_INIT_SCREEN = 1000;      // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
-const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000; // 5 s. Ventana de tiempo que tiene que mantenerse la condicion de inicio del modo diagnostico.
+const int32_t C_TIME_IDLE_30_SEG = 30000;          // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
+const int32_t C_TIME_INIT_SCREEN = 1000;           // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
+const int32_t C_TIME_DIAGNOSTIC_CHECK = 5000;      // 5 s. Ventana de tiempo que tiene que mantenerse la condicion de inicio del modo diagnostico.
+const int32_t C_TIME_GAP_ARRANQUE_NITRO_OFF = 500; // 500 ms. Ventana de tiempo durante la cual, las protecciones no estan activas.
 
 const int32_t C_MIN_PERIOD_LOG_PM = 60 / LOG_PER_HOUR; // Periodo de tiempo cada logeo del PM,
 const int32_t C_MIN_PERIOD_WARNING_LOW_BATT = 5 * 60;  // 5 min. Periodo de tiempo cada logeo del PM,
@@ -96,6 +97,9 @@ const bool C_STARTING_TEXT = true;
 const bool C_STARTING_SOUND = false;
 const bool C_ENDING_TEXT = true;
 const bool C_ENDING_SOUND = false;
+
+//--------------------------------- Menu Options -------------------------------------------
+const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -155,27 +159,29 @@ HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
 dcdc_controler DCDC(C_PIN_EN_DCDC);
 
 //--------------------------------------- Timers variables-------------------------------------
-MilliTimer protection_event_delay;  // Delay impuesto entre detecciones de erroes.
-MilliTimer timer_sec_count;         // Timer contador de segundos.
-MilliTimer timer_display_capacity;  // Timer para el muestreo de la capacidad en el arranque.
-MilliTimer timer_recover_voltage;   // Timer que controla el tiempo que se deja para que la bateria se recupere antes de realizar una medicion de capacidad.
-MilliTimer timer_wait_sleep;        // Timer que controla el tiempo entre los checkeos del boton central durante el protocolo de apagado.
-MilliTimer timer_irq_button_center; // Timer que controla el tiempo tras el cual, si no hay eventos que saquen al sistema de SLEEP, el sistema vuelve al estado de bajo consumo.
-MilliTimer timer_idle;              // Timer que controla el tiempo de inactividad sobre el sistema.
-MilliTimer timer_display_error;     // Timer que controla el tiempo que se muestra por pantalla el aviso de error.
-MilliTimer timer_init_screen;       // Timer que controla el tiempo que se muestra el logo durante el encendido.
-MilliTimer timer_end_screen;        // Timer que controla el tiempo que se muestra la pantalla de apagado.
-MilliTimer timer_refresh_screen;    // Timer que control el tiempo tras el cual se refresca la infomracion de la pantalla durante el estadado de Run y Stop.
-MilliTimer timer_log_sec;           // Timer que cuenta hasta un seg para el logeo temporal.
-MilliTimer timer_log_active;        // Timer que controla el intervalo de tiempo que tiene que pasar el sistema en el estado de RUN para realizar un log de ciertas variables de estado.
-MilliTimer timer_check_diagnostic;  // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en modo diagnostico.
-MilliTimer timer_waiting_naming;    // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
-MilliTimer timer_active_naming;     // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
-MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
-MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte la señal de op switch.
-MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
-MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
-MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
+MilliTimer protection_event_delay;       // Delay impuesto entre detecciones de erroes.
+MilliTimer timer_sec_count;              // Timer contador de segundos.
+MilliTimer timer_display_capacity;       // Timer para el muestreo de la capacidad en el arranque.
+MilliTimer timer_recover_voltage;        // Timer que controla el tiempo que se deja para que la bateria se recupere antes de realizar una medicion de capacidad.
+MilliTimer timer_wait_sleep;             // Timer que controla el tiempo entre los checkeos del boton central durante el protocolo de apagado.
+MilliTimer timer_irq_button_center;      // Timer que controla el tiempo tras el cual, si no hay eventos que saquen al sistema de SLEEP, el sistema vuelve al estado de bajo consumo.
+MilliTimer timer_idle;                   // Timer que controla el tiempo de inactividad sobre el sistema.
+MilliTimer timer_display_error;          // Timer que controla el tiempo que se muestra por pantalla el aviso de error.
+MilliTimer timer_init_screen;            // Timer que controla el tiempo que se muestra el logo durante el encendido.
+MilliTimer timer_end_screen;             // Timer que controla el tiempo que se muestra la pantalla de apagado.
+MilliTimer timer_refresh_screen;         // Timer que control el tiempo tras el cual se refresca la infomracion de la pantalla durante el estadado de Run y Stop.
+MilliTimer timer_log_sec;                // Timer que cuenta hasta un seg para el logeo temporal.
+MilliTimer timer_log_active;             // Timer que controla el intervalo de tiempo que tiene que pasar el sistema en el estado de RUN para realizar un log de ciertas variables de estado.
+MilliTimer timer_check_diagnostic;       // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en modo diagnostico.
+MilliTimer timer_waiting_naming;         // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_active_naming;          // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_blink_error;            // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
+MilliTimer timer_test_op_switch;         // Timer que durante el modo testeo invierte la señal de op switch.
+MilliTimer timer_test_en_dcdc;           // Timer que durante el modo testeo invierte la señal de en dcdc.
+MilliTimer timer_test_dac;               // Timer que durante el modo testeo invierte la señal de en dac.
+MilliTimer timer_test_sensing;           // Timer que controla el periodo de muestreo durante el modo de test.
+MilliTimer timer_enter_menu;             // Timer que controla el tiempo para entrar en el menu de configuracion.
+MilliTimer timer_gap_arranque_nitro_off; // Timer que controla el tiempo que se deja de Gap cuando el nitro esta desactivado durante el arranque;
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
@@ -183,16 +189,19 @@ bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_
 bool output_mode = C_NON_BOOST_MODE;                                                 // Contenedor del modo de la tension de salida.
 bool blink_error_state = false;                                                      // Identificador del estado del parapadeo de la barra de potencia durante el mostrado de un error.
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
+uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
+bool nitro_status = false;                                                           // Estado del Nitro.
 
 //--------------------------------------- Counters variables-------------------------------------
-int32_t cont_sec_log = 0;           // Contador de los segundos en el intervalo del logeo de la EEPROM.
-uint16_t long_press_events = 0;     // Contador del numero de longpress consectivos.
-int16_t cont_idle_timer = 0;        // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
-uint32_t cont_log_sec = 0;          // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
-uint32_t cont_log_active = 0;       // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
-uint32_t cont_low_batt_run = 0;     // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
-uint32_t cont_test_sample = 0;      // Contador que acumula el numero de muestras que se toman.
+int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
+uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
+int16_t cont_idle_timer = 0;         // Contador de las veces que el timer de inactividad de 30 seg ha saltado.
+uint32_t cont_log_sec = 0;           // Contador de los segundos que lleva el sistema actvio fura del modo bajo consumo. (Reset con el cambio de pila)
+uint32_t cont_log_active = 0;        // Contador de los segundos que el sistema lleva en el estado RUN. Utilizado para el intervalo de tiempo entre logeos.
+uint32_t cont_low_batt_run = 0;      // Contador de los segundos que marcan el lapso entre avisos del low batt durante el estado Run.
+uint32_t cont_test_sample = 0;       // Contador que acumula el numero de muestras que se toman.
 uint32_t cont_low_batt_triggers = 0; // Contador que acumulada las veces que el voltaje de entrada esta por debajo del umbral antes de dar la 1º alarma.
+uint32_t cont_sec_menu_wait = 0;     // Contadore de los segundos que se espera para entrar en el menu.
 
 //--------------------------------------- Diagnostics variables-------------------------------------
 int16_t sound = C_SOUND_MUTE;        // Contenedor de la ID de un sonido.
@@ -256,6 +265,11 @@ bool flag_naming_active = false;     // Flag que indica si la configuracion del 
 
 bool test_mode_activate = false;    // Flag que indica si el modo test esta activado o no.
 bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el voltage de entrada es demasiado bajo en el estado de RUN.
+
+bool flag_menu_active = false;                // Flag que marca el estado del menu de configuracion.
+uint16_t flag_wait_menu_timer = C_TIMER_IDLE; // Flag que indica el estado del timer de espera de activacion del menu de configuracion.
+bool flag_option_selected = false;            // Flag que indica si se ha selccionado una opcion en el menu de configuracion.
+
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -269,6 +283,8 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
+    //pinMode(C_PIN_TEST, OUTPUT);
+    //digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
     Watchdog.enable(100);
@@ -471,6 +487,7 @@ void setup()
             LogDiagnosticData(50, C_THEORY_VOLTAGE);
             theory_Vout = 50;
         }
+        nitro_status = ReadDiagnosticData(C_NITRO_STATUS);
         //------------------------ INICIALIZACION DE PROTECCIONES------------------------
         over_consumption_protection.setCounter(0);
         over_power_protection.setCounter(0);
@@ -655,6 +672,7 @@ void setup()
         }
         while (1)
         {
+            Watchdog.reset();
         }
     }
 
@@ -666,7 +684,7 @@ void setup()
         Watchdog.reset();
         t1 = micros(); // Control del periodo del ciclo de trabajpo.
 #ifdef SERIAL_DEBUG
-        Serial5.println(sw_status);
+        // Serial5.println(sw_status);
 #endif
         //============================================================== SENSADO ==================================================================//
 
@@ -773,45 +791,57 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-                    // planicie a 5v
-                    DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                    digitalWrite(C_PIN_OP_SWITCH, LOW);
-                    Watchdog.reset();
-                    delay(50);
-                    int tiempo_arrancado = 200; // ms
-                    int tiempo_bajada = 60;     // ms
-                    int steps_subida = 10;
-                    int steps_bajada = 10;
-
-                    // Rampa de subida
-                    for (int i = 0; i < steps_subida; i++)
+                    if (nitro_status == false)
                     {
-                        Watchdog.reset();
-                        DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                        boost_check.check(sample_raw_io);
-                        delay(tiempo_arrancado / steps_subida);
-                        over_consumption_protection.getSample(C_PIN_I_OUT);
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
+                        {
+                            arrancado = true;
+                        }
                     }
-                    sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
-                    sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-                    sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                    UpdatePowerBar(sample_POut);
-                    // Rampa de Bajada
-                    for (int i = steps_bajada; i >= 0; i--)
+                    else
                     {
+                        // planicie a 5v
+                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
                         Watchdog.reset();
-                        DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
-                        sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                        boost_check.check(sample_raw_io);
-                        delay(tiempo_bajada / steps_bajada);
-                        over_consumption_protection.getSample(C_PIN_I_OUT);
-                    }
+                        delay(50);
+                        int tiempo_arrancado = 200; // ms
+                        int tiempo_bajada = 60;     // ms
+                        int steps_subida = 10;
+                        int steps_bajada = 10;
 
-                    // Voltaje Objetivo
-                    DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                    output_mode = C_BOOST_MODE;
-                    arrancado = true;
+                        // Rampa de subida
+                        for (int i = 0; i < steps_subida; i++)
+                        {
+                            Watchdog.reset();
+                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_arrancado / steps_subida);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                        }
+                        sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                        sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                        sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                        UpdatePowerBar(sample_POut);
+                        // Rampa de Bajada
+                        for (int i = steps_bajada; i >= 0; i--)
+                        {
+                            Watchdog.reset();
+                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_bajada / steps_bajada);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                        }
+
+                        // Voltaje Objetivo
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        arrancado = true;
+                    }
                 }
                 else if (arrancado)
                 {
@@ -841,17 +871,17 @@ void setup()
                                 if (flag_low_vin_detected)
                                 {
                                     if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
-                                {
-                                    DisplayLowBattery();
-                                    playSound(C_SOUND_LOW_BATTERY);
-                                    trigger_Display_volt = true;
-                                    cont_low_batt_run = 0;
+                                    {
+                                        DisplayLowBattery();
+                                        playSound(C_SOUND_LOW_BATTERY);
+                                        trigger_Display_volt = true;
+                                        cont_low_batt_run = 0;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                flag_low_vin_detected = true;
-                                DisplayLowBattery();
+                                else
+                                {
+                                    flag_low_vin_detected = true;
+                                    DisplayLowBattery();
                                     playSound(C_SOUND_LOW_BATTERY);
                                     trigger_Display_volt = true;
                                     cont_low_batt_run = 0;
@@ -956,6 +986,83 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
+                // Chequeo de entrada al menu
+                Watchdog.reset(); /**/
+                if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+                {
+                    timer_enter_menu.set(750);
+                    while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+                    {
+                        // #ifdef SERIAL_DEBUG
+                        //                         Serial5.println("DETECTADO!");
+                        // #endif
+                        Watchdog.reset();
+                        // #ifdef SERIAL_DEBUG
+                        //                         Serial5.println(flag_menu_active);
+                        // #endif
+                        if (flag_menu_active == false) // Menu NO activado
+                        {
+#ifdef SERIAL_DEBUG
+                            Serial5.println(timer_enter_menu.remaining());
+#endif
+                            if (timer_enter_menu.poll(750) != C_TIMER_NOT_EXPIRED)
+                            {
+#ifdef SERIAL_DEBUG
+                                Serial5.println(cont_sec_menu_wait);
+#endif
+                                cont_sec_menu_wait++;
+                                playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
+                                if (cont_sec_menu_wait == 1)
+                                {
+                                    OLED_display.clearDisplay();
+                                    OLED_display.setCursor(8, 0);
+                                    OLED_display.setTextSize(2);
+                                    OLED_display.print("MENU");
+                                    OLED_display.setCursor(0, 16);
+                                    OLED_display.setTextSize(2);
+                                    OLED_display.setCursor(0, 16);
+                                    OLED_display.print("3");
+                                }
+                                else if (cont_sec_menu_wait == 2)
+                                {
+                                    OLED_display.setCursor(0, 16);
+                                    OLED_display.print("3 2 ");
+                                }
+                                else if (cont_sec_menu_wait == 3)
+                                {
+                                    OLED_display.setCursor(0, 16);
+                                    OLED_display.print("3 2 1");
+                                }
+                                else if (cont_sec_menu_wait == 4)
+                                {
+                                    OLED_display.print("3-2-1");
+                                    flag_menu_active = true;
+                                    cont_sec_menu_wait = 0;
+                                }
+                                else if (cont_sec_menu_wait == 5)
+                                {
+                                }
+                                OLED_display.display();
+                            }
+                        }
+                        else
+                        {
+                            ConfigMenu();
+                            button_event = C_NONE_EVENT;
+                            flag_menu_active = false;
+                            cont_sec_menu_wait = 0;
+                        }
+                        trigger_Display_volt = true;
+                        button_event = C_NONE_EVENT;
+                    }
+
+                    ReadDirPad(true);
+                    sound = C_SOUND_MUTE;
+                    long_press_events = 0;
+                }
+                flag_menu_active = false;
+                cont_sec_menu_wait = 0;
+                sound = C_SOUND_MUTE;
             }
 
             //--------------- CONTROL DE LOS EVENTOS DE LA BOTONERA ---------------------//
@@ -1203,7 +1310,7 @@ void setup()
                 {
                     if (flag_irq_center_button == true)
                     {
-
+                        // Deteccion Modo Diagnostico
                         if ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                         {
                             if (flag_enable_diagnostic == true)
@@ -1269,6 +1376,7 @@ void setup()
                                             delay(10);
                                             Watchdog.reset();
                                         }
+                                        ReadDirPad(true);
                                         while (flag_active_confirmation_question == true) // Espera hasta que se reciba una respuesta.
                                         {
                                             Watchdog.reset();
@@ -1573,6 +1681,10 @@ void setup()
                     /* Output */
                     sw_output = C_OUTPUT_ON;
                     user_output = C_OUTPUT_ON; // Activacion de la salida.
+                    if (nitro_status == false)
+                    {
+                        timer_gap_arranque_nitro_off.set(C_TIME_GAP_ARRANQUE_NITRO_OFF);
+                    }
                     /* Clear Flags */
                     flag_enable_off = false;
 /* Change-State Effects */
@@ -1759,7 +1871,7 @@ void setup()
             Serial5.printf("AVG Prog cycle avrg:%d us\n", prog_cycle);
             Serial5.printf("MIN Prog cycle avrg:%d us\n", min_prog_cycle);
             Serial5.printf("-------- %d ---------\n\n", cont_log_sec);
-            Serial5.printf("RAM: %d \n", freeMemory());
+            // Serial5.printf("RAM: %d \n", freeMemory());
             prog_cycle = 0;
             cont_per = 0;
             min_prog_cycle = max_prog_cycle;
@@ -1838,4 +1950,183 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
         *empty_batt = false;
     }
     return percent;
+}
+
+/**
+ * @brief Menu de Configuracion
+ *
+ */
+void ConfigMenu()
+{
+#ifdef SERIAL_DEBUG
+    Serial5.println("Menu Configuracion Activo");
+#endif
+
+    // Mostrado de la Opcion 1: Nitro
+    switch (menu_option)
+    {
+    case C_MnOpt_NITRO:
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(1);
+        OLED_display.setCursor(17, 12);
+        OLED_display.print("NITRO");
+        OLED_display.drawRect(0, 0, 64, 32, WHITE);
+        OLED_display.display();
+        Watchdog.reset();
+        playSound(C_SOUND_CHARGE_IN);
+        break;
+    default:
+        break;
+    }
+    // Espera a la liberacion de los pulsadores
+    while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
+    {
+        delay(10);
+        Watchdog.reset();
+    }
+    // delay(500);
+    for (int i = 0; i < 50; i++)
+    {
+        delay(10);
+        Watchdog.reset();
+    }
+    flag_option_selected = false;
+    ReadDirPad(true);
+    while (flag_option_selected == false) // Espera hasta confirmacion de la opcion del menu seleccionada.
+    {
+        Watchdog.reset();
+        delay(10);
+        button_event = ReadDirPad();                                   // Lectura de la botonera
+        if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
+        {
+        }
+        else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // cambio de opcion
+        {
+        }
+        else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+        {
+            flag_option_selected = true;
+        }
+    }
+
+    // Opcion seleccionada.
+    if (menu_option == C_MnOpt_NITRO)
+    {
+        bool active_question_nitro = true;
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(2);
+        OLED_display.setCursor(0, 0);
+        OLED_display.print("ON");
+        OLED_display.setCursor(30, 0);
+        OLED_display.print("OFF");
+
+        // OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
+        //  OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+        // OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+        if (nitro_status == false)
+        {
+            OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x18, WHITE, BLACK, 2);
+        }
+        else
+        {
+            OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x00, WHITE, BLACK, 2);
+        }
+        ReadDirPad(true);
+        while (active_question_nitro == true)
+        {
+            Watchdog.reset();
+            delay(10);
+            button_event_naming = ReadDirPad();
+
+            if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("UP!");
+#endif
+                OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x18, WHITE, BLACK, 2);
+                nitro_status = false;
+            }
+            else if ((button_event_naming == C_CLICK_DOWN) || (button_event_naming == C_LP_DOWN))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("DOWN!");
+#endif
+                OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x00, WHITE, BLACK, 2);
+                nitro_status = true;
+            }
+            else if ((button_event_naming == C_CLICK_CENTER) || (button_event_naming == C_LP_CENTER))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("CENTER!");
+#endif
+                active_question_nitro = false;
+
+                // Pantalla de carga.
+                OLED_display.clearDisplay();
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(0, 0);
+                OLED_display.print("Saving...");
+                OLED_display.drawRect(0, 16, 64, 16, WHITE);
+                for (uint16_t i = 0; i <= 100; i++)
+                {
+                    Watchdog.reset();
+                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                    OLED_display.display();
+                }
+                // delay(500);
+                for (int i = 0; i < 50; i++)
+                {
+                    delay(10);
+                    Watchdog.reset();
+                }
+
+                // Pantalla Confirmacion
+                LogDiagnosticData(nitro_status, C_NITRO_STATUS);
+                SaveEeprom();
+                if (nitro_status == true)
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("NITRO");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("ON");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                }
+                else
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("NITRO");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("OFF");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                }
+            }
+            OLED_display.display();
+        }
+    }
 }
