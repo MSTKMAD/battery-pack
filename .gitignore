@@ -376,3 +376,5 @@ XXXX- MISC/cyclator/cyclator.ino
 *.jflash
 
 03.Firmware/TEST/Rover R-1/DCDC/VerificacionProduccion/build/
+
+03.Firmware/CODE/02.ROVER R-1/Produccion/

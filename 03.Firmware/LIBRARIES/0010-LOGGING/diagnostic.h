@@ -32,8 +32,8 @@
 /**
  *                  CONSTANTS
  */
-const uint16_t MIN_WATS = 500;
-const uint16_t MAX_WATS = 5000;
+const uint16_t MIN_WATS = 0;
+const uint16_t MAX_WATS = 2000;
 
 /**
  *                  VARIABLES
@@ -234,7 +234,7 @@ void LogDiagnosticData(int16_t data, int16_t address)
 
     case C_POWER_USE:
         data = constrain(data, MIN_WATS, MAX_WATS);
-        wats_pos = (data - MIN_WATS) / 100;
+        wats_pos = (data) / 50;
         local_eeprom.array_power_use[wats_pos]++;
         break;
 

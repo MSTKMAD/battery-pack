@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 1
+#define INTEGRATED_VERSION 103
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
@@ -764,6 +764,8 @@ void setup()
                     error = C_ERROR_SHORTCIRCUIT;
                     IncrementDiagnosticData(C_SHORT_CIRCUIT_ERROR);
                     short_current_protection.setCounter(0);
+                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_SHORTCIRCUIT);
+
 #ifdef SERIAL_DEBUG
                     Serial5.printf("ShC \n");
 #endif
@@ -827,7 +829,7 @@ void setup()
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
                         {
-                            PostMortemLog(sample_POut, capacity, theory_Vout, 0);
+                            PostMortemLog(sample_POut, capacity, sample_VOut/100, 0);
                             LogDiagnosticData(sample_POut, C_POWER_USE);
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;
@@ -873,6 +875,7 @@ void setup()
                         error = C_ERROR_OVERCURRENT;
                         IncrementDiagnosticData(C_CONSUMPTION_ERROR);
                         over_consumption_protection.setCounter(0);
+                        PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERCURRENT);
 
 #ifdef SERIAL_DEBUG
                         Serial5.printf("CON \n");
@@ -885,6 +888,7 @@ void setup()
                         error = C_ERROR_OVERPOWER;
                         IncrementDiagnosticData(C_POWER_ERROR);
                         over_power_protection.setCounter(0);
+                        PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERPOWER);
 
 #ifdef SERIAL_DEBUG
                         Serial5.printf("OP \n");
@@ -897,6 +901,7 @@ void setup()
                         error = C_ERROR_OUPUT_UNDERVOLTAGE;
                         IncrementDiagnosticData(C_VOLTAGE_ERROR);
                         under_voltage_protection.setCounter(under_voltage_protection.limit);
+                        PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OUPUT_UNDERVOLTAGE);
 
 #ifdef SERIAL_DEBUG
                         Serial5.printf("OUV \n");
@@ -1378,26 +1383,23 @@ void setup()
                     OLED_display.fillCircle(31, 14, 13, WHITE);
                     OLED_display.fillRect(30, 6, 3, 12, BLACK);
                     OLED_display.fillRect(30, 20, 3, 3, BLACK);
-                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERPOWER);
+
                     break;
                 case C_ERROR_OVERCURRENT: // Triangulo
                     OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
                     OLED_display.fillRect(30, 7, 3, 12, BLACK);
                     OLED_display.fillRect(30, 21, 3, 3, BLACK);
-                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OVERCURRENT);
                     break;
                 case C_ERROR_OUPUT_UNDERVOLTAGE: // Cuadrado
                     OLED_display.drawBitmap(0, 0, error_square, 64, 30, WHITE, BLACK);
-                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_OUPUT_UNDERVOLTAGE);
                     break;
-                case C_ERROR_INPUT_UNDERVOLTAGE:
-                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_INPUT_UNDERVOLTAGE);
-                    break;
+                // case C_ERROR_INPUT_UNDERVOLTAGE:
+                //   PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_INPUT_UNDERVOLTAGE);
+                // break;
                 case C_ERROR_SHORTCIRCUIT: // Triangulo
                     OLED_display.fillTriangle(31, 0, 15, 26, 47, 26, WHITE);
                     OLED_display.fillRect(30, 7, 3, 12, BLACK);
                     OLED_display.fillRect(30, 21, 3, 3, BLACK);
-                    PostMortemLog(sample_POut, capacity, theory_Vout, C_ERROR_SHORTCIRCUIT);
                     break;
                 default:
                     break;
