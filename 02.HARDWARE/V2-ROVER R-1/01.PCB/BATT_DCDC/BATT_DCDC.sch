@@ -5266,6 +5266,7 @@ Fondo Escala 3V @ 2A</text>
 <junction x="96.52" y="91.44"/>
 <pinref part="R3" gate="G$1" pin="2"/>
 <wire x1="104.14" y1="71.12" x2="96.52" y2="71.12" width="0.1524" layer="91"/>
+<junction x="96.52" y="71.12"/>
 </segment>
 </net>
 <net name="VOUT-" class="0">
