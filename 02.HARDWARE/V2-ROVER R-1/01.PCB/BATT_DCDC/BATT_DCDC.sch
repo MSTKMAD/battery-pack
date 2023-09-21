@@ -4303,6 +4303,87 @@ by exp-lbrs.ulp</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="LM5114BMF_NOPB">
+<description>&lt;Single 7.6A Peak Current Low-Side Gate Driver&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="SOT95P280X145-6N">
+<description>&lt;b&gt;DBV (R-PDSO-G6)&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-1.25" y="0.95" dx="1.2" dy="0.6" layer="1"/>
+<smd name="2" x="-1.25" y="0" dx="1.2" dy="0.6" layer="1"/>
+<smd name="3" x="-1.25" y="-0.95" dx="1.2" dy="0.6" layer="1"/>
+<smd name="4" x="1.25" y="-0.95" dx="1.2" dy="0.6" layer="1"/>
+<smd name="5" x="1.25" y="0" dx="1.2" dy="0.6" layer="1"/>
+<smd name="6" x="1.25" y="0.95" dx="1.2" dy="0.6" layer="1"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-2.1" y1="1.775" x2="2.1" y2="1.775" width="0.05" layer="51"/>
+<wire x1="2.1" y1="1.775" x2="2.1" y2="-1.775" width="0.05" layer="51"/>
+<wire x1="2.1" y1="-1.775" x2="-2.1" y2="-1.775" width="0.05" layer="51"/>
+<wire x1="-2.1" y1="-1.775" x2="-2.1" y2="1.775" width="0.05" layer="51"/>
+<wire x1="-0.8" y1="1.45" x2="0.8" y2="1.45" width="0.1" layer="51"/>
+<wire x1="0.8" y1="1.45" x2="0.8" y2="-1.45" width="0.1" layer="51"/>
+<wire x1="0.8" y1="-1.45" x2="-0.8" y2="-1.45" width="0.1" layer="51"/>
+<wire x1="-0.8" y1="-1.45" x2="-0.8" y2="1.45" width="0.1" layer="51"/>
+<wire x1="-0.8" y1="0.5" x2="0.15" y2="1.45" width="0.1" layer="51"/>
+<wire x1="-0.3" y1="1.45" x2="0.3" y2="1.45" width="0.2" layer="21"/>
+<wire x1="0.3" y1="1.45" x2="0.3" y2="-1.45" width="0.2" layer="21"/>
+<wire x1="0.3" y1="-1.45" x2="-0.3" y2="-1.45" width="0.2" layer="21"/>
+<wire x1="-0.3" y1="-1.45" x2="-0.3" y2="1.45" width="0.2" layer="21"/>
+<wire x1="-1.85" y1="1.6" x2="-0.65" y2="1.6" width="0.2" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="LM5114BMF_NOPB">
+<wire x1="5.08" y1="2.54" x2="22.86" y2="2.54" width="0.254" layer="94"/>
+<wire x1="22.86" y1="-7.62" x2="22.86" y2="2.54" width="0.254" layer="94"/>
+<wire x1="22.86" y1="-7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<text x="24.13" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="24.13" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="VDD" x="0" y="0" length="middle"/>
+<pin name="P_OUT" x="0" y="-2.54" length="middle"/>
+<pin name="N_OUT" x="0" y="-5.08" length="middle"/>
+<pin name="IN" x="27.94" y="0" length="middle" rot="R180"/>
+<pin name="INB" x="27.94" y="-2.54" length="middle" rot="R180"/>
+<pin name="VSS" x="27.94" y="-5.08" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="LM5114BMF_NOPB" prefix="IC">
+<description>&lt;b&gt;Single 7.6A Peak Current Low-Side Gate Driver&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="http://www.ti.com/lit/ds/symlink/lm5114.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="LM5114BMF_NOPB" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SOT95P280X145-6N">
+<connects>
+<connect gate="G$1" pin="IN" pad="6"/>
+<connect gate="G$1" pin="INB" pad="5"/>
+<connect gate="G$1" pin="N_OUT" pad="3"/>
+<connect gate="G$1" pin="P_OUT" pad="2"/>
+<connect gate="G$1" pin="VDD" pad="1"/>
+<connect gate="G$1" pin="VSS" pad="4"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="LM5114BMF/NOPB" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/lm5114bmfnopb/texas-instruments?region=nac" constant="no"/>
+<attribute name="DESCRIPTION" value="Single 7.6A Peak Current Low-Side Gate Driver" constant="no"/>
+<attribute name="HEIGHT" value="1.45mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="Texas Instruments" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="LM5114BMF/NOPB" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="926-LM5114BMF/NOPB" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Texas-Instruments/LM5114BMF-NOPB?qs=iiglMaU8SAe9aSTTg%252BIeRA%3D%3D" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="COMPANY" value="ADAFRUIT INDUSTRIES"/>
@@ -4347,11 +4428,8 @@ by exp-lbrs.ulp</description>
 <part name="GND50" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND58" library="SparkFun" deviceset="GND" device=""/>
 <part name="Q1" library="SamacSys_Parts" deviceset="NVTFS9D6P04M8LTAG" device=""/>
-<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
-<part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
-<part name="Q5" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
+<part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="10k"/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
-<part name="GND2" library="SparkFun" deviceset="GND" device=""/>
 <part name="U1" library="MCP6071" deviceset="MCP6071T-E/OT" device=""/>
 <part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="5k1"/>
 <part name="FRAME2" library="microbuilder" deviceset="FRAME_A3" device=""/>
@@ -4411,6 +4489,7 @@ by exp-lbrs.ulp</description>
 <part name="GND18" library="SparkFun" deviceset="GND" device=""/>
 <part name="C9" library="SparkFun-Capacitors" deviceset="0.1UF" device="-0603-25V-(+80/-20%)" value="N.A."/>
 <part name="RSNS" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="100mR"/>
+<part name="U2" library="LM5114BMF_NOPB" deviceset="LM5114BMF_NOPB" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -4547,23 +4626,12 @@ Fondo Escala 3V @ 2A</text>
 <attribute name="NAME" x="207.01" y="236.22" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="207.01" y="233.68" size="1.778" layer="96" align="center-left"/>
 </instance>
-<instance part="R15" gate="G$1" x="180.34" y="220.98" smashed="yes" rot="R180">
-<attribute name="NAME" x="180.34" y="219.456" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
-<attribute name="VALUE" x="180.34" y="222.504" size="1.778" layer="96" font="vector" rot="R180" align="top-center"/>
+<instance part="R16" gate="G$1" x="220.98" y="185.42" smashed="yes" rot="R270">
+<attribute name="NAME" x="222.504" y="185.42" size="1.778" layer="95" font="vector" rot="R270" align="bottom-center"/>
+<attribute name="VALUE" x="219.456" y="185.42" size="1.778" layer="96" font="vector" rot="R270" align="top-center"/>
 </instance>
-<instance part="R16" gate="G$1" x="203.2" y="185.42" smashed="yes" rot="R270">
-<attribute name="NAME" x="204.724" y="185.42" size="1.778" layer="95" font="vector" rot="R270" align="bottom-center"/>
-<attribute name="VALUE" x="201.676" y="185.42" size="1.778" layer="96" font="vector" rot="R270" align="top-center"/>
-</instance>
-<instance part="Q5" gate="G$1" x="187.96" y="193.04" smashed="yes" rot="MR0">
-<attribute name="NAME" x="193.04" y="200.66" size="1.778" layer="95" rot="MR0"/>
-<attribute name="VALUE" x="200.66" y="198.12" size="1.778" layer="96" rot="MR0"/>
-</instance>
-<instance part="GND1" gate="1" x="203.2" y="175.26" smashed="yes">
-<attribute name="VALUE" x="200.66" y="172.72" size="1.778" layer="96"/>
-</instance>
-<instance part="GND2" gate="1" x="187.96" y="175.26" smashed="yes">
-<attribute name="VALUE" x="185.42" y="172.72" size="1.778" layer="96"/>
+<instance part="GND1" gate="1" x="220.98" y="175.26" smashed="yes">
+<attribute name="VALUE" x="218.44" y="172.72" size="1.778" layer="96"/>
 </instance>
 <instance part="U1" gate="A" x="50.8" y="68.58" smashed="yes">
 <attribute name="NAME" x="66.3956" y="80.2386" size="2.0828" layer="95" ratio="6" rot="SR0"/>
@@ -4767,6 +4835,10 @@ Fondo Escala 3V @ 2A</text>
 <attribute name="NAME" x="22.86" y="61.976" size="1.778" layer="95" font="vector" rot="R180" align="bottom-center"/>
 <attribute name="VALUE" x="22.86" y="57.404" size="1.778" layer="96" font="vector" rot="R180" align="top-center"/>
 </instance>
+<instance part="U2" gate="G$1" x="182.88" y="195.58" smashed="yes" rot="MR180">
+<attribute name="NAME" x="189.23" y="190.5" size="1.778" layer="95" rot="MR180" align="center-left"/>
+<attribute name="VALUE" x="189.23" y="187.96" size="1.778" layer="96" rot="MR180" align="center-left"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -4865,13 +4937,13 @@ Fondo Escala 3V @ 2A</text>
 </segment>
 <segment>
 <pinref part="R16" gate="G$1" pin="2"/>
-<wire x1="203.2" y1="180.34" x2="203.2" y2="177.8" width="0.1524" layer="91"/>
+<wire x1="220.98" y1="180.34" x2="220.98" y2="177.8" width="0.1524" layer="91"/>
 <pinref part="GND1" gate="1" pin="GND"/>
-</segment>
-<segment>
-<pinref part="Q5" gate="G$1" pin="S"/>
-<wire x1="187.96" y1="187.96" x2="187.96" y2="177.8" width="0.1524" layer="91"/>
-<pinref part="GND2" gate="1" pin="GND"/>
+<pinref part="U2" gate="G$1" pin="VSS"/>
+<wire x1="210.82" y1="200.66" x2="215.9" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="200.66" x2="215.9" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="215.9" y1="180.34" x2="220.98" y2="180.34" width="0.1524" layer="91"/>
+<junction x="220.98" y="180.34"/>
 </segment>
 <segment>
 <pinref part="U1" gate="A" pin="VSS"/>
@@ -4989,10 +5061,10 @@ Fondo Escala 3V @ 2A</text>
 <pinref part="R43" gate="G$1" pin="1"/>
 <pinref part="Q1" gate="G$1" pin="S_1"/>
 <wire x1="170.18" y1="208.28" x2="170.18" y2="203.2" width="0.1524" layer="91"/>
-<wire x1="170.18" y1="228.6" x2="175.26" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="170.18" y1="228.6" x2="172.72" y2="228.6" width="0.1524" layer="91"/>
 <junction x="170.18" y="228.6"/>
 <pinref part="Q1" gate="G$1" pin="S_2"/>
-<wire x1="175.26" y1="228.6" x2="193.04" y2="228.6" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="228.6" x2="193.04" y2="228.6" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="228.6" x2="198.12" y2="228.6" width="0.1524" layer="91"/>
 <wire x1="198.12" y1="226.06" x2="193.04" y2="226.06" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="226.06" x2="193.04" y2="228.6" width="0.1524" layer="91"/>
@@ -5001,13 +5073,14 @@ Fondo Escala 3V @ 2A</text>
 <wire x1="198.12" y1="223.52" x2="193.04" y2="223.52" width="0.1524" layer="91"/>
 <wire x1="193.04" y1="223.52" x2="193.04" y2="226.06" width="0.1524" layer="91"/>
 <junction x="193.04" y="226.06"/>
-<pinref part="R15" gate="G$1" pin="2"/>
-<wire x1="175.26" y1="220.98" x2="175.26" y2="228.6" width="0.1524" layer="91"/>
-<junction x="175.26" y="228.6"/>
 <pinref part="C7" gate="G$1" pin="2"/>
 <wire x1="165.1" y1="203.2" x2="165.1" y2="208.28" width="0.1524" layer="91"/>
 <wire x1="170.18" y1="208.28" x2="165.1" y2="208.28" width="0.1524" layer="91"/>
 <junction x="170.18" y="208.28"/>
+<pinref part="U2" gate="G$1" pin="VDD"/>
+<wire x1="182.88" y1="195.58" x2="172.72" y2="195.58" width="0.1524" layer="91"/>
+<wire x1="172.72" y1="195.58" x2="172.72" y2="228.6" width="0.1524" layer="91"/>
+<junction x="172.72" y="228.6"/>
 </segment>
 </net>
 <net name="SW2_TPS" class="0">
@@ -5152,27 +5225,16 @@ Fondo Escala 3V @ 2A</text>
 <pinref part="K1" gate="G$1" pin="P$11"/>
 </segment>
 </net>
-<net name="N$8" class="0">
-<segment>
-<pinref part="R15" gate="G$1" pin="1"/>
-<pinref part="Q1" gate="G$1" pin="G"/>
-<wire x1="185.42" y1="220.98" x2="187.96" y2="220.98" width="0.1524" layer="91"/>
-<pinref part="Q5" gate="G$1" pin="D"/>
-<wire x1="187.96" y1="220.98" x2="198.12" y2="220.98" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="198.12" x2="187.96" y2="220.98" width="0.1524" layer="91"/>
-<junction x="187.96" y="220.98"/>
-</segment>
-</net>
 <net name="OP_SWITCH" class="0">
 <segment>
-<label x="208.28" y="193.04" size="1.778" layer="95"/>
-<pinref part="Q5" gate="G$1" pin="G"/>
-<wire x1="195.58" y1="193.04" x2="203.2" y2="193.04" width="0.1524" layer="91"/>
+<label x="226.06" y="198.12" size="1.778" layer="95"/>
 <pinref part="R16" gate="G$1" pin="1"/>
-<wire x1="203.2" y1="190.5" x2="203.2" y2="193.04" width="0.1524" layer="91"/>
-<junction x="203.2" y="193.04"/>
-<wire x1="241.3" y1="193.04" x2="203.2" y2="193.04" width="0.1524" layer="91"/>
-<label x="241.3" y="193.04" size="1.778" layer="95" xref="yes"/>
+<wire x1="220.98" y1="190.5" x2="220.98" y2="198.12" width="0.1524" layer="91"/>
+<wire x1="241.3" y1="198.12" x2="220.98" y2="198.12" width="0.1524" layer="91"/>
+<label x="241.3" y="198.12" size="1.778" layer="95" xref="yes"/>
+<pinref part="U2" gate="G$1" pin="INB"/>
+<wire x1="210.82" y1="198.12" x2="220.98" y2="198.12" width="0.1524" layer="91"/>
+<junction x="220.98" y="198.12"/>
 </segment>
 <segment>
 <wire x1="358.14" y1="101.6" x2="368.3" y2="101.6" width="0.1524" layer="91"/>
@@ -5570,6 +5632,18 @@ Fondo Escala 3V @ 2A</text>
 <wire x1="185.42" y1="167.64" x2="180.34" y2="167.64" width="0.1524" layer="91"/>
 <wire x1="185.42" y1="160.02" x2="185.42" y2="167.64" width="0.1524" layer="91"/>
 <junction x="185.42" y="167.64"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="U2" gate="G$1" pin="P_OUT"/>
+<pinref part="U2" gate="G$1" pin="N_OUT"/>
+<wire x1="182.88" y1="198.12" x2="182.88" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="182.88" y1="200.66" x2="180.34" y2="200.66" width="0.1524" layer="91"/>
+<wire x1="180.34" y1="200.66" x2="180.34" y2="220.98" width="0.1524" layer="91"/>
+<junction x="182.88" y="200.66"/>
+<pinref part="Q1" gate="G$1" pin="G"/>
+<wire x1="180.34" y1="220.98" x2="198.12" y2="220.98" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
