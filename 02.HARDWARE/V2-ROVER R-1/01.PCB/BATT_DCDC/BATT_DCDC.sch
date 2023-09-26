@@ -4510,7 +4510,7 @@ BW=13Hz</text>
 <wire x1="312.42" y1="38.1" x2="312.42" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
 <text x="17.78" y="116.84" size="5.08" layer="94">IOSENSE LOWPASS FILTERING</text>
 <text x="35.56" y="241.3" size="5.08" layer="94">STEP UP DCDC CONVERTER
-ROVER1K - DEC'22-v2</text>
+ROVER R-1- SEP2023 - v3 (3ra producion)</text>
 <text x="88.9" y="45.72" size="1.778" layer="91">G1=1.6
 BW=312Hz</text>
 <text x="12.7" y="10.16" size="1.778" layer="91">CONJUNTO
