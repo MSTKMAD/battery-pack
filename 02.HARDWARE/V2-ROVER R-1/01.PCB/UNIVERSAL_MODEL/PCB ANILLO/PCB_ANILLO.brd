@@ -6,27 +6,27 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mm"/>
+<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
 <layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
 <layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
 <layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
@@ -34,9 +34,9 @@
 <layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
@@ -46,7 +46,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -157,34 +157,46 @@
 </layers>
 <board>
 <plain>
-<wire x1="4.42666875" y1="8.006659375" x2="4.42666875" y2="9.430040625" width="0.01" layer="51"/>
-<wire x1="2.02666875" y1="8.006659375" x2="4.42666875" y2="8.006659375" width="0.01" layer="51"/>
-<wire x1="2.02666875" y1="10.212540625" x2="2.02666875" y2="8.006659375" width="0.01" layer="51"/>
-<wire x1="4.42666875" y1="9.430040625" x2="2.02666875" y2="10.212546875" width="0.01" layer="51" curve="13.941509"/>
-<circle x="0.026659375" y="0.006659375" radius="10.9" width="0.01" layer="20"/>
-<circle x="-0.013340625" y="-0.000009375" radius="3.75" width="0.01" layer="51"/>
-<circle x="-0.013340625" y="-0.000009375" radius="1.75" width="0.01" layer="51"/>
-<circle x="-0.013340625" y="-0.000009375" radius="1.25" width="0.01" layer="51"/>
-<wire x1="-1.97333125" y1="10.212540625" x2="-4.37333125" y2="9.4300375" width="0.01" layer="51" curve="13.941508"/>
-<wire x1="-4.37333125" y1="8.006659375" x2="-1.97333125" y2="8.006659375" width="0.01" layer="51"/>
-<wire x1="-4.37333125" y1="9.4300375" x2="-4.37333125" y2="8.006659375" width="0.01" layer="51"/>
-<wire x1="-1.97333125" y1="8.006659375" x2="-1.97333125" y2="10.212540625" width="0.01" layer="51"/>
+<circle x="9.666659375" y="7.106659375" radius="4.7" width="0.01" layer="20"/>
+<circle x="9.686659375" y="6.999990625" radius="3.75" width="0.01" layer="51"/>
+<circle x="9.686659375" y="6.999990625" radius="1.75" width="0.01" layer="51"/>
+<circle x="9.686659375" y="6.999990625" radius="1.25" width="0.01" layer="51"/>
 <polygon width="0.1524" layer="29">
-<vertex x="3.75" y="0" curve="180"/>
-<vertex x="-3.75" y="0" curve="180"/>
+<vertex x="13.45" y="7" curve="180"/>
+<vertex x="5.95" y="7" curve="180"/>
 </polygon>
 <polygon width="0.1524" layer="30">
-<vertex x="-4.4" y="9.4"/>
-<vertex x="-4.4" y="8"/>
-<vertex x="-1.9" y="8"/>
-<vertex x="-1.9" y="10.3"/>
+<vertex x="8.3" y="7.8"/>
+<vertex x="11" y="7.8"/>
+<vertex x="11" y="6.1"/>
+<vertex x="8.3" y="6.1"/>
 </polygon>
 <polygon width="0.1524" layer="30">
-<vertex x="1.9" y="10.2"/>
-<vertex x="1.9" y="8"/>
-<vertex x="4.4" y="8"/>
-<vertex x="4.4" y="9.4"/>
+<vertex x="8.3" y="10.4"/>
+<vertex x="11" y="10.4"/>
+<vertex x="11" y="8.8"/>
+<vertex x="8.3" y="8.8"/>
 </polygon>
+<polygon width="0.1524" layer="30">
+<vertex x="12.9" y="8.5"/>
+<vertex x="14.5" y="8.5"/>
+<vertex x="14.5" y="5.3"/>
+<vertex x="12.9" y="5.3"/>
+</polygon>
+<polygon width="0.1524" layer="30">
+<vertex x="4.9" y="8.5"/>
+<vertex x="6.5" y="8.5"/>
+<vertex x="6.5" y="5.3"/>
+<vertex x="4.9" y="5.3"/>
+</polygon>
+<polygon width="0.1524" layer="30">
+<vertex x="8.1" y="2.2"/>
+<vertex x="8.1" y="3.8"/>
+<vertex x="11.3" y="3.8"/>
+<vertex x="11.3" y="2.2"/>
+</polygon>
+<text x="10.9" y="5.1" size="0.8128" layer="22" rot="MR0">ROJO</text>
+<text x="11.2" y="10.5" size="0.8128" layer="22" rot="MR0">NEGRO</text>
 </plain>
 <libraries>
 <library name="BeagleBone_Blue_R3" urn="urn:adsk.eagle:library:5828899">
@@ -245,10 +257,10 @@ design rules under a new name.</description>
 <param name="mdViaVia" value="8mil"/>
 <param name="mdSmdPad" value="0mil"/>
 <param name="mdSmdVia" value="0mil"/>
-<param name="mdSmdSmd" value="5mil"/>
+<param name="mdSmdSmd" value="0mil"/>
 <param name="mdViaViaSameLayer" value="6mil"/>
 <param name="mnLayersViaInSmd" value="2"/>
-<param name="mdCopperDimension" value="6mil"/>
+<param name="mdCopperDimension" value="0mil"/>
 <param name="mdDrill" value="6mil"/>
 <param name="mdSmdStop" value="0mil"/>
 <param name="msWidth" value="0.00038125mm"/>
@@ -283,7 +295,7 @@ design rules under a new name.</description>
 <param name="psElongationOffset" value="100"/>
 <param name="mvStopFrame" value="1"/>
 <param name="mvCreamFrame" value="0"/>
-<param name="mlMinStopFrame" value="2mil"/>
+<param name="mlMinStopFrame" value="0mil"/>
 <param name="mlMaxStopFrame" value="2mil"/>
 <param name="mlMinCreamFrame" value="0mil"/>
 <param name="mlMaxCreamFrame" value="0mil"/>
@@ -291,7 +303,7 @@ design rules under a new name.</description>
 <param name="srRoundness" value="0"/>
 <param name="srMinRoundness" value="0mil"/>
 <param name="srMaxRoundness" value="0mil"/>
-<param name="slThermalIsolate" value="10mil"/>
+<param name="slThermalIsolate" value="0mil"/>
 <param name="slThermalsForVias" value="0"/>
 <param name="dpMaxLengthDifference" value="10mm"/>
 <param name="dpGapFactor" value="2.5"/>
@@ -403,63 +415,81 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="GND_" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" package="TESTPAD_B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2" value="TESTPAD_TPSQB1,27" x="0.34" y="8.02" smashed="yes" rot="MR0">
-<attribute name="NAME" x="-2.325" y="6.236" size="1.27" layer="26" ratio="10" rot="MR0"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="0.34" y="8.02" size="1.778" layer="28" font="vector" rot="MR0" display="off"/>
-<attribute name="VALUE" x="0.975" y="7.258" size="0.0254" layer="28" rot="MR0"/>
+<element name="GND" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" package="TESTPAD_B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2" value="TESTPAD_TPSQB1,27" x="9.54" y="9.62" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="9.54" y="9.62" size="1.778" layer="28" font="vector" rot="MR0" display="off"/>
+<attribute name="VALUE" x="10.175" y="8.858" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="VPOS_" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" package="TESTPAD_B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2" value="TESTPAD_TPSQB1,27" x="3.05" y="8.95" smashed="yes" rot="MR0">
-<attribute name="NAME" x="7.445" y="6.206" size="1.27" layer="26" ratio="10" rot="MR0"/>
-<attribute name="TP_SIGNAL_NAME" value="" x="3.05" y="8.95" size="1.778" layer="28" font="vector" rot="MR0" display="off"/>
-<attribute name="VALUE" x="3.685" y="8.188" size="0.0254" layer="28" rot="MR0"/>
+<element name="VPOS" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" package="TESTPAD_B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2" value="TESTPAD_TPSQB1,27" x="9.55" y="6.95" smashed="yes" rot="MR0">
+<attribute name="TP_SIGNAL_NAME" value="" x="9.55" y="6.95" size="1.778" layer="28" font="vector" rot="MR0" display="off"/>
 </element>
 </elements>
 <signals>
 <signal name="VPOS">
-<contactref element="VPOS_" pad="TP"/>
+<contactref element="VPOS" pad="TP"/>
 <polygon width="0.01" layer="1" isolate="0.5">
-<vertex x="1.25" y="0" curve="180"/>
-<vertex x="-1.25" y="0" curve="180"/>
+<vertex x="10.95" y="7" curve="180"/>
+<vertex x="8.45" y="7" curve="180"/>
 </polygon>
-<via x="3" y="8.9" extent="1-16" drill="0.35"/>
-<wire x1="3" y1="8.9" x2="3" y2="3" width="1.016" layer="16"/>
-<wire x1="3" y1="3" x2="0" y2="0" width="1.016" layer="16"/>
-<via x="0" y="0" extent="1-16" drill="0.35"/>
-<wire x1="3.05" y1="8.95" x2="3" y2="8.9" width="0.254" layer="16"/>
-<polygon width="0.1016" layer="16" thermals="no">
-<vertex x="2" y="10.2"/>
-<vertex x="2" y="8"/>
-<vertex x="4.4" y="8"/>
-<vertex x="4.4" y="9.4"/>
+<via x="10.5" y="7" extent="1-16" drill="0.35"/>
+<wire x1="10.5" y1="7" x2="9.6" y2="7" width="0.254" layer="16"/>
+<wire x1="9.6" y1="7" x2="9.55" y2="6.95" width="0.254" layer="16"/>
+<polygon width="0.1524" layer="16">
+<vertex x="8.3" y="7.8"/>
+<vertex x="11" y="7.8"/>
+<vertex x="11" y="6.1"/>
+<vertex x="8.3" y="6.1"/>
 </polygon>
+<via x="9" y="7" extent="1-16" drill="0.35"/>
 </signal>
 <signal name="GND">
 <polygon width="0.01" layer="1" rank="2">
-<vertex x="3.75" y="0" curve="180"/>
-<vertex x="-3.75" y="0" curve="180"/>
+<vertex x="13.45" y="7" curve="180"/>
+<vertex x="5.95" y="7" curve="180"/>
 </polygon>
 <polygon width="0.01" layer="1" isolate="1.27" rank="2">
-<vertex x="3.75" y="0" curve="180"/>
-<vertex x="-3.75" y="0" curve="180"/>
+<vertex x="13.45" y="7" curve="180"/>
+<vertex x="5.95" y="7" curve="180"/>
 </polygon>
 <polygon width="0.01" layer="1">
-<vertex x="1.75" y="0" curve="180"/>
-<vertex x="-1.75" y="0" curve="180"/>
+<vertex x="11.45" y="7" curve="180"/>
+<vertex x="7.95" y="7" curve="180"/>
 </polygon>
-<contactref element="GND_" pad="TP"/>
-<wire x1="-0.7" y1="3.1" x2="-0.6" y2="3" width="0.254" layer="1"/>
-<wire x1="-0.7" y1="3.1" x2="-0.7" y2="6.98" width="1.016" layer="1"/>
-<wire x1="-0.7" y1="6.98" x2="-2.62" y2="8.9" width="1.016" layer="1"/>
-<wire x1="-2.62" y1="8.9" x2="-3.3" y2="8.9" width="1.016" layer="1"/>
-<via x="-3.3" y="8.9" extent="1-16" drill="0.35"/>
-<polygon width="0.1016" layer="16">
-<vertex x="-4.4" y="9.4"/>
-<vertex x="-4.4" y="8"/>
-<vertex x="-2" y="8"/>
-<vertex x="-2" y="10.2"/>
+<contactref element="GND" pad="TP"/>
+<wire x1="8.5" y1="10" x2="10.6" y2="10" width="1.016" layer="1"/>
+<via x="10.6" y="10" extent="1-16" drill="0.35"/>
+<wire x1="10.6" y1="10" x2="9.92" y2="10" width="1.016" layer="16"/>
+<wire x1="9.54" y1="9.62" x2="9.92" y2="10" width="1.016" layer="16"/>
+<polygon width="0.1524" layer="16">
+<vertex x="8.3" y="10.4"/>
+<vertex x="11" y="10.4"/>
+<vertex x="11" y="8.8"/>
+<vertex x="8.3" y="8.8"/>
 </polygon>
-<wire x1="0.34" y1="8.02" x2="-2.42" y2="8.02" width="1.016" layer="16"/>
-<wire x1="-2.42" y1="8.02" x2="-3.3" y2="8.9" width="1.016" layer="16"/>
+<via x="8.6" y="10" extent="1-16" drill="0.35"/>
+</signal>
+<signal name="N$1">
+<polygon width="0.1524" layer="16">
+<vertex x="8.17" y="2.3"/>
+<vertex x="8.17" y="3.9"/>
+<vertex x="11.37" y="3.9"/>
+<vertex x="11.37" y="2.3"/>
+</polygon>
+</signal>
+<signal name="N$2">
+<polygon width="0.1524" layer="16">
+<vertex x="12.89" y="8.5"/>
+<vertex x="14.49" y="8.5"/>
+<vertex x="14.49" y="5.3"/>
+<vertex x="12.89" y="5.3"/>
+</polygon>
+</signal>
+<signal name="N$3">
+<polygon width="0.1524" layer="16">
+<vertex x="4.9" y="8.5"/>
+<vertex x="6.5" y="8.5"/>
+<vertex x="6.5" y="5.3"/>
+<vertex x="4.9" y="5.3"/>
+</polygon>
 </signal>
 </signals>
 <mfgpreviewcolors>
