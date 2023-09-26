@@ -4244,7 +4244,7 @@ Source: &lt;a href="https://www.hirose.com/product/document?clcode=CL0684-4003-3
 <part name="C19" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
 <part name="R48" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="1k"/>
 <part name="Q1" library="BSS84W-7-F" deviceset="BSS84W-7-F" device=""/>
-<part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="47k"/>
+<part name="R5" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
 <part name="U$1" library="microbuilder" deviceset="GND" device=""/>
 <part name="Q3" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
 <part name="R16" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="100k"/>
@@ -6061,7 +6061,6 @@ SEP_2023-v4</text>
 <errors>
 <approved hash="102,1,299.72,213.36,VCC,VCC_2,,,,"/>
 <approved hash="102,1,121.92,220.98,VCC,VCC_2,,,,"/>
-<approved hash="102,1,210.82,223.52,VCC,VCC_2,,,,"/>
 <approved hash="102,1,228.6,233.68,VCC,VCC_2,,,,"/>
 <approved hash="102,1,274.32,198.12,VCC,VCC_2,,,,"/>
 <approved hash="102,1,266.7,27.94,VCC,VCC_2,,,,"/>
@@ -6070,7 +6069,6 @@ SEP_2023-v4</text>
 <approved hash="201,1,266.7,27.94,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,274.32,198.12,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,228.6,233.68,VCC,VCC\, VCC_2,,,,"/>
-<approved hash="201,1,210.82,223.52,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,121.92,220.98,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="201,1,299.72,213.36,VCC,VCC\, VCC_2,,,,"/>
 <approved hash="104,1,27.94,86.36,U1,VDDA,VCC,,,"/>
@@ -6093,8 +6091,6 @@ SEP_2023-v4</text>
 <approved hash="208,1,10.16,25.4,VCC,sup,,,,"/>
 <approved hash="208,1,256.54,160.02,VCC,sup,,,,"/>
 <approved hash="208,1,177.8,160.02,VCC,sup,,,,"/>
-<approved hash="208,1,63.5,215.9,VCC,out,,,,"/>
-<approved hash="208,1,81.28,220.98,VCC,sup,,,,"/>
 <approved hash="208,1,213.36,129.54,VCC,sup,,,,"/>
 <approved hash="208,1,342.9,238.76,VCC,sup,,,,"/>
 </errors>
