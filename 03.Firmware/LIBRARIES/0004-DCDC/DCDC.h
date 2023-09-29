@@ -14,7 +14,7 @@
 #define MAX_VOLTAGE 120
 #endif
 #ifndef MIN_VOLTAGE
-#define MIN_VOLTAGE 25
+#define MIN_VOLTAGE 50
 #endif
 const uint16_t LenDCDCvalues = 121;
 const bool C_BOOST_MODE = true;
@@ -42,16 +42,8 @@ public:
     dcdc_controler(int16_t pin)
     {
         pin_enable = pin;
-        pwm.setClockDivider(48, false); // Main clock divided by 200 => 240KHz
-        pwm.timer(2, 1, 50, false);     // Use timer 2 for pin 13, divide clock by 4, resolution 60000, dual-slope PWM
         pinMode(pin_enable, OUTPUT);
         digitalWrite(pin_enable, LOW);
-        pinMode(C_PIN_OP_SWITCH, OUTPUT);
-        pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
-        //------------------------ INITIALITATION PERIFERICOS ----------------------------
-
-        digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
-        digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     }
 
     /**
@@ -64,13 +56,7 @@ public:
     {
         if (mode == C_BOOST_MODE)
         {
-            if (mode == C_BOOST_MODE)
-            {
-                volt += 3;
-            }
-            volt = constrain(volt, 50, 120);
-            dac_count = C_DAC_MIN_COUNT - (((volt - 50) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 50));
-            analogWrite(C_PIN_DAC, dac_count);
+            volt += 3;
         }
         volt = constrain(volt, MIN_VOLTAGE, MAX_VOLTAGE);
         dac_count = C_DAC_MIN_COUNT - (((volt - MIN_VOLTAGE) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (MAX_VOLTAGE - MIN_VOLTAGE));

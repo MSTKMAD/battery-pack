@@ -190,7 +190,7 @@ bool output_mode = C_NON_BOOST_MODE;                                            
 bool blink_error_state = false;                                                      // Identificador del estado del parapadeo de la barra de potencia durante el mostrado de un error.
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
-bool nitro_status = true;                                                           // Estado del Nitro.
+bool nitro_status = false;                                                           // Estado del Nitro.
 
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
