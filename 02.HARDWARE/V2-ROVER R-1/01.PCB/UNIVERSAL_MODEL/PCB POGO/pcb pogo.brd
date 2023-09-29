@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mm"/>
@@ -25,24 +25,24 @@
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
@@ -50,9 +50,9 @@
 </layers>
 <board>
 <plain>
-<circle x="7.073309375" y="8.648309375" radius="0.8" width="0.01" layer="20"/>
-<circle x="7.073309375" y="6.18831875" radius="5.899990625" width="0.01" layer="20"/>
-<circle x="7.073309375" y="6.18831875" radius="0.799990625" width="0.01" layer="20"/>
+<circle x="7.073309375" y="8.648309375" radius="0.8125" width="0.01" layer="20"/>
+<circle x="7.073309375" y="6.18831875" radius="6.5" width="0.01" layer="51"/>
+<circle x="7.073309375" y="6.18831875" radius="0.8125" width="0.01" layer="20"/>
 <polygon width="0.01" layer="29">
 <vertex x="6.71" y="10.08"/>
 <vertex x="6.6" y="10.08"/>
@@ -97,18 +97,6 @@
 <vertex x="6.04" y="7.12"/>
 </polygon>
 <polygon width="0.01" layer="29">
-<vertex x="6.55" y="2.08"/>
-<vertex x="6.55" y="1.23"/>
-<vertex x="6.71" y="1.07"/>
-<vertex x="8.09" y="1.07"/>
-<vertex x="8.25" y="1.23"/>
-<vertex x="8.25" y="2.08"/>
-<vertex x="8.18" y="2.15"/>
-<vertex x="6.57" y="2.15"/>
-<vertex x="6.55" y="2.13"/>
-<vertex x="6.55" y="2.07"/>
-</polygon>
-<polygon width="0.01" layer="29">
 <vertex x="6.73" y="10.66"/>
 <vertex x="6.73" y="9.96"/>
 <vertex x="6.77" y="9.92"/>
@@ -119,21 +107,41 @@
 <vertex x="7.46" y="10.75"/>
 <vertex x="6.73" y="10.75"/>
 </polygon>
-<polygon width="0.01" layer="29">
-<vertex x="6.87" y="2.03"/>
-<vertex x="6.87" y="2.69"/>
-<vertex x="6.91" y="2.73"/>
-<vertex x="7.75" y="2.73"/>
-<vertex x="7.79" y="2.69"/>
-<vertex x="7.79" y="2.03"/>
-<vertex x="7.8" y="2.02"/>
-<vertex x="6.89" y="2.02"/>
-<vertex x="6.87" y="2.04"/>
+<text x="8.92" y="2.12" size="0.8128" layer="25" font="vector">ROJO</text>
+<text x="2.02" y="9.26" size="0.8128" layer="25" font="vector">NEGRO</text>
+<text x="2.5" y="2.71" size="0.8128" layer="25" font="vector" rot="R90">v2
+Sep2023</text>
+<circle x="7.083309375" y="6.13831875" radius="8.5" width="0.01" layer="20"/>
+<polygon width="0.1524" layer="29">
+<vertex x="10.17" y="1.88"/>
+<vertex x="10.17" y="0.91"/>
+<vertex x="9.7" y="0.44"/>
+<vertex x="9.18" y="0.44"/>
+<vertex x="8.8" y="0.06"/>
+<vertex x="5.72" y="0.06"/>
+<vertex x="5.42" y="0.36"/>
+<vertex x="4.74" y="0.36"/>
+<vertex x="4.46" y="0.64"/>
+<vertex x="4.46" y="1.86"/>
+<vertex x="10.07" y="1.86"/>
+<vertex x="10.07" y="1.85"/>
+<vertex x="10.12" y="1.8"/>
 </polygon>
-<text x="9.09" y="5.6" size="0.8128" layer="25" font="vector">+pos</text>
-<text x="2.52" y="8.52" size="0.8128" layer="25" font="vector">-neg</text>
-<text x="4.62" y="2.66" size="0.8128" layer="25" font="vector" rot="R90">v1
-Ago2023</text>
+<polygon width="0.1524" layer="29">
+<vertex x="4.05" y="10.52"/>
+<vertex x="4.05" y="11.49"/>
+<vertex x="4.52" y="11.96"/>
+<vertex x="5.04" y="11.96"/>
+<vertex x="5.42" y="12.34"/>
+<vertex x="8.5" y="12.34"/>
+<vertex x="8.8" y="12.04"/>
+<vertex x="9.48" y="12.04"/>
+<vertex x="9.76" y="11.76"/>
+<vertex x="9.76" y="10.54"/>
+<vertex x="4.15" y="10.54"/>
+<vertex x="4.15" y="10.55"/>
+<vertex x="4.1" y="10.6"/>
+</polygon>
 </plain>
 <libraries>
 </libraries>
@@ -340,12 +348,27 @@ design rules under a new name.</description>
 <vertex x="7.96" y="7.47"/>
 <vertex x="8.59" y="8.1"/>
 <vertex x="8.59" y="9.5"/>
-<vertex x="8.02" y="10.07"/>
-<vertex x="8.02" y="11.31"/>
+<vertex x="8.08" y="10.01"/>
+<vertex x="8.08" y="11.31"/>
 <vertex x="6.55" y="11.31"/>
 <vertex x="6.5" y="11.26"/>
 <vertex x="6.5" y="10.38"/>
 <vertex x="5.95" y="9.83"/>
+</polygon>
+<polygon width="0.1524" layer="1">
+<vertex x="4.09" y="10.5"/>
+<vertex x="4.09" y="11.47"/>
+<vertex x="4.56" y="11.94"/>
+<vertex x="5.08" y="11.94"/>
+<vertex x="5.46" y="12.32"/>
+<vertex x="8.54" y="12.32"/>
+<vertex x="8.84" y="12.02"/>
+<vertex x="9.52" y="12.02"/>
+<vertex x="9.8" y="11.74"/>
+<vertex x="9.8" y="10.52"/>
+<vertex x="4.19" y="10.52"/>
+<vertex x="4.19" y="10.53"/>
+<vertex x="4.14" y="10.58"/>
 </polygon>
 </signal>
 <signal name="POS+">
@@ -353,18 +376,30 @@ design rules under a new name.</description>
 <vertex x="8.08" y="7.3"/>
 <vertex x="5.95" y="7.3"/>
 <vertex x="5.16" y="6.51"/>
-<vertex x="5.16" y="5.38"/>
-<vertex x="6.38" y="4.16"/>
+<vertex x="5.16" y="5.41"/>
+<vertex x="6.41" y="4.16"/>
 <vertex x="6.42" y="4.16"/>
 <vertex x="6.42" y="1.1"/>
 <vertex x="6.62" y="0.9"/>
 <vertex x="8.07" y="0.9"/>
-<vertex x="8.36" y="1.19"/>
-<vertex x="8.36" y="3.56"/>
-<vertex x="8.3" y="3.62"/>
+<vertex x="8.3" y="1.13"/>
 <vertex x="8.3" y="4.46"/>
 <vertex x="8.86" y="5.02"/>
 <vertex x="8.86" y="6.52"/>
+</polygon>
+<polygon width="0.1524" layer="1">
+<vertex x="10.17" y="1.88"/>
+<vertex x="10.17" y="0.91"/>
+<vertex x="9.7" y="0.44"/>
+<vertex x="9.18" y="0.44"/>
+<vertex x="8.8" y="0.06"/>
+<vertex x="5.72" y="0.06"/>
+<vertex x="5.42" y="0.36"/>
+<vertex x="4.74" y="0.36"/>
+<vertex x="4.46" y="0.64"/>
+<vertex x="4.46" y="1.85"/>
+<vertex x="10.07" y="1.85"/>
+<vertex x="10.12" y="1.8"/>
 </polygon>
 </signal>
 </signals>

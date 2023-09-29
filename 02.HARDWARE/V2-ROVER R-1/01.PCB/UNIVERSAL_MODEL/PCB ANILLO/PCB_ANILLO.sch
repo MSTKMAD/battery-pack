@@ -1202,8 +1202,8 @@ by exp-lbrs.ulp</description>
 </class>
 </classes>
 <parts>
-<part name="GND_" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" deviceset="TESTPAD_TPSQ" device="B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2"/>
-<part name="VPOS_" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" deviceset="TESTPAD_TPSQ" device="B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2"/>
+<part name="GND" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" deviceset="TESTPAD_TPSQ" device="B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2"/>
+<part name="VPOS" library="BeagleBone_Blue_R3" library_urn="urn:adsk.eagle:library:5828899" deviceset="TESTPAD_TPSQ" device="B1,27" package3d_urn="urn:adsk.eagle:package:5829773/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -1211,11 +1211,11 @@ by exp-lbrs.ulp</description>
 <text x="58.42" y="106.68" size="2.54" layer="91">BATTERY_CONNECTOR</text>
 </plain>
 <instances>
-<instance part="GND_" gate="G$1" x="15.24" y="76.2" smashed="yes">
+<instance part="GND" gate="G$1" x="15.24" y="76.2" smashed="yes">
 <attribute name="NAME" x="12.7" y="71.755" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="17.78" y="74.93" size="1.778" layer="97"/>
 </instance>
-<instance part="VPOS_" gate="G$1" x="25.4" y="76.2" smashed="yes">
+<instance part="VPOS" gate="G$1" x="25.4" y="76.2" smashed="yes">
 <attribute name="NAME" x="22.86" y="71.755" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="27.94" y="74.93" size="1.778" layer="97"/>
 </instance>
@@ -1225,7 +1225,7 @@ by exp-lbrs.ulp</description>
 <nets>
 <net name="GND" class="0">
 <segment>
-<pinref part="GND_" gate="G$1" pin="TP"/>
+<pinref part="GND" gate="G$1" pin="TP"/>
 <wire x1="15.24" y1="78.74" x2="15.24" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="15.24" y1="83.82" x2="10.16" y2="83.82" width="0.1524" layer="91"/>
 <label x="10.16" y="83.82" size="1.778" layer="95" rot="R180" xref="yes"/>
@@ -1233,7 +1233,7 @@ by exp-lbrs.ulp</description>
 </net>
 <net name="VPOS" class="0">
 <segment>
-<pinref part="VPOS_" gate="G$1" pin="TP"/>
+<pinref part="VPOS" gate="G$1" pin="TP"/>
 <wire x1="25.4" y1="78.74" x2="25.4" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="25.4" y1="83.82" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
 <label x="30.48" y="83.82" size="1.778" layer="95" xref="yes"/>
