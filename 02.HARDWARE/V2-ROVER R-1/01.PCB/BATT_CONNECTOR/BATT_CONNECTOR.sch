@@ -1366,77 +1366,6 @@ Source: &lt;a href="https://cdn.harwin.com/pdfs/S1761-XXR.pdf"&gt; Datasheet &lt
 </deviceset>
 </devicesets>
 </library>
-<library name="SM2T18A">
-<description>&lt;200 W TVS in STmite&lt;/b&gt;&lt;p&gt;
-&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
-<packages>
-<package name="SM2T18A">
-<description>&lt;b&gt;SM2T18A-1&lt;/b&gt;&lt;br&gt;
-</description>
-<smd name="1" x="-0.698" y="0" dx="2.67" dy="2.54" layer="1"/>
-<smd name="2" x="1.653" y="0" dx="1.27" dy="0.762" layer="1" rot="R90"/>
-<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
-<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
-<wire x1="-1.282" y1="-0.95" x2="0.618" y2="-0.95" width="0.1" layer="51"/>
-<wire x1="0.618" y1="-0.95" x2="0.618" y2="0.95" width="0.1" layer="51"/>
-<wire x1="0.618" y1="0.95" x2="-1.282" y2="0.95" width="0.1" layer="51"/>
-<wire x1="-1.282" y1="0.95" x2="-1.282" y2="-0.95" width="0.1" layer="51"/>
-<wire x1="-3.034" y1="2.27" x2="3.034" y2="2.27" width="0.1" layer="51"/>
-<wire x1="3.034" y1="2.27" x2="3.034" y2="-2.27" width="0.1" layer="51"/>
-<wire x1="3.034" y1="-2.27" x2="-3.034" y2="-2.27" width="0.1" layer="51"/>
-<wire x1="-3.034" y1="-2.27" x2="-3.034" y2="2.27" width="0.1" layer="51"/>
-<wire x1="-2.5" y1="0" x2="-2.5" y2="0" width="0.1" layer="21"/>
-<wire x1="-2.5" y1="0" x2="-2.6" y2="0" width="0.1" layer="21" curve="180"/>
-<wire x1="-2.6" y1="0" x2="-2.6" y2="0" width="0.1" layer="21"/>
-<wire x1="-2.6" y1="0" x2="-2.5" y2="0" width="0.1" layer="21" curve="180"/>
-</package>
-</packages>
-<symbols>
-<symbol name="SM2T18A">
-<wire x1="5.08" y1="0" x2="10.16" y2="2.54" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-2.54" x2="10.16" y2="2.54" width="0.254" layer="94"/>
-<wire x1="10.16" y1="-2.54" x2="5.08" y2="0" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-2.032" x2="6.096" y2="-2.54" width="0.254" layer="94"/>
-<wire x1="5.08" y1="-2.032" x2="5.08" y2="2.032" width="0.254" layer="94"/>
-<wire x1="4.064" y1="2.54" x2="5.08" y2="2.032" width="0.254" layer="94"/>
-<text x="10.16" y="8.89" size="1.778" layer="95">&gt;NAME</text>
-<text x="10.16" y="6.35" size="1.778" layer="96">&gt;VALUE</text>
-<pin name="K" x="0" y="0" visible="pad" length="middle"/>
-<pin name="A" x="15.24" y="0" visible="pad" length="middle" rot="R180"/>
-</symbol>
-</symbols>
-<devicesets>
-<deviceset name="SM2T18A" prefix="D">
-<description>&lt;b&gt;200 W TVS in STmite&lt;/b&gt;&lt;p&gt;
-Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datasheet &lt;/a&gt;</description>
-<gates>
-<gate name="G$1" symbol="SM2T18A" x="0" y="0"/>
-</gates>
-<devices>
-<device name="" package="SM2T18A">
-<connects>
-<connect gate="G$1" pin="A" pad="2"/>
-<connect gate="G$1" pin="K" pad="1"/>
-</connects>
-<technologies>
-<technology name="">
-<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
-<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
-<attribute name="DESCRIPTION" value="200 W TVS in STmite" constant="no"/>
-<attribute name="HEIGHT" value="1.15mm" constant="no"/>
-<attribute name="MANUFACTURER_NAME" value="STMicroelectronics" constant="no"/>
-<attribute name="MANUFACTURER_PART_NUMBER" value="SM2T18A" constant="no"/>
-<attribute name="MOUSER_PART_NUMBER" value="511-SM2T18A" constant="no"/>
-<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/STMicroelectronics/SM2T18A?qs=9NrABl3fj%2FoQ9e7jVf8sKA%3D%3D" constant="no"/>
-<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
-<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
-</technology>
-</technologies>
-</device>
-</devices>
-</deviceset>
-</devicesets>
-</library>
 <library name="SSM3J338R_LF">
 <description>&lt;MOSFET Small-signal MOSFET Vdss= -12V, ID= -6A&lt;/b&gt;&lt;p&gt;
 &lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
@@ -1526,6 +1455,145 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 </deviceset>
 </devicesets>
 </library>
+<library name="SMF16A">
+<description>&lt;ESD Suppressors / TVS Diodes 200W 16V 5% Uni-directional&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="SODFL3618X110N">
+<description>&lt;b&gt;SOD-123FL_2023&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-1.55" y="0" dx="1.22" dy="1.2" layer="1" rot="R90"/>
+<smd name="2" x="1.55" y="0" dx="1.22" dy="1.2" layer="1" rot="R90"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-2.3" y1="1.15" x2="2.3" y2="1.15" width="0.05" layer="51"/>
+<wire x1="2.3" y1="1.15" x2="2.3" y2="-1.15" width="0.05" layer="51"/>
+<wire x1="2.3" y1="-1.15" x2="-2.3" y2="-1.15" width="0.05" layer="51"/>
+<wire x1="-2.3" y1="-1.15" x2="-2.3" y2="1.15" width="0.05" layer="51"/>
+<wire x1="-1.35" y1="0.875" x2="1.35" y2="0.875" width="0.1" layer="51"/>
+<wire x1="1.35" y1="0.875" x2="1.35" y2="-0.875" width="0.1" layer="51"/>
+<wire x1="1.35" y1="-0.875" x2="-1.35" y2="-0.875" width="0.1" layer="51"/>
+<wire x1="-1.35" y1="-0.875" x2="-1.35" y2="0.875" width="0.1" layer="51"/>
+<wire x1="-1.35" y1="0.275" x2="-0.75" y2="0.875" width="0.1" layer="51"/>
+<wire x1="-2.15" y1="0.875" x2="1.35" y2="0.875" width="0.2" layer="21"/>
+<wire x1="-1.35" y1="-0.875" x2="1.35" y2="-0.875" width="0.2" layer="21"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SMF16A">
+<wire x1="5.08" y1="0" x2="10.16" y2="2.54" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-2.54" x2="10.16" y2="2.54" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-2.54" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.032" x2="6.096" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.032" x2="5.08" y2="2.032" width="0.254" layer="94"/>
+<wire x1="4.064" y1="2.54" x2="5.08" y2="2.032" width="0.254" layer="94"/>
+<text x="10.16" y="8.89" size="1.778" layer="95">&gt;NAME</text>
+<text x="10.16" y="6.35" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="K" x="0" y="0" visible="pad" length="middle"/>
+<pin name="A" x="15.24" y="0" visible="pad" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SMF16A" prefix="D">
+<description>&lt;b&gt;ESD Suppressors / TVS Diodes 200W 16V 5% Uni-directional&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.littelfuse.com/~/media/electronics/datasheets/tvs_diodes/littelfuse_tvs_diode_smf_datasheet.pdf.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="SMF16A" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SODFL3618X110N">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="K" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="SMF16A" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="https://www.arrow.com/en/products/smf16a/littelfuse" constant="no"/>
+<attribute name="DESCRIPTION" value="ESD Suppressors / TVS Diodes 200W 16V 5% Uni-directional" constant="no"/>
+<attribute name="HEIGHT" value="1.1mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="LITTELFUSE" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="SMF16A" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="576-SMF16A" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/Littelfuse/SMF16A?qs=IP%252BaFeBnnar8T%2Ffm%252BJ%2Flrw%3D%3D" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+<library name="SM2T18A">
+<description>&lt;200 W TVS in STmite&lt;/b&gt;&lt;p&gt;
+&lt;author&gt;Created by SamacSys&lt;/author&gt;</description>
+<packages>
+<package name="SM2T18A">
+<description>&lt;b&gt;SM2T18A-1&lt;/b&gt;&lt;br&gt;
+</description>
+<smd name="1" x="-0.698" y="0" dx="2.67" dy="2.54" layer="1"/>
+<smd name="2" x="1.653" y="0" dx="1.27" dy="0.762" layer="1" rot="R90"/>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.282" y1="-0.95" x2="0.618" y2="-0.95" width="0.1" layer="51"/>
+<wire x1="0.618" y1="-0.95" x2="0.618" y2="0.95" width="0.1" layer="51"/>
+<wire x1="0.618" y1="0.95" x2="-1.282" y2="0.95" width="0.1" layer="51"/>
+<wire x1="-1.282" y1="0.95" x2="-1.282" y2="-0.95" width="0.1" layer="51"/>
+<wire x1="-3.034" y1="2.27" x2="3.034" y2="2.27" width="0.1" layer="51"/>
+<wire x1="3.034" y1="2.27" x2="3.034" y2="-2.27" width="0.1" layer="51"/>
+<wire x1="3.034" y1="-2.27" x2="-3.034" y2="-2.27" width="0.1" layer="51"/>
+<wire x1="-3.034" y1="-2.27" x2="-3.034" y2="2.27" width="0.1" layer="51"/>
+<wire x1="-2.5" y1="0" x2="-2.5" y2="0" width="0.1" layer="21"/>
+<wire x1="-2.5" y1="0" x2="-2.6" y2="0" width="0.1" layer="21" curve="180"/>
+<wire x1="-2.6" y1="0" x2="-2.6" y2="0" width="0.1" layer="21"/>
+<wire x1="-2.6" y1="0" x2="-2.5" y2="0" width="0.1" layer="21" curve="180"/>
+</package>
+</packages>
+<symbols>
+<symbol name="SM2T18A">
+<wire x1="5.08" y1="0" x2="10.16" y2="2.54" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-2.54" x2="10.16" y2="2.54" width="0.254" layer="94"/>
+<wire x1="10.16" y1="-2.54" x2="5.08" y2="0" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.032" x2="6.096" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-2.032" x2="5.08" y2="2.032" width="0.254" layer="94"/>
+<wire x1="4.064" y1="2.54" x2="5.08" y2="2.032" width="0.254" layer="94"/>
+<text x="10.16" y="8.89" size="1.778" layer="95">&gt;NAME</text>
+<text x="10.16" y="6.35" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="K" x="0" y="0" visible="pad" length="middle"/>
+<pin name="A" x="15.24" y="0" visible="pad" length="middle" rot="R180"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="SM2T18A" prefix="D">
+<description>&lt;b&gt;200 W TVS in STmite&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datasheet &lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="SM2T18A" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="SM2T18A">
+<connects>
+<connect gate="G$1" pin="A" pad="2"/>
+<connect gate="G$1" pin="K" pad="1"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="ARROW_PART_NUMBER" value="" constant="no"/>
+<attribute name="ARROW_PRICE-STOCK" value="" constant="no"/>
+<attribute name="DESCRIPTION" value="200 W TVS in STmite" constant="no"/>
+<attribute name="HEIGHT" value="1.15mm" constant="no"/>
+<attribute name="MANUFACTURER_NAME" value="STMicroelectronics" constant="no"/>
+<attribute name="MANUFACTURER_PART_NUMBER" value="SM2T18A" constant="no"/>
+<attribute name="MOUSER_PART_NUMBER" value="511-SM2T18A" constant="no"/>
+<attribute name="MOUSER_PRICE-STOCK" value="https://www.mouser.co.uk/ProductDetail/STMicroelectronics/SM2T18A?qs=9NrABl3fj%2FoQ9e7jVf8sKA%3D%3D" constant="no"/>
+<attribute name="MOUSER_TESTING_PART_NUMBER" value="" constant="no"/>
+<attribute name="MOUSER_TESTING_PRICE-STOCK" value="" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1548,9 +1616,10 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <part name="SWDIO" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="!RESET" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="TXO" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="D1" library="SM2T18A" deviceset="SM2T18A" device=""/>
+<part name="D1" library="SMF16A" deviceset="SMF16A" device=""/>
 <part name="RXI" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="Q1" library="SSM3J338R_LF" deviceset="SSM3J338R,LF" device="" value="DMG3415U-7"/>
+<part name="D2" library="SM2T18A" deviceset="SM2T18A" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -1605,6 +1674,10 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <attribute name="NAME" x="97.79" y="24.13" size="1.778" layer="95" align="center-left"/>
 <attribute name="VALUE" x="97.79" y="21.59" size="1.778" layer="96" align="center-left"/>
 </instance>
+<instance part="D2" gate="G$1" x="68.58" y="60.96" smashed="yes" rot="R270">
+<attribute name="NAME" x="73.66" y="57.15" size="1.778" layer="95"/>
+<attribute name="VALUE" x="73.66" y="54.61" size="1.778" layer="96"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -1620,6 +1693,9 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <pinref part="D1" gate="G$1" pin="K"/>
 <wire x1="58.42" y1="60.96" x2="21.59" y2="60.96" width="0.1524" layer="91"/>
 <junction x="21.59" y="60.96"/>
+<pinref part="D2" gate="G$1" pin="K"/>
+<wire x1="58.42" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
+<junction x="58.42" y="60.96"/>
 </segment>
 <segment>
 <wire x1="104.14" y1="53.34" x2="91.44" y2="53.34" width="0.1524" layer="91"/>
@@ -1636,6 +1712,9 @@ Source: &lt;a href="http://toshiba.semicon-storage.com/info/docget.jsp?did=30384
 <label x="25.4" y="45.72" size="1.778" layer="95"/>
 <pinref part="D1" gate="G$1" pin="A"/>
 <wire x1="58.42" y1="45.72" x2="21.59" y2="45.72" width="0.1524" layer="91"/>
+<pinref part="D2" gate="G$1" pin="A"/>
+<wire x1="68.58" y1="45.72" x2="58.42" y2="45.72" width="0.1524" layer="91"/>
+<junction x="58.42" y="45.72"/>
 </segment>
 <segment>
 <wire x1="104.14" y1="55.88" x2="91.44" y2="55.88" width="0.1524" layer="91"/>
