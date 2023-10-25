@@ -16,43 +16,43 @@
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
-<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="no" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
-<layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="no" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
-<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="no" active="yes"/>
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
-<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
-<layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
 <plain>
 <polygon width="0.01" layer="29">
-<vertex x="8.08" y="10"/>
-<vertex x="6.47" y="10"/>
+<vertex x="8.12" y="9.96"/>
+<vertex x="6.43" y="9.96"/>
 <vertex x="5.54" y="9.07"/>
 <vertex x="5.54" y="8.17"/>
 <vertex x="6.17" y="7.54"/>
@@ -61,72 +61,41 @@
 <vertex x="8.6" y="9.48"/>
 </polygon>
 <polygon width="0.01" layer="29">
-<vertex x="6.88" y="11.55"/>
-<vertex x="6.57" y="11.24"/>
-<vertex x="6.56" y="11.24"/>
-<vertex x="6.55" y="11.23"/>
-<vertex x="6.55" y="10.6"/>
-<vertex x="7.98" y="10.6"/>
-<vertex x="7.99" y="10.61"/>
-<vertex x="7.99" y="11.44"/>
-<vertex x="7.88" y="11.55"/>
-</polygon>
-<polygon width="0.01" layer="29">
 <vertex x="5.92" y="7.28"/>
 <vertex x="5.14" y="6.5"/>
-<vertex x="5.14" y="5.44"/>
-<vertex x="6.37" y="4.21"/>
-<vertex x="8.29" y="4.21"/>
-<vertex x="8.86" y="4.78"/>
+<vertex x="5.14" y="5.66"/>
+<vertex x="6.24" y="4.56"/>
+<vertex x="8.17" y="4.56"/>
+<vertex x="8.86" y="5.25"/>
 <vertex x="8.86" y="6.54"/>
 <vertex x="8.12" y="7.28"/>
 </polygon>
 <polygon width="0.01" layer="29">
-<vertex x="6.28" y="10.75"/>
 <vertex x="6.28" y="9.79"/>
 <vertex x="6.46" y="9.61"/>
 <vertex x="6.57" y="9.72"/>
 <vertex x="8.38" y="9.72"/>
-<vertex x="8.38" y="11.67"/>
-<vertex x="7.46" y="10.75"/>
 </polygon>
-<text x="8.92" y="2.12" size="0.8128" layer="25" font="vector">ROJO</text>
-<text x="2.02" y="9.26" size="0.8128" layer="25" font="vector">NEGRO</text>
-<text x="2.34" y="3.66" size="0.8128" layer="25" font="vector" rot="R90">Sep2023
-v3</text>
+<text x="10.1" y="9.715" size="0.8128" layer="25" font="vector">ROJO</text>
+<text x="1.57" y="9.715" size="0.8128" layer="25" font="vector">NEGRO</text>
+<text x="8.42" y="1.98" size="0.8128" layer="25" font="vector" rot="R180">Oct2023
+v4</text>
 <polygon width="0.1524" layer="29">
-<vertex x="10.17" y="1.88"/>
-<vertex x="10.17" y="0.91"/>
-<vertex x="9.7" y="0.44"/>
-<vertex x="9.33" y="0.44"/>
-<vertex x="8.95" y="0.06"/>
-<vertex x="5.38" y="0.06"/>
-<vertex x="5.08" y="0.36"/>
-<vertex x="4.74" y="0.36"/>
-<vertex x="4.46" y="0.64"/>
-<vertex x="4.46" y="1.86"/>
-<vertex x="10.07" y="1.86"/>
-<vertex x="10.07" y="1.85"/>
-<vertex x="10.12" y="1.8"/>
-</polygon>
-<polygon width="0.1524" layer="29">
-<vertex x="4.05" y="10.52"/>
-<vertex x="4.05" y="11.49"/>
-<vertex x="4.52" y="11.96"/>
-<vertex x="4.64" y="11.96"/>
-<vertex x="5.02" y="12.34"/>
-<vertex x="8.86" y="12.34"/>
-<vertex x="9.16" y="12.04"/>
-<vertex x="9.48" y="12.04"/>
-<vertex x="9.76" y="11.76"/>
-<vertex x="9.76" y="10.54"/>
-<vertex x="4.15" y="10.54"/>
-<vertex x="4.15" y="10.55"/>
-<vertex x="4.1" y="10.6"/>
+<vertex x="10.34" y="9.253334375"/>
+<vertex x="12.14" y="9.253334375"/>
+<vertex x="12.14" y="3.17"/>
+<vertex x="10.34" y="3.17"/>
 </polygon>
 <wire x1="15.01358125" y1="6.0425" x2="-0.88358125" y2="6.0425" width="0.001" layer="20" curve="182.162234"/>
-<wire x1="-0.88358125" y1="6.0425" x2="15.01358125" y2="6.0425" width="0.001" layer="20" curve="182.162234"/>
 <circle x="7.065" y="6.1925" radius="5.4" width="0.001" layer="21"/>
+<circle x="7.07" y="6.18" radius="7.95" width="0.0762" layer="20"/>
+<polygon width="0.1524" layer="29">
+<vertex x="3.916" y="3.146665625"/>
+<vertex x="1.92" y="3.146665625"/>
+<vertex x="1.92" y="9.29"/>
+<vertex x="3.916" y="9.29"/>
+</polygon>
+<text x="12.33" y="2.57" size="1.4224" layer="22" rot="MR0">ROVER R-1</text>
 </plain>
 <libraries>
 </libraries>
@@ -326,67 +295,60 @@ design rules under a new name.</description>
 <signals>
 <signal name="NEG-">
 <polygon width="0.01" layer="1" isolate="0.254">
-<vertex x="6.26" y="9.77"/>
+<vertex x="6.46" y="9.97"/>
 <vertex x="5.51" y="9.02"/>
 <vertex x="5.51" y="8.19"/>
 <vertex x="6.16" y="7.54"/>
 <vertex x="8.03" y="7.54"/>
 <vertex x="8.59" y="8.1"/>
-<vertex x="8.59" y="9.5"/>
-<vertex x="8.41" y="9.68"/>
-<vertex x="8.41" y="11.31"/>
-<vertex x="6.55" y="11.31"/>
-<vertex x="6.26" y="11.02"/>
+<vertex x="8.59" y="9.51"/>
+<vertex x="8.13" y="9.97"/>
 </polygon>
+<via x="7.07" y="8.65" extent="1-16" drill="1.55"/>
+<wire x1="2.77" y1="10.66" x2="2.77" y2="5.87" width="1.016" layer="1"/>
+<wire x1="9.25" y1="10.55" x2="7.25" y2="8.55" width="1.016" layer="1"/>
+<wire x1="7.25" y1="8.55" x2="7.17" y2="8.55" width="1.016" layer="1"/>
+<wire x1="7.07" y1="8.65" x2="7.17" y2="8.55" width="1.016" layer="1"/>
+<wire x1="9.25" y1="12" x2="9.25" y2="10.55" width="1.016" layer="1"/>
+<wire x1="9.25" y1="12" x2="8.83" y2="12.42" width="1.016" layer="1"/>
+<wire x1="8.83" y1="12.42" x2="4.53" y2="12.42" width="1.016" layer="1"/>
+<wire x1="4.53" y1="12.42" x2="2.77" y2="10.66" width="1.016" layer="1"/>
 <polygon width="0.1524" layer="1">
-<vertex x="4.09" y="10.5"/>
-<vertex x="4.09" y="11.47"/>
-<vertex x="4.56" y="11.94"/>
-<vertex x="4.71" y="11.94"/>
-<vertex x="5.09" y="12.32"/>
-<vertex x="8.78" y="12.32"/>
-<vertex x="9.08" y="12.02"/>
-<vertex x="9.52" y="12.02"/>
-<vertex x="9.8" y="11.74"/>
-<vertex x="9.8" y="10.52"/>
-<vertex x="4.19" y="10.52"/>
-<vertex x="4.19" y="10.53"/>
-<vertex x="4.14" y="10.58"/>
+<vertex x="3.87" y="3.2"/>
+<vertex x="1.96" y="3.2"/>
+<vertex x="1.96" y="9.28"/>
+<vertex x="3.87" y="9.28"/>
 </polygon>
-<via x="7.07" y="8.65" extent="1-16" drill="1.7"/>
-<wire x1="7.07" y1="8.65" x2="7.18" y2="11.55" width="0.1524" layer="1"/>
 </signal>
 <signal name="POS+">
-<polygon width="0.01" layer="1" isolate="0.254">
-<vertex x="8.1" y="7.28"/>
-<vertex x="5.93" y="7.28"/>
-<vertex x="5.16" y="6.51"/>
-<vertex x="5.16" y="5.41"/>
-<vertex x="6.37" y="4.2"/>
-<vertex x="6.37" y="1.15"/>
-<vertex x="6.62" y="0.9"/>
-<vertex x="8.07" y="0.9"/>
-<vertex x="8.3" y="1.13"/>
-<vertex x="8.3" y="4.21"/>
-<vertex x="8.86" y="4.77"/>
-<vertex x="8.86" y="6.52"/>
-</polygon>
 <polygon width="0.1524" layer="1">
-<vertex x="10.17" y="1.88"/>
-<vertex x="10.17" y="0.91"/>
-<vertex x="9.7" y="0.44"/>
-<vertex x="9.46" y="0.44"/>
-<vertex x="9.08" y="0.06"/>
-<vertex x="5.39" y="0.06"/>
-<vertex x="5.09" y="0.36"/>
-<vertex x="4.74" y="0.36"/>
-<vertex x="4.46" y="0.64"/>
-<vertex x="4.46" y="1.85"/>
-<vertex x="10.07" y="1.85"/>
-<vertex x="10.12" y="1.8"/>
+<vertex x="10.28" y="9.26"/>
+<vertex x="12.18" y="9.26"/>
+<vertex x="12.18" y="3.18"/>
+<vertex x="10.31" y="3.18"/>
+<vertex x="10.31" y="9.16"/>
+<vertex x="10.36" y="9.21"/>
 </polygon>
-<via x="7.07" y="6.18" extent="1-16" drill="1.7"/>
-<wire x1="7.07" y1="6.18" x2="7.31" y2="0.53" width="0.1524" layer="1"/>
+<via x="7.07" y="6.18" extent="1-16" drill="1.55"/>
+<polygon width="0.1524" layer="1">
+<vertex x="5.92" y="7.25"/>
+<vertex x="8.13" y="7.25"/>
+<vertex x="8.86" y="6.52"/>
+<vertex x="8.86" y="5.22"/>
+<vertex x="8.18" y="4.54"/>
+<vertex x="6.22" y="4.54"/>
+<vertex x="5.16" y="5.6"/>
+<vertex x="5.16" y="6.47"/>
+<vertex x="5.89" y="7.2"/>
+<vertex x="5.91" y="7.2"/>
+</polygon>
+<wire x1="7.07" y1="6.18" x2="7.07" y2="3.57" width="1.016" layer="1"/>
+<wire x1="7.07" y1="3.57" x2="5.51" y2="2.01" width="1.016" layer="1"/>
+<wire x1="5.51" y1="2.01" x2="5.51" y2="1.04958125" width="1.016" layer="1"/>
+<wire x1="6.50958125" y1="0.05" x2="9.33" y2="0.05" width="1.016" layer="1"/>
+<wire x1="9.33" y1="0.05" x2="11.5" y2="2.22" width="1.016" layer="1"/>
+<wire x1="11.5" y1="2.22" x2="11.5" y2="6.8" width="1.016" layer="1"/>
+<wire x1="5.51" y1="1.04958125" x2="6.50958125" y2="0.05" width="1.016" layer="1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
