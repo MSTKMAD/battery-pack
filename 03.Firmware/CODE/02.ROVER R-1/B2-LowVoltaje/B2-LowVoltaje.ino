@@ -655,6 +655,7 @@ void setup()
         }
         while (1)
         {
+            Watchdog.reset();
         }
     }
 
@@ -812,6 +813,13 @@ void setup()
                         }
 
                         // Voltaje Objetivo
+                        pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        arrancado = true;
+                        Watchdog.reset();
+                        
                     }
                     else
                     {

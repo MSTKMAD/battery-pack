@@ -12,10 +12,10 @@
 #include <SAMD21turboPWM.h>
 
 #ifndef MAX_VOLTAGE
-#define MAX_VOLTAGE 120
+//#define MAX_VOLTAGE 120
 #endif
 #ifndef MIN_VOLTAGE
-#define MIN_VOLTAGE 50
+//#define MIN_VOLTAGE 50
 #endif
 const uint16_t LenDCDCvalues = 121;
 const bool C_BOOST_MODE = true;
@@ -27,7 +27,7 @@ const uint16_t C_DAC_RESOLUTON = 1024;                     // Fondo de escala de
 const uint16_t C_DAC_MIN_COUNT = C_VDAC_MIN * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
 const uint16_t C_DAC_MAX_COUNT = C_VDAC_MAX * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
 
-const uint16_t C_ARRAY_DUTY[] = {62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14};
+const uint16_t C_ARRAY_DUTY[] = {46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 2};
 const uint16_t C_PIN_DAC = A0;
 TurboPWM pwm;
 class dcdc_controler
@@ -62,8 +62,6 @@ public:
     {
         if (volt >= 50)
         {
-            /* code */
-
             if (mode == C_BOOST_MODE)
             {
                 volt += 3;
@@ -74,7 +72,7 @@ public:
         }
         else if (volt < 50)
         {
-            dac_count = C_DAC_MIN_COUNT - (((60 - 50) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 50));
+            dac_count = C_DAC_MIN_COUNT - (((50 - 50) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 50));
             analogWrite(C_PIN_DAC, dac_count);
             duty = C_ARRAY_DUTY[volt - MIN_VOLTAGE];
             pwm.analogWrite(C_PIN_OP_SWITCH, duty * 10); // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
