@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -172,7 +172,7 @@
 <plain>
 <text x="67.91" y="5.05" size="0.6096" layer="26" font="vector" rot="MR180" align="center">BATT_DCDC
 ROVER R-1
-v4-SEP'23</text>
+Nov'23 v5</text>
 <circle x="67.69" y="35.12" radius="0.9" width="0.1" layer="20"/>
 <circle x="58.94" y="10.62" radius="0.9" width="0.1" layer="20"/>
 <polygon width="0.0762" layer="42">

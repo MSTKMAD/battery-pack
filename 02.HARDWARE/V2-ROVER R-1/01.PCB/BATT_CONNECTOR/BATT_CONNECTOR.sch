@@ -1620,6 +1620,10 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <part name="RXI" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="Q1" library="SSM3J338R_LF" deviceset="SSM3J338R,LF" device="" value="DMG3415U-7"/>
 <part name="D2" library="SM2T18A" deviceset="SM2T18A" device=""/>
+<part name="FD_1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
+<part name="FD_2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
+<part name="FD_3" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
+<part name="FD_4" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
 </parts>
 <sheets>
 <sheet>
@@ -1677,6 +1681,22 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <instance part="D2" gate="G$1" x="68.58" y="60.96" smashed="yes" rot="R270">
 <attribute name="NAME" x="73.66" y="57.15" size="1.778" layer="95"/>
 <attribute name="VALUE" x="73.66" y="54.61" size="1.778" layer="96"/>
+</instance>
+<instance part="FD_1" gate="G$1" x="144.78" y="27.94" smashed="yes">
+<attribute name="NAME" x="143.51" y="29.21" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="146.05" y="26.67" size="1.778" layer="97"/>
+</instance>
+<instance part="FD_2" gate="G$1" x="152.4" y="27.94" smashed="yes">
+<attribute name="NAME" x="151.13" y="29.21" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="153.67" y="26.67" size="1.778" layer="97"/>
+</instance>
+<instance part="FD_3" gate="G$1" x="160.02" y="27.94" smashed="yes">
+<attribute name="NAME" x="158.75" y="29.21" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="161.29" y="26.67" size="1.778" layer="97"/>
+</instance>
+<instance part="FD_4" gate="G$1" x="167.64" y="27.94" smashed="yes">
+<attribute name="NAME" x="166.37" y="29.21" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="168.91" y="26.67" size="1.778" layer="97"/>
 </instance>
 </instances>
 <busses>
