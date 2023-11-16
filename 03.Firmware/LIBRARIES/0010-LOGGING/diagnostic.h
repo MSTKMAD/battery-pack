@@ -50,7 +50,7 @@ uint32_t checksum;
  *          * Guardado en EEPROM (X,B,C). X no se guarda, B se guarda en la Bateria y C se guarda en el Chasis.
  *
  */
-bool Init_local_eeprom()
+bool Init_local_eeprom(bool nitro_state_default)
 {
     Watchdog.reset();
     local_eeprom = flash_eeprom.read();
@@ -73,7 +73,7 @@ bool Init_local_eeprom()
         local_eeprom.flag_init = true;
         local_eeprom.flag_corruption = false;
         local_eeprom.flag_naming_enable = false;
-        local_eeprom.nitro_status = false;
+        local_eeprom.nitro_status = nitro_state_default;
         local_eeprom.num_char_in_name = 0;
         local_eeprom.num_wdt_errors = 0;
         for (int16_t i = 0; i < 25; i++)
