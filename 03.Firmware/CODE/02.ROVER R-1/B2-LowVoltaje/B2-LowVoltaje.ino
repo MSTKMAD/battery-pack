@@ -802,10 +802,13 @@ void setup()
                         }
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
-                        if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
-                        {
-                            arrancado = true;
-                        }
+                        arrancado = true;
+                        /*
+                         if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
+                         {
+                            a rrancado = true;
+                         }
+                         */
                     }
                     else
                     {
