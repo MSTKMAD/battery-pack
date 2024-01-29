@@ -1819,7 +1819,10 @@ void setup()
         if (hw_output == C_OUTPUT_ON)
         {
             theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
-            DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
+            if (arrancado == true)
+            {
+                DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
+            }
             if (theory_Vout >= 50)
             {
                 pinMode(C_PIN_OP_SWITCH, OUTPUT);
