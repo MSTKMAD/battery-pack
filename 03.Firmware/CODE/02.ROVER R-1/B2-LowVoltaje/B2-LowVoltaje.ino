@@ -788,6 +788,19 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
+                    pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                    digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
+                    digitalWrite(C_PIN_EN_DCDC, HIGH);   // Desactivacion del EN_DCDC
+                    digitalWrite(C_PIN_OP_SWITCH, LOW);  // Activacion del transistor de salida.
+                    // delay(130);
+                    for (int i = 0; i < 13; i++)
+                    {
+                        delay(10);
+                        Watchdog.reset();
+                    }
+                    DCDC.SetVoltage(50, C_BOOST_MODE);
+                    digitalWrite(C_PIN_EN_DCDC, LOW); // Activacion del EN_DCDC
+
                     if (nitro_status == false)
                     {
                         if (theory_Vout >= 50)
@@ -1822,11 +1835,11 @@ void setup()
             if (arrancado == true)
             {
                 DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-            }
-            if (theory_Vout >= 50)
-            {
-                pinMode(C_PIN_OP_SWITCH, OUTPUT);
-                digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                if (theory_Vout >= 50)
+                {
+                    pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                }
             }
 
             LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
