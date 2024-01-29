@@ -284,8 +284,8 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
-    //pinMode(C_PIN_TEST, OUTPUT);
-    //digitalWrite(C_PIN_TEST, LOW);
+    // pinMode(C_PIN_TEST, OUTPUT);
+    // digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
     Watchdog.enable(100);
@@ -340,7 +340,7 @@ void setup()
         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
         InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
         initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT))                   // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -792,8 +792,23 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
+                   
+                    for (int j = 0; j < 130; j++)
+                    {
+                        delay(1);
+                        Watchdog.reset();
+                    }
+                    digitalWrite(C_PIN_EN_DCDC, LOW);
+
                     if (nitro_status == false)
                     {
+                        // Rampa de subida
+                         for (int i = 0; i < 10; i++)
+                        {
+                            Watchdog.reset();
+                            DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_BOOST_MODE);
+                            delay(100 / 10);
+                        }
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
                         if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
@@ -804,10 +819,10 @@ void setup()
                     else
                     {
                         // planicie a 5v
-                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        /*DCDC.SetVoltage(50, C_NON_BOOST_MODE);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
                         Watchdog.reset();
-                        delay(50);
+                        delay(8);*/
                         int tiempo_arrancado = 200; // ms
                         int tiempo_bajada = 60;     // ms
                         int steps_subida = 10;
@@ -860,7 +875,7 @@ void setup()
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
                         {
-                            PostMortemLog(sample_POut, capacity, sample_VOut/100, 0);
+                            PostMortemLog(sample_POut, capacity, sample_VOut / 100, 0);
                             LogDiagnosticData(sample_POut, C_POWER_USE);
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;

@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 201
+#define INTEGRATED_VERSION 202
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
@@ -336,7 +336,7 @@ void setup()
         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
         InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
         initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT))                   // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -790,6 +790,16 @@ void setup()
                 {
                     if (nitro_status == false)
                     {
+                        if (theory_Vout >= 50)
+                        {
+                            // Rampa de subida
+                            for (int i = 0; i < 10; i++)
+                            {
+                                Watchdog.reset();
+                                DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_BOOST_MODE);
+                                delay(100 / 10);
+                            }
+                        }
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
                         if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
@@ -1804,7 +1814,7 @@ void setup()
             }
         }
         if (hw_output == C_OUTPUT_ON)
-        {            
+        {
             theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
             DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
             if (theory_Vout >= 50)
