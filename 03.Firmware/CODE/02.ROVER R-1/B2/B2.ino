@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 120
+#define INTEGRATED_VERSION 122
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
@@ -182,7 +182,6 @@ MilliTimer timer_test_en_dcdc;           // Timer que durante el modo testeo inv
 MilliTimer timer_test_dac;               // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;           // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;             // Timer que controla el tiempo para entrar en el menu de configuracion.
-MilliTimer timer_gap_arranque_nitro_off; // Timer que controla el tiempo que se deja de Gap cuando el nitro esta desactivado durante el arranque;
 
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
@@ -1800,9 +1799,12 @@ void setup()
         if (hw_output == C_OUTPUT_ON)
         {
             theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
-            DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
-            digitalWrite(C_PIN_OP_SWITCH, LOW);                             // Activacion del transistor de salida
-            LedWork(C_OUTPUT_ON);                                           // se enciende el Led que indica que la salida esta activa
+            if (arrancado == true)
+            {
+                DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
+                digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
+            }
+            LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
         }
         else if (hw_output == C_OUTPUT_OFF)
         {
