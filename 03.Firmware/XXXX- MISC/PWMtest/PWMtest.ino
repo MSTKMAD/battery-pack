@@ -1,11 +1,13 @@
 // Note: Uses pin 13 as the LED pin; may need changing for other boards
 
 #include "MilliTimer.h"
-#include <SAMD21turboPWM.h>
+#include <DCDC.h>
+//#include <SAMD21turboPWM.h>
 #include <Dpad.h>
 #include <display.h>
 
-TurboPWM pwm;
+dcdc_controler DCDC(11);
+//TurboPWM pwm;
 int16_t button_event;
 
 int16_t duty = 500;
@@ -23,6 +25,7 @@ void setup()
   pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
   pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
   initDisplay();
+  DCDC.SetVoltage(50, C_NON_BOOST_MODE);
 }
 
 void loop()
@@ -37,7 +40,7 @@ void loop()
   {
     duty += 10;
   }
-  duty = constrain(duty, 50, 950);
+  duty = constrain(duty, 20, 980);
   pwm.analogWrite(13, duty); // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
-  DisplayCap(duty/10);
+  DisplayCap(duty / 10);
 }

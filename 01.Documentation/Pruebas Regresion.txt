@@ -1,0 +1,18 @@
+Escalera de carga al meter la bateria
+Pulsacion corta para subir voltaje
+Pulsacion corta para bajar voltaje
+Pulsacion larga para subir voltaje
+Pulsacion larga para bajar voltaje
+Pulsacion larga para encender la bateria.
+Funcionamiento del Naming
+Visulaizacion de la bateria.
+Dar salida con el boton central.
+Apagado de la bateria
+Entrada al menu
+Configuracion del Nitro
+Rango completo del voltaje
+Entrada Modo Diagnostico
+UnderVoltageInput
+OverCurrent
+OverPower
+UnderVoltageOutput

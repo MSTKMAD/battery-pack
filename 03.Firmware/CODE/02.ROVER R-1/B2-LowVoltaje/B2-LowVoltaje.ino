@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 201
+#define INTEGRATED_VERSION 202
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
@@ -160,29 +160,28 @@ HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
 dcdc_controler DCDC(C_PIN_EN_DCDC);
 
 //--------------------------------------- Timers variables-------------------------------------
-MilliTimer protection_event_delay;       // Delay impuesto entre detecciones de erroes.
-MilliTimer timer_sec_count;              // Timer contador de segundos.
-MilliTimer timer_display_capacity;       // Timer para el muestreo de la capacidad en el arranque.
-MilliTimer timer_recover_voltage;        // Timer que controla el tiempo que se deja para que la bateria se recupere antes de realizar una medicion de capacidad.
-MilliTimer timer_wait_sleep;             // Timer que controla el tiempo entre los checkeos del boton central durante el protocolo de apagado.
-MilliTimer timer_irq_button_center;      // Timer que controla el tiempo tras el cual, si no hay eventos que saquen al sistema de SLEEP, el sistema vuelve al estado de bajo consumo.
-MilliTimer timer_idle;                   // Timer que controla el tiempo de inactividad sobre el sistema.
-MilliTimer timer_display_error;          // Timer que controla el tiempo que se muestra por pantalla el aviso de error.
-MilliTimer timer_init_screen;            // Timer que controla el tiempo que se muestra el logo durante el encendido.
-MilliTimer timer_end_screen;             // Timer que controla el tiempo que se muestra la pantalla de apagado.
-MilliTimer timer_refresh_screen;         // Timer que control el tiempo tras el cual se refresca la infomracion de la pantalla durante el estadado de Run y Stop.
-MilliTimer timer_log_sec;                // Timer que cuenta hasta un seg para el logeo temporal.
-MilliTimer timer_log_active;             // Timer que controla el intervalo de tiempo que tiene que pasar el sistema en el estado de RUN para realizar un log de ciertas variables de estado.
-MilliTimer timer_check_diagnostic;       // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en modo diagnostico.
-MilliTimer timer_waiting_naming;         // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
-MilliTimer timer_active_naming;          // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
-MilliTimer timer_blink_error;            // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
-MilliTimer timer_test_op_switch;         // Timer que durante el modo testeo invierte la señal de op switch.
-MilliTimer timer_test_en_dcdc;           // Timer que durante el modo testeo invierte la señal de en dcdc.
-MilliTimer timer_test_dac;               // Timer que durante el modo testeo invierte la señal de en dac.
-MilliTimer timer_test_sensing;           // Timer que controla el periodo de muestreo durante el modo de test.
-MilliTimer timer_enter_menu;             // Timer que controla el tiempo para entrar en el menu de configuracion.
-MilliTimer timer_gap_arranque_nitro_off; // Timer que controla el tiempo que se deja de Gap cuando el nitro esta desactivado durante el arranque;
+MilliTimer protection_event_delay;  // Delay impuesto entre detecciones de erroes.
+MilliTimer timer_sec_count;         // Timer contador de segundos.
+MilliTimer timer_display_capacity;  // Timer para el muestreo de la capacidad en el arranque.
+MilliTimer timer_recover_voltage;   // Timer que controla el tiempo que se deja para que la bateria se recupere antes de realizar una medicion de capacidad.
+MilliTimer timer_wait_sleep;        // Timer que controla el tiempo entre los checkeos del boton central durante el protocolo de apagado.
+MilliTimer timer_irq_button_center; // Timer que controla el tiempo tras el cual, si no hay eventos que saquen al sistema de SLEEP, el sistema vuelve al estado de bajo consumo.
+MilliTimer timer_idle;              // Timer que controla el tiempo de inactividad sobre el sistema.
+MilliTimer timer_display_error;     // Timer que controla el tiempo que se muestra por pantalla el aviso de error.
+MilliTimer timer_init_screen;       // Timer que controla el tiempo que se muestra el logo durante el encendido.
+MilliTimer timer_end_screen;        // Timer que controla el tiempo que se muestra la pantalla de apagado.
+MilliTimer timer_refresh_screen;    // Timer que control el tiempo tras el cual se refresca la infomracion de la pantalla durante el estadado de Run y Stop.
+MilliTimer timer_log_sec;           // Timer que cuenta hasta un seg para el logeo temporal.
+MilliTimer timer_log_active;        // Timer que controla el intervalo de tiempo que tiene que pasar el sistema en el estado de RUN para realizar un log de ciertas variables de estado.
+MilliTimer timer_check_diagnostic;  // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en modo diagnostico.
+MilliTimer timer_waiting_naming;    // Timer que controla la ventana de tiempo durante la que se comprueba los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_active_naming;     // Timer que controla el tiempo que tiene que manterse activo los eventos necesarios para entrar en la configuracion del naming.
+MilliTimer timer_blink_error;       // Periodo del parpadeo de la barra de potencia durante el aviso de un error.
+MilliTimer timer_test_op_switch;    // Timer que durante el modo testeo invierte la señal de op switch.
+MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte la señal de en dcdc.
+MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
+MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
+MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -336,7 +335,7 @@ void setup()
         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
         InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
         initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT))                   // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -790,12 +789,19 @@ void setup()
                 {
                     if (nitro_status == false)
                     {
+                        if (theory_Vout >= 50)
+                        {
+                            // Rampa de subida
+                            for (int i = 0; i <= 10; i++)
+                            {
+                                Watchdog.reset();
+                                DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
+                                delay(100 / 10);
+                            }
+                        }
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
-                        if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
-                        {
-                            arrancado = true;
-                        }
+                        arrancado = true;
                     }
                     else
                     {
@@ -1696,10 +1702,6 @@ void setup()
                     /* Output */
                     sw_output = C_OUTPUT_ON;
                     user_output = C_OUTPUT_ON; // Activacion de la salida.
-                    if (nitro_status == false)
-                    {
-                        timer_gap_arranque_nitro_off.set(C_TIME_GAP_ARRANQUE_NITRO_OFF);
-                    }
                     /* Clear Flags */
                     flag_enable_off = false;
 /* Change-State Effects */
@@ -1804,13 +1806,16 @@ void setup()
             }
         }
         if (hw_output == C_OUTPUT_ON)
-        {            
+        {
             theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
-            DCDC.SetVoltage(theory_Vout, output_mode);                      // Fijado de la tension de salida
-            if (theory_Vout >= 50)
+            if (arrancado == true)
             {
-                pinMode(C_PIN_OP_SWITCH, OUTPUT);
-                digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
+                if (theory_Vout >= 50)
+                {
+                    pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                }
             }
 
             LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
