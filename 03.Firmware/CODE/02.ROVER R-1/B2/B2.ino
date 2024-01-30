@@ -792,37 +792,30 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-                   
-                    for (int j = 0; j < 130; j++)
-                    {
-                        delay(1);
-                        Watchdog.reset();
-                    }
-                    digitalWrite(C_PIN_EN_DCDC, LOW);
 
                     if (nitro_status == false)
                     {
-                        // Rampa de subida
-                         for (int i = 0; i < 10; i++)
+                        if (theory_Vout >= 50)
                         {
-                            Watchdog.reset();
-                            DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_BOOST_MODE);
-                            delay(100 / 10);
+                            // Rampa de subida
+                            for (int i = 0; i <= 10; i++)
+                            {
+                                Watchdog.reset();
+                                DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
+                                delay(100 / 10);
+                            }
                         }
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
-                        if (timer_gap_arranque_nitro_off.poll() != C_TIMER_NOT_EXPIRED)
-                        {
-                            arrancado = true;
-                        }
+                        arrancado = true;
                     }
                     else
                     {
                         // planicie a 5v
-                        /*DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
                         Watchdog.reset();
-                        delay(8);*/
+                        delay(50);
                         int tiempo_arrancado = 200; // ms
                         int tiempo_bajada = 60;     // ms
                         int steps_subida = 10;
