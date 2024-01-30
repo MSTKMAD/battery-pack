@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.05" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
@@ -247,6 +247,8 @@
 <sheets>
 <sheet>
 <plain>
+<text x="101.6" y="123.19" size="5.08" layer="91">FLEX_11
+v1_Ene'23</text>
 </plain>
 <instances>
 <instance part="K3" gate="G$1" x="121.92" y="96.52" smashed="yes" rot="MR0">
@@ -428,4 +430,10 @@
 </sheets>
 </schematic>
 </drawing>
+<compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
+</compatibility>
 </eagle>
