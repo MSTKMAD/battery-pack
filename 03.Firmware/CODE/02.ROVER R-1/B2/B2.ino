@@ -791,13 +791,13 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-
                     if (nitro_status == false)
                     {
+                        digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
                         if (theory_Vout >= 50)
                         {
                             // Rampa de subida
-                            for (int i = 0; i <= 10; i++)
+                            for (int i = 0; i <= 15; i++)
                             {
                                 Watchdog.reset();
                                 DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
