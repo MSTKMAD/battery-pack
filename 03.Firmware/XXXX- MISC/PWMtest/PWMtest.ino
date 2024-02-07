@@ -1,13 +1,15 @@
 // Note: Uses pin 13 as the LED pin; may need changing for other boards
 
 #include "MilliTimer.h"
+const uint16_t MIN_VOLTAGE = 25;
+const uint16_t C_PIN_OP_SWITCH = 13;
 #include <DCDC.h>
-//#include <SAMD21turboPWM.h>
+// #include <SAMD21turboPWM.h>
 #include <Dpad.h>
 #include <display.h>
 
 dcdc_controler DCDC(11);
-//TurboPWM pwm;
+// TurboPWM pwm;
 int16_t button_event;
 
 int16_t duty = 500;
