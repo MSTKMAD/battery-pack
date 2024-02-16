@@ -154,8 +154,8 @@
 <vertex x="40.857" y="20.693"/>
 <vertex x="33.933" y="20.693"/>
 </polygon>
-<text x="31.537" y="19.061" size="1.016" layer="21" font="vector">GND</text>
-<text x="37.645" y="24.519" size="1.016" layer="21" font="vector">VCC</text>
+<text x="31.916828125" y="18.8190375" size="1.016" layer="21" font="vector" rot="R22">GND</text>
+<text x="38.707" y="24.488" size="1.016" layer="21" font="vector">VCC</text>
 <text x="40.041" y="21.067" size="1.016" layer="22" font="vector" rot="MR0">Clipcordv2
 v1-Feb24</text>
 <wire x1="24.05" y1="17.977" x2="24.05" y2="15.727" width="0.001" layer="20"/>
@@ -240,6 +240,7 @@ v1-Feb24</text>
 <vertex x="46.859" y="20.675"/>
 <vertex x="46.859" y="25.569"/>
 </polygon>
+<text x="33.055" y="24.496" size="0.7" layer="21" font="vector">v2.Feb24</text>
 </plain>
 <libraries>
 </libraries>
