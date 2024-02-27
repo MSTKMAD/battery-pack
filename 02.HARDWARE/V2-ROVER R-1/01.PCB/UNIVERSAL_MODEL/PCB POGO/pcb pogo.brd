@@ -8,7 +8,7 @@
 </settings>
 <grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mm"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
 <layer number="15" name="Route15" color="23" fill="1" visible="no" active="no"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
@@ -76,10 +76,10 @@
 <vertex x="6.57" y="9.72"/>
 <vertex x="8.38" y="9.72"/>
 </polygon>
-<text x="10.1" y="9.715" size="0.8128" layer="25" font="vector">ROJO</text>
-<text x="1.57" y="9.715" size="0.8128" layer="25" font="vector">NEGRO</text>
-<text x="8.42" y="1.98" size="0.8128" layer="25" font="vector" rot="R180">Oct2023
-v4</text>
+<text x="9.81" y="9.185" size="0.8128" layer="25" font="vector">ROJO</text>
+<text x="2.18" y="9.745" size="0.8128" layer="25" font="vector">NEGRO</text>
+<text x="9.07" y="2.5" size="0.8128" layer="25" font="vector" rot="R180">Feb2024
+v5</text>
 <polygon width="0.1524" layer="29">
 <vertex x="10.34" y="9.253334375"/>
 <vertex x="12.14" y="9.253334375"/>
@@ -87,8 +87,8 @@ v4</text>
 <vertex x="10.34" y="3.17"/>
 </polygon>
 <wire x1="15.01358125" y1="6.0425" x2="-0.88358125" y2="6.0425" width="0.001" layer="20" curve="182.162234"/>
-<circle x="7.065" y="6.1925" radius="5.4" width="0.001" layer="21"/>
-<circle x="7.07" y="6.18" radius="7.95" width="0.0762" layer="20"/>
+<circle x="7.065" y="6.1925" radius="7" width="0.001" layer="21"/>
+<circle x="7.07" y="6.18" radius="7.45" width="0.00761875" layer="20"/>
 <polygon width="0.1524" layer="29">
 <vertex x="3.916" y="3.146665625"/>
 <vertex x="1.92" y="3.146665625"/>
@@ -295,60 +295,73 @@ design rules under a new name.</description>
 <signals>
 <signal name="NEG-">
 <polygon width="0.01" layer="1" isolate="0.254">
-<vertex x="6.46" y="9.97"/>
-<vertex x="5.51" y="9.02"/>
-<vertex x="5.51" y="8.19"/>
-<vertex x="6.16" y="7.54"/>
-<vertex x="8.03" y="7.54"/>
+<vertex x="6.3" y="10.06"/>
+<vertex x="5.51" y="9.27"/>
+<vertex x="5.51" y="8.26"/>
+<vertex x="6.17" y="7.6"/>
+<vertex x="8.09" y="7.6"/>
 <vertex x="8.59" y="8.1"/>
 <vertex x="8.59" y="9.51"/>
-<vertex x="8.13" y="9.97"/>
+<vertex x="8.04" y="10.06"/>
 </polygon>
-<via x="7.07" y="8.65" extent="1-16" drill="1.55"/>
-<wire x1="2.77" y1="10.66" x2="2.77" y2="5.87" width="1.016" layer="1"/>
-<wire x1="9.25" y1="10.55" x2="7.25" y2="8.55" width="1.016" layer="1"/>
-<wire x1="7.25" y1="8.55" x2="7.17" y2="8.55" width="1.016" layer="1"/>
-<wire x1="7.07" y1="8.65" x2="7.17" y2="8.55" width="1.016" layer="1"/>
-<wire x1="9.25" y1="12" x2="9.25" y2="10.55" width="1.016" layer="1"/>
-<wire x1="9.25" y1="12" x2="8.83" y2="12.42" width="1.016" layer="1"/>
-<wire x1="8.83" y1="12.42" x2="4.53" y2="12.42" width="1.016" layer="1"/>
-<wire x1="4.53" y1="12.42" x2="2.77" y2="10.66" width="1.016" layer="1"/>
+<via x="7.07" y="8.65" extent="1-16" drill="1.5"/>
+<wire x1="3.14" y1="9.46" x2="3.14" y2="5.87" width="1.016" layer="1"/>
+<wire x1="7.09" y1="10.94" x2="7.09" y2="8.67" width="1.016" layer="1"/>
+<wire x1="7.07" y1="8.65" x2="7.09" y2="8.67" width="1.016" layer="1"/>
+<wire x1="7.09" y1="10.94" x2="4.62" y2="10.94" width="1.016" layer="1"/>
+<wire x1="4.62" y1="10.94" x2="3.14" y2="9.46" width="1.016" layer="1"/>
 <polygon width="0.1524" layer="1">
-<vertex x="3.87" y="3.2"/>
-<vertex x="1.96" y="3.2"/>
-<vertex x="1.96" y="9.28"/>
-<vertex x="3.87" y="9.28"/>
+<vertex x="4.18" y="3.62"/>
+<vertex x="2.45" y="3.62"/>
+<vertex x="2.45" y="9.28"/>
+<vertex x="4.18" y="9.28"/>
+</polygon>
+<polygon width="0.0762" layer="16">
+<vertex x="3.9" y="10.13"/>
+<vertex x="9.66" y="10.13"/>
+<vertex x="10.19" y="9.6"/>
+<vertex x="10.19" y="8.04"/>
+<vertex x="9.85" y="7.7"/>
+<vertex x="3.71" y="7.7"/>
+<vertex x="3.46" y="7.95"/>
+<vertex x="3.46" y="9.69"/>
 </polygon>
 </signal>
 <signal name="POS+">
 <polygon width="0.1524" layer="1">
-<vertex x="10.28" y="9.26"/>
-<vertex x="12.18" y="9.26"/>
-<vertex x="12.18" y="3.18"/>
-<vertex x="10.31" y="3.18"/>
-<vertex x="10.31" y="9.16"/>
-<vertex x="10.36" y="9.21"/>
+<vertex x="10.03" y="8.78"/>
+<vertex x="11.82" y="8.78"/>
+<vertex x="11.82" y="3.18"/>
+<vertex x="10.03" y="3.18"/>
 </polygon>
-<via x="7.07" y="6.18" extent="1-16" drill="1.55"/>
-<polygon width="0.1524" layer="1">
-<vertex x="5.92" y="7.25"/>
-<vertex x="8.13" y="7.25"/>
-<vertex x="8.86" y="6.52"/>
-<vertex x="8.86" y="5.22"/>
+<via x="7.07" y="6.18" extent="1-16" drill="1.5"/>
+<polygon width="0.0762" layer="1">
+<vertex x="5.89" y="7.2"/>
+<vertex x="8.18" y="7.2"/>
+<vertex x="8.72" y="6.66"/>
+<vertex x="8.72" y="5.08"/>
 <vertex x="8.18" y="4.54"/>
 <vertex x="6.22" y="4.54"/>
-<vertex x="5.16" y="5.6"/>
-<vertex x="5.16" y="6.47"/>
-<vertex x="5.89" y="7.2"/>
-<vertex x="5.91" y="7.2"/>
+<vertex x="5.32" y="5.44"/>
+<vertex x="5.32" y="6.63"/>
 </polygon>
-<wire x1="7.07" y1="6.18" x2="7.07" y2="3.57" width="1.016" layer="1"/>
-<wire x1="7.07" y1="3.57" x2="5.51" y2="2.01" width="1.016" layer="1"/>
-<wire x1="5.51" y1="2.01" x2="5.51" y2="1.04958125" width="1.016" layer="1"/>
-<wire x1="6.50958125" y1="0.05" x2="9.33" y2="0.05" width="1.016" layer="1"/>
-<wire x1="9.33" y1="0.05" x2="11.5" y2="2.22" width="1.016" layer="1"/>
-<wire x1="11.5" y1="2.22" x2="11.5" y2="6.8" width="1.016" layer="1"/>
-<wire x1="5.51" y1="1.04958125" x2="6.50958125" y2="0.05" width="1.016" layer="1"/>
+<wire x1="7.07" y1="6.18" x2="7.07" y2="2.91" width="1.016" layer="1"/>
+<wire x1="7.07" y1="2.91" x2="7.06" y2="2.9" width="1.016" layer="1"/>
+<wire x1="7.06" y1="2.9" x2="7.06" y2="2.84958125" width="1.016" layer="1"/>
+<wire x1="7.75958125" y1="2.15" x2="8.97" y2="2.15" width="1.016" layer="1"/>
+<wire x1="8.97" y1="2.15" x2="11.2" y2="4.38" width="1.016" layer="1"/>
+<wire x1="11.2" y1="4.38" x2="11.2" y2="7.07" width="1.016" layer="1"/>
+<wire x1="7.06" y1="2.84958125" x2="7.75958125" y2="2.15" width="1.016" layer="1"/>
+<polygon width="0.0762" layer="16">
+<vertex x="3.77" y="7.12"/>
+<vertex x="9.95" y="7.12"/>
+<vertex x="10.23" y="6.84"/>
+<vertex x="10.23" y="5.31"/>
+<vertex x="9.87" y="4.95"/>
+<vertex x="3.95" y="4.95"/>
+<vertex x="3.36" y="5.54"/>
+<vertex x="3.36" y="6.71"/>
+</polygon>
 </signal>
 </signals>
 <mfgpreviewcolors>
