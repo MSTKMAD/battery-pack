@@ -386,3 +386,7 @@ XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/LIBRARIES/Arduino_SAMD21_turbo_PWM-master/examples/blink/build/
 
 03.Firmware/XXXX- MISC/PWMtest/build/
+
+03.Firmware/TEST/
+
+03.Firmware/CODE/02.ROVER R-1/B2-PMU/build/
