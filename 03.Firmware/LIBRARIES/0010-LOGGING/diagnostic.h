@@ -126,9 +126,9 @@ bool Init_local_eeprom(bool nitro_state_default)
         }
         flash_eeprom.write(local_eeprom);
         Watchdog.reset();
-#ifdef SERIAL_DEBUG
+
         Serial5.println("INICIALIZADA");
-#endif
+
         return 1;
     }
     else
@@ -139,7 +139,7 @@ bool Init_local_eeprom(bool nitro_state_default)
         }
         else
         {
-#ifdef SERIAL_DEBUG
+
             Serial5.println("EEPROM Inicializada.");
             Serial5.println("Volcando EEPROM.");
             Serial5.println(local_eeprom.serial_number);
@@ -175,7 +175,7 @@ bool Init_local_eeprom(bool nitro_state_default)
                 Serial5.print(",");
             }
             Serial5.println();
-#endif
+
             uint32_t checksum;
             checksum = 0;
             checksum += local_eeprom.serial_number;
