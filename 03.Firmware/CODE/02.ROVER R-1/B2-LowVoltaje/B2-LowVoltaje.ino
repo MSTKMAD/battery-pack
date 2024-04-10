@@ -282,7 +282,9 @@ void setup()
 {
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
+#ifdef WATCHDOG_ENABLE
     Watchdog.enable(100);
+#endif
     Wire.begin();
 
     //-------------------------- Reset Cause---------------------------
@@ -355,11 +357,15 @@ void setup()
             timer_test_sensing.set(1000);
             while (test_mode_activate)
             {
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
                 sample_IOut = boost_check.getSample(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;               // Lectura de la Corriente de Salida
                 sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
 
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
 
                 if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
                 {
@@ -436,11 +442,15 @@ void setup()
             digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
             DCDC.SetVoltage(50, C_NON_BOOST_MODE);
             SaveEeprom();
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
 
-        //------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
+//------------------------ CALCULO INICIAL CAPACIDAD ----------------------------
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
         for (int i = 0; i <= capacity; i += 1)
         {
@@ -448,34 +458,46 @@ void setup()
             for (int j = 0; j < 100 / i; j++)
             {
                 delay(1);
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
             }
         }
         // delay 1s
         for (int i = 0; i < 100; i++)
         {
             delay(10);
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
 
         SwitchScreenOff();
         if (ReadDiagnosticData(C_FLAG_ENABLE_NAME) == true)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
             ShowName();
 
             // delay(2000);
             for (int i = 0; i < 200; i++)
             {
                 delay(10);
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
             }
         }
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         SwitchScreenOff();
         playSound(C_SOUND_UP);
-        //------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
+//------------------------ SETEO DEL VOLTAJE ANTERIOR----------------------------
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         theory_Vout = ReadDiagnosticData(C_THEORY_VOLTAGE);
         if (theory_Vout == 0)
         {
@@ -495,7 +517,9 @@ void setup()
 
         while (flag_waiting_naming == true)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
             if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
             {
                 if (flag_naming_active == false) // Configuracio NO activada
@@ -532,13 +556,17 @@ void setup()
                     OLED_display.drawRect(0, 16, 64, 16, WHITE);
                     for (uint16_t i = 0; i <= 100; i++)
                     {
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                         OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
 
                         for (int j = 0; j < 5; j++)
                         {
                             delay(10);
+#ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
+#endif
                         }
                         OLED_display.display();
                     }
@@ -547,7 +575,9 @@ void setup()
                     for (int i = 0; i < 200; i++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                     // Apagado Dramatico!
                     SwitchScreenOff();
@@ -555,7 +585,9 @@ void setup()
                     for (int i = 0; i < 200; i++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                     // Pantalla de Presentacion
 #ifdef SERIAL_DEBUG
@@ -567,38 +599,50 @@ void setup()
                     OLED_display.print("NICKNAME");
                     OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     OLED_display.display();
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                     playSound(C_SOUND_CHARGE_IN);
                     // delay(4000);
                     for (int i = 0; i < 400; i++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
 #ifdef SERIAL_DEBUG
                     Serial5.println("Configuracion Naming");
 #endif
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                     // Inicio de la configuracion
                     Config_Naming();
 
                     // Guardado en EEPROM
                     LogDiagnosticData(true, C_FLAG_ENABLE_NAME);
                     SwitchScreenOff();
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                     // RESETs Flags
                     flag_waiting_naming = false;
                 }
             }
             else if (timer_waiting_naming.poll() != C_TIMER_NOT_EXPIRED) // La ventana de tiempo cumple sin que se active la configuracion
             {
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
                 flag_waiting_naming = false;
                 sw_status = C_SW_ST_SLEEP;
             }
             else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
             {
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
                 flag_waiting_naming = false;
                 sw_status = C_SW_ST_START_UP;
 
@@ -620,7 +664,9 @@ void setup()
                 DisplayLogo();
                 timer_init_screen.set(C_TIME_INIT_SCREEN);
                 flag_first_sleep = false;
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
             }
 
             button_event = ReadDirPad(); // Lectura de la botonera.
@@ -667,7 +713,9 @@ void setup()
         }
         while (1)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
     }
 
@@ -676,7 +724,9 @@ void setup()
     /*===============================================================================================================================================*/
     while (1)
     {
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         t1 = micros(); // Control del periodo del ciclo de trabajpo.
 #ifdef SERIAL_DEBUG
         // Serial5.println(sw_status);
@@ -734,7 +784,9 @@ void setup()
             {
                 // t1_cap = micros();
                 flag_display_capacity_init = true;
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
                 capacity = CapacityCheck(C_PIN_V_IN, &flag_low_battery, &flag_empty_battery);
                 DisplayCap(capacity); // Actualizacion de la pantalla con la Capacidad
                 timer_display_capacity.set(1000);
@@ -794,7 +846,9 @@ void setup()
                             // Rampa de subida
                             for (int i = 0; i <= 15; i++)
                             {
+#ifdef WATCHDOG_ENABLE
                                 Watchdog.reset();
+#endif
                                 DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
                                 delay(100 / 10);
                             }
@@ -810,7 +864,9 @@ void setup()
                             // planicie a 5v
                             DCDC.SetVoltage(50, C_NON_BOOST_MODE);
                             digitalWrite(C_PIN_OP_SWITCH, LOW);
+#ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
+#endif
                             delay(50);
                             int tiempo_arrancado = 200; // ms
                             int tiempo_bajada = 60;     // ms
@@ -821,7 +877,9 @@ void setup()
                             // Rampa de subida
                             for (int i = 0; i < steps_subida; i++)
                             {
+#ifdef WATCHDOG_ENABLE
                                 Watchdog.reset();
+#endif
                                 DCDC.SetVoltage((theory_Vout + increment_nitro - 50) / steps_subida * i + 50, C_BOOST_MODE);
                                 sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                                 boost_check.check(sample_raw_io);
@@ -835,7 +893,9 @@ void setup()
                             // Rampa de Bajada
                             for (int i = steps_bajada; i >= 0; i--)
                             {
+#ifdef WATCHDOG_ENABLE
                                 Watchdog.reset();
+#endif
                                 DCDC.SetVoltage((theory_Vout + increment_nitro - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
                                 sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                                 boost_check.check(sample_raw_io);
@@ -856,12 +916,16 @@ void setup()
                             for (int i = 0; i < 20; i++)
                             {
                                 delay(10);
+#ifdef WATCHDOG_ENABLE
                                 Watchdog.reset();
+#endif
                             }
                             DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                             output_mode = C_BOOST_MODE;
                             arrancado = true;
+#ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
+#endif
                         }
                     }
                 }
@@ -978,7 +1042,9 @@ void setup()
                             for (int i = 0; i < 75; i++)
                             {
                                 delay(10);
+#ifdef WATCHDOG_ENABLE
                                 Watchdog.reset();
+#endif
                             }
 
                             trigger_Display_volt = true;
@@ -1008,17 +1074,21 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
-                // Chequeo de entrada al menu
-                Watchdog.reset(); /**/
+// Chequeo de entrada al menu
+#ifdef WATCHDOG_ENABLE
+                Watchdog.reset();
+#endif /**/
                 if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                 {
                     timer_enter_menu.set(750);
                     while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                     {
-                        // #ifdef SERIAL_DEBUG
-                        //                         Serial5.println("DETECTADO!");
-                        // #endif
+// #ifdef SERIAL_DEBUG
+//                         Serial5.println("DETECTADO!");
+// #endif
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                         // #ifdef SERIAL_DEBUG
                         //                         Serial5.println(flag_menu_active);
                         // #endif
@@ -1307,7 +1377,9 @@ void setup()
 #ifdef SERIAL_DEBUG
                     Serial5.println("Zzz");
 #endif
+#ifdef WATCHDOG_ENABLE
                     Watchdog.disable();
+#endif
                     LowPower.sleep();
 
                     //---------- RUTINA DE DESPERTAR-----------------
@@ -1315,7 +1387,9 @@ void setup()
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
                     delay(100);
                     initDisplay();
+#ifdef WATCHDOG_ENABLE
                     Watchdog.enable(100);
+#endif
                     // Comprobar causante del despertar.
                     if (flag_irq_center_button == true)
                     {
@@ -1363,7 +1437,9 @@ void setup()
                                     // MODO DIAGNOSTICO ACTIVADO
                                     while (flag_diagnostic_active == true)
                                     {
+#ifdef WATCHDOG_ENABLE
                                         Watchdog.reset();
+#endif
                                         // Ventana de presentacion
                                         OLED_display.clearDisplay();
                                         OLED_display.setTextSize(2);
@@ -1376,7 +1452,9 @@ void setup()
                                         for (int i = 0; i < 100; i++)
                                         {
                                             delay(10);
+#ifdef WATCHDOG_ENABLE
                                             Watchdog.reset();
+#endif
                                         }
 
 // Pregunta sobre si diagnostico o no.
@@ -1395,12 +1473,16 @@ void setup()
                                         while ((digitalRead(C_PIN_BUTT_CENTER) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed) || (digitalRead(C_PIN_BUTT_UP) == button_pressed))
                                         {
                                             delay(10);
+#ifdef WATCHDOG_ENABLE
                                             Watchdog.reset();
+#endif
                                         }
                                         ReadDirPad(true);
                                         while (flag_active_confirmation_question == true) // Espera hasta que se reciba una respuesta.
                                         {
+#ifdef WATCHDOG_ENABLE
                                             Watchdog.reset();
+#endif
                                             button_event = ReadDirPad(); // Lectura de la botonera
 
                                             if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // NO
@@ -1438,7 +1520,9 @@ void setup()
                                                 for (int i = 0; i < 100; i++)
                                                 {
                                                     delay(10);
+#ifdef WATCHDOG_ENABLE
                                                     Watchdog.reset();
+#endif
                                                 }
                                             }
 
@@ -1459,7 +1543,9 @@ void setup()
                                             for (int i = 0; i < 100; i++)
                                             {
                                                 delay(10);
+#ifdef WATCHDOG_ENABLE
                                                 Watchdog.reset();
+#endif
                                             }
 
                                             OLED_display.clearDisplay();
@@ -1970,7 +2056,9 @@ int16_t CapacityCheck(uint16_t pin_battery, bool *lowbattery, bool *empty_batt)
         for (int i = 0; i < 25; i++)
         {
             delay(10);
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
     }
     else
@@ -2001,7 +2089,9 @@ void ConfigMenu()
         OLED_display.print("NITRO");
         OLED_display.drawRect(0, 0, 64, 32, WHITE);
         OLED_display.display();
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         playSound(C_SOUND_CHARGE_IN);
         break;
     default:
@@ -2011,19 +2101,25 @@ void ConfigMenu()
     while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
     {
         delay(10);
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
     }
     // delay(500);
     for (int i = 0; i < 50; i++)
     {
         delay(10);
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
     }
     flag_option_selected = false;
     ReadDirPad(true);
     while (flag_option_selected == false) // Espera hasta confirmacion de la opcion del menu seleccionada.
     {
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         delay(10);
         button_event = ReadDirPad();                                   // Lectura de la botonera
         if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
@@ -2065,7 +2161,9 @@ void ConfigMenu()
         ReadDirPad(true);
         while (active_question_nitro == true)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
             delay(10);
             button_event_naming = ReadDirPad();
 
@@ -2102,13 +2200,17 @@ void ConfigMenu()
                 OLED_display.drawRect(0, 16, 64, 16, WHITE);
                 for (uint16_t i = 0; i <= 100; i++)
                 {
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                     OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
 
                     for (int j = 0; j < 2; j++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                     OLED_display.display();
                 }
@@ -2116,7 +2218,9 @@ void ConfigMenu()
                 for (int i = 0; i < 50; i++)
                 {
                     delay(10);
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                 }
 
                 // Pantalla Confirmacion
@@ -2135,7 +2239,9 @@ void ConfigMenu()
                     for (int i = 0; i < 200; i++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                 }
                 else
@@ -2151,7 +2257,9 @@ void ConfigMenu()
                     for (int i = 0; i < 200; i++)
                     {
                         delay(10);
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                 }
             }

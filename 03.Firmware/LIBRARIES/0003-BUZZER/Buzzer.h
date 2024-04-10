@@ -240,7 +240,9 @@ void playSound(int16_t num)
     {
         while (timer_buzzer.poll() == C_TIMER_NOT_EXPIRED)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         };
         tone(C_PIN_BUZZER, local_sound[i], local_sound[i + 1]);
         timer_buzzer.set(local_sound[i + 1] + local_sound[i + 2]);
