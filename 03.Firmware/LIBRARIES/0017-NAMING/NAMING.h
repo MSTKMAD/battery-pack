@@ -47,10 +47,14 @@ void Config_Naming()
     cursor_y = 16;
     while (end_flag == false)
     {
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         while (button_event_naming == C_NONE_EVENT)
         {
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
             button_event_naming = ReadDirPad();
 
             if (blink_underscore.poll(500) != C_TIMER_NOT_EXPIRED)
@@ -151,7 +155,9 @@ void Config_Naming()
                     {
                         OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
                         cursor_x_name += 12;
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                 }
                 else
@@ -161,7 +167,9 @@ void Config_Naming()
                     {
                         OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
                         cursor_x_name += 12;
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                     }
                 }
                 cursor_x_underscore = cursor_x_name;
@@ -176,7 +184,9 @@ void Config_Naming()
             OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
             while (active_question == true)
             {
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
                 button_event_naming = ReadDirPad();
 
                 if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
@@ -209,7 +219,9 @@ void Config_Naming()
                         OLED_display.drawChar(28, 0, init_char, WHITE, BLACK, 2);
                         OLED_display.drawChar(52, 0, 0x1A, WHITE, BLACK, 2);
                         OLED_display.display();
+#ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
+#endif
                         OLED_display.fillRect(16, 16, 64, 16, BLACK);
                         if (num_char < 5)
                         {
@@ -234,19 +246,25 @@ void Config_Naming()
                     }
                 }
                 OLED_display.display();
+#ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
+#endif
             }
         }
 
         OLED_display.display();
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
         button_event_naming = ReadDirPad();
     }
 
     OLED_display.clearDisplay();
     OLED_display.setCursor(0, 0);
     OLED_display.print("Hi!");
+#ifdef WATCHDOG_ENABLE
     Watchdog.reset();
+#endif
     num_swft = num_char * 12 - 64;
     if (num_swft < 0)
     {
@@ -255,7 +273,9 @@ void Config_Naming()
         {
             OLED_display.drawChar(cursor_x_name, cursor_y, name[i], WHITE, BLACK, 2);
             cursor_x_name += 12;
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
         OLED_display.display();
     }
@@ -265,13 +285,17 @@ void Config_Naming()
         for (int j = num_char - 1; j >= 0; j--)
         {
             name[j + num_spaces] = name[j];
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
         for (int i = 1; i <= num_spaces; i++)
         {
             name[(num_spaces + num_char * 2) - i] = 0x00;
             name[i - 1] = 0x00;
+#ifdef WATCHDOG_ENABLE
             Watchdog.reset();
+#endif
         }
         num_char = num_char + num_spaces * 2;
         num_swft = num_char * 12 - 64;
@@ -291,7 +315,9 @@ void Config_Naming()
                 for (int i = 0; i < 5; i++)
                 {
                     delay(10);
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                 }
             }
         }
@@ -301,7 +327,9 @@ void Config_Naming()
     for (int i = 0; i < 200; i++)
     {
         delay(10);
+#ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
     }
 }
 void ShowName()
@@ -347,7 +375,9 @@ void ShowName()
                 for (int i = 0; i < 5; i++)
                 {
                     delay(10);
+#ifdef WATCHDOG_ENABLE
                     Watchdog.reset();
+#endif
                 }
             }
         }
