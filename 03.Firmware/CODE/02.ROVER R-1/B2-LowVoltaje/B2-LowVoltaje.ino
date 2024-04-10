@@ -10,8 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 202
-
+#define INTEGRATED_VERSION 203
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG

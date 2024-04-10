@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 122
+#define INTEGRATED_VERSION 123
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
