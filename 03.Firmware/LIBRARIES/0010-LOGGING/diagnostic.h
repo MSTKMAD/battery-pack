@@ -76,17 +76,17 @@ bool Init_local_eeprom(bool nitro_state_default)
         local_eeprom.nitro_status = nitro_state_default;
         local_eeprom.num_char_in_name = 0;
         local_eeprom.num_wdt_errors = 0;
-        for (int16_t i = 0; i < 25; i++)
+        for (int16_t i = 0; i < NUM_POS_NAME; i++)
         {
             local_eeprom.name[i] = 0;
             Watchdog.reset();
         }
-        for (int16_t i = 0; i < 46; i++)
+        for (int16_t i = 0; i < POWER_USE_POSITIONS; i++)
         {
             local_eeprom.array_power_use[i] = 0;
             Watchdog.reset();
         }
-        for (uint16_t i = 0; i < 21; i++)
+        for (uint16_t i = 0; i < PERCENT_USE_POSITIONS; i++)
         {
             local_eeprom.array_percent_use[i] = 0;
             Watchdog.reset();
@@ -109,17 +109,17 @@ bool Init_local_eeprom(bool nitro_state_default)
         local_eeprom.checksum += local_eeprom.nitro_status;
         local_eeprom.checksum += local_eeprom.num_char_in_name;
         local_eeprom.checksum += local_eeprom.num_wdt_errors;
-        for (int16_t i = 0; i < 25; i++)
+        for (int16_t i = 0; i < NUM_POS_NAME; i++)
         {
             local_eeprom.checksum += local_eeprom.name[i];
             Watchdog.reset();
         }
-        for (size_t i = 0; i < 46; i++)
+        for (size_t i = 0; i < POWER_USE_POSITIONS; i++)
         {
             local_eeprom.checksum += local_eeprom.array_power_use[i];
             Watchdog.reset();
         }
-        for (size_t i = 0; i < 21; i++)
+        for (size_t i = 0; i < PERCENT_USE_POSITIONS; i++)
         {
             local_eeprom.checksum += local_eeprom.array_percent_use[i];
             Watchdog.reset();
@@ -157,19 +157,19 @@ bool Init_local_eeprom(bool nitro_state_default)
             Serial5.println(local_eeprom.nitro_status);
             Serial5.println(local_eeprom.num_char_in_name);
             Serial5.println(local_eeprom.num_wdt_errors);
-            for (int16_t i = 0; i < 25; i++)
+            for (int16_t i = 0; i < NUM_POS_NAME; i++)
             {
                 Serial5.print(local_eeprom.name[i]);
                 Serial5.print(",");
             }
             Serial5.println();
-            for (int16_t i = 0; i < 46; i++)
+            for (int16_t i = 0; i < POWER_USE_POSITIONS; i++)
             {
                 Serial5.print(local_eeprom.array_power_use[i]);
                 Serial5.print(",");
             }
             Serial5.println();
-            for (uint16_t i = 0; i < 21; i++)
+            for (uint16_t i = 0; i < PERCENT_USE_POSITIONS; i++)
             {
                 Serial5.print(local_eeprom.array_percent_use[i]);
                 Serial5.print(",");
@@ -189,23 +189,25 @@ bool Init_local_eeprom(bool nitro_state_default)
             checksum += local_eeprom.test_mode;
             checksum += local_eeprom.flag_init;
             checksum += local_eeprom.flag_corruption;
-            for (int16_t i = 0; i < 25; i++)
+            checksum += local_eeprom.flag_naming_enable;
+            checksum += local_eeprom.nitro_status;
+            checksum += local_eeprom.num_char_in_name;
+            checksum += local_eeprom.num_wdt_errors;
+            for (int16_t i = 0; i < NUM_POS_NAME; i++)
             {
                 checksum += local_eeprom.name[i];
                 Watchdog.reset();
             }
-            checksum += local_eeprom.num_char_in_name;
-            for (size_t i = 0; i < 46; i++)
+            for (size_t i = 0; i < POWER_USE_POSITIONS; i++)
             {
                 checksum += local_eeprom.array_power_use[i];
                 Watchdog.reset();
             }
-            for (size_t i = 0; i < 21; i++)
+            for (size_t i = 0; i < PERCENT_USE_POSITIONS; i++)
             {
                 checksum += local_eeprom.array_percent_use[i];
                 Watchdog.reset();
             }
-            checksum += local_eeprom.num_wdt_errors;
 #ifdef SERIAL_DEBUG
             Serial5.println("Volcado de EEPROM Finalizado.");
             Serial5.printf("Checksum: %d\nEEPROM Checkcum:%d\n", checksum, local_eeprom.checksum);
@@ -344,17 +346,17 @@ void SaveEeprom()
     local_eeprom.checksum += local_eeprom.nitro_status;
     local_eeprom.checksum += local_eeprom.num_char_in_name;
     local_eeprom.checksum += local_eeprom.num_wdt_errors;
-    for (int16_t i = 0; i < 25; i++)
+    for (int16_t i = 0; i < NUM_POS_NAME; i++)
     {
         local_eeprom.checksum += local_eeprom.name[i];
         Watchdog.reset();
     }
-    for (size_t i = 0; i < 46; i++)
+    for (size_t i = 0; i < POWER_USE_POSITIONS; i++)
     {
         local_eeprom.checksum += local_eeprom.array_power_use[i];
         Watchdog.reset();
     }
-    for (size_t i = 0; i < 21; i++)
+    for (size_t i = 0; i < PERCENT_USE_POSITIONS; i++)
     {
         local_eeprom.checksum += local_eeprom.array_percent_use[i];
         Watchdog.reset();
@@ -409,7 +411,7 @@ void DiagnosticMode()
     diagnostic_chain[13] = local_eeprom.num_char_in_name;
     diagnostic_chain[14] = local_eeprom.num_wdt_errors;
 
-    for (int i = 0; i < 25; i++)
+    for (int i = 0; i < NUM_POS_NAME; i++)
     {
         diagnostic_chain[NUM_NON_ARRAY_POS + i] = local_eeprom.name[i];
     }
@@ -460,7 +462,7 @@ void DiagnosticMode()
  */
 void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
 {
-    for (uint16_t i = 0; i < 25; i++)
+    for (uint16_t i = 0; i < NUM_POS_NAME; i++)
     {
         local_eeprom.name[i] = array_to_display[i];
     }
@@ -474,12 +476,12 @@ void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
  * @param array_to_name
  * .++
  * .
- * 
+ *
  * @return uint16_t
  */
 uint16_t ReadNameEEPROM(char array_to_name[])
 {
-    for (uint16_t i = 0; i < 25; i++)
+    for (uint16_t i = 0; i < NUM_POS_NAME; i++)
     {
         array_to_name[i] = local_eeprom.name[i];
     }
