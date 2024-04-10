@@ -14,7 +14,7 @@
 const uint8_t HOURS_PM = 8;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
-const uint16_t NUM_POS_NAME = 25;
+const uint16_t NUM_POS_NAME = 50;
 const uint16_t NUM_NON_ARRAY_POS = 15;
 const uint16_t POWER_USE_POSITIONS = 41;   // 0w to 2000w in step of 50w -> 41 step
 const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 step
