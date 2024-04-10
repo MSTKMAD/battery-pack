@@ -13,11 +13,12 @@ const uint8_t C_PHASE_NAME = 0;
 const uint8_t C_PHASE_CONFIRM = 1;
 const uint8_t init_char = 0x41;
 const uint8_t end_char = 0x5A;
+const uint16_t MAX_CHAR_NAME = 15;
 
 char array_letras[] = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x4B, 0x4C, 0x4D, 0x4E, 0x4F, 0x50, 0x51, 0x52, 0x53, 0x54, 0x55, 0x56, 0x57, 0x58, 0x59, 0x5A, 0xFA, 0x11};
 
 uint16_t size_array_letras = sizeof(array_letras) / sizeof(array_letras[0]);
-char name[25];
+char name[50];
 uint16_t num_char = 0;
 char char_index = 0;
 uint16_t index_phase = 0;
@@ -136,12 +137,16 @@ void Config_Naming()
                     {
                         name[num_char - 1] = 0x00;
                         num_char -= 1;
+                        num_char = constrain(num_char, 0, MAX_CHAR_NAME);
+                        Serial5.println(num_char);
                     }
                 }
                 else
                 {
                     name[num_char] = array_letras[char_index];
                     num_char++;
+                    num_char = constrain(num_char, 0, MAX_CHAR_NAME);
+                    Serial5.println(num_char);
                 }
                 OLED_display.fillRect(0, 16, 64, 16, BLACK);
                 if (num_char < 5)
@@ -309,7 +314,7 @@ void ShowName()
 #ifdef SERIAL_DEBUG
     Serial5.println("ShowName");
 #endif
-    char name_to_display[25];
+    char name_to_display[NUM_POS_NAME];
     uint16_t num_char_to_show = ReadNameEEPROM(name_to_display);
 #ifdef SERIAL_DEBUG
     Serial5.println(num_char_to_show);
