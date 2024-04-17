@@ -143,6 +143,7 @@ bool Init_local_eeprom(bool nitro_state_default)
         flash_eeprom.write(local_eeprom);
 #ifdef WATCHDOG_ENABLE
         Watchdog.reset();
+#endif
 #ifdef SERIAL_DEBUG
         Serial5.println("INICIALIZADA");
 #endif
@@ -507,7 +508,7 @@ void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
  * @param array_to_name
  * .++
  * .
- * 
+ *
  * @return uint16_t
  */
 uint16_t ReadNameEEPROM(char array_to_name[])
