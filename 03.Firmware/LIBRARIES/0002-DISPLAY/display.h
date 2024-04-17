@@ -238,7 +238,7 @@ void DisplayNoBattery()
         for (int i = 0; i < 75; i++)
         {
             delay(10);
-            Watchdog.reset();
+            //Watchdog.reset();
         }
 
         OLED_display.clearDisplay();
@@ -248,7 +248,7 @@ void DisplayNoBattery()
         for (int i = 0; i < 75; i++)
         {
             delay(10);
-            Watchdog.reset();
+           // Watchdog.reset();
         }
     }
 }
@@ -273,7 +273,7 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
         // delay(333);
         for (int j = 0; j < 33; j++)
         {
-            Watchdog.reset();
+           // Watchdog.reset();
             delay(10);
         }
     }

@@ -13,7 +13,7 @@
 #define INTEGRATED_VERSION 302
 
 #define MAX_VOLTAGE 120
-#define MIN_VOLTAGE 25
+#define MIN_VOLTAGE 35
 // #define SERIAL_DEBUG
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
@@ -1224,6 +1224,59 @@ void setup()
                         }
                     }
                 }
+                if (theory_Vout < 45)
+                {
+                    if ((button_event == C_LP_DOWN) || (button_event == C_CLICK_DOWN))
+                    {
+                        if (theory_Vout >= 43)
+                        {
+                            theory_Vout = 43;
+                        }
+                        else if (theory_Vout >= 41)
+                        {
+                            theory_Vout = 41;
+                        }
+                        else if (theory_Vout >= 39)
+                        {
+                            theory_Vout = 39;
+                        }
+                        else if (theory_Vout >= 37)
+                        {
+                            theory_Vout = 37;
+                        }
+                        else
+                        {
+                            theory_Vout = 35;
+                        }
+                    }
+                    else if ((button_event == C_LP_UP) || (button_event == C_CLICK_UP))
+                    {
+                        if (theory_Vout <= 35)
+                        {
+                            theory_Vout = 35;
+                        }
+                        else if (theory_Vout <= 37)
+                        {
+                            theory_Vout = 37;
+                        }
+                        else if (theory_Vout <= 39)
+                        {
+                            theory_Vout = 39;
+                        }
+                        else if (theory_Vout <= 41)
+                        {
+                            theory_Vout = 41;
+                        }
+                        else if (theory_Vout <= 43)
+                        {
+                            theory_Vout = 43;
+                        }
+                        else
+                        {
+                            theory_Vout = 45;
+                        }
+                    }
+                }
 
                 theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
             }
@@ -1828,7 +1881,7 @@ void setup()
             if (arrancado == true)
             {
                 DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-                if (theory_Vout >= 50)
+                if (theory_Vout >= 45)
                 {
                     pinMode(C_PIN_OP_SWITCH, OUTPUT);
                     digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
