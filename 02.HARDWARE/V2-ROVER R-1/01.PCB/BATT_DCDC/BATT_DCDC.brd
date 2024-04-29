@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -172,7 +172,7 @@
 <plain>
 <text x="67.91" y="5.05" size="0.6096" layer="26" font="vector" rot="MR180" align="center">BATT_DCDC
 ROVER R-1
-v5-NOV'23</text>
+v6-ABR'23</text>
 <circle x="67.69" y="35.12" radius="0.9" width="0.1" layer="20"/>
 <circle x="58.94" y="10.62" radius="0.9" width="0.1" layer="20"/>
 <polygon width="0.0762" layer="42">
@@ -5183,7 +5183,7 @@ einem neuen Namen ab.</description>
 <attribute name="NAME" x="63.92" y="21.29" size="0.6096" layer="25" font="vector" align="center"/>
 <attribute name="VALUE" x="65.85" y="20.2" size="1.27" layer="27" rot="R90" align="center"/>
 </element>
-<element name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="20R" x="62.63" y="33.54" smashed="yes" rot="MR90">
+<element name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="10R" x="62.63" y="33.54" smashed="yes" rot="MR90">
 <attribute name="NAME" x="63.665" y="32.733" size="0.6096" layer="26" rot="MR90"/>
 <attribute name="PROD_ID" value=" " x="62.63" y="33.54" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" value=" " x="59.455" y="30.873" size="1.27" layer="28" rot="MR90"/>
@@ -5200,7 +5200,7 @@ einem neuen Namen ab.</description>
 <attribute name="PROD_ID" value=" " x="63.26" y="29.71" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="63.92" y="28.948" size="0.6096" layer="28" font="vector" ratio="20" rot="MR0" align="top-center"/>
 </element>
-<element name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="20R" x="60.16" y="33.55" smashed="yes" rot="MR90">
+<element name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="10R" x="60.16" y="33.55" smashed="yes" rot="MR90">
 <attribute name="NAME" x="61.003" y="33.47" size="0.6096" layer="26" font="vector" rot="MR90" align="bottom-center"/>
 <attribute name="PROD_ID" value=" " x="60.16" y="33.55" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" value=" " x="60.16" y="33.55" size="1.778" layer="28" rot="MR90" display="off"/>
