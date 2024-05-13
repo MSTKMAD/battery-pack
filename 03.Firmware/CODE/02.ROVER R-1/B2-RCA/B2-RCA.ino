@@ -10,9 +10,10 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 203
+#define INTEGRATED_VERSION 122
+
 #define MAX_VOLTAGE 120
-#define MIN_VOLTAGE 25
+#define MIN_VOLTAGE 50
 // #define SERIAL_DEBUG
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
@@ -99,7 +100,7 @@ const bool C_ENDING_SOUND = false;
 
 //--------------------------------- Menu Options -------------------------------------------
 const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
-const uint16_t C_NITRO_STATE_DFLT = false;
+const uint16_t C_NITRO_STATE_DFLT = true;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -181,6 +182,7 @@ MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
+
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -188,7 +190,7 @@ bool output_mode = C_NON_BOOST_MODE;                                            
 bool blink_error_state = false;                                                      // Identificador del estado del parapadeo de la barra de potencia durante el mostrado de un error.
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
-bool nitro_status = true;                                                            // Estado del Nitro.
+bool nitro_status = false;                                                           // Estado del Nitro.
 
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
@@ -267,6 +269,7 @@ bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el
 bool flag_menu_active = false;                // Flag que marca el estado del menu de configuracion.
 uint16_t flag_wait_menu_timer = C_TIMER_IDLE; // Flag que indica el estado del timer de espera de activacion del menu de configuracion.
 bool flag_option_selected = false;            // Flag que indica si se ha selccionado una opcion en el menu de configuracion.
+
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -280,6 +283,8 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
+    // pinMode(C_PIN_TEST, OUTPUT);
+    // digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
 #ifdef WATCHDOG_ENABLE
@@ -840,7 +845,7 @@ void setup()
                 {
                     if (nitro_status == false)
                     {
-                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
                         if (theory_Vout >= 50)
                         {
                             // Rampa de subida
@@ -859,74 +864,51 @@ void setup()
                     }
                     else
                     {
-                        if (theory_Vout >= 50)
+                        // planicie a 5v
+                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        digitalWrite(C_PIN_OP_SWITCH, LOW);
+#ifdef WATCHDOG_ENABLE
+                        Watchdog.reset();
+#endif
+                        delay(50);
+                        int tiempo_arrancado = 200; // ms
+                        int tiempo_bajada = 60;     // ms
+                        int steps_subida = 10;
+                        int steps_bajada = 10;
+
+                        // Rampa de subida
+                        for (int i = 0; i < steps_subida; i++)
                         {
-                            // planicie a 5v
-                            DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                            digitalWrite(C_PIN_OP_SWITCH, LOW);
 #ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
 #endif
-                            delay(50);
-                            int tiempo_arrancado = 200; // ms
-                            int tiempo_bajada = 60;     // ms
-                            int steps_subida = 10;
-                            int steps_bajada = 10;
-                            int increment_nitro = 40;
-
-                            // Rampa de subida
-                            for (int i = 0; i < steps_subida; i++)
-                            {
-#ifdef WATCHDOG_ENABLE
-                                Watchdog.reset();
-#endif
-                                DCDC.SetVoltage((theory_Vout + increment_nitro - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                                boost_check.check(sample_raw_io);
-                                delay(tiempo_arrancado / steps_subida);
-                                over_consumption_protection.getSample(C_PIN_I_OUT);
-                            }
-                            sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
-                            sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-                            sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                            UpdatePowerBar(sample_POut);
-                            // Rampa de Bajada
-                            for (int i = steps_bajada; i >= 0; i--)
-                            {
-#ifdef WATCHDOG_ENABLE
-                                Watchdog.reset();
-#endif
-                                DCDC.SetVoltage((theory_Vout + increment_nitro - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
-                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                                boost_check.check(sample_raw_io);
-                                delay(tiempo_bajada / steps_bajada);
-                                over_consumption_protection.getSample(C_PIN_I_OUT);
-                            }
-
-                            // Voltaje Objetivo
-                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                            output_mode = C_BOOST_MODE;
-                            arrancado = true;
+                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_arrancado / steps_subida);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
                         }
-                        else
+                        sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                        sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                        sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                        UpdatePowerBar(sample_POut);
+                        // Rampa de Bajada
+                        for (int i = steps_bajada; i >= 0; i--)
                         {
-                            pinMode(C_PIN_OP_SWITCH, OUTPUT);
-                            digitalWrite(C_PIN_OP_SWITCH, LOW);
-                            DCDC.SetVoltage(60, C_BOOST_MODE);
-                            for (int i = 0; i < 20; i++)
-                            {
-                                delay(10);
-#ifdef WATCHDOG_ENABLE
-                                Watchdog.reset();
-#endif
-                            }
-                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                            output_mode = C_BOOST_MODE;
-                            arrancado = true;
 #ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
 #endif
+                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                            boost_check.check(sample_raw_io);
+                            delay(tiempo_bajada / steps_bajada);
+                            over_consumption_protection.getSample(C_PIN_I_OUT);
                         }
+
+                        // Voltaje Objetivo
+                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                        output_mode = C_BOOST_MODE;
+                        arrancado = true;
                     }
                 }
                 else if (arrancado)
@@ -940,7 +922,7 @@ void setup()
                         // Sensado de la tension de entrada para prevenir apagado no deseado
                         sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
 #ifdef SERIAL_DEBUG
-                        // Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
+                        Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
 #endif
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
@@ -1095,12 +1077,12 @@ void setup()
                         if (flag_menu_active == false) // Menu NO activado
                         {
 #ifdef SERIAL_DEBUG
-                            // Serial5.println(timer_enter_menu.remaining());
+                            Serial5.println(timer_enter_menu.remaining());
 #endif
                             if (timer_enter_menu.poll(750) != C_TIMER_NOT_EXPIRED)
                             {
 #ifdef SERIAL_DEBUG
-                                // Serial5.println(cont_sec_menu_wait);
+                                Serial5.println(cont_sec_menu_wait);
 #endif
                                 cont_sec_menu_wait++;
                                 playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
@@ -1280,6 +1262,7 @@ void setup()
 
                 theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
             }
+
             //-------------- ACTUALIZACION DEL DISPLAY (CON SONIDO)---------------------//
 
             if (trigger_Display_volt == true)
@@ -1897,21 +1880,14 @@ void setup()
             if (arrancado == true)
             {
                 DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-                if (theory_Vout >= 50)
-                {
-                    pinMode(C_PIN_OP_SWITCH, OUTPUT);
-                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
-                }
+                digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
             }
-
             LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
         }
         else if (hw_output == C_OUTPUT_OFF)
         {
-            pinMode(C_PIN_OP_SWITCH, OUTPUT);
             digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
-
-            LedWork(C_OUTPUT_OFF); // Apagado del led indicador de salida activada.
+            LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
 
             // Limpieza y reset de variables de las protecciones.
             over_consumption_protection.setCounter(0);
@@ -1980,12 +1956,10 @@ void setup()
         {
             cont_log_sec++;
             prog_cycle /= cont_per;
-#ifdef SERIAL_DEBUG
             Serial5.printf("MAX Prog cycle avrg:%d us\n", max_prog_cycle);
             Serial5.printf("AVG Prog cycle avrg:%d us\n", prog_cycle);
             Serial5.printf("MIN Prog cycle avrg:%d us\n", min_prog_cycle);
             Serial5.printf("-------- %d ---------\n\n", cont_log_sec);
-#endif
             // Serial5.printf("RAM: %d \n", freeMemory());
             prog_cycle = 0;
             cont_per = 0;
