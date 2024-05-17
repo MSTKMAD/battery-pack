@@ -21,7 +21,7 @@ const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 ste
 struct EEPROM
 {
     uint16_t serial_number;
-    uint8_t integrated_version;
+    uint16_t integrated_version;
     uint16_t work_time;
     uint16_t power_errors;
     uint16_t consumption_errors;
