@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="yes"/>
+<setting alwaysvectorfont="no"/>
 <setting keepoldvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
@@ -5188,7 +5188,7 @@ einem neuen Namen ab.</description>
 <attribute name="PROD_ID" value=" " x="62.63" y="33.54" size="1.778" layer="28" rot="MR90" display="off"/>
 <attribute name="VALUE" value=" " x="59.455" y="30.873" size="1.27" layer="28" rot="MR90"/>
 </element>
-<element name="Q3" library="PMV20XNER" package="SOT23-TO-236AB_NEX-L" value="PMV20XNER" x="60.92" y="29.8" smashed="yes" rot="MR0">
+<element name="Q3" library="PMV20XNER" package="SOT23-TO-236AB_NEX-L" value="DMN3023L-7" x="60.92" y="29.8" smashed="yes" rot="MR0">
 <attribute name="COPYRIGHT" value="Copyright (C) 2023 Ultra Librarian. All rights reserved." x="60.92" y="29.8" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MANUFACTURER_PART_NUMBER" value="PMV20XNER" x="60.92" y="29.8" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="MFR_NAME" value="Nexperia" x="60.92" y="29.8" size="1.778" layer="28" rot="MR0" display="off"/>
