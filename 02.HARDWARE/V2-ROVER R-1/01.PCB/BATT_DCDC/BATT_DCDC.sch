@@ -6047,10 +6047,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="RSNS" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="100mR"/>
 <part name="U2" library="LM5114BMF_NOPB" deviceset="LM5114BMF_NOPB" device=""/>
 <part name="GND2" library="SparkFun" deviceset="GND" device=""/>
-<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="10R"/>
-<part name="Q3" library="PMV20XNER" deviceset="PMV20XNER" device="SOT23-TO-236AB_NEX-L" value="PMV20XNER"/>
+<part name="R15" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="20R"/>
+<part name="Q3" library="PMV20XNER" deviceset="PMV20XNER" device="SOT23-TO-236AB_NEX-L" value="DMN3023L-7"/>
 <part name="R19" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="33R"/>
-<part name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="10R"/>
+<part name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="1206" package3d_urn="urn:adsk.eagle:package:39654/1" value="20R"/>
 <part name="FD_1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
 <part name="FD_2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
 <part name="FD_3" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
@@ -6073,7 +6073,7 @@ BW=13Hz</text>
 <wire x1="312.42" y1="38.1" x2="312.42" y2="132.08" width="0.1524" layer="94" style="shortdash"/>
 <text x="17.78" y="116.84" size="5.08" layer="94">IOSENSE LOWPASS FILTERING</text>
 <text x="35.56" y="241.3" size="5.08" layer="94">STEP UP DCDC CONVERTER
-ROVER R-1- SEP2023 - v6 (producion DK y PMU)</text>
+ROVER R-1- SEP2023 - v5 (producion DK y PMU)</text>
 <text x="88.9" y="45.72" size="1.778" layer="91">G1=1.6
 BW=312Hz</text>
 <text x="12.7" y="10.16" size="1.778" layer="91">CONJUNTO
@@ -6412,7 +6412,7 @@ Fondo Escala 3V @ 2A</text>
 </instance>
 <instance part="Q3" gate="A" x="266.7" y="205.74" smashed="yes">
 <attribute name="NAME" x="283.21" y="205.74" size="2.54" layer="95" ratio="10" rot="SR0"/>
-<attribute name="VALUE" x="283.21" y="203.2" size="2.54" layer="96" ratio="10" rot="SR0"/>
+<attribute name="VALUE" x="283.21" y="200.66" size="2.54" layer="96" ratio="10" rot="SR0"/>
 </instance>
 <instance part="R19" gate="G$1" x="259.08" y="205.74" smashed="yes">
 <attribute name="NAME" x="259.08" y="207.264" size="1.778" layer="95" font="vector" align="bottom-center"/>
