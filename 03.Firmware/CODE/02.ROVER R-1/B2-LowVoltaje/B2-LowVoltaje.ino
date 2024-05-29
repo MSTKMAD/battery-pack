@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 203
+#define INTEGRATED_VERSION 204
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG
@@ -1686,6 +1686,7 @@ void setup()
                 flag_init2stop = false;
                 flag_sound_init = false;
                 flag_display_capacity_init = false;
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1715,6 +1716,7 @@ void setup()
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
                 cont_low_batt_triggers = 0;
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1865,8 +1867,10 @@ void setup()
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
                 user_output = C_OUTPUT_OFF;
+                flag_enable_off = true;
 
-/* Clear Flags */
+                /* Clear Flags */
+                flag_enable_off = true;
 
 /* Change-State Effects */
 #ifdef SERIAL_DEBUG

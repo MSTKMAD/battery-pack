@@ -1705,6 +1705,7 @@ void setup()
                 flag_init2stop = false;
                 flag_sound_init = false;
                 flag_display_capacity_init = false;
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1733,7 +1734,8 @@ void setup()
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
-                cont_low_batt_triggers = 0;
+                cont_low_batt_triggers = 0;                
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1883,7 +1885,8 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
-                user_output = C_OUTPUT_OFF;
+                user_output = C_OUTPUT_OFF;                
+                flag_enable_off = true;
 
 /* Clear Flags */
 
