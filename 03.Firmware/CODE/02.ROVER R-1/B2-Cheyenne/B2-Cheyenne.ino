@@ -10,11 +10,11 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 301 // Version 301: Fork de la version 122 con cambios adaptados a la solnova 2.0
+#define INTEGRATED_VERSION 302 // Version 301: Fork de la version 122 con cambios adaptados a la solnova 2.0
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
-#define SERIAL_DEBUG
+// #define SERIAL_DEBUG
 // #define WATCHDOG_ENABLE
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
@@ -1392,8 +1392,12 @@ void setup()
                     {
                         flag_irq_center_button = false; // Limpieza de los flags de interrupcion
                     }
-                    SaveEeprom();                                                                       // Salvado en EEPROM
-                    digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW);                                          // Apagado de la alimentacion secundaria.
+                    SaveEeprom(); // Salvado en EEPROM
+                    sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+                    if (sample_VIN >= 3400) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
+                    {
+                        digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW); // Apagado de la alimentacion secundaria.
+                    }
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar por flanco de bajada del boton central
 #ifdef SERIAL_DEBUG
                     Serial5.println("Zzz");
@@ -1701,6 +1705,7 @@ void setup()
                 flag_init2stop = false;
                 flag_sound_init = false;
                 flag_display_capacity_init = false;
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1729,7 +1734,8 @@ void setup()
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
-                cont_low_batt_triggers = 0;
+                cont_low_batt_triggers = 0;                
+                flag_enable_off = true;
 
                 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1879,7 +1885,8 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
-                user_output = C_OUTPUT_OFF;
+                user_output = C_OUTPUT_OFF;                
+                flag_enable_off = true;
 
 /* Clear Flags */
 
