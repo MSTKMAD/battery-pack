@@ -392,7 +392,4 @@ XXXX- MISC/cyclator/cyclator.ino
 03.Firmware/CODE/02.ROVER R-1/B2-PMU/build/
 
 03.Firmware/CODE/02.ROVER R-1/B2-RCA/build/
-03.Firmware/CODE/02.ROVER R-1/B2-Cheyenne/build/adafruit.samd.adafruit_feather_m0/B2-Cheyenne.ino.elf
-03.Firmware/CODE/02.ROVER R-1/B2-Cheyenne/build/adafruit.samd.adafruit_feather_m0/B2-Cheyenne.ino.hex
-03.Firmware/CODE/02.ROVER R-1/B2-Cheyenne/build/adafruit.samd.adafruit_feather_m0/B2-Cheyenne.ino.map
-03.Firmware/CODE/02.ROVER R-1/B2-Cheyenne/build/adafruit.samd.adafruit_feather_m0/B2-Cheyenne.ino.bin
+03.Firmware/CODE/02.ROVER R-1/B2-Cheyenne/build/
