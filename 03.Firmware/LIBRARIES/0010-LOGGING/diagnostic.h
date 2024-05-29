@@ -143,12 +143,7 @@ bool Init_local_eeprom(bool nitro_state_default)
         flash_eeprom.write(local_eeprom);
 #ifdef WATCHDOG_ENABLE
         Watchdog.reset();
-<<<<<<< HEAD
-
-=======
 #endif
-#ifdef SERIAL_DEBUG
->>>>>>> feature/CheyenneStep
         Serial5.println("INICIALIZADA");
 
         return 1;
