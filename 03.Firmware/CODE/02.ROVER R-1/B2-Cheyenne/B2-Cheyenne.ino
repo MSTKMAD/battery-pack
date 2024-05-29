@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 302 // Version 301: Fork de la version 122 con cambios adaptados a la solnova 2.0
+#define INTEGRATED_VERSION 311 // Version 301: Fork de la version 122 con cambios adaptados a la solnova 2.0
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
