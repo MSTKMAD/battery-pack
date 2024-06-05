@@ -875,35 +875,40 @@ void setup()
                     else
                     {
                         // planicie a 5v
-                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        //DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                        DCDC.SetVoltage(120, C_NON_BOOST_MODE);
                         digitalWrite(C_PIN_OP_SWITCH, LOW);
 #ifdef WATCHDOG_ENABLE
                         Watchdog.reset();
 #endif
-                        delay(50);
+                        //delay(50);
                         int tiempo_arrancado = 200; // ms
                         int tiempo_bajada = 60;     // ms
                         int steps_subida = 10;
                         int steps_bajada = 10;
-
+                        delay(600);
                         // Rampa de subida
-                        for (int i = 0; i < steps_subida; i++)
-                        {
-#ifdef WATCHDOG_ENABLE
-                            Watchdog.reset();
-#endif
-                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                            boost_check.check(sample_raw_io);
-                            delay(tiempo_arrancado / steps_subida);
-                            over_consumption_protection.getSample(C_PIN_I_OUT);
-                        }
+                        /*
+                                                for (int i = 0; i < steps_subida; i++)
+                                                {
+                        #ifdef WATCHDOG_ENABLE
+                                                    Watchdog.reset();
+                        #endif
+                                                    DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                                                    sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                                                    boost_check.check(sample_raw_io);
+                                                    delay(tiempo_arrancado / steps_subida);
+                                                    over_consumption_protection.getSample(C_PIN_I_OUT);
+                                                }
+                        */
+
                         sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
                         sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
                         sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
                         UpdatePowerBar(sample_POut);
                         // Rampa de Bajada
-                        for (int i = steps_bajada; i >= 0; i--)
+                        steps_bajada = 120 - theory_Vout;
+                        for (int i = steps_bajada; i > 0; i--)
                         {
 #ifdef WATCHDOG_ENABLE
                             Watchdog.reset();
@@ -911,7 +916,7 @@ void setup()
                             DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
                             sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                             boost_check.check(sample_raw_io);
-                            delay(tiempo_bajada / steps_bajada);
+                            delay(15);
                             over_consumption_protection.getSample(C_PIN_I_OUT);
                         }
 
@@ -1745,7 +1750,7 @@ void setup()
                 cont_log_active = 0;
                 cont_low_batt_run = 0;
                 flag_low_vin_detected = false;
-                cont_low_batt_triggers = 0;                
+                cont_low_batt_triggers = 0;
                 flag_enable_off = true;
 
                 /* Change-State Effects */
@@ -1896,7 +1901,7 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
-                user_output = C_OUTPUT_OFF;                
+                user_output = C_OUTPUT_OFF;
                 flag_enable_off = true;
 
 /* Clear Flags */
