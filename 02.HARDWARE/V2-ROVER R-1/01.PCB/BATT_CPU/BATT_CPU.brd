@@ -273,7 +273,7 @@
 <text x="13.72" y="24.62" size="0.6096" layer="25" font="vector">GND</text>
 <text x="16.07" y="17.88" size="0.8128" layer="26" font="vector" ratio="9" rot="MR0">BATT_CPU
 rover R-1
-Nov'23 V5
+v6-Sep'24
 </text>
 <wire x1="82.74" y1="25.87" x2="82.74" y2="16.07" width="0.1" layer="48"/>
 <wire x1="82.84" y1="25.87" x2="82.74" y2="25.87" width="0.1" layer="48"/>
