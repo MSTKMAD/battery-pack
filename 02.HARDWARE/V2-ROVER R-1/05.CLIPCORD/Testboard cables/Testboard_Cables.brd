@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -40,7 +40,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
@@ -179,9 +179,9 @@ v1-Sep'24</text>
 <wire x1="16.3" y1="111" x2="31.3" y2="111" width="1.016" layer="47"/>
 <wire x1="73.8" y1="111" x2="58.8" y2="111" width="1.016" layer="47"/>
 <dimension x1="74.1" y1="111" x2="59.5" y2="111" x3="66.8" y3="118.2" textsize="1.778" layer="47"/>
-<text x="30" y="106.5" size="3.81" layer="25">+</text>
-<text x="58.2" y="106.5" size="3.81" layer="25">-</text>
-<text x="29.2" y="112.9" size="1.778" layer="25">Rojo</text>
+<text x="36.9" y="106.8" size="3.81" layer="25" rot="R90">+</text>
+<text x="58.2" y="107.3" size="3.81" layer="25">-</text>
+<text x="33.3" y="112.9" size="1.778" layer="25">Rojo</text>
 <text x="56.2" y="113" size="1.778" layer="25">Negro</text>
 <text x="66" y="51" size="2.54" layer="25">Rojo</text>
 <text x="65.2" y="37.9" size="2.54" layer="25">Negro</text>
@@ -190,6 +190,179 @@ v1-Sep'24</text>
 <text x="13.5" y="38.5" size="1.778" layer="25">GND</text>
 <text x="67" y="54.5" size="1.778" layer="25">GND</text>
 <text x="54.4" y="33" size="1.778" layer="25">GND</text>
+<hole x="29.2" y="111.4" drill="3"/>
+<hole x="65" y="111.5" drill="3"/>
+<polygon width="0.1524" layer="41">
+<vertex x="67.3" y="104.7"/>
+<vertex x="67.3" y="101.9"/>
+<vertex x="68.3" y="101.9"/>
+<vertex x="68.3" y="104.6"/>
+<vertex x="68.3" y="104.7"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="67.4" y="91.8"/>
+<vertex x="67.4" y="88.9"/>
+<vertex x="68.6" y="88.9"/>
+<vertex x="68.6" y="91.7"/>
+<vertex x="68.6" y="91.8"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="67.1" y="79.6"/>
+<vertex x="67.1" y="76.8"/>
+<vertex x="68.3" y="76.8"/>
+<vertex x="68.3" y="79.6"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="67.1" y="67.7"/>
+<vertex x="67.1" y="64.9"/>
+<vertex x="68.3" y="64.9"/>
+<vertex x="68.3" y="67.7"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="71" y="61.6"/>
+<vertex x="71" y="59.9"/>
+<vertex x="72.2" y="59.9"/>
+<vertex x="72.2" y="61.6"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="53.6" y="49.5"/>
+<vertex x="53.6" y="46.8"/>
+<vertex x="54.7" y="46.8"/>
+<vertex x="54.8" y="46.7"/>
+<vertex x="54.8" y="49.5"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="54.9" y="39.9"/>
+<vertex x="54.9" y="37.1"/>
+<vertex x="56.1" y="37.1"/>
+<vertex x="56.1" y="39.8"/>
+<vertex x="56" y="39.9"/>
+<vertex x="55" y="39.9"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="41.7" y="27.5"/>
+<vertex x="41.7" y="24.9"/>
+<vertex x="42.9" y="24.9"/>
+<vertex x="42.9" y="27.5"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="22.4" y="45.3"/>
+<vertex x="22.4" y="42.7"/>
+<vertex x="23.5" y="42.7"/>
+<vertex x="23.5" y="45.3"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="47.8" y="112.1"/>
+<vertex x="47.8" y="111.1"/>
+<vertex x="49" y="111.1"/>
+<vertex x="49" y="112"/>
+<vertex x="47.8" y="112"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="30.2" y="43.5"/>
+<vertex x="30.2" y="41.8"/>
+<vertex x="31.7" y="41.8"/>
+<vertex x="31.8" y="41.9"/>
+<vertex x="31.8" y="43.4"/>
+<vertex x="31.6" y="43.6"/>
+<vertex x="30.3" y="43.6"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="26.4" y="38.9"/>
+<vertex x="26.4" y="37.3"/>
+<vertex x="27.6" y="37.3"/>
+<vertex x="27.7" y="37.4"/>
+<vertex x="27.7" y="38.7"/>
+<vertex x="27.5" y="38.9"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="42.2" y="22.7"/>
+<vertex x="42.2" y="20.9"/>
+<vertex x="43.7" y="20.9"/>
+<vertex x="43.8" y="21"/>
+<vertex x="43.8" y="22.5"/>
+<vertex x="43.6" y="22.7"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="47.1" y="25.4"/>
+<vertex x="47.1" y="24.2"/>
+<vertex x="48.8" y="24.2"/>
+<vertex x="48.8" y="25.4"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="58.7" y="48.9"/>
+<vertex x="58.7" y="47.3"/>
+<vertex x="58.8" y="47.2"/>
+<vertex x="60" y="47.2"/>
+<vertex x="60.1" y="47.3"/>
+<vertex x="60.1" y="48.8"/>
+<vertex x="60" y="48.9"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="60.3" y="39.3"/>
+<vertex x="60.3" y="37.5"/>
+<vertex x="61.7" y="37.5"/>
+<vertex x="61.9" y="37.7"/>
+<vertex x="61.9" y="39.1"/>
+<vertex x="61.7" y="39.3"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="70.9" y="97.4"/>
+<vertex x="70.9" y="95.7"/>
+<vertex x="72.3" y="95.7"/>
+<vertex x="72.4" y="95.8"/>
+<vertex x="72.4" y="97.2"/>
+<vertex x="71" y="97.2"/>
+<vertex x="70.9" y="97.3"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="71" y="85.4"/>
+<vertex x="71" y="83.7"/>
+<vertex x="72" y="83.7"/>
+<vertex x="72.2" y="83.9"/>
+<vertex x="72.2" y="85.3"/>
+<vertex x="72.1" y="85.4"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="70.9" y="73.5"/>
+<vertex x="70.9" y="71.9"/>
+<vertex x="71" y="72"/>
+<vertex x="72.4" y="72"/>
+<vertex x="72.4" y="73.4"/>
+<vertex x="72.3" y="73.5"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="56.2" y="16"/>
+<vertex x="56.3" y="15.9"/>
+<vertex x="56.3" y="14.1"/>
+<vertex x="57.4" y="15.2"/>
+<vertex x="57.6" y="15.2"/>
+<vertex x="57.6" y="16"/>
+<vertex x="57.7" y="16.1"/>
+<vertex x="56.4" y="16.1"/>
+<vertex x="56.3" y="16"/>
+<vertex x="56.3" y="15.8"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="52.1" y="7.3"/>
+<vertex x="52.1" y="5.8"/>
+<vertex x="52.2" y="5.7"/>
+<vertex x="53.6" y="5.7"/>
+<vertex x="53.6" y="7.5"/>
+<vertex x="52.1" y="7.5"/>
+</polygon>
+<polygon width="0.1524" layer="41">
+<vertex x="21.2" y="62"/>
+<vertex x="21.3" y="61.9"/>
+<vertex x="21.3" y="55.6"/>
+<vertex x="21.4" y="55.5"/>
+<vertex x="28" y="55.5"/>
+<vertex x="26.6" y="56.9"/>
+<vertex x="26.2" y="56.9"/>
+<vertex x="26.2" y="61.9"/>
+<vertex x="25.9" y="62.2"/>
+<vertex x="21.4" y="62.2"/>
+</polygon>
 </plain>
 <libraries>
 <library name="RaspberryPi_Pico">
@@ -1128,11 +1301,11 @@ design rules under a new name.</description>
 <wire x1="50.6" y1="110.5" x2="51.45" y2="109.65" width="0.8128" layer="1"/>
 <wire x1="53" y1="109.65" x2="56.95" y2="109.65" width="0.8128" layer="1"/>
 <wire x1="56.95" y1="109.65" x2="58.8" y2="111.5" width="0.8128" layer="1"/>
-<wire x1="40.6" y1="109.75" x2="42.1" y2="109.75" width="0.8128" layer="1"/>
-<wire x1="43.95" y1="107.9" x2="42.1" y2="109.75" width="0.8128" layer="1"/>
+<wire x1="40.6" y1="109.75" x2="40.7" y2="109.75" width="0.8128" layer="1"/>
+<wire x1="42.55" y1="107.9" x2="40.7" y2="109.75" width="0.8128" layer="1"/>
 <wire x1="52.5" y1="107.9" x2="53" y2="108.4" width="0.8128" layer="1"/>
 <wire x1="53" y1="108.4" x2="53" y2="109.65" width="0.8128" layer="1"/>
-<wire x1="43.95" y1="107.9" x2="52.5" y2="107.9" width="0.8128" layer="1"/>
+<wire x1="42.55" y1="107.9" x2="52.5" y2="107.9" width="0.8128" layer="1"/>
 <via x="56.9" y="31.5" extent="1-16" drill="1.5" diameter="2.5"/>
 <via x="74" y="55.2" extent="1-16" drill="1.5" diameter="2.5"/>
 <via x="16.1" y="36.8" extent="1-16" drill="1.5" diameter="2.5"/>
@@ -1285,7 +1458,7 @@ design rules under a new name.</description>
 <contactref element="R2" pad="2"/>
 <contactref element="R3" pad="2"/>
 <contactref element="R4" pad="2"/>
-<polygon width="0.254" layer="1" isolate="0.3048">
+<polygon width="0.254" layer="1" isolate="0.4064">
 <vertex x="10" y="117"/>
 <vertex x="80" y="117"/>
 <vertex x="80" y="-3.8"/>
@@ -1380,13 +1553,13 @@ design rules under a new name.</description>
 <contactref element="U7" pad="1"/>
 <contactref element="U7" pad="3"/>
 <contactref element="C1" pad="1"/>
-<via x="31.4" y="111.4" extent="1-16" drill="1.5" diameter="2.5"/>
+<via x="35" y="111.4" extent="1-16" drill="1.5" diameter="2.5"/>
 <wire x1="47.15" y1="111.45" x2="43.4" y2="111.45" width="0.8128" layer="1"/>
 <wire x1="43.4" y1="111.45" x2="40.6" y2="111.45" width="0.8128" layer="1"/>
 <wire x1="47.15" y1="109.55" x2="44.15" y2="109.55" width="0.8128" layer="1"/>
 <wire x1="43.4" y1="110.3" x2="43.4" y2="111.45" width="0.8128" layer="1"/>
 <wire x1="44.15" y1="109.55" x2="43.4" y2="110.3" width="0.8128" layer="1"/>
-<wire x1="31.4" y1="111.4" x2="40.55" y2="111.4" width="1.016" layer="1"/>
+<wire x1="35" y1="111.4" x2="40.55" y2="111.4" width="1.016" layer="1"/>
 <wire x1="40.55" y1="111.4" x2="40.6" y2="111.45" width="1.016" layer="1"/>
 </signal>
 </signals>
