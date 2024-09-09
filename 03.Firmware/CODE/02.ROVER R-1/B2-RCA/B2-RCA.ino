@@ -292,8 +292,6 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
-    // pinMode(C_PIN_TEST, OUTPUT);
-    // digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
 #ifdef WATCHDOG_ENABLE
@@ -1355,10 +1353,20 @@ void setup()
                         flag_irq_center_button = false; // Limpieza de los flags de interrupcion
                     }
                     SaveEeprom(); // Salvado en EEPROM
-                    sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        sample_VIN += analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+                        delay(50);
+                    }
+                    sample_VIN = sample_VIN << 3;
                     if (sample_VIN >= 3400) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
                     {
                         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW); // Apagado de la alimentacion secundaria.
+                        digitalWrite(C_PIN_EN_DCDC, HIGH);         // Desactivacion del EN_DCDC
+                    }
+                    else
+                    {
+                        // Dejamos encendido Vcc_2 y por tanto el DCDC, para evitar que sale el LM5114. Y por tanto deje disparado el switch Q1.
                     }
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar por flanco de bajada del boton central
 #ifdef SERIAL_DEBUG
@@ -1372,6 +1380,7 @@ void setup()
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
+                    digitalWrite(C_PIN_EN_DCDC, LOW);           // Activacion del EN_DCDC
                     delay(100);
                     initDisplay();
 #ifdef WATCHDOG_ENABLE
