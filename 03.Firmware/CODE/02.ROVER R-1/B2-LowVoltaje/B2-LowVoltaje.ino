@@ -1375,12 +1375,13 @@ void setup()
                         flag_irq_center_button = false; // Limpieza de los flags de interrupcion
                     }
                     SaveEeprom(); // Salvado en EEPROM
+                    sample_VIN = 0;
                     for (int i = 0; i < 8; i++)
                     {
                         sample_VIN += analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
                         delay(50);
                     }
-                    sample_VIN = sample_VIN << 3;
+                    sample_VIN = sample_VIN >> 3;
                     if (sample_VIN >= 3400) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
                     {
                         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW); // Apagado de la alimentacion secundaria.
