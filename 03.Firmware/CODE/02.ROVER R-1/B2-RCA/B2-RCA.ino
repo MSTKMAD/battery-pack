@@ -1709,6 +1709,8 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
+                pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
 
                 /* Clear Flags */
                 flag_low_battery = false;

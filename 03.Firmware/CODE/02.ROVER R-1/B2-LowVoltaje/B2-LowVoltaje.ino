@@ -951,7 +951,7 @@ void setup()
                         cont_log_active++;
                         cont_low_batt_run++;
                         // Sensado de la tension de entrada para prevenir apagado no deseado
-                        
+
 #ifdef SERIAL_DEBUG
                         // Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
 #endif
@@ -966,27 +966,27 @@ void setup()
                     }
                     //------------ PROTECCIONES--------------//
                     if ((low_voltage_protection.check(sample_VIN) == false) && (low_voltage_protection.getCounter() == 0))
-                        {
+                    {
                         low_voltage_protection.setCounter(low_voltage_protection.limit);
-                                if (flag_low_vin_detected)
-                                {
-                                    if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
-                                    {
-                                        DisplayLowBattery();
-                                        playSound(C_SOUND_LOW_BATTERY);
-                                        trigger_Display_volt = true;
-                                        cont_low_batt_run = 0;
-                                    }
-                                }
-                                else
-                                {
-                                    flag_low_vin_detected = true;
-                                    DisplayLowBattery();
-                                    playSound(C_SOUND_LOW_BATTERY);
-                                    trigger_Display_volt = true;
-                                    cont_low_batt_run = 0;
-                                }
+                        if (flag_low_vin_detected)
+                        {
+                            if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
+                            {
+                                DisplayLowBattery();
+                                playSound(C_SOUND_LOW_BATTERY);
+                                trigger_Display_volt = true;
+                                cont_low_batt_run = 0;
                             }
+                        }
+                        else
+                        {
+                            flag_low_vin_detected = true;
+                            DisplayLowBattery();
+                            playSound(C_SOUND_LOW_BATTERY);
+                            trigger_Display_volt = true;
+                            cont_low_batt_run = 0;
+                        }
+                    }
                     //      Consumption Monitor     //
                     if (over_consumption_protection.check(sample_IOut) == true)
                     {
@@ -1748,6 +1748,8 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
+                pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
 
                 /* Clear Flags */
                 flag_low_battery = false;
