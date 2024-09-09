@@ -864,7 +864,7 @@
 <circle x="189.24" y="107.38971875" radius="3.1" width="0.1" layer="48"/>
 <circle x="184.24" y="116.38971875" radius="2.3" width="0.1" layer="48"/>
 <circle x="194.24" y="116.38971875" radius="2.3" width="0.1" layer="48"/>
-<rectangle x1="84.58" y1="91" x2="88.58" y2="94" layer="16"/>
+<rectangle x1="84.49" y1="91" x2="88.49" y2="94" layer="16"/>
 <rectangle x1="100.46" y1="91.02" x2="104.46" y2="94.02" layer="16"/>
 <circle x="94.46" y="91.37" radius="4" width="0.1" layer="48"/>
 <rectangle x1="96.05" y1="85.46" x2="99.05" y2="89.06" layer="16"/>
@@ -902,7 +902,7 @@
 <circle x="94.37" y="92.28" radius="8" width="0.1524" layer="22"/>
 <circle x="94.39" y="92.33" radius="11" width="0.1524" layer="22"/>
 <text x="86.11828125" y="89.251003125" size="0.8128" layer="22" distance="46" rot="MR225">Bat_Con
-v2_Dic'23</text>
+v3-Sep'24</text>
 </plain>
 <libraries>
 <library name="testpad" urn="urn:adsk.eagle:library:385">
@@ -1072,6 +1072,44 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <wire x1="-2.6" y1="0" x2="-2.5" y2="0" width="0.1" layer="21" curve="180"/>
 </package>
 </packages>
+</library>
+<library name="SparkFun-Resistors" urn="urn:adsk.eagle:library:532">
+<description>&lt;h3&gt;SparkFun Resistors&lt;/h3&gt;
+This library contains resistors. Reference designator:R. 
+&lt;br&gt;
+&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is &lt;b&gt; the end user's responsibility&lt;/b&gt; to ensure correctness and suitablity for a given componet or application. 
+&lt;br&gt;
+&lt;br&gt;If you enjoy using this library, please buy one of our products at &lt;a href=" www.sparkfun.com"&gt;SparkFun.com&lt;/a&gt;.
+&lt;br&gt;
+&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;
+&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="0805" urn="urn:adsk.eagle:footprint:39617/1" library_version="1">
+<description>&lt;p&gt;&lt;b&gt;Generic 2012 (0805) package&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;0.2mm courtyard excess rounded to nearest 0.05mm.&lt;/p&gt;</description>
+<smd name="1" x="-0.9" y="0" dx="0.8" dy="1.2" layer="1"/>
+<smd name="2" x="0.9" y="0" dx="0.8" dy="1.2" layer="1"/>
+<text x="0" y="0.889" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-0.889" size="0.6096" layer="27" font="vector" ratio="20" align="top-center">&gt;VALUE</text>
+<wire x1="-1.5" y1="0.8" x2="1.5" y2="0.8" width="0.0508" layer="39"/>
+<wire x1="1.5" y1="0.8" x2="1.5" y2="-0.8" width="0.0508" layer="39"/>
+<wire x1="1.5" y1="-0.8" x2="-1.5" y2="-0.8" width="0.0508" layer="39"/>
+<wire x1="-1.5" y1="-0.8" x2="-1.5" y2="0.8" width="0.0508" layer="39"/>
+</package>
+</packages>
+<packages3d>
+<package3d name="0805" urn="urn:adsk.eagle:package:39651/1" type="box" library_version="1">
+<description>Generic 2012 (0805) package
+0.2mm courtyard excess rounded to nearest 0.05mm.</description>
+<packageinstances>
+<packageinstance name="0805"/>
+</packageinstances>
+</package3d>
+</packages3d>
 </library>
 </libraries>
 <attributes>
@@ -1415,6 +1453,11 @@ design rules under a new name.</description>
 <attribute name="TP_SIGNAL_NAME" value="" x="104.1570375" y="86.182959375" size="1" layer="37" rot="R45"/>
 <attribute name="VALUE" x="102.8998" y="87.080984375" size="0.0254" layer="27" rot="R45"/>
 </element>
+<element name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" " x="87.37" y="87.84" smashed="yes" rot="MR225">
+<attribute name="NAME" x="88.55138125" y="88.921378125" size="0.6096" layer="26" font="vector" ratio="20" rot="MR225" align="bottom-center"/>
+<attribute name="PROD_ID" value=" " x="87.37" y="87.84" size="1.778" layer="28" rot="MR225" display="off"/>
+<attribute name="VALUE" x="87.998615625" y="88.4686125" size="0.6096" layer="28" font="vector" ratio="20" rot="MR225" align="top-center"/>
+</element>
 </elements>
 <signals>
 <signal name="VBUS">
@@ -1468,19 +1511,15 @@ design rules under a new name.</description>
 <signal name="VOUT+">
 <contactref element="VOUT+1" pad="TP"/>
 <contactref element="VO+" pad="TP"/>
-<wire x1="90.84" y1="87.21" x2="91.24" y2="87.61" width="1.016" layer="16"/>
-<wire x1="90.84" y1="87.21" x2="87.84" y2="87.21" width="1.016" layer="16"/>
-<wire x1="86.83" y1="92.49" x2="86.83" y2="88.22" width="1.016" layer="16"/>
-<wire x1="86.83" y1="88.22" x2="87.84" y2="87.21" width="1.016" layer="16"/>
-<wire x1="86.83" y1="92.49" x2="89.39" y2="92.49" width="0.8128" layer="16"/>
+<wire x1="91.24" y1="87.61" x2="90.87" y2="87.24" width="1.016" layer="16"/>
+<wire x1="86.83" y1="92.49" x2="86.7" y2="92.36" width="1.016" layer="16"/>
+<wire x1="86.7" y1="92.36" x2="86.7" y2="88.51" width="1.016" layer="16"/>
 <contactref element="D1" pad="1"/>
 <wire x1="94.48" y1="84.13" x2="94.48" y2="84.085" width="0.6096" layer="16"/>
 <wire x1="94.48" y1="84.085" x2="92.235" y2="84.085" width="0.6096" layer="16"/>
 <wire x1="91.24" y1="87.61" x2="91.24" y2="85.08" width="0.6096" layer="16"/>
 <wire x1="92.235" y1="84.085" x2="91.24" y2="85.08" width="0.6096" layer="16"/>
 <contactref element="K1" pad="12"/>
-<wire x1="89.39" y1="92.49" x2="89.53" y2="92.63" width="0.6096" layer="16"/>
-<wire x1="89.53" y1="92.63" x2="89.53" y2="95.16" width="0.6096" layer="16"/>
 <via x="93.45" y="83.31" extent="1-16" drill="0.35"/>
 <via x="94.16" y="83.27" extent="1-16" drill="0.35"/>
 <via x="94.84" y="83.25" extent="1-16" drill="0.35"/>
@@ -1516,6 +1555,18 @@ design rules under a new name.</description>
 <contactref element="D2" pad="1"/>
 <wire x1="94.43" y1="84.652" x2="94.48" y2="84.602" width="0.1524" layer="16"/>
 <wire x1="94.48" y1="84.602" x2="94.48" y2="84.13" width="0.1524" layer="16"/>
+<contactref element="R1" pad="2"/>
+<contactref element="R1" pad="1"/>
+<wire x1="88.04279375" y1="87.24" x2="88.006396875" y2="87.203603125" width="1.016" layer="16"/>
+<wire x1="90.87" y1="87.24" x2="88.04279375" y2="87.24" width="1.016" layer="16"/>
+<wire x1="86.73360625" y1="88.47639375" x2="86.7" y2="88.51" width="1.016" layer="16"/>
+<wire x1="88.006396875" y1="87.203603125" x2="86.73360625" y2="88.47639375" width="1.016" layer="16"/>
+<wire x1="91.27" y1="88.12" x2="89.74" y2="89.65" width="1.016" layer="16"/>
+<wire x1="89.53" y1="95.16" x2="89.53" y2="92.86" width="0.6096" layer="16"/>
+<wire x1="89.53" y1="92.86" x2="89.74" y2="92.65" width="0.6096" layer="16"/>
+<wire x1="89.74" y1="92.65" x2="89.74" y2="89.65" width="1.016" layer="16"/>
+<wire x1="91.27" y1="88.12" x2="91.27" y2="87.469765625" width="1.016" layer="16"/>
+<wire x1="91.24" y1="87.61" x2="91.27" y2="87.469765625" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="VOUT-">
 <contactref element="VOUT-1" pad="TP"/>
@@ -1523,7 +1574,6 @@ design rules under a new name.</description>
 <wire x1="100.808215625" y1="84.76" x2="98.01" y2="84.76" width="0.8128" layer="16"/>
 <wire x1="98.01" y1="84.76" x2="97.56" y2="85.21" width="0.8128" layer="16"/>
 <wire x1="97.56" y1="87.5" x2="97.56" y2="85.21" width="0.8128" layer="16"/>
-<wire x1="102.67" y1="91.84" x2="102.67" y2="92.46" width="1.016" layer="16"/>
 <wire x1="102.09" y1="93.04" x2="102.67" y2="92.46" width="0.8128" layer="16"/>
 <wire x1="102.09" y1="93.04" x2="90.86" y2="93.04" width="0.8128" layer="16"/>
 <contactref element="D1" pad="2"/>
@@ -1699,13 +1749,10 @@ design rules under a new name.</description>
 <errors>
 <approved hash="19,16,62e264c360cd66ec"/>
 <approved hash="19,16,d232d4c6c0c8c63c"/>
-<approved hash="19,16,ac403d440d0c736b"/>
 <approved hash="19,16,f86486fa14e66a78"/>
-<approved hash="19,16,8d850db226a1975e"/>
 <approved hash="19,16,31c490450f445807"/>
 <approved hash="19,16,339433f931f3319e"/>
 <approved hash="19,16,86ad53836e6006bc"/>
-<approved hash="19,16,68ffa340850753e4"/>
 <approved hash="6,16,130fa058539a456c"/>
 <approved hash="19,16,3ccbbd61c9b9fca6"/>
 <approved hash="19,16,27cf5aa0b9f0d849"/>
@@ -1715,8 +1762,6 @@ design rules under a new name.</description>
 <approved hash="19,16,c893cf13bf13b893"/>
 <approved hash="19,16,2b137f23a06b0bff"/>
 <approved hash="19,16,ed8cef38e136e382"/>
-<approved hash="19,16,e81945ec34283475"/>
-<approved hash="19,16,a546663a321a1b70"/>
 <approved hash="19,16,a5c4b8cdbc5abaa2"/>
 <approved hash="19,16,30b5cde3c0530895"/>
 <approved hash="19,16,aa018dc00b34579a"/>
@@ -1744,7 +1789,15 @@ design rules under a new name.</description>
 <approved hash="22,16,fc35fc3571ba71ba"/>
 <approved hash="22,16,51645163d6ecd6eb"/>
 <approved hash="22,16,fc35fc3571ba71ba"/>
-<approved hash="19,16,dda536d1e0c8d954"/>
+<approved hash="21,19,93ad97af945190ad"/>
+<approved hash="19,16,acececf8d5ecdc17"/>
+<approved hash="19,16,fa311d4aa7a7ad36"/>
+<approved hash="19,16,3366e0b3abdf0bb5"/>
+<approved hash="19,16,f643ffc22923a0d4"/>
+<approved hash="19,16,2d8889d38f64c39c"/>
+<approved hash="19,16,610bc897ed80936c"/>
+<approved hash="19,16,f71ff59f4f834d03"/>
+<approved hash="23,16,923f30d12cd28e3c"/>
 </errors>
 </board>
 </drawing>
