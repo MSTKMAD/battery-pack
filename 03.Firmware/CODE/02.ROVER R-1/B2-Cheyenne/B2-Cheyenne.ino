@@ -117,7 +117,7 @@ HealthMonitor boost_check(20, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
  *      - Umbral : 1000 mA.
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1500ms
  *
  */
@@ -126,7 +126,7 @@ HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 1, 600);
 /**
  * @brief HealthMonitor de la potencia de salida.
  *      - Umbral : 5000 mW. (mA x mV / 1000)
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 2000 ms
  *
  */
@@ -140,7 +140,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      que cada vez que el HM no salte, disminuya el contador. En el momento que el contador llegue a 0, se considera que
  *      la proteccion tiene que saltar. Lo resets se localizaran al limite superior.
  *      - Umbral : 1000 mV
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1000 ms
  *
  */
@@ -296,8 +296,6 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
-    // pinMode(C_PIN_TEST, OUTPUT);
-    // digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
 #ifdef WATCHDOG_ENABLE
@@ -308,7 +306,6 @@ void setup()
     //-------------------------- Reset Cause---------------------------
 
     reset_register = Watchdog.resetCause();
-
     Serial5.printf("%04x\n", reset_register);
     if (reset_register & 0x01)
     {
@@ -384,7 +381,6 @@ void setup()
 
 #ifdef WATCHDOG_ENABLE
                 Watchdog.reset();
-
 #endif
 
                 if (timer_test_sensing.poll() != C_TIMER_NOT_EXPIRED)
@@ -1907,6 +1903,7 @@ void setup()
                 flag_enable_off = true;
 
 /* Clear Flags */
+                flag_enable_off = true;
 
 /* Change-State Effects */
 #ifdef SERIAL_DEBUG

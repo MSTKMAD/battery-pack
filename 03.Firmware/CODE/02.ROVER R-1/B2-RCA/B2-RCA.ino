@@ -108,7 +108,7 @@ const uint16_t C_NITRO_STATE_DFLT = true;
 /**
  * @brief HealthMonitor de la corriente de salida para el modo boost.
  *      - Umbral
- *      - Ts = 10 ms.
+ *      - Ts = 25 ms.
  *      - T boost = 100ms.
  *      - T no boost = 1s
  *
@@ -117,7 +117,7 @@ HealthMonitor boost_check(20, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
  *      - Umbral : 1000 mA.
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1500ms
  *
  */
@@ -126,7 +126,7 @@ HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 1, 600);
 /**
  * @brief HealthMonitor de la potencia de salida.
  *      - Umbral : 5000 mW. (mA x mV / 1000)
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 2000 ms
  *
  */
@@ -140,7 +140,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      que cada vez que el HM no salte, disminuya el contador. En el momento que el contador llegue a 0, se considera que
  *      la proteccion tiene que saltar. Lo resets se localizaran al limite superior.
  *      - Umbral : 1000 mV
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1000 ms
  *
  */
@@ -193,7 +193,6 @@ MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
-
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -280,7 +279,6 @@ bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el
 bool flag_menu_active = false;                // Flag que marca el estado del menu de configuracion.
 uint16_t flag_wait_menu_timer = C_TIMER_IDLE; // Flag que indica el estado del timer de espera de activacion del menu de configuracion.
 bool flag_option_selected = false;            // Flag que indica si se ha selccionado una opcion en el menu de configuracion.
-
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -935,7 +933,7 @@ void setup()
                         // Sensado de la tension de entrada para prevenir apagado no deseado
 
 #ifdef SERIAL_DEBUG
-                        Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
+                        // Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
 #endif
 
                         if (cont_log_active == C_MIN_PERIOD_LOG_PM) // A la hora logeo en EEPROM.
@@ -949,8 +947,7 @@ void setup()
                     //------------ PROTECCIONES--------------//
                     if ((low_voltage_protection.check(sample_VIN) == false) && (low_voltage_protection.getCounter() == 0))
                         {
-                            if (cont_low_batt_triggers >= 5)
-                            {
+                        low_voltage_protection.setCounter(low_voltage_protection.limit);
                                 if (flag_low_vin_detected)
                                 {
                                     if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
@@ -1969,10 +1966,12 @@ void setup()
         {
             cont_log_sec++;
             prog_cycle /= cont_per;
+#ifdef SERIAL_DEBUG
             Serial5.printf("MAX Prog cycle avrg:%d us\n", max_prog_cycle);
             Serial5.printf("AVG Prog cycle avrg:%d us\n", prog_cycle);
             Serial5.printf("MIN Prog cycle avrg:%d us\n", min_prog_cycle);
             Serial5.printf("-------- %d ---------\n\n", cont_log_sec);
+#endif
             // Serial5.printf("RAM: %d \n", freeMemory());
             prog_cycle = 0;
             cont_per = 0;
@@ -1989,6 +1988,8 @@ void setup()
 
 void loop()
 {
+    Serial5.printf("Puntero perdido. \n");
+    delay(1000);
 }
 
 void IrqCenterButtonHandler()

@@ -107,7 +107,7 @@ const uint16_t C_NITRO_STATE_DFLT = false;
 /**
  * @brief HealthMonitor de la corriente de salida para el modo boost.
  *      - Umbral
- *      - Ts = 10 ms.
+ *      - Ts = 25 ms.
  *      - T boost = 100ms.
  *      - T no boost = 1s
  *
@@ -116,7 +116,7 @@ HealthMonitor boost_check(20, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
  *      - Umbral : 1000 mA.
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1500ms
  *
  */
@@ -125,7 +125,7 @@ HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 1, 600);
 /**
  * @brief HealthMonitor de la potencia de salida.
  *      - Umbral : 5000 mW. (mA x mV / 1000)
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 2000 ms
  *
  */
@@ -139,7 +139,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      que cada vez que el HM no salte, disminuya el contador. En el momento que el contador llegue a 0, se considera que
  *      la proteccion tiene que saltar. Lo resets se localizaran al limite superior.
  *      - Umbral : 1000 mV
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1000 ms
  *
  */
@@ -2016,6 +2016,8 @@ void setup()
 
 void loop()
 {
+    Serial5.printf("Puntero perdido. \n");
+    delay(1000);
 }
 
 void IrqCenterButtonHandler()
