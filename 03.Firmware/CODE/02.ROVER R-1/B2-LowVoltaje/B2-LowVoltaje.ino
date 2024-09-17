@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 204
+#define INTEGRATED_VERSION 205
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG
@@ -60,6 +60,7 @@ const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A  Limite de la proteccion d
 const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. Diferencial de tension de la proteccion de Undervoltage de la tension de salida
 const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
 const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 1900; // 1.9A. Limite de la porteccion de cortocircuito.
+const int16_t C_LIMIT_LOW_VOLTAGE_PROT = 3200;  // 3.2v. Limite inferior del detecteor de Low Voltage
 
 const int32_t C_TIME_IDLE_30_SEG = 30000;          // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
 const int32_t C_TIME_INIT_SCREEN = 1000;           // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
@@ -106,7 +107,7 @@ const uint16_t C_NITRO_STATE_DFLT = false;
 /**
  * @brief HealthMonitor de la corriente de salida para el modo boost.
  *      - Umbral
- *      - Ts = 10 ms.
+ *      - Ts = 25 ms.
  *      - T boost = 100ms.
  *      - T no boost = 1s
  *
@@ -115,7 +116,7 @@ HealthMonitor boost_check(20, 10, 1, 100);
 /**
  * @brief HealthMonitor del consumo de salida de la bateria.
  *      - Umbral : 1000 mA.
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1500ms
  *
  */
@@ -124,7 +125,7 @@ HealthMonitor over_consumption_protection(C_LIMIT_COMSUPTION_PROT, 10, 1, 600);
 /**
  * @brief HealthMonitor de la potencia de salida.
  *      - Umbral : 5000 mW. (mA x mV / 1000)
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 2000 ms
  *
  */
@@ -138,7 +139,7 @@ HealthMonitor over_power_protection(C_LIMIT_OVERPOWER_PROT, 10, 1, 800);
  *      que cada vez que el HM no salte, disminuya el contador. En el momento que el contador llegue a 0, se considera que
  *      la proteccion tiene que saltar. Lo resets se localizaran al limite superior.
  *      - Umbral : 1000 mV
- *      - Ts = 10 ms
+ *      - Ts = 25 ms
  *      - Time spam = 1000 ms
  *
  */
@@ -151,6 +152,15 @@ HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 1, 10, 400);
  *
  */
 HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
+
+/**
+ * @brief HealthMonitor del low_voltage de salida.
+ *      - Umbral :3200 mV
+ *      - Ts = 25 ms
+ *      - Time spam = 60000 ms
+ *
+ */
+HealthMonitor low_voltage_protection(C_LIMIT_LOW_VOLTAGE_PROT, 1, 1, 2400);
 
 /**
  * @brief
@@ -511,6 +521,7 @@ void setup()
         over_power_protection.setCounter(0);
         under_voltage_protection.setCounter(under_voltage_protection.limit);
         short_current_protection.setCounter(0);
+        low_voltage_protection.setCounter(low_voltage_protection.limit);
 
         //------------------------ CHECKEO PARA APP NAMING ------------------------------
 
@@ -739,6 +750,7 @@ void setup()
         sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
         sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
         sample_POut = (sample_IOut) * (sample_VOut) / 1000;                                     // Calculo de la potencia de salida
+        sample_VIN = low_voltage_protection.getSample(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
         //========================================================== BOOST MODE MONITOR ===========================================================//
 
         /*   Seleccion del tipo de salida en  funcion de la carga presente en la salida.   */
@@ -939,7 +951,7 @@ void setup()
                         cont_log_active++;
                         cont_low_batt_run++;
                         // Sensado de la tension de entrada para prevenir apagado no deseado
-                        sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+
 #ifdef SERIAL_DEBUG
                         // Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
 #endif
@@ -951,40 +963,30 @@ void setup()
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;
                         }
-                        if (sample_VIN <= 3200)
+                    }
+                    //------------ PROTECCIONES--------------//
+                    if ((low_voltage_protection.check(sample_VIN) == false) && (low_voltage_protection.getCounter() == 0))
+                    {
+                        low_voltage_protection.setCounter(low_voltage_protection.limit);
+                        if (flag_low_vin_detected)
                         {
-                            if (cont_low_batt_triggers >= 5)
+                            if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
                             {
-                                if (flag_low_vin_detected)
-                                {
-                                    if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
-                                    {
-                                        DisplayLowBattery();
-                                        playSound(C_SOUND_LOW_BATTERY);
-                                        trigger_Display_volt = true;
-                                        cont_low_batt_run = 0;
-                                    }
-                                }
-                                else
-                                {
-                                    flag_low_vin_detected = true;
-                                    DisplayLowBattery();
-                                    playSound(C_SOUND_LOW_BATTERY);
-                                    trigger_Display_volt = true;
-                                    cont_low_batt_run = 0;
-                                }
-                            }
-                            else
-                            {
-                                cont_low_batt_triggers++;
+                                DisplayLowBattery();
+                                playSound(C_SOUND_LOW_BATTERY);
+                                trigger_Display_volt = true;
+                                cont_low_batt_run = 0;
                             }
                         }
                         else
                         {
-                            cont_low_batt_triggers--;
+                            flag_low_vin_detected = true;
+                            DisplayLowBattery();
+                            playSound(C_SOUND_LOW_BATTERY);
+                            trigger_Display_volt = true;
+                            cont_low_batt_run = 0;
                         }
                     }
-                    //------------ PROTECCIONES--------------//
                     //      Consumption Monitor     //
                     if (over_consumption_protection.check(sample_IOut) == true)
                     {
@@ -1373,12 +1375,22 @@ void setup()
                         flag_irq_center_button = false; // Limpieza de los flags de interrupcion
                     }
                     SaveEeprom(); // Salvado en EEPROM
-                    sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
-                    if (sample_VIN > 3350) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
+                    sample_VIN = 0;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        sample_VIN += analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+                        delay(50);
+                    }
+                    sample_VIN = sample_VIN >> 3;
+                    if (sample_VIN >= 3400) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
                     {
                         digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW); // Apagado de la alimentacion secundaria.
+                        digitalWrite(C_PIN_EN_DCDC, HIGH);         // Desactivacion del EN_DCDC
                     }
-
+                    else
+                    {
+                        // Dejamos encendido Vcc_2 y por tanto el DCDC, para evitar que sale el LM5114. Y por tanto deje disparado el switch Q1.
+                    }
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar por flanco de bajada del boton central
 #ifdef SERIAL_DEBUG
                     Serial5.println("Zzz");
@@ -1391,6 +1403,7 @@ void setup()
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
+                    digitalWrite(C_PIN_EN_DCDC, LOW);           // Activacion del EN_DCDC
                     delay(100);
                     initDisplay();
 #ifdef WATCHDOG_ENABLE
@@ -1656,6 +1669,7 @@ void setup()
                 over_power_protection.setCounter(0);
                 under_voltage_protection.setCounter(under_voltage_protection.limit);
                 short_current_protection.setCounter(0);
+                low_voltage_protection.setCounter(low_voltage_protection.limit);
                 SwitchScreenOff();
                 // -------------- GUARDADO EN EEPROM -----------------
                 SaveEeprom();
@@ -1735,6 +1749,8 @@ void setup()
 
                 /* Output */
                 sw_output = C_OUTPUT_OFF;
+                pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
 
                 /* Clear Flags */
                 flag_low_battery = false;
@@ -1928,6 +1944,7 @@ void setup()
             over_power_protection.setCounter(0);
             under_voltage_protection.setCounter(under_voltage_protection.limit);
             short_current_protection.setCounter(0);
+            low_voltage_protection.setCounter(low_voltage_protection.limit);
         }
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
@@ -2012,6 +2029,8 @@ void setup()
 
 void loop()
 {
+    Serial5.printf("Puntero perdido. \n");
+    delay(1000);
 }
 
 void IrqCenterButtonHandler()

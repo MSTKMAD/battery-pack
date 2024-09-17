@@ -6,20 +6,20 @@
 <setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
+<grid distance="0.01" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="24" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
@@ -33,9 +33,9 @@
 <layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
-<layer number="40" name="bKeepout" color="1" fill="11" visible="no" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
-<layer number="42" name="bRestrict" color="1" fill="10" visible="no" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="no" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
@@ -45,7 +45,7 @@
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
 <layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -155,13 +155,9 @@
 </layers>
 <board>
 <plain>
-<wire x1="72.466109375" y1="82.89346875" x2="72.773509375" y2="82.86830625" width="0.001" layer="20" curve="48.464246"/>
-<wire x1="71.110490625" y1="82.873309375" x2="71.589890625" y2="82.899471875" width="0.001" layer="20" curve="48.46403"/>
-<wire x1="72.466109375" y1="82.89346875" x2="71.589890625" y2="82.899471875" width="0.001" layer="20" curve="105.105949"/>
 <circle x="72" y="71" radius="6.4" width="2.2" layer="29"/>
-<wire x1="71.110490625" y1="82.873309375" x2="72.773509375" y2="82.86830625" width="0.001" layer="20" curve="351.823836"/>
 <circle x="72" y="71" radius="9.05" width="2.1" layer="29"/>
-<circle x="72" y="71" radius="10.1" width="0.001" layer="48"/>
+<circle x="72" y="71" radius="10.75" width="0.001" layer="48"/>
 <circle x="72" y="71" radius="7.5" width="0.001" layer="48"/>
 <circle x="72" y="71" radius="5.3" width="0.001" layer="29"/>
 <circle x="72" y="71" radius="8" width="0.001" layer="48"/>
@@ -179,14 +175,20 @@
 <vertex x="67.161" y="74.349"/>
 <vertex x="67.161" y="67.911"/>
 </polygon>
-<text x="67.7" y="74.9" size="1.778" layer="22" font="vector" rot="MR0">EXT</text>
-<text x="79.6" y="74.8" size="1.778" layer="22" font="vector" rot="MR0">INT</text>
-<text x="75" y="63.5" size="1.016" layer="22" font="vector" rot="MR0">FK_CONN
-v1-Feb24</text>
+<text x="67.71" y="74.67" size="1.016" layer="22" font="vector" rot="MR0">NEGRO</text>
+<text x="79.6" y="74.67" size="1.016" layer="22" font="vector" rot="MR0">ROJO</text>
+<text x="75" y="63.46" size="1.016" layer="22" font="vector" rot="MR0">FK_CONN
+v3-Sep'24</text>
 <text x="75.8" y="68.45" size="1.016" layer="22" font="vector" rot="MR0">"I love it 
 when a plan
 comes
 together"</text>
+<circle x="72.00701875" y="70.96" radius="7.5" width="0.001" layer="48"/>
+<circle x="72.00701875" y="70.96" radius="5.3" width="0.001" layer="48"/>
+<circle x="72.00701875" y="70.96" radius="10.35" width="0.001" layer="48"/>
+<circle x="72.00701875" y="70.96" radius="11.65" width="0.001" layer="20"/>
+<circle x="72.00701875" y="70.96" radius="8" width="0.001" layer="48"/>
+<circle x="72.05" y="71.03" radius="10.1" width="0.001" layer="48"/>
 </plain>
 <libraries>
 </libraries>
@@ -427,12 +429,6 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="A">
-<polygon width="0.1524" layer="16">
-<vertex x="64.327" y="67.911"/>
-<vertex x="64.327" y="74.349"/>
-<vertex x="67.161" y="74.349"/>
-<vertex x="67.161" y="67.911"/>
-</polygon>
 <via x="63.796" y="75.91" extent="1-16" drill="0.35"/>
 <via x="72.006" y="80.575" extent="1-16" drill="0.35"/>
 <via x="79.091" y="77.347" extent="1-16" drill="0.35"/>
@@ -458,6 +454,25 @@ design rules under a new name.</description>
 <wire x1="70.09" y1="64.76" x2="67.813" y2="64.76" width="1.016" layer="16"/>
 <wire x1="67.813" y1="64.76" x2="65.518" y2="67.055" width="1.016" layer="16"/>
 <wire x1="65.518" y1="67.055" x2="63.294" y2="67.055" width="1.016" layer="16"/>
+<polygon width="0.1524" layer="16">
+<vertex x="63.29" y="76.32"/>
+<vertex x="63.29" y="75.48"/>
+<vertex x="63.4" y="75.37"/>
+<vertex x="65.33" y="75.37"/>
+<vertex x="65.35" y="75.35"/>
+<vertex x="65.35" y="74.47"/>
+<vertex x="65.29" y="74.41"/>
+<vertex x="64.34" y="74.41"/>
+<vertex x="64.34" y="67.96"/>
+<vertex x="64.38" y="67.92"/>
+<vertex x="67.08" y="67.92"/>
+<vertex x="67.08" y="74.49"/>
+<vertex x="66.34" y="74.49"/>
+<vertex x="66.24" y="74.59"/>
+<vertex x="66.24" y="76.34"/>
+<vertex x="66.22" y="76.36"/>
+<vertex x="63.31" y="76.36"/>
+</polygon>
 </signal>
 </signals>
 <mfgpreviewcolors>
@@ -467,6 +482,30 @@ design rules under a new name.</description>
 <mfgpreviewcolor name="coppercolor" color="0xFFFFBF00"/>
 <mfgpreviewcolor name="substratecolor" color="0xFF786E46"/>
 </mfgpreviewcolors>
+<errors>
+<approved hash="19,1,3be109835491f209"/>
+<approved hash="19,1,ad22f510524ceef2"/>
+<approved hash="19,1,3b6948011e35ff54"/>
+<approved hash="19,1,5dfbedc6a2e81c2f"/>
+<approved hash="19,1,016affd50d977014"/>
+<approved hash="19,1,b53b8aa28a418d50"/>
+<approved hash="19,1,b984fd5be85cd254"/>
+<approved hash="19,1,4608bb4562891b64"/>
+<approved hash="19,1,69db48de5d2db074"/>
+<approved hash="19,1,e3e2c75d9e7c6e03"/>
+<approved hash="19,1,d630e38db6d288b4"/>
+<approved hash="19,1,c0cf3aca16f28d10"/>
+<approved hash="19,1,cc8cd4a97593966d"/>
+<approved hash="19,1,72ac51f687c3d8e0"/>
+<approved hash="19,1,0da1bf4a35204490"/>
+<approved hash="19,1,802ca5b040eeba42"/>
+<approved hash="19,1,7f3ad7afb9811266"/>
+<approved hash="23,1,32e4401c3ddc4f24"/>
+<approved hash="23,1,e4d754183c102bab"/>
+<approved hash="23,1,0afad802d8190ae1"/>
+<approved hash="23,1,b1dbc923cd1db5e5"/>
+<approved hash="23,1,9118e9e0e9fd9105"/>
+</errors>
 </board>
 </drawing>
 <compatibility>

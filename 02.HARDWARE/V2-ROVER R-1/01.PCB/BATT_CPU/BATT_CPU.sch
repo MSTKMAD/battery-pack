@@ -5286,7 +5286,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="SUPPLY12" library="SparkFun-PowerSymbols" deviceset="VCC" device="" value="VCC_2"/>
 <part name="U$18" library="microbuilder" deviceset="GND" device=""/>
 <part name="R10" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="120k"/>
-<part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="8k2"/>
+<part name="R11" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0402" package3d_urn="urn:adsk.eagle:package:39657/1" value="11k"/>
 <part name="U$21" library="microbuilder" deviceset="GND" device=""/>
 <part name="U$22" library="microbuilder" deviceset="VBUS" device=""/>
 <part name="C15" library="SparkFun-Capacitors" library_urn="urn:adsk.eagle:library:510" deviceset="0.1UF" device="-0402-16V-10%" package3d_urn="urn:adsk.eagle:package:37413/1" value="100n"/>
@@ -5436,7 +5436,7 @@ vo/vi = 0.6
 </text>
 <text x="165.1" y="264.16" size="5.08" layer="94">BATT_CPU
 rover R-1
-Nov'23 v5</text>
+v6-Sep'24</text>
 <text x="144.78" y="81.28" size="2.54" layer="94">DISPLAY</text>
 <text x="139.7" y="162.56" size="2.54" layer="94">SWITCHES</text>
 <text x="350.52" y="162.56" size="2.54" layer="94">CONNECTOR</text>
@@ -6231,13 +6231,6 @@ Nov'23 v5</text>
 <label x="17.78" y="48.26" size="1.778" layer="95"/>
 </segment>
 </net>
-<net name="A3" class="0">
-<segment>
-<pinref part="U1" gate="G$1" pin="PA04/EINT4/VREFB/AIN4/SERCOM0.0"/>
-<wire x1="104.14" y1="86.36" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
-<label x="111.76" y="86.36" size="1.778" layer="95"/>
-</segment>
-</net>
 <net name="AREF" class="0">
 <segment>
 <pinref part="C14" gate="G$1" pin="1"/>
@@ -6362,6 +6355,11 @@ Nov'23 v5</text>
 <wire x1="302.26" y1="149.86" x2="292.1" y2="149.86" width="0.1524" layer="91"/>
 <label x="294.64" y="149.86" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="PA04/EINT4/VREFB/AIN4/SERCOM0.0"/>
+<wire x1="104.14" y1="86.36" x2="121.92" y2="86.36" width="0.1524" layer="91"/>
+<label x="111.76" y="86.36" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SWDIO" class="0">
 <segment>
@@ -6379,6 +6377,11 @@ Nov'23 v5</text>
 <pinref part="J1" gate="G$1" pin="10"/>
 <wire x1="302.26" y1="147.32" x2="292.1" y2="147.32" width="0.1524" layer="91"/>
 <label x="294.64" y="147.32" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="U1" gate="G$1" pin="PA15/I15/SERCOM3+4.3"/>
+<wire x1="104.14" y1="53.34" x2="121.92" y2="53.34" width="0.1524" layer="91"/>
+<label x="111.76" y="53.34" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">

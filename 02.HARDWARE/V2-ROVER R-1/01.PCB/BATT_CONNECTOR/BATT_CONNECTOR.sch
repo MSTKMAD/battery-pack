@@ -1608,8 +1608,6 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <part name="VO-" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="GND" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="K1" library="Flex_3mm" deviceset="FLEX11" device=""/>
-<part name="VOUT+1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
-<part name="VOUT-1" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 <part name="H1" library="S1761-42R" deviceset="S1761-42R" device=""/>
 <part name="H2" library="S1761-42R" deviceset="S1761-42R" device=""/>
 <part name="SWCLK" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
@@ -1624,13 +1622,15 @@ Source: &lt;a href="https://www.st.com/resource/en/datasheet/sm2t.pdf"&gt; Datas
 <part name="FD_2" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
 <part name="FD_3" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
 <part name="FD_4" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="TP06SQ" package3d_urn="urn:adsk.eagle:package:27952/1" value="FD_1"/>
+<part name="ID" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
+<part name="DAT" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B2,54" package3d_urn="urn:adsk.eagle:package:27948/1"/>
 </parts>
 <sheets>
 <sheet>
 <plain>
 <text x="78.74" y="33.02" size="1.778" layer="91">POLARITY PROTECTION</text>
 <text x="58.42" y="104.14" size="2.54" layer="91">BATTERY_CONNECTOR
-v2_Dic'23</text>
+v3-Sep'24</text>
 </plain>
 <instances>
 <instance part="VO+" gate="G$1" x="19.05" y="55.88" smashed="yes" rot="R90">
@@ -1647,12 +1647,6 @@ v2_Dic'23</text>
 <instance part="K1" gate="G$1" x="106.68" y="81.28" smashed="yes">
 <attribute name="NAME" x="106.68" y="86.82" size="1.778" layer="95"/>
 <attribute name="VALUE" x="106.68" y="83.82" size="1.778" layer="96"/>
-</instance>
-<instance part="VOUT+1" gate="G$1" x="19.05" y="60.96" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="20.32" y="62.23" size="1.778" layer="97" rot="R90"/>
-</instance>
-<instance part="VOUT-1" gate="G$1" x="19.05" y="50.8" smashed="yes" rot="R90">
-<attribute name="TP_SIGNAL_NAME" x="20.32" y="52.07" size="1.778" layer="97" rot="R90"/>
 </instance>
 <instance part="H1" gate="G$1" x="34.29" y="30.48" smashed="yes" rot="R270"/>
 <instance part="H2" gate="G$1" x="27.94" y="30.48" smashed="yes" rot="R270"/>
@@ -1699,13 +1693,18 @@ v2_Dic'23</text>
 <attribute name="NAME" x="166.37" y="29.21" size="1.778" layer="95"/>
 <attribute name="TP_SIGNAL_NAME" x="168.91" y="26.67" size="1.778" layer="97"/>
 </instance>
+<instance part="ID" gate="G$1" x="19.05" y="96.52" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" x="20.32" y="97.79" size="1.778" layer="97" rot="R90"/>
+</instance>
+<instance part="DAT" gate="G$1" x="19.05" y="104.14" smashed="yes" rot="R90">
+<attribute name="TP_SIGNAL_NAME" x="20.32" y="105.41" size="1.778" layer="97" rot="R90"/>
+</instance>
 </instances>
 <busses>
 </busses>
 <nets>
 <net name="VOUT+" class="0">
 <segment>
-<pinref part="VOUT+1" gate="G$1" pin="TP"/>
 <pinref part="VO+" gate="G$1" pin="TP"/>
 <wire x1="21.59" y1="60.96" x2="21.59" y2="55.88" width="0.1524" layer="91"/>
 <wire x1="21.59" y1="55.88" x2="31.75" y2="55.88" width="0.1524" layer="91"/>
@@ -1713,7 +1712,6 @@ v2_Dic'23</text>
 <label x="25.4" y="55.88" size="1.778" layer="95"/>
 <pinref part="D1" gate="G$1" pin="K"/>
 <wire x1="58.42" y1="60.96" x2="21.59" y2="60.96" width="0.1524" layer="91"/>
-<junction x="21.59" y="60.96"/>
 <pinref part="D2" gate="G$1" pin="K"/>
 <wire x1="58.42" y1="60.96" x2="68.58" y2="60.96" width="0.1524" layer="91"/>
 <junction x="58.42" y="60.96"/>
@@ -1726,7 +1724,6 @@ v2_Dic'23</text>
 </net>
 <net name="VOUT-" class="0">
 <segment>
-<pinref part="VOUT-1" gate="G$1" pin="TP"/>
 <pinref part="VO-" gate="G$1" pin="TP"/>
 <wire x1="21.59" y1="50.8" x2="21.59" y2="45.72" width="0.1524" layer="91"/>
 <junction x="21.59" y="45.72"/>
@@ -1771,6 +1768,11 @@ v2_Dic'23</text>
 <label x="93.98" y="63.5" size="1.778" layer="95"/>
 <pinref part="K1" gate="G$1" pin="P$7"/>
 </segment>
+<segment>
+<pinref part="ID" gate="G$1" pin="TP"/>
+<wire x1="21.59" y1="96.52" x2="35.56" y2="96.52" width="0.1524" layer="91"/>
+<label x="25.4" y="96.52" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="SWDIO" class="0">
 <segment>
@@ -1782,6 +1784,11 @@ v2_Dic'23</text>
 <label x="93.98" y="68.58" size="1.778" layer="95"/>
 <wire x1="104.14" y1="68.58" x2="91.44" y2="68.58" width="0.1524" layer="91"/>
 <pinref part="K1" gate="G$1" pin="P$5"/>
+</segment>
+<segment>
+<pinref part="DAT" gate="G$1" pin="TP"/>
+<wire x1="21.59" y1="104.14" x2="38.1" y2="104.14" width="0.1524" layer="91"/>
+<label x="25.4" y="104.14" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TXO" class="0">
