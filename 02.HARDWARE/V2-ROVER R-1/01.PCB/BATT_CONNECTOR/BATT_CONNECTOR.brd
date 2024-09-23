@@ -8,9 +8,9 @@
 </settings>
 <grid distance="0.1" unitdist="mm" unit="mm" style="lines" multiple="1" display="yes" altdistance="5" altunitdist="mil" altunit="mil"/>
 <layers>
-<layer number="1" name="Top" color="4" fill="1" visible="no" active="yes"/>
-<layer number="2" name="Route2" color="16" fill="1" visible="no" active="yes"/>
-<layer number="15" name="Route15" color="23" fill="1" visible="no" active="yes"/>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="2" name="Route2" color="16" fill="1" visible="yes" active="yes"/>
+<layer number="15" name="Route15" color="23" fill="1" visible="yes" active="yes"/>
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
@@ -1443,7 +1443,7 @@ design rules under a new name.</description>
 <vertex x="108.61" y="80.7"/>
 <vertex x="108.61" y="100.6"/>
 </polygon>
-<polygon width="0.0762" layer="16">
+<polygon width="0.0762" layer="16" isolate="0.254">
 <vertex x="98.17" y="99"/>
 <vertex x="98.17" y="93.51"/>
 <vertex x="104" y="93.51"/>
@@ -1646,7 +1646,7 @@ design rules under a new name.</description>
 <contactref element="GND" pad="TP"/>
 <contactref element="Q1" pad="1"/>
 <via x="86.1" y="96.6" extent="1-16" drill="1.6" diameter="2.5"/>
-<polygon width="0.6096" layer="16" rank="2">
+<polygon width="0.6096" layer="16" isolate="0.254" rank="2">
 <vertex x="83.9" y="99.8"/>
 <vertex x="97.6" y="99.8"/>
 <vertex x="98" y="99.4"/>
@@ -1658,8 +1658,8 @@ design rules under a new name.</description>
 <vertex x="92" y="90.6"/>
 <vertex x="92" y="89.6"/>
 <vertex x="88" y="89.6"/>
-<vertex x="88" y="90.7"/>
-<vertex x="83.9" y="94.8"/>
+<vertex x="88" y="91.1"/>
+<vertex x="83.9" y="95.2"/>
 </polygon>
 <wire x1="90.87" y1="91.32" x2="90.86" y2="91.33" width="0.6096" layer="1"/>
 <wire x1="90.86" y1="91.33" x2="90.86" y2="92.05" width="0.6096" layer="1"/>
@@ -1711,6 +1711,15 @@ design rules under a new name.</description>
 <vertex x="92.06" y="89.57"/>
 <vertex x="92.06" y="90.74"/>
 <vertex x="92.09" y="90.77"/>
+</polygon>
+<polygon width="0.1524" layer="16">
+<vertex x="93.1" y="88.7"/>
+<vertex x="93.1" y="86.7"/>
+<vertex x="93.3" y="86.5"/>
+<vertex x="95.7" y="86.5"/>
+<vertex x="95.8" y="86.5"/>
+<vertex x="96" y="86.7"/>
+<vertex x="96" y="88.7"/>
 </polygon>
 </signal>
 </signals>
