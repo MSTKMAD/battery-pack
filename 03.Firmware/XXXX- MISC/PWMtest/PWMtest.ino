@@ -1,5 +1,8 @@
 // Note: Uses pin 13 as the LED pin; may need changing for other boards
+#define MAX_VOLTAGE 120
+#define MIN_VOLTAGE 25
 
+uint16_t C_PIN_OP_SWITCH = 13;
 #include "MilliTimer.h"
 const uint16_t MIN_VOLTAGE = 25;
 const uint16_t C_PIN_OP_SWITCH = 13;
@@ -7,11 +10,9 @@ const uint16_t C_PIN_OP_SWITCH = 13;
 // #include <SAMD21turboPWM.h>
 #include <Dpad.h>
 #include <display.h>
-
 dcdc_controler DCDC(11);
 // TurboPWM pwm;
 int16_t button_event;
-
 int16_t duty = 500;
 void setup()
 {
@@ -20,8 +21,8 @@ void setup()
   pinMode(8, INPUT_PULLUP);
   pinMode(13, OUTPUT);
   digitalWrite(13, LOW);
-  pwm.setClockDivider(48, false); // Main clock divided by 200 => 240KHz
-  pwm.timer(2, 1, 50, false);     // Use timer 2 for pin 13, divide clock by 4, resolution 60000, dual-slope PWM
+  pwm.setClockDivider(48, false); // Main clock divided by 48 => 1M
+  pwm.timer(2, 1, 10, false);     // Use timer 2 for pin 13, divide clock by 50.
   pwm.analogWrite(13, duty);      // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
   pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
   pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
