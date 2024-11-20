@@ -21,15 +21,13 @@ const uint16_t LenDCDCvalues = 121;
 const bool C_BOOST_MODE = true;
 const bool C_NON_BOOST_MODE = false;
 
-const uint16_t C_VDAC_MIN = 1536;                          // mv del DAC para dar a la salida el MIN_VOLTAGE
+const uint16_t C_VDAC_MIN = 1629;                          // mv del DAC para dar a la salida el MIN_VOLTAGE
 const uint16_t C_VDAC_MAX = 140;                           // mv del DAC para dar a la salida el MAX_VOLTAGE
 const uint16_t C_DAC_RESOLUTON = 1024;                     // Fondo de escala del DAC
 const uint16_t C_DAC_MIN_COUNT = C_VDAC_MIN * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
 const uint16_t C_DAC_MAX_COUNT = C_VDAC_MAX * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
 
-const uint16_t C_ARRAY_DUTY[] = {38, 38, 34, 34, 30, 30, 26, 26, 22, 22};
-const uint16_t C_ARRAY_VOLT_PWM[] = {45, 45, 45, 45, 45, 45, 45, 45, 45, 45};
-
+const uint16_t C_ARRAY_DUTY[] = {48, 46, 44, 42, 40, 38, 36, 34, 32, 30, 28, 26, 24, 22, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0};
 const uint16_t C_PIN_DAC = A0;
 TurboPWM pwm;
 class dcdc_controler
@@ -39,7 +37,6 @@ public:
     int16_t pin_enable;
     int16_t dac_count;
     int16_t duty;
-    int16_t volt_pwm;
 
     /**
      * @brief Construct a new dcdc controler object
@@ -52,7 +49,7 @@ public:
         pinMode(pin_enable, OUTPUT);
         digitalWrite(pin_enable, LOW);
         pwm.setClockDivider(48, false); // Main clock divided by 200 => 240KHz
-        pwm.timer(2, 1, 25, false);     // Use timer 2 for pin 13, divide clock by 4, resolution 60000, dual-slope PWM
+        pwm.timer(2, 1, 50, false);     // Use timer 2 for pin 13, divide clock by 4, resolution 60000, dual-slope PWM
     }
 
     /**
@@ -63,20 +60,19 @@ public:
      */
     void SetVoltage(int volt, bool mode)
     {
-        if (volt >= 45)
+        if (volt >= 40)
         {
             if (mode == C_BOOST_MODE)
             {
                 volt += 3;
             }
-            volt = constrain(volt, 45, 120);
-            dac_count = C_DAC_MIN_COUNT - (((volt - 45) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 45));
+            volt = constrain(volt, 40, 120);
+            dac_count = C_DAC_MIN_COUNT - (((volt - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
             analogWrite(C_PIN_DAC, dac_count);
         }
-        else if (volt < 45)
+        else if (volt < 40)
         {
-            volt_pwm = C_ARRAY_VOLT_PWM[volt - MIN_VOLTAGE];
-            dac_count = C_DAC_MIN_COUNT - (((volt_pwm - 45) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 45));
+            dac_count = C_DAC_MIN_COUNT - (((50 - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
             analogWrite(C_PIN_DAC, dac_count);
             duty = C_ARRAY_DUTY[volt - MIN_VOLTAGE];
             pwm.analogWrite(C_PIN_OP_SWITCH, duty * 10); // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
