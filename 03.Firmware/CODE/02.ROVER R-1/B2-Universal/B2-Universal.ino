@@ -669,13 +669,6 @@ void setup()
             Serial5.println("Lectura Correcta de EEPROM");
 #endif
         }
-        while (1)
-        {
-#ifdef SERIAL_DEBUG
-            Serial5.printf("Reset BOD33\n");
-            delay(300);
-#endif
-        }
     }
 
     /*===============================================================================================================================================*/
