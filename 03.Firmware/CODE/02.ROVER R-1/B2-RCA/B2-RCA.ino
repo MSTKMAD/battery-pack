@@ -21,6 +21,8 @@ const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion 
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
 const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
 const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
+const uint16_t C_PIN_DAT = 5;              // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_ID = A3;              // Lectura de la tension correspodiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
@@ -193,6 +195,10 @@ MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
+
+MilliTimer timer_test_pines; // Timer para testear los pines nuevos de la placa connector conectados al puerto SWD
+bool pin_dat;
+bool pin_id;
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -340,6 +346,8 @@ void setup()
     pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
     pinMode(C_PIN_OP_SWITCH, OUTPUT);
     pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
+    pinMode(C_PIN_DAT, OUTPUT);
+    pinMode(C_PIN_ID, OUTPUT);
     //------------------------ INITIALITATION PERIFERICOS ----------------------------
 
     digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
@@ -732,12 +740,22 @@ void setup()
 #endif
         }
     }
+    pin_dat = true;
+    pin_id = true;
 
     /*===============================================================================================================================================*/
     //                                                                 CONTROL LOOP
     /*===============================================================================================================================================*/
     while (1)
     {
+        if (timer_test_pines.poll(3000) != C_TIMER_NOT_EXPIRED)
+        {
+            pin_dat = !pin_dat;
+            pin_id = !pin_id;
+            digitalWrite(C_PIN_DAT, pin_dat);
+            digitalWrite(C_PIN_ID, pin_id);
+        }
+
 #ifdef WATCHDOG_ENABLE
         Watchdog.reset();
 #endif
@@ -853,7 +871,7 @@ void setup()
                 {
                     if (nitro_status == false)
                     {
-                       // --- CHIQUI NITRO ---
+                        // --- CHIQUI NITRO ---
                         digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
                         DCDC.SetVoltage(100, C_NON_BOOST_MODE);
                         delay(45);
