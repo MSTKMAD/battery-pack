@@ -10,16 +10,19 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 123
+#define INTEGRATED_VERSION 130
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
 // #define SERIAL_DEBUG
+// #define WATCHDOG_ENABLE
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
 const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
 const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
+const uint16_t C_PIN_DAT = 5;              // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_ID = A3;              // Lectura de la tension correspodiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
@@ -60,6 +63,7 @@ const int16_t C_LIMIT_COMSUPTION_PROT = 1000;   // 1A  Limite de la proteccion d
 const int16_t C_LIMIT_UNDERVOLTAGE_PROT = 1000; // -1V a la tension de salida. Diferencial de tension de la proteccion de Undervoltage de la tension de salida
 const int16_t C_LIMIT_OVERPOWER_PROT = 5000;    // 5W de potencia a la sealida. Limite de la proteccion de sobre potencia.
 const int16_t C_LIMIT_SHORTCIRCUIT_PROT = 1900; // 1.9A. Limite de la porteccion de cortocircuito.
+const int16_t C_LIMIT_LOW_VOLTAGE_PROT = 3200;  // 3.2v. Limite inferior del detecteor de Low Voltage
 
 const int32_t C_TIME_IDLE_30_SEG = 30000;          // 30 s. Contador auxiliar para poder contar tiempos por encima del min.
 const int32_t C_TIME_INIT_SCREEN = 1000;           // 1 s. Tiempo durante el que se muestra la pantalla de inicio al encender.
@@ -153,6 +157,15 @@ HealthMonitor under_voltage_protection(C_LIMIT_UNDERVOLTAGE_PROT, 1, 10, 400);
 HealthMonitor short_current_protection(C_LIMIT_SHORTCIRCUIT_PROT, 10, 1, 200);
 
 /**
+ * @brief HealthMonitor del low_voltage de salida.
+ *      - Umbral :3200 mV
+ *      - Ts = 25 ms
+ *      - Time spam = 60000 ms
+ *
+ */
+HealthMonitor low_voltage_protection(C_LIMIT_LOW_VOLTAGE_PROT, 1, 1, 2400);
+
+/**
  * @brief
  *
  * @return dcdc_controler
@@ -182,6 +195,10 @@ MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
+
+MilliTimer timer_test_pines; // Timer para testear los pines nuevos de la placa connector conectados al puerto SWD
+bool pin_dat;
+bool pin_id;
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -281,8 +298,6 @@ uint32_t min_prog_cycle = 0xFFFF;
 /*===============================================================================================================================================*/
 void setup()
 {
-    // pinMode(C_PIN_TEST, OUTPUT);
-    // digitalWrite(C_PIN_TEST, LOW);
     Serial5.begin(57600);
     Serial5.println("START!\n\r");
 #ifdef WATCHDOG_ENABLE
@@ -325,18 +340,20 @@ void setup()
         reset_cause = C_RCAUSE_SYST;
     }
     // delay(500);
+    //------------------------- INIT PIN-------------------------------
+    pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
+    pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
+    pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
+    pinMode(C_PIN_OP_SWITCH, OUTPUT);
+    pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
+    pinMode(C_PIN_DAT, OUTPUT);
+    pinMode(C_PIN_ID, OUTPUT);
+    //------------------------ INITIALITATION PERIFERICOS ----------------------------
+
+    digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
+    digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        //------------------------- INIT PIN-------------------------------
-        pinMode(C_PIN_BUTT_CENTER, INPUT_PULLUP);
-        pinMode(C_PIN_BUTT_UP, INPUT_PULLUP);
-        pinMode(C_PIN_BUTT_DOWN, INPUT_PULLUP);
-        pinMode(C_PIN_OP_SWITCH, OUTPUT);
-        pinMode(C_PIN_ENABLE_LDO_VCC_2, OUTPUT);
-        //------------------------ INITIALITATION PERIFERICOS ----------------------------
-
-        digitalWrite(C_PIN_OP_SWITCH, HIGH);        // Interruptor Salida
-        digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
         InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
         initDisplay();                              // Inicializacion de la pantalla
         if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
@@ -513,6 +530,7 @@ void setup()
         over_power_protection.setCounter(0);
         under_voltage_protection.setCounter(under_voltage_protection.limit);
         short_current_protection.setCounter(0);
+        low_voltage_protection.setCounter(low_voltage_protection.limit);
 
         //------------------------ CHECKEO PARA APP NAMING ------------------------------
 
@@ -716,17 +734,28 @@ void setup()
         }
         while (1)
         {
-#ifdef WATCHDOG_ENABLE
-            Watchdog.reset();
+#ifdef SERIAL_DEBUG
+            Serial5.printf("Reset BOD33\n");
+            delay(300);
 #endif
         }
     }
+    pin_dat = true;
+    pin_id = true;
 
     /*===============================================================================================================================================*/
     //                                                                 CONTROL LOOP
     /*===============================================================================================================================================*/
     while (1)
     {
+        if (timer_test_pines.poll(3000) != C_TIMER_NOT_EXPIRED)
+        {
+            pin_dat = !pin_dat;
+            pin_id = !pin_id;
+            digitalWrite(C_PIN_DAT, pin_dat);
+            digitalWrite(C_PIN_ID, pin_id);
+        }
+
 #ifdef WATCHDOG_ENABLE
         Watchdog.reset();
 #endif
@@ -741,6 +770,7 @@ void setup()
         sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
         sample_VOut = under_voltage_protection.getSample(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
         sample_POut = (sample_IOut) * (sample_VOut) / 1000;                                     // Calculo de la potencia de salida
+        sample_VIN = low_voltage_protection.getSample(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
         //========================================================== BOOST MODE MONITOR ===========================================================//
 
         /*   Seleccion del tipo de salida en  funcion de la carga presente en la salida.   */
@@ -820,10 +850,8 @@ void setup()
         /*_______________________________________________________________RUN / STOP__________________________________________________________________*/
         else if ((sw_status == C_SW_ST_RUN) || (sw_status == C_SW_ST_STOP))
         {
-            // t1 = micros();
             if (sw_status == C_SW_ST_RUN)
             {
-
                 //      Shortcircuit Monitor     //
                 if (short_current_protection.check(sample_IOut) == true)
                 {
@@ -843,19 +871,10 @@ void setup()
                 {
                     if (nitro_status == false)
                     {
+                        // --- CHIQUI NITRO ---
                         digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
-                        if (theory_Vout >= 50)
-                        {
-                            // Rampa de subida
-                            for (int i = 0; i <= 15; i++)
-                            {
-#ifdef WATCHDOG_ENABLE
-                                Watchdog.reset();
-#endif
-                                DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
-                                delay(100 / 10);
-                            }
-                        }
+                        DCDC.SetVoltage(100, C_NON_BOOST_MODE);
+                        delay(45);
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
                         arrancado = true;
@@ -918,7 +937,7 @@ void setup()
                         cont_log_active++;
                         cont_low_batt_run++;
                         // Sensado de la tension de entrada para prevenir apagado no deseado
-                        sample_VIN = analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+
 #ifdef SERIAL_DEBUG
                         // Serial5.printf("Vin:%d\nContador:%d\nSalida:%d\n", sample_VIN, cont_log_active, output_mode);
 #endif
@@ -930,39 +949,30 @@ void setup()
                             LogDiagnosticData(sample_VIN, C_PERCENT_USE);
                             cont_log_active = 0;
                         }
-                        if (sample_VIN <= 3200)
-                        {
+                    }
+                    //------------ PROTECCIONES--------------//
+                    if ((low_voltage_protection.check(sample_VIN) == false) && (low_voltage_protection.getCounter() == 0))
+                    {
                         low_voltage_protection.setCounter(low_voltage_protection.limit);
-                                if (flag_low_vin_detected)
-                                {
-                                    if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
-                                    {
-                                        DisplayLowBattery();
-                                        playSound(C_SOUND_LOW_BATTERY);
-                                        trigger_Display_volt = true;
-                                        cont_low_batt_run = 0;
-                                    }
-                                }
-                                else
-                                {
-                                    flag_low_vin_detected = true;
-                                    DisplayLowBattery();
-                                    playSound(C_SOUND_LOW_BATTERY);
-                                    trigger_Display_volt = true;
-                                    cont_low_batt_run = 0;
-                                }
-                            }
-                            else
+                        if (flag_low_vin_detected)
+                        {
+                            if (cont_low_batt_run >= C_MIN_PERIOD_WARNING_LOW_BATT)
                             {
-                                cont_low_batt_triggers++;
+                                DisplayLowBattery();
+                                playSound(C_SOUND_LOW_BATTERY);
+                                trigger_Display_volt = true;
+                                cont_low_batt_run = 0;
                             }
                         }
                         else
                         {
-                            cont_low_batt_triggers--;
+                            flag_low_vin_detected = true;
+                            DisplayLowBattery();
+                            playSound(C_SOUND_LOW_BATTERY);
+                            trigger_Display_volt = true;
+                            cont_low_batt_run = 0;
                         }
                     }
-                    //------------ PROTECCIONES--------------//
                     //      Consumption Monitor     //
                     if (over_consumption_protection.check(sample_IOut) == true)
                     {
@@ -1053,10 +1063,8 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
-// Chequeo de entrada al menu
-#ifdef WATCHDOG_ENABLE
-                Watchdog.reset();
-#endif /**/
+                // Chequeo de entrada al menu
+
                 if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                 {
                     timer_enter_menu.set(750);
@@ -1074,12 +1082,12 @@ void setup()
                         if (flag_menu_active == false) // Menu NO activado
                         {
 #ifdef SERIAL_DEBUG
-                            Serial5.println(timer_enter_menu.remaining());
+                            // Serial5.println(timer_enter_menu.remaining());
 #endif
                             if (timer_enter_menu.poll(750) != C_TIMER_NOT_EXPIRED)
                             {
 #ifdef SERIAL_DEBUG
-                                Serial5.println(cont_sec_menu_wait);
+                                // Serial5.println(cont_sec_menu_wait);
 #endif
                                 cont_sec_menu_wait++;
                                 playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
@@ -1259,7 +1267,6 @@ void setup()
 
                 theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
             }
-
             //-------------- ACTUALIZACION DEL DISPLAY (CON SONIDO)---------------------//
 
             if (trigger_Display_volt == true)
@@ -1318,7 +1325,6 @@ void setup()
             {
                 flag_waiting = C_TIMER_ARMED;
                 timer_wait_sleep.set(600);
-                // t1 = micros();
             }
             if (flag_waiting == C_TIMER_ARMED)
             {
@@ -1351,8 +1357,23 @@ void setup()
                     {
                         flag_irq_center_button = false; // Limpieza de los flags de interrupcion
                     }
-                    SaveEeprom();                                                                       // Salvado en EEPROM
-                    digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW);                                          // Apagado de la alimentacion secundaria.
+                    SaveEeprom(); // Salvado en EEPROM
+                    sample_VIN = 0;
+                    for (int i = 0; i < 8; i++)
+                    {
+                        sample_VIN += analogRead(C_PIN_V_IN) * 3000 / 4096 * 250 / 150;
+                        delay(50);
+                    }
+                    sample_VIN = sample_VIN >> 3;
+                    if (sample_VIN >= 3400) // Prevenir que por debajo de determinado nivel, el transistor de salida se cierre debido al UVLO del controlador del mosfet.
+                    {
+                        digitalWrite(C_PIN_ENABLE_LDO_VCC_2, LOW); // Apagado de la alimentacion secundaria.
+                        digitalWrite(C_PIN_EN_DCDC, HIGH);         // Desactivacion del EN_DCDC
+                    }
+                    else
+                    {
+                        // Dejamos encendido Vcc_2 y por tanto el DCDC, para evitar que sale el LM5114. Y por tanto deje disparado el switch Q1.
+                    }
                     LowPower.attachInterruptWakeup(C_PIN_BUTT_CENTER, IrqCenterButtonHandler, FALLING); // Activacion de la interrupcion de despertar por flanco de bajada del boton central
 #ifdef SERIAL_DEBUG
                     Serial5.println("Zzz");
@@ -1365,6 +1386,7 @@ void setup()
                     //---------- RUTINA DE DESPERTAR-----------------
                     detachInterrupt(C_PIN_BUTT_CENTER);         // Desactivar interrupcion
                     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encender alimentacion secundaria.
+                    digitalWrite(C_PIN_EN_DCDC, LOW);           // Activacion del EN_DCDC
                     delay(100);
                     initDisplay();
 #ifdef WATCHDOG_ENABLE
@@ -1630,6 +1652,7 @@ void setup()
                 over_power_protection.setCounter(0);
                 under_voltage_protection.setCounter(under_voltage_protection.limit);
                 short_current_protection.setCounter(0);
+                low_voltage_protection.setCounter(low_voltage_protection.limit);
                 SwitchScreenOff();
                 // -------------- GUARDADO EN EEPROM -----------------
                 SaveEeprom();
@@ -1845,7 +1868,8 @@ void setup()
                 user_output = C_OUTPUT_OFF;
                 flag_enable_off = true;
 
-/* Clear Flags */
+                /* Clear Flags */
+                flag_enable_off = true;
 
 /* Change-State Effects */
 #ifdef SERIAL_DEBUG
@@ -1896,6 +1920,7 @@ void setup()
             over_power_protection.setCounter(0);
             under_voltage_protection.setCounter(under_voltage_protection.limit);
             short_current_protection.setCounter(0);
+            low_voltage_protection.setCounter(low_voltage_protection.limit);
         }
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
