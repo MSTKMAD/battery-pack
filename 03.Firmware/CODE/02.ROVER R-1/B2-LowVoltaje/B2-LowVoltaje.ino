@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 205
+#define INTEGRATED_VERSION 206  // Version 206: Modificacion del limite inferior por DCDC a 4v.
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG
@@ -1923,7 +1923,7 @@ void setup()
             if (arrancado == true)
             {
                 DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-                if (theory_Vout >= 50)
+                if (theory_Vout >= 40)
                 {
                     pinMode(C_PIN_OP_SWITCH, OUTPUT);
                     digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida

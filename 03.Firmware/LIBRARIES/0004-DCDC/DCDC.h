@@ -21,7 +21,7 @@ const uint16_t LenDCDCvalues = 121;
 const bool C_BOOST_MODE = true;
 const bool C_NON_BOOST_MODE = false;
 
-const uint16_t C_VDAC_MIN = 1435;                          // mv del DAC para dar a la salida el MIN_VOLTAGE
+const uint16_t C_VDAC_MIN = 1629;                          // mv del DAC para dar a la salida el MIN_VOLTAGE
 const uint16_t C_VDAC_MAX = 140;                           // mv del DAC para dar a la salida el MAX_VOLTAGE
 const uint16_t C_DAC_RESOLUTON = 1024;                     // Fondo de escala del DAC
 const uint16_t C_DAC_MIN_COUNT = C_VDAC_MIN * 1024 / 3000; // cuentas dac para dar el Minimo voltaje permitido (5v)
@@ -60,19 +60,19 @@ public:
      */
     void SetVoltage(int volt, bool mode)
     {
-        if (volt >= 50)
+        if (volt >= 40)
         {
             if (mode == C_BOOST_MODE)
             {
                 volt += 3;
             }
-            volt = constrain(volt, 50, 120);
-            dac_count = C_DAC_MIN_COUNT - (((volt - 50) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 50));
+            volt = constrain(volt, 40, 120);
+            dac_count = C_DAC_MIN_COUNT - (((volt - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
             analogWrite(C_PIN_DAC, dac_count);
         }
-        else if (volt < 50)
+        else if (volt < 40)
         {
-            dac_count = C_DAC_MIN_COUNT - (((50 - 50) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 50));
+            dac_count = C_DAC_MIN_COUNT - (((50 - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
             analogWrite(C_PIN_DAC, dac_count);
             duty = C_ARRAY_DUTY[volt - MIN_VOLTAGE];
             pwm.analogWrite(C_PIN_OP_SWITCH, duty * 10); // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
