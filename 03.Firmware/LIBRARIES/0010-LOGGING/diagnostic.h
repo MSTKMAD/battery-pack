@@ -123,9 +123,6 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
 
         }
         flash_eeprom.write(local_eeprom);
-
-        Watchdog.reset();
-
         Serial5.println("INICIALIZADA");
 
         return 1;

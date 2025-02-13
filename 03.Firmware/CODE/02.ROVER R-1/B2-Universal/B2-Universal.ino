@@ -101,7 +101,8 @@ const bool C_ENDING_TEXT = true;
 const bool C_ENDING_SOUND = false;
 
 //--------------------------------- Menu Options -------------------------------------------
-const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
+const uint16_t C_MnOpt_NITRO = 0xA1;    // Configuracion del Modo Nitro.
+const uint16_t C_MnOpt_LOW_VOLT = 0xA2; // Configuracion del Modo LOW VOLT.
 const uint16_t C_NITRO_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
@@ -201,6 +202,7 @@ bool blink_error_state = false;                                                 
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
+bool low_volt_status = false;                                                        // Estado del Low Volt Feature
 
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
@@ -814,45 +816,67 @@ void setup()
                     }
                     else
                     {
-                        // planicie a 5v
-                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                        digitalWrite(C_PIN_OP_SWITCH, LOW);
-
-                        delay(50);
-                        int tiempo_arrancado = 200; // ms
-                        int tiempo_bajada = 60;     // ms
-                        int steps_subida = 10;
-                        int steps_bajada = 10;
-
-                        // Rampa de subida
-                        for (int i = 0; i < steps_subida; i++)
+                        if (theory_Vout >= 50)
                         {
+                            // planicie a 5v
+                            DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                            digitalWrite(C_PIN_OP_SWITCH, LOW);
 
-                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                            boost_check.check(sample_raw_io);
-                            delay(tiempo_arrancado / steps_subida);
-                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                            delay(50);
+                            int tiempo_arrancado = 200; // ms
+                            int tiempo_bajada = 60;     // ms
+                            int steps_subida = 10;
+                            int steps_bajada = 10;
+
+                            // Rampa de subida
+                            for (int i = 0; i < steps_subida; i++)
+                            {
+
+                                DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                                boost_check.check(sample_raw_io);
+                                delay(tiempo_arrancado / steps_subida);
+                                over_consumption_protection.getSample(C_PIN_I_OUT);
+                            }
+                            sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                            sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                            sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                            UpdatePowerBar(sample_POut);
+                            // Rampa de Bajada
+                            for (int i = steps_bajada; i >= 0; i--)
+                            {
+
+                                DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                                boost_check.check(sample_raw_io);
+                                delay(tiempo_bajada / steps_bajada);
+                                over_consumption_protection.getSample(C_PIN_I_OUT);
+                            }
+
+                            // Voltaje Objetivo
+                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                            output_mode = C_BOOST_MODE;
+                            arrancado = true;
                         }
-                        sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
-                        sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-                        sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                        UpdatePowerBar(sample_POut);
-                        // Rampa de Bajada
-                        for (int i = steps_bajada; i >= 0; i--)
+                        else
                         {
-
-                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
-                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                            boost_check.check(sample_raw_io);
-                            delay(tiempo_bajada / steps_bajada);
-                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                            pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                            digitalWrite(C_PIN_OP_SWITCH, LOW);
+                            DCDC.SetVoltage(60, C_BOOST_MODE);
+                            for (int i = 0; i < 20; i++)
+                            {
+                                delay(10);
+#ifdef WATCHDOG_ENABLE
+                                Watchdog.reset();
+#endif
+                            }
+                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                            output_mode = C_BOOST_MODE;
+                            arrancado = true;
+#ifdef WATCHDOG_ENABLE
+                            Watchdog.reset();
+#endif
                         }
-
-                        // Voltaje Objetivo
-                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                        output_mode = C_BOOST_MODE;
-                        arrancado = true;
                     }
                 }
                 else if (arrancado)
@@ -1186,8 +1210,15 @@ void setup()
                         }
                     }
                 }
-
+            }
+            //-------------- CONSTRAIN THEORY VOLT ---------------------//
+            if (low_volt_status == true)
+            {
                 theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
+            }
+            else
+            {
+                theory_Vout = constrain(theory_Vout, 40, MAX_VOLTAGE); // Constrain del voltaje de salida.
             }
             //-------------- ACTUALIZACION DEL DISPLAY (CON SONIDO)---------------------//
 
@@ -1790,6 +1821,7 @@ void setup()
         //=============================================================================================================================================
         //                                                              END STATE MANAGEMENT
         //=============================================================================================================================================
+
         //============================================================== OUTPUT MANAGEMENT ===========================================================//
         if (sw_output == C_OUTPUT_OFF)
         {
@@ -1812,14 +1844,22 @@ void setup()
             if (arrancado == true)
             {
                 DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-                digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
+                if (theory_Vout >= 40)
+                {
+                    pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                }
             }
+
             LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
         }
         else if (hw_output == C_OUTPUT_OFF)
         {
+            pinMode(C_PIN_OP_SWITCH, OUTPUT);
             digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
-            LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
+
+            LedWork(C_OUTPUT_OFF); // Apagado del led indicador de salida activada.
+
             // Limpieza y reset de variables de las protecciones.
             over_consumption_protection.setCounter(0);
             over_power_protection.setCounter(0);
@@ -1827,7 +1867,6 @@ void setup()
             short_current_protection.setCounter(0);
             low_voltage_protection.setCounter(low_voltage_protection.limit);
         }
-
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
         //============================================================ TIMER LOGEO EEPROM  =============================================================//
@@ -1987,48 +2026,76 @@ void ConfigMenu()
     Serial5.println("Menu Configuracion Activo");
 #endif
 
-    // Mostrado de la Opcion 1: Nitro
-    switch (menu_option)
-    {
-    case C_MnOpt_NITRO:
-        OLED_display.clearDisplay();
-        OLED_display.setTextSize(1);
-        OLED_display.setCursor(17, 12);
-        OLED_display.print("NITRO");
-        OLED_display.drawRect(0, 0, 64, 32, WHITE);
-        OLED_display.display();
-
-        playSound(C_SOUND_CHARGE_IN);
-        break;
-    default:
-        break;
-    }
-    // Espera a la liberacion de los pulsadores
-    while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
-    {
-        delay(10);
-    }
-    // delay(500);
-    for (int i = 0; i < 50; i++)
-    {
-        delay(10);
-    }
     flag_option_selected = false;
-    ReadDirPad(true);
+    // Mostrado de la Opcion 1: Nitro
     while (flag_option_selected == false) // Espera hasta confirmacion de la opcion del menu seleccionada.
     {
+        switch (menu_option)
+        {
+        case C_MnOpt_NITRO:
+            OLED_display.clearDisplay();
+            OLED_display.setTextSize(1);
+            OLED_display.setCursor(17, 12);
+            OLED_display.print("NITRO");
+            OLED_display.drawRect(0, 0, 64, 32, WHITE);
+            OLED_display.display();
 
-        delay(10);
-        button_event = ReadDirPad();                                   // Lectura de la botonera
-        if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
-        {
+            playSound(C_SOUND_CHARGE_IN);
+            break;
+        case C_MnOpt_LOW_VOLT:
+            OLED_display.clearDisplay();
+            OLED_display.setTextSize(1);
+            OLED_display.setCursor(10, 12);
+            OLED_display.print("LOW VOLT");
+            OLED_display.drawRect(0, 0, 64, 32, WHITE);
+            OLED_display.display();
+
+            playSound(C_SOUND_CHARGE_IN);
+            break;
+        default:
+            break;
         }
-        else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // cambio de opcion
+        // Espera a la liberacion de los pulsadores
+        while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
         {
+            delay(10);
         }
-        else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+        // delay(500);
+        for (int i = 0; i < 50; i++)
         {
-            flag_option_selected = true;
+            delay(10);
+        }
+        button_event = ReadDirPad(true);
+        while (button_event == C_NONE_EVENT)
+        {
+            delay(10);
+            button_event = ReadDirPad();                                   // Lectura de la botonera
+            if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
+            {
+                if (menu_option == C_MnOpt_NITRO)
+                {
+                    menu_option = C_MnOpt_LOW_VOLT;
+                }
+                else if (menu_option == C_MnOpt_LOW_VOLT)
+                {
+                    menu_option = C_MnOpt_NITRO;
+                }
+            }
+            else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // cambio de opcion
+            {
+                if (menu_option == C_MnOpt_NITRO)
+                {
+                    menu_option = C_MnOpt_LOW_VOLT;
+                }
+                else if (menu_option == C_MnOpt_LOW_VOLT)
+                {
+                    menu_option = C_MnOpt_NITRO;
+                }
+            }
+            else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+            {
+                flag_option_selected = true;
+            }
         }
     }
 
@@ -2147,5 +2214,121 @@ void ConfigMenu()
             }
             OLED_display.display();
         }
+    }
+    if (menu_option == C_MnOpt_LOW_VOLT)
+    {
+        bool active_question_nitro = true;
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(2);
+        OLED_display.setCursor(0, 0);
+        OLED_display.print("ON");
+        OLED_display.setCursor(30, 0);
+        OLED_display.print("OFF");
+
+        // OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
+        //  OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+        // OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+        if (low_volt_status == false)
+        {
+            OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x18, WHITE, BLACK, 2);
+        }
+        else
+        {
+            OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x00, WHITE, BLACK, 2);
+        }
+        ReadDirPad(true);
+        while (active_question_nitro == true)
+        {
+
+            delay(10);
+            button_event_naming = ReadDirPad();
+
+            if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("UP!");
+#endif
+                OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x18, WHITE, BLACK, 2);
+                low_volt_status = false;
+            }
+            else if ((button_event_naming == C_CLICK_DOWN) || (button_event_naming == C_LP_DOWN))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("DOWN!");
+#endif
+                OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x00, WHITE, BLACK, 2);
+                low_volt_status = true;
+            }
+            else if ((button_event_naming == C_CLICK_CENTER) || (button_event_naming == C_LP_CENTER))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("CENTER!");
+#endif
+                active_question_nitro = false;
+
+                // Pantalla de carga.
+                OLED_display.clearDisplay();
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(0, 0);
+                OLED_display.print("Saving...");
+                OLED_display.drawRect(0, 16, 64, 16, WHITE);
+                for (uint16_t i = 0; i <= 100; i++)
+                {
+
+                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        delay(10);
+                    }
+                    OLED_display.display();
+                }
+                // delay(500);
+                for (int i = 0; i < 50; i++)
+                {
+                    delay(10);
+                }
+
+                // Pantalla Confirmacion
+                LogDiagnosticData(nitro_status, C_NITRO_STATUS);
+                SaveEeprom();
+                if (low_volt_status == true)
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("LOW");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("ON");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                    }
+                }
+                else
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("LOW");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("OFF");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                    }
+                }
+            }
+            OLED_display.display();
+        }
+        trigger_Display_volt = true;
     }
 }
