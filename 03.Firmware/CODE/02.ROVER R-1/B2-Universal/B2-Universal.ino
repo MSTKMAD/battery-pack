@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 400 // Version 400: Bifurcacion de la version 125 de la RCA. Se añade la bajada de rango de voltaje de 4v a 12v y el uNitro.
+#define INTEGRATED_VERSION 401 // Version 401: Inclusion del modo low_voltaje
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 40
@@ -104,6 +104,7 @@ const bool C_ENDING_SOUND = false;
 const uint16_t C_MnOpt_NITRO = 0xA1;    // Configuracion del Modo Nitro.
 const uint16_t C_MnOpt_LOW_VOLT = 0xA2; // Configuracion del Modo LOW VOLT.
 const uint16_t C_NITRO_STATE_DFLT = false;
+const uint16_t C_LOW_VOLT_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -350,7 +351,7 @@ void setup()
     {
         InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
         initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -493,6 +494,7 @@ void setup()
             theory_Vout = 50;
         }
         nitro_status = ReadDiagnosticData(C_NITRO_STATUS);
+        low_volt_status = ReadDiagnosticData(C_LOW_VOLT_STATUS);
         //------------------------ INICIALIZACION DE PROTECCIONES------------------------
         over_consumption_protection.setCounter(0);
         over_power_protection.setCounter(0);
@@ -638,7 +640,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -658,7 +660,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Reset BOD33\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -1877,7 +1879,7 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
                     {
                         flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -2294,7 +2296,7 @@ void ConfigMenu()
                 }
 
                 // Pantalla Confirmacion
-                LogDiagnosticData(nitro_status, C_NITRO_STATUS);
+                LogDiagnosticData(low_volt_status, C_LOW_VOLT_STATUS);
                 SaveEeprom();
                 if (low_volt_status == true)
                 {

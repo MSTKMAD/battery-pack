@@ -34,6 +34,7 @@ struct EEPROM
     bool flag_naming_enable;
     bool nitro_status;
     bool vanta_mode_status;
+    bool low_volt_status;
     uint16_t num_char_in_name;
     uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
@@ -58,6 +59,7 @@ const uint8_t C_FLAG_INIT = 7;
 const uint8_t C_FLAG_ENABLE_NAME = 8;
 const uint8_t C_NITRO_STATUS = 9;
 const uint8_t C_VANTA_MODE_STATUS = 10;
+const uint8_t C_LOW_VOLT_STATUS = 10;
 
 const uint8_t C_NAME = 11;
 
