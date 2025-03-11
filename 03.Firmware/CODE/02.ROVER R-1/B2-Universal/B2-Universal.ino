@@ -36,6 +36,7 @@ const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondie
 #include <power_bar.h>
 #include <batt_ArduinoLowPower.h>
 #include <NAMING.h>
+#include <pid.h>
 
 //============================================================== CONSTANTS ===========================================================//
 
@@ -193,6 +194,7 @@ MilliTimer timer_test_en_dcdc;      // Timer que durante el modo testeo invierte
 MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte la señal de en dac.
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
+MilliTimer timer_pid_spam_uptade;   // Timer que controla el tiempo entre actualizaciones del PID.
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -201,7 +203,7 @@ bool blink_error_state = false;                                                 
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
-
+bool pid_status = false;                                                             // Estado del PID.
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -231,7 +233,7 @@ uint32_t test_sammple_IOut = 0;      // Valor de la corriente durante el modo te
 uint32_t test_sammple_VOut = 0;      // Valor de la tension de salida durante el modo test.
 uint16_t reset_cause = 0;            // Variable que almacena la causa de los inicios del sistema.
 uint16_t reset_register = 0;         // Valriable que almacena el valor leido del registro de la causa del reset.
-
+uint16_t pid_Vout = 0;               // Valor de la tension de salida del PID.
 //-------------------------------------- FLAGS--------------------------------------------
 bool flag_active_confirmation_question = false; // Flag que marca el estado de la pregunta de confirmacion de la entrada al modo diagnostico
 bool flag_eeprom_init_fail = false;             // Flag que indica si se ha producido un fallo durante la inicializacion de la EEPROM
@@ -279,6 +281,7 @@ bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el
 bool flag_menu_active = false;                // Flag que marca el estado del menu de configuracion.
 uint16_t flag_wait_menu_timer = C_TIMER_IDLE; // Flag que indica el estado del timer de espera de activacion del menu de configuracion.
 bool flag_option_selected = false;            // Flag que indica si se ha selccionado una opcion en el menu de configuracion.
+bool reset_pid = true;
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -1068,6 +1071,57 @@ void setup()
 
             //--------------- CONTROL DE LOS EVENTOS DE LA BOTONERA ---------------------//
 
+            // Deteccion activacoin PID
+            if (sw_status == C_SW_ST_RUN)
+            {
+
+                if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_CENTER) == button_pressed))
+                {
+
+                    if (pid_status == false)
+                    {
+                        pid_status = true;
+                        setTarget(theory_Vout, sample_IOut);
+
+                        OLED_display.clearDisplay();
+                        OLED_display.setTextSize(1);
+                        OLED_display.setCursor(8, 12);
+                        OLED_display.print("PID ON");
+                        OLED_display.drawRect(0, 0, 64, 32, WHITE);
+                    }
+                    else
+                    {
+                        pid_status = false;
+                        OLED_display.clearDisplay();
+                        OLED_display.setTextSize(1);
+                        OLED_display.setCursor(8, 12);
+                        OLED_display.print("PID OFF");
+                        OLED_display.drawRect(0, 0, 64, 32, WHITE);
+                    }
+                    OLED_display.display();
+                    OLED_display.clearDisplay();
+                    playSound(C_SOUND_CHARGE_IN);
+                    delay(1000);
+                    while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_CENTER) == button_pressed))
+                    {
+                    };
+                    button_event = ReadDirPad(true);
+                    trigger_Display_volt = true;
+                }
+                else
+                {
+                    if (timer_pid_spam_uptade.poll() != C_TIMER_NOT_EXPIRED)
+                    {
+                        setTarget(theory_Vout, sample_IOut);
+                        reset_pid = true;
+                        pid_status = true;
+                    }
+                }
+            }
+            else
+            {
+            }
+
             // Si no se ha pulsado nada durante un rato se refresca la pantalla.
             if (button_event == C_NONE_EVENT)
             {
@@ -1185,9 +1239,18 @@ void setup()
                             trigger_Display_volt = true;
                         }
                     }
-                }
 
-                theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
+                    if (button_event != C_CLICK_CENTER)
+                    {
+                        if (pid_status == true)
+                        {
+                            timer_pid_spam_uptade.set(100);
+                            pid_status = false;
+                        }
+                    }
+
+                    theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Constrain del voltaje de salida.
+                }
             }
             //-------------- ACTUALIZACION DEL DISPLAY (CON SONIDO)---------------------//
 
@@ -1206,6 +1269,7 @@ void setup()
 
             UpdatePowerBar(sample_POut);
         }
+
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
         else if (sw_status == C_SW_ST_SLEEP)
         {
@@ -1808,11 +1872,25 @@ void setup()
         }
         if (hw_output == C_OUTPUT_ON)
         {
-            theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
-            if (arrancado == true)
+            if (pid_status == true)
             {
-                DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
-                digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
+                if (arrancado == true)
+                {
+                    pid_Vout = controlPID(sample_IOut, reset_pid);
+                    reset_pid = false;
+                    pid_Vout = constrain(pid_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
+                    DCDC.SetVoltage(pid_Vout, output_mode);                   // Fijado de la tension de salida
+                    digitalWrite(C_PIN_OP_SWITCH, LOW);                       // Activacion del transistor de salida
+                }
+            }
+            else
+            {
+                theory_Vout = constrain(theory_Vout, MIN_VOLTAGE, MAX_VOLTAGE); // Contrain de la tension de salida
+                if (arrancado == true)
+                {
+                    DCDC.SetVoltage(theory_Vout, output_mode); // Fijado de la tension de salida
+                    digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
+                }
             }
             LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
         }

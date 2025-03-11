@@ -141,8 +141,6 @@ bool Init_local_eeprom(bool nitro_state_default)
 #endif
         }
         flash_eeprom.write(local_eeprom);
-#ifdef WATCHDOG_ENABLE
-        Watchdog.reset();
 
         Serial5.println("INICIALIZADA");
 
