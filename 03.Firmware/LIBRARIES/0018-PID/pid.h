@@ -15,8 +15,8 @@ const float Ki = 0.03; // 0.03
 const float Kd = 0.02; // 0.02
 const int delta = 30;  // ms
 
-int Vreal_target = 0;
-int Vdcdc = 0;
+float Vreal_target = 0;
+float Vdcdc = 0;
 float integral_error = 0;
 int prev_increment = 0;
 float u_control = 0;
@@ -34,7 +34,7 @@ int controlPID(int motor_dut_current, bool reset)
         u_control = Vdcdc;
     }
 
-    current_actual = motor_dut_current * 3300 / 4096 * 10 / 15;
+    current_actual = motor_dut_current;
     Serial.printf("Current:%0.1f -", current_actual);
 
     Vreal_motor = u_control / 10 - r_motor * current_actual / 1000;
@@ -68,7 +68,7 @@ int controlPID(int motor_dut_current, bool reset)
     return u_control;
 }
 
-void setTarget(int volt, int current)
+void setTarget(float volt, float current)
 {
     Vreal_target = volt / 10 - r_motor * current / 1000;
     Vdcdc = volt;

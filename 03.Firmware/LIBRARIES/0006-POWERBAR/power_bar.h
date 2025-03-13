@@ -20,34 +20,52 @@ const int16_t power_by_led = MAX_POWER_DISPLAYED / LEDS_IN_POWERBAR;
 
 MilliTimer refresh_timer;
 
+int color_bground = BLACK;
+int color_led = WHITE;
+
 /**
  * @brief Esta funcion se encarga de encender y apagar los leds necesario en la barra de potencia.
  *
  * @param leds
  * @param OLED_display
  */
-void PowerBar(int16_t leds)
+void PowerBar(int16_t leds, bool pid_status = false)
 {
     int xsize_rect_powerbar = C_DISPLAY_WIDTH;
     int ysize_rect_powerbar = 18;
 
     int cursor_x = 0;
 
+
     leds = constrain(leds, 0, LEDS_IN_POWERBAR);
+    if (pid_status == true)
+    {
+        color_bground = WHITE;
+        color_led = BLACK;
+    }
+    else
+    {
+        color_bground = BLACK;
+        color_led = WHITE;
+    }
+
+    OLED_display.fillRect(0, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
 
     if (leds == 0)
     {
-        OLED_display.fillRect(4, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, BLACK);
+        OLED_display.fillRect(4, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
+
         OLED_display.display();
     }
     else
     {
+
         for (int16_t i = 0; i <= leds; i++)
         {
-            OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, 2, 7, WHITE);
+            OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, 2, 7, color_led);
             cursor_x += 4;
         }
-        OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, ysize_rect_powerbar, BLACK);
+        OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, ysize_rect_powerbar, color_bground);
     }
     OLED_display.display();
 }
@@ -57,7 +75,7 @@ void PowerBar(int16_t leds)
  * @param power_sample
  * @param OLED_display
  */
-void UpdatePowerBar(int16_t power_sample)
+void UpdatePowerBar(int16_t power_sample, bool pid_status)
 {
     static int16_t high_sample = 0;
 
@@ -69,7 +87,7 @@ void UpdatePowerBar(int16_t power_sample)
     // if (refresh_timer.poll(25) != C_TIMER_NOT_EXPIRED)
     //{
     uint16_t num_leds = (high_sample + (power_by_led / 2)) / power_by_led;
-    PowerBar(num_leds);
+    PowerBar(num_leds, pid_status);
     high_sample = 0;
     //}
 }
@@ -83,11 +101,11 @@ void LedWork(bool state_led)
 {
     if (state_led == true)
     {
-        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, WHITE);
+        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, color_led);
     }
     else if (state_led == false)
     {
-        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, BLACK);
+        OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, color_bground);
     }
     OLED_display.display();
 }

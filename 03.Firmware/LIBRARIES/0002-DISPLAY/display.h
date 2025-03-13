@@ -149,6 +149,7 @@ void DisplayVolt(int16_t number)
     cursor = 44; //
     OLED_display.setCursor(cursor, 0);
     OLED_display.print(fracPart);
+
     OLED_display.display();
 }
 

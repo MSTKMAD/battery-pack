@@ -840,7 +840,7 @@ void setup()
                         sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
                         sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
                         sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                        UpdatePowerBar(sample_POut);
+                        UpdatePowerBar(sample_POut, pid_status);
                         // Rampa de Bajada
                         for (int i = steps_bajada; i >= 0; i--)
                         {
@@ -1072,12 +1072,11 @@ void setup()
             //--------------- CONTROL DE LOS EVENTOS DE LA BOTONERA ---------------------//
 
             // Deteccion activacoin PID
-            if (sw_status == C_SW_ST_RUN)
+
+            if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_CENTER) == button_pressed))
             {
-
-                if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_CENTER) == button_pressed))
+                if (sw_status == C_SW_ST_RUN)
                 {
-
                     if (pid_status == false)
                     {
                         pid_status = true;
@@ -1110,16 +1109,35 @@ void setup()
                 }
                 else
                 {
-                    if (timer_pid_spam_uptade.poll() != C_TIMER_NOT_EXPIRED)
+                    if (pid_status == true)
                     {
-                        setTarget(theory_Vout, sample_IOut);
-                        reset_pid = true;
-                        pid_status = true;
+                        pid_status = false;
+                        OLED_display.clearDisplay();
+                        OLED_display.setTextSize(1);
+                        OLED_display.setCursor(8, 12);
+                        OLED_display.print("PID OFF");
+                        OLED_display.drawRect(0, 0, 64, 32, WHITE);
+                        OLED_display.display();
+                        OLED_display.clearDisplay();
+                        playSound(C_SOUND_CHARGE_IN);
+                        delay(1000);
+                        while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_CENTER) == button_pressed))
+                        {
+                        };
+                        button_event = ReadDirPad(true);
+                        trigger_Display_volt = true;
                     }
                 }
             }
             else
             {
+                if ((timer_pid_spam_uptade.poll() != C_TIMER_NOT_EXPIRED) && (sw_status == C_SW_ST_RUN))
+                {
+                    setTarget(theory_Vout, sample_IOut);
+                    reset_pid = true;
+                    pid_status = true;
+                    trigger_Display_volt = true;
+                }
             }
 
             // Si no se ha pulsado nada durante un rato se refresca la pantalla.
@@ -1267,7 +1285,7 @@ void setup()
 
             //------- Actualizacion de la barra de potencia ----------//
 
-            UpdatePowerBar(sample_POut);
+            UpdatePowerBar(sample_POut, pid_status);
         }
 
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
