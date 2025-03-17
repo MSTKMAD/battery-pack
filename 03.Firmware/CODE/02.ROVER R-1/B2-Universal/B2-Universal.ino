@@ -203,7 +203,7 @@ bool blink_error_state = false;                                                 
 bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                                  // Identificador de si se esta mostrando el aviso de error por la pantalla.
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
-bool pid_status = false;                                                             // Estado del PID.
+bool status_boost_pd = false;                                                        // Estado del PID.
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -281,7 +281,9 @@ bool flag_low_vin_detected = false; // Flag que indica si se ha detectado que el
 bool flag_menu_active = false;                // Flag que marca el estado del menu de configuracion.
 uint16_t flag_wait_menu_timer = C_TIMER_IDLE; // Flag que indica el estado del timer de espera de activacion del menu de configuracion.
 bool flag_option_selected = false;            // Flag que indica si se ha selccionado una opcion en el menu de configuracion.
-bool reset_pid = true;
+bool reset_pid = true;                        // Flag que indica si se ha de resetear el PID.
+bool status_boost_pd_save = false;            // Flag que indica si se ha de guardar el estado del PID.
+bool flag_pid_saved = false;                  // Flag que indica si se ha guardado el estado del PID.
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -840,7 +842,7 @@ void setup()
                         sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
                         sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
                         sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                        UpdatePowerBar(sample_POut, pid_status);
+                        UpdatePowerBar(sample_POut, status_boost_pd);
                         // Rampa de Bajada
                         for (int i = steps_bajada; i >= 0; i--)
                         {
@@ -1077,9 +1079,9 @@ void setup()
             {
                 if (sw_status == C_SW_ST_RUN)
                 {
-                    if (pid_status == false)
+                    if (status_boost_pd == false)
                     {
-                        pid_status = true;
+                        status_boost_pd = true;
                         setTarget(theory_Vout, sample_IOut);
 
                         OLED_display.clearDisplay();
@@ -1090,7 +1092,7 @@ void setup()
                     }
                     else
                     {
-                        pid_status = false;
+                        status_boost_pd = false;
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
                         OLED_display.setCursor(8, 12);
@@ -1109,9 +1111,9 @@ void setup()
                 }
                 else
                 {
-                    if (pid_status == true)
+                    if (status_boost_pd == true)
                     {
-                        pid_status = false;
+                        status_boost_pd = false;
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
                         OLED_display.setCursor(8, 12);
@@ -1135,12 +1137,18 @@ void setup()
                 {
                     setTarget(theory_Vout, sample_IOut);
                     reset_pid = true;
-                    pid_status = true;
+                    status_boost_pd = true;
                     trigger_Display_volt = true;
                 }
             }
 
             // Si no se ha pulsado nada durante un rato se refresca la pantalla.
+            if ((flag_pid_saved == true)&&(button_event == C_NONE_EVENT))
+            {
+                status_boost_pd = status_boost_pd_save;
+               // trigger_Display_volt = true;
+                flag_pid_saved = false;
+            }
             if (button_event == C_NONE_EVENT)
             {
                 if (timer_refresh_screen.poll() != C_TIMER_NOT_EXPIRED)
@@ -1158,8 +1166,17 @@ void setup()
 #ifdef SERIAL_DEBUG
                     Serial5.println("Longpress CENTER");
 #endif
+
+                    if (long_press_events == 0)
+                    {
+                        flag_pid_saved = true;
+                        status_boost_pd_save = status_boost_pd;
+                        status_boost_pd = false;
+                    }
+
                     long_press_events++;
                     timer_refresh_screen.set(1000); // Inicio del timer por si se suelta el boton central.
+
                     if (long_press_events == 1)
                     {
                         if (flag_enable_off == true) // si estamos en el estado STOP se pasa a mostrar la capacidad
@@ -1172,7 +1189,7 @@ void setup()
                             long_press_events--; // Si no estamos en el estado STOP reseteamos el contador, esperando estar en el estado de STOP
                         }
                     }
-                    else if ((long_press_events >= 2) && (long_press_events < 5))
+                    else if ((long_press_events >= 3) && (long_press_events < 6))
                     {
                         // Pantalla de Confirmacion de Apagado.
                         OLED_display.clearDisplay();
@@ -1183,13 +1200,13 @@ void setup()
                         OLED_display.setTextSize(2);
                         switch (long_press_events)
                         {
-                        case 2:
+                        case 3:
                             OLED_display.print("3");
                             break;
-                        case 3:
+                        case 4:
                             OLED_display.print("3 2 ");
                             break;
-                        case 4:
+                        case 5:
                             OLED_display.print("3 2 1");
                             break;
 
@@ -1199,7 +1216,7 @@ void setup()
                         OLED_display.display();
                         playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
                     }
-                    else if (long_press_events == 5) // Al 5 evento de LongPress nos vamos al estado SLEEP.
+                    else if (long_press_events == 6) // Al 6 evento de LongPress nos vamos al estado SLEEP.
                     {
                         flag_sleep = true;
                         long_press_events = 0;
@@ -1260,10 +1277,10 @@ void setup()
 
                     if (button_event != C_CLICK_CENTER)
                     {
-                        if (pid_status == true)
+                        if (status_boost_pd == true)
                         {
                             timer_pid_spam_uptade.set(100);
-                            pid_status = false;
+                            status_boost_pd = false;
                         }
                     }
 
@@ -1285,7 +1302,7 @@ void setup()
 
             //------- Actualizacion de la barra de potencia ----------//
 
-            UpdatePowerBar(sample_POut, pid_status);
+            UpdatePowerBar(sample_POut, status_boost_pd);
         }
 
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
@@ -1813,6 +1830,7 @@ void setup()
                 Serial5.printf("Change TO SLEEP\n");
 #endif
                 timer_end_screen.set(1000);
+                status_boost_pd = false;
             }
         }
         /*________________________________________________________________ SLEEP __________________________________________________________________*/
@@ -1890,7 +1908,7 @@ void setup()
         }
         if (hw_output == C_OUTPUT_ON)
         {
-            if (pid_status == true)
+            if (status_boost_pd == true)
             {
                 if (arrancado == true)
                 {
@@ -1910,12 +1928,12 @@ void setup()
                     digitalWrite(C_PIN_OP_SWITCH, LOW);        // Activacion del transistor de salida
                 }
             }
-            LedWork(C_OUTPUT_ON); // se enciende el Led que indica que la salida esta activa
+            LedWork(C_OUTPUT_ON, status_boost_pd); // se enciende el Led que indica que la salida esta activa
         }
         else if (hw_output == C_OUTPUT_OFF)
         {
-            digitalWrite(C_PIN_OP_SWITCH, HIGH); // Desactivacion del transistor de salida.
-            LedWork(C_OUTPUT_OFF);               // Apagado del led indicador de salida activada.
+            digitalWrite(C_PIN_OP_SWITCH, HIGH);    // Desactivacion del transistor de salida.
+            LedWork(C_OUTPUT_OFF, status_boost_pd); // Apagado del led indicador de salida activada.
             // Limpieza y reset de variables de las protecciones.
             over_consumption_protection.setCounter(0);
             over_power_protection.setCounter(0);

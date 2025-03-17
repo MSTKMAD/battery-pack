@@ -97,8 +97,18 @@ void UpdatePowerBar(int16_t power_sample, bool pid_status)
  * @param state_led
  * @param OLED_display
  */
-void LedWork(bool state_led)
+void LedWork(bool state_led,bool pid_status = false)
 {
+    if (pid_status == true)
+    {
+        color_bground = WHITE;
+        color_led = BLACK;
+    }
+    else
+    {
+        color_bground = BLACK;
+        color_led = WHITE;
+    }
     if (state_led == true)
     {
         OLED_display.fillRect(0, C_PWBAR_Y_AXE, 2, 7, color_led);
