@@ -102,8 +102,10 @@ const bool C_ENDING_TEXT = true;
 const bool C_ENDING_SOUND = false;
 
 //--------------------------------- Menu Options -------------------------------------------
-const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
+const uint16_t C_MnOpt_NITRO = 0xA1;      // Configuracion del Modo Nitro.
+const uint16_t C_MnOpt_VANTA_MODE = 0xA2; // Configuracion del Modo Vanta.
 const uint16_t C_NITRO_STATE_DFLT = false;
+const uint16_t C_VANTA_MODE_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -195,6 +197,7 @@ MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
 MilliTimer timer_pid_spam_uptade;   // Timer que controla el tiempo entre actualizaciones del PID.
+MilliTimer timer_hz_refresh;         // Timer que controla el tiempo entre refrescos de la pantalla de Hz.
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -204,6 +207,7 @@ bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                             
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
 bool status_boost_pd = false;                                                        // Estado del PID.
+bool vanta_mode_status = false;                                                      // Estado del Low Volt Feature
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -351,9 +355,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
-        initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                          // Inicializacion del Buzzer
+        initDisplay();                                                       // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -496,6 +500,7 @@ void setup()
             theory_Vout = 50;
         }
         nitro_status = ReadDiagnosticData(C_NITRO_STATUS);
+        vanta_mode_status = ReadDiagnosticData(C_VANTA_MODE_STATUS);
         //------------------------ INICIALIZACION DE PROTECCIONES------------------------
         over_consumption_protection.setCounter(0);
         over_power_protection.setCounter(0);
@@ -641,7 +646,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -661,7 +666,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Reset BOD33\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -1087,7 +1092,7 @@ void setup()
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
                         OLED_display.setCursor(8, 12);
-                        OLED_display.print("PID ON");
+                        OLED_display.print("WHIP SHD");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
                     else
@@ -1096,7 +1101,7 @@ void setup()
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
                         OLED_display.setCursor(8, 12);
-                        OLED_display.print("PID OFF");
+                        OLED_display.print("NORMAL");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
                     OLED_display.display();
@@ -1117,7 +1122,7 @@ void setup()
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
                         OLED_display.setCursor(8, 12);
-                        OLED_display.print("PID OFF");
+                        OLED_display.print("NORMAL");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                         OLED_display.display();
                         OLED_display.clearDisplay();
@@ -1143,14 +1148,14 @@ void setup()
             }
 
             // Si no se ha pulsado nada durante un rato se refresca la pantalla.
-            if ((flag_pid_saved == true)&&(button_event == C_NONE_EVENT))
-            {
-                status_boost_pd = status_boost_pd_save;
-               // trigger_Display_volt = true;
-                flag_pid_saved = false;
-            }
             if (button_event == C_NONE_EVENT)
             {
+                if (flag_pid_saved == true)
+                {
+                    // status_boost_pd = status_boost_pd_save;
+                    // trigger_Display_volt = true;
+                    flag_pid_saved = false;
+                }
                 if (timer_refresh_screen.poll() != C_TIMER_NOT_EXPIRED)
                 {
                     trigger_Display_volt = true;
@@ -1295,8 +1300,32 @@ void setup()
                 {
                     playSound(sound);
                 }
-                DisplayVolt(theory_Vout);
+                if (vanta_mode_status)
+                {
+                    if (sound != C_SOUND_MUTE)
+                    {
+                        playSound(sound);
+                    }
+                    if (hw_output == C_OUTPUT_OFF)
+                    {
+                        DisplayVolt(theory_Vout);
+                    }
+                    else
+                    {
+                        DisplayHz(theory_Vout, sample_IOut);
+                        timer_hz_refresh.set(200);
+                    }
+                }
+                else
+                {
+                    DisplayVolt(theory_Vout);
+                }
+
                 trigger_Display_volt = false;
+            }
+            if(timer_hz_refresh.poll() != C_TIMER_NOT_EXPIRED)
+            {
+                DisplayHz(theory_Vout, sample_IOut);
             }
             // DebugDisplay(sample_IOut, sample_raw_io, sample_VOut, theory_Vout, sample_POut);
 
@@ -1728,6 +1757,7 @@ void setup()
                 playSound(C_SOUND_OFF);
                 timer_idle.set(30000);
                 timer_recover_voltage.set(1000);
+                trigger_Display_volt = true;
                 // PowerBar(0);
             }
             //----------- TO ERROR -----------
@@ -1807,7 +1837,8 @@ void setup()
 #ifdef SERIAL_DEBUG
                     Serial5.printf("Change TO RUN\n");
 #endif
-                    playSound(C_SOUND_ON);
+                    //playSound(C_SOUND_ON);
+                    trigger_Display_volt = true;
                 }
             }
             //----------- TO SLEEP -----------
@@ -1952,7 +1983,7 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT)) // Incializacion EEPROM
+                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
                     {
                         flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -2101,48 +2132,76 @@ void ConfigMenu()
     Serial5.println("Menu Configuracion Activo");
 #endif
 
-    // Mostrado de la Opcion 1: Nitro
-    switch (menu_option)
-    {
-    case C_MnOpt_NITRO:
-        OLED_display.clearDisplay();
-        OLED_display.setTextSize(1);
-        OLED_display.setCursor(17, 12);
-        OLED_display.print("NITRO");
-        OLED_display.drawRect(0, 0, 64, 32, WHITE);
-        OLED_display.display();
-
-        playSound(C_SOUND_CHARGE_IN);
-        break;
-    default:
-        break;
-    }
-    // Espera a la liberacion de los pulsadores
-    while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
-    {
-        delay(10);
-    }
-    // delay(500);
-    for (int i = 0; i < 50; i++)
-    {
-        delay(10);
-    }
     flag_option_selected = false;
-    ReadDirPad(true);
+    // Mostrado de la Opcion 1: Nitro
     while (flag_option_selected == false) // Espera hasta confirmacion de la opcion del menu seleccionada.
     {
+        switch (menu_option)
+        {
+        case C_MnOpt_NITRO:
+            OLED_display.clearDisplay();
+            OLED_display.setTextSize(1);
+            OLED_display.setCursor(17, 12);
+            OLED_display.print("NITRO");
+            OLED_display.drawRect(0, 0, 64, 32, WHITE);
+            OLED_display.display();
 
-        delay(10);
-        button_event = ReadDirPad();                                   // Lectura de la botonera
-        if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
-        {
+            playSound(C_SOUND_CHARGE_IN);
+            break;
+        case C_MnOpt_VANTA_MODE:
+            OLED_display.clearDisplay();
+            OLED_display.setTextSize(1);
+            OLED_display.setCursor(3, 12);
+            OLED_display.print("VANTA MODE");
+            OLED_display.drawRect(0, 0, 64, 32, WHITE);
+            OLED_display.display();
+
+            playSound(C_SOUND_CHARGE_IN);
+            break;
+        default:
+            break;
         }
-        else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // cambio de opcion
+        // Espera a la liberacion de los pulsadores
+        while ((digitalRead(C_PIN_BUTT_UP) == button_pressed) || (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
         {
+            delay(10);
         }
-        else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+        // delay(500);
+        for (int i = 0; i < 50; i++)
         {
-            flag_option_selected = true;
+            delay(10);
+        }
+        button_event = ReadDirPad(true);
+        while (button_event == C_NONE_EVENT)
+        {
+            delay(10);
+            button_event = ReadDirPad();                                   // Lectura de la botonera
+            if ((button_event == C_CLICK_UP) || (button_event == C_LP_UP)) // cambio de opcion
+            {
+                if (menu_option == C_MnOpt_NITRO)
+                {
+                    menu_option = C_MnOpt_VANTA_MODE;
+                }
+                else if (menu_option == C_MnOpt_VANTA_MODE)
+                {
+                    menu_option = C_MnOpt_NITRO;
+                }
+            }
+            else if ((button_event == C_CLICK_DOWN) || (button_event == C_LP_DOWN)) // cambio de opcion
+            {
+                if (menu_option == C_MnOpt_NITRO)
+                {
+                    menu_option = C_MnOpt_VANTA_MODE;
+                }
+                else if (menu_option == C_MnOpt_VANTA_MODE)
+                {
+                    menu_option = C_MnOpt_NITRO;
+                }
+            }
+            else if ((button_event == C_CLICK_CENTER) || (button_event == C_LP_CENTER))
+            {
+                flag_option_selected = true;
+            }
         }
     }
 
@@ -2261,5 +2320,121 @@ void ConfigMenu()
             }
             OLED_display.display();
         }
+    }
+    if (menu_option == C_MnOpt_VANTA_MODE)
+    {
+        bool active_question_nitro = true;
+        OLED_display.clearDisplay();
+        OLED_display.setTextSize(2);
+        OLED_display.setCursor(0, 0);
+        OLED_display.print("ON");
+        OLED_display.setCursor(30, 0);
+        OLED_display.print("OFF");
+
+        // OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
+        //  OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
+        // OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
+        if (vanta_mode_status == false)
+        {
+            OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x18, WHITE, BLACK, 2);
+        }
+        else
+        {
+            OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+            OLED_display.drawChar(44, 16, 0x00, WHITE, BLACK, 2);
+        }
+        ReadDirPad(true);
+        while (active_question_nitro == true)
+        {
+
+            delay(10);
+            button_event_naming = ReadDirPad();
+
+            if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("UP!");
+#endif
+                OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x18, WHITE, BLACK, 2);
+                vanta_mode_status = false;
+            }
+            else if ((button_event_naming == C_CLICK_DOWN) || (button_event_naming == C_LP_DOWN))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("DOWN!");
+#endif
+                OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
+                OLED_display.drawChar(42, 16, 0x00, WHITE, BLACK, 2);
+                vanta_mode_status = true;
+            }
+            else if ((button_event_naming == C_CLICK_CENTER) || (button_event_naming == C_LP_CENTER))
+            {
+#ifdef SERIAL_DEBUG
+                Serial5.println("CENTER!");
+#endif
+                active_question_nitro = false;
+
+                // Pantalla de carga.
+                OLED_display.clearDisplay();
+                OLED_display.setTextSize(1);
+                OLED_display.setCursor(0, 0);
+                OLED_display.print("Saving...");
+                OLED_display.drawRect(0, 16, 64, 16, WHITE);
+                for (uint16_t i = 0; i <= 100; i++)
+                {
+
+                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
+
+                    for (int j = 0; j < 2; j++)
+                    {
+                        delay(10);
+                    }
+                    OLED_display.display();
+                }
+                // delay(500);
+                for (int i = 0; i < 50; i++)
+                {
+                    delay(10);
+                }
+
+                // Pantalla Confirmacion
+                LogDiagnosticData(vanta_mode_status, C_VANTA_MODE_STATUS);
+                SaveEeprom();
+                if (vanta_mode_status == true)
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("VANTA");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("ON");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                    }
+                }
+                else
+                {
+                    OLED_display.clearDisplay();
+                    OLED_display.setTextSize(2);
+                    OLED_display.setCursor(0, 0);
+                    OLED_display.print("LOW");
+                    OLED_display.setCursor(0, 16);
+                    OLED_display.print("OFF");
+                    OLED_display.display();
+                    // delay(2000);
+                    for (int i = 0; i < 200; i++)
+                    {
+                        delay(10);
+                    }
+                }
+            }
+            OLED_display.display();
+        }
+        trigger_Display_volt = true;
     }
 }

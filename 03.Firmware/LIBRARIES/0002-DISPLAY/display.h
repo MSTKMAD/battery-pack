@@ -304,3 +304,28 @@ void DebugDisplay(uint32_t current, uint32_t current_raw, uint32_t voltage, uint
     OLED_display.printf("P %d", power);
     OLED_display.display();
 }
+void DisplayHz(int16_t volts, int16_t current)
+{
+    uint32_t hertz;
+    float vmotor;
+
+    OLED_display.clearDisplay();
+    OLED_display.setTextSize(3);
+
+    vmotor = (float)volts / 10 - 8.2 * (float)current / 1000;
+    hertz = vmotor * 18.5+20; // 12.34 es el valor de la frecuencia en Hz por cada voltio de la bateria.
+    if (hertz < 100)
+    {
+        OLED_display.setCursor(13, 4);
+    }
+    else
+    {
+        OLED_display.setCursor(0, 4);
+    }
+
+    OLED_display.print(hertz);
+    OLED_display.setCursor(50, 16);
+    OLED_display.setTextSize(1);
+    OLED_display.print("Hz");
+    OLED_display.display();
+}
