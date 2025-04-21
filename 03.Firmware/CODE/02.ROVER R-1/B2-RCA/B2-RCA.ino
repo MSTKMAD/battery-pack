@@ -104,7 +104,7 @@ const bool C_ENDING_SOUND = false;
 
 //--------------------------------- Menu Options -------------------------------------------
 const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
-const uint16_t C_NITRO_STATE_DFLT = true;
+const uint16_t C_NITRO_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
