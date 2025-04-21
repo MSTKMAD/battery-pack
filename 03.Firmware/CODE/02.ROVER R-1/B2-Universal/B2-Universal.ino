@@ -609,6 +609,7 @@ void setup()
             {
 
                 flag_waiting_naming = false;
+                flag_waiting = C_TIMER_DONE;
                 sw_status = C_SW_ST_SLEEP;
             }
             else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
@@ -1091,8 +1092,14 @@ void setup()
 
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
-                        OLED_display.setCursor(8, 12);
-                        OLED_display.print("WHIP SHD");
+                        /*
+                        OLED_display.setCursor(8, 5);
+                        OLED_display.print("MTHR");
+                        OLED_display.setCursor(8, 20);
+                        OLED_display.print("FCKR");
+                        */
+                       OLED_display.setCursor(17, 12);
+                       OLED_display.print("FORTE");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
                     else
@@ -1100,7 +1107,7 @@ void setup()
                         status_boost_pd = false;
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
-                        OLED_display.setCursor(8, 12);
+                        OLED_display.setCursor(15, 12);
                         OLED_display.print("NORMAL");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
@@ -1302,10 +1309,6 @@ void setup()
                 }
                 if (vanta_mode_status)
                 {
-                    if (sound != C_SOUND_MUTE)
-                    {
-                        playSound(sound);
-                    }
                     if (hw_output == C_OUTPUT_OFF)
                     {
                         DisplayVolt(theory_Vout);
@@ -1837,7 +1840,7 @@ void setup()
 #ifdef SERIAL_DEBUG
                     Serial5.printf("Change TO RUN\n");
 #endif
-                    //playSound(C_SOUND_ON);
+                    playSound(C_SOUND_ON);
                     trigger_Display_volt = true;
                 }
             }

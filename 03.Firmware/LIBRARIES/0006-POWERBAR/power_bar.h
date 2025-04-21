@@ -36,7 +36,6 @@ void PowerBar(int16_t leds, bool pid_status = false)
 
     int cursor_x = 0;
 
-
     leds = constrain(leds, 0, LEDS_IN_POWERBAR);
     if (pid_status == true)
     {
@@ -49,17 +48,16 @@ void PowerBar(int16_t leds, bool pid_status = false)
         color_led = WHITE;
     }
 
-    OLED_display.fillRect(0, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
+    OLED_display.fillRect(2, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
 
     if (leds == 0)
     {
-        OLED_display.fillRect(4, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
+        OLED_display.fillRect(2, C_PWBAR_Y_AXE, C_DISPLAY_WIDTH, C_DISPLAY_HEIGHT, color_bground);
 
         OLED_display.display();
     }
     else
     {
-
         for (int16_t i = 0; i <= leds; i++)
         {
             OLED_display.fillRect(cursor_x, C_PWBAR_Y_AXE, 2, 7, color_led);
@@ -97,7 +95,7 @@ void UpdatePowerBar(int16_t power_sample, bool pid_status)
  * @param state_led
  * @param OLED_display
  */
-void LedWork(bool state_led,bool pid_status = false)
+void LedWork(bool state_led, bool pid_status = false)
 {
     if (pid_status == true)
     {
