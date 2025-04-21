@@ -10,11 +10,11 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 130
+#define INTEGRATED_VERSION 131 // Version 131: Cambio del modo por defecto del nitro.
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
-// #define SERIAL_DEBUG
+#define SERIAL_DEBUG // Activar el modo de depuración por serie
 // #define WATCHDOG_ENABLE
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
