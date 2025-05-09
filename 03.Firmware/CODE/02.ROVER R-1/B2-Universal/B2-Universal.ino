@@ -197,7 +197,7 @@ MilliTimer timer_test_dac;          // Timer que durante el modo testeo invierte
 MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo durante el modo de test.
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
 MilliTimer timer_pid_spam_uptade;   // Timer que controla el tiempo entre actualizaciones del PID.
-MilliTimer timer_hz_refresh;         // Timer que controla el tiempo entre refrescos de la pantalla de Hz.
+MilliTimer timer_hz_refresh;        // Timer que controla el tiempo entre refrescos de la pantalla de Hz.
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -1098,8 +1098,8 @@ void setup()
                         OLED_display.setCursor(8, 20);
                         OLED_display.print("FCKR");
                         */
-                       OLED_display.setCursor(17, 12);
-                       OLED_display.print("FORTE");
+                        OLED_display.setCursor(7, 12);
+                        OLED_display.print("MOTHER F.");
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
                     else
@@ -1326,7 +1326,7 @@ void setup()
 
                 trigger_Display_volt = false;
             }
-            if(timer_hz_refresh.poll() != C_TIMER_NOT_EXPIRED)
+            if (timer_hz_refresh.poll() != C_TIMER_NOT_EXPIRED)
             {
                 DisplayHz(theory_Vout, sample_IOut);
             }
@@ -2183,7 +2183,7 @@ void ConfigMenu()
             {
                 if (menu_option == C_MnOpt_NITRO)
                 {
-                    menu_option = C_MnOpt_VANTA_MODE;
+                    // menu_option = C_MnOpt_VANTA_MODE;
                 }
                 else if (menu_option == C_MnOpt_VANTA_MODE)
                 {
@@ -2194,7 +2194,7 @@ void ConfigMenu()
             {
                 if (menu_option == C_MnOpt_NITRO)
                 {
-                    menu_option = C_MnOpt_VANTA_MODE;
+                    // menu_option = C_MnOpt_VANTA_MODE;
                 }
                 else if (menu_option == C_MnOpt_VANTA_MODE)
                 {
