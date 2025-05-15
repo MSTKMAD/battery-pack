@@ -16,6 +16,7 @@
 #define MIN_VOLTAGE 40
 // #define SERIAL_DEBUG
 // #define WATCHDOG_ENABLE
+ #define VANTAMODE_ENABLE
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
@@ -198,6 +199,7 @@ MilliTimer timer_test_sensing;      // Timer que controla el periodo de muestreo
 MilliTimer timer_enter_menu;        // Timer que controla el tiempo para entrar en el menu de configuracion.
 MilliTimer timer_pid_spam_uptade;   // Timer que controla el tiempo entre actualizaciones del PID.
 MilliTimer timer_hz_refresh;        // Timer que controla el tiempo entre refrescos de la pantalla de Hz.
+MilliTimer timer_blancking_start;   // Timer que controla el tiempo de espera para el arranque.
 //--------------------------------------- States variables-------------------------------------
 int16_t sw_status = C_SW_ST_SLEEP;                                                   // Identificador del estado del sistema
 bool sw_output = C_OUTPUT_OFF, hw_output = C_OUTPUT_OFF, user_output = C_OUTPUT_OFF; // Identificadores del estado de la salida del sistema.
@@ -266,6 +268,7 @@ bool flag_initialize = false;          // Flag que marca el cambio al estado de 
 bool flag_init2stop = false;           // Flag que marca el cambio de estado de START_UP a STOP
 bool flag_center_button_press = false; // Flag que indica si el boton central se encuentra presionado.
 bool arrancado = false;                // Flag que indica si la secuencia de arrancado a finalizado.
+bool flag_en_arranque = false;         // Flag que indica si el sistema se encuentra en la secuencia de arranque.
 bool flag_enable_off = false;          // Flag que indica la posibilidad de iniciar el protocolo de apagado.
 
 uint16_t flag_waiting = C_TIMER_IDLE;          // Flag que indica el estado del timer "timer_wait_sleep"
@@ -288,6 +291,7 @@ bool flag_option_selected = false;            // Flag que indica si se ha selcci
 bool reset_pid = true;                        // Flag que indica si se ha de resetear el PID.
 bool status_boost_pd_save = false;            // Flag que indica si se ha de guardar el estado del PID.
 bool flag_pid_saved = false;                  // Flag que indica si se ha guardado el estado del PID.
+
 //-------------------------------------- PROFILING --------------------------------------------
 uint32_t t1; // Variables auxiliares para la medidcion de tiempos dentro del flujo del sistema.
 uint32_t t2;
@@ -797,8 +801,14 @@ void setup()
 #endif
                 }
                 //------------- ARRANCADO--------------//
+
                 if (arrancado == false)
                 {
+#ifdef VANTAMODE_ENABLE
+                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
+                    DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                    delay(70);
+#endif
                     if (nitro_status == false)
                     {
                         // --- CHIQUI NITRO ---
@@ -806,19 +816,20 @@ void setup()
                         DCDC.SetVoltage(100, C_NON_BOOST_MODE);
                         delay(45);
                         /* digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
-                         if (theory_Vout >= 50)
-                         {
-                             // Rampa de subida
-                             for (int i = 0; i <= 15; i++)
-                             {
- #ifdef WATCHDOG_ENABLE
+                        if (theory_Vout >= 50)
+                        {
+                            // Rampa de subida
+                            for (int i = 0; i <= 15; i++)
+                            {
 
- #endif
-                                 DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
-                                 delay(100 / 10);
-                             }
+#ifdef WATCHDOG_ENABLE
+
+#endif
+                             DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
+                             delay(100 / 10);
                          }
-                         */
+                     }
+                     */
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
                         arrancado = true;
@@ -2194,7 +2205,9 @@ void ConfigMenu()
             {
                 if (menu_option == C_MnOpt_NITRO)
                 {
-                    // menu_option = C_MnOpt_VANTA_MODE;
+#ifdef VANTAMODE_ENABLE
+                    menu_option = C_MnOpt_VANTA_MODE;
+#endif
                 }
                 else if (menu_option == C_MnOpt_VANTA_MODE)
                 {

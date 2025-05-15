@@ -9,7 +9,8 @@
  *
  */
 
-const int r_motor = 16;
+const int r_motor = 16; // 9v
+//const int r_motor = 8; // 6v
 const float Kp = 1.5;  // 1
 const float Ki = 0.03; // 0.03
 const float Kd = 0.02; // 0.02

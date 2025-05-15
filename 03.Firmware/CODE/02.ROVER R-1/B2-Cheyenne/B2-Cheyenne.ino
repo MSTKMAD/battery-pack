@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 313 // Version 301: Fork de la version 122 con cambios adaptados a la solnova 2.0
+#define INTEGRATED_VERSION 314 // Version 314: cambio del modo nitro por defecto a apagado.
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 50
@@ -21,7 +21,7 @@ const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion 
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
 const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
 const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
-const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspondiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
 //============================================================== INCLUDES ===========================================================//
@@ -102,7 +102,7 @@ const bool C_ENDING_SOUND = false;
 
 //--------------------------------- Menu Options -------------------------------------------
 const uint16_t C_MnOpt_NITRO = 0xA1; // Configuracion del Modo Nitro.
-const uint16_t C_NITRO_STATE_DFLT = true;
+const uint16_t C_NITRO_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
