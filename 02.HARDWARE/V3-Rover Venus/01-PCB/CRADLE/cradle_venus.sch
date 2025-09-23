@@ -6262,8 +6262,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="Q5" library="SSM3J338R_LF" deviceset="SSM3J338R,LF" device="" value="DMG3415U-7"/>
 <part name="R18" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" "/>
 <part name="Q6" library="SparkFun-DiscreteSemi" deviceset="MOSFET-NCHANNEL" device="2N7002PW" value="2N7002PW"/>
-<part name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" "/>
-<part name="R21" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" "/>
+<part name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value="100R"/>
+<part name="R21" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value="100K"/>
 <part name="GND1" library="SparkFun" deviceset="GND" device=""/>
 <part name="GND2" library="SparkFun" deviceset="GND" device=""/>
 <part name="R1" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" deviceset="RESISTOR" device="0805" package3d_urn="urn:adsk.eagle:package:39651/1" value=" "/>
@@ -6305,8 +6305,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <part name="JP1" library="SparkFun-Jumpers" library_urn="urn:adsk.eagle:library:528" deviceset="JUMPER-SMT_3_NO" device="_SILK" package3d_urn="urn:adsk.eagle:package:39285/1"/>
 <part name="GND9" library="SparkFun" deviceset="GND" device=""/>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
-<part name="C3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
-<part name="C4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
+<part name="C3" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
+<part name="C4" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2" value="100n"/>
 <part name="C5" library="resistor" library_urn="urn:adsk.eagle:library:348" deviceset="C-EU" device="C0805" package3d_urn="urn:adsk.eagle:package:23617/2"/>
 <part name="P+6" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
 <part name="P+7" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VCC" device=""/>
@@ -6318,6 +6318,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <sheet>
 <plain>
 <text x="369.57" y="212.09" size="6.4516" layer="94">USB-C Power IN</text>
+<text x="229.87" y="167.64" size="1.778" layer="91">El Attiny1616 puede trabajar con 5v, 
+por lo que no seria necesario el LDO</text>
 </plain>
 <instances>
 <instance part="IC1" gate="G$1" x="119.38" y="115.57" smashed="yes" rot="MR0">
@@ -6338,11 +6340,11 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </instance>
 <instance part="R20" gate="G$1" x="38.1" y="80.01" smashed="yes" rot="MR0">
 <attribute name="NAME" x="38.1" y="81.534" size="1.778" layer="95" font="vector" rot="MR0" align="bottom-center"/>
-<attribute name="VALUE" x="37.846" y="77.47" size="1.778" layer="96" font="vector" rot="MR90" align="top-center"/>
+<attribute name="VALUE" x="38.1" y="76.454" size="1.778" layer="96" font="vector" rot="MR180" align="top-center"/>
 </instance>
 <instance part="R21" gate="G$1" x="48.26" y="72.39" smashed="yes" rot="MR90">
 <attribute name="NAME" x="49.784" y="72.39" size="1.778" layer="95" font="vector" rot="MR90" align="bottom-center"/>
-<attribute name="VALUE" x="53.34" y="68.834" size="1.778" layer="96" font="vector" rot="MR180" align="top-center"/>
+<attribute name="VALUE" x="46.736" y="72.39" size="1.778" layer="96" font="vector" rot="MR90" align="top-center"/>
 </instance>
 <instance part="GND1" gate="1" x="60.96" y="62.23" smashed="yes" rot="MR0">
 <attribute name="VALUE" x="63.5" y="59.69" size="1.778" layer="96" rot="MR0"/>
@@ -6882,8 +6884,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="PB4"/>
-<wire x1="60.96" y1="160.02" x2="39.37" y2="160.02" width="0.1524" layer="91"/>
-<label x="43.18" y="160.02" size="1.778" layer="95"/>
+<wire x1="60.96" y1="160.02" x2="24.13" y2="160.02" width="0.1524" layer="91"/>
+<label x="27.94" y="160.02" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$10" class="0">
@@ -6899,8 +6901,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 <net name="STRIP_LEDS_MASTER" class="0">
 <segment>
 <pinref part="IC3" gate="G$1" pin="PA7"/>
-<wire x1="60.96" y1="165.1" x2="39.37" y2="165.1" width="0.1524" layer="91"/>
-<label x="43.18" y="165.1" size="1.778" layer="95"/>
+<wire x1="60.96" y1="165.1" x2="24.13" y2="165.1" width="0.1524" layer="91"/>
+<label x="27.94" y="165.1" size="1.778" layer="95"/>
 </segment>
 <segment>
 <wire x1="193.04" y1="218.44" x2="214.63" y2="218.44" width="0.1524" layer="91"/>
@@ -6952,8 +6954,8 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </segment>
 <segment>
 <pinref part="IC3" gate="G$1" pin="PA4"/>
-<wire x1="60.96" y1="172.72" x2="39.37" y2="172.72" width="0.1524" layer="91"/>
-<label x="43.18" y="172.72" size="1.778" layer="95"/>
+<wire x1="60.96" y1="172.72" x2="24.13" y2="172.72" width="0.1524" layer="91"/>
+<label x="27.94" y="172.72" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
@@ -6967,6 +6969,10 @@ You are welcome to use this library for commercial purposes. For attribution, we
 </schematic>
 </drawing>
 <compatibility>
+<note version="6.3" minversion="6.2.2" severity="warning">
+Since Version 6.2.2 text objects can contain more than one line,
+which will not be processed correctly with this version.
+</note>
 <note version="8.2" severity="warning">
 Since Version 8.2, EAGLE supports online libraries. The ids
 of those online libraries will not be understood (or retained)
