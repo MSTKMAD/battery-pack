@@ -10,8 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 400 // Version 400: Bifurcacion de la version 125 de la RCA. Se añade la bajada de rango de voltaje de 4v a 12v y el uNitro.
-
+#define INTEGRATED_VERSION 500 // Version 500: Bifurcacion de la version 400 de la Universal. Version Vantablack
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 40
 // #define SERIAL_DEBUG
@@ -1103,14 +1102,15 @@ void setup()
 
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
+                        
+                        OLED_display.setCursor(15, 7);
+                        OLED_display.print("MOTHER");
+                        OLED_display.setCursor(15, 18);
+                        OLED_display.print("FUCKER");
                         /*
-                        OLED_display.setCursor(8, 5);
-                        OLED_display.print("MTHR");
-                        OLED_display.setCursor(8, 20);
-                        OLED_display.print("FCKR");
-                        */
                         OLED_display.setCursor(7, 12);
-                        OLED_display.print("MOTHER F.");
+                        OLED_display.print("M. FUCKER");
+                        */
                         OLED_display.drawRect(0, 0, 64, 32, WHITE);
                     }
                     else
