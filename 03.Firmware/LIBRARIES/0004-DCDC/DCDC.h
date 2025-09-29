@@ -72,7 +72,7 @@ public:
         }
         else if (volt < 40)
         {
-            dac_count = C_DAC_MIN_COUNT - (((<50> - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
+            dac_count = C_DAC_MIN_COUNT - (((50 - 40) * (C_DAC_MIN_COUNT - C_DAC_MAX_COUNT)) / (120 - 40));
             analogWrite(C_PIN_DAC, dac_count);
             duty = C_ARRAY_DUTY[volt - MIN_VOLTAGE];
             pwm.analogWrite(C_PIN_OP_SWITCH, duty * 10); // PWM frequency is now 0.5Hz, dutycycle is 500 / 1000 * 100% = 50%
