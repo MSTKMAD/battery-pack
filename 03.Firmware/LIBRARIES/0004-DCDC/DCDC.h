@@ -53,7 +53,7 @@ public:
     }
 
     /**
-     * @brief Set the Voltage object
+     * @brief Set the Voltage object    
      *
      * @param volt
      * @param mode

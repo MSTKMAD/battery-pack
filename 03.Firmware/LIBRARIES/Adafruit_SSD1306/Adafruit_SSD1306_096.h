@@ -26,7 +26,8 @@
 
 // ONE of the following three lines must be #defined:
 //#define SSD1306_128_64 ///< DEPRECTAED: old way to specify 128x64 screen
-#define SSD1306_128_32 ///< DEPRECATED: old way to specify 128x32 screen
+//#define SSD1306_128_32 ///< DEPRECATED: old way to specify 128x32 screen
+#define SSD1306_70_40 ///< DEPRECATED: old way to specify 128x32 screen
 //#define SSD1306_96_16  ///< DEPRECATED: old way to specify 96x16 screen
 // This establishes the screen dimensions in old Adafruit_SSD1306 sketches
 // (NEW CODE SHOULD IGNORE THIS, USE THE CONSTRUCTORS THAT ACCEPT WIDTH
@@ -120,6 +121,10 @@ typedef uint32_t PortMask;
 #if defined SSD1306_96_16
 #define SSD1306_LCDWIDTH 96  ///< DEPRECATED: width w/SSD1306_96_16 defined
 #define SSD1306_LCDHEIGHT 16 ///< DEPRECATED: height w/SSD1306_96_16 defined
+#endif
+#if defined SSD1306_70_40
+#define SSD1306_LCDWIDTH 70  ///< DEPRECATED: width w/SSD1306_70_40 defined
+#define SSD1306_LCDHEIGHT 40 ///< DEPRECATED: height w/SSD1306_70_40 defined
 #endif
 
 /*!

@@ -15,7 +15,7 @@ const uint8_t HOURS_PM = 8;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 const uint16_t NUM_POS_NAME = 50;
-const uint16_t NUM_NON_ARRAY_POS = 15;
+const uint16_t NUM_NON_ARRAY_POS = 16;
 const uint16_t POWER_USE_POSITIONS = 41;   // 0w to 2000w in step of 50w -> 41 step
 const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 step
 struct EEPROM
@@ -33,6 +33,7 @@ struct EEPROM
     bool flag_corruption;
     bool flag_naming_enable;
     bool nitro_status;
+    bool vanta_mode_status;
     uint16_t num_char_in_name;
     uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
@@ -56,24 +57,25 @@ const uint8_t C_FLAG_CORRUPTION = 6;
 const uint8_t C_FLAG_INIT = 7;
 const uint8_t C_FLAG_ENABLE_NAME = 8;
 const uint8_t C_NITRO_STATUS = 9;
+const uint8_t C_VANTA_MODE_STATUS = 10;
 
-const uint8_t C_NAME = 10;
+const uint8_t C_NAME = 11;
 
-const uint8_t C_SERIAL_NUMBER = 11;
-const uint8_t C_INTEGRATED_VERSION = 12;
+const uint8_t C_SERIAL_NUMBER = 12;
+const uint8_t C_INTEGRATED_VERSION = 13;
 
-const uint8_t C_NUM_DIAG_DATA = 13;
+const uint8_t C_NUM_DIAG_DATA = 14;
 
-const uint8_t C_POWER_USE = 14;
-const uint8_t C_PERCENT_USE = 15;
-const uint8_t C_THEORY_VOLTAGE = 16;
+const uint8_t C_POWER_USE = 15;
+const uint8_t C_PERCENT_USE = 16;
+const uint8_t C_THEORY_VOLTAGE = 17;
 
-const uint8_t C_PM_POWER = 17;
-const uint8_t C_PM_PERCENT = 18;
-const uint8_t C_PM_VOLTAGE = 19;
-const uint8_t C_PM_ERRORS = 20;
+const uint8_t C_PM_POWER = 18;
+const uint8_t C_PM_PERCENT = 19;
+const uint8_t C_PM_VOLTAGE = 20;
+const uint8_t C_PM_ERRORS = 21;
 
-const uint8_t C_NUM_WDT_ERRORS = 21;
+const uint8_t C_NUM_WDT_ERRORS = 22;
 
 const uint16_t C_ERROR_PWR = 1001;
 const uint16_t C_ERROR_VOLT = 1002;

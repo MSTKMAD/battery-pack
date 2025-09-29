@@ -93,7 +93,7 @@ All text above, and the splash screen must be included in any redistribution
 #endif
 #if defined SSD1306_64_32
   #define SSD1306_LCDWIDTH                  64
-  #define SSD1306_LCDHEIGHT                 32
+  #define SSD1306_LCDHEIGHT                 32 
 #endif
 
 #define SSD1306_SETCONTRAST 0x81
