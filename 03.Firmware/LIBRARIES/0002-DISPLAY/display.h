@@ -311,11 +311,12 @@ void DisplayHz(int16_t volts, int16_t current)
     OLED_display.clearDisplay();
     OLED_display.setTextSize(3);
 
-    //vmotor = (float)volts / 10 - 8.2 * (float)current / 1000;  // Motor de 6v
-    vmotor = (float)volts / 10 - 16.8 * (float)current / 1000;  // Motor de 9v
+    vmotor = (float)volts / 10 - 8.2 * (float)current / 1000;  // Motor de 6v
+    hertz = vmotor * 18.51+20; // @6v 18.51 es el valor de la frecuencia en Hz por cada voltio de la bateria.
+    
+    //vmotor = (float)volts / 10 - 16.8 * (float)current / 1000;  // Motor de 9v
+    //hertz = vmotor * 12.34+20; // @9v 12.34 es el valor de la frecuencia en Hz por cada voltio de la bateria.
 
-    //hertz = vmotor * 18.51+20; // @6v 18.51 es el valor de la frecuencia en Hz por cada voltio de la bateria.
-    hertz = vmotor * 12.34+20; // @9v 12.34 es el valor de la frecuencia en Hz por cada voltio de la bateria.
     if (hertz < 100)
     {
         OLED_display.setCursor(13, 4);

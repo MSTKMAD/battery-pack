@@ -4657,43 +4657,43 @@ OUTPUT(C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF
  .comment       0x00000079       0x7a C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(PluggableUSB.cpp.o)
  .comment       0x00000079       0x7a C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(SAMD21_USBDevice.cpp.o)
 
-.debug_info     0x00000000   0x10065b
- .debug_info    0x00000000    0x14a2f C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\sketch\B2-Universal-VantaBlack.ino.cpp.o
- .debug_info    0x00014a2f     0x69ad C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_SleepyDog-master\Adafruit_SleepyDog.cpp.o
- .debug_info    0x0001b3dc     0x824e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_SleepyDog-master\utility\WatchdogSAMD.cpp.o
- .debug_info    0x0002362a     0x6a47 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0014-MilliTimer\MilliTimer.cpp.o
- .debug_info    0x0002a071     0x925d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Wire\Wire.cpp.o
- .debug_info    0x000332ce     0xa45b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Arduino_SAMD21_turbo_PWM-master\SAMD21turboPWM.cpp.o
- .debug_info    0x0003d729     0xeefd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0008.Adafruit_GFX_Library\Adafruit_GFX.cpp.o
- .debug_info    0x0004c626     0x901d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\SPI\SPI.cpp.o
- .debug_info    0x00055643     0x95f0 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_ZeroDMA\Adafruit_ZeroDMA.cpp.o
- .debug_info    0x0005ec33     0x93e2 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0016-Adafruit_SSD1306-049\Adafruit_SSD1306_049.cpp.o
- .debug_info    0x00068015     0x71c5 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0012-batt_FlashStorage\batt_FlashAsEEPROM.cpp.o
- .debug_info    0x0006f1da     0x71f8 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0012-batt_FlashStorage\batt_FlashStorage.cpp.o
- .debug_info    0x000763d2     0xa00b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0009-LOWPOWER\batt_ArduinoLowPower.cpp.o
- .debug_info    0x000803dd     0xb7ae C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0015-RTCZero\batt_RTCZero.cpp.o
- .debug_info    0x0008bb8b     0x6cf9 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\core\variant.cpp.o
- .debug_info    0x00092884     0x9759 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Print.cpp.o)
- .debug_info    0x0009bfdd     0x8091 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(SERCOM.cpp.o)
- .debug_info    0x000a406e     0x845d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Tone.cpp.o)
- .debug_info    0x000ac4cb     0x8ff4 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(CDC.cpp.o)
- .debug_info    0x000b54bf     0xea8c C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(USBCore.cpp.o)
- .debug_info    0x000c3f4b     0x9cb6 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Uart.cpp.o)
- .debug_info    0x000cdc01     0x25fd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(WInterrupts.c.o)
- .debug_info    0x000d01fe     0x1033 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(abi.cpp.o)
- .debug_info    0x000d1231     0x121b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(cortex_handlers.c.o)
- .debug_info    0x000d244c     0x14c5 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(delay.c.o)
- .debug_info    0x000d3911       0x67 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(hooks.c.o)
- .debug_info    0x000d3978     0x68d4 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(main.cpp.o)
- .debug_info    0x000da24c     0x1111 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(new.cpp.o)
- .debug_info    0x000db35d     0x3863 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(startup.c.o)
- .debug_info    0x000debc0     0x307e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring.c.o)
- .debug_info    0x000e1c3e     0x5505 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_analog.c.o)
- .debug_info    0x000e7143     0x19bd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_digital.c.o)
- .debug_info    0x000e8b00     0x194b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_private.c.o)
- .debug_info    0x000ea44b     0x6ecd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Reset.cpp.o)
- .debug_info    0x000f1318     0x6d7d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(PluggableUSB.cpp.o)
- .debug_info    0x000f8095     0x85c6 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(SAMD21_USBDevice.cpp.o)
+.debug_info     0x00000000   0x10065a
+ .debug_info    0x00000000    0x14a2e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\sketch\B2-Universal-VantaBlack.ino.cpp.o
+ .debug_info    0x00014a2e     0x69ad C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_SleepyDog-master\Adafruit_SleepyDog.cpp.o
+ .debug_info    0x0001b3db     0x824e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_SleepyDog-master\utility\WatchdogSAMD.cpp.o
+ .debug_info    0x00023629     0x6a47 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0014-MilliTimer\MilliTimer.cpp.o
+ .debug_info    0x0002a070     0x925d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Wire\Wire.cpp.o
+ .debug_info    0x000332cd     0xa45b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Arduino_SAMD21_turbo_PWM-master\SAMD21turboPWM.cpp.o
+ .debug_info    0x0003d728     0xeefd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0008.Adafruit_GFX_Library\Adafruit_GFX.cpp.o
+ .debug_info    0x0004c625     0x901d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\SPI\SPI.cpp.o
+ .debug_info    0x00055642     0x95f0 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\Adafruit_ZeroDMA\Adafruit_ZeroDMA.cpp.o
+ .debug_info    0x0005ec32     0x93e2 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0016-Adafruit_SSD1306-049\Adafruit_SSD1306_049.cpp.o
+ .debug_info    0x00068014     0x71c5 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0012-batt_FlashStorage\batt_FlashAsEEPROM.cpp.o
+ .debug_info    0x0006f1d9     0x71f8 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0012-batt_FlashStorage\batt_FlashStorage.cpp.o
+ .debug_info    0x000763d1     0xa00b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0009-LOWPOWER\batt_ArduinoLowPower.cpp.o
+ .debug_info    0x000803dc     0xb7ae C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\libraries\0015-RTCZero\batt_RTCZero.cpp.o
+ .debug_info    0x0008bb8a     0x6cf9 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\core\variant.cpp.o
+ .debug_info    0x00092883     0x9759 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Print.cpp.o)
+ .debug_info    0x0009bfdc     0x8091 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(SERCOM.cpp.o)
+ .debug_info    0x000a406d     0x845d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Tone.cpp.o)
+ .debug_info    0x000ac4ca     0x8ff4 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(CDC.cpp.o)
+ .debug_info    0x000b54be     0xea8c C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(USBCore.cpp.o)
+ .debug_info    0x000c3f4a     0x9cb6 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Uart.cpp.o)
+ .debug_info    0x000cdc00     0x25fd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(WInterrupts.c.o)
+ .debug_info    0x000d01fd     0x1033 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(abi.cpp.o)
+ .debug_info    0x000d1230     0x121b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(cortex_handlers.c.o)
+ .debug_info    0x000d244b     0x14c5 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(delay.c.o)
+ .debug_info    0x000d3910       0x67 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(hooks.c.o)
+ .debug_info    0x000d3977     0x68d4 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(main.cpp.o)
+ .debug_info    0x000da24b     0x1111 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(new.cpp.o)
+ .debug_info    0x000db35c     0x3863 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(startup.c.o)
+ .debug_info    0x000debbf     0x307e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring.c.o)
+ .debug_info    0x000e1c3d     0x5505 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_analog.c.o)
+ .debug_info    0x000e7142     0x19bd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_digital.c.o)
+ .debug_info    0x000e8aff     0x194b C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(wiring_private.c.o)
+ .debug_info    0x000ea44a     0x6ecd C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(Reset.cpp.o)
+ .debug_info    0x000f1317     0x6d7d C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(PluggableUSB.cpp.o)
+ .debug_info    0x000f8094     0x85c6 C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA/..\..\cores\adafruit_samd_adafruit_feather_m0_5503e6aad5db57eadcab98d87e4628b1\core.a(SAMD21_USBDevice.cpp.o)
 
 .debug_abbrev   0x00000000    0x1071a
  .debug_abbrev  0x00000000      0xd4e C:\Users\javie\AppData\Local\arduino\sketches\407271B1AD6E3CCBCBC8D928CBF3F3BA\sketch\B2-Universal-VantaBlack.ino.cpp.o
