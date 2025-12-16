@@ -34,6 +34,7 @@ void setup()
 void loop()
 {
     //analogSetResolution(12); // 12 bits de resolucion (0-4095)
+    /*
     v_sense = analogRead(PIN_ADC_SENSE);
     v_sense = v_sense * 5000 / 1024; // Conversion a mV
     if (v_sense < 1500)
@@ -48,8 +49,9 @@ void loop()
     {
         colorWipe(strip.Color(255, 0, 0), 50); // Red
     }
+    */
 
-    /*
+    
     if (digitalRead(PIN_STATUS) == HIGH)
     {
 
@@ -60,9 +62,9 @@ void loop()
     }
     else
     {
-        colorWipe(strip.Color(0, 0, 0), 50); // Apaga todos los leds.
+       colorWipe(strip.Color(0, 0, 255), 50); // Blue
     }
-    */
+    
 }
 // Fill the dots one after the other with a color
 void colorWipe(uint32_t c, uint8_t wait)
