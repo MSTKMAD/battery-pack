@@ -10,10 +10,10 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 401 // Version 401: Inclusion del modo low_voltaje
+#define INTEGRATED_VERSION 600 // Version 600: Version inicial de PMU para el ROVER R-1
 
 #define MAX_VOLTAGE 120
-#define MIN_VOLTAGE 40
+#define MIN_VOLTAGE 25
 // #define SERIAL_DEBUG
 // #define WATCHDOG_ENABLE
 //============================================================== PINES ===========================================================//
