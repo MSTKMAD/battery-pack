@@ -4,18 +4,18 @@
  * @brief Look Up Table de direcciones de memeoria de la eeprom de la bateria.
  * @version 1
  * @date 2021-03-22
- * 
+ *
  * @copyright Copyright (c) 2021
- * 
+ *
  */
 
-#define POSICION_MEMORIA 0x0000AB00 //Ordenacion BigEndian
+#define POSICION_MEMORIA 0x0000AB00 // Ordenacion BigEndian
 
 const uint8_t HOURS_PM = 8;
 const uint16_t LOG_PER_HOUR = 10;
 const uint16_t PM_POSITIONS = HOURS_PM * LOG_PER_HOUR;
 const uint16_t NUM_POS_NAME = 50;
-const uint16_t NUM_NON_ARRAY_POS = 16;
+const uint16_t NUM_NON_ARRAY_POS = 17;
 const uint16_t POWER_USE_POSITIONS = 41;   // 0w to 2000w in step of 50w -> 41 step
 const uint16_t PERCENT_USE_POSITIONS = 21; // 0% to 100% in step of 5% -> 21 step
 struct EEPROM
@@ -38,7 +38,7 @@ struct EEPROM
     uint16_t num_char_in_name;
     uint16_t num_wdt_errors;
     uint16_t name[NUM_POS_NAME];
-    uint16_t array_power_use[POWER_USE_POSITIONS];   // 500mW to 5000mW in step of 100mW -> 46 step
+    uint16_t array_power_use[POWER_USE_POSITIONS];     // 500mW to 5000mW in step of 100mW -> 46 step
     uint16_t array_percent_use[PERCENT_USE_POSITIONS]; // 3300 to 4100 in step of 20mv -> 21 step
     uint16_t pm_power[PM_POSITIONS];
     uint16_t pm_percent[PM_POSITIONS];
@@ -54,30 +54,30 @@ const uint8_t C_SHORT_CIRCUIT_ERROR = 3;
 const uint8_t C_WORK_TIME = 4;
 
 const uint8_t C_TEST_MODE = 5;
-const uint8_t C_FLAG_CORRUPTION = 6;
-const uint8_t C_FLAG_INIT = 7;
+const uint8_t C_FLAG_CORRUPTION = 6; // <--
+const uint8_t C_FLAG_INIT = 7;       // <--
 const uint8_t C_FLAG_ENABLE_NAME = 8;
 const uint8_t C_NITRO_STATUS = 9;
 const uint8_t C_VANTA_MODE_STATUS = 10;
-const uint8_t C_LOW_VOLT_STATUS = 10;
+const uint8_t C_LOW_VOLT_STATUS = 11;
 
-const uint8_t C_NAME = 11;
+const uint8_t C_NAME = 12;
 
-const uint8_t C_SERIAL_NUMBER = 12;
-const uint8_t C_INTEGRATED_VERSION = 13;
+const uint8_t C_SERIAL_NUMBER = 13;
+const uint8_t C_INTEGRATED_VERSION = 14;
 
-const uint8_t C_NUM_DIAG_DATA = 14;
+const uint8_t C_NUM_DIAG_DATA = 15;
 
-const uint8_t C_POWER_USE = 15;
-const uint8_t C_PERCENT_USE = 16;
-const uint8_t C_THEORY_VOLTAGE = 17;
+const uint8_t C_POWER_USE = 16;
+const uint8_t C_PERCENT_USE = 17;
+const uint8_t C_THEORY_VOLTAGE = 18;
 
-const uint8_t C_PM_POWER = 18;
-const uint8_t C_PM_PERCENT = 19;
-const uint8_t C_PM_VOLTAGE = 20;
-const uint8_t C_PM_ERRORS = 21;
+const uint8_t C_PM_POWER = 19;
+const uint8_t C_PM_PERCENT = 20;
+const uint8_t C_PM_VOLTAGE = 21;
+const uint8_t C_PM_ERRORS = 22;
 
-const uint8_t C_NUM_WDT_ERRORS = 22;
+const uint8_t C_NUM_WDT_ERRORS = 23;
 
 const uint16_t C_ERROR_PWR = 1001;
 const uint16_t C_ERROR_VOLT = 1002;

@@ -349,9 +349,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
-        initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                        // Inicializacion del Buzzer
+        initDisplay();                                                     // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -640,39 +640,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
-        {
-            flag_eeprom_init_fail = true;
-#ifdef SERIAL_DEBUG
-            Serial5.println("Fallo de lectura de EEPROM");
-#endif
-        }
-        else
-        {
-#ifdef SERIAL_DEBUG
-            Serial5.println("Lectura Correcta de EEPROM");
-#endif
-        }
         SaveEeprom();
-    }
-    else if (reset_cause == C_RCAUSE_BOD33)
-    {
-#ifdef SERIAL_DEBUG
-        Serial5.printf("Reset BOD33\n");
-#endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
-        {
-            flag_eeprom_init_fail = true;
-#ifdef SERIAL_DEBUG
-            Serial5.println("Fallo de lectura de EEPROM");
-#endif
-        }
-        else
-        {
-#ifdef SERIAL_DEBUG
-            Serial5.println("Lectura Correcta de EEPROM");
-#endif
-        }
     }
 
     /*===============================================================================================================================================*/
@@ -1013,8 +981,8 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
-                // Chequeo de entrada al menu
-
+                
+                //------------- Chequeo de entrada al menu -------------//                
                 if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                 {
                     timer_enter_menu.set(750);
@@ -1076,7 +1044,6 @@ void setup()
                         {
                             ConfigMenu();
                             button_event = C_NONE_EVENT;
-                            flag_menu_active = false;
                             cont_sec_menu_wait = 0;
                         }
                         trigger_Display_volt = true;
@@ -1879,7 +1846,7 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
                     {
                         flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -2044,7 +2011,8 @@ void ConfigMenu()
 
             playSound(C_SOUND_CHARGE_IN);
             break;
-        case C_MnOpt_LOW_VOLT:
+            /*
+            case C_MnOpt_LOW_VOLT:
             OLED_display.clearDisplay();
             OLED_display.setTextSize(1);
             OLED_display.setCursor(10, 12);
@@ -2054,6 +2022,7 @@ void ConfigMenu()
 
             playSound(C_SOUND_CHARGE_IN);
             break;
+            */
         default:
             break;
         }
@@ -2076,7 +2045,7 @@ void ConfigMenu()
             {
                 if (menu_option == C_MnOpt_NITRO)
                 {
-                    menu_option = C_MnOpt_LOW_VOLT;
+                    // menu_option = C_MnOpt_LOW_VOLT;
                 }
                 else if (menu_option == C_MnOpt_LOW_VOLT)
                 {
@@ -2087,7 +2056,7 @@ void ConfigMenu()
             {
                 if (menu_option == C_MnOpt_NITRO)
                 {
-                    menu_option = C_MnOpt_LOW_VOLT;
+                    // menu_option = C_MnOpt_LOW_VOLT;
                 }
                 else if (menu_option == C_MnOpt_LOW_VOLT)
                 {

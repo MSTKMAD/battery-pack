@@ -10,7 +10,7 @@
  * @copyright Copyright (c) 2022
  *
  */
-#define INTEGRATED_VERSION 600 // Version 600: Version inicial de PMU para el ROVER R-1
+#define INTEGRATED_VERSION 600 // Version 600: Version inicial de KORA (Micro) para el ROVER R-1
 
 #define MAX_VOLTAGE 120
 #define MIN_VOLTAGE 25
@@ -104,7 +104,8 @@ const bool C_ENDING_SOUND = false;
 const uint16_t C_MnOpt_NITRO = 0xA1;    // Configuracion del Modo Nitro.
 const uint16_t C_MnOpt_LOW_VOLT = 0xA2; // Configuracion del Modo LOW VOLT.
 const uint16_t C_NITRO_STATE_DFLT = false;
-const uint16_t C_LOW_VOLT_STATE_DFLT = false;
+const uint16_t C_LOW_VOLT_STATE_DFLT = true;
+const uint16_t C_VANTA_MODE_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -349,9 +350,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                 // Inicializacion del Buzzer
-        initDisplay();                              // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                                                 // Inicializacion del Buzzer
+        initDisplay();                                                                              // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -640,7 +641,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -1879,7 +1880,7 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT,C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
                     {
                         flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG

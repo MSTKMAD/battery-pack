@@ -50,7 +50,7 @@ uint32_t checksum;
  *          * Guardado en EEPROM (X,B,C). X no se guarda, B se guarda en la Bateria y C se guarda en el Chasis.
  *
  */
-bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
+bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default = false, bool low_volt_status_default = false)
 {
 
     local_eeprom = flash_eeprom.read();
@@ -75,6 +75,7 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
         local_eeprom.flag_naming_enable = false;
         local_eeprom.nitro_status = nitro_state_default;
         local_eeprom.vanta_mode_status = vanta_mode_status_default;
+        local_eeprom.low_volt_status = low_volt_status_default;
         local_eeprom.num_char_in_name = 0;
         local_eeprom.num_wdt_errors = 0;
         for (int16_t i = 0; i < NUM_POS_NAME; i++)
@@ -107,6 +108,8 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
         local_eeprom.checksum += local_eeprom.flag_corruption;
         local_eeprom.checksum += local_eeprom.flag_naming_enable;
         local_eeprom.checksum += local_eeprom.nitro_status;
+        local_eeprom.checksum += local_eeprom.vanta_mode_status;
+        local_eeprom.checksum += local_eeprom.low_volt_status;
         local_eeprom.checksum += local_eeprom.num_char_in_name;
         local_eeprom.checksum += local_eeprom.num_wdt_errors;
         for (int16_t i = 0; i < NUM_POS_NAME; i++)
@@ -135,7 +138,6 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
         }
         else
         {
-
             Serial5.println("EEPROM Inicializada.");
             Serial5.println("Volcando EEPROM.");
             Serial5.println(local_eeprom.serial_number);
@@ -151,6 +153,8 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
             Serial5.println(local_eeprom.flag_corruption);
             Serial5.println(local_eeprom.flag_naming_enable);
             Serial5.println(local_eeprom.nitro_status);
+            Serial5.println(local_eeprom.vanta_mode_status);
+            Serial5.println(local_eeprom.low_volt_status);
             Serial5.println(local_eeprom.num_char_in_name);
             Serial5.println(local_eeprom.num_wdt_errors);
             for (int16_t i = 0; i < NUM_POS_NAME; i++)
@@ -187,6 +191,8 @@ bool Init_local_eeprom(bool nitro_state_default, bool vanta_mode_status_default)
             checksum += local_eeprom.flag_corruption;
             checksum += local_eeprom.flag_naming_enable;
             checksum += local_eeprom.nitro_status;
+            checksum += local_eeprom.vanta_mode_status;
+            checksum += local_eeprom.low_volt_status;
             checksum += local_eeprom.num_char_in_name;
             checksum += local_eeprom.num_wdt_errors;
             for (int16_t i = 0; i < NUM_POS_NAME; i++)
@@ -257,6 +263,9 @@ void LogDiagnosticData(int16_t data, int16_t address)
     case C_VANTA_MODE_STATUS:
         local_eeprom.vanta_mode_status = data;
 
+    case C_LOW_VOLT_STATUS:
+        local_eeprom.low_volt_status = data;
+
     default:
         break;
     }
@@ -286,6 +295,9 @@ uint16_t ReadDiagnosticData(int16_t address)
 
     case C_VANTA_MODE_STATUS:
         return local_eeprom.vanta_mode_status;
+
+    case C_LOW_VOLT_STATUS:
+        return local_eeprom.low_volt_status;
 
     default:
         return 0;
@@ -347,6 +359,7 @@ void SaveEeprom()
     local_eeprom.checksum += local_eeprom.flag_naming_enable;
     local_eeprom.checksum += local_eeprom.nitro_status;
     local_eeprom.checksum += local_eeprom.vanta_mode_status;
+    local_eeprom.checksum += local_eeprom.low_volt_status;
     local_eeprom.checksum += local_eeprom.num_char_in_name;
     local_eeprom.checksum += local_eeprom.num_wdt_errors;
     for (int16_t i = 0; i < NUM_POS_NAME; i++)
@@ -412,8 +425,9 @@ void DiagnosticMode()
     diagnostic_chain[11] = local_eeprom.flag_naming_enable;
     diagnostic_chain[12] = local_eeprom.nitro_status;
     diagnostic_chain[13] = local_eeprom.vanta_mode_status;
-    diagnostic_chain[14] = local_eeprom.num_char_in_name;
-    diagnostic_chain[15] = local_eeprom.num_wdt_errors;
+    diagnostic_chain[14] = local_eeprom.low_volt_status;
+    diagnostic_chain[15] = local_eeprom.num_char_in_name;
+    diagnostic_chain[16] = local_eeprom.num_wdt_errors;
 
     for (int i = 0; i < NUM_POS_NAME; i++)
     {
@@ -477,8 +491,6 @@ void SaveNameEEPROM(char array_to_display[], uint16_t num_char)
  * @brief
  *
  * @param array_to_name
- * .++
- * .
  *
  * @return uint16_t
  */

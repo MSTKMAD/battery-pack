@@ -373,7 +373,7 @@ void setup()
             Serial5.println("Lectura Correcta de EEPROM");
 #endif
         }
-
+        // TEST MODE
         if (local_eeprom.test_mode == true)
         {
             test_mode_activate = true;
@@ -2438,7 +2438,7 @@ void ConfigMenu()
                     OLED_display.clearDisplay();
                     OLED_display.setTextSize(2);
                     OLED_display.setCursor(0, 0);
-                    OLED_display.print("LOW");
+                    OLED_display.print("VANTA");
                     OLED_display.setCursor(0, 16);
                     OLED_display.print("OFF");
                     OLED_display.display();
