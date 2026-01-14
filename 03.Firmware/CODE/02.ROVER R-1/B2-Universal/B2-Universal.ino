@@ -21,7 +21,7 @@ const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion 
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
 const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
 const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
-const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspondiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
 //============================================================== INCLUDES ===========================================================//
@@ -815,7 +815,6 @@ void setup()
                             // Rampa de Bajada
                             for (int i = steps_bajada; i >= 0; i--)
                             {
-
                                 DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
                                 sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
                                 boost_check.check(sample_raw_io);
