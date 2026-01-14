@@ -1972,7 +1972,7 @@ void setup()
             {
                 if (flag_eeprom_init_fail == true)
                 {
-                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
+                    if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
                     {
                         flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
