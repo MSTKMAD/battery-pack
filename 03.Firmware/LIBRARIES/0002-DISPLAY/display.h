@@ -198,7 +198,6 @@ void DisplayCap(int capacity)
  * @brief Animacion Bateria Baja.
  *
  */
-
 void DisplayLowBattery()
 {
 #ifdef SERIAL_DEBUG
@@ -212,11 +211,11 @@ void DisplayLowBattery()
     OLED_display.print("Batt");
     OLED_display.display();
 }
+
 /**
  * @brief Bateria Agotada
  *
  */
-
 void DisplayNoBattery()
 {
 #ifdef SERIAL_DEBUG
@@ -256,8 +255,9 @@ void DisplayNoBattery()
         }
     }
 }
+
 /**
- * @brief
+ * @brief Funcion de display de arrays.
  *
  */
 void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
@@ -284,8 +284,9 @@ void DisplayArray(uint16_t array_to_display[], uint16_t size_array)
         }
     }
 }
+
 /**
- * @brief
+ * @brief Pantalla de debug.
  *
  * @param current
  * @param voltage
@@ -303,7 +304,14 @@ void DebugDisplay(uint32_t current, uint32_t current_raw, uint32_t voltage, uint
     OLED_display.printf("P %d", power);
     OLED_display.display();
 }
-void DisplayHz(int16_t volts, int16_t current)
+
+/**
+ * @brief Muestra la frecuencia en Hz.
+ *
+ * @param volts
+ * @param current
+ */
+void DisplayHz(int16_t volts, int16_t current) 
 {
     uint32_t hertz;
     float vmotor;

@@ -833,13 +833,7 @@ void setup()
                             pinMode(C_PIN_OP_SWITCH, OUTPUT);
                             digitalWrite(C_PIN_OP_SWITCH, LOW);
                             DCDC.SetVoltage(60, C_BOOST_MODE);
-                            for (int i = 0; i < 20; i++)
-                            {
-                                delay(10);
-#ifdef WATCHDOG_ENABLE
-                                Watchdog.reset();
-#endif
-                            }
+                            delay(200ms);
                             DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                             output_mode = C_BOOST_MODE;
                             arrancado = true;
@@ -981,8 +975,8 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
-                
-                //------------- Chequeo de entrada al menu -------------//                
+
+                //------------- Chequeo de entrada al menu -------------//
                 if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                 {
                     timer_enter_menu.set(750);

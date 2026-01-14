@@ -98,8 +98,6 @@ int16_t ReadDirPad(bool reset = false)
     }
     else
     {
-        /* code */
-
         /**
          *  UP BUTTON
          */
