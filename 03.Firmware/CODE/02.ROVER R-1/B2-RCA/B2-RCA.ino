@@ -104,6 +104,7 @@ const bool C_ENDING_SOUND = false;
 const uint16_t C_MnOpt_NITRO = 0xA1;    // Configuracion del Modo Nitro.
 const uint16_t C_MnOpt_LOW_VOLT = 0xA2; // Configuracion del Modo LOW VOLT.
 const uint16_t C_NITRO_STATE_DFLT = false;
+const uint16_t C_VANTA_MODE_STATE_DFLT = false;
 const uint16_t C_LOW_VOLT_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
@@ -204,7 +205,7 @@ bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                             
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
 bool low_volt_status = false;                                                        // Estado del Low Volt Feature
-
+bool vanta_mode_status = false;                                                      // Estado del Vanta Mode
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -349,9 +350,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                                        // Inicializacion del Buzzer
-        initDisplay();                                                     // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                                                 // Inicializacion del Buzzer
+        initDisplay();                                                                              // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -364,7 +365,7 @@ void setup()
             Serial5.println("Lectura Correcta de EEPROM");
 #endif
         }
-
+        // TEST MODE
         if (local_eeprom.test_mode == true)
         {
             test_mode_activate = true;
@@ -494,7 +495,6 @@ void setup()
             theory_Vout = 50;
         }
         nitro_status = ReadDiagnosticData(C_NITRO_STATUS);
-        low_volt_status = ReadDiagnosticData(C_LOW_VOLT_STATUS);
         //------------------------ INICIALIZACION DE PROTECCIONES------------------------
         over_consumption_protection.setCounter(0);
         over_power_protection.setCounter(0);
@@ -772,9 +772,6 @@ void setup()
                              // Rampa de subida
                              for (int i = 0; i <= 15; i++)
                              {
- #ifdef WATCHDOG_ENABLE
-
- #endif
                                  DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
                                  delay(100 / 10);
                              }

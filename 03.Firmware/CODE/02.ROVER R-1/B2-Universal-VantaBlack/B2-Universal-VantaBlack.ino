@@ -15,13 +15,13 @@
 #define MIN_VOLTAGE 40
 // #define SERIAL_DEBUG
 // #define WATCHDOG_ENABLE
- #define VANTAMODE_ENABLE
+#define VANTAMODE_ENABLE
 //============================================================== PINES ===========================================================//
 const uint16_t C_PIN_ENABLE_LDO_VCC_2 = 1; // Enable del LDO de la alimentacion de VCC_2
 const uint16_t C_PIN_OP_SWITCH = 13;       // Señal que activa/desactiva el transistor de salida en la placa DCDC. HIHG = ON, LOW = OFF
 const uint16_t C_PIN_EN_DCDC = 11;         // Enable del DCDC de la placa DCDC. HIGH = OFF, LOW = ON
 const uint16_t C_PIN_I_OUT = A1;           // Lectura de la tension correspondiente a la medida de corriente de salida.
-const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspodiente a la tension de salida del DCDC.
+const uint16_t C_PIN_V_OUT = A4;           // Lectura de la tension correspondiente a la tension de salida del DCDC.
 const uint16_t C_PIN_V_IN = A5;            // Lectura de la tension correspondiente a la tension de entrada (la bateria)
 
 //============================================================== INCLUDES ===========================================================//
@@ -106,6 +106,7 @@ const uint16_t C_MnOpt_NITRO = 0xA1;      // Configuracion del Modo Nitro.
 const uint16_t C_MnOpt_VANTA_MODE = 0xA2; // Configuracion del Modo Vanta.
 const uint16_t C_NITRO_STATE_DFLT = false;
 const uint16_t C_VANTA_MODE_STATE_DFLT = false;
+const uint16_t C_LOW_VOLT_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
 /**
@@ -208,7 +209,7 @@ bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                             
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
 bool status_boost_pd = false;                                                        // Estado del PID.
-bool vanta_mode_status = false;                                                      // Estado del Low Volt Feature
+bool vanta_mode_status = false;                                                      // Estado del Vanta Mode
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -358,9 +359,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                                          // Inicializacion del Buzzer
-        initDisplay();                                                       // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                                                 // Inicializacion del Buzzer
+        initDisplay();                                                                              // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -612,7 +613,6 @@ void setup()
             {
 
                 flag_waiting_naming = false;
-                flag_waiting = C_TIMER_DONE;
                 sw_status = C_SW_ST_SLEEP;
             }
             else if (button_event == C_LP_CENTER) // Pulsacion del boton central para skipear la ventana de tiempo.
@@ -650,39 +650,7 @@ void setup()
 #ifdef SERIAL_DEBUG
         Serial5.printf("Increment WTD\n");
 #endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
-        {
-            flag_eeprom_init_fail = true;
-#ifdef SERIAL_DEBUG
-            Serial5.println("Fallo de lectura de EEPROM");
-#endif
-        }
-        else
-        {
-#ifdef SERIAL_DEBUG
-            Serial5.println("Lectura Correcta de EEPROM");
-#endif
-        }
         SaveEeprom();
-    }
-    else if (reset_cause == C_RCAUSE_BOD33)
-    {
-#ifdef SERIAL_DEBUG
-        Serial5.printf("Reset BOD33\n");
-#endif
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT)) // Incializacion EEPROM
-        {
-            flag_eeprom_init_fail = true;
-#ifdef SERIAL_DEBUG
-            Serial5.println("Fallo de lectura de EEPROM");
-#endif
-        }
-        else
-        {
-#ifdef SERIAL_DEBUG
-            Serial5.println("Lectura Correcta de EEPROM");
-#endif
-        }
     }
 
     /*===============================================================================================================================================*/
@@ -800,7 +768,6 @@ void setup()
 #endif
                 }
                 //------------- ARRANCADO--------------//
-
                 if (arrancado == false)
                 {
 #ifdef VANTAMODE_ENABLE
@@ -815,65 +782,76 @@ void setup()
                         DCDC.SetVoltage(100, C_NON_BOOST_MODE);
                         delay(45);
                         /* digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
-                        if (theory_Vout >= 50)
-                        {
-                            // Rampa de subida
-                            for (int i = 0; i <= 15; i++)
-                            {
-
-#ifdef WATCHDOG_ENABLE
-
-#endif
-                             DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
-                             delay(100 / 10);
+                         if (theory_Vout >= 50)
+                         {
+                             // Rampa de subida
+                             for (int i = 0; i <= 15; i++)
+                             {
+                                 DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
+                                 delay(100 / 10);
+                             }
                          }
-                     }
-                     */
+                         */
                         DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                         output_mode = C_BOOST_MODE;
                         arrancado = true;
                     }
                     else
                     {
-                        // planicie a 5v
-                        DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                        digitalWrite(C_PIN_OP_SWITCH, LOW);
-
-                        delay(50);
-                        int tiempo_arrancado = 200; // ms
-                        int tiempo_bajada = 60;     // ms
-                        int steps_subida = 10;
-                        int steps_bajada = 10;
-
-                        // Rampa de subida
-                        for (int i = 0; i < steps_subida; i++)
+                        if (theory_Vout >= 50)
                         {
+                            // planicie a 5v
+                            DCDC.SetVoltage(50, C_NON_BOOST_MODE);
+                            digitalWrite(C_PIN_OP_SWITCH, LOW);
 
-                            DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
-                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                            boost_check.check(sample_raw_io);
-                            delay(tiempo_arrancado / steps_subida);
-                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                            delay(50);
+                            int tiempo_arrancado = 200; // ms
+                            int tiempo_bajada = 60;     // ms
+                            int steps_subida = 10;
+                            int steps_bajada = 10;
+
+                            // Rampa de subida
+                            for (int i = 0; i < steps_subida; i++)
+                            {
+
+                                DCDC.SetVoltage((120 - 50) / steps_subida * i + 50, C_BOOST_MODE);
+                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                                boost_check.check(sample_raw_io);
+                                delay(tiempo_arrancado / steps_subida);
+                                over_consumption_protection.getSample(C_PIN_I_OUT);
+                            }
+                            sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
+                            sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
+                            sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
+                            UpdatePowerBar(sample_POut);
+                            // Rampa de Bajada
+                            for (int i = steps_bajada; i >= 0; i--)
+                            {
+                                DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
+                                sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
+                                boost_check.check(sample_raw_io);
+                                delay(tiempo_bajada / steps_bajada);
+                                over_consumption_protection.getSample(C_PIN_I_OUT);
+                            }
+
+                            // Voltaje Objetivo
+                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                            output_mode = C_BOOST_MODE;
+                            arrancado = true;
                         }
-                        sample_IOut = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;  // Lectura de la Corriente de Salida
-                        sample_VOut = analogRead(C_PIN_V_OUT) * 208 / 39 * 3000 / 4096; // Lectura del Voltaje de salida
-                        sample_POut = (sample_IOut) * (sample_VOut) / 1000;             // Calculo de la potencia de salida
-                        UpdatePowerBar(sample_POut, status_boost_pd);
-                        // Rampa de Bajada
-                        for (int i = steps_bajada; i >= 0; i--)
+                        else
                         {
-
-                            DCDC.SetVoltage((120 - theory_Vout) / steps_bajada * i + theory_Vout, C_BOOST_MODE);
-                            sample_raw_io = analogRead(C_PIN_I_OUT) * 3000 / 4096 * 10 / 15;
-                            boost_check.check(sample_raw_io);
-                            delay(tiempo_bajada / steps_bajada);
-                            over_consumption_protection.getSample(C_PIN_I_OUT);
+                            pinMode(C_PIN_OP_SWITCH, OUTPUT);
+                            digitalWrite(C_PIN_OP_SWITCH, LOW);
+                            DCDC.SetVoltage(60, C_BOOST_MODE);
+                            delay(200);
+                            DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
+                            output_mode = C_BOOST_MODE;
+                            arrancado = true;
+#ifdef WATCHDOG_ENABLE
+                            Watchdog.reset();
+#endif
                         }
-
-                        // Voltaje Objetivo
-                        DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
-                        output_mode = C_BOOST_MODE;
-                        arrancado = true;
                     }
                 }
                 else if (arrancado)
@@ -1008,8 +986,8 @@ void setup()
                     timer_idle.set(C_TIME_IDLE_30_SEG); // Incio del contador de 30 seg para el Idle Timer.
                     cont_idle_timer = 0;                // Reset del contador de minutos.
                 }
-                // Chequeo de entrada al menu
 
+                //------------- Chequeo de entrada al menu -------------//
                 if ((digitalRead(C_PIN_BUTT_UP) == button_pressed) && (digitalRead(C_PIN_BUTT_DOWN) == button_pressed))
                 {
                     timer_enter_menu.set(750);
@@ -1071,7 +1049,6 @@ void setup()
                         {
                             ConfigMenu();
                             button_event = C_NONE_EVENT;
-                            flag_menu_active = false;
                             cont_sec_menu_wait = 0;
                         }
                         trigger_Display_volt = true;
@@ -1102,7 +1079,7 @@ void setup()
 
                         OLED_display.clearDisplay();
                         OLED_display.setTextSize(1);
-                        
+
                         OLED_display.setCursor(15, 7);
                         OLED_display.print("MOTHER");
                         OLED_display.setCursor(15, 18);
@@ -1199,7 +1176,6 @@ void setup()
 
                     long_press_events++;
                     timer_refresh_screen.set(1000); // Inicio del timer por si se suelta el boton central.
-
                     if (long_press_events == 1)
                     {
                         if (flag_enable_off == true) // si estamos en el estado STOP se pasa a mostrar la capacidad
@@ -1212,7 +1188,7 @@ void setup()
                             long_press_events--; // Si no estamos en el estado STOP reseteamos el contador, esperando estar en el estado de STOP
                         }
                     }
-                    else if ((long_press_events >= 3) && (long_press_events < 6))
+                    else if ((long_press_events >= 2) && (long_press_events < 5))
                     {
                         // Pantalla de Confirmacion de Apagado.
                         OLED_display.clearDisplay();
@@ -1223,13 +1199,13 @@ void setup()
                         OLED_display.setTextSize(2);
                         switch (long_press_events)
                         {
-                        case 3:
+                        case 2:
                             OLED_display.print("3");
                             break;
-                        case 4:
+                        case 3:
                             OLED_display.print("3 2 ");
                             break;
-                        case 5:
+                        case 4:
                             OLED_display.print("3 2 1");
                             break;
 
@@ -1239,7 +1215,7 @@ void setup()
                         OLED_display.display();
                         playSound(C_SOUND_UP); // Sonido de aviso de continuidad.
                     }
-                    else if (long_press_events == 6) // Al 6 evento de LongPress nos vamos al estado SLEEP.
+                    else if (long_press_events == 5) // Al 5 evento de LongPress nos vamos al estado SLEEP.
                     {
                         flag_sleep = true;
                         long_press_events = 0;
@@ -1347,7 +1323,6 @@ void setup()
 
             UpdatePowerBar(sample_POut, status_boost_pd);
         }
-
         /*________________________________________________________________ SLEEP ____________________________________________________________________*/
         else if (sw_status == C_SW_ST_SLEEP)
         {
@@ -1935,6 +1910,7 @@ void setup()
         //=============================================================================================================================================
         //                                                              END STATE MANAGEMENT
         //=============================================================================================================================================
+
         //============================================================== OUTPUT MANAGEMENT ===========================================================//
         if (sw_output == C_OUTPUT_OFF)
         {
@@ -1986,7 +1962,6 @@ void setup()
             short_current_protection.setCounter(0);
             low_voltage_protection.setCounter(low_voltage_protection.limit);
         }
-
         //======================================================= ACTUALIZACION DEL DIAGNOSTICO ===========================================================//
         LogDiagnosticData(theory_Vout, C_THEORY_VOLTAGE);
         //============================================================ TIMER LOGEO EEPROM  =============================================================//

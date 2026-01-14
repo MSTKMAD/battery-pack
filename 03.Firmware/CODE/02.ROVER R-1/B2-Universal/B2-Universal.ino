@@ -104,6 +104,7 @@ const bool C_ENDING_SOUND = false;
 const uint16_t C_MnOpt_NITRO = 0xA1;    // Configuracion del Modo Nitro.
 const uint16_t C_MnOpt_LOW_VOLT = 0xA2; // Configuracion del Modo LOW VOLT.
 const uint16_t C_NITRO_STATE_DFLT = false;
+const uint16_t C_VANTA_MODE_STATE_DFLT = false;
 const uint16_t C_LOW_VOLT_STATE_DFLT = false;
 
 //============================================================== VARIABLES ===========================================================//
@@ -204,7 +205,7 @@ bool display_error_status = C_DISPLAY_ST_NOT_BUSSY;                             
 uint16_t menu_option = C_MnOpt_NITRO;                                                // Valor de la opcion seleccionada en el menu.
 bool nitro_status = false;                                                           // Estado del Nitro.
 bool low_volt_status = false;                                                        // Estado del Low Volt Feature
-
+bool vanta_mode_status = false;                                                      // Estado del Vanta Mode
 //--------------------------------------- Counters variables-------------------------------------
 int32_t cont_sec_log = 0;            // Contador de los segundos en el intervalo del logeo de la EEPROM.
 uint16_t long_press_events = 0;      // Contador del numero de longpress consectivos.
@@ -349,9 +350,9 @@ void setup()
     digitalWrite(C_PIN_ENABLE_LDO_VCC_2, HIGH); // Encendido del DCDC
     if ((reset_cause != C_RCAUSE_BOD12) && (reset_cause != C_RCAUSE_BOD33) && (reset_cause != C_RCAUSE_WDT))
     {
-        InitBuzzer(C_MODE_DEFAULT);                                        // Inicializacion del Buzzer
-        initDisplay();                                                     // Inicializacion de la pantalla
-        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
+        InitBuzzer(C_MODE_DEFAULT);                                                                 // Inicializacion del Buzzer
+        initDisplay();                                                                              // Inicializacion de la pantalla
+        if (!Init_local_eeprom(C_NITRO_STATE_DFLT, C_VANTA_MODE_STATE_DFLT, C_LOW_VOLT_STATE_DFLT)) // Incializacion EEPROM
         {
             flag_eeprom_init_fail = true;
 #ifdef SERIAL_DEBUG
@@ -364,7 +365,7 @@ void setup()
             Serial5.println("Lectura Correcta de EEPROM");
 #endif
         }
-
+        // TEST MODE
         if (local_eeprom.test_mode == true)
         {
             test_mode_activate = true;
@@ -494,7 +495,6 @@ void setup()
             theory_Vout = 50;
         }
         nitro_status = ReadDiagnosticData(C_NITRO_STATUS);
-        low_volt_status = ReadDiagnosticData(C_LOW_VOLT_STATUS);
         //------------------------ INICIALIZACION DE PROTECCIONES------------------------
         over_consumption_protection.setCounter(0);
         over_power_protection.setCounter(0);
@@ -772,9 +772,6 @@ void setup()
                              // Rampa de subida
                              for (int i = 0; i <= 15; i++)
                              {
- #ifdef WATCHDOG_ENABLE
-
- #endif
                                  DCDC.SetVoltage((theory_Vout - 50) / 10 * i + 50, C_NON_BOOST_MODE);
                                  delay(100 / 10);
                              }
@@ -832,7 +829,7 @@ void setup()
                             pinMode(C_PIN_OP_SWITCH, OUTPUT);
                             digitalWrite(C_PIN_OP_SWITCH, LOW);
                             DCDC.SetVoltage(60, C_BOOST_MODE);
-                            delay(200ms);
+                            delay(200);
                             DCDC.SetVoltage(theory_Vout, C_BOOST_MODE);
                             output_mode = C_BOOST_MODE;
                             arrancado = true;
@@ -2178,121 +2175,5 @@ void ConfigMenu()
             }
             OLED_display.display();
         }
-    }
-    if (menu_option == C_MnOpt_LOW_VOLT)
-    {
-        bool active_question_nitro = true;
-        OLED_display.clearDisplay();
-        OLED_display.setTextSize(2);
-        OLED_display.setCursor(0, 0);
-        OLED_display.print("ON");
-        OLED_display.setCursor(30, 0);
-        OLED_display.print("OFF");
-
-        // OLED_display.drawChar(0, 0, 0x59, WHITE, BLACK, 2);
-        //  OLED_display.drawChar(26, 0,0x2F , WHITE, BLACK, 2);
-        // OLED_display.drawChar(52, 0, 0x4E, WHITE, BLACK, 2);
-        if (low_volt_status == false)
-        {
-            OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
-            OLED_display.drawChar(44, 16, 0x18, WHITE, BLACK, 2);
-        }
-        else
-        {
-            OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
-            OLED_display.drawChar(44, 16, 0x00, WHITE, BLACK, 2);
-        }
-        ReadDirPad(true);
-        while (active_question_nitro == true)
-        {
-
-            delay(10);
-            button_event_naming = ReadDirPad();
-
-            if ((button_event_naming == C_CLICK_UP) || (button_event_naming == C_LP_UP))
-            {
-#ifdef SERIAL_DEBUG
-                Serial5.println("UP!");
-#endif
-                OLED_display.drawChar(8, 16, 0x00, WHITE, BLACK, 2);
-                OLED_display.drawChar(42, 16, 0x18, WHITE, BLACK, 2);
-                low_volt_status = false;
-            }
-            else if ((button_event_naming == C_CLICK_DOWN) || (button_event_naming == C_LP_DOWN))
-            {
-#ifdef SERIAL_DEBUG
-                Serial5.println("DOWN!");
-#endif
-                OLED_display.drawChar(8, 16, 0x18, WHITE, BLACK, 2);
-                OLED_display.drawChar(42, 16, 0x00, WHITE, BLACK, 2);
-                low_volt_status = true;
-            }
-            else if ((button_event_naming == C_CLICK_CENTER) || (button_event_naming == C_LP_CENTER))
-            {
-#ifdef SERIAL_DEBUG
-                Serial5.println("CENTER!");
-#endif
-                active_question_nitro = false;
-
-                // Pantalla de carga.
-                OLED_display.clearDisplay();
-                OLED_display.setTextSize(1);
-                OLED_display.setCursor(0, 0);
-                OLED_display.print("Saving...");
-                OLED_display.drawRect(0, 16, 64, 16, WHITE);
-                for (uint16_t i = 0; i <= 100; i++)
-                {
-
-                    OLED_display.fillRect(0, 16, i * 64 / 100, 16, WHITE);
-
-                    for (int j = 0; j < 2; j++)
-                    {
-                        delay(10);
-                    }
-                    OLED_display.display();
-                }
-                // delay(500);
-                for (int i = 0; i < 50; i++)
-                {
-                    delay(10);
-                }
-
-                // Pantalla Confirmacion
-                LogDiagnosticData(low_volt_status, C_LOW_VOLT_STATUS);
-                SaveEeprom();
-                if (low_volt_status == true)
-                {
-                    OLED_display.clearDisplay();
-                    OLED_display.setTextSize(2);
-                    OLED_display.setCursor(0, 0);
-                    OLED_display.print("LOW");
-                    OLED_display.setCursor(0, 16);
-                    OLED_display.print("ON");
-                    OLED_display.display();
-                    // delay(2000);
-                    for (int i = 0; i < 200; i++)
-                    {
-                        delay(10);
-                    }
-                }
-                else
-                {
-                    OLED_display.clearDisplay();
-                    OLED_display.setTextSize(2);
-                    OLED_display.setCursor(0, 0);
-                    OLED_display.print("LOW");
-                    OLED_display.setCursor(0, 16);
-                    OLED_display.print("OFF");
-                    OLED_display.display();
-                    // delay(2000);
-                    for (int i = 0; i < 200; i++)
-                    {
-                        delay(10);
-                    }
-                }
-            }
-            OLED_display.display();
-        }
-        trigger_Display_volt = true;
     }
 }
