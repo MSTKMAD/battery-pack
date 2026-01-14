@@ -770,11 +770,6 @@ void setup()
                 //------------- ARRANCADO--------------//
                 if (arrancado == false)
                 {
-#ifdef VANTAMODE_ENABLE
-                    digitalWrite(C_PIN_OP_SWITCH, LOW); // Activacion del transistor de salida
-                    DCDC.SetVoltage(50, C_NON_BOOST_MODE);
-                    delay(70);
-#endif
                     if (nitro_status == false)
                     {
                         // --- CHIQUI NITRO ---
