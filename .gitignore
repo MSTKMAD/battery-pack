@@ -57,24 +57,7 @@ dxfimp.scr
 # Folders
 Doxygen/*
 XXXX- MISC/cyclator/cyclator.ino
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_BusIO_Register.cpp
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_BusIO_Register.h
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_I2CDevice.cpp
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_I2CDevice.h
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_I2CRegister.h
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_SPIDevice.cpp
-03.Firmware/libraries/Adafruit_BusIO/Adafruit_SPIDevice.h
-03.Firmware/libraries/Adafruit_BusIO/library.properties
-03.Firmware/libraries/Adafruit_BusIO/LICENSE
-03.Firmware/libraries/Adafruit_BusIO/README.md
-03.Firmware/libraries/Adafruit_BusIO/examples/i2c_address_detect/i2c_address_detect.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/i2c_readwrite/i2c_readwrite.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/i2c_registers/i2c_registers.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/i2corspi_register/i2corspi_register.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/spi_modetest/spi_modetest.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/spi_readwrite/spi_readwrite.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/spi_register_bits/spi_register_bits.ino
-03.Firmware/libraries/Adafruit_BusIO/examples/spi_registers/spi_registers.ino
+
 03.Firmware/libraries/Adafruit_GFX_Library/Adafruit_GFX.cpp
 03.Firmware/libraries/Adafruit_GFX_Library/Adafruit_GFX.h
 03.Firmware/libraries/Adafruit_GFX_Library/Adafruit_GrayOLED.cpp

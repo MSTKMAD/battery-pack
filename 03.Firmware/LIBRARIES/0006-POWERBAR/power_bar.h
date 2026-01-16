@@ -73,7 +73,7 @@ void PowerBar(int16_t leds, bool pid_status = false)
  * @param power_sample
  * @param OLED_display
  */
-void UpdatePowerBar(int16_t power_sample, bool pid_status)
+void UpdatePowerBar(int16_t power_sample, bool pid_status=false)
 {
     static int16_t high_sample = 0;
 

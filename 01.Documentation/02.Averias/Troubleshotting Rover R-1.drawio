@@ -1,0 +1,366 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.0 Chrome/140.0.7339.249 Electron/38.7.2 Safari/537.36" version="29.3.0">
+  <diagram name="Page-1" id="s_CgVKNF7Vfo0RQgOjCI">
+    <mxGraphModel dx="1714" dy="510" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-98" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="_-jxbxfjw4b-YKAUnd5X-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Contacto del Cliente" vertex="1">
+          <mxGeometry height="60" width="120" x="365" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-4" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-5" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-4" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="La tapa no cierra bien" vertex="1">
+          <mxGeometry relative="1" x="0.1287" as="geometry">
+            <mxPoint x="437" y="40" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-11" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-12" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-11" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&quot;No se Enciende&quot;" vertex="1">
+          <mxGeometry relative="1" x="0.8195" y="-1" as="geometry">
+            <mxPoint x="2" y="39" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-15" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-16" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-15" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&quot;No da salida&quot;" vertex="1">
+          <mxGeometry relative="1" x="0.7356" as="geometry">
+            <mxPoint y="16" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-18" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-29" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="270" y="250.0000000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-19" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-18" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&quot;Al dar salida, salta un error&quot;" vertex="1">
+          <mxGeometry relative="1" x="0.5985" y="1" as="geometry">
+            <mxPoint x="-1" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-25" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-24" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-26" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&quot;al dar salida, la bateria se reinicia&quot;" vertex="1">
+          <mxGeometry relative="1" x="0.8288" y="-1" as="geometry">
+            <mxPoint x="1" y="11" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-2" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Problemas" vertex="1">
+          <mxGeometry height="80" width="125" x="363" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-9" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-8" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-3" parent="1" style="whiteSpace=wrap;html=1;shape=process;backgroundOutline=1;" value="Fallo Mecanico" vertex="1">
+          <mxGeometry height="60" width="120" x="1535" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-8" parent="1" style="whiteSpace=wrap;html=1;shape=step;perimeter=stepPerimeter;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Cambio de la tapa por posible golpe o fallo de fabrica" vertex="1">
+          <mxGeometry height="60" width="190" x="1500" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-23" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-10" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Posibles: Conectores, Fallo Software,&lt;div&gt;Watchdog&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1155" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-21" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-46">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="760" y="670" />
+            </Array>
+            <mxPoint x="760" y="339.1600000000001" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-14" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;size=0.05;" value="&lt;div&gt;Si no hay fallo por Undervoltage&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;Posible fallo Hardware:&lt;div&gt;&lt;div&gt;Faja&lt;/div&gt;&lt;div&gt;Cables de Connectores&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="100.84" width="200" x="660" y="249.16" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-58" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-60">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1000" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-59" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-58" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Mete la pila, hay carga de capacidad,&amp;nbsp;&lt;div&gt;pero no se enciende pulsando botones&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.6214" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-63" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-65">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1215" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-64" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-63" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Al meter la pila no se&lt;div&gt;&amp;nbsp;enciende la pantalla&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.0704" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-22" parent="1" style="shape=ellipse;whiteSpace=wrap;html=1;backgroundOutline=1;perimeter=ellipsePerimeter;" value="Pedir Video" vertex="1">
+          <mxGeometry height="60" width="120" x="1155" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-28" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-27" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-24" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Fallo de Supervisor" vertex="1">
+          <mxGeometry height="60" width="120" x="-310" y="260.33" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-27" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Quitar supervisor de la placa CPU" vertex="1">
+          <mxGeometry height="80" width="200" x="-350" y="399.15999999999997" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-31" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="_-jxbxfjw4b-YKAUnd5X-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-29" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Fallo relacionado con la salida" vertex="1">
+          <mxGeometry height="60" width="120" x="210" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-33" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-32" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-48" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-33" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Corriente o Potencia" vertex="1">
+          <mxGeometry relative="1" x="0.427" as="geometry">
+            <mxPoint y="19" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-47" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-46" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-49" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-47" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="UnderVoltage" vertex="1">
+          <mxGeometry relative="1" x="-0.2556" y="4" as="geometry">
+            <mxPoint x="13" y="63" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-30" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="" vertex="1">
+          <mxGeometry height="80" width="80" x="230" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-36" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-35" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-37" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-36" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Hay corto" vertex="1">
+          <mxGeometry relative="1" x="-0.1429" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-32" parent="1" style="whiteSpace=wrap;html=1;" value="Revisar cortocirucito en el conector RCA" vertex="1">
+          <mxGeometry height="60" width="120" x="-30" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-39" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-38" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-41" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-39" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Todo Bien" vertex="1">
+          <mxGeometry relative="1" x="-0.0952" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-43" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-42" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-45" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-43" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fallo detectado" vertex="1">
+          <mxGeometry relative="1" x="-0.2053" y="-2" as="geometry">
+            <mxPoint x="2" y="32" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-35" parent="1" style="whiteSpace=wrap;html=1;" value="Revisar la placa de conectores:&lt;div&gt;- Lineas de Vout+ y Vout-, por posible corto en la faja&lt;/div&gt;&lt;div&gt;- Comprobar que al cerrar el conector RCA no hace corto con los pines del transistor.&lt;/div&gt;&lt;div&gt;- Revisar ambos lados de la faja por fallos en el montaje.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Revisar DCDC:&lt;/div&gt;&lt;div&gt;- Posible fallo en el conector entre placas en la linea de sensado de corriente.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="150" width="340" x="-140" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-44" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-42" value="Alguna de las placas presenta&amp;nbsp;&lt;div&gt;problemas en el testeo&lt;/div&gt;">
+          <mxGeometry relative="1" x="-0.6552" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="30" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-51" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-50" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-60" y="780" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-52" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-51" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;div&gt;Todo parece&amp;nbsp;&lt;/div&gt;&lt;div&gt;estar bien&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="-0.1067" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-38" parent="1" style="whiteSpace=wrap;html=1;" value="Revisar las placas por separado en el tester de placas" vertex="1">
+          <mxGeometry height="60" width="120" x="-30" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-42" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;size=10;" value="Solucionar el Error presente" vertex="1">
+          <mxGeometry height="80" width="150" x="210" y="920" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-53" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-42">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="280" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-55" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-38" value="Todo Bien">
+          <mxGeometry relative="1" x="-0.7975" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="455" y="830" />
+            </Array>
+            <mxPoint x="455" y="800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-56" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-55" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Todo bien" vertex="1">
+          <mxGeometry relative="1" x="-0.263" y="-1" as="geometry">
+            <mxPoint x="1" y="-143" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-46" parent="1" style="whiteSpace=wrap;html=1;" value="Encendar la salida y comprobar con el multimetro el RCA y las lineas de la placa de conectores" vertex="1">
+          <mxGeometry height="80" width="190" x="365" y="630" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-50" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;size=10;" value="Revision intensa&amp;nbsp;&lt;div&gt;sin guia&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="-260" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-62" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-60" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="_-jxbxfjw4b-YKAUnd5X-61">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-60" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Watchdog" vertex="1">
+          <mxGeometry height="60" width="120" x="940" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-61" parent="1" style="whiteSpace=wrap;html=1;shape=step;perimeter=stepPerimeter;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Reprogramación" vertex="1">
+          <mxGeometry height="60" width="125" x="937.5" y="580" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-66" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-68">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1130" y="530" />
+            </Array>
+            <mxPoint x="1130" y="690" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-67" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-66" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+          <mxGeometry relative="1" x="0.226" y="-2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-71" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-72">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1320" y="670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-73" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-71" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Si" vertex="1">
+          <mxGeometry relative="1" x="0.324" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-65" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Tiene&amp;nbsp;&lt;div&gt;Muelle?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="80" x="1175" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-70" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-68" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-69">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-68" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Connectores Antiguos Planos" vertex="1">
+          <mxGeometry height="60" width="120" x="1070" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-69" parent="1" style="whiteSpace=wrap;html=1;shape=step;perimeter=stepPerimeter;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Poner Muelle" vertex="1">
+          <mxGeometry height="60" width="125" x="1067.5" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-75" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-72" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-74" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-72" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Posible fallo en el Pin del cobre o fallo en la faja." vertex="1">
+          <mxGeometry height="60" width="120" x="1270" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-76" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-79">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1580" y="950" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-77" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-76" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No llega" vertex="1">
+          <mxGeometry relative="1" x="-0.0685" y="3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-82" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-84">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1330" y="990" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-83" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-82" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Si llega" vertex="1">
+          <mxGeometry relative="1" x="0.1417" y="2" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-74" parent="1" style="whiteSpace=wrap;html=1;" value="Abrir placa conectores.&lt;div&gt;Meter pila&lt;/div&gt;&lt;div&gt;Medir con el multimetro si la tension llega a la placa de conectores&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="270" x="1195" y="850" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-81" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-80">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-79" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Fallo en el Pin" vertex="1">
+          <mxGeometry height="60" width="120" x="1520" y="960" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-80" parent="1" style="whiteSpace=wrap;html=1;shape=step;perimeter=stepPerimeter;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Cambiar Barril" vertex="1">
+          <mxGeometry height="60" width="125" x="1517.5" y="1070" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-85" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="_-jxbxfjw4b-YKAUnd5X-86" value="Sin continuidad">
+          <mxGeometry relative="1" x="-0.2308" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="1150" y="1050" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-89" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-84" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-91">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1330" y="1120" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-90" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-89" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Buena continuidad" vertex="1">
+          <mxGeometry relative="1" x="0.2875" as="geometry">
+            <mxPoint y="-12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-84" parent="1" style="whiteSpace=wrap;html=1;" value="Comprobar continuidad en la Faja" vertex="1">
+          <mxGeometry height="60" width="115" x="1272.5" y="980" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-88" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-86" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-87">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-86" parent="1" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" value="Fallo en la Faja" vertex="1">
+          <mxGeometry height="60" width="120" x="1090" y="1060" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-87" parent="1" style="whiteSpace=wrap;html=1;shape=step;perimeter=stepPerimeter;fixedSize=1;size=10;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;" value="Cambiar Faja" vertex="1">
+          <mxGeometry height="60" width="125" x="1087.5" y="1140" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-93" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-92">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-94" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-93" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fallo en los testeos" vertex="1">
+          <mxGeometry relative="1" x="-0.3333" as="geometry">
+            <mxPoint y="10" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-95" edge="1" parent="1" source="_-jxbxfjw4b-YKAUnd5X-91" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="_-jxbxfjw4b-YKAUnd5X-97">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1540" y="1280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-96" connectable="0" parent="_-jxbxfjw4b-YKAUnd5X-95" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Sin fallos en los testeos" vertex="1">
+          <mxGeometry relative="1" x="-0.3012" as="geometry">
+            <mxPoint x="65" y="60" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-91" parent="1" style="whiteSpace=wrap;html=1;" value="Revisar las placas por separado en el tester de placas" vertex="1">
+          <mxGeometry height="60" width="120" x="1270" y="1160" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-92" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#60a917;fontColor=#ffffff;strokeColor=#2D7600;size=10;" value="Solucionar el Error presente" vertex="1">
+          <mxGeometry height="80" width="150" x="1255" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="_-jxbxfjw4b-YKAUnd5X-97" parent="1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#a20025;fontColor=#ffffff;strokeColor=#6F0000;size=10;" value="Revision intensa&amp;nbsp;&lt;div&gt;sin guia&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="120" x="1470" y="1280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
